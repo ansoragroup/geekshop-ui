@@ -3,18 +3,19 @@ import { useState } from 'react';
 import { CategorySidebar } from './CategorySidebar';
 import type { CategorySidebarProps } from './CategorySidebar';
 
-const meta: Meta<typeof CategorySidebar> = {
+const meta = {
   title: 'Navigation/CategorySidebar',
   component: CategorySidebar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'iPhone13' },
     backgrounds: { default: 'White' },
   },
-};
+} satisfies Meta<typeof CategorySidebar>;
 
 export default meta;
-type Story = StoryObj<typeof CategorySidebar>;
+type Story = StoryObj<typeof meta>;
 
 function InteractiveSidebar(props: Partial<CategorySidebarProps> & { initialKey?: string }) {
   const { initialKey = 'gpu', ...rest } = props;

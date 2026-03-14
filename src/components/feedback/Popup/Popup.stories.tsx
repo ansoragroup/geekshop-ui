@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Popup } from './Popup';
 
-const meta: Meta<typeof Popup> = {
+const meta = {
   title: 'Feedback/Popup',
   component: Popup,
   tags: ['autodocs'],
@@ -15,10 +15,10 @@ const meta: Meta<typeof Popup> = {
       options: ['center', 'bottom'],
     },
   },
-};
+} satisfies Meta<typeof Popup>;
 
 export default meta;
-type Story = StoryObj<typeof Popup>;
+type Story = StoryObj<typeof meta>;
 
 export const Center: Story = {
   args: {

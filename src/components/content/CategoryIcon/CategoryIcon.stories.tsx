@@ -75,9 +75,10 @@ const CpuIcon = () => (
 );
 
 // Single icon meta
-const meta: Meta<typeof CategoryIcon> = {
+const meta = {
   title: 'Content/CategoryIcon',
   component: CategoryIcon,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -92,10 +93,10 @@ const meta: Meta<typeof CategoryIcon> = {
     onClick: { action: 'clicked' },
     color: { control: 'color' },
   },
-};
+} satisfies Meta<typeof CategoryIcon>;
 
 export default meta;
-type Story = StoryObj<typeof CategoryIcon>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

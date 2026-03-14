@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { FilterBar } from './FilterBar';
 import type { FilterBarProps } from './FilterBar';
 
-const meta: Meta<typeof FilterBar> = {
+const meta = {
   title: 'Navigation/FilterBar',
   component: FilterBar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     viewport: { defaultViewport: 'iPhone13' },
@@ -17,10 +18,10 @@ const meta: Meta<typeof FilterBar> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof FilterBar>;
 
 export default meta;
-type Story = StoryObj<typeof FilterBar>;
+type Story = StoryObj<typeof meta>;
 
 function InteractiveFilterBar(props: Partial<FilterBarProps> & { initialFilter?: string }) {
   const { initialFilter = 'all', filters = [], ...rest } = props;

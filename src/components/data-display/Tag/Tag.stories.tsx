@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Tag } from './Tag';
 
-const meta: Meta<typeof Tag> = {
+const meta = {
   title: 'Data Display/Tag',
   component: Tag,
   tags: ['autodocs'],
@@ -17,10 +17,10 @@ const meta: Meta<typeof Tag> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Tag>;
 
 export default meta;
-type Story = StoryObj<typeof Tag>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default ---
 export const Default: Story = {

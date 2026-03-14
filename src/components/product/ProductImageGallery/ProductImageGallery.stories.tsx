@@ -15,7 +15,7 @@ const monitorImages = [
   'https://picsum.photos/seed/mongal3/800/800',
 ];
 
-const meta: Meta<typeof ProductImageGallery> = {
+const meta = {
   title: 'Product/ProductImageGallery',
   component: ProductImageGallery,
   tags: ['autodocs'],
@@ -34,10 +34,10 @@ const meta: Meta<typeof ProductImageGallery> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof ProductImageGallery>;
 
 export default meta;
-type Story = StoryObj<typeof ProductImageGallery>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default with 4 images ---
 export const Default: Story = {

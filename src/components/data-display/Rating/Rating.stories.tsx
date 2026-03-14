@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Rating } from './Rating';
 
-const meta: Meta<typeof Rating> = {
+const meta = {
   title: 'Data Display/Rating',
   component: Rating,
   tags: ['autodocs'],
@@ -16,10 +16,10 @@ const meta: Meta<typeof Rating> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Rating>;
 
 export default meta;
-type Story = StoryObj<typeof Rating>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default display ---
 export const Default: Story = {

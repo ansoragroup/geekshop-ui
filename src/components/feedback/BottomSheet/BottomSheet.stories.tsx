@@ -2,17 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { BottomSheet } from './BottomSheet';
 
-const meta: Meta<typeof BottomSheet> = {
+const meta = {
   title: 'Feedback/BottomSheet',
   component: BottomSheet,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<typeof BottomSheet>;
 
 export default meta;
-type Story = StoryObj<typeof BottomSheet>;
+type Story = StoryObj<typeof meta>;
 
 export const SkuSelector: Story = {
   name: 'SKU Selector',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PriceDisplay } from './PriceDisplay';
 
-const meta: Meta<typeof PriceDisplay> = {
+const meta = {
   title: 'Product/PriceDisplay',
   component: PriceDisplay,
   tags: ['autodocs'],
@@ -23,10 +23,10 @@ const meta: Meta<typeof PriceDisplay> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof PriceDisplay>;
 
 export default meta;
-type Story = StoryObj<typeof PriceDisplay>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default ---
 export const Default: Story = {

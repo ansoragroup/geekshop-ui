@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Toast } from './Toast';
 
-const meta: Meta<typeof Toast> = {
+const meta = {
   title: 'Feedback/Toast',
   component: Toast,
   tags: ['autodocs'],
@@ -15,10 +15,10 @@ const meta: Meta<typeof Toast> = {
       options: ['success', 'error', 'info', 'loading'],
     },
   },
-};
+} satisfies Meta<typeof Toast>;
 
 export default meta;
-type Story = StoryObj<typeof Toast>;
+type Story = StoryObj<typeof meta>;
 
 export const Success: Story = {
   args: {

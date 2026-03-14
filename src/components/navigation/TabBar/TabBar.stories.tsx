@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { TabBar } from './TabBar';
 import type { TabBarProps } from './TabBar';
 
-const meta: Meta<typeof TabBar> = {
+const meta = {
   title: 'Navigation/TabBar',
   component: TabBar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'iPhone13' },
@@ -22,10 +23,10 @@ const meta: Meta<typeof TabBar> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof TabBar>;
 
 export default meta;
-type Story = StoryObj<typeof TabBar>;
+type Story = StoryObj<typeof meta>;
 
 /* Interactive wrapper to enable tab switching */
 function InteractiveTabBar(props: Partial<TabBarProps> & { initialTab?: string }) {

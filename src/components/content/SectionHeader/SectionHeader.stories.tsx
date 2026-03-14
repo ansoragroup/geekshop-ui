@@ -25,9 +25,10 @@ const BoltIcon = () => (
   </svg>
 );
 
-const meta: Meta<typeof SectionHeader> = {
+const meta = {
   title: 'Content/SectionHeader',
   component: SectionHeader,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -41,10 +42,10 @@ const meta: Meta<typeof SectionHeader> = {
   argTypes: {
     onViewAll: { action: 'view all clicked' },
   },
-};
+} satisfies Meta<typeof SectionHeader>;
 
 export default meta;
-type Story = StoryObj<typeof SectionHeader>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

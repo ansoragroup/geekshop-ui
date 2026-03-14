@@ -13,9 +13,10 @@ const NewIcon = () => (
   </svg>
 );
 
-const meta: Meta<typeof PromoBanner> = {
+const meta = {
   title: 'Content/PromoBanner',
   component: PromoBanner,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -26,10 +27,10 @@ const meta: Meta<typeof PromoBanner> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof PromoBanner>;
 
 export default meta;
-type Story = StoryObj<typeof PromoBanner>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

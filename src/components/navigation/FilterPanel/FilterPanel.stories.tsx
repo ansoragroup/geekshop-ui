@@ -3,17 +3,18 @@ import { useState } from 'react';
 import { FilterPanel } from './FilterPanel';
 import type { FilterPanelProps, FilterValues } from './FilterPanel';
 
-const meta: Meta<typeof FilterPanel> = {
+const meta = {
   title: 'Navigation/FilterPanel',
   component: FilterPanel,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'iPhone13' },
   },
-};
+} satisfies Meta<typeof FilterPanel>;
 
 export default meta;
-type Story = StoryObj<typeof FilterPanel>;
+type Story = StoryObj<typeof meta>;
 
 const gpuFilterGroups = [
   {

@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import CountdownTimer from './CountdownTimer';
 
-const meta: Meta<typeof CountdownTimer> = {
+const meta = {
   title: 'Content/CountdownTimer',
   component: CountdownTimer,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -17,10 +18,10 @@ const meta: Meta<typeof CountdownTimer> = {
   argTypes: {
     onEnd: { action: 'countdown ended' },
   },
-};
+} satisfies Meta<typeof CountdownTimer>;
 
 export default meta;
-type Story = StoryObj<typeof CountdownTimer>;
+type Story = StoryObj<typeof meta>;
 
 /** 8 hours from now */
 const eightHoursFromNow = new Date(Date.now() + 8 * 60 * 60 * 1000 + 42 * 60 * 1000 + 11 * 1000);

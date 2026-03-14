@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import CouponCard from './CouponCard';
 
-const meta: Meta<typeof CouponCard> = {
+const meta = {
   title: 'Content/CouponCard',
   component: CouponCard,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -18,10 +19,10 @@ const meta: Meta<typeof CouponCard> = {
     onUse: { action: 'coupon used' },
     color: { control: 'color' },
   },
-};
+} satisfies Meta<typeof CouponCard>;
 
 export default meta;
-type Story = StoryObj<typeof CouponCard>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

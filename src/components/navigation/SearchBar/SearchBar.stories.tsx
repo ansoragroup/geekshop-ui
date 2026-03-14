@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { SearchBar } from './SearchBar';
 import type { SearchBarProps } from './SearchBar';
 
-const meta: Meta<typeof SearchBar> = {
+const meta = {
   title: 'Navigation/SearchBar',
   component: SearchBar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     viewport: { defaultViewport: 'iPhone13' },
@@ -17,10 +18,10 @@ const meta: Meta<typeof SearchBar> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof SearchBar>;
 
 export default meta;
-type Story = StoryObj<typeof SearchBar>;
+type Story = StoryObj<typeof meta>;
 
 function InteractiveSearchBar(props: Partial<SearchBarProps>) {
   const [val, setVal] = useState(props.value ?? '');

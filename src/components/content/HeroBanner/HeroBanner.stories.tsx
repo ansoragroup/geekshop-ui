@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import HeroBanner from './HeroBanner';
 
-const meta: Meta<typeof HeroBanner> = {
+const meta = {
   title: 'Content/HeroBanner',
   component: HeroBanner,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -18,10 +19,10 @@ const meta: Meta<typeof HeroBanner> = {
     bgGradient: { control: 'text' },
     onClick: { action: 'clicked' },
   },
-};
+} satisfies Meta<typeof HeroBanner>;
 
 export default meta;
-type Story = StoryObj<typeof HeroBanner>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

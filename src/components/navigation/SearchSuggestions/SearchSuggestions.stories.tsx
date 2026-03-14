@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SearchSuggestions } from './SearchSuggestions';
 
-const meta: Meta<typeof SearchSuggestions> = {
+const meta = {
   title: 'Navigation/SearchSuggestions',
   component: SearchSuggestions,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     viewport: { defaultViewport: 'iPhone13' },
@@ -15,10 +16,10 @@ const meta: Meta<typeof SearchSuggestions> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof SearchSuggestions>;
 
 export default meta;
-type Story = StoryObj<typeof SearchSuggestions>;
+type Story = StoryObj<typeof meta>;
 
 const pcPartsSuggestions = [
   { id: '1', text: 'RTX 4090 videokarta' },

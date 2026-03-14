@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Empty, emptyIcons } from './Empty';
 
-const meta: Meta<typeof Empty> = {
+const meta = {
   title: 'Feedback/Empty',
   component: Empty,
   tags: ['autodocs'],
@@ -12,10 +12,10 @@ const meta: Meta<typeof Empty> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Empty>;
 
 export default meta;
-type Story = StoryObj<typeof Empty>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

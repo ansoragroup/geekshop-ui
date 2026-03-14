@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import DealCard from './DealCard';
 
-const meta: Meta<typeof DealCard> = {
+const meta = {
   title: 'Content/DealCard',
   component: DealCard,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -18,10 +19,10 @@ const meta: Meta<typeof DealCard> = {
     onClick: { action: 'clicked' },
     soldPercent: { control: { type: 'range', min: 0, max: 100, step: 1 } },
   },
-};
+} satisfies Meta<typeof DealCard>;
 
 export default meta;
-type Story = StoryObj<typeof DealCard>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {

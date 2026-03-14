@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PopularSearches } from './PopularSearches';
 
-const meta: Meta<typeof PopularSearches> = {
+const meta = {
   title: 'Navigation/PopularSearches',
   component: PopularSearches,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     viewport: { defaultViewport: 'iPhone13' },
@@ -15,10 +16,10 @@ const meta: Meta<typeof PopularSearches> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof PopularSearches>;
 
 export default meta;
-type Story = StoryObj<typeof PopularSearches>;
+type Story = StoryObj<typeof meta>;
 
 const defaultSearches = [
   { rank: 1, text: 'RTX 4070' },

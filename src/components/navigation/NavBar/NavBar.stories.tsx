@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { NavBar, ShareIcon, HeartIcon, MoreIcon } from './NavBar';
 import { SearchBar } from '../SearchBar/SearchBar';
 
-const meta: Meta<typeof NavBar> = {
+const meta = {
   title: 'Navigation/NavBar',
   component: NavBar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'iPhone13' },
@@ -20,10 +21,10 @@ const meta: Meta<typeof NavBar> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof NavBar>;
 
 export default meta;
-type Story = StoryObj<typeof NavBar>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
