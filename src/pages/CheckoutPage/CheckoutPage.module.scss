@@ -1,0 +1,106 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  padding-bottom: calc($action-bar-height + 40px);
+}
+
+// === Address list ===
+.addressList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-md;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+// === Payment list ===
+.paymentList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+// === Order items ===
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+// === Coupon ===
+.couponInput {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+
+  > *:first-child {
+    flex: 1;
+  }
+
+  > button {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+}
+
+// === Bottom action bar ===
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  padding-bottom: calc($spacing-md + $safe-area-bottom);
+  background: $color-bg-white;
+  box-shadow: $shadow-bottom-bar;
+  z-index: $z-index-fixed;
+  gap: $spacing-lg;
+}
+
+.totalSection {
+  flex-shrink: 0;
+}
+
+.totalLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+}
+
+.totalPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.totalCurrency {
+  font-size: $font-size-sm;
+  color: $color-price;
+  font-weight: $font-weight-bold;
+}
+
+.totalAmount {
+  font-size: $font-size-price-md;
+  color: $color-price;
+  font-weight: $font-weight-bold;
+}
+
+.placeOrderBtn {
+  flex: 1;
+  max-width: 200px;
+}

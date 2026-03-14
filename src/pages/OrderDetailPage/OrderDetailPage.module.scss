@@ -1,0 +1,141 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  padding-bottom: 100px;
+}
+
+// === Status Header ===
+.statusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  background: $color-bg-white;
+  margin-bottom: $spacing-sm;
+}
+
+.orderDate {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// === Delivery Tracker ===
+.tracker {
+  display: flex;
+  gap: $spacing-lg;
+  padding: $spacing-md 0;
+}
+
+.trackerIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-round;
+  background: $color-primary-bg;
+  color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trackerSteps {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  gap: $spacing-md;
+  min-height: 40px;
+}
+
+.stepIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.stepDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: $color-border;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+
+  &Completed {
+    background: $color-success;
+  }
+
+  &Active {
+    background: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.stepLine {
+  width: 2px;
+  flex: 1;
+  min-height: 16px;
+  background: $color-border;
+  transition: all $transition-fast;
+
+  &Completed {
+    background: $color-success;
+  }
+}
+
+.stepInfo {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $spacing-sm;
+}
+
+.stepLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+
+  &Active {
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.stepDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xxs;
+}
+
+// === Order Items ===
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+// === Bottom Actions ===
+.bottomActions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  padding-bottom: calc($spacing-md + $safe-area-bottom);
+  background: $color-bg-white;
+  box-shadow: $shadow-bottom-bar;
+  z-index: $z-index-fixed;
+}

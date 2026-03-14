@@ -1,0 +1,102 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// === Rating Summary ===
+.ratingSummary {
+  display: flex;
+  gap: $spacing-xl;
+  padding: $spacing-xl $spacing-lg;
+  background: $color-bg-white;
+}
+
+.ratingLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-width: 80px;
+}
+
+.ratingBig {
+  font-size: 40px;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 1;
+}
+
+.ratingTotal {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+// === Bar chart ===
+.ratingBars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  justify-content: center;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.barStars {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 28px;
+  justify-content: flex-end;
+}
+
+.barTrack {
+  flex: 1;
+  height: 6px;
+  background: $color-bg-page;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: #FFC107;
+  border-radius: 3px;
+  transition: width $transition-normal;
+}
+
+.barCount {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  min-width: 28px;
+  text-align: right;
+}
+
+// === Reviews list ===
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+}
+
+// === End text ===
+.endText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  text-align: center;
+  display: block;
+  padding: $spacing-xl;
+}
