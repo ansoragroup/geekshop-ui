@@ -56,7 +56,7 @@ const products: CarouselProduct[] = [
   },
 ];
 
-const meta: Meta<typeof ProductCarousel> = {
+const meta = {
   title: 'Product/ProductCarousel',
   component: ProductCarousel,
   tags: ['autodocs'],
@@ -70,10 +70,10 @@ const meta: Meta<typeof ProductCarousel> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof ProductCarousel>;
 
 export default meta;
-type Story = StoryObj<typeof ProductCarousel>;
+type Story = StoryObj<typeof meta>;
 
 // --- With tabs ---
 export const WithTabs: Story = {

@@ -25,7 +25,6 @@ export const Default: Story = {
 };
 
 export const EmptyCart: Story = {
-  name: 'Empty Cart',
   args: {
     icon: emptyIcons.cart,
     title: 'Savat bo\'sh',
@@ -36,7 +35,6 @@ export const EmptyCart: Story = {
 };
 
 export const NoSearchResults: Story = {
-  name: 'No Search Results',
   args: {
     icon: emptyIcons.search,
     title: 'Hech narsa topilmadi',
@@ -45,7 +43,6 @@ export const NoSearchResults: Story = {
 };
 
 export const NoOrders: Story = {
-  name: 'No Orders',
   args: {
     title: 'Buyurtmalar yo\'q',
     description: 'Siz hali hech qanday buyurtma bermagansiz',

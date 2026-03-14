@@ -65,6 +65,8 @@ src/
 8. **No deprecated Sass** — Never use `darken()`, `lighten()`, `saturate()` etc. Use `@use 'sass:color'` and `color.adjust()` / `color.scale()`
 9. **Named exports only** — No default exports. Export component and Props type from index.ts
 10. **Controlled/uncontrolled** — Use `useControllableState` hook for components with `value`/`onChange`. Support both controlled and uncontrolled usage
+11. **Visual verification** — After creating/modifying any component, you MUST run Storybook and take a screenshot via Playwright MCP (`browser_navigate` to `http://localhost:6006`, find the story, `browser_take_screenshot`). A component that compiles is NOT the same as a component that looks correct.
+12. **Match existing visual density** — Before creating a new component, render 2-3 existing components from the same category in Storybook. Match their spacing, font sizes, border radius, and visual density. A new card must look like it belongs next to OrderCard and ReviewCard.
 
 ### Story requirements:
 - Include `tags: ['autodocs']` in meta
@@ -146,6 +148,7 @@ npm run test:coverage  # Tests with coverage report
 6. Create `index.ts`: `export { ComponentName } from './ComponentName'` + `export type { ComponentNameProps } from './ComponentName'`
 7. Add export to `src/components/index.ts`
 8. Verify: `npm run lint && npm test && npm run build:lib`
+9. Visual QA: Start Storybook (`npm run storybook`), navigate to the new component's story via Playwright MCP, take screenshots at iPhone 13 (390px) viewport, verify the component looks correct visually — no broken layout, no clipped text, proper spacing
 
 ## Common Patterns
 
@@ -195,6 +198,45 @@ return <div ref={containerRef} role="dialog" aria-modal="true">...</div>
 3. **Skeleton over spinner** — Use Skeleton component for loading states, not Loading spinner
 4. **Optimistic UI** — Toast appears immediately on action, don't wait for API
 5. **Safe area** — ActionBar, TabBar respect `env(safe-area-inset-bottom)`
+
+## Visual QA (REQUIRED for every component)
+
+Every component MUST pass visual inspection. Code that compiles is NOT sufficient — you must SEE the rendered result.
+
+### Verification steps
+1. Run Storybook: `npm run storybook` (port 6006)
+2. Navigate via Playwright MCP: `browser_navigate` to `http://localhost:6006`
+3. Find the component's story in the sidebar
+4. Take screenshot: `browser_take_screenshot`
+5. Verify at default iPhone 13 viewport (390x844)
+
+### Visual checklist
+- No overflow, clipping, or unexpected scrollbars
+- Proper spacing between elements (consistent with design tokens)
+- Text readable, not overlapping, proper hierarchy (title > body > secondary)
+- Interactive elements have visible boundaries and touch targets (min 44x44px)
+- Component looks intentional, not broken
+- Matches visual density of sibling components in the same category
+
+### Card-type components (ProductCard, OrderCard, ReviewCard, AddressCard, etc.) MUST follow:
+- Container: `padding: $spacing-lg`, `background: $color-bg-card`, `border-radius: $radius-lg`, `border: 1px solid $color-border` or `box-shadow: $shadow-sm`
+- Title: `font-size: $font-size-lg`, `font-weight: $font-weight-semibold`, `color: $color-text-primary`
+- Secondary text: `font-size: $font-size-sm`, `color: $color-text-secondary`
+- Actions row: `margin-top: $spacing-md`, `gap: $spacing-sm`, aligned flex-end
+- Consistent internal spacing using `$spacing-md` or `$spacing-lg` gaps
+
+### Layout reference requirement
+When creating a new component, the prompt MUST include a visual layout description (ASCII diagram or structured format). Example:
+```
+┌──────────────────────────────┐
+│ [Tag: Home]        [Default] │
+│ John Doe  •  +998 90 123... │
+│ 123 Main Street, Apt 4      │
+│ Tashkent, Uzbekistan 100000 │
+│                [Edit] [Del]  │
+└──────────────────────────────┘
+```
+Without a visual reference, the agent is guessing what the component should look like.
 
 ## DO NOT
 - Add `default export` — library uses named exports only

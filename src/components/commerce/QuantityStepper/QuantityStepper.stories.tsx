@@ -5,6 +5,7 @@ import { QuantityStepper } from './QuantityStepper';
 const meta = {
   title: 'Commerce/QuantityStepper',
   component: QuantityStepper,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     backgrounds: { default: 'White' },

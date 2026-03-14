@@ -5,6 +5,7 @@ import { CartItem } from './CartItem';
 const meta = {
   title: 'Commerce/CartItem',
   component: CartItem,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     backgrounds: { default: 'GeekShop Light' },

@@ -5,6 +5,7 @@ import { ActionBar } from './ActionBar';
 const meta = {
   title: 'Commerce/ActionBar',
   component: ActionBar,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     backgrounds: { default: 'GeekShop Light' },

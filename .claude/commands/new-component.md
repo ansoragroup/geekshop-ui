@@ -15,3 +15,4 @@ Instructions:
    - index.ts — named exports of component and props type
 6. Add export to src/components/index.ts (maintain alphabetical order within category)
 7. Verify build: run npm run lint and npm run build:lib
+8. Visual QA: Start Storybook if not running (`npm run storybook`), use Playwright MCP to navigate to the new component's story at http://localhost:6006, take a screenshot, and verify the component renders correctly — no broken layout, proper spacing, readable text, matches visual density of other components in the same category

@@ -89,7 +89,6 @@ export const AllVariants: Story = {
 };
 
 export const InListContext: Story = {
-  name: 'In List Context',
   render: () => (
     <div>
       {['Brend', 'Narx', 'Rang', 'Hajm'].map((item, i, arr) => (

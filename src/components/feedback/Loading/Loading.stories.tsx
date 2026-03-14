@@ -53,7 +53,6 @@ export const SkeletonCards: Story = {
 };
 
 export const FullscreenSpinner: Story = {
-  name: 'Fullscreen Spinner',
   args: {
     type: 'spinner',
     text: 'Iltimos, kuting...',
@@ -62,7 +61,6 @@ export const FullscreenSpinner: Story = {
 };
 
 export const FullscreenDots: Story = {
-  name: 'Fullscreen Dots',
   args: {
     type: 'dots',
     text: 'Ma\'lumotlar yuklanmoqda',

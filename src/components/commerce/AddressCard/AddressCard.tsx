@@ -18,7 +18,7 @@ export interface AddressCardProps {
   address: Address;
   /** Whether this card is currently selected */
   selected?: boolean;
-  /** Show radio/checkmark for selection */
+  /** Show radio circle for selection */
   selectable?: boolean;
   /** Show edit button */
   editable?: boolean;
@@ -29,20 +29,6 @@ export interface AddressCardProps {
   onDelete?: (address: Address) => void;
   /** Additional CSS class */
   className?: string;
-}
-
-function CheckIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path
-        d="M3 7L6 10L11 4"
-        stroke="#FFF"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
 }
 
 function EditIcon() {
@@ -71,13 +57,6 @@ function DeleteIcon() {
       />
     </svg>
   );
-}
-
-function buildAddressString(address: Address): string {
-  const parts = [address.street, address.city];
-  if (address.region) parts.push(address.region);
-  if (address.postalCode) parts.push(address.postalCode);
-  return parts.join(', ');
 }
 
 export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
@@ -119,40 +98,52 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
 
     const hasActions = editable || deletable;
 
+    // Build address lines
+    const streetLine = address.street;
+    const cityParts = [address.city];
+    if (address.region) cityParts.push(address.region);
+    if (address.postalCode) cityParts.push(address.postalCode);
+    const cityLine = cityParts.join(', ');
+
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${selected ? styles.selected : ''} ${className}`}
+        className={`${styles.root} ${selected ? styles.selected : ''} ${selectable ? styles.selectable : ''} ${className}`}
         role={selectable ? 'option' : undefined}
         aria-selected={selectable ? selected : undefined}
         tabIndex={selectable ? 0 : undefined}
         onClick={selectable ? handleSelect : undefined}
         onKeyDown={selectable ? handleKeyDown : undefined}
       >
+        {/* Top row: radio + tag + default badge */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             {selectable && (
               <span
                 className={`${styles.radio} ${selected ? styles.radioSelected : ''}`}
+                aria-hidden="true"
               >
-                {selected && <CheckIcon />}
+                {selected && <span className={styles.radioDot} />}
               </span>
             )}
-            <span className={styles.name}>{address.name}</span>
             {address.label && (
               <span className={styles.label}>{address.label}</span>
             )}
-            {address.isDefault && (
-              <span className={styles.defaultBadge}>Asosiy</span>
-            )}
           </div>
+          {address.isDefault && (
+            <span className={styles.defaultBadge}>Asosiy</span>
+          )}
+        </div>
+
+        {/* Body: name, phone, address */}
+        <div className={styles.body}>
+          <span className={styles.name}>{address.name}</span>
           <span className={styles.phone}>{address.phone}</span>
+          <span className={styles.addressLine}>{streetLine}</span>
+          <span className={styles.addressLine}>{cityLine}</span>
         </div>
 
-        <div className={styles.addressText}>
-          {buildAddressString(address)}
-        </div>
-
+        {/* Actions row: right-aligned text buttons */}
         {hasActions && (
           <div className={styles.actions}>
             {editable && (

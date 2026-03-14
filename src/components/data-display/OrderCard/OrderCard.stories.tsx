@@ -117,7 +117,6 @@ export const Return: Story = {
 
 // --- Multiple orders ---
 export const OrdersList: Story = {
-  name: 'Orders List',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <OrderCard

@@ -50,7 +50,6 @@ export const CustomPadding: Story = {
 };
 
 export const MultipleSections: Story = {
-  name: 'Multiple Sections',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Section title="Tavsif">

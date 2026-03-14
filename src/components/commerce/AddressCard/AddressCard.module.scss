@@ -2,13 +2,20 @@
 
 .root {
   background: $color-bg-card;
-  border: 1.5px solid $color-border;
+  border: 1px solid $color-border;
   border-radius: $radius-lg;
   padding: $spacing-lg;
   cursor: default;
-  transition: border-color $transition-fast, box-shadow $transition-fast;
-  container-type: inline-size;
-  container-name: address-card;
+  transition: border-color $transition-fast, background $transition-fast,
+    box-shadow $transition-fast;
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.selectable {
+  cursor: pointer;
 
   &:hover {
     box-shadow: $shadow-sm;
@@ -17,16 +24,15 @@
 
 .selected {
   border-color: $color-primary;
-  box-shadow: 0 0 0 1px $color-primary;
+  background: $color-primary-bg;
 }
 
-// Header row
+// ---- Header row: radio + label tag ... default badge ----
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: $spacing-sm;
-  margin-bottom: $spacing-sm;
 }
 
 .headerLeft {
@@ -36,7 +42,7 @@
   min-width: 0;
 }
 
-// Radio / checkmark
+// Radio circle
 .radio {
   flex-shrink: 0;
   width: 20px;
@@ -47,21 +53,18 @@
   align-items: center;
   justify-content: center;
   transition: all $transition-fast;
+  background: transparent;
 }
 
 .radioSelected {
-  background: $color-primary;
   border-color: $color-primary;
 }
 
-// Name
-.name {
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
-  color: $color-text-primary;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.radioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: $color-primary;
 }
 
 // Label tag (Home, Work)
@@ -73,6 +76,7 @@
   background: $color-primary-bg;
   padding: 2px $spacing-sm;
   border-radius: $radius-xs;
+  line-height: $line-height-normal;
 }
 
 // Default badge
@@ -84,30 +88,48 @@
   background: $color-primary;
   padding: 2px $spacing-sm;
   border-radius: $radius-xs;
+  line-height: $line-height-normal;
 }
 
-// Phone
+// ---- Body: name, phone, address lines ----
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  // Indent to align with text after radio
+  padding-left: 0;
+}
+
+.selectable .body {
+  padding-left: calc(20px + #{$spacing-sm});
+}
+
+.name {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
 .phone {
-  flex-shrink: 0;
   font-size: $font-size-sm;
-  color: $color-text-secondary;
-}
-
-// Address text
-.addressText {
-  font-size: $font-size-md;
   color: $color-text-secondary;
   line-height: $line-height-normal;
 }
 
-// Actions row
+.addressLine {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+// ---- Actions row: right-aligned ----
 .actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: $spacing-md;
-  margin-top: $spacing-md;
-  padding-top: $spacing-md;
-  border-top: 1px solid $color-border-light;
+  margin-top: $spacing-xs;
 }
 
 .actionBtn {
@@ -117,6 +139,7 @@
   padding: $spacing-xs $spacing-sm;
   border-radius: $radius-sm;
   font-size: $font-size-sm;
+  font-family: $font-family;
   color: $color-text-secondary;
   background: none;
   border: none;
@@ -136,41 +159,19 @@
   }
 }
 
-// Container queries
-@container address-card (max-width: 280px) {
-  .actions {
-    display: none;
-  }
-
-  .phone {
-    display: none;
-  }
-
-  .header {
-    flex-wrap: wrap;
-  }
-}
-
-@container address-card (min-width: 500px) {
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
   .root {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    transition: none;
   }
 
-  .header {
-    flex: 1 0 100%;
+  .radio {
+    transition: none;
   }
 
-  .addressText {
-    flex: 1;
-  }
-
-  .actions {
-    border-top: none;
-    margin-top: 0;
-    padding-top: 0;
-    margin-left: auto;
-    padding-left: $spacing-lg;
+  .actionBtn {
+    transition: none;
   }
 }

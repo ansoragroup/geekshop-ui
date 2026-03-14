@@ -63,7 +63,7 @@ const sampleProducts: ProductCardFlatProps[] = [
   },
 ];
 
-const meta: Meta<typeof ProductGrid> = {
+const meta = {
   title: 'Product/ProductGrid',
   component: ProductGrid,
   tags: ['autodocs'],
@@ -77,10 +77,10 @@ const meta: Meta<typeof ProductGrid> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof ProductGrid>;
 
 export default meta;
-type Story = StoryObj<typeof ProductGrid>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default 2-column grid ---
 export const Default: Story = {

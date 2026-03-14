@@ -57,7 +57,6 @@ export const SkuSelector: Story = {
 };
 
 export const FilterSheet: Story = {
-  name: 'Filter Sheet',
   args: {
     visible: true,
     title: 'Filtrlar',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Grid } from './Grid';
 
-const meta: Meta<typeof Grid> = {
+const meta = {
   title: 'Layout/Grid',
   component: Grid,
   tags: ['autodocs'],
@@ -12,10 +12,10 @@ const meta: Meta<typeof Grid> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Grid>;
 
 export default meta;
-type Story = StoryObj<typeof Grid>;
+type Story = StoryObj<typeof meta>;
 
 const PlaceholderCard = ({ label, color }: { label: string; color?: string }) => (
   <div style={{ background: color || '#fff', borderRadius: 8, padding: 16, textAlign: 'center', fontSize: 13, color: '#666' }}>
@@ -100,7 +100,6 @@ export const FiveColumns: Story = {
 };
 
 export const ProductGrid: Story = {
-  name: 'Product Grid',
   render: () => (
     <Grid columns={2} gap="8px">
       {[1, 2, 3, 4].map((i) => (

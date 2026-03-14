@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ProductCard } from './ProductCard';
 
-const meta: Meta<typeof ProductCard> = {
+const meta = {
   title: 'Product/ProductCard',
   component: ProductCard,
   tags: ['autodocs'],
@@ -19,10 +19,10 @@ const meta: Meta<typeof ProductCard> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof ProductCard>;
 
 export default meta;
-type Story = StoryObj<typeof ProductCard>;
+type Story = StoryObj<typeof meta>;
 
 // ═══════════════════════════════════════════════════════════════════
 // Flat API stories (existing, backward-compatible)

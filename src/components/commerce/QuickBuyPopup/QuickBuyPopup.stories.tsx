@@ -32,6 +32,7 @@ const keyboardVariants: QuickBuyVariant[] = [
 const meta = {
   title: 'Commerce/QuickBuyPopup',
   component: QuickBuyPopup,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     backgrounds: { default: 'GeekShop Light' },

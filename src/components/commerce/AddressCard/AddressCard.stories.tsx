@@ -29,8 +29,9 @@ const sampleAddress: Address = {
   phone: '+998 90 123 45 67',
   street: 'Amir Temur shoh ko\'chasi, 108-uy, 24-xonadon',
   city: 'Toshkent',
-  region: 'Toshkent shahri',
+  region: 'O\'zbekiston',
   postalCode: '100000',
+  label: 'Uy',
 };
 
 export const Default: Story = {
@@ -44,6 +45,14 @@ export const Selected: Story = {
     address: sampleAddress,
     selected: true,
     selectable: true,
+  },
+};
+
+export const Selectable: Story = {
+  args: {
+    address: sampleAddress,
+    selectable: true,
+    selected: false,
   },
 };
 
@@ -74,21 +83,6 @@ export const DefaultAddress: Story = {
   },
 };
 
-export const CompactWidth: Story = {
-  args: {
-    address: sampleAddress,
-    editable: true,
-    deletable: true,
-  },
-  decorators: [
-    (Story) => (
-      <div style={{ maxWidth: 260 }}>
-        <Story />
-      </div>
-    ),
-  ],
-};
-
 export const AddressList = () => {
   const addresses: Address[] = [
     {
@@ -97,7 +91,8 @@ export const AddressList = () => {
       phone: '+998 90 123 45 67',
       street: 'Amir Temur shoh ko\'chasi, 108-uy, 24-xonadon',
       city: 'Toshkent',
-      region: 'Toshkent shahri',
+      region: 'O\'zbekiston',
+      postalCode: '100000',
       isDefault: true,
       label: 'Uy',
     },
@@ -107,7 +102,7 @@ export const AddressList = () => {
       phone: '+998 90 123 45 67',
       street: 'Mustaqillik maydoni, 5-bino, 3-qavat',
       city: 'Toshkent',
-      region: 'Toshkent shahri',
+      region: 'O\'zbekiston',
       label: 'Ish',
     },
     {
@@ -116,7 +111,7 @@ export const AddressList = () => {
       phone: '+998 91 987 65 43',
       street: 'Navoiy ko\'chasi, 42-uy',
       city: 'Samarqand',
-      region: 'Samarqand viloyati',
+      region: 'O\'zbekiston',
       postalCode: '140100',
     },
   ];

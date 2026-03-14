@@ -61,6 +61,7 @@ const meta = {
     layout: 'fullscreen',
     backgrounds: { default: 'GeekShop Light' },
   },
+  tags: ['autodocs'],
   argTypes: {
     viewMode: { control: 'radio', options: ['list', 'grid'] },
     open: { control: 'boolean' },
