@@ -45,6 +45,7 @@ coverage
 *.lcov
 test-results
 playwright-report
+.playwright-mcp
 
 # Misc
 *.tgz
