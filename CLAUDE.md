@@ -171,11 +171,13 @@ return <div ref={containerRef} role="dialog" aria-modal="true">...</div>
 ```scss
 .card {
   container-type: inline-size;
+  width: 100%; // REQUIRED — without this, inline-size containment collapses to 0px
   @container (max-width: 200px) { /* compact */ }
   @container (min-width: 200px) and (max-width: 320px) { /* standard */ }
   @container (min-width: 320px) { /* expanded */ }
 }
 ```
+**WARNING:** `container-type: inline-size` MUST always be paired with `width: 100%`. Without explicit width, the element has no intrinsic inline size and collapses to 0px.
 
 ### Keyboard-accessible clickable div
 ```tsx
