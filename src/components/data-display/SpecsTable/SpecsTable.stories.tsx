@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SpecsTable } from './SpecsTable';
 
-const meta: Meta<typeof SpecsTable> = {
+const meta = {
   title: 'Data Display/SpecsTable',
   component: SpecsTable,
   tags: ['autodocs'],
@@ -12,10 +12,10 @@ const meta: Meta<typeof SpecsTable> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof SpecsTable>;
 
 export default meta;
-type Story = StoryObj<typeof SpecsTable>;
+type Story = StoryObj<typeof meta>;
 
 // --- GPU specs ---
 export const GPUSpecs: Story = {

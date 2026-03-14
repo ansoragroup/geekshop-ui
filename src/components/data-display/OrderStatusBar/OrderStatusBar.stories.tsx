@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { OrderStatusBar, DEFAULT_ORDER_STATUSES } from './OrderStatusBar';
 
-const meta: Meta<typeof OrderStatusBar> = {
+const meta = {
   title: 'Data Display/OrderStatusBar',
   component: OrderStatusBar,
   tags: ['autodocs'],
@@ -12,10 +12,10 @@ const meta: Meta<typeof OrderStatusBar> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof OrderStatusBar>;
 
 export default meta;
-type Story = StoryObj<typeof OrderStatusBar>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default (no counts) ---
 export const Default: Story = {

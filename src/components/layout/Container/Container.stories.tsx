@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Container } from './Container';
 
-const meta: Meta<typeof Container> = {
+const meta = {
   title: 'Layout/Container',
   component: Container,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<typeof Container>;
 
 export default meta;
-type Story = StoryObj<typeof Container>;
+type Story = StoryObj<typeof meta>;
 
 const SampleContent = () => (
   <div style={{ padding: 12 }}>

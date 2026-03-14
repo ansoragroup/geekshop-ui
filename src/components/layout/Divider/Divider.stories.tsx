@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Divider } from './Divider';
 
-const meta: Meta<typeof Divider> = {
+const meta = {
   title: 'Layout/Divider',
   component: Divider,
   tags: ['autodocs'],
@@ -18,10 +18,10 @@ const meta: Meta<typeof Divider> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Divider>;
 
 export default meta;
-type Story = StoryObj<typeof Divider>;
+type Story = StoryObj<typeof meta>;
 
 export const Full: Story = {
   args: {

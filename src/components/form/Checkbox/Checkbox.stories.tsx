@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Checkbox } from './Checkbox';
 
-const meta: Meta<typeof Checkbox> = {
+const meta = {
   title: 'Form/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
@@ -13,10 +13,10 @@ const meta: Meta<typeof Checkbox> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Checkbox>;
 
 export default meta;
-type Story = StoryObj<typeof Checkbox>;
+type Story = StoryObj<typeof meta>;
 
 export const Unchecked: Story = {
   args: {

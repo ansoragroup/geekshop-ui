@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { OrderCard } from './OrderCard';
 
-const meta: Meta<typeof OrderCard> = {
+const meta = {
   title: 'Data Display/OrderCard',
   component: OrderCard,
   tags: ['autodocs'],
@@ -15,10 +15,10 @@ const meta: Meta<typeof OrderCard> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof OrderCard>;
 
 export default meta;
-type Story = StoryObj<typeof OrderCard>;
+type Story = StoryObj<typeof meta>;
 
 // --- Pending payment ---
 export const Pending: Story = {

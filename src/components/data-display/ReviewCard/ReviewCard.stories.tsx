@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ReviewCard } from './ReviewCard';
 
-const meta: Meta<typeof ReviewCard> = {
+const meta = {
   title: 'Data Display/ReviewCard',
   component: ReviewCard,
   tags: ['autodocs'],
@@ -12,10 +12,10 @@ const meta: Meta<typeof ReviewCard> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof ReviewCard>;
 
 export default meta;
-type Story = StoryObj<typeof ReviewCard>;
+type Story = StoryObj<typeof meta>;
 
 // --- Default review ---
 export const Default: Story = {

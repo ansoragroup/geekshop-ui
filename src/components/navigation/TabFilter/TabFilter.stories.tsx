@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { TabFilter } from './TabFilter';
 import type { TabFilterProps } from './TabFilter';
 
-const meta: Meta<typeof TabFilter> = {
+const meta = {
   title: 'Navigation/TabFilter',
   component: TabFilter,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     viewport: { defaultViewport: 'iPhone13' },
@@ -17,10 +18,10 @@ const meta: Meta<typeof TabFilter> = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof TabFilter>;
 
 export default meta;
-type Story = StoryObj<typeof TabFilter>;
+type Story = StoryObj<typeof meta>;
 
 function InteractiveTabFilter(props: Partial<TabFilterProps> & { initialTab?: string }) {
   const { initialTab = '', tabs = [], ...rest } = props;
