@@ -1,6 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .root {
+  container-type: inline-size;
   background: $color-bg-card;
   border-radius: $radius-lg;
   font-family: $font-family;
@@ -160,4 +161,134 @@
   background: $color-bg-page;
   color: $color-text-primary;
   border: 1px solid $color-border;
+}
+
+// ========================================
+// Container Query: Compact (< 280px)
+// ========================================
+@container (max-width: 279px) {
+  .date {
+    display: none;
+  }
+
+  .statusBadge {
+    font-size: $font-size-xs;
+  }
+
+  .header {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .products {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .productRow {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .productImage {
+    width: 56px;
+    height: 56px;
+  }
+
+  .productTitle {
+    font-size: $font-size-sm;
+    -webkit-line-clamp: 1;
+  }
+
+  .productPrice {
+    font-size: $font-size-sm;
+  }
+
+  .totalRow {
+    padding: $spacing-sm $spacing-md;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $spacing-xxs;
+  }
+
+  .totalAmount {
+    font-size: $font-size-md;
+  }
+
+  .actions {
+    padding: 0 $spacing-md $spacing-md;
+    flex-direction: column;
+  }
+
+  .actionBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+// ========================================
+// Container Query: Standard (280px - 400px)
+// ========================================
+@container (min-width: 280px) and (max-width: 400px) {
+  // Default layout, no overrides needed
+}
+
+// ========================================
+// Container Query: Expanded (> 400px)
+// ========================================
+@container (min-width: 401px) {
+  .root {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .header {
+    grid-column: 1 / -1;
+  }
+
+  .products {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .statusBadge {
+    font-size: $font-size-md;
+  }
+
+  .productImage {
+    width: 88px;
+    height: 88px;
+  }
+
+  .productTitle {
+    font-size: $font-size-lg;
+  }
+
+  .productPrice {
+    font-size: $font-size-lg;
+  }
+
+  .totalRow {
+    grid-column: 1 / -1;
+  }
+
+  .actions {
+    grid-column: 1 / -1;
+  }
+
+  .totalAmount {
+    font-size: $font-size-xl;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .actionBtn {
+    transition: none;
+
+    &:active {
+      opacity: 1;
+    }
+  }
 }

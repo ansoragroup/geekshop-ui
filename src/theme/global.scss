@@ -4,12 +4,14 @@
 // GeekShop.uz Global Styles
 // ============================================
 
-:root {
+:root, [data-theme="light"] {
   // Colors
   --gs-color-primary: #{$color-primary};
   --gs-color-primary-light: #{$color-primary-light};
   --gs-color-primary-dark: #{$color-primary-dark};
   --gs-color-primary-bg: #{$color-primary-bg};
+  --gs-color-primary-gradient: #{$color-primary-gradient};
+  --gs-color-primary-gradient-header: #{$color-primary-gradient-header};
   --gs-color-price: #{$color-price};
   --gs-color-price-dark: #{$color-price-dark};
   --gs-color-sale: #{$color-sale};
@@ -25,21 +27,128 @@
   --gs-text-secondary: #{$color-text-secondary};
   --gs-text-tertiary: #{$color-text-tertiary};
   --gs-text-placeholder: #{$color-text-placeholder};
+  --gs-text-white: #{$color-text-white};
+  --gs-text-link: #{$color-text-link};
 
   // Background
   --gs-bg-page: #{$color-bg-page};
   --gs-bg-white: #{$color-bg-white};
   --gs-bg-card: #{$color-bg-card};
+  --gs-bg-overlay: #{$color-bg-overlay};
+  --gs-bg-skeleton: #{$color-bg-skeleton};
 
   // Border
   --gs-border-color: #{$color-border};
+  --gs-border-color-light: #{$color-border-light};
   --gs-divider-color: #{$color-divider};
+
+  // Shadows
+  --gs-shadow-sm: #{$shadow-sm};
+  --gs-shadow-md: #{$shadow-md};
+  --gs-shadow-lg: #{$shadow-lg};
+  --gs-shadow-xl: #{$shadow-xl};
+  --gs-shadow-bottom-bar: #{$shadow-bottom-bar};
 
   // Layout
   --gs-navbar-height: #{$navbar-height};
   --gs-tabbar-height: #{$tabbar-height};
   --gs-action-bar-height: #{$action-bar-height};
   --gs-safe-area-bottom: #{$safe-area-bottom};
+}
+
+[data-theme="dark"] {
+  // Colors
+  --gs-color-primary: #FF6B33;
+  --gs-color-primary-light: #3D2A1A;
+  --gs-color-primary-dark: #CC5200;
+  --gs-color-primary-bg: #2A1A10;
+  --gs-color-primary-gradient: linear-gradient(135deg, #FF6B33 0%, #FF8F5C 100%);
+  --gs-color-primary-gradient-header: linear-gradient(180deg, #FF6B33 0%, #CC5200 50%, #993D00 100%);
+  --gs-color-price: #FF4D4D;
+  --gs-color-price-dark: #FF6B5C;
+  --gs-color-sale: #FF5247;
+  --gs-color-success: #2ED573;
+  --gs-color-success-light: #1A2E1F;
+  --gs-color-warning: #FFB84D;
+  --gs-color-warning-light: #2E2510;
+  --gs-color-error: #FF5247;
+  --gs-color-info: #40A9FF;
+
+  // Text
+  --gs-text-primary: #E5E5E5;
+  --gs-text-secondary: #A0A0A0;
+  --gs-text-tertiary: #707070;
+  --gs-text-placeholder: #555555;
+  --gs-text-white: #E5E5E5;
+  --gs-text-link: #FF6B33;
+
+  // Background
+  --gs-bg-page: #121212;
+  --gs-bg-white: #1E1E1E;
+  --gs-bg-card: #1E1E1E;
+  --gs-bg-overlay: rgba(0, 0, 0, 0.7);
+  --gs-bg-skeleton: #2A2A2A;
+
+  // Border
+  --gs-border-color: #333333;
+  --gs-border-color-light: #2A2A2A;
+  --gs-divider-color: #2E2E2E;
+
+  // Shadows
+  --gs-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --gs-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --gs-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --gs-shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --gs-shadow-bottom-bar: 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+
+// Auto dark mode via prefers-color-scheme (when no data-theme attribute is set)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    // Colors
+    --gs-color-primary: #FF6B33;
+    --gs-color-primary-light: #3D2A1A;
+    --gs-color-primary-dark: #CC5200;
+    --gs-color-primary-bg: #2A1A10;
+    --gs-color-primary-gradient: linear-gradient(135deg, #FF6B33 0%, #FF8F5C 100%);
+    --gs-color-primary-gradient-header: linear-gradient(180deg, #FF6B33 0%, #CC5200 50%, #993D00 100%);
+    --gs-color-price: #FF4D4D;
+    --gs-color-price-dark: #FF6B5C;
+    --gs-color-sale: #FF5247;
+    --gs-color-success: #2ED573;
+    --gs-color-success-light: #1A2E1F;
+    --gs-color-warning: #FFB84D;
+    --gs-color-warning-light: #2E2510;
+    --gs-color-error: #FF5247;
+    --gs-color-info: #40A9FF;
+
+    // Text
+    --gs-text-primary: #E5E5E5;
+    --gs-text-secondary: #A0A0A0;
+    --gs-text-tertiary: #707070;
+    --gs-text-placeholder: #555555;
+    --gs-text-white: #E5E5E5;
+    --gs-text-link: #FF6B33;
+
+    // Background
+    --gs-bg-page: #121212;
+    --gs-bg-white: #1E1E1E;
+    --gs-bg-card: #1E1E1E;
+    --gs-bg-overlay: rgba(0, 0, 0, 0.7);
+    --gs-bg-skeleton: #2A2A2A;
+
+    // Border
+    --gs-border-color: #333333;
+    --gs-border-color-light: #2A2A2A;
+    --gs-divider-color: #2E2E2E;
+
+    // Shadows
+    --gs-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
+    --gs-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --gs-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --gs-shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --gs-shadow-bottom-bar: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  }
 }
 
 * {
@@ -57,8 +166,8 @@ html {
 body {
   font-family: $font-family;
   font-size: $font-size-md;
-  color: $color-text-primary;
-  background-color: $color-bg-page;
+  color: var(--gs-text-primary);
+  background-color: var(--gs-bg-page);
   line-height: $line-height-normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -93,11 +202,11 @@ input, textarea {
 }
 
 // Utility classes
-.gs-text-primary { color: $color-text-primary; }
-.gs-text-secondary { color: $color-text-secondary; }
-.gs-text-tertiary { color: $color-text-tertiary; }
-.gs-text-price { color: $color-price; font-weight: $font-weight-bold; }
-.gs-text-orange { color: $color-primary; }
+.gs-text-primary { color: var(--gs-text-primary); }
+.gs-text-secondary { color: var(--gs-text-secondary); }
+.gs-text-tertiary { color: var(--gs-text-tertiary); }
+.gs-text-price { color: var(--gs-color-price); font-weight: $font-weight-bold; }
+.gs-text-orange { color: var(--gs-color-primary); }
 
 .gs-ellipsis {
   overflow: hidden;
@@ -117,11 +226,11 @@ input, textarea {
 .gs-mobile-frame {
   width: 375px;
   min-height: 812px;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0 auto;
   border-radius: 0;
-  box-shadow: $shadow-xl;
+  box-shadow: var(--gs-shadow-xl);
 }

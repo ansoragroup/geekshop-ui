@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useId } from 'react';
 import styles from './Rating.module.scss';
 
 export type RatingSize = 'sm' | 'md' | 'lg';
@@ -28,7 +28,7 @@ const STAR_SIZES: Record<RatingSize, number> = {
   lg: 24,
 };
 
-function StarIcon({ size, fill }: { size: number; fill: 'full' | 'half' | 'empty' }) {
+function StarIcon({ size, fill, clipId }: { size: number; fill: 'full' | 'half' | 'empty'; clipId: string }) {
   if (fill === 'full') {
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="#FFC107" stroke="none">
@@ -41,7 +41,7 @@ function StarIcon({ size, fill }: { size: number; fill: 'full' | 'half' | 'empty
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="none">
         <defs>
-          <clipPath id={`half-clip-${size}`}>
+          <clipPath id={clipId}>
             <rect x="0" y="0" width="12" height="24" />
           </clipPath>
         </defs>
@@ -52,7 +52,7 @@ function StarIcon({ size, fill }: { size: number; fill: 'full' | 'half' | 'empty
         <path
           d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
           fill="#FFC107"
-          clipPath={`url(#half-clip-${size})`}
+          clipPath={`url(#${clipId})`}
         />
       </svg>
     );
@@ -75,6 +75,7 @@ export function Rating({
   showCount = true,
   className = '',
 }: RatingProps) {
+  const clipId = useId();
   const [hoverValue, setHoverValue] = useState<number | null>(null);
   const displayValue = hoverValue ?? value;
   const starSize = STAR_SIZES[size];
@@ -101,7 +102,7 @@ export function Rating({
         role={interactive ? 'button' : undefined}
         aria-label={interactive ? `${starIndex} yulduz` : undefined}
       >
-        <StarIcon size={starSize} fill={fill} />
+        <StarIcon size={starSize} fill={fill} clipId={`${clipId}-half-${i}`} />
       </span>
     );
   });

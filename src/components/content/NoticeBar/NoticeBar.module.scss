@@ -1,0 +1,81 @@
+@use '../../../theme/tokens' as *;
+
+.noticeBar {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  background: var(--notice-bg, $color-warning-light);
+  color: var(--notice-color, $color-warning);
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  font-family: $font-family;
+  gap: $spacing-sm;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.textWrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.staticText {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scrollText {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll var(--notice-duration, 10s) linear var(--notice-delay, 1s) infinite;
+  padding-left: 100%;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    padding-left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  border-radius: $radius-round;
+  transition: background $transition-fast;
+
+  &:active {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

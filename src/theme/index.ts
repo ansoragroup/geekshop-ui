@@ -53,3 +53,20 @@ export const tokens = {
     xxxl: '24px',
   },
 } as const;
+
+export type Theme = 'light' | 'dark' | 'auto';
+
+export function setTheme(theme: Theme) {
+  if (theme === 'auto') {
+    document.documentElement.removeAttribute('data-theme');
+    // Falls back to prefers-color-scheme media query in global.scss
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+}
+
+export function getTheme(): 'light' | 'dark' {
+  if (document.documentElement.getAttribute('data-theme') === 'dark') return 'dark';
+  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
+  return 'light';
+}

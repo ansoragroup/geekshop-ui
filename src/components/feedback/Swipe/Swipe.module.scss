@@ -1,0 +1,61 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-md;
+  background: $color-bg-white;
+}
+
+.content {
+  position: relative;
+  z-index: $z-index-normal;
+  background: $color-bg-white;
+  touch-action: pan-y;
+  user-select: none;
+
+  &.transitioning {
+    transition: transform $transition-normal;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &.transitioning {
+      transition: none;
+    }
+  }
+}
+
+.actionsLeft,
+.actionsRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.actionsLeft {
+  left: 0;
+}
+
+.actionsRight {
+  right: 0;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border: none;
+  padding: 0 $spacing-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity $transition-fast;
+
+  &:active {
+    opacity: 0.8;
+  }
+}

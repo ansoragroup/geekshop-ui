@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import styles from './QuantityStepper.module.scss';
 
 export interface QuantityStepperProps {
@@ -19,6 +19,10 @@ export function QuantityStepper({
   disabled = false,
 }: QuantityStepperProps) {
   const [inputValue, setInputValue] = useState(String(value));
+
+  useEffect(() => {
+    setInputValue(String(value));
+  }, [value]);
 
   const isMinDisabled = disabled || value <= min;
   const isMaxDisabled = disabled || value >= max;

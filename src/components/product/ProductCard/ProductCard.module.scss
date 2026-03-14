@@ -1,6 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .root {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   background: $color-bg-card;
@@ -110,4 +111,95 @@
   font-size: $font-size-xs;
   color: $color-text-tertiary;
   line-height: $line-height-tight;
+}
+
+// ========================================
+// Container Query: Compact (< 200px)
+// ========================================
+@container (max-width: 199px) {
+  .title {
+    -webkit-line-clamp: 1;
+    min-height: calc($font-size-sm * $line-height-normal);
+  }
+
+  .imageWrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .badge,
+  .discountBadge {
+    padding: 1px $spacing-xs;
+    font-size: 8px;
+  }
+
+  .soldCount {
+    display: none;
+  }
+
+  .content {
+    padding: $spacing-xs $spacing-xs $spacing-sm;
+    gap: 2px;
+  }
+}
+
+// ========================================
+// Container Query: Standard (200px - 320px)
+// ========================================
+@container (min-width: 200px) and (max-width: 320px) {
+  .title {
+    -webkit-line-clamp: 2;
+  }
+}
+
+// ========================================
+// Container Query: Expanded (> 320px)
+// ========================================
+@container (min-width: 321px) {
+  .root {
+    flex-direction: row;
+  }
+
+  .imageWrapper {
+    width: 40%;
+    flex-shrink: 0;
+    aspect-ratio: auto;
+  }
+
+  .image {
+    border-radius: $radius-md 0 0 $radius-md;
+  }
+
+  .content {
+    flex: 1;
+    padding: $spacing-md;
+    justify-content: center;
+    gap: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-size-md;
+    -webkit-line-clamp: 2;
+    min-height: auto;
+  }
+
+  .soldCount {
+    font-size: $font-size-sm;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+
+    &:active {
+      transform: none;
+    }
+  }
+
+  .image {
+    transition: none;
+  }
 }

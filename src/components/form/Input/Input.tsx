@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
-import { useRef } from 'react';
+import { forwardRef, useRef, useImperativeHandle, useId } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 import styles from './Input.module.scss';
 
-export interface InputProps {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'size'> {
   /** Input value */
   value?: string;
   /** Label text above input */
@@ -18,9 +18,11 @@ export interface InputProps {
   /** Whether input is disabled */
   disabled?: boolean;
   /** Input type */
-  type?: string;
-  /** Change handler */
+  type?: InputHTMLAttributes<HTMLInputElement>['type'];
+  /** Change handler (receives string value) */
   onChange?: (value: string) => void;
+  /** Native change handler (receives event) */
+  onNativeChange?: InputHTMLAttributes<HTMLInputElement>['onChange'];
 }
 
 const ClearIcon = () => (
@@ -30,57 +32,93 @@ const ClearIcon = () => (
   </svg>
 );
 
-export function Input({
-  value = '',
-  label,
-  placeholder,
-  error,
-  leftIcon,
-  clearable = false,
-  disabled = false,
-  type = 'text',
-  onChange,
-}: InputProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      value = '',
+      label,
+      placeholder,
+      error,
+      leftIcon,
+      clearable = false,
+      disabled = false,
+      type = 'text',
+      onChange,
+      onNativeChange,
+      id: externalId,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const internalRef = useRef<HTMLInputElement>(null);
+    useImperativeHandle(ref, () => internalRef.current!, []);
 
-  const handleClear = () => {
-    onChange?.('');
-    inputRef.current?.focus();
-  };
+    const generatedId = useId();
+    const inputId = externalId ?? generatedId;
 
-  const rootClass = [
-    styles.root,
-    error && styles.hasError,
-    disabled && styles.disabled,
-  ].filter(Boolean).join(' ');
+    const handleClear = () => {
+      onChange?.('');
+      internalRef.current?.focus();
+    };
 
-  return (
-    <div className={rootClass}>
-      {label && <label className={styles.label}>{label}</label>}
+    const rootClass = [
+      styles.root,
+      error && styles.hasError,
+      disabled && styles.disabled,
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
-      <div className={styles.inputWrap}>
-        {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
+    return (
+      <div className={rootClass}>
+        {label && (
+          <label className={styles.label} htmlFor={inputId}>
+            {label}
+          </label>
+        )}
 
-        <input
-          ref={inputRef}
-          className={styles.input}
-          type={type}
-          value={value}
-          placeholder={placeholder}
-          disabled={disabled}
-          onChange={(e) => onChange?.(e.target.value)}
-        />
+        <div className={styles.inputWrap}>
+          {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
 
-        {clearable && value && !disabled && (
-          <button className={styles.clearBtn} onClick={handleClear} type="button" aria-label="Tozalash">
-            <ClearIcon />
-          </button>
+          <input
+            ref={internalRef}
+            id={inputId}
+            className={styles.input}
+            type={type}
+            value={value}
+            placeholder={placeholder}
+            disabled={disabled}
+            onChange={(e) => {
+              onChange?.(e.target.value);
+              onNativeChange?.(e);
+            }}
+            aria-invalid={!!error}
+            aria-describedby={error ? `${inputId}-error` : undefined}
+            {...rest}
+          />
+
+          {clearable && value && !disabled && (
+            <button
+              className={styles.clearBtn}
+              onClick={handleClear}
+              type="button"
+              aria-label="Clear input"
+            >
+              <ClearIcon />
+            </button>
+          )}
+        </div>
+
+        {error && (
+          <span className={styles.error} id={`${inputId}-error`} role="alert">
+            {error}
+          </span>
         )}
       </div>
+    );
+  },
+);
 
-      {error && <span className={styles.error}>{error}</span>}
-    </div>
-  );
-}
-
-export default Input;
+Input.displayName = 'Input';

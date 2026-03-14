@@ -1,6 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .wrapper {
+  container-type: inline-size;
   position: relative;
   overflow: hidden;
   background: $color-bg-white;
@@ -116,4 +117,83 @@
   font-size: $font-size-price-sm;
   font-weight: $font-weight-bold;
   color: $color-price;
+}
+
+// ========================================
+// Container Query: Compact (< 280px)
+// ========================================
+@container (max-width: 279px) {
+  .image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .variant {
+    display: none;
+  }
+
+  .content {
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .title {
+    font-size: $font-size-sm;
+    -webkit-line-clamp: 1;
+  }
+
+  .bottom {
+    gap: $spacing-xs;
+    margin-top: 2px;
+  }
+
+  .price {
+    font-size: $font-size-md;
+  }
+}
+
+// ========================================
+// Container Query: Standard (280px - 400px)
+// ========================================
+@container (min-width: 280px) and (max-width: 400px) {
+  // Default layout, no overrides needed
+}
+
+// ========================================
+// Container Query: Expanded (> 400px)
+// ========================================
+@container (min-width: 401px) {
+  .image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+  }
+
+  .variant {
+    font-size: $font-size-md;
+  }
+
+  .bottom {
+    margin-top: $spacing-sm;
+  }
+
+  .price {
+    font-size: $font-size-price-md;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    transition: none;
+  }
+
+  .checkbox {
+    transition: none;
+  }
 }

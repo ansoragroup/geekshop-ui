@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ProductGrid } from './ProductGrid';
-import type { ProductCardProps } from '../ProductCard';
+import type { ProductCardFlatProps } from '../ProductCard';
 
-const sampleProducts: ProductCardProps[] = [
+const sampleProducts: ProductCardFlatProps[] = [
   {
     image: 'https://picsum.photos/seed/gpu1/400/400',
     title: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',

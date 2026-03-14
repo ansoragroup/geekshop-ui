@@ -140,6 +140,16 @@ export const AllVariants: Story = {
   ),
 };
 
+// --- Polymorphic `as` prop ---
+export const AsAnchor: Story = {
+  name: 'As Anchor (<a>)',
+  render: () => (
+    <Button as="a" href="#" target="_blank" rel="noopener noreferrer">
+      Link Button
+    </Button>
+  ),
+};
+
 // --- E-commerce patterns ---
 export const BuyNow: Story = {
   name: 'Buy Now (Taobao style)',

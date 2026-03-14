@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './QuickBuyPopup.module.scss';
 
@@ -38,6 +39,10 @@ export function QuickBuyPopup({
     variants.length > 0 ? variants[0].id : null
   );
 
+  const sheetRef = useFocusTrap<HTMLDivElement>(open, {
+    onEscape: onClose,
+  });
+
   const handleAddToCart = useCallback(() => {
     onAddToCart?.(selectedVariant, quantity);
   }, [onAddToCart, selectedVariant, quantity]);
@@ -46,38 +51,43 @@ export function QuickBuyPopup({
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.sheet} onClick={(e) => e.stopPropagation()}>
-        {/* Close button */}
-        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+      <div
+        ref={sheetRef}
+        className={styles.sheet}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Quick buy: ${product.title}`}
+        tabIndex={-1}
+      >
+        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Close">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M5 5L15 15M15 5L5 15" stroke="#999" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </button>
 
-        {/* Product image */}
         <div className={styles.imageWrap}>
           <img src={product.image} alt={product.title} className={styles.productImage} />
         </div>
 
-        {/* Price */}
         <div className={styles.priceSection}>
           <span className={styles.price}>{formatPrice(product.price)} so'm</span>
         </div>
 
-        {/* Title */}
         <div className={styles.title}>{product.title}</div>
 
-        {/* Variant chips */}
         {variants.length > 0 && (
           <div className={styles.variantSection}>
             <div className={styles.sectionLabel}>Variant</div>
-            <div className={styles.chips}>
+            <div className={styles.chips} role="radiogroup" aria-label="Select variant">
               {variants.map((v) => (
                 <button
                   type="button"
                   key={v.id}
                   className={`${styles.chip} ${selectedVariant === v.id ? styles.chipActive : ''}`}
                   onClick={() => setSelectedVariant(v.id)}
+                  role="radio"
+                  aria-checked={selectedVariant === v.id}
                 >
                   {v.name}
                 </button>
@@ -86,7 +96,6 @@ export function QuickBuyPopup({
           </div>
         )}
 
-        {/* Quantity */}
         <div className={styles.quantitySection}>
           <div className={styles.quantityRow}>
             <span className={styles.sectionLabel}>Miqdor</span>
@@ -103,7 +112,6 @@ export function QuickBuyPopup({
           </div>
         </div>
 
-        {/* Add to cart button */}
         <div className={styles.footer}>
           <button type="button" className={styles.addToCartBtn} onClick={handleAddToCart}>
             Savatga qo'shish

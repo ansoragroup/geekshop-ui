@@ -1,6 +1,8 @@
+import { forwardRef } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import styles from './Checkbox.module.scss';
 
-export interface CheckboxProps {
+export interface CheckboxProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange' | 'type'> {
   /** Whether the checkbox is checked */
   checked?: boolean;
   /** Label text */
@@ -11,34 +13,59 @@ export interface CheckboxProps {
   onChange?: (checked: boolean) => void;
 }
 
-export function Checkbox({
-  checked = false,
-  label,
-  disabled = false,
-  onChange,
-}: CheckboxProps) {
-  const handleClick = () => {
-    if (disabled) return;
-    onChange?.(!checked);
-  };
+export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
+  (
+    {
+      checked = false,
+      label,
+      disabled = false,
+      onChange,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const handleClick = () => {
+      if (disabled) return;
+      onChange?.(!checked);
+    };
 
-  const rootClass = [
-    styles.root,
-    disabled && styles.disabled,
-  ].filter(Boolean).join(' ');
+    const rootClass = [
+      styles.root,
+      disabled && styles.disabled,
+      className,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
-  return (
-    <button className={rootClass} onClick={handleClick} type="button" role="checkbox" aria-checked={checked} aria-disabled={disabled}>
-      <span className={`${styles.circle} ${checked ? styles.checked : styles.unchecked}`}>
-        {checked && (
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3.5 7l2.5 2.5 4.5-4.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        )}
-      </span>
-      {label && <span className={styles.label}>{label}</span>}
-    </button>
-  );
-}
+    return (
+      <button
+        ref={ref}
+        className={rootClass}
+        onClick={handleClick}
+        type="button"
+        role="checkbox"
+        aria-checked={checked}
+        aria-disabled={disabled}
+        {...rest}
+      >
+        <span className={`${styles.circle} ${checked ? styles.checked : styles.unchecked}`}>
+          {checked && (
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M3.5 7l2.5 2.5 4.5-4.5"
+                stroke="#fff"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </span>
+        {label && <span className={styles.label}>{label}</span>}
+      </button>
+    );
+  },
+);
 
-export default Checkbox;
+Checkbox.displayName = 'Checkbox';

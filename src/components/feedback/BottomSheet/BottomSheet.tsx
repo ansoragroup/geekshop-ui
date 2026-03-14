@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './BottomSheet.module.scss';
 
 export interface BottomSheetProps {
@@ -27,6 +28,10 @@ export function BottomSheet({
   onClose,
   children,
 }: BottomSheetProps) {
+  const sheetRef = useFocusTrap<HTMLDivElement>(visible, {
+    onEscape: onClose,
+  });
+
   if (!visible) return null;
 
   const handleOverlayClick = () => {
@@ -40,9 +45,14 @@ export function BottomSheet({
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div
+        ref={sheetRef}
         className={styles.sheet}
         style={{ maxHeight: height }}
         onClick={handleContentClick}
+        role="dialog"
+        aria-modal="true"
+        aria-label={title || 'Bottom sheet'}
+        tabIndex={-1}
       >
         <div className={styles.dragHandle}>
           <span className={styles.dragBar} />
@@ -51,7 +61,7 @@ export function BottomSheet({
         {(title || onClose) && (
           <div className={styles.header}>
             <span className={styles.title}>{title}</span>
-            <button className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+            <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
               <CloseIcon />
             </button>
           </div>
@@ -62,5 +72,3 @@ export function BottomSheet({
     </div>
   );
 }
-
-export default BottomSheet;

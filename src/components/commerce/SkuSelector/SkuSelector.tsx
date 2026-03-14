@@ -77,15 +77,15 @@ export function SkuSelector({
         } else {
           next[variantId] = quantity;
         }
+        onSelect?.(
+          Object.entries(next)
+            .filter(([, q]) => q > 0)
+            .map(([id, q]) => ({ variantId: id, quantity: q }))
+        );
         return next;
       });
-      onSelect?.(
-        Object.entries({ ...selections, [variantId]: quantity })
-          .filter(([, q]) => q > 0)
-          .map(([id, q]) => ({ variantId: id, quantity: q }))
-      );
     },
-    [selections, onSelect]
+    [onSelect]
   );
 
   const handleGridSelect = useCallback(

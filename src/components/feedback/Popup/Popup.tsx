@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './Popup.module.scss';
 
 export type PopupPosition = 'center' | 'bottom';
@@ -32,6 +33,10 @@ export function Popup({
   onClose,
   children,
 }: PopupProps) {
+  const popupRef = useFocusTrap<HTMLDivElement>(visible, {
+    onEscape: closable ? onClose : undefined,
+  });
+
   if (!visible) return null;
 
   const handleOverlayClick = () => {
@@ -45,14 +50,19 @@ export function Popup({
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
       <div
+        ref={popupRef}
         className={`${styles.popup} ${styles[`position-${position}`]}`}
         onClick={handleContentClick}
+        role="dialog"
+        aria-modal="true"
+        aria-label={title || 'Popup'}
+        tabIndex={-1}
       >
         {(title || closable) && (
           <div className={styles.header}>
             <span className={styles.title}>{title}</span>
             {closable && (
-              <button className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+              <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
                 <CloseIcon />
               </button>
             )}
@@ -63,5 +73,3 @@ export function Popup({
     </div>
   );
 }
-
-export default Popup;

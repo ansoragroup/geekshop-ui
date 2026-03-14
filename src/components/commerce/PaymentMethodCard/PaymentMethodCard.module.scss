@@ -1,0 +1,155 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-card;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-lg;
+  cursor: default;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+.selected {
+  border-color: $color-primary;
+  box-shadow: 0 0 0 1px $color-primary;
+}
+
+// Payment icon
+.icon {
+  flex-shrink: 0;
+  border-radius: $radius-xs;
+}
+
+// Details section
+.details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.defaultBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-white;
+  background: $color-primary;
+  padding: 1px $spacing-sm;
+  border-radius: $radius-xs;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.masked {
+  letter-spacing: 1px;
+}
+
+.expiry {
+  &::before {
+    content: '·';
+    margin-right: $spacing-sm;
+  }
+}
+
+// Trailing actions
+.trailing {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  background: none;
+  border: none;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-error;
+    background: rgba($color-error, 0.06);
+  }
+}
+
+// Radio / checkmark
+.radio {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  border: 2px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-fast;
+}
+
+.radioSelected {
+  background: $color-primary;
+  border-color: $color-primary;
+}
+
+// Payment type color accents on selected
+.type-visa.selected {
+  border-color: #1A1F71;
+  box-shadow: 0 0 0 1px #1A1F71;
+}
+
+.type-mastercard.selected {
+  border-color: #EB001B;
+  box-shadow: 0 0 0 1px #EB001B;
+}
+
+.type-uzcard.selected {
+  border-color: #00A651;
+  box-shadow: 0 0 0 1px #00A651;
+}
+
+.type-humo.selected {
+  border-color: #5B2D8E;
+  box-shadow: 0 0 0 1px #5B2D8E;
+}
+
+.type-click.selected {
+  border-color: #00AEEF;
+  box-shadow: 0 0 0 1px #00AEEF;
+}
+
+.type-payme.selected {
+  border-color: #33CCCC;
+  box-shadow: 0 0 0 1px #33CCCC;
+}
+
+.type-cash.selected {
+  border-color: $color-success;
+  box-shadow: 0 0 0 1px $color-success;
+}

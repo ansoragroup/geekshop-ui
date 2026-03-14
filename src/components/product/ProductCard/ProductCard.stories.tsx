@@ -24,6 +24,10 @@ const meta: Meta<typeof ProductCard> = {
 export default meta;
 type Story = StoryObj<typeof ProductCard>;
 
+// ═══════════════════════════════════════════════════════════════════
+// Flat API stories (existing, backward-compatible)
+// ═══════════════════════════════════════════════════════════════════
+
 // --- Default GPU card ---
 export const Default: Story = {
   args: {
@@ -111,4 +115,135 @@ export const FullFeatured: Story = {
     badge: 'top',
     soldCount: '45+ sotilgan',
   },
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// Compound API stories (new)
+// ═══════════════════════════════════════════════════════════════════
+
+export const CompoundBasic: Story = {
+  name: 'Compound / Basic',
+  render: () => (
+    <ProductCard>
+      <ProductCard.Image src="https://picsum.photos/seed/phone1/400/400" alt="iPhone 15" />
+      <ProductCard.Body>
+        <ProductCard.Title>iPhone 15 Pro Max 256GB</ProductCard.Title>
+        <ProductCard.Price current={16_900_000} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
+};
+
+export const CompoundWithDiscount: Story = {
+  name: 'Compound / With Discount',
+  render: () => (
+    <ProductCard>
+      <ProductCard.Image
+        src="https://picsum.photos/seed/phone2/400/400"
+        alt="Samsung Galaxy"
+        discount="-15%"
+      />
+      <ProductCard.Body>
+        <ProductCard.Title>Samsung Galaxy S24 Ultra 512GB</ProductCard.Title>
+        <ProductCard.Price current={18_500_000} original={21_800_000} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
+};
+
+export const CompoundWithBadges: Story = {
+  name: 'Compound / With Badges',
+  render: () => (
+    <ProductCard>
+      <ProductCard.Image
+        src="https://picsum.photos/seed/headphones1/400/400"
+        alt="AirPods"
+        badges={['hot']}
+        discount="-10%"
+      />
+      <ProductCard.Body>
+        <ProductCard.Title>Apple AirPods Pro 2nd Gen USB-C</ProductCard.Title>
+        <ProductCard.Price current={3_200_000} original={3_550_000} />
+        <ProductCard.Rating value={4.8} count={512} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
+};
+
+export const CompoundWithRating: Story = {
+  name: 'Compound / With Rating',
+  render: () => (
+    <ProductCard>
+      <ProductCard.Image
+        src="https://picsum.photos/seed/keyboard1/400/400"
+        alt="Keychron"
+        badges={['new']}
+      />
+      <ProductCard.Body>
+        <ProductCard.Title>Keychron Q1 Pro Wireless Mechanical Keyboard</ProductCard.Title>
+        <ProductCard.Price current={2_450_000} />
+        <ProductCard.Rating value={4.6} count={87} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
+};
+
+export const CompoundWithInstallment: Story = {
+  name: 'Compound / With Installment',
+  render: () => (
+    <ProductCard>
+      <ProductCard.Image
+        src="https://picsum.photos/seed/laptop2/400/400"
+        alt="MacBook"
+        badges={['top']}
+      />
+      <ProductCard.Body>
+        <ProductCard.Title>MacBook Air M3 15" 16GB 512GB</ProductCard.Title>
+        <ProductCard.Price
+          current={22_900_000}
+          original={24_500_000}
+          installment={1_908_000}
+        />
+        <ProductCard.Rating value={4.9} count={234} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
+};
+
+export const CompoundLineClamp: Story = {
+  name: 'Compound / Title Line Clamp',
+  render: () => (
+    <ProductCard>
+      <ProductCard.Image src="https://picsum.photos/seed/mouse1/400/400" alt="Mouse" />
+      <ProductCard.Body>
+        <ProductCard.Title lineClamp={1}>
+          Logitech G Pro X Superlight 2 Wireless Gaming Mouse - Very Long Title That Should Be Truncated
+        </ProductCard.Title>
+        <ProductCard.Price current={1_650_000} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
+};
+
+export const CompoundFullFeatured: Story = {
+  name: 'Compound / Full Featured',
+  render: () => (
+    <ProductCard onClick={() => console.log('clicked')}>
+      <ProductCard.Image
+        src="https://picsum.photos/seed/gpu4/400/400"
+        alt="RTX 4090"
+        badges={['hot']}
+        discount="-11%"
+      />
+      <ProductCard.Body>
+        <ProductCard.Title>Gigabyte GeForce RTX 4090 AORUS Master 24GB GDDR6X</ProductCard.Title>
+        <ProductCard.Price
+          current={28_500_000}
+          original={32_000_000}
+          installment={2_375_000}
+        />
+        <ProductCard.Rating value={4.9} count={45} />
+      </ProductCard.Body>
+    </ProductCard>
+  ),
 };

@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../../theme/tokens' as *;
 
 .button {
@@ -46,7 +47,7 @@
   color: $color-text-white;
 
   &:hover:not(.disabled):not(.loading) {
-    background: darken(#FF3B30, 8%);
+    background: color.adjust(#FF3B30, $lightness: -8%);
   }
 }
 

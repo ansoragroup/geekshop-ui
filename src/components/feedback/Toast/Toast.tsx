@@ -72,8 +72,8 @@ export function Toast({
   const Icon = iconMap[type];
 
   return (
-    <div className={styles.overlay}>
-      <div className={`${styles.toast} ${styles[`type-${type}`]}`}>
+    <div className={styles.overlay} role="status" aria-live="assertive" aria-atomic="true">
+      <div className={`${styles.toast} ${styles[`type-${type}`]}`} role="alert">
         <span className={styles.icon}>
           <Icon />
         </span>
@@ -82,5 +82,3 @@ export function Toast({
     </div>
   );
 }
-
-export default Toast;

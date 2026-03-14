@@ -88,3 +88,8 @@
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { animation: none; }
+  .sheet { animation: none; }
+}

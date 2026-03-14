@@ -1,6 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .dealCard {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   width: 140px;
@@ -132,4 +133,119 @@
   font-size: $font-size-xs;
   color: $color-text-tertiary;
   line-height: $line-height-tight;
+}
+
+// ========================================
+// Container Query: Compact (< 200px)
+// ========================================
+@container (max-width: 199px) {
+  .discountBadge {
+    // Keep the badge tag but reduce size; text stays visible
+    font-size: 8px;
+    padding: 1px $spacing-xs;
+  }
+
+  .imageArea {
+    aspect-ratio: 4 / 3;
+  }
+
+  .title {
+    font-size: $font-size-xs;
+    white-space: nowrap;
+  }
+
+  .currentPrice {
+    font-size: $font-size-md;
+  }
+
+  .savingsRow {
+    display: none;
+  }
+
+  .progressLabel {
+    display: none;
+  }
+
+  .progressBar {
+    height: 4px;
+  }
+
+  .infoArea {
+    padding: $spacing-xs;
+  }
+}
+
+// ========================================
+// Container Query: Standard (200px - 320px)
+// ========================================
+@container (min-width: 200px) and (max-width: 320px) {
+  // Default vertical card layout
+  .dealCard {
+    width: auto;
+  }
+}
+
+// ========================================
+// Container Query: Expanded (> 320px)
+// ========================================
+@container (min-width: 321px) {
+  .dealCard {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .imageArea {
+    width: 40%;
+    flex-shrink: 0;
+    aspect-ratio: auto;
+  }
+
+  .infoArea {
+    flex: 1;
+    padding: $spacing-md;
+    justify-content: center;
+    gap: $spacing-xs;
+  }
+
+  .title {
+    font-size: $font-size-md;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .currentPrice {
+    font-size: $font-size-price-lg;
+  }
+
+  .originalPrice {
+    font-size: $font-size-sm;
+  }
+
+  .savingsText {
+    font-size: $font-size-sm;
+  }
+
+  .savingsIcon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .dealCard {
+    transition: none;
+
+    &:active {
+      transform: none;
+    }
+  }
+
+  .progressFill {
+    transition: none;
+  }
 }

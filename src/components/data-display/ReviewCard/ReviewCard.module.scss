@@ -1,6 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .root {
+  container-type: inline-size;
   background: $color-bg-card;
   border-radius: $radius-lg;
   padding: $spacing-lg;
@@ -11,6 +12,10 @@
   display: flex;
   align-items: center;
   gap: $spacing-sm;
+}
+
+.avatar {
+  flex-shrink: 0;
 }
 
 .headerInfo {
@@ -74,4 +79,101 @@
   object-fit: cover;
   flex-shrink: 0;
   background: $color-bg-skeleton;
+}
+
+// ========================================
+// Container Query: Compact (< 240px)
+// ========================================
+@container (max-width: 239px) {
+  .root {
+    padding: $spacing-md;
+  }
+
+  // Hide avatar in compact mode
+  .header > :first-child {
+    display: none;
+  }
+
+  .date {
+    display: none;
+  }
+
+  .content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $font-size-sm;
+  }
+
+  .variant {
+    display: none;
+  }
+
+  .images {
+    margin-top: $spacing-sm;
+  }
+
+  .thumbnail {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+// ========================================
+// Container Query: Standard (240px - 360px)
+// ========================================
+@container (min-width: 240px) and (max-width: 360px) {
+  // Default layout: avatar visible, full text, date shown
+}
+
+// ========================================
+// Container Query: Expanded (> 360px)
+// ========================================
+@container (min-width: 361px) {
+  .root {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0 $spacing-lg;
+  }
+
+  // Header spans the avatar column; avatar sits as sidebar
+  .header {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    gap: $spacing-md;
+  }
+
+  .headerInfo {
+    flex: 1;
+  }
+
+  .userName {
+    font-size: $font-size-lg;
+  }
+
+  .ratingRow {
+    grid-column: 2;
+    margin-top: $spacing-xs;
+  }
+
+  .variant {
+    grid-column: 2;
+  }
+
+  .content {
+    grid-column: 2;
+    font-size: $font-size-md;
+    line-height: $line-height-relaxed;
+  }
+
+  .images {
+    grid-column: 2;
+  }
+
+  .thumbnail {
+    width: 88px;
+    height: 88px;
+  }
 }

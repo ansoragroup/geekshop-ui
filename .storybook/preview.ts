@@ -27,6 +27,14 @@ const preview: Preview = {
           name: 'Android Medium',
           styles: { width: '412px', height: '915px' },
         },
+        tablet: {
+          name: 'Tablet',
+          styles: { width: '768px', height: '1024px' },
+        },
+        desktop: {
+          name: 'Desktop',
+          styles: { width: '1280px', height: '800px' },
+        },
       },
       defaultViewport: 'iPhone13',
     },
@@ -36,11 +44,12 @@ const preview: Preview = {
         { name: 'GeekShop Light', value: '#F5F5F5' },
         { name: 'White', value: '#FFFFFF' },
         { name: 'GeekShop Primary', value: '#FF5000' },
+        { name: 'Dark', value: '#1A1A1A' },
       ],
     },
     layout: 'centered',
     a11y: {
-      test: 'todo',
+      test: 'error',
     },
   },
 };

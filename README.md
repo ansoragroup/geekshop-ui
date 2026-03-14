@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# GeekShop UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An open-source React component library built for e-commerce applications. Mobile-first, accessible, and tree-shakeable.
 
-Currently, two official plugins are available:
+[![npm version](https://img.shields.io/npm/v/@geekshop/ui.svg)](https://www.npmjs.com/package/@geekshop/ui)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![CI](https://github.com/ansoragroup/geekshop-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/ansoragroup/geekshop-ui/actions/workflows/ci.yml)
+[![Storybook](https://img.shields.io/badge/storybook-live-ff4785.svg)](https://ansoragroup.github.io/geekshop-ui)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **46+ components** across 8 categories, purpose-built for e-commerce
+- **Mobile-first** design with responsive breakpoints (375px / 414px / 768px)
+- **TypeScript** -- strict types, exported interfaces for every component
+- **SCSS Modules** -- scoped styles with design tokens, no global CSS leaks
+- **Storybook** -- interactive documentation with accessibility audits
+- **Tree-shakeable** -- import only what you use
+- **Accessible** -- WAI-ARIA patterns, keyboard navigation, screen reader support
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install @geekshop/ui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Quick Start
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { Button } from '@geekshop/ui';
+import '@geekshop/ui/styles.css';
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function App() {
+  return (
+    <Button variant="primary" size="lg" onClick={() => alert('Added to cart')}>
+      Add to Cart
+    </Button>
+  );
+}
 ```
+
+## Component Categories
+
+| Category | Components |
+|---|---|
+| **Commerce** | ActionBar, CartItem, QuantityStepper, QuickBuyPopup, SkuSelector |
+| **Content** | CategoryIcon, CountdownTimer, CouponCard, DealCard, HeroBanner, PromoBanner, SectionHeader |
+| **Data Display** | Avatar, Badge, OrderCard, OrderStatusBar, Rating, ReviewCard, SpecsTable, Tag |
+| **Feedback** | BottomSheet, Empty, Loading, Popup, Toast |
+| **Form** | Button, Checkbox, Input |
+| **Layout** | Container, Divider, Grid, Section |
+| **Navigation** | CategorySidebar, FilterBar, FilterPanel, NavBar, PopularSearches, SearchBar, SearchSuggestions, TabBar, TabFilter |
+| **Product** | PriceDisplay, ProductCard, ProductCarousel, ProductGrid, ProductImageGallery |
+
+## Theming
+
+GeekShop UI uses CSS custom properties for theming. All tokens use the `--gs-*` prefix and can be overridden at any level of the DOM tree.
+
+```css
+:root {
+  --gs-color-primary: #FF5000;
+  --gs-color-primary-light: #FF7A33;
+  --gs-color-primary-dark: #E64800;
+  --gs-color-bg-page: #F5F5F5;
+  --gs-radius-md: 8px;
+  --gs-spacing-lg: 16px;
+  --gs-font-size-md: 14px;
+}
+```
+
+Override tokens to match your brand:
+
+```css
+:root {
+  --gs-color-primary: #1A73E8;
+  --gs-color-primary-light: #4A90D9;
+  --gs-color-primary-dark: #1557B0;
+}
+```
+
+## Documentation
+
+Browse the full component documentation, live examples, and accessibility reports in [Storybook](https://ansoragroup.github.io/geekshop-ui).
+
+## Contributing
+
+Contributions are welcome. Please read the [Contributing Guide](./CONTRIBUTING.md) before opening a pull request.
+
+## License
+
+[MIT](./LICENSE) -- Copyright (c) 2025-present Ansora Group

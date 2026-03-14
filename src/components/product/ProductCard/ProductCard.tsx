@@ -1,9 +1,14 @@
+import type { ReactNode } from 'react';
 import { PriceDisplay } from '../PriceDisplay';
+import { Rating } from '../../data-display/Rating';
 import styles from './ProductCard.module.scss';
+
+// ─── Types ───────────────────────────────────────────────────────────────────
 
 export type ProductBadge = 'new' | 'top' | 'hot';
 
-export interface ProductCardProps {
+/** Props for the flat API (backward-compatible) */
+export interface ProductCardFlatProps {
   /** Product image URL */
   image: string;
   /** Product title */
@@ -22,7 +27,76 @@ export interface ProductCardProps {
   onClick?: () => void;
   /** Additional CSS class */
   className?: string;
+  children?: never;
 }
+
+/** Props for the compound API */
+export interface ProductCardCompoundProps {
+  /** Click handler */
+  onClick?: () => void;
+  /** Additional CSS class */
+  className?: string;
+  /** Compound sub-components */
+  children: ReactNode;
+  image?: never;
+  title?: never;
+  price?: never;
+}
+
+export type ProductCardProps = ProductCardFlatProps | ProductCardCompoundProps;
+
+// ─── Sub-component props ─────────────────────────────────────────────────────
+
+export interface ProductCardImageProps {
+  /** Image URL */
+  src: string;
+  /** Alt text for the image */
+  alt?: string;
+  /** Badges to display on the image */
+  badges?: ProductBadge[];
+  /** Discount text, e.g. "-6%" */
+  discount?: string;
+  /** Additional CSS class */
+  className?: string;
+}
+
+export interface ProductCardBodyProps {
+  /** Content to render inside the body */
+  children: ReactNode;
+  /** Additional CSS class */
+  className?: string;
+}
+
+export interface ProductCardTitleProps {
+  /** Title text */
+  children: ReactNode;
+  /** Max number of lines before truncation */
+  lineClamp?: number;
+  /** Additional CSS class */
+  className?: string;
+}
+
+export interface ProductCardPriceProps {
+  /** Current/sale price */
+  current: number;
+  /** Original price before discount */
+  original?: number;
+  /** Monthly installment amount */
+  installment?: number;
+  /** Additional CSS class */
+  className?: string;
+}
+
+export interface ProductCardRatingProps {
+  /** Rating value (0-5) */
+  value: number;
+  /** Number of reviews */
+  count?: number;
+  /** Additional CSS class */
+  className?: string;
+}
+
+// ─── Badge labels ────────────────────────────────────────────────────────────
 
 const badgeLabels: Record<ProductBadge, string> = {
   new: 'Yangi',
@@ -30,21 +104,151 @@ const badgeLabels: Record<ProductBadge, string> = {
   hot: 'Xit',
 };
 
-export function ProductCard({
-  image,
-  title,
-  price,
-  originalPrice,
+// ─── Sub-components ──────────────────────────────────────────────────────────
+
+function ProductCardImage({
+  src,
+  alt = '',
+  badges,
   discount,
-  badge,
-  soldCount,
-  onClick,
   className = '',
-}: ProductCardProps) {
+}: ProductCardImageProps) {
+  return (
+    <div className={`${styles.imageWrapper} ${className}`}>
+      <img src={src} alt={alt} className={styles.image} loading="lazy" />
+
+      {discount && (
+        <span className={styles.discountBadge}>{discount}</span>
+      )}
+
+      {badges?.map((badge) => (
+        <span
+          key={badge}
+          className={`${styles.badge} ${styles[`badge-${badge}`]}`}
+        >
+          {badgeLabels[badge]}
+        </span>
+      ))}
+    </div>
+  );
+}
+ProductCardImage.displayName = 'ProductCard.Image';
+
+function ProductCardBody({ children, className = '' }: ProductCardBodyProps) {
+  return (
+    <div className={`${styles.content} ${className}`}>
+      {children}
+    </div>
+  );
+}
+ProductCardBody.displayName = 'ProductCard.Body';
+
+function ProductCardTitle({
+  children,
+  lineClamp,
+  className = '',
+}: ProductCardTitleProps) {
+  const style = lineClamp ? { WebkitLineClamp: lineClamp } as React.CSSProperties : undefined;
+
+  return (
+    <h3 className={`${styles.title} ${className}`} style={style}>
+      {children}
+    </h3>
+  );
+}
+ProductCardTitle.displayName = 'ProductCard.Title';
+
+function ProductCardPrice({
+  current,
+  original,
+  installment,
+  className = '',
+}: ProductCardPriceProps) {
+  const hasDiscount = original !== undefined && original > current;
+
+  return (
+    <div className={`${styles.priceRow} ${className}`}>
+      <PriceDisplay
+        price={current}
+        originalPrice={hasDiscount ? original : undefined}
+        variant={hasDiscount ? 'sale' : 'default'}
+        size="sm"
+      />
+      {installment !== undefined && (
+        <span className={styles.soldCount}>
+          {installment.toLocaleString('ru-RU').replace(/,/g, ' ')} so'm/oy
+        </span>
+      )}
+    </div>
+  );
+}
+ProductCardPrice.displayName = 'ProductCard.Price';
+
+function ProductCardRating({
+  value,
+  count,
+  className = '',
+}: ProductCardRatingProps) {
+  return (
+    <Rating
+      value={value}
+      count={count}
+      size="sm"
+      className={className}
+    />
+  );
+}
+ProductCardRating.displayName = 'ProductCard.Rating';
+
+// ─── Detection helper ────────────────────────────────────────────────────────
+
+function isCompoundMode(props: ProductCardProps): props is ProductCardCompoundProps {
+  return 'children' in props && props.children !== undefined && !('title' in props && props.title !== undefined);
+}
+
+// ─── Main component ─────────────────────────────────────────────────────────
+
+export function ProductCard(props: ProductCardProps) {
+  const { onClick, className = '' } = props;
+
+  if (isCompoundMode(props)) {
+    // Compound API: render children directly
+    return (
+      <div
+        className={`${styles.root} ${className}`}
+        onClick={onClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick?.();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        {props.children}
+      </div>
+    );
+  }
+
+  // Flat API: existing behavior (backward-compatible)
+  const { image, title, price, originalPrice, discount, badge, soldCount } =
+    props as ProductCardFlatProps;
   const hasDiscount = originalPrice !== undefined && originalPrice > price;
 
   return (
-    <div className={`${styles.root} ${className}`} onClick={onClick} role="button" tabIndex={0}>
+    <div
+      className={`${styles.root} ${className}`}
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+    >
       {/* Image container */}
       <div className={styles.imageWrapper}>
         <img src={image} alt={title} className={styles.image} loading="lazy" />
@@ -82,5 +286,13 @@ export function ProductCard({
     </div>
   );
 }
+
+// ─── Attach sub-components ───────────────────────────────────────────────────
+
+ProductCard.Image = ProductCardImage;
+ProductCard.Body = ProductCardBody;
+ProductCard.Title = ProductCardTitle;
+ProductCard.Price = ProductCardPrice;
+ProductCard.Rating = ProductCardRating;
 
 export default ProductCard;
