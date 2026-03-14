@@ -1,0 +1,148 @@
+@use '../../../theme/tokens' as *;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xxs;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-xs;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: opacity $transition-fast;
+}
+
+.text {
+  line-height: 1;
+}
+
+// --- Sizes ---
+.size-sm {
+  height: 22px;
+  padding: 0 $spacing-sm;
+  font-size: $font-size-xs;
+
+  .closeBtn {
+    margin-right: -2px;
+  }
+}
+
+.size-md {
+  height: 28px;
+  padding: 0 $spacing-md;
+  font-size: $font-size-sm;
+
+  .closeBtn {
+    margin-right: -4px;
+  }
+}
+
+// --- Close button ---
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-left: $spacing-xxs;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  color: inherit;
+  line-height: 1;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// --- Variant + Color combos ---
+
+// Filled
+.variant-filled {
+  &.color-primary {
+    background-color: $color-primary;
+    color: $color-text-white;
+  }
+
+  &.color-success {
+    background-color: $color-success;
+    color: $color-text-white;
+  }
+
+  &.color-warning {
+    background-color: $color-warning;
+    color: $color-text-white;
+  }
+
+  &.color-error {
+    background-color: $color-error;
+    color: $color-text-white;
+  }
+
+  &.color-default {
+    background-color: #EAEAEA;
+    color: $color-text-secondary;
+  }
+}
+
+// Outlined
+.variant-outlined {
+  background-color: transparent;
+  border: 1px solid;
+
+  &.color-primary {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &.color-success {
+    border-color: $color-success;
+    color: $color-success;
+  }
+
+  &.color-warning {
+    border-color: $color-warning;
+    color: $color-warning;
+  }
+
+  &.color-error {
+    border-color: $color-error;
+    color: $color-error;
+  }
+
+  &.color-default {
+    border-color: $color-border;
+    color: $color-text-secondary;
+  }
+}
+
+// Light (soft background)
+.variant-light {
+  &.color-primary {
+    background-color: $color-primary-bg;
+    color: $color-primary;
+  }
+
+  &.color-success {
+    background-color: $color-success-light;
+    color: $color-success;
+  }
+
+  &.color-warning {
+    background-color: $color-warning-light;
+    color: #E69500;
+  }
+
+  &.color-error {
+    background-color: #FFF0F0;
+    color: $color-error;
+  }
+
+  &.color-default {
+    background-color: $color-bg-page;
+    color: $color-text-secondary;
+  }
+}

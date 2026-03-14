@@ -1,0 +1,113 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: $shadow-sm;
+  }
+}
+
+// --- Image ---
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: $color-bg-skeleton;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius-md $radius-md 0 0;
+  transition: transform $transition-normal;
+}
+
+// --- Discount badge (top-left red pill) ---
+.discountBadge {
+  position: absolute;
+  top: $spacing-sm;
+  left: $spacing-sm;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $spacing-sm;
+  background: $color-sale;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-xs;
+  line-height: $line-height-tight;
+}
+
+// --- Status badges (top-right) ---
+.badge {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $spacing-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-xs;
+  line-height: $line-height-tight;
+}
+
+.badge-new {
+  background: $color-success;
+  color: $color-text-white;
+}
+
+.badge-top {
+  background: $color-primary;
+  color: $color-text-white;
+}
+
+.badge-hot {
+  background: linear-gradient(135deg, #FF5000 0%, #FF3B30 100%);
+  color: $color-text-white;
+}
+
+// --- Content ---
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-sm $spacing-sm $spacing-md;
+  gap: $spacing-xs;
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc($font-size-sm * $line-height-normal * 2);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.soldCount {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+}

@@ -1,0 +1,81 @@
+@use '../../../theme/tokens' as *;
+
+.suggestions {
+  background: $color-bg-white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  border: none;
+  background: none;
+  cursor: pointer;
+  gap: $spacing-md;
+  position: relative;
+  text-align: left;
+  font-family: $font-family;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+
+  &:active {
+    background: $color-border-light;
+  }
+
+  // Divider line between items
+  & + & {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: $spacing-lg + 14px + $spacing-md; // icon offset
+      right: $spacing-lg;
+      height: 1px;
+      background: $color-divider;
+    }
+  }
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+}
+
+.text {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.highlight {
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: $color-text-placeholder;
+  transform: rotate(180deg);
+}
+
+// Hidden — we use ::before pseudo-element instead
+.divider {
+  display: none;
+}

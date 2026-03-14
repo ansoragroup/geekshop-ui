@@ -1,0 +1,89 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: $radius-round;
+  overflow: visible;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius-round;
+}
+
+.fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  user-select: none;
+}
+
+// --- Sizes ---
+.size-sm {
+  .fallback {
+    font-size: $font-size-xs;
+  }
+}
+
+.size-md {
+  .fallback {
+    font-size: $font-size-md;
+  }
+}
+
+.size-lg {
+  .fallback {
+    font-size: $font-size-xl;
+  }
+}
+
+.size-xl {
+  .fallback {
+    font-size: $font-size-xxl;
+  }
+}
+
+// --- Online indicator ---
+.onlineDot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  border-radius: $radius-round;
+  background-color: $color-success;
+  border: 2px solid $color-bg-white;
+  box-sizing: border-box;
+}
+
+.size-sm .onlineDot {
+  width: 8px;
+  height: 8px;
+  bottom: 0;
+  right: 0;
+}
+
+.size-md .onlineDot {
+  width: 10px;
+  height: 10px;
+}
+
+.size-lg .onlineDot {
+  width: 12px;
+  height: 12px;
+}
+
+.size-xl .onlineDot {
+  width: 14px;
+  height: 14px;
+  bottom: 2px;
+  right: 2px;
+}

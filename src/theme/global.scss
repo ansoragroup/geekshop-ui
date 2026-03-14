@@ -1,0 +1,127 @@
+@use './tokens' as *;
+
+// ============================================
+// GeekShop.uz Global Styles
+// ============================================
+
+:root {
+  // Colors
+  --gs-color-primary: #{$color-primary};
+  --gs-color-primary-light: #{$color-primary-light};
+  --gs-color-primary-dark: #{$color-primary-dark};
+  --gs-color-primary-bg: #{$color-primary-bg};
+  --gs-color-price: #{$color-price};
+  --gs-color-price-dark: #{$color-price-dark};
+  --gs-color-sale: #{$color-sale};
+  --gs-color-success: #{$color-success};
+  --gs-color-success-light: #{$color-success-light};
+  --gs-color-warning: #{$color-warning};
+  --gs-color-warning-light: #{$color-warning-light};
+  --gs-color-error: #{$color-error};
+  --gs-color-info: #{$color-info};
+
+  // Text
+  --gs-text-primary: #{$color-text-primary};
+  --gs-text-secondary: #{$color-text-secondary};
+  --gs-text-tertiary: #{$color-text-tertiary};
+  --gs-text-placeholder: #{$color-text-placeholder};
+
+  // Background
+  --gs-bg-page: #{$color-bg-page};
+  --gs-bg-white: #{$color-bg-white};
+  --gs-bg-card: #{$color-bg-card};
+
+  // Border
+  --gs-border-color: #{$color-border};
+  --gs-divider-color: #{$color-divider};
+
+  // Layout
+  --gs-navbar-height: #{$navbar-height};
+  --gs-tabbar-height: #{$tabbar-height};
+  --gs-action-bar-height: #{$action-bar-height};
+  --gs-safe-area-bottom: #{$safe-area-bottom};
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  background-color: $color-bg-page;
+  line-height: $line-height-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+// Utility classes
+.gs-text-primary { color: $color-text-primary; }
+.gs-text-secondary { color: $color-text-secondary; }
+.gs-text-tertiary { color: $color-text-tertiary; }
+.gs-text-price { color: $color-price; font-weight: $font-weight-bold; }
+.gs-text-orange { color: $color-primary; }
+
+.gs-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gs-ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// Mobile viewport wrapper for Storybook
+.gs-mobile-frame {
+  width: 375px;
+  min-height: 812px;
+  background: $color-bg-page;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: $shadow-xl;
+}

@@ -1,0 +1,130 @@
+@use '../../../theme/tokens' as *;
+
+.couponCard {
+  display: flex;
+  width: 100%;
+  background: $color-bg-white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  position: relative;
+}
+
+.leftPart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  min-height: 100px;
+  flex-shrink: 0;
+  padding: $spacing-lg $spacing-md;
+  position: relative;
+}
+
+.discountText {
+  font-size: $font-size-xxxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  line-height: $line-height-tight;
+  text-align: center;
+}
+
+.minAmount {
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: $spacing-xs;
+  text-align: center;
+  line-height: $line-height-tight;
+}
+
+// Coupon divider with cutout effect
+.divider {
+  position: relative;
+  width: 16px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cutoutTop,
+.cutoutBottom {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: $color-bg-page;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.cutoutTop {
+  top: -8px;
+}
+
+.cutoutBottom {
+  bottom: -8px;
+}
+
+.dashedLine {
+  width: 0;
+  flex: 1;
+  border-left: 2px dashed $color-border;
+  margin: 12px 0;
+}
+
+.rightPart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-md $spacing-lg $spacing-md $spacing-sm;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.codeLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.codeValue {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: 1px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.expiry {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.useButton {
+  align-self: flex-start;
+  padding: $spacing-xs $spacing-lg;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-round;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-fast;
+  white-space: nowrap;
+
+  &:active {
+    background: $color-primary-dark;
+  }
+}

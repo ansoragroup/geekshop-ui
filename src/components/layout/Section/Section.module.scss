@@ -1,0 +1,23 @@
+@use '../../../theme/tokens' as *;
+
+.section {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-sm;
+  overflow: hidden;
+}
+
+.header {
+  padding: $spacing-md $spacing-md 0;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.body {
+  padding: $spacing-md;
+}

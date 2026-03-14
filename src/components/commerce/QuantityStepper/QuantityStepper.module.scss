@@ -1,0 +1,106 @@
+@use '../../../theme/tokens' as *;
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  user-select: none;
+}
+
+// Size variants
+.sm {
+  .btn {
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .input {
+    width: 32px;
+    height: 24px;
+    font-size: $font-size-sm;
+  }
+}
+
+.md {
+  .btn {
+    width: 28px;
+    height: 28px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .input {
+    width: 40px;
+    height: 28px;
+    font-size: $font-size-md;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-border;
+  background: $color-bg-white;
+  border-radius: $radius-round;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  flex-shrink: 0;
+
+  &:active:not(:disabled) {
+    background: $color-bg-page;
+    transform: scale(0.92);
+  }
+}
+
+.btnMinus {
+  border-radius: $radius-round;
+}
+
+.btnPlus {
+  border-radius: $radius-round;
+}
+
+.btnDisabled {
+  color: $color-text-placeholder;
+  border-color: $color-border-light;
+  background: $color-bg-page;
+  cursor: not-allowed;
+}
+
+.input {
+  text-align: center;
+  border: none;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  background: $color-bg-white;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  outline: none;
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &:disabled {
+    color: $color-text-placeholder;
+    background: $color-bg-page;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

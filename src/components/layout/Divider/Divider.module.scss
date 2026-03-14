@@ -1,0 +1,46 @@
+@use '../../../theme/tokens' as *;
+
+// --- Horizontal ---
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background: $color-divider;
+}
+
+.variant-full {
+  margin: 0;
+}
+
+.variant-inset {
+  margin: 0 $spacing-lg;
+  width: calc(100% - #{$spacing-lg} * 2);
+}
+
+// --- With text ---
+.withText {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: $color-divider;
+}
+
+.text {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+// --- Vertical ---
+.vertical {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: $color-divider;
+  vertical-align: middle;
+  margin: 0 $spacing-sm;
+}

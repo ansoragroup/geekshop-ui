@@ -1,0 +1,130 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: relative;
+  width: 100%;
+  background: $color-bg-white;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+// --- Top overlay bar ---
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  z-index: $z-index-normal + 1;
+  // Subtle gradient so icons are visible on any image
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-round;
+  background: rgba(0, 0, 0, 0.35);
+  color: $color-text-white;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-fast;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  &:active {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
+
+.favorited {
+  color: $color-sale;
+}
+
+// --- Scrollable image container ---
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  scroll-snap-align: start;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// --- Counter badge (bottom-right) ---
+.counter {
+  position: absolute;
+  bottom: $spacing-xxxl + $spacing-sm;
+  right: $spacing-md;
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xxs $spacing-sm;
+  background: rgba(0, 0, 0, 0.5);
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-round;
+  line-height: $line-height-tight;
+  min-width: 36px;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+// --- Dots ---
+.dots {
+  position: absolute;
+  bottom: $spacing-md;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-round;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all $transition-fast;
+}
+
+.dotActive {
+  width: 16px;
+  background: $color-text-white;
+  border-radius: $radius-round;
+}

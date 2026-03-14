@@ -1,0 +1,97 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 44px;
+  padding: 0 $spacing-md;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  transition: border-color $transition-fast;
+
+  &:focus-within {
+    border-color: $color-primary;
+  }
+}
+
+.leftIcon {
+  display: flex;
+  align-items: center;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  height: 100%;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:disabled {
+    color: $color-text-tertiary;
+    cursor: not-allowed;
+  }
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.error {
+  font-size: $font-size-sm;
+  color: $color-error;
+  line-height: $line-height-normal;
+}
+
+// --- Error state ---
+.hasError {
+  .inputWrap {
+    border-color: $color-error;
+  }
+}
+
+// --- Disabled state ---
+.disabled {
+  .inputWrap {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+  }
+}

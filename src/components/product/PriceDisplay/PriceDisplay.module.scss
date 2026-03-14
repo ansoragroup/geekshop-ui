@@ -1,0 +1,121 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: baseline;
+  gap: $spacing-xs;
+  font-family: $font-family;
+  line-height: $line-height-tight;
+}
+
+// --- Current price ---
+.currentPrice {
+  display: inline-flex;
+  align-items: baseline;
+  color: $color-price;
+  font-weight: $font-weight-bold;
+}
+
+.currency {
+  font-weight: $font-weight-semibold;
+  margin-right: 2px;
+}
+
+.priceValue {
+  font-feature-settings: 'tnum';
+  letter-spacing: -0.02em;
+}
+
+.rangeSeparator {
+  margin: 0 2px;
+  font-weight: $font-weight-medium;
+}
+
+// --- Original price (sale variant strikethrough) ---
+.originalPrice {
+  display: inline-flex;
+  align-items: baseline;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  font-weight: $font-weight-regular;
+}
+
+.originalCurrency {
+  margin-right: 1px;
+}
+
+// --- Size variants ---
+.size-sm {
+  .currentPrice {
+    font-size: $font-size-price-sm;
+  }
+
+  .currency {
+    font-size: $font-size-xs;
+  }
+
+  .originalPrice {
+    font-size: $font-size-xs;
+  }
+}
+
+.size-md {
+  .currentPrice {
+    font-size: $font-size-price-md;
+  }
+
+  .currency {
+    font-size: $font-size-sm;
+  }
+
+  .originalPrice {
+    font-size: $font-size-sm;
+  }
+}
+
+.size-lg {
+  .currentPrice {
+    font-size: $font-size-price-lg;
+  }
+
+  .currency {
+    font-size: $font-size-md;
+  }
+
+  .originalPrice {
+    font-size: $font-size-md;
+  }
+}
+
+.size-xl {
+  .currentPrice {
+    font-size: $font-size-price-xl;
+  }
+
+  .currency {
+    font-size: $font-size-lg;
+  }
+
+  .originalPrice {
+    font-size: $font-size-lg;
+  }
+}
+
+// --- Variant colours ---
+.variant-default {
+  .currentPrice {
+    color: $color-price;
+  }
+}
+
+.variant-sale {
+  .currentPrice {
+    color: $color-sale;
+  }
+}
+
+.variant-range {
+  .currentPrice {
+    color: $color-primary;
+  }
+}

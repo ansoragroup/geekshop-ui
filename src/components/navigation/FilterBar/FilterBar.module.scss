@@ -1,0 +1,78 @@
+@use '../../../theme/tokens' as *;
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  background: $color-bg-white;
+  border-bottom: 1px solid $color-divider;
+  padding: 0 $spacing-xs;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 $spacing-lg;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: $color-text-secondary;
+  gap: $spacing-xxs;
+  transition: color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  &.active {
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.label {
+  line-height: 1;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  color: $color-text-tertiary;
+  transition: color $transition-fast, transform $transition-fast;
+
+  &.arrowActive {
+    color: $color-primary;
+  }
+}
+
+.indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: $color-primary;
+  border-radius: $radius-round;
+}

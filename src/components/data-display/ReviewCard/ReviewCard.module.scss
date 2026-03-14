@@ -1,0 +1,77 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  font-family: $font-family;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.date {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: 1px;
+}
+
+.ratingRow {
+  margin-top: $spacing-sm;
+}
+
+.variant {
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  background: $color-bg-page;
+  display: inline-block;
+  padding: $spacing-xxs $spacing-sm;
+  border-radius: $radius-xs;
+}
+
+.content {
+  margin: $spacing-sm 0 0;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  word-break: break-word;
+}
+
+.images {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.thumbnail {
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}

@@ -1,0 +1,70 @@
+@use '../../../theme/tokens' as *;
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-md 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: $color-primary;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xxs;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $color-text-tertiary;
+  transition: color $transition-fast;
+
+  &:active {
+    color: $color-primary;
+  }
+}
+
+.count {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: inherit;
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+  color: inherit;
+}

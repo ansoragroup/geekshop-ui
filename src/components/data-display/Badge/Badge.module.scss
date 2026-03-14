@@ -1,0 +1,109 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+// --- Types ---
+.type-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-round;
+}
+
+.type-count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: $radius-round;
+  font-size: $font-size-xs;
+  line-height: 18px;
+}
+
+.type-text {
+  height: 20px;
+  padding: 0 6px;
+  border-radius: $radius-xs;
+  font-size: $font-size-xs;
+  line-height: 20px;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.02em;
+}
+
+// --- Colors ---
+.color-primary {
+  background-color: $color-primary;
+}
+
+.color-success {
+  background-color: $color-success;
+}
+
+.color-error {
+  background-color: $color-error;
+}
+
+.color-warning {
+  background-color: $color-warning;
+}
+
+.color-info {
+  background-color: $color-info;
+}
+
+// --- Positions ---
+.position-top-right {
+  .badge {
+    position: absolute;
+    z-index: $z-index-normal;
+  }
+
+  .type-dot {
+    top: -2px;
+    right: -2px;
+  }
+
+  .type-count,
+  .type-text {
+    top: -8px;
+    right: -8px;
+  }
+}
+
+.position-top-left {
+  .badge {
+    position: absolute;
+    z-index: $z-index-normal;
+  }
+
+  .type-dot {
+    top: -2px;
+    left: -2px;
+  }
+
+  .type-count,
+  .type-text {
+    top: -8px;
+    left: -8px;
+  }
+}
+
+.position-inline {
+  .badge {
+    position: static;
+    margin-left: $spacing-xs;
+  }
+}

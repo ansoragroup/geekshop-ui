@@ -1,0 +1,78 @@
+@use '../../../theme/tokens' as *;
+
+.countdownTimer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-white;
+  border-radius: $radius-lg;
+}
+
+.labelArea {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: $color-sale;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.timerArea {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xxs;
+}
+
+.digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 28px;
+  padding: 0 $spacing-xs;
+  background: $color-sale;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-sm;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.15s ease;
+}
+
+.tick {
+  animation: digitPulse 0.3s ease;
+}
+
+.separator {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-sale;
+  line-height: 1;
+}
+
+@keyframes digitPulse {
+  0% {
+    transform: scaleY(1);
+  }
+  30% {
+    transform: scaleY(0.85);
+  }
+  60% {
+    transform: scaleY(1.05);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

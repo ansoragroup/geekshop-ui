@@ -1,0 +1,68 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg $spacing-sm;
+  font-family: $font-family;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: $color-text-primary;
+  transition: opacity $transition-fast;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.iconWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: $color-text-primary;
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: $radius-round;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  line-height: 16px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-tight;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

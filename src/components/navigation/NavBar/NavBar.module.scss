@@ -1,0 +1,89 @@
+@use '../../../theme/tokens' as *;
+
+.navBar {
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+  padding: 0 $spacing-sm;
+  z-index: $z-index-sticky;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &.default {
+    background: $color-bg-white;
+    color: $color-text-primary;
+    box-shadow: $shadow-sm;
+  }
+
+  &.gradient {
+    background: $color-primary-gradient;
+    color: $color-text-white;
+  }
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: $spacing-xs;
+}
+
+.left {
+  min-width: 40px;
+}
+
+.right {
+  min-width: 40px;
+  justify-content: flex-end;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 $spacing-xs;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.backBtn,
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background $transition-fast, opacity $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+// On gradient variant, hover should use white overlay
+.gradient {
+  .backBtn:hover,
+  .actionBtn:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}

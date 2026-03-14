@@ -1,0 +1,163 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  font-family: $font-family;
+  overflow: hidden;
+}
+
+// --- Header ---
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.orderId {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.date {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.statusBadge {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+}
+
+// --- Products ---
+.products {
+  padding: $spacing-md $spacing-lg;
+}
+
+.productRow {
+  display: flex;
+  gap: $spacing-md;
+
+  & + & {
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px solid $color-border-light;
+  }
+}
+
+.productImage {
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: $spacing-xxs;
+}
+
+.productTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.productVariant {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.productPriceRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: auto;
+}
+
+.productPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-price;
+}
+
+.productQty {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// --- Total ---
+.totalRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  border-top: 1px solid $color-border-light;
+}
+
+.totalLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.totalAmount {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+// --- Actions ---
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  padding: 0 $spacing-lg $spacing-lg;
+}
+
+.actionBtn {
+  height: 32px;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-round;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+  border: none;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.actionPrimary {
+  background: $color-primary;
+  color: $color-text-white;
+}
+
+.actionDefault {
+  background: $color-bg-page;
+  color: $color-text-primary;
+  border: 1px solid $color-border;
+}

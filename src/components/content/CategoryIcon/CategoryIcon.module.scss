@@ -1,0 +1,74 @@
+@use '../../../theme/tokens' as *;
+
+.categoryIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  width: 64px;
+  transition: transform $transition-fast;
+
+  &:active {
+    transform: scale(0.93);
+  }
+}
+
+.circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background $transition-fast;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  text-align: center;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+// Scrollable row
+.categoryRow {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  padding: $spacing-md 0;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categoryIcon {
+    scroll-snap-align: start;
+  }
+}

@@ -1,0 +1,39 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  font-family: $font-family;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  padding: $spacing-md $spacing-lg;
+  gap: $spacing-lg;
+}
+
+.rowEven {
+  background: $color-bg-card;
+}
+
+.rowOdd {
+  background: $color-bg-page;
+}
+
+.label {
+  flex: 0 0 120px;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.value {
+  flex: 1;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  word-break: break-word;
+}

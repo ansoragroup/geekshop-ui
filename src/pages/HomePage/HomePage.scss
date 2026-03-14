@@ -1,0 +1,548 @@
+@use '../../theme/tokens' as *;
+
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  padding-bottom: calc($tabbar-height + 16px);
+  overflow-x: hidden;
+
+  // === NavBar ===
+  &__navbar {
+    position: sticky;
+    top: 0;
+    z-index: $z-index-sticky;
+    background: $color-primary-gradient;
+    padding: $spacing-sm $spacing-md;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    height: $navbar-height;
+  }
+
+  &__logo {
+    color: $color-text-white;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+  }
+
+  &__search-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: $color-bg-white;
+    border-radius: $radius-round;
+    padding: 0 $spacing-md;
+    height: $search-bar-height;
+    gap: $spacing-sm;
+  }
+
+  &__search-icon {
+    flex-shrink: 0;
+    color: $color-text-tertiary;
+  }
+
+  &__search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: $font-size-md;
+    color: $color-text-primary;
+    background: transparent;
+
+    &::placeholder {
+      color: $color-text-placeholder;
+    }
+  }
+
+  &__nav-icons {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: center;
+  }
+
+  &__nav-icon {
+    color: $color-text-white;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  // === Hero Banner ===
+  &__hero {
+    margin: $spacing-md;
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, #FF5000 0%, #FF8A33 50%, #FFB366 100%);
+    padding: $spacing-xl $spacing-lg;
+    color: $color-text-white;
+    position: relative;
+    overflow: hidden;
+    min-height: 120px;
+  }
+
+  &__hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: $radius-round;
+    padding: $spacing-xxs $spacing-sm;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__hero-title {
+    font-size: $font-size-xxxl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__hero-subtitle {
+    font-size: $font-size-md;
+    opacity: 0.9;
+  }
+
+  &__hero-decoration {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  // === Promo Cards ===
+  &__promos {
+    display: flex;
+    gap: $spacing-sm;
+    padding: 0 $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__promo-card {
+    flex: 1;
+    border-radius: $radius-lg;
+    padding: $spacing-md;
+    color: $color-text-white;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+
+    &--sale {
+      background: linear-gradient(135deg, #FF3B30, #FF6B5A);
+    }
+
+    &--new {
+      background: linear-gradient(135deg, #1890FF, #45A5FF);
+    }
+  }
+
+  &__promo-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-xxs;
+    line-height: $line-height-tight;
+  }
+
+  &__promo-subtitle {
+    font-size: $font-size-sm;
+    opacity: 0.85;
+  }
+
+  &__promo-badge {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: $radius-round;
+    padding: $spacing-xxs $spacing-sm;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+  }
+
+  // === Categories ===
+  &__categories {
+    background: $color-bg-white;
+    padding: $spacing-lg $spacing-md;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__categories-scroll {
+    display: flex;
+    gap: $spacing-lg;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: $spacing-xs;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+    min-width: 56px;
+    cursor: pointer;
+  }
+
+  &__category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: transform $transition-fast;
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__category-name {
+    font-size: $font-size-xs;
+    color: $color-text-primary;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: $font-weight-medium;
+  }
+
+  // === Deals Section ===
+  &__deals {
+    background: $color-bg-white;
+    padding: $spacing-lg 0;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__deals-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
+  &__deals-title-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__deals-icon {
+    color: $color-price;
+  }
+
+  &__deals-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+  }
+
+  &__deals-countdown {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__countdown-block {
+    background: $color-text-primary;
+    color: $color-text-white;
+    border-radius: $radius-xs;
+    padding: 1px 4px;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    min-width: 22px;
+    text-align: center;
+  }
+
+  &__countdown-sep {
+    color: $color-text-primary;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+  }
+
+  &__deals-more {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__deals-scroll {
+    display: flex;
+    gap: $spacing-sm;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 $spacing-md;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__deal-card {
+    min-width: 120px;
+    max-width: 120px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  &__deal-image {
+    width: 120px;
+    height: 120px;
+    border-radius: $radius-md;
+    object-fit: cover;
+    background: $color-bg-skeleton;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__deal-price {
+    font-size: $font-size-price-sm;
+    font-weight: $font-weight-bold;
+    color: $color-price;
+    margin-bottom: 2px;
+  }
+
+  &__deal-original {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    text-decoration: line-through;
+  }
+
+  &__deal-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF3B30, #FF6B5A);
+    color: $color-text-white;
+    font-size: 9px;
+    font-weight: $font-weight-bold;
+    padding: 1px 6px;
+    border-radius: $radius-round;
+    margin-top: $spacing-xs;
+  }
+
+  // === Recommended Section ===
+  &__recommended {
+    padding: $spacing-lg $spacing-md;
+  }
+
+  &__recommended-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+  }
+
+  &__recommended-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+  }
+
+  &__filter-tabs {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__filter-tab {
+    white-space: nowrap;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-round;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    background: $color-bg-white;
+    color: $color-text-secondary;
+    border: 1px solid $color-border;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &--active {
+      background: $color-primary;
+      color: $color-text-white;
+      border-color: $color-primary;
+    }
+  }
+
+  &__product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-sm;
+  }
+
+  &__product-card {
+    background: $color-bg-white;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-sm;
+    cursor: pointer;
+    transition: transform $transition-fast;
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__product-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background: $color-bg-skeleton;
+    display: block;
+  }
+
+  &__product-info {
+    padding: $spacing-sm;
+  }
+
+  &__product-title {
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+    line-height: $line-height-normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: $spacing-sm;
+    font-weight: $font-weight-medium;
+  }
+
+  &__product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-xs;
+  }
+
+  &__product-currency {
+    font-size: $font-size-xs;
+    color: $color-price;
+    font-weight: $font-weight-bold;
+  }
+
+  &__product-price {
+    font-size: $font-size-price-md;
+    color: $color-price;
+    font-weight: $font-weight-bold;
+  }
+
+  &__product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: $spacing-sm;
+  }
+
+  &__product-sales {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+
+  &__product-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: $font-size-xs;
+    color: $color-warning;
+  }
+
+  &__product-tag {
+    display: inline-block;
+    font-size: 9px;
+    padding: 1px $spacing-xs;
+    border-radius: $radius-xs;
+    margin-bottom: $spacing-xs;
+
+    &--official {
+      background: $color-primary-bg;
+      color: $color-primary;
+      border: 1px solid rgba($color-primary, 0.3);
+    }
+
+    &--sale {
+      background: #FFF0F0;
+      color: $color-price;
+      border: 1px solid rgba($color-price, 0.3);
+    }
+  }
+
+  // === TabBar ===
+  &__tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: $tabbar-height;
+    background: $color-bg-white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: $shadow-bottom-bar;
+    z-index: $z-index-fixed;
+    padding-bottom: $safe-area-bottom;
+  }
+
+  &__tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    padding: $spacing-xs;
+    min-width: 50px;
+  }
+
+  &__tab-icon {
+    width: 22px;
+    height: 22px;
+    color: $color-text-tertiary;
+
+    &--active {
+      color: $color-primary;
+    }
+  }
+
+  &__tab-label {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    font-weight: $font-weight-medium;
+
+    &--active {
+      color: $color-primary;
+    }
+  }
+
+  &__tab-badge {
+    position: absolute;
+    top: -2px;
+    right: -6px;
+    background: $color-price;
+    color: $color-text-white;
+    font-size: 9px;
+    min-width: 14px;
+    height: 14px;
+    border-radius: $radius-round;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-weight-bold;
+  }
+}

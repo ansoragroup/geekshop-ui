@@ -1,0 +1,117 @@
+@use '../../../theme/tokens' as *;
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $action-bar-height;
+  padding: 0 $spacing-md;
+  background: $color-bg-white;
+  box-shadow: $shadow-bottom-bar;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-fixed;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+// Left: icon buttons
+.icons {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.iconBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-xs;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.iconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: $color-price;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.iconLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: 1;
+}
+
+// Right: action buttons
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.addToCartBtn {
+  padding: $spacing-sm $spacing-xl;
+  height: 36px;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  background: $color-bg-white;
+  border: 1.5px solid $color-primary;
+  border-radius: $radius-xxl;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:active {
+    background: $color-primary-bg;
+    transform: scale(0.97);
+  }
+}
+
+.buyNowBtn {
+  padding: $spacing-sm $spacing-xl;
+  height: 36px;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  background: $color-primary;
+  border: none;
+  border-radius: $radius-xxl;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:active {
+    background: $color-primary-dark;
+    transform: scale(0.97);
+  }
+}

@@ -1,0 +1,276 @@
+@use '../../../theme/tokens' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: $color-bg-overlay;
+  z-index: $z-index-modal-backdrop;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 420px;
+  max-height: 80vh;
+  background: $color-bg-white;
+  border-radius: $radius-xl $radius-xl 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.3s $transition-normal;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Header
+.header {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  border-bottom: 1px solid $color-border-light;
+  position: relative;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.headerInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding-right: $spacing-xxl;
+}
+
+.priceRange {
+  display: flex;
+  align-items: baseline;
+}
+
+.priceSymbol {
+  font-size: $font-size-price-md;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.productTitle {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.closeBtn {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+}
+
+// Section
+.section {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-lg;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0;
+  background: $color-bg-page;
+  border-radius: $radius-round;
+  padding: 2px;
+}
+
+.toggleBtn {
+  padding: $spacing-xs $spacing-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  border-radius: $radius-round;
+  transition: all $transition-fast;
+  line-height: 1.4;
+}
+
+.toggleActive {
+  background: $color-bg-white;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  box-shadow: $shadow-sm;
+}
+
+// List view
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm 0;
+}
+
+.listItemImage {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.listItemInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.listItemName {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listItemStock {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: 2px;
+}
+
+.listItemStepper {
+  flex-shrink: 0;
+}
+
+// Grid view
+.gridView {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-sm;
+  border: 2px solid $color-border;
+  border-radius: $radius-lg;
+  transition: all $transition-fast;
+  cursor: pointer;
+  text-align: center;
+  background: none;
+}
+
+.gridItemSelected {
+  border-color: $color-price;
+  background: rgba($color-price, 0.03);
+}
+
+.gridItemImage {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: $radius-md;
+  object-fit: cover;
+  margin-bottom: $spacing-xs;
+}
+
+.gridItemName {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.gridItemPrice {
+  font-size: $font-size-xs;
+  color: $color-price;
+  font-weight: $font-weight-medium;
+  margin-top: 2px;
+}
+
+// Footer
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md $spacing-lg;
+  border-top: 1px solid $color-border-light;
+  background: $color-bg-white;
+}
+
+.footerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footerCount {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.footerPrice {
+  font-size: $font-size-price-md;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.addToCartBtn {
+  padding: $spacing-sm $spacing-xxl;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-xxl;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.97);
+    background: $color-primary-dark;
+  }
+}
+
+.addToCartDisabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

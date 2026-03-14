@@ -1,0 +1,49 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xxxl $spacing-lg;
+  text-align: center;
+}
+
+.icon {
+  margin-bottom: $spacing-lg;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.description {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  max-width: 260px;
+  margin-bottom: $spacing-xl;
+}
+
+.action {
+  padding: $spacing-sm $spacing-xxl;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  background: $color-primary;
+  border: none;
+  border-radius: $radius-xxl;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}

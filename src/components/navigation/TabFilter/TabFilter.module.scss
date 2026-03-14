@@ -1,0 +1,154 @@
+@use '../../../theme/tokens' as *;
+
+.tabFilter {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  white-space: nowrap;
+}
+
+// === Pill variant ===
+.pill {
+  .tab {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-lg;
+    border: 1px solid $color-border;
+    border-radius: $radius-round;
+    background: $color-bg-white;
+    font-family: $font-family;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-regular;
+    color: $color-text-secondary;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all $transition-fast;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &.active {
+      border-color: $color-primary;
+      background: $color-primary;
+      color: $color-text-white;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 $spacing-xs;
+    border-radius: $radius-round;
+    background: rgba($color-text-secondary, 0.15);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-text-secondary;
+    line-height: 1;
+
+    &.badgeActive {
+      background: rgba($color-text-white, 0.25);
+      color: $color-text-white;
+    }
+  }
+}
+
+// === Underline variant ===
+.underline {
+  .track {
+    gap: $spacing-xl;
+    padding-bottom: 0;
+    border-bottom: 1px solid $color-divider;
+  }
+
+  .tab {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: $spacing-xs;
+    padding: $spacing-sm 0 $spacing-md;
+    border: none;
+    background: none;
+    font-family: $font-family;
+    font-size: $font-size-md;
+    font-weight: $font-weight-regular;
+    color: $color-text-secondary;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color $transition-fast;
+    white-space: nowrap;
+
+    &:hover {
+      color: $color-text-primary;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &.active {
+      color: $color-primary;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  .underline {
+    // Reset container styles when used as indicator
+    overflow: visible;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: $color-primary;
+    border-radius: $radius-round;
+    border-bottom: none;
+
+    .track {
+      display: none;
+    }
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 $spacing-xs;
+    border-radius: $radius-round;
+    background: $color-primary-bg;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    line-height: 1;
+
+    &.badgeActive {
+      background: $color-primary;
+      color: $color-text-white;
+    }
+  }
+}

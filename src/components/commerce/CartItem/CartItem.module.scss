@@ -1,0 +1,119 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  background: $color-bg-white;
+}
+
+// Delete action (revealed on swipe)
+.deleteAction {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  width: 100%;
+  height: 100%;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  cursor: pointer;
+}
+
+// Main content
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-white;
+  transition: transform 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+// Checkbox
+.checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  border: 2px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $spacing-sm;
+  transition: all $transition-fast;
+  background: none;
+  cursor: pointer;
+}
+
+.checkboxChecked {
+  background: $color-primary;
+  border-color: $color-primary;
+}
+
+// Image
+.image {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+// Info
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.title {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-tight;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.variant {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  background: $color-bg-page;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-xs;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $spacing-xs;
+}
+
+.price {
+  font-size: $font-size-price-sm;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}

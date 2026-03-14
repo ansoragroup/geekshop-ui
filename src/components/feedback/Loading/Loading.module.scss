@@ -1,0 +1,121 @@
+@use '../../../theme/tokens' as *;
+
+// --- Fullscreen overlay ---
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: $z-index-modal;
+}
+
+.text {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-top: $spacing-sm;
+}
+
+// --- Spinner ---
+.spinnerWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+}
+
+.spinnerSvg {
+  animation: spin 0.8s linear infinite;
+}
+
+// --- Dots ---
+.dotsWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-lg;
+}
+
+.dots {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-round;
+  background: $color-primary;
+  animation: bounce 1.2s ease-in-out infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+// --- Skeleton ---
+.skeleton {
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+}
+
+.skeletonCard {
+  flex: 1;
+  background: $color-bg-white;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.skeletonImage {
+  width: 100%;
+  aspect-ratio: 1;
+  background: $color-bg-skeleton;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeletonBody {
+  padding: $spacing-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.skeletonLine {
+  height: 12px;
+  background: $color-bg-skeleton;
+  border-radius: $radius-xs;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}

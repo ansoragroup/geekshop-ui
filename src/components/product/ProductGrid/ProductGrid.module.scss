@@ -1,0 +1,7 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: grid;
+  padding: $spacing-sm;
+  width: 100%;
+}
