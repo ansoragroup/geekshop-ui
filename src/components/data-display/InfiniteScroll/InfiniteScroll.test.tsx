@@ -146,7 +146,7 @@ describe('InfiniteScroll', () => {
   });
 
   it('applies custom className', () => {
-    const { container: _c } = render(
+    const { container } = render(
       <InfiniteScroll onLoadMore={vi.fn()} hasMore className="my-scroll">
         <div>Items</div>
       </InfiniteScroll>,
@@ -170,7 +170,7 @@ describe('InfiniteScroll', () => {
   });
 
   it('does not show sentinel when error is true', () => {
-    const { container: _c } = render(
+    const { container } = render(
       <InfiniteScroll onLoadMore={vi.fn()} hasMore error>
         <div>Items</div>
       </InfiniteScroll>,

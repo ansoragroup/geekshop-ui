@@ -56,7 +56,7 @@ describe('FilterPanel', () => {
     const onClose = vi.fn()
     const user = userEvent.setup()
 
-    const { container: _c } = render(<FilterPanel filterGroups={[checkboxGroup]} onClose={onClose} />)
+    const { container } = render(<FilterPanel filterGroups={[checkboxGroup]} onClose={onClose} />)
     const overlay = container.firstElementChild!
     await user.click(overlay)
 
@@ -84,7 +84,7 @@ describe('FilterPanel', () => {
 
   it('toggles checkbox on click', async () => {
     const user = userEvent.setup()
-    const { container: _c } = render(<FilterPanel filterGroups={[checkboxGroup]} />)
+    const { container } = render(<FilterPanel filterGroups={[checkboxGroup]} />)
 
     await user.click(screen.getByText('NVIDIA'))
 
@@ -174,7 +174,7 @@ describe('FilterPanel', () => {
 
   // Pre-filled values
   it('renders with pre-filled checkbox values', () => {
-    const { container: _c } = render(
+    const { container } = render(
       <FilterPanel
         filterGroups={[checkboxGroup]}
         values={{ brand: ['nvidia'] }}
