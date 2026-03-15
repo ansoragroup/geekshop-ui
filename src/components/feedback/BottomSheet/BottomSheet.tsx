@@ -50,12 +50,14 @@ export const BottomSheet = forwardRef<HTMLDivElement, BottomSheetProps>(
     };
 
     return (
-      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick}>
+      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick} role="presentation">
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
           className={styles.sheet}
           style={{ maxHeight: height }}
           onClick={handleContentClick}
+          onKeyDown={(e) => e.stopPropagation()}
           role="dialog"
           aria-modal="true"
           aria-label={title || 'Bottom sheet'}

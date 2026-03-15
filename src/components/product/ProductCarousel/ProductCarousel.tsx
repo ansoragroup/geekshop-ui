@@ -107,6 +107,7 @@ export const ProductCarousel = forwardRef<HTMLDivElement, ProductCarouselProps>(
               key={index}
               className={styles.card}
               onClick={product.onClick}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); product.onClick?.(); } }}
               role="button"
               tabIndex={0}
             >

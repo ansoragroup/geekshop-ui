@@ -7,7 +7,7 @@ export interface CategoryItem {
   icon: ReactNode;
 }
 
-export interface CategorySidebarProps extends HTMLAttributes<HTMLElement> {
+export interface CategorySidebarProps extends HTMLAttributes<HTMLDivElement> {
   /** Currently active category key */
   activeKey: string;
   /** Callback when a category is selected */
@@ -91,10 +91,10 @@ const DEFAULT_CATEGORIES: CategoryItem[] = [
   { key: 'periphery', label: 'Periferiya', icon: <PeripheryIcon /> },
 ];
 
-export const CategorySidebar = forwardRef<HTMLElement, CategorySidebarProps>(
+export const CategorySidebar = forwardRef<HTMLDivElement, CategorySidebarProps>(
   ({ activeKey, onChange, items = DEFAULT_CATEGORIES, className, ...rest }, ref) => {
     return (
-      <nav
+      <div
         ref={ref}
         className={`${styles.sidebar} ${className ?? ''}`}
         role="tablist"
@@ -116,7 +116,7 @@ export const CategorySidebar = forwardRef<HTMLElement, CategorySidebarProps>(
             </button>
           );
         })}
-      </nav>
+      </div>
     );
   },
 );

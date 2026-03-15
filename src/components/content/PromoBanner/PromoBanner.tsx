@@ -33,6 +33,7 @@ export const PromoBanner = forwardRef<HTMLDivElement, PromoBannerProps>(
           className={styles.card}
           style={{ '--gs-promo-card-bg': item.gradient } as CSSProperties}
           onClick={item.onClick}
+          onKeyDown={item.onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.onClick!(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
           role={item.onClick ? 'button' : undefined}
           tabIndex={item.onClick ? 0 : undefined}
         >

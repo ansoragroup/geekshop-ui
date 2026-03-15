@@ -10,7 +10,7 @@ export interface TabBarItem {
   badge?: number;
 }
 
-export interface TabBarProps extends HTMLAttributes<HTMLElement> {
+export interface TabBarProps extends HTMLAttributes<HTMLDivElement> {
   /** Currently active tab key */
   activeKey?: string;
   /** Default active tab key for uncontrolled usage */
@@ -89,7 +89,7 @@ const DEFAULT_ITEMS: TabBarItem[] = [
   { key: 'profile', label: 'Profil', icon: <UserIcon />, activeIcon: <UserIconFilled /> },
 ];
 
-export const TabBar = forwardRef<HTMLElement, TabBarProps>(
+export const TabBar = forwardRef<HTMLDivElement, TabBarProps>(
   ({ activeKey: activeKeyProp, defaultActiveKey = '', onChange, items = DEFAULT_ITEMS, className, ...rest }, ref) => {
     const [activeKey, setActiveKey] = useControllableState({
       value: activeKeyProp,
@@ -98,7 +98,7 @@ export const TabBar = forwardRef<HTMLElement, TabBarProps>(
     });
 
     return (
-      <nav ref={ref} className={`${styles.tabBar} ${className ?? ''}`} role="tablist" {...rest}>
+      <div ref={ref} className={`${styles.tabBar} ${className ?? ''}`} role="tablist" {...rest}>
         {items.map((item) => {
           const isActive = item.key === activeKey;
           return (
@@ -121,7 +121,7 @@ export const TabBar = forwardRef<HTMLElement, TabBarProps>(
             </button>
           );
         })}
-      </nav>
+      </div>
     );
   },
 );

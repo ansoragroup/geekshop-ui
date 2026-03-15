@@ -56,11 +56,13 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
   if (!open) return null;
 
   return (
-    <div ref={ref} className={[styles.overlay, className].filter(Boolean).join(' ')} onClick={onClose} {...rest}>
+    <div ref={ref} className={[styles.overlay, className].filter(Boolean).join(' ')} onClick={onClose} role="presentation" {...rest}>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div
         ref={sheetRef}
         className={styles.sheet}
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label={`Quick buy: ${product.title}`}

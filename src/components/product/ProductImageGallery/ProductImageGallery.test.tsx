@@ -20,9 +20,9 @@ describe('ProductImageGallery', () => {
 
   it('renders images with correct alt text', () => {
     render(<ProductImageGallery images={images} />)
-    expect(screen.getByAltText('Product image 1')).toBeInTheDocument()
-    expect(screen.getByAltText('Product image 2')).toBeInTheDocument()
-    expect(screen.getByAltText('Product image 3')).toBeInTheDocument()
+    expect(screen.getByAltText('Product 1')).toBeInTheDocument()
+    expect(screen.getByAltText('Product 2')).toBeInTheDocument()
+    expect(screen.getByAltText('Product 3')).toBeInTheDocument()
   })
 
   it('renders images with correct src', () => {
