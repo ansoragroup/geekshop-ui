@@ -1,0 +1,97 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  gap: $spacing-sm;
+  align-items: center;
+  font-family: $font-family;
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-round;
+  background: var(--swatch-color);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all $transition-fast;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 2px $color-bg-white, 0 0 0 4px var(--swatch-color);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-info;
+    outline-offset: 2px;
+  }
+
+  &.active {
+    border-color: $color-bg-white;
+    box-shadow: 0 0 0 2px var(--swatch-color);
+  }
+}
+
+.check {
+  color: $color-text-white;
+
+  // For dark swatches that are close to white text, this is fine.
+  // For the yellow preset, we need darker check mark.
+  .swatch[aria-label="Warm Gold"] & {
+    color: $color-text-primary;
+  }
+}
+
+// === Sizes ===
+.sm {
+  gap: $spacing-xs;
+
+  .swatch {
+    width: 24px;
+    height: 24px;
+  }
+
+  .check {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.md {
+  gap: $spacing-sm;
+
+  .swatch {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .check {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Respect reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .swatch {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+}

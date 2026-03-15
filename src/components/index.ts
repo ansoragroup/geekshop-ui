@@ -11,6 +11,7 @@ export { TabFilter } from './navigation/TabFilter';
 export { AppBar } from './navigation/AppBar';
 export { LanguageSwitcher } from './navigation/LanguageSwitcher';
 export { CurrencySwitcher } from './navigation/CurrencySwitcher';
+export { ThemeSwitcher } from './navigation/ThemeSwitcher';
 
 // Product
 export { PriceDisplay } from './product/PriceDisplay';
@@ -90,6 +91,7 @@ export type { TabFilterProps, TabFilterItem } from './navigation/TabFilter';
 export type { AppBarProps } from './navigation/AppBar';
 export type { LanguageSwitcherProps } from './navigation/LanguageSwitcher';
 export type { CurrencySwitcherProps } from './navigation/CurrencySwitcher';
+export type { ThemeSwitcherProps } from './navigation/ThemeSwitcher';
 
 // Types — Product
 export type { PriceDisplayProps, PriceDisplayVariant, PriceDisplaySize } from './product/PriceDisplay';
@@ -161,6 +163,11 @@ export { GeekShopProvider, useGeekShop } from '../i18n';
 export type { GeekShopProviderProps } from '../i18n';
 export type { Locale, CurrencyCode, CurrencyConfig } from '../i18n';
 export { CURRENCY_CONFIGS, TRANSLATIONS } from '../i18n';
+
+// Theme Presets
+export { setThemePreset, getThemePreset } from '../theme';
+export { THEME_PRESETS, THEME_PRESET_NAMES } from '../theme/presets';
+export type { ThemePreset, ThemePresetConfig } from '../theme/presets';
 
 // Utils
 export { formatPrice } from '../utils';

@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/react-vite'
 import { createElement } from 'react'
 import { GeekShopProvider } from '../src/i18n'
+import { setThemePreset } from '../src/theme'
+import type { ThemePreset } from '../src/theme/presets'
 import '../src/theme/global.scss'
 
 const preview: Preview = {
@@ -32,15 +34,36 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    themePreset: {
+      name: 'Theme Preset',
+      description: 'Color theme preset',
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: 'default', title: 'Orange (Default)' },
+          { value: 'teal', title: 'Teal Tech' },
+          { value: 'red', title: 'Classic Red' },
+          { value: 'yellow', title: 'Warm Gold' },
+          { value: 'green', title: 'Fresh Green' },
+          { value: 'monochrome', title: 'Monochrome' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   initialGlobals: {
     locale: 'uz',
     currency: 'UZS',
+    themePreset: 'default',
   },
   decorators: [
     (Story, context) => {
       const locale = context.globals.locale || 'uz';
       const currency = context.globals.currency || 'UZS';
+      const preset = (context.globals.themePreset || 'default') as ThemePreset;
+
+      setThemePreset(preset);
+
       return createElement(
         GeekShopProvider,
         { locale, currency },
