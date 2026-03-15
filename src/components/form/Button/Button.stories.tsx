@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Button } from './Button';
 
 const meta = {
@@ -32,6 +33,17 @@ export const Primary: Story = {
   args: {
     variant: 'primary',
     children: 'Sotib olish',
+    onClick: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /sotib olish/i });
+
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(1);
+
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalledTimes(2);
   },
 };
 

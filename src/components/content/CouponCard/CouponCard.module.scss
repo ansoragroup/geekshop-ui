@@ -20,6 +20,7 @@
   flex-shrink: 0;
   padding: $spacing-lg $spacing-md;
   position: relative;
+  background: var(--gs-coupon-bg, $color-primary);
 }
 
 .discountText {

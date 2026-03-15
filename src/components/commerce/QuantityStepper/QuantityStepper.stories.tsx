@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { QuantityStepper } from './QuantityStepper';
 
 const meta = {
@@ -31,6 +32,26 @@ export const Default: Story = {
     min: 1,
     max: 99,
     size: 'md',
+    onChange: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Decrement button should be disabled at min value
+    const decrementBtn = canvas.getByRole('button', { name: /kamaytirish/i });
+    const incrementBtn = canvas.getByRole('button', { name: /ko'paytirish/i });
+
+    await expect(decrementBtn).toBeDisabled();
+
+    // Click increment
+    await userEvent.click(incrementBtn);
+    await expect(args.onChange).toHaveBeenCalledWith(2);
+
+    // Click increment again
+    await userEvent.click(incrementBtn);
+    await expect(args.onChange).toHaveBeenCalledWith(3);
+
+    await expect(args.onChange).toHaveBeenCalledTimes(2);
   },
 };
 

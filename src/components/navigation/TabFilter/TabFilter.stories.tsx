@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { TabFilter } from './TabFilter';
 import type { TabFilterProps } from './TabFilter';
 
@@ -155,4 +156,72 @@ export const AllVariants: Story = {
       </div>
     </div>
   ),
+};
+
+export const SwitchPillTabsTest: Story = {
+  args: {
+    tabs: [
+      { key: 'all', label: 'Barchasi' },
+      { key: 'gpu', label: 'Videokartalar' },
+      { key: 'cpu', label: 'Protsessorlar' },
+      { key: 'ram', label: 'Xotira' },
+    ],
+    activeTab: 'all',
+    variant: 'pill',
+    onChange: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Verify tablist is rendered
+    const tablist = canvas.getByRole('tablist');
+    await expect(tablist).toBeInTheDocument();
+
+    // Verify initial tab is selected
+    const allTab = canvas.getByRole('tab', { name: /barchasi/i });
+    await expect(allTab).toHaveAttribute('aria-selected', 'true');
+
+    // Click on Videokartalar tab
+    const gpuTab = canvas.getByRole('tab', { name: /videokartalar/i });
+    await userEvent.click(gpuTab);
+    await expect(args.onChange).toHaveBeenCalledWith('gpu');
+
+    // Click on Protsessorlar tab
+    const cpuTab = canvas.getByRole('tab', { name: /protsessorlar/i });
+    await userEvent.click(cpuTab);
+    await expect(args.onChange).toHaveBeenCalledWith('cpu');
+
+    // Verify onChange was called twice
+    await expect(args.onChange).toHaveBeenCalledTimes(2);
+  },
+};
+
+export const SwitchUnderlineTabsTest: Story = {
+  args: {
+    tabs: [
+      { key: 'all', label: 'Barchasi' },
+      { key: 'new', label: 'Yangi' },
+      { key: 'popular', label: 'Mashhur' },
+      { key: 'sale', label: 'Chegirma' },
+    ],
+    activeTab: 'all',
+    variant: 'underline',
+    onChange: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Click on Yangi tab
+    const newTab = canvas.getByRole('tab', { name: /yangi/i });
+    await userEvent.click(newTab);
+    await expect(args.onChange).toHaveBeenCalledWith('new');
+
+    // Click on Chegirma tab
+    const saleTab = canvas.getByRole('tab', { name: /chegirma/i });
+    await userEvent.click(saleTab);
+    await expect(args.onChange).toHaveBeenCalledWith('sale');
+
+    // Verify onChange was called twice
+    await expect(args.onChange).toHaveBeenCalledTimes(2);
+  },
 };

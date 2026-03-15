@@ -1,4 +1,4 @@
-import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './PromoBanner.module.scss';
 
 export interface PromoBannerItem {
@@ -31,7 +31,7 @@ export const PromoBanner = forwardRef<HTMLDivElement, PromoBannerProps>(
         <div
           key={index}
           className={styles.card}
-          style={{ background: item.gradient }}
+          style={{ '--gs-promo-card-bg': item.gradient } as CSSProperties}
           onClick={item.onClick}
           role={item.onClick ? 'button' : undefined}
           tabIndex={item.onClick ? 0 : undefined}

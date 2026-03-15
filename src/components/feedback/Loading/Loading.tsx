@@ -44,17 +44,17 @@ function Skeleton() {
       <div className={styles.skeletonCard}>
         <div className={styles.skeletonImage} />
         <div className={styles.skeletonBody}>
-          <div className={styles.skeletonLine} style={{ width: '80%' }} />
-          <div className={styles.skeletonLine} style={{ width: '60%' }} />
-          <div className={styles.skeletonLine} style={{ width: '40%', height: 16 }} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW80}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW60}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW40} ${styles.skeletonLinePrice}`} />
         </div>
       </div>
       <div className={styles.skeletonCard}>
         <div className={styles.skeletonImage} />
         <div className={styles.skeletonBody}>
-          <div className={styles.skeletonLine} style={{ width: '70%' }} />
-          <div className={styles.skeletonLine} style={{ width: '90%' }} />
-          <div className={styles.skeletonLine} style={{ width: '35%', height: 16 }} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW70}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW90}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW35} ${styles.skeletonLinePrice}`} />
         </div>
       </div>
     </div>

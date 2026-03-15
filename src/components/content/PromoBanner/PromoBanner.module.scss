@@ -13,6 +13,7 @@
   cursor: pointer;
   transition: transform $transition-fast;
   min-height: 90px;
+  background: var(--gs-promo-card-bg, $color-primary-gradient);
 
   &:active {
     transform: scale(0.97);

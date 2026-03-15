@@ -46,6 +46,19 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - run: npx vitest run --project unit
 
+  test-storybook:
+    name: Storybook Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - run: npx playwright install chromium --with-deps
+      - run: npx vitest run --project storybook
+
   build:
     name: Build Library
     needs: [lint, typecheck, test]

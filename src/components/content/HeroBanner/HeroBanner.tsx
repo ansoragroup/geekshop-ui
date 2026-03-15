@@ -1,4 +1,4 @@
-import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './HeroBanner.module.scss';
 
 export interface HeroBannerProps extends HTMLAttributes<HTMLDivElement> {
@@ -36,7 +36,7 @@ export const HeroBanner = forwardRef<HTMLDivElement, HeroBannerProps>(
     <div
       ref={ref}
       className={rootClass}
-      style={{ background: bgGradient }}
+      style={{ '--gs-hero-bg': bgGradient } as CSSProperties}
       onClick={onClick}
       onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
       role={onClick ? 'button' : undefined}

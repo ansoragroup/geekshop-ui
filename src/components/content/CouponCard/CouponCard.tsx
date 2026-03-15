@@ -1,4 +1,4 @@
-import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './CouponCard.module.scss';
 
 export interface CouponCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -38,7 +38,7 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
 
   return (
     <div ref={ref} className={rootClass} {...rest}>
-      <div className={styles.leftPart} style={{ background: color }}>
+      <div className={styles.leftPart} style={{ '--gs-coupon-bg': color } as CSSProperties}>
         <div className={styles.discountCircleTop} />
         <div className={styles.discountCircleBottom} />
         <span className={styles.discountText}>{discount}</span>

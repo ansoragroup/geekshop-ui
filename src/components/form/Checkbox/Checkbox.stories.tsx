@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Checkbox } from './Checkbox';
 
 const meta = {
@@ -22,6 +23,23 @@ export const Unchecked: Story = {
   args: {
     checked: false,
     label: 'Tanlash',
+    onChange: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox', { name: /tanlash/i });
+
+    // Initially unchecked
+    await expect(checkbox).toHaveAttribute('aria-checked', 'false');
+
+    // Click to check
+    await userEvent.click(checkbox);
+    await expect(args.onChange).toHaveBeenCalledWith(true);
+
+    // Click again to uncheck
+    await userEvent.click(checkbox);
+    await expect(args.onChange).toHaveBeenCalledWith(false);
+    await expect(args.onChange).toHaveBeenCalledTimes(2);
   },
 };
 

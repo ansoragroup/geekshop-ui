@@ -38,15 +38,17 @@ describe('HeroBanner', () => {
 
   it('applies default gradient background', () => {
     const { container } = render(<HeroBanner title="Sale" />)
-    expect(container.firstChild).toHaveStyle({
-      background: 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
-    })
+    const el = container.firstChild as HTMLElement
+    expect(el.style.getPropertyValue('--gs-hero-bg')).toBe(
+      'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
+    )
   })
 
   it('applies custom gradient background', () => {
     const gradient = 'linear-gradient(90deg, #000 0%, #FFF 100%)'
     const { container } = render(<HeroBanner title="Sale" bgGradient={gradient} />)
-    expect(container.firstChild).toHaveStyle({ background: gradient })
+    const el = container.firstChild as HTMLElement
+    expect(el.style.getPropertyValue('--gs-hero-bg')).toBe(gradient)
   })
 
   it('renders background image when provided', () => {
