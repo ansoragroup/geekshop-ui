@@ -159,7 +159,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
         <div className={styles.scrollContainer} ref={scrollRef} onScroll={handleScroll}>
           {images.map((src, i) => (
             <div key={i} className={styles.slide}>
-              <img src={src} alt={`Product image ${i + 1}`} className={styles.image} />
+              <img src={src} alt={`Product ${i + 1}`} className={styles.image} />
             </div>
           ))}
         </div>

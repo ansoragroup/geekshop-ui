@@ -79,6 +79,7 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
         ref={ref}
         className={wrapperClass}
         onClick={readOnly ? onClick : undefined}
+        onKeyDown={readOnly ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
         role={readOnly ? 'button' : undefined}
         tabIndex={readOnly ? 0 : undefined}
         {...rest}

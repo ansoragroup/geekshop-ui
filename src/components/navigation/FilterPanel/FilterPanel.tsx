@@ -119,9 +119,12 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
           onClose?.();
           onClick?.(e);
         }}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClose?.(); } }}
+        role="presentation"
         {...rest}
       >
-        <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+        <div className={styles.panel} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Filtr">
           {/* Header */}
           <div className={styles.header}>
             <span className={styles.headerTitle}>Filtr</span>

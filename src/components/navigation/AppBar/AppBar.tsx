@@ -108,6 +108,7 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
         <div
           className={styles.searchWrapper}
           onClick={isReadOnly ? onSearchClick : undefined}
+          onKeyDown={isReadOnly ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSearchClick?.(); } } : undefined}
           role={isReadOnly ? 'button' : undefined}
           tabIndex={isReadOnly ? 0 : undefined}
         >

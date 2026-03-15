@@ -46,6 +46,7 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
       ref={ref}
       className={rootClass}
       onClick={onClick}
+      onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       {...rest}

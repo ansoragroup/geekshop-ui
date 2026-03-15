@@ -95,9 +95,11 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
           key={i}
           className={`${styles.star} ${interactive ? styles.interactive : ''}`}
           onClick={interactive ? () => setValue(starIndex) : undefined}
+          onKeyDown={interactive ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setValue(starIndex); } } : undefined}
           onMouseEnter={interactive ? () => setHoverValue(starIndex) : undefined}
           onMouseLeave={interactive ? () => setHoverValue(null) : undefined}
           role={interactive ? 'button' : undefined}
+          tabIndex={interactive ? 0 : undefined}
           aria-label={interactive ? `${starIndex} yulduz` : undefined}
         >
           <StarIcon size={starSize} fill={fill} clipId={`${clipId}-half-${i}`} />
