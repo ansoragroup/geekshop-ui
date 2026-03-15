@@ -1,4 +1,4 @@
-import { type FC, type MouseEventHandler } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
 import styles from './PromoBanner.module.scss';
 
 export interface PromoBannerItem {
@@ -16,14 +16,17 @@ export interface PromoBannerItem {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-export interface PromoBannerProps {
+export interface PromoBannerProps extends HTMLAttributes<HTMLDivElement> {
   /** Array of promo banner items (typically 2) */
   items: PromoBannerItem[];
 }
 
-const PromoBanner: FC<PromoBannerProps> = ({ items }) => {
+export const PromoBanner = forwardRef<HTMLDivElement, PromoBannerProps>(
+  ({ items, className, ...rest }, ref) => {
+  const rootClass = [styles.promoBanner, className].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.promoBanner}>
+    <div ref={ref} className={rootClass} {...rest}>
       {items.map((item, index) => (
         <div
           key={index}
@@ -49,6 +52,7 @@ const PromoBanner: FC<PromoBannerProps> = ({ items }) => {
       ))}
     </div>
   );
-};
+  },
+);
 
-export default PromoBanner;
+PromoBanner.displayName = 'PromoBanner';

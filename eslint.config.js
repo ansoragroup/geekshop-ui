@@ -24,4 +24,16 @@ export default defineConfig([globalIgnores(['dist']), {
     'react-refresh/only-export-components': 'warn',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
   },
-}, ...storybook.configs["flat/recommended"]])
+}, ...storybook.configs["flat/recommended"], {
+  files: ['src/**/*.{ts,tsx}'],
+  ignores: ['**/*.stories.{ts,tsx}', '**/*.test.{ts,tsx}', 'src/pages/**', 'src/App.tsx', 'src/main.tsx'],
+  rules: {
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'ExportDefaultDeclaration',
+        message: 'Default exports are not allowed. Use named exports only.',
+      },
+    ],
+  },
+}])

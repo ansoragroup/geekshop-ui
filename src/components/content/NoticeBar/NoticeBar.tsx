@@ -147,5 +147,3 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
 );
 
 NoticeBar.displayName = 'NoticeBar';
-
-export default NoticeBar;

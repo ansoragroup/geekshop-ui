@@ -1,10 +1,10 @@
-import type { CSSProperties } from 'react';
+import { forwardRef, type CSSProperties, type HTMLAttributes } from 'react';
 import styles from './PriceDisplay.module.scss';
 
 export type PriceDisplayVariant = 'default' | 'sale' | 'range';
 export type PriceDisplaySize = 'sm' | 'md' | 'lg' | 'xl';
 
-export interface PriceDisplayProps {
+export interface PriceDisplayProps extends HTMLAttributes<HTMLDivElement> {
   /** Current/discounted price */
   price: number;
   /** Original price (shown as strikethrough in sale variant) */
@@ -23,8 +23,6 @@ export interface PriceDisplayProps {
   showCurrency?: boolean;
   /** Custom color override */
   color?: string;
-  /** Additional CSS class */
-  className?: string;
 }
 
 /**
@@ -35,52 +33,61 @@ export function formatPrice(value: number): string {
   return value.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
-export function PriceDisplay({
-  price,
-  originalPrice,
-  minPrice,
-  maxPrice,
-  currency = "so'm",
-  variant = 'default',
-  size = 'md',
-  showCurrency = true,
-  color,
-  className = '',
-}: PriceDisplayProps) {
-  const rootStyle: CSSProperties = color ? { color } : {};
+export const PriceDisplay = forwardRef<HTMLDivElement, PriceDisplayProps>(
+  (
+    {
+      price,
+      originalPrice,
+      minPrice,
+      maxPrice,
+      currency = "so'm",
+      variant = 'default',
+      size = 'md',
+      showCurrency = true,
+      color,
+      className = '',
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+    const rootStyle: CSSProperties = color ? { ...style, color } : style ?? {};
 
-  const renderPrice = () => {
-    if (variant === 'range' && minPrice !== undefined && maxPrice !== undefined) {
-      return (
-        <span className={styles.priceValue}>
-          {formatPrice(minPrice)}
-          <span className={styles.rangeSeparator}>~</span>
-          {formatPrice(maxPrice)}
+    const renderPrice = () => {
+      if (variant === 'range' && minPrice !== undefined && maxPrice !== undefined) {
+        return (
+          <span className={styles.priceValue}>
+            {formatPrice(minPrice)}
+            <span className={styles.rangeSeparator}>~</span>
+            {formatPrice(maxPrice)}
+          </span>
+        );
+      }
+
+      return <span className={styles.priceValue}>{formatPrice(price)}</span>;
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={`${styles.root} ${styles[`size-${size}`]} ${styles[`variant-${variant}`]} ${className}`}
+        style={rootStyle}
+        {...rest}
+      >
+        <span className={styles.currentPrice}>
+          {showCurrency && <span className={styles.currency}>{currency}</span>}
+          {renderPrice()}
         </span>
-      );
-    }
 
-    return <span className={styles.priceValue}>{formatPrice(price)}</span>;
-  };
+        {variant === 'sale' && originalPrice !== undefined && (
+          <span className={styles.originalPrice}>
+            {showCurrency && <span className={styles.originalCurrency}>{currency}</span>}
+            <span className={styles.originalValue}>{formatPrice(originalPrice)}</span>
+          </span>
+        )}
+      </div>
+    );
+  },
+);
 
-  return (
-    <div
-      className={`${styles.root} ${styles[`size-${size}`]} ${styles[`variant-${variant}`]} ${className}`}
-      style={rootStyle}
-    >
-      <span className={styles.currentPrice}>
-        {showCurrency && <span className={styles.currency}>{currency}</span>}
-        {renderPrice()}
-      </span>
-
-      {variant === 'sale' && originalPrice !== undefined && (
-        <span className={styles.originalPrice}>
-          {showCurrency && <span className={styles.originalCurrency}>{currency}</span>}
-          <span className={styles.originalValue}>{formatPrice(originalPrice)}</span>
-        </span>
-      )}
-    </div>
-  );
-}
-
-export default PriceDisplay;
+PriceDisplay.displayName = 'PriceDisplay';

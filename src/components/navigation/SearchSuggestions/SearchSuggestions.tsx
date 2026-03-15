@@ -1,3 +1,4 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './SearchSuggestions.module.scss';
 
 export interface SearchSuggestion {
@@ -7,7 +8,7 @@ export interface SearchSuggestion {
   text: string;
 }
 
-export interface SearchSuggestionsProps {
+export interface SearchSuggestionsProps extends HTMLAttributes<HTMLDivElement> {
   /** Current search query (used for highlight matching) */
   query: string;
   /** List of suggestions to display */
@@ -52,37 +53,35 @@ function highlightMatch(text: string, query: string) {
   );
 }
 
-export function SearchSuggestions({
-  query,
-  suggestions,
-  onSelect,
-}: SearchSuggestionsProps) {
-  if (suggestions.length === 0) return null;
+export const SearchSuggestions = forwardRef<HTMLDivElement, SearchSuggestionsProps>(
+  ({ query, suggestions, onSelect, className, ...rest }, ref) => {
+    if (suggestions.length === 0) return null;
 
-  return (
-    <div className={styles.suggestions} role="listbox">
-      {suggestions.map((suggestion, index) => (
-        <button
-          key={suggestion.id}
-          className={styles.item}
-          role="option"
-          aria-selected={false}
-          onClick={() => onSelect?.(suggestion)}
-        >
-          <span className={styles.searchIcon}>
-            <SearchIcon />
-          </span>
-          <span className={styles.text}>
-            {highlightMatch(suggestion.text, query)}
-          </span>
-          <span className={styles.arrowIcon}>
-            <ArrowIcon />
-          </span>
-          {index < suggestions.length - 1 && <span className={styles.divider} />}
-        </button>
-      ))}
-    </div>
-  );
-}
+    return (
+      <div ref={ref} className={`${styles.suggestions} ${className ?? ''}`} role="listbox" {...rest}>
+        {suggestions.map((suggestion, index) => (
+          <button
+            key={suggestion.id}
+            className={styles.item}
+            role="option"
+            aria-selected={false}
+            onClick={() => onSelect?.(suggestion)}
+          >
+            <span className={styles.searchIcon}>
+              <SearchIcon />
+            </span>
+            <span className={styles.text}>
+              {highlightMatch(suggestion.text, query)}
+            </span>
+            <span className={styles.arrowIcon}>
+              <ArrowIcon />
+            </span>
+            {index < suggestions.length - 1 && <span className={styles.divider} />}
+          </button>
+        ))}
+      </div>
+    );
+  },
+);
 
-export default SearchSuggestions;
+SearchSuggestions.displayName = 'SearchSuggestions';

@@ -1,8 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
+import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './QuantityStepper.module.scss';
 
-export interface QuantityStepperProps {
+export interface QuantityStepperProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Controlled value */
   value?: number;
   /** Default value for uncontrolled usage */
@@ -14,15 +14,21 @@ export interface QuantityStepperProps {
   disabled?: boolean;
 }
 
-export function QuantityStepper({
-  value: valueProp,
-  defaultValue,
-  min = 1,
-  max = 99,
-  onChange,
-  size = 'md',
-  disabled = false,
-}: QuantityStepperProps) {
+export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
+  (
+    {
+      value: valueProp,
+      defaultValue,
+      min = 1,
+      max = 99,
+      onChange,
+      size = 'md',
+      disabled = false,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
   const [value, setValue] = useControllableState<number>({
     value: valueProp,
     defaultValue: defaultValue ?? min,
@@ -72,9 +78,18 @@ export function QuantityStepper({
     }
   }, [inputValue, min, max, value, setValue]);
 
+  const rootClass = [
+    styles.stepper,
+    styles[size],
+    disabled && styles.disabled,
+    className,
+  ].filter(Boolean).join(' ');
+
   return (
     <div
-      className={`${styles.stepper} ${styles[size]} ${disabled ? styles.disabled : ''}`}
+      ref={ref}
+      className={rootClass}
+      {...rest}
     >
       <button
         type="button"
@@ -122,4 +137,7 @@ export function QuantityStepper({
       </button>
     </div>
   );
-}
+  },
+);
+
+QuantityStepper.displayName = 'QuantityStepper';

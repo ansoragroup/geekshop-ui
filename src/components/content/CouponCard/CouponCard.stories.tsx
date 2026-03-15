@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import CouponCard from './CouponCard';
+import { CouponCard } from './CouponCard';
 
 const meta = {
   title: 'Content/CouponCard',

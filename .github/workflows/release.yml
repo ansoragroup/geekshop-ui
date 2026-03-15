@@ -25,6 +25,13 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: '@geekshop'
       - run: npm ci --legacy-peer-deps
+
+      - name: Quality gate (lint, typecheck, test)
+        run: |
+          npm run lint
+          npx tsc --noEmit
+          npx vitest run --project unit
+
       - run: npm run build:lib
 
       - name: Verify dist

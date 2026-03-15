@@ -196,5 +196,3 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
 );
 
 Swipe.displayName = 'Swipe';
-
-export default Swipe;

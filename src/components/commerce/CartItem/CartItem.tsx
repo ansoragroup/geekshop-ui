@@ -1,8 +1,8 @@
-import { useState, useRef, useCallback } from 'react';
+import { forwardRef, useState, useRef, useCallback, type HTMLAttributes } from 'react';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './CartItem.module.scss';
 
-export interface CartItemProps {
+export interface CartItemProps extends HTMLAttributes<HTMLDivElement> {
   image: string;
   title: string;
   variant?: string;
@@ -18,17 +18,23 @@ function formatPrice(price: number): string {
   return price.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
-export function CartItem({
-  image,
-  title,
-  variant,
-  price,
-  quantity,
-  selected = false,
-  onSelect,
-  onQuantityChange,
-  onDelete,
-}: CartItemProps) {
+export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
+  (
+    {
+      image,
+      title,
+      variant,
+      price,
+      quantity,
+      selected = false,
+      onSelect,
+      onQuantityChange,
+      onDelete,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
   const [translateX, setTranslateX] = useState(0);
   const startXRef = useRef(0);
   const currentXRef = useRef(0);
@@ -61,8 +67,10 @@ export function CartItem({
     onDelete?.();
   }, [onDelete]);
 
+  const wrapperClass = [styles.wrapper, className].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.wrapper}>
+    <div ref={ref} className={wrapperClass} {...rest}>
       {/* Delete action behind */}
       <div className={styles.deleteAction}>
         <button type="button" className={styles.deleteBtn} onClick={handleDelete}>
@@ -128,4 +136,7 @@ export function CartItem({
       </div>
     </div>
   );
-}
+  },
+);
+
+CartItem.displayName = 'CartItem';

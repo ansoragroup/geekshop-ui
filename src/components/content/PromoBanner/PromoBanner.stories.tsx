@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import PromoBanner from './PromoBanner';
+import { PromoBanner } from './PromoBanner';
 
 const DiscountIcon = () => (
   <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">

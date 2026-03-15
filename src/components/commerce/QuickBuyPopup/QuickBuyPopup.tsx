@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './QuickBuyPopup.module.scss';
@@ -15,7 +15,7 @@ export interface QuickBuyProduct {
   stock: number;
 }
 
-export interface QuickBuyPopupProps {
+export interface QuickBuyPopupProps extends HTMLAttributes<HTMLDivElement> {
   product: QuickBuyProduct;
   variants?: QuickBuyVariant[];
   onClose?: () => void;
@@ -27,13 +27,19 @@ function formatPrice(price: number): string {
   return price.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
-export function QuickBuyPopup({
-  product,
-  variants = [],
-  onClose,
-  onAddToCart,
-  open = true,
-}: QuickBuyPopupProps) {
+export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
+  (
+    {
+      product,
+      variants = [],
+      onClose,
+      onAddToCart,
+      open = true,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState<string | null>(
     variants.length > 0 ? variants[0].id : null
@@ -50,7 +56,7 @@ export function QuickBuyPopup({
   if (!open) return null;
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div ref={ref} className={[styles.overlay, className].filter(Boolean).join(' ')} onClick={onClose} {...rest}>
       <div
         ref={sheetRef}
         className={styles.sheet}
@@ -120,4 +126,7 @@ export function QuickBuyPopup({
       </div>
     </div>
   );
-}
+  },
+);
+
+QuickBuyPopup.displayName = 'QuickBuyPopup';

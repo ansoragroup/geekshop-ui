@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import SectionHeader from './SectionHeader';
+import { SectionHeader } from './SectionHeader';
 
 const FireIcon = () => (
   <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

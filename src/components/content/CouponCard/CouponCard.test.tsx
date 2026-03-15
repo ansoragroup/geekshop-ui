@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import CouponCard from './CouponCard'
+import { CouponCard } from './CouponCard'
 
 describe('CouponCard', () => {
   afterEach(cleanup)

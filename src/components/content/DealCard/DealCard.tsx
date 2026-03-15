@@ -1,7 +1,7 @@
-import { type FC, type MouseEventHandler } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
 import styles from './DealCard.module.scss';
 
-export interface DealCardProps {
+export interface DealCardProps extends HTMLAttributes<HTMLDivElement> {
   /** Product image URL */
   image: string;
   /** Product name */
@@ -22,23 +22,33 @@ function formatPrice(value: number): string {
   return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
 }
 
-const DealCard: FC<DealCardProps> = ({
-  image,
-  title,
-  price,
-  originalPrice,
-  discount,
-  soldPercent = 0,
-  onClick,
-}) => {
+export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
+  (
+    {
+      image,
+      title,
+      price,
+      originalPrice,
+      discount,
+      soldPercent = 0,
+      onClick,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
   const savings = originalPrice - price;
+
+  const rootClass = [styles.dealCard, className].filter(Boolean).join(' ');
 
   return (
     <div
-      className={styles.dealCard}
+      ref={ref}
+      className={rootClass}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
+      {...rest}
     >
       <div className={styles.imageArea}>
         <img className={styles.image} src={image} alt={title} />
@@ -94,6 +104,7 @@ const DealCard: FC<DealCardProps> = ({
       </div>
     </div>
   );
-};
+  },
+);
 
-export default DealCard;
+DealCard.displayName = 'DealCard';

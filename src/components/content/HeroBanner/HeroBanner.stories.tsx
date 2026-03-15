@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import HeroBanner from './HeroBanner';
+import { HeroBanner } from './HeroBanner';
 
 const meta = {
   title: 'Content/HeroBanner',

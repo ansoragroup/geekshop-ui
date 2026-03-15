@@ -1,3 +1,4 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './SpecsTable.module.scss';
 
 export interface SpecItem {
@@ -5,27 +6,27 @@ export interface SpecItem {
   value: string;
 }
 
-export interface SpecsTableProps {
+export interface SpecsTableProps extends HTMLAttributes<HTMLDivElement> {
   /** Array of spec key-value pairs */
   specs: SpecItem[];
-  /** Additional CSS class */
-  className?: string;
 }
 
-export function SpecsTable({ specs, className = '' }: SpecsTableProps) {
-  return (
-    <div className={`${styles.root} ${className}`}>
-      {specs.map((spec, i) => (
-        <div
-          key={i}
-          className={`${styles.row} ${i % 2 === 0 ? styles.rowEven : styles.rowOdd}`}
-        >
-          <span className={styles.label}>{spec.label}</span>
-          <span className={styles.value}>{spec.value}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
+export const SpecsTable = forwardRef<HTMLDivElement, SpecsTableProps>(
+  ({ specs, className = '', ...rest }, ref) => {
+    return (
+      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+        {specs.map((spec, i) => (
+          <div
+            key={i}
+            className={`${styles.row} ${i % 2 === 0 ? styles.rowEven : styles.rowOdd}`}
+          >
+            <span className={styles.label}>{spec.label}</span>
+            <span className={styles.value}>{spec.value}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+);
 
-export default SpecsTable;
+SpecsTable.displayName = 'SpecsTable';

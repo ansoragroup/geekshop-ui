@@ -1,6 +1,7 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './AppBar.module.scss';
 
-export interface AppBarProps {
+export interface AppBarProps extends HTMLAttributes<HTMLElement> {
   /** Location text (e.g. "Toshkent") */
   location?: string;
   /** Search placeholder */
@@ -27,8 +28,6 @@ export interface AppBarProps {
   onScanClick?: () => void;
   /** Callback when dark mode is toggled */
   onDarkModeClick?: () => void;
-  /** Additional class */
-  className?: string;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -59,90 +58,101 @@ const MoonIcon = () => (
   </svg>
 );
 
-export function AppBar({
-  location = 'Toshkent',
-  searchPlaceholder = 'Mahsulot qidirish...',
-  searchValue,
-  variant = 'colored',
-  backgroundColor,
-  showLocation = false,
-  showScan = false,
-  showDarkMode = false,
-  onLocationClick,
-  onSearchClick,
-  onSearchChange,
-  onScanClick,
-  onDarkModeClick,
-  className = '',
-}: AppBarProps) {
-  const isReadOnly = !onSearchChange;
-  const backgroundStyle = backgroundColor ? { background: backgroundColor } : undefined;
+export const AppBar = forwardRef<HTMLElement, AppBarProps>(
+  (
+    {
+      location = 'Toshkent',
+      searchPlaceholder = 'Mahsulot qidirish...',
+      searchValue,
+      variant = 'colored',
+      backgroundColor,
+      showLocation = false,
+      showScan = false,
+      showDarkMode = false,
+      onLocationClick,
+      onSearchClick,
+      onSearchChange,
+      onScanClick,
+      onDarkModeClick,
+      className = '',
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+    const isReadOnly = !onSearchChange;
+    const backgroundStyle = backgroundColor
+      ? { ...style, background: backgroundColor }
+      : style;
 
-  return (
-    <header
-      className={`${styles.appBar} ${styles[variant]} ${className}`}
-      style={backgroundStyle}
-    >
-      {/* Location button */}
-      {showLocation && (
-        <button
-          className={styles.locationBtn}
-          onClick={onLocationClick}
-          aria-label={`Joylashuv: ${location}`}
-        >
-          <LocationIcon />
-          <span>{location}</span>
-        </button>
-      )}
-
-      {/* Search bar */}
-      <div
-        className={styles.searchWrapper}
-        onClick={isReadOnly ? onSearchClick : undefined}
-        role={isReadOnly ? 'button' : undefined}
-        tabIndex={isReadOnly ? 0 : undefined}
+    return (
+      <header
+        ref={ref}
+        className={`${styles.appBar} ${styles[variant]} ${className}`}
+        style={backgroundStyle}
+        {...rest}
       >
-        <span className={styles.searchIcon}>
-          <SearchIcon />
-        </span>
-
-        {isReadOnly ? (
-          <span className={styles.placeholderText}>{searchPlaceholder}</span>
-        ) : (
-          <input
-            className={styles.searchInput}
-            type="text"
-            value={searchValue ?? ''}
-            placeholder={searchPlaceholder}
-            onChange={(e) => onSearchChange?.(e.target.value)}
-            onClick={onSearchClick}
-          />
+        {/* Location button */}
+        {showLocation && (
+          <button
+            className={styles.locationBtn}
+            onClick={onLocationClick}
+            aria-label={`Joylashuv: ${location}`}
+          >
+            <LocationIcon />
+            <span>{location}</span>
+          </button>
         )}
-      </div>
 
-      {/* Scan / camera button */}
-      {showScan && (
-        <button
-          className={styles.iconBtn}
-          onClick={onScanClick}
-          aria-label="Kamera bilan qidirish"
+        {/* Search bar */}
+        <div
+          className={styles.searchWrapper}
+          onClick={isReadOnly ? onSearchClick : undefined}
+          role={isReadOnly ? 'button' : undefined}
+          tabIndex={isReadOnly ? 0 : undefined}
         >
-          <ScanIcon />
-        </button>
-      )}
+          <span className={styles.searchIcon}>
+            <SearchIcon />
+          </span>
 
-      {/* Dark mode toggle */}
-      {showDarkMode && (
-        <button
-          className={styles.iconBtn}
-          onClick={onDarkModeClick}
-          aria-label="Tungi rejim"
-        >
-          <MoonIcon />
-        </button>
-      )}
-    </header>
-  );
-}
+          {isReadOnly ? (
+            <span className={styles.placeholderText}>{searchPlaceholder}</span>
+          ) : (
+            <input
+              className={styles.searchInput}
+              type="text"
+              value={searchValue ?? ''}
+              placeholder={searchPlaceholder}
+              onChange={(e) => onSearchChange?.(e.target.value)}
+              onClick={onSearchClick}
+            />
+          )}
+        </div>
 
-export default AppBar;
+        {/* Scan / camera button */}
+        {showScan && (
+          <button
+            className={styles.iconBtn}
+            onClick={onScanClick}
+            aria-label="Kamera bilan qidirish"
+          >
+            <ScanIcon />
+          </button>
+        )}
+
+        {/* Dark mode toggle */}
+        {showDarkMode && (
+          <button
+            className={styles.iconBtn}
+            onClick={onDarkModeClick}
+            aria-label="Tungi rejim"
+          >
+            <MoonIcon />
+          </button>
+        )}
+      </header>
+    );
+  },
+);
+
+AppBar.displayName = 'AppBar';

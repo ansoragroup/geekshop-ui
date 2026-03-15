@@ -1,8 +1,9 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Divider.module.scss';
 
 export type DividerVariant = 'full' | 'inset' | 'withText';
 
-export interface DividerProps {
+export interface DividerProps extends HTMLAttributes<HTMLElement> {
   /** Divider variant */
   variant?: DividerVariant;
   /** Text shown in the center (only for withText variant) */
@@ -11,18 +12,26 @@ export interface DividerProps {
   vertical?: boolean;
 }
 
-export function Divider({
-  variant = 'full',
-  text,
-  vertical = false,
-}: DividerProps) {
+export const Divider = forwardRef<HTMLElement, DividerProps>(
+  (
+    {
+      variant = 'full',
+      text,
+      vertical = false,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
   if (vertical) {
-    return <span className={styles.vertical} />;
+    const verticalClass = [styles.vertical, className].filter(Boolean).join(' ');
+    return <span ref={ref as React.Ref<HTMLSpanElement>} className={verticalClass} {...rest} />;
   }
 
   if (variant === 'withText' && text) {
+    const withTextClass = [styles.withText, className].filter(Boolean).join(' ');
     return (
-      <div className={styles.withText}>
+      <div ref={ref as React.Ref<HTMLDivElement>} className={withTextClass} {...rest}>
         <span className={styles.line} />
         <span className={styles.text}>{text}</span>
         <span className={styles.line} />
@@ -30,9 +39,11 @@ export function Divider({
     );
   }
 
+  const horizontalClass = [styles.horizontal, styles[`variant-${variant}`], className].filter(Boolean).join(' ');
   return (
-    <div className={`${styles.horizontal} ${styles[`variant-${variant}`]}`} />
+    <div ref={ref as React.Ref<HTMLDivElement>} className={horizontalClass} {...rest} />
   );
-}
+  },
+);
 
-export default Divider;
+Divider.displayName = 'Divider';

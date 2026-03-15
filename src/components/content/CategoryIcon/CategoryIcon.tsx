@@ -1,7 +1,7 @@
-import { type FC, type MouseEventHandler } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
 import styles from './CategoryIcon.module.scss';
 
-export interface CategoryIconProps {
+export interface CategoryIconProps extends HTMLAttributes<HTMLDivElement> {
   /** SVG icon element */
   icon: React.ReactNode;
   /** Label text below the icon */
@@ -12,19 +12,29 @@ export interface CategoryIconProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-export const CategoryIcon: FC<CategoryIconProps> = ({
-  icon,
-  label,
-  color = '#FF5000',
-  onClick,
-}) => {
+export const CategoryIcon = forwardRef<HTMLDivElement, CategoryIconProps>(
+  (
+    {
+      icon,
+      label,
+      color = '#FF5000',
+      onClick,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+  const rootClass = [styles.categoryIcon, className].filter(Boolean).join(' ');
+
   return (
     <div
-      className={styles.categoryIcon}
+      ref={ref}
+      className={rootClass}
       onClick={onClick}
       onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
+      {...rest}
     >
       <div
         className={styles.circle}
@@ -37,4 +47,7 @@ export const CategoryIcon: FC<CategoryIconProps> = ({
       <span className={styles.label}>{label}</span>
     </div>
   );
-};
+  },
+);
+
+CategoryIcon.displayName = 'CategoryIcon';

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import CountdownTimer from './CountdownTimer';
+import { CountdownTimer } from './CountdownTimer';
 
 const meta = {
   title: 'Content/CountdownTimer',

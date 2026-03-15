@@ -3,19 +3,20 @@
 <!-- Priority: CRITICAL > HIGH > MEDIUM > LOW -->
 
 ## CRITICAL
-- [ ] Fix Vite build config — rollupOptions.output must be array with separate dirs for ESM/CJS, verify dist/ matches package.json exports
-- [ ] Add test job to CI workflow (ci.yml) — 772 tests never run in pipeline
+- [x] ~~Fix Vite build config~~ (completed 20260315)
+- [x] ~~Add test job to CI workflow~~ (completed 20260315)
 
 ## HIGH
-- [ ] Sync CLAUDE.md design tokens with actual tokens.scss (colors, spacing names, z-index names/values)
-- [ ] Remove default exports from 4 components (AddressCard, PaymentMethodCard, CategoryIcon, CategoryIconRow)
+- [x] ~~Sync CLAUDE.md design tokens with actual tokens.scss~~ (completed 20260315)
+- [x] ~~Remove default exports from 4 components~~ (completed 20260315)
+- [x] ~~Wire useControllableState into QuantityStepper~~ (completed 20260315)
+- [x] ~~Wire useCountdown into CountdownTimer~~ (completed 20260315)
 - [ ] Add forwardRef to 15+ interactive components missing it (QuantityStepper, SkuSelector, ActionBar, CartItem, BottomSheet, Popup, Toast, SearchBar, TabBar, FilterBar, FilterPanel, NavBar, Rating, TabFilter, QuickBuyPopup)
-- [ ] Wire useControllableState into components with value/onChange (QuantityStepper, Rating, FilterBar, TabFilter, TabBar, SearchBar)
-- [ ] Wire useCountdown into CountdownTimer (replace ad-hoc implementation)
+- [ ] Wire useControllableState into remaining components (Rating, FilterBar, TabFilter, TabBar, SearchBar)
 - [ ] Add ...rest prop spreading to 46 components missing it
 
 ## MEDIUM
-- [ ] Fix deprecated darken() in Skeleton.module.scss — use sass:color module
+- [x] ~~Fix deprecated darken() in Skeleton.module.scss~~ (completed 20260315)
 - [ ] Add play functions to interactive component stories (form, feedback, commerce, navigation)
 - [ ] Export all Props types from main barrel (src/components/index.ts) — ~35 missing
 - [ ] Add import/no-default-export ESLint rule to enforce convention

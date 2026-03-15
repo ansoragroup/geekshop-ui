@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
+import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './BottomSheet.module.scss';
 
-export interface BottomSheetProps {
+export interface BottomSheetProps extends HTMLAttributes<HTMLDivElement> {
   /** Whether the bottom sheet is visible */
   visible: boolean;
   /** Title shown in the header */
@@ -21,54 +21,65 @@ const CloseIcon = () => (
   </svg>
 );
 
-export function BottomSheet({
-  visible,
-  title,
-  height = '60vh',
-  onClose,
-  children,
-}: BottomSheetProps) {
-  const sheetRef = useFocusTrap<HTMLDivElement>(visible, {
-    onEscape: onClose,
-  });
+export const BottomSheet = forwardRef<HTMLDivElement, BottomSheetProps>(
+  ({ visible, title, height = '60vh', onClose, children, className = '', ...rest }, ref) => {
+    const sheetRef = useFocusTrap<HTMLDivElement>(visible, {
+      onEscape: onClose,
+    });
 
-  if (!visible) return null;
+    const mergedRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        sheetRef.current = node;
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+      },
+      [ref, sheetRef],
+    );
 
-  const handleOverlayClick = () => {
-    onClose?.();
-  };
+    if (!visible) return null;
 
-  const handleContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
+    const handleOverlayClick = () => {
+      onClose?.();
+    };
 
-  return (
-    <div className={styles.overlay} onClick={handleOverlayClick}>
-      <div
-        ref={sheetRef}
-        className={styles.sheet}
-        style={{ maxHeight: height }}
-        onClick={handleContentClick}
-        role="dialog"
-        aria-modal="true"
-        aria-label={title || 'Bottom sheet'}
-        tabIndex={-1}
-      >
-        <div className={styles.dragHandle}>
-          <span className={styles.dragBar} />
-        </div>
+    const handleContentClick = (e: React.MouseEvent) => {
+      e.stopPropagation();
+    };
 
-        {(title || onClose) && (
-          <div className={styles.header}>
-            <span className={styles.title}>{title}</span>
-            <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
-              <CloseIcon />
-            </button>
+    return (
+      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick}>
+        <div
+          ref={mergedRef}
+          className={styles.sheet}
+          style={{ maxHeight: height }}
+          onClick={handleContentClick}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title || 'Bottom sheet'}
+          tabIndex={-1}
+          {...rest}
+        >
+          <div className={styles.dragHandle}>
+            <span className={styles.dragBar} />
           </div>
-        )}
 
-        <div className={styles.body}>{children}</div>
+          {(title || onClose) && (
+            <div className={styles.header}>
+              <span className={styles.title}>{title}</span>
+              <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
+                <CloseIcon />
+              </button>
+            </div>
+          )}
+
+          <div className={styles.body}>{children}</div>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
+
+BottomSheet.displayName = 'BottomSheet';
