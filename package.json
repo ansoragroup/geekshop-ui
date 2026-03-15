@@ -1,6 +1,6 @@
 {
   "name": "@ansoragroup/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "dist/cjs/components/index.cjs",
   "module": "dist/es/components/index.mjs",
