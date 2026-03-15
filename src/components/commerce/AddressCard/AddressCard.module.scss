@@ -154,8 +154,8 @@
 
 .actionDelete {
   &:hover {
-    color: $color-error;
-    background: rgba($color-error, 0.06);
+    color: var(--gs-color-error);
+    background: color-mix(in srgb, var(--gs-color-error) 6%, transparent);
   }
 }
 

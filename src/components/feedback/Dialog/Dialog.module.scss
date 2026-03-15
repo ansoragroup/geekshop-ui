@@ -1,0 +1,117 @@
+@use '../../../theme/tokens' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-index-modal;
+  animation: overlayIn $transition-fast;
+}
+
+.dialog {
+  width: 300px;
+  max-width: calc(100vw - 48px);
+  background: $color-bg-white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  animation: dialogIn $transition-normal;
+}
+
+.title {
+  padding: $spacing-xxl $spacing-xxl $spacing-sm;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  text-align: center;
+  line-height: $line-height-normal;
+}
+
+.body {
+  padding: $spacing-sm $spacing-xxl $spacing-xxl;
+}
+
+.message {
+  margin: 0;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  text-align: center;
+  line-height: $line-height-normal;
+}
+
+// ---- Actions ----
+
+.actions {
+  display: flex;
+  border-top: 1px solid $color-border-light;
+}
+
+.cancelBtn,
+.confirmBtn {
+  flex: 1;
+  height: 48px;
+  min-height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.cancelBtn {
+  color: $color-text-secondary;
+  border-right: 1px solid $color-border-light;
+}
+
+.confirm-primary {
+  color: var(--gs-color-primary, #{$color-primary});
+  font-weight: $font-weight-semibold;
+}
+
+.confirm-danger {
+  color: var(--gs-color-error);
+  font-weight: $font-weight-semibold;
+}
+
+// ---- Animations ----
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ---- Reduced motion ----
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .dialog {
+    animation: none;
+  }
+}

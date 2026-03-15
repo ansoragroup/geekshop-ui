@@ -1,0 +1,112 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-height: 44px;
+}
+
+// ---- Track ----
+
+.track {
+  position: relative;
+  border: none;
+  border-radius: $radius-round;
+  cursor: pointer;
+  padding: 2px;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+.size-md {
+  width: 44px;
+  height: 24px;
+}
+
+.size-sm {
+  width: 36px;
+  height: 20px;
+}
+
+// ---- States ----
+
+.off {
+  background: #e0e0e0;
+}
+
+.on {
+  background: var(--gs-color-primary, #{$color-primary});
+}
+
+// ---- Thumb ----
+
+.thumb {
+  display: block;
+  background: $color-bg-white;
+  border-radius: $radius-round;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-fast;
+}
+
+.size-md .thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.size-sm .thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.on .thumb {
+  // Slide right: track padding (2px) + track inner width - thumb width
+  // md: 44 - 4 (padding) - 20 = 20px
+  // sm: 36 - 4 (padding) - 16 = 16px
+  transform: translateX(calc(100%));
+}
+
+.off .thumb {
+  transform: translateX(0);
+}
+
+// ---- Label ----
+
+.label {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  cursor: pointer;
+  user-select: none;
+}
+
+// ---- Disabled ----
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+
+  .track {
+    cursor: not-allowed;
+  }
+
+  .label {
+    cursor: not-allowed;
+    color: $color-text-tertiary;
+  }
+}
+
+// ---- Reduced motion ----
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .thumb {
+    transition: none;
+  }
+}

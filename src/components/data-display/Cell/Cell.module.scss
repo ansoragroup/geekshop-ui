@@ -1,0 +1,109 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: $spacing-md $spacing-lg;
+  background: var(--gs-color-bg-card, $color-bg-card);
+  gap: $spacing-md;
+  position: relative;
+  font-family: $font-family;
+}
+
+// --- Interactive state ---
+.interactive {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-bg-page, $color-bg-page);
+  }
+
+  &:active {
+    background: var(--gs-color-border, $color-border);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+    border-radius: $radius-xs;
+  }
+}
+
+// --- Divider ---
+.divider {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: $spacing-lg;
+    right: $spacing-lg;
+    height: 1px;
+    background: var(--gs-color-border, $color-border);
+  }
+}
+
+// --- Icon ---
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--gs-color-text-secondary, $color-text-secondary);
+}
+
+// --- Content ---
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: $spacing-xxs;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: var(--gs-color-text-primary, $color-text-primary);
+  line-height: $line-height-tight;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: var(--gs-color-text-tertiary, $color-text-tertiary);
+  line-height: $line-height-normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// --- Value ---
+.value {
+  flex-shrink: 0;
+  font-size: $font-size-md;
+  color: var(--gs-color-text-secondary, $color-text-secondary);
+  line-height: $line-height-tight;
+}
+
+// --- Arrow ---
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gs-color-text-placeholder, $color-text-placeholder);
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .interactive {
+    transition: none;
+  }
+}

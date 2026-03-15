@@ -59,7 +59,7 @@
   bottom: 1px;
   right: 1px;
   border-radius: $radius-round;
-  background-color: $color-success;
+  background-color: var(--gs-color-success);
   border: 2px solid $color-bg-white;
   box-sizing: border-box;
 }

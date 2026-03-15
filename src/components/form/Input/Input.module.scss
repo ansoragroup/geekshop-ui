@@ -76,14 +76,14 @@
 
 .error {
   font-size: $font-size-sm;
-  color: $color-error;
+  color: var(--gs-color-error);
   line-height: $line-height-normal;
 }
 
 // --- Error state ---
 .hasError {
   .inputWrap {
-    border-color: $color-error;
+    border-color: var(--gs-color-error);
   }
 }
 

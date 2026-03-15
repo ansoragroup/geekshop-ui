@@ -1,0 +1,90 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xxxl $spacing-xxl;
+  text-align: center;
+  font-family: $font-family;
+}
+
+// === Icon circle ===
+.iconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: $radius-round;
+  margin-bottom: $spacing-xxl;
+  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+// === Status colors ===
+.status-success {
+  background: var(--gs-color-success-light);
+  color: var(--gs-color-success);
+}
+
+.status-error {
+  background: color-mix(in srgb, var(--gs-color-error) 10%, transparent);
+  color: var(--gs-color-error);
+}
+
+.status-warning {
+  background: var(--gs-color-warning-light);
+  color: var(--gs-color-warning);
+}
+
+.status-info {
+  background: color-mix(in srgb, var(--gs-color-info) 10%, transparent);
+  color: var(--gs-color-info);
+}
+
+// === Title ===
+.title {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-text-primary, $color-text-primary);
+  margin-bottom: $spacing-sm;
+  line-height: $line-height-tight;
+}
+
+// === Description ===
+.description {
+  font-size: $font-size-md;
+  color: var(--gs-color-text-secondary, $color-text-secondary);
+  line-height: $line-height-normal;
+  max-width: 280px;
+  margin-bottom: $spacing-xxl;
+}
+
+// === Actions ===
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+  max-width: 280px;
+}
+
+// === Scale-in animation ===
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconCircle {
+    animation: none;
+  }
+}

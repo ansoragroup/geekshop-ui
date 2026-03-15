@@ -12,7 +12,7 @@
 .currentPrice {
   display: inline-flex;
   align-items: baseline;
-  color: $color-price;
+  color: var(--gs-color-price);
   font-weight: $font-weight-bold;
 }
 
@@ -104,13 +104,13 @@
 // --- Variant colours ---
 .variant-default {
   .currentPrice {
-    color: $color-price;
+    color: var(--gs-color-price);
   }
 }
 
 .variant-sale {
   .currentPrice {
-    color: $color-sale;
+    color: var(--gs-color-sale);
   }
 }
 

@@ -37,7 +37,7 @@
   top: $spacing-sm;
   left: 0;
   padding: $spacing-xxs $spacing-sm;
-  background: $color-sale;
+  background: var(--gs-color-sale);
   color: $color-text-white;
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
@@ -70,7 +70,7 @@
 .currentPrice {
   font-size: $font-size-price-md;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
   line-height: $line-height-tight;
 }
 
@@ -96,14 +96,14 @@
 .savingsIcon {
   width: 10px;
   height: 10px;
-  color: $color-success;
+  color: var(--gs-color-success);
   flex-shrink: 0;
 }
 
 .savingsText {
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
-  color: $color-success;
+  color: var(--gs-color-success);
   line-height: $line-height-tight;
 }
 
@@ -124,7 +124,7 @@
 
 .progressFill {
   height: 100%;
-  background: linear-gradient(90deg, $color-sale, var(--gs-color-primary));
+  background: linear-gradient(90deg, var(--gs-color-sale), var(--gs-color-primary));
   border-radius: $radius-round;
   transition: width $transition-normal;
 }

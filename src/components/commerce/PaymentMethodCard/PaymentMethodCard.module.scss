@@ -95,8 +95,8 @@
   transition: color $transition-fast, background $transition-fast;
 
   &:hover {
-    color: $color-error;
-    background: rgba($color-error, 0.06);
+    color: var(--gs-color-error);
+    background: color-mix(in srgb, var(--gs-color-error) 6%, transparent);
   }
 }
 
@@ -150,6 +150,6 @@
 }
 
 .type-cash.selected {
-  border-color: $color-success;
-  box-shadow: 0 0 0 1px $color-success;
+  border-color: var(--gs-color-success);
+  box-shadow: 0 0 0 1px var(--gs-color-success);
 }

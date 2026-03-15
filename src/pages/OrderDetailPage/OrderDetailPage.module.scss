@@ -72,7 +72,7 @@
   transition: all $transition-fast;
 
   &Completed {
-    background: $color-success;
+    background: var(--gs-color-success);
   }
 
   &Active {
@@ -91,7 +91,7 @@
   transition: all $transition-fast;
 
   &Completed {
-    background: $color-success;
+    background: var(--gs-color-success);
   }
 }
 

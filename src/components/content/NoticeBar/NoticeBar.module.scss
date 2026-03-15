@@ -4,8 +4,8 @@
   display: flex;
   align-items: center;
   padding: $spacing-sm $spacing-md;
-  background: var(--notice-bg, $color-warning-light);
-  color: var(--notice-color, $color-warning);
+  background: var(--notice-bg, var(--gs-color-warning-light));
+  color: var(--notice-color, var(--gs-color-warning));
   font-size: $font-size-sm;
   line-height: $line-height-normal;
   font-family: $font-family;

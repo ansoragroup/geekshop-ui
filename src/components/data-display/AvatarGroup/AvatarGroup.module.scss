@@ -1,0 +1,67 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+}
+
+// === Each avatar item ===
+.item {
+  position: relative;
+  border-radius: $radius-round;
+  box-shadow: 0 0 0 2px $color-bg-white;
+}
+
+// === Negative margin per size ===
+.size-sm {
+  .item + .item,
+  .item + .overflow {
+    margin-left: -8px;
+  }
+}
+
+.size-md {
+  .item + .item,
+  .item + .overflow {
+    margin-left: -12px;
+  }
+}
+
+.size-lg {
+  .item + .item,
+  .item + .overflow {
+    margin-left: -16px;
+  }
+}
+
+// === Overflow circle (+N) ===
+.overflow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary-bg, $color-primary-bg);
+  box-shadow: 0 0 0 2px $color-bg-white;
+  flex-shrink: 0;
+}
+
+.overflowText {
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-primary, $color-primary);
+  user-select: none;
+}
+
+// === Overflow font sizes per size ===
+.size-sm .overflowText {
+  font-size: $font-size-xs;
+}
+
+.size-md .overflowText {
+  font-size: $font-size-sm;
+}
+
+.size-lg .overflowText {
+  font-size: $font-size-md;
+}

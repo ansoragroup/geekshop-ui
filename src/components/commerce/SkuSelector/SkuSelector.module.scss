@@ -66,7 +66,7 @@
 .priceSymbol {
   font-size: $font-size-price-md;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 .productTitle {
@@ -200,8 +200,8 @@
 }
 
 .gridItemSelected {
-  border-color: $color-price;
-  background: rgba($color-price, 0.03);
+  border-color: var(--gs-color-price);
+  background: color-mix(in srgb, var(--gs-color-price) 3%, transparent);
 }
 
 .gridItemImage {
@@ -223,7 +223,7 @@
 
 .gridItemPrice {
   font-size: $font-size-xs;
-  color: $color-price;
+  color: var(--gs-color-price);
   font-weight: $font-weight-medium;
   margin-top: 2px;
 }
@@ -267,7 +267,7 @@
   height: 20px;
   padding: 0 6px;
   border-radius: 0 0 $radius-md 0;
-  background: $color-sale;
+  background: var(--gs-color-sale);
   color: $color-text-white;
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
@@ -352,7 +352,7 @@
 .imageGridInfoPrice {
   font-size: $font-size-price-md;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
   margin-bottom: $spacing-md;
 }
 
@@ -391,7 +391,7 @@
 .footerPrice {
   font-size: $font-size-price-md;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 .addToCartBtn {

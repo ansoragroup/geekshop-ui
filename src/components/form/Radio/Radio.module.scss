@@ -1,0 +1,93 @@
+@use '../../../theme/tokens' as *;
+
+// ---- RadioGroup ----
+
+.group {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.direction-vertical {
+  flex-direction: column;
+}
+
+.direction-horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $spacing-xl;
+}
+
+// ---- Radio ----
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
+  padding: 0;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  &:focus-visible + .circle {
+    box-shadow: 0 0 0 2px var(--gs-color-primary, #{$color-primary});
+  }
+}
+
+.circle {
+  width: 22px;
+  height: 22px;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+  box-sizing: border-box;
+}
+
+.unchecked {
+  border: 2px solid $color-border;
+  background: transparent;
+}
+
+.checked {
+  border: 2px solid var(--gs-color-primary, #{$color-primary});
+  background: transparent;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary, #{$color-primary});
+}
+
+.label {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+// ---- Disabled ----
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+
+  .label {
+    color: $color-text-tertiary;
+  }
+}

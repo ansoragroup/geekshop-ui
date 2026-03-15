@@ -30,7 +30,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $color-info;
+    outline: 2px solid var(--gs-color-info);
     outline-offset: 2px;
   }
 

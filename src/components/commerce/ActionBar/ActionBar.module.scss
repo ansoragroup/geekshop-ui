@@ -58,7 +58,7 @@
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
-  background: $color-price;
+  background: var(--gs-color-price);
   color: $color-text-white;
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
