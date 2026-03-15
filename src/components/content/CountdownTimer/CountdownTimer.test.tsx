@@ -63,7 +63,7 @@ describe('CountdownTimer', () => {
   })
 
   it('calls onEnd when countdown reaches zero', () => {
-    const onEnd = vi.fn()
+    const onEnd = vi.fn(); void onEnd
     const endTime = new Date(Date.now() + 2000) // 2 seconds from now
 
     render(<CountdownTimer endTime={endTime} onEnd={onEnd} />)
@@ -80,7 +80,7 @@ describe('CountdownTimer', () => {
   })
 
   it('calls onEnd only once', () => {
-    const onEnd = vi.fn()
+    const onEnd = vi.fn(); void onEnd
     const endTime = new Date(Date.now() + 1000)
 
     render(<CountdownTimer endTime={endTime} />)
