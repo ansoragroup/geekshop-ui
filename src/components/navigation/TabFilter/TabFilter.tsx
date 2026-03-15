@@ -1,3 +1,5 @@
+import { forwardRef, type HTMLAttributes } from 'react';
+import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './TabFilter.module.scss';
 
 export interface TabFilterItem {
@@ -9,51 +11,56 @@ export interface TabFilterItem {
   badge?: number;
 }
 
-export interface TabFilterProps {
+export interface TabFilterProps extends HTMLAttributes<HTMLDivElement> {
   /** Available tab options */
   tabs: TabFilterItem[];
   /** Currently active tab key */
-  activeTab: string;
+  activeTab?: string;
+  /** Default active tab key for uncontrolled usage */
+  defaultActiveTab?: string;
   /** Callback when a tab is selected */
   onChange?: (key: string) => void;
   /** Visual variant */
   variant?: 'pill' | 'underline';
 }
 
-export function TabFilter({
-  tabs,
-  activeTab,
-  onChange,
-  variant = 'pill',
-}: TabFilterProps) {
-  return (
-    <div className={`${styles.tabFilter} ${styles[variant]}`} role="tablist">
-      <div className={styles.track}>
-        {tabs.map((tab) => {
-          const isActive = tab.key === activeTab;
-          return (
-            <button
-              key={tab.key}
-              role="tab"
-              aria-selected={isActive}
-              className={`${styles.tab} ${isActive ? styles.active : ''}`}
-              onClick={() => onChange?.(tab.key)}
-            >
-              <span className={styles.label}>{tab.label}</span>
-              {tab.badge != null && tab.badge > 0 && (
-                <span className={`${styles.badge} ${isActive ? styles.badgeActive : ''}`}>
-                  {tab.badge > 99 ? '99+' : tab.badge}
-                </span>
-              )}
-              {variant === 'underline' && isActive && (
-                <span className={styles.underline} />
-              )}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+export const TabFilter = forwardRef<HTMLDivElement, TabFilterProps>(
+  ({ tabs, activeTab: activeTabProp, defaultActiveTab = '', onChange, variant = 'pill', className, ...rest }, ref) => {
+    const [activeTab, setActiveTab] = useControllableState({
+      value: activeTabProp,
+      defaultValue: defaultActiveTab,
+      onChange,
+    });
 
-export default TabFilter;
+    return (
+      <div ref={ref} className={`${styles.tabFilter} ${styles[variant]} ${className ?? ''}`} role="tablist" {...rest}>
+        <div className={styles.track}>
+          {tabs.map((tab) => {
+            const isActive = tab.key === activeTab;
+            return (
+              <button
+                key={tab.key}
+                role="tab"
+                aria-selected={isActive}
+                className={`${styles.tab} ${isActive ? styles.active : ''}`}
+                onClick={() => setActiveTab(tab.key)}
+              >
+                <span className={styles.label}>{tab.label}</span>
+                {tab.badge != null && tab.badge > 0 && (
+                  <span className={`${styles.badge} ${isActive ? styles.badgeActive : ''}`}>
+                    {tab.badge > 99 ? '99+' : tab.badge}
+                  </span>
+                )}
+                {variant === 'underline' && isActive && (
+                  <span className={styles.underline} />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+);
+
+TabFilter.displayName = 'TabFilter';

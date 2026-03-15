@@ -1,6 +1,7 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './ActionBar.module.scss';
 
-export interface ActionBarProps {
+export interface ActionBarProps extends HTMLAttributes<HTMLDivElement> {
   cartCount?: number;
   isFavorite?: boolean;
   onChat?: () => void;
@@ -10,17 +11,25 @@ export interface ActionBarProps {
   onBuyNow?: () => void;
 }
 
-export function ActionBar({
-  cartCount = 0,
-  isFavorite = false,
-  onChat,
-  onCart,
-  onFavorite,
-  onAddToCart,
-  onBuyNow,
-}: ActionBarProps) {
+export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
+  (
+    {
+      cartCount = 0,
+      isFavorite = false,
+      onChat,
+      onCart,
+      onFavorite,
+      onAddToCart,
+      onBuyNow,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+  const classNames = [styles.bar, className].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.bar}>
+    <div ref={ref} className={classNames} {...rest}>
       {/* Left side: icon buttons */}
       <div className={styles.icons}>
         {/* Customer service */}
@@ -103,4 +112,7 @@ export function ActionBar({
       </div>
     </div>
   );
-}
+  },
+);
+
+ActionBar.displayName = 'ActionBar';

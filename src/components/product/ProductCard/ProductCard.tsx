@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import { PriceDisplay } from '../PriceDisplay';
 import { Rating } from '../../data-display/Rating';
 import styles from './ProductCard.module.scss';
@@ -8,7 +8,7 @@ import styles from './ProductCard.module.scss';
 export type ProductBadge = 'new' | 'top' | 'hot';
 
 /** Props for the flat API (backward-compatible) */
-export interface ProductCardFlatProps {
+export interface ProductCardFlatProps extends HTMLAttributes<HTMLDivElement> {
   /** Product image URL */
   image: string;
   /** Product title */
@@ -25,19 +25,11 @@ export interface ProductCardFlatProps {
   soldCount?: string;
   /** Image aspect ratio override, e.g. "auto" for natural height (waterfall), "1/1" for square (default) */
   imageAspectRatio?: string;
-  /** Click handler */
-  onClick?: () => void;
-  /** Additional CSS class */
-  className?: string;
   children?: never;
 }
 
 /** Props for the compound API */
-export interface ProductCardCompoundProps {
-  /** Click handler */
-  onClick?: () => void;
-  /** Additional CSS class */
-  className?: string;
+export interface ProductCardCompoundProps extends HTMLAttributes<HTMLDivElement> {
   /** Compound sub-components */
   children: ReactNode;
   image?: never;
@@ -210,13 +202,50 @@ function isCompoundMode(props: ProductCardProps): props is ProductCardCompoundPr
 
 // ─── Main component ─────────────────────────────────────────────────────────
 
-export function ProductCard(props: ProductCardProps) {
-  const { onClick, className = '' } = props;
+const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
+  (props, ref) => {
+    const { onClick, className = '', ...rest } = props;
 
-  if (isCompoundMode(props)) {
-    // Compound API: render children directly
+    if (isCompoundMode(props)) {
+      // Compound API: render children directly
+      const { children, ...compoundRest } = rest as Omit<ProductCardCompoundProps, 'onClick' | 'className'>;
+      return (
+        <div
+          ref={ref}
+          className={`${styles.root} ${className}`}
+          onClick={onClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onClick?.();
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          {...compoundRest}
+        >
+          {children}
+        </div>
+      );
+    }
+
+    // Flat API: existing behavior (backward-compatible)
+    const {
+      image,
+      title,
+      price,
+      originalPrice,
+      discount,
+      badge,
+      soldCount,
+      imageAspectRatio,
+      ...flatRest
+    } = rest as Omit<ProductCardFlatProps, 'onClick' | 'className'>;
+    const hasDiscount = originalPrice !== undefined && originalPrice > price;
+
     return (
       <div
+        ref={ref}
         className={`${styles.root} ${className}`}
         onClick={onClick}
         onKeyDown={(e) => {
@@ -227,74 +256,55 @@ export function ProductCard(props: ProductCardProps) {
         }}
         role="button"
         tabIndex={0}
+        {...flatRest}
       >
-        {props.children}
-      </div>
-    );
-  }
+        {/* Image container */}
+        <div className={styles.imageWrapper} style={imageAspectRatio ? { aspectRatio: imageAspectRatio } : undefined}>
+          <img src={image} alt={title} className={styles.image} loading="lazy" />
 
-  // Flat API: existing behavior (backward-compatible)
-  const { image, title, price, originalPrice, discount, badge, soldCount, imageAspectRatio } =
-    props as ProductCardFlatProps;
-  const hasDiscount = originalPrice !== undefined && originalPrice > price;
+          {/* Discount badge */}
+          {discount && (
+            <span className={styles.discountBadge}>{discount}</span>
+          )}
 
-  return (
-    <div
-      className={`${styles.root} ${className}`}
-      onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick?.();
-        }
-      }}
-      role="button"
-      tabIndex={0}
-    >
-      {/* Image container */}
-      <div className={styles.imageWrapper} style={imageAspectRatio ? { aspectRatio: imageAspectRatio } : undefined}>
-        <img src={image} alt={title} className={styles.image} loading="lazy" />
-
-        {/* Discount badge */}
-        {discount && (
-          <span className={styles.discountBadge}>{discount}</span>
-        )}
-
-        {/* Status badge */}
-        {badge && (
-          <span className={`${styles.badge} ${styles[`badge-${badge}`]}`}>
-            {badgeLabels[badge]}
-          </span>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-
-        <div className={styles.priceRow}>
-          <PriceDisplay
-            price={price}
-            originalPrice={hasDiscount ? originalPrice : undefined}
-            variant={hasDiscount ? 'sale' : 'default'}
-            size="sm"
-          />
+          {/* Status badge */}
+          {badge && (
+            <span className={`${styles.badge} ${styles[`badge-${badge}`]}`}>
+              {badgeLabels[badge]}
+            </span>
+          )}
         </div>
 
-        {soldCount && (
-          <span className={styles.soldCount}>{soldCount}</span>
-        )}
+        {/* Content */}
+        <div className={styles.content}>
+          <h3 className={styles.title}>{title}</h3>
+
+          <div className={styles.priceRow}>
+            <PriceDisplay
+              price={price}
+              originalPrice={hasDiscount ? originalPrice : undefined}
+              variant={hasDiscount ? 'sale' : 'default'}
+              size="sm"
+            />
+          </div>
+
+          {soldCount && (
+            <span className={styles.soldCount}>{soldCount}</span>
+          )}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  },
+);
+
+ProductCardBase.displayName = 'ProductCard';
 
 // ─── Attach sub-components ───────────────────────────────────────────────────
 
-ProductCard.Image = ProductCardImage;
-ProductCard.Body = ProductCardBody;
-ProductCard.Title = ProductCardTitle;
-ProductCard.Price = ProductCardPrice;
-ProductCard.Rating = ProductCardRating;
-
-export default ProductCard;
+export const ProductCard = Object.assign(ProductCardBase, {
+  Image: ProductCardImage,
+  Body: ProductCardBody,
+  Title: ProductCardTitle,
+  Price: ProductCardPrice,
+  Rating: ProductCardRating,
+});

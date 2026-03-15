@@ -1,7 +1,7 @@
-import { type FC, type MouseEventHandler } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './HeroBanner.module.scss';
 
-export interface HeroBannerProps {
+export interface HeroBannerProps extends HTMLAttributes<HTMLDivElement> {
   /** Main title text */
   title: string;
   /** Subtitle text below title */
@@ -16,22 +16,32 @@ export interface HeroBannerProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-const HeroBanner: FC<HeroBannerProps> = ({
-  title,
-  subtitle,
-  badge,
-  bgGradient = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
-  image,
-  onClick,
-}) => {
+export const HeroBanner = forwardRef<HTMLDivElement, HeroBannerProps>(
+  (
+    {
+      title,
+      subtitle,
+      badge,
+      bgGradient = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
+      image,
+      onClick,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+  const rootClass = [styles.heroBanner, className].filter(Boolean).join(' ');
+
   return (
     <div
-      className={styles.heroBanner}
-      style={{ background: bgGradient }}
+      ref={ref}
+      className={rootClass}
+      style={{ '--gs-hero-bg': bgGradient } as CSSProperties}
       onClick={onClick}
       onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
+      {...rest}
     >
       {image && (
         <img
@@ -51,6 +61,7 @@ const HeroBanner: FC<HeroBannerProps> = ({
       </div>
     </div>
   );
-};
+  },
+);
 
-export default HeroBanner;
+HeroBanner.displayName = 'HeroBanner';

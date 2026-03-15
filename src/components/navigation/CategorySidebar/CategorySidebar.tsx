@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './CategorySidebar.module.scss';
 
 export interface CategoryItem {
@@ -7,7 +7,7 @@ export interface CategoryItem {
   icon: ReactNode;
 }
 
-export interface CategorySidebarProps {
+export interface CategorySidebarProps extends HTMLAttributes<HTMLElement> {
   /** Currently active category key */
   activeKey: string;
   /** Callback when a category is selected */
@@ -91,30 +91,34 @@ const DEFAULT_CATEGORIES: CategoryItem[] = [
   { key: 'periphery', label: 'Periferiya', icon: <PeripheryIcon /> },
 ];
 
-export function CategorySidebar({
-  activeKey,
-  onChange,
-  items = DEFAULT_CATEGORIES,
-}: CategorySidebarProps) {
-  return (
-    <nav className={styles.sidebar} role="tablist" aria-orientation="vertical">
-      {items.map((item) => {
-        const isActive = item.key === activeKey;
-        return (
-          <button
-            key={item.key}
-            role="tab"
-            aria-selected={isActive}
-            className={`${styles.item} ${isActive ? styles.active : ''}`}
-            onClick={() => onChange(item.key)}
-          >
-            <span className={styles.icon}>{item.icon}</span>
-            <span className={styles.label}>{item.label}</span>
-          </button>
-        );
-      })}
-    </nav>
-  );
-}
+export const CategorySidebar = forwardRef<HTMLElement, CategorySidebarProps>(
+  ({ activeKey, onChange, items = DEFAULT_CATEGORIES, className, ...rest }, ref) => {
+    return (
+      <nav
+        ref={ref}
+        className={`${styles.sidebar} ${className ?? ''}`}
+        role="tablist"
+        aria-orientation="vertical"
+        {...rest}
+      >
+        {items.map((item) => {
+          const isActive = item.key === activeKey;
+          return (
+            <button
+              key={item.key}
+              role="tab"
+              aria-selected={isActive}
+              className={`${styles.item} ${isActive ? styles.active : ''}`}
+              onClick={() => onChange(item.key)}
+            >
+              <span className={styles.icon}>{item.icon}</span>
+              <span className={styles.label}>{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+    );
+  },
+);
 
-export default CategorySidebar;
+CategorySidebar.displayName = 'CategorySidebar';

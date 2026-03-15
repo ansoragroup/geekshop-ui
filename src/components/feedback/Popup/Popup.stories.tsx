@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Popup } from './Popup';
 
 const meta = {
@@ -117,5 +118,54 @@ export const Interactive: Story = {
         </Popup>
       </div>
     );
+  },
+};
+
+export const OpenCloseTest: Story = {
+  args: {
+    visible: true,
+    position: 'center',
+    title: 'Test Popup',
+    closable: true,
+    onClose: fn(),
+    children: <p style={{ color: '#666', fontSize: 14, textAlign: 'center' }}>Popup test content</p>,
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Verify the dialog is visible
+    const dialog = canvas.getByRole('dialog', { name: /test popup/i });
+    await expect(dialog).toBeInTheDocument();
+
+    // Find and click the close button
+    const closeButton = canvas.getByRole('button', { name: /close/i });
+    await expect(closeButton).toBeInTheDocument();
+    await userEvent.click(closeButton);
+
+    // Verify onClose was called
+    await expect(args.onClose).toHaveBeenCalledTimes(1);
+  },
+};
+
+export const BottomOpenCloseTest: Story = {
+  args: {
+    visible: true,
+    position: 'bottom',
+    title: 'Bottom Popup Test',
+    closable: true,
+    onClose: fn(),
+    children: <p style={{ color: '#666', fontSize: 14 }}>Bottom popup test content</p>,
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Verify the dialog is rendered with correct position
+    const dialog = canvas.getByRole('dialog', { name: /bottom popup test/i });
+    await expect(dialog).toBeInTheDocument();
+
+    // Click close
+    const closeButton = canvas.getByRole('button', { name: /close/i });
+    await userEvent.click(closeButton);
+    await expect(args.onClose).toHaveBeenCalledTimes(1);
   },
 };

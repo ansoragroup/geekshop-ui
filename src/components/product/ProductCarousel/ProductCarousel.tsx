@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { forwardRef, useState, useRef, type HTMLAttributes } from 'react';
 import { PriceDisplay } from '../PriceDisplay';
 import styles from './ProductCarousel.module.scss';
 
@@ -22,7 +22,7 @@ export interface CarouselTab {
   label: string;
 }
 
-export interface ProductCarouselProps {
+export interface ProductCarouselProps extends HTMLAttributes<HTMLDivElement> {
   /** Section title */
   title: string;
   /** Array of products to display */
@@ -35,8 +35,6 @@ export interface ProductCarouselProps {
   onTabChange?: (tabKey: string) => void;
   /** "See all" click handler */
   onSeeAll?: () => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 function ArrowRightIcon() {
@@ -47,88 +45,94 @@ function ArrowRightIcon() {
   );
 }
 
-export function ProductCarousel({
-  title,
-  products,
-  tabs,
-  activeTab: controlledActiveTab,
-  onTabChange,
-  onSeeAll,
-  className = '',
-}: ProductCarouselProps) {
-  const [internalActiveTab, setInternalActiveTab] = useState(tabs?.[0]?.key ?? '');
-  const scrollRef = useRef<HTMLDivElement>(null);
+export const ProductCarousel = forwardRef<HTMLDivElement, ProductCarouselProps>(
+  (
+    {
+      title,
+      products,
+      tabs,
+      activeTab: controlledActiveTab,
+      onTabChange,
+      onSeeAll,
+      className = '',
+      ...rest
+    },
+    ref,
+  ) => {
+    const [internalActiveTab, setInternalActiveTab] = useState(tabs?.[0]?.key ?? '');
+    const scrollRef = useRef<HTMLDivElement>(null);
 
-  const activeTab = controlledActiveTab ?? internalActiveTab;
+    const activeTab = controlledActiveTab ?? internalActiveTab;
 
-  const handleTabClick = (tabKey: string) => {
-    setInternalActiveTab(tabKey);
-    onTabChange?.(tabKey);
-    // Scroll the product list back to the start when switching tabs
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = 0;
-    }
-  };
+    const handleTabClick = (tabKey: string) => {
+      setInternalActiveTab(tabKey);
+      onTabChange?.(tabKey);
+      // Scroll the product list back to the start when switching tabs
+      if (scrollRef.current) {
+        scrollRef.current.scrollLeft = 0;
+      }
+    };
 
-  return (
-    <div className={`${styles.root} ${className}`}>
-      {/* Section header */}
-      <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
-        <button className={styles.seeAll} onClick={onSeeAll} type="button">
-          <span>Barchasi</span>
-          <ArrowRightIcon />
-        </button>
-      </div>
+    return (
+      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+        {/* Section header */}
+        <div className={styles.header}>
+          <h2 className={styles.title}>{title}</h2>
+          <button className={styles.seeAll} onClick={onSeeAll} type="button">
+            <span>Barchasi</span>
+            <ArrowRightIcon />
+          </button>
+        </div>
 
-      {/* Tabs */}
-      {tabs && tabs.length > 0 && (
-        <div className={styles.tabs}>
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              type="button"
-              className={`${styles.tab} ${activeTab === tab.key ? styles.tabActive : ''}`}
-              onClick={() => handleTabClick(tab.key)}
+        {/* Tabs */}
+        {tabs && tabs.length > 0 && (
+          <div className={styles.tabs}>
+            {tabs.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                className={`${styles.tab} ${activeTab === tab.key ? styles.tabActive : ''}`}
+                onClick={() => handleTabClick(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Horizontal scrollable product list */}
+        <div className={styles.scrollContainer} ref={scrollRef}>
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className={styles.card}
+              onClick={product.onClick}
+              role="button"
+              tabIndex={0}
             >
-              {tab.label}
-            </button>
+              <div className={styles.cardImageWrapper}>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className={styles.cardImage}
+                  loading="lazy"
+                />
+              </div>
+              <div className={styles.cardContent}>
+                <p className={styles.cardTitle}>{product.title}</p>
+                <PriceDisplay
+                  price={product.price}
+                  originalPrice={product.originalPrice}
+                  variant={product.originalPrice ? 'sale' : 'default'}
+                  size="sm"
+                />
+              </div>
+            </div>
           ))}
         </div>
-      )}
-
-      {/* Horizontal scrollable product list */}
-      <div className={styles.scrollContainer} ref={scrollRef}>
-        {products.map((product, index) => (
-          <div
-            key={index}
-            className={styles.card}
-            onClick={product.onClick}
-            role="button"
-            tabIndex={0}
-          >
-            <div className={styles.cardImageWrapper}>
-              <img
-                src={product.image}
-                alt={product.title}
-                className={styles.cardImage}
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.cardContent}>
-              <p className={styles.cardTitle}>{product.title}</p>
-              <PriceDisplay
-                price={product.price}
-                originalPrice={product.originalPrice}
-                variant={product.originalPrice ? 'sale' : 'default'}
-                size="sm"
-              />
-            </div>
-          </div>
-        ))}
       </div>
-    </div>
-  );
-}
+    );
+  },
+);
 
-export default ProductCarousel;
+ProductCarousel.displayName = 'ProductCarousel';

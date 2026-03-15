@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { Toast } from './Toast';
 
 const meta = {
@@ -94,5 +95,39 @@ export const Interactive: Story = {
         />
       </div>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Click the success button to show toast
+    const successBtn = canvas.getByRole('button', { name: /muvaffaqiyat/i });
+    await userEvent.click(successBtn);
+
+    // Verify toast alert appears with success message
+    const alert = canvas.getByRole('alert');
+    await expect(alert).toBeInTheDocument();
+    await expect(alert).toHaveTextContent('Muvaffaqiyatli!');
+  },
+};
+
+export const VisibleToastTest: Story = {
+  args: {
+    message: 'Test toast message',
+    type: 'success',
+    visible: true,
+    duration: 0,
+    onClose: fn(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Verify the toast alert is rendered
+    const alert = canvas.getByRole('alert');
+    await expect(alert).toBeInTheDocument();
+    await expect(alert).toHaveTextContent('Test toast message');
+
+    // Verify aria-live for accessibility
+    const status = canvas.getByRole('status');
+    await expect(status).toHaveAttribute('aria-live', 'assertive');
   },
 };

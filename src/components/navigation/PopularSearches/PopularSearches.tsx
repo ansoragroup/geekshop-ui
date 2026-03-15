@@ -1,3 +1,4 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './PopularSearches.module.scss';
 
 export interface PopularSearch {
@@ -7,7 +8,7 @@ export interface PopularSearch {
   text: string;
 }
 
-export interface PopularSearchesProps {
+export interface PopularSearchesProps extends HTMLAttributes<HTMLDivElement> {
   /** List of popular search terms with rankings */
   searches: PopularSearch[];
   /** Callback when a search tag is selected */
@@ -29,39 +30,37 @@ const FireIcon = () => (
   </svg>
 );
 
-export function PopularSearches({
-  searches,
-  onSelect,
-  title = 'Ommabop qidiruvlar',
-}: PopularSearchesProps) {
-  if (searches.length === 0) return null;
+export const PopularSearches = forwardRef<HTMLDivElement, PopularSearchesProps>(
+  ({ searches, onSelect, title = 'Ommabop qidiruvlar', className, ...rest }, ref) => {
+    if (searches.length === 0) return null;
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <FireIcon />
-        <span className={styles.title}>{title}</span>
+    return (
+      <div ref={ref} className={`${styles.container} ${className ?? ''}`} {...rest}>
+        <div className={styles.header}>
+          <FireIcon />
+          <span className={styles.title}>{title}</span>
+        </div>
+
+        <div className={styles.tags}>
+          {searches.map((search) => {
+            const isTop3 = search.rank <= 3;
+            return (
+              <button
+                key={search.rank}
+                className={`${styles.tag} ${isTop3 ? styles.top : ''}`}
+                onClick={() => onSelect?.(search)}
+              >
+                <span className={`${styles.rank} ${isTop3 ? styles.rankTop : ''}`}>
+                  #{search.rank}
+                </span>
+                <span className={styles.text}>{search.text}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
+    );
+  },
+);
 
-      <div className={styles.tags}>
-        {searches.map((search) => {
-          const isTop3 = search.rank <= 3;
-          return (
-            <button
-              key={search.rank}
-              className={`${styles.tag} ${isTop3 ? styles.top : ''}`}
-              onClick={() => onSelect?.(search)}
-            >
-              <span className={`${styles.rank} ${isTop3 ? styles.rankTop : ''}`}>
-                #{search.rank}
-              </span>
-              <span className={styles.text}>{search.text}</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-export default PopularSearches;
+PopularSearches.displayName = 'PopularSearches';

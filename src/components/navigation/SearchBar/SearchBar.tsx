@@ -1,8 +1,12 @@
+import { forwardRef, type HTMLAttributes } from 'react';
+import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './SearchBar.module.scss';
 
-export interface SearchBarProps {
+export interface SearchBarProps extends HTMLAttributes<HTMLDivElement> {
   /** Current input value */
   value?: string;
+  /** Default value for uncontrolled usage */
+  defaultValue?: string;
   /** Change handler */
   onChange?: (value: string) => void;
   /** Triggered when user submits/presses enter */
@@ -17,8 +21,6 @@ export interface SearchBarProps {
   compact?: boolean;
   /** Whether the input is read-only (acts as a link/button) */
   readOnly?: boolean;
-  /** Click handler when in readOnly mode */
-  onClick?: () => void;
 }
 
 const SearchIcon = () => (
@@ -35,55 +37,77 @@ const CameraIcon = () => (
   </svg>
 );
 
-export function SearchBar({
-  value = '',
-  onChange,
-  onSearch,
-  onCamera,
-  placeholder = 'Mahsulot qidirish...',
-  variant = 'default',
-  compact = false,
-  readOnly = false,
-  onClick,
-}: SearchBarProps) {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      onSearch?.(value);
-    }
-  };
+export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
+  (
+    {
+      value: valueProp,
+      defaultValue: defaultValueProp = '',
+      onChange,
+      onSearch,
+      onCamera,
+      placeholder = 'Mahsulot qidirish...',
+      variant = 'default',
+      compact = false,
+      readOnly = false,
+      onClick,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const [value, setValue] = useControllableState({
+      value: valueProp,
+      defaultValue: defaultValueProp,
+      onChange,
+    });
 
-  const wrapperClass = [
-    styles.searchBar,
-    styles[variant],
-    compact ? styles.compact : '',
-  ].filter(Boolean).join(' ');
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        onSearch?.(value);
+      }
+    };
 
-  return (
-    <div className={wrapperClass} onClick={readOnly ? onClick : undefined} role={readOnly ? 'button' : undefined} tabIndex={readOnly ? 0 : undefined}>
-      <span className={styles.searchIcon}>
-        <SearchIcon />
-      </span>
+    const wrapperClass = [
+      styles.searchBar,
+      styles[variant],
+      compact ? styles.compact : '',
+      className ?? '',
+    ].filter(Boolean).join(' ');
 
-      {readOnly ? (
-        <span className={styles.placeholderText}>{placeholder}</span>
-      ) : (
-        <input
-          className={styles.input}
-          type="text"
-          value={value}
-          placeholder={placeholder}
-          onChange={(e) => onChange?.(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-      )}
+    return (
+      <div
+        ref={ref}
+        className={wrapperClass}
+        onClick={readOnly ? onClick : undefined}
+        role={readOnly ? 'button' : undefined}
+        tabIndex={readOnly ? 0 : undefined}
+        {...rest}
+      >
+        <span className={styles.searchIcon}>
+          <SearchIcon />
+        </span>
 
-      {onCamera && (
-        <button className={styles.cameraBtn} onClick={(e) => { e.stopPropagation(); onCamera(); }} aria-label="Kamera bilan qidirish">
-          <CameraIcon />
-        </button>
-      )}
-    </div>
-  );
-}
+        {readOnly ? (
+          <span className={styles.placeholderText}>{placeholder}</span>
+        ) : (
+          <input
+            className={styles.input}
+            type="text"
+            value={value}
+            placeholder={placeholder}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        )}
 
-export default SearchBar;
+        {onCamera && (
+          <button className={styles.cameraBtn} onClick={(e) => { e.stopPropagation(); onCamera(); }} aria-label="Kamera bilan qidirish">
+            <CameraIcon />
+          </button>
+        )}
+      </div>
+    );
+  },
+);
+
+SearchBar.displayName = 'SearchBar';

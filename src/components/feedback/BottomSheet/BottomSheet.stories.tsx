@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { BottomSheet } from './BottomSheet';
 
 const meta = {
@@ -110,5 +111,29 @@ export const Interactive: Story = {
         </BottomSheet>
       </div>
     );
+  },
+};
+
+export const OpenCloseTest: Story = {
+  args: {
+    visible: true,
+    title: 'Test Bottom Sheet',
+    onClose: fn(),
+    children: <div style={{ padding: 16 }}>Bottom sheet content</div>,
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Verify the dialog is visible
+    const dialog = canvas.getByRole('dialog', { name: /test bottom sheet/i });
+    await expect(dialog).toBeInTheDocument();
+
+    // Find and click the close button
+    const closeButton = canvas.getByRole('button', { name: /close/i });
+    await expect(closeButton).toBeInTheDocument();
+    await userEvent.click(closeButton);
+
+    // Verify onClose was called
+    await expect(args.onClose).toHaveBeenCalledTimes(1);
   },
 };

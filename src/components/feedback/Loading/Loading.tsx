@@ -1,8 +1,9 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Loading.module.scss';
 
 export type LoadingType = 'spinner' | 'skeleton' | 'dots';
 
-export interface LoadingProps {
+export interface LoadingProps extends HTMLAttributes<HTMLDivElement> {
   /** Loading display type */
   type?: LoadingType;
   /** Optional text shown below spinner/dots */
@@ -43,48 +44,50 @@ function Skeleton() {
       <div className={styles.skeletonCard}>
         <div className={styles.skeletonImage} />
         <div className={styles.skeletonBody}>
-          <div className={styles.skeletonLine} style={{ width: '80%' }} />
-          <div className={styles.skeletonLine} style={{ width: '60%' }} />
-          <div className={styles.skeletonLine} style={{ width: '40%', height: 16 }} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW80}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW60}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW40} ${styles.skeletonLinePrice}`} />
         </div>
       </div>
       <div className={styles.skeletonCard}>
         <div className={styles.skeletonImage} />
         <div className={styles.skeletonBody}>
-          <div className={styles.skeletonLine} style={{ width: '70%' }} />
-          <div className={styles.skeletonLine} style={{ width: '90%' }} />
-          <div className={styles.skeletonLine} style={{ width: '35%', height: 16 }} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW70}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW90}`} />
+          <div className={`${styles.skeletonLine} ${styles.skeletonLineW35} ${styles.skeletonLinePrice}`} />
         </div>
       </div>
     </div>
   );
 }
 
-export function Loading({
-  type = 'spinner',
-  text,
-  fullscreen = false,
-}: LoadingProps) {
-  const content = (() => {
-    switch (type) {
-      case 'spinner':
-        return <Spinner text={text} />;
-      case 'dots':
-        return <Dots text={text} />;
-      case 'skeleton':
-        return <Skeleton />;
-    }
-  })();
+export const Loading = forwardRef<HTMLDivElement, LoadingProps>(
+  ({ type = 'spinner', text, fullscreen = false, className = '', ...rest }, ref) => {
+    const content = (() => {
+      switch (type) {
+        case 'spinner':
+          return <Spinner text={text} />;
+        case 'dots':
+          return <Dots text={text} />;
+        case 'skeleton':
+          return <Skeleton />;
+      }
+    })();
 
-  if (fullscreen && type !== 'skeleton') {
+    if (fullscreen && type !== 'skeleton') {
+      return (
+        <div ref={ref} className={`${styles.fullscreen} ${className}`} {...rest}>
+          {content}
+        </div>
+      );
+    }
+
     return (
-      <div className={styles.fullscreen}>
+      <div ref={ref} className={className || undefined} {...rest}>
         {content}
       </div>
     );
   }
+);
 
-  return content;
-}
-
-export default Loading;
+Loading.displayName = 'Loading';

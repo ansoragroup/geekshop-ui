@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { SkuSelector } from './SkuSelector';
 import type { SkuProduct, SkuVariant } from './SkuSelector';
 
@@ -127,6 +128,31 @@ export const ListView: Story = {
     viewMode: 'list',
     variant: 'chips',
     open: true,
+    onClose: fn(),
+    onAddToCart: fn(),
+    onSelect: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // The "Savatga qo'shish" button should be disabled initially (no selections)
+    const addToCartBtn = canvas.getByRole('button', { name: /savatga/i });
+    await expect(addToCartBtn).toBeDisabled();
+
+    // Find increment buttons for list items — each variant has a QuantityStepper
+    // Click the first variant's increment button to select it
+    const incrementButtons = canvas.getAllByRole('button', { name: /ko'paytirish/i });
+    await userEvent.click(incrementButtons[0]);
+
+    // onSelect should have been called with the first variant selected
+    await expect(args.onSelect).toHaveBeenCalled();
+
+    // Add to cart button should now be enabled
+    await expect(addToCartBtn).not.toBeDisabled();
+
+    // Click add to cart
+    await userEvent.click(addToCartBtn);
+    await expect(args.onAddToCart).toHaveBeenCalledTimes(1);
   },
 };
 

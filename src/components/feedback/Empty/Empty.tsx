@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Empty.module.scss';
 
-export interface EmptyProps {
+export interface EmptyProps extends HTMLAttributes<HTMLDivElement> {
   /** Custom icon/illustration (renders inline SVG by default) */
   icon?: ReactNode;
   /** Empty state title */
@@ -51,32 +51,28 @@ export const emptyIcons = {
   search: <SearchEmptyIcon />,
 } as const;
 
-export function Empty({
-  icon,
-  title = 'Ma\'lumot topilmadi',
-  description,
-  actionText,
-  onAction,
-}: EmptyProps) {
-  return (
-    <div className={styles.root}>
-      <div className={styles.icon}>
-        {icon ?? <DefaultEmptyIcon />}
+export const Empty = forwardRef<HTMLDivElement, EmptyProps>(
+  ({ icon, title = 'Ma\'lumot topilmadi', description, actionText, onAction, className = '', ...rest }, ref) => {
+    return (
+      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+        <div className={styles.icon}>
+          {icon ?? <DefaultEmptyIcon />}
+        </div>
+
+        <h3 className={styles.title}>{title}</h3>
+
+        {description && (
+          <p className={styles.description}>{description}</p>
+        )}
+
+        {actionText && onAction && (
+          <button className={styles.action} onClick={onAction}>
+            {actionText}
+          </button>
+        )}
       </div>
+    );
+  }
+);
 
-      <h3 className={styles.title}>{title}</h3>
-
-      {description && (
-        <p className={styles.description}>{description}</p>
-      )}
-
-      {actionText && onAction && (
-        <button className={styles.action} onClick={onAction}>
-          {actionText}
-        </button>
-      )}
-    </div>
-  );
-}
-
-export default Empty;
+Empty.displayName = 'Empty';

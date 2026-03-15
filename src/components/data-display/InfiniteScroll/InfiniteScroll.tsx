@@ -150,5 +150,3 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
 );
 
 InfiniteScroll.displayName = 'InfiniteScroll';
-
-export default InfiniteScroll;

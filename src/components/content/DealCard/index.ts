@@ -1,2 +1,2 @@
-export { default as DealCard } from './DealCard';
+export { DealCard } from './DealCard';
 export type { DealCardProps } from './DealCard';

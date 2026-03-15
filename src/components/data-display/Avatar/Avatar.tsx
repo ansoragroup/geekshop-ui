@@ -1,8 +1,9 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Avatar.module.scss';
 
 export type AvatarSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export interface AvatarProps {
+export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   /** Image source URL */
   src?: string;
   /** User's name (for initials fallback) */
@@ -11,8 +12,6 @@ export interface AvatarProps {
   size?: AvatarSize;
   /** Show online indicator dot */
   showOnline?: boolean;
-  /** Additional CSS class */
-  className?: string;
 }
 
 const SIZES: Record<AvatarSize, number> = {
@@ -39,51 +38,49 @@ function getColorFromName(name: string): string {
   return colors[Math.abs(hash) % colors.length];
 }
 
-export function Avatar({
-  src,
-  name = '',
-  size = 'md',
-  showOnline = false,
-  className = '',
-}: AvatarProps) {
-  const px = SIZES[size];
-  const initials = name ? getInitials(name) : '?';
-  const bgColor = name ? getColorFromName(name) : '#CCCCCC';
+export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
+  ({ src, name = '', size = 'md', showOnline = false, className = '', ...rest }, ref) => {
+    const px = SIZES[size];
+    const initials = name ? getInitials(name) : '?';
+    const bgColor = name ? getColorFromName(name) : '#CCCCCC';
 
-  return (
-    <span
-      className={`${styles.wrapper} ${styles[`size-${size}`]} ${className}`}
-      style={{ width: px, height: px }}
-    >
-      {src ? (
-        <img
-          src={src}
-          alt={name || 'Avatar'}
-          className={styles.image}
-          width={px}
-          height={px}
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-            const parent = (e.target as HTMLImageElement).parentElement;
-            if (parent) {
-              const fallback = parent.querySelector(`.${styles.fallback}`) as HTMLElement | null;
-              if (fallback) fallback.style.display = 'flex';
-            }
-          }}
-        />
-      ) : null}
+    return (
       <span
-        className={styles.fallback}
-        style={{
-          backgroundColor: bgColor,
-          display: src ? 'none' : 'flex',
-        }}
+        ref={ref}
+        className={`${styles.wrapper} ${styles[`size-${size}`]} ${className}`}
+        style={{ width: px, height: px }}
+        {...rest}
       >
-        {initials}
+        {src ? (
+          <img
+            src={src}
+            alt={name || 'Avatar'}
+            className={styles.image}
+            width={px}
+            height={px}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none';
+              const parent = (e.target as HTMLImageElement).parentElement;
+              if (parent) {
+                const fallback = parent.querySelector(`.${styles.fallback}`) as HTMLElement | null;
+                if (fallback) fallback.style.display = 'flex';
+              }
+            }}
+          />
+        ) : null}
+        <span
+          className={styles.fallback}
+          style={{
+            backgroundColor: bgColor,
+            display: src ? 'none' : 'flex',
+          }}
+        >
+          {initials}
+        </span>
+        {showOnline && <span className={styles.onlineDot} />}
       </span>
-      {showOnline && <span className={styles.onlineDot} />}
-    </span>
-  );
-}
+    );
+  }
+);
 
-export default Avatar;
+Avatar.displayName = 'Avatar';

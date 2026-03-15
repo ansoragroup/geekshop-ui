@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './NavBar.module.scss';
 
 export interface NavBarAction {
@@ -8,7 +8,7 @@ export interface NavBarAction {
   ariaLabel?: string;
 }
 
-export interface NavBarProps {
+export interface NavBarProps extends HTMLAttributes<HTMLElement> {
   /** Title text (ignored if children is provided) */
   title?: string;
   /** Visual variant */
@@ -53,51 +53,60 @@ export const MoreIcon = () => (
   </svg>
 );
 
-export function NavBar({
-  title,
-  variant = 'default',
-  showBack = true,
-  onBack,
-  rightActions = [],
-  children,
-}: NavBarProps) {
-  const isGradient = variant === 'gradient';
+export const NavBar = forwardRef<HTMLElement, NavBarProps>(
+  (
+    {
+      title,
+      variant = 'default',
+      showBack = true,
+      onBack,
+      rightActions = [],
+      children,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const isGradient = variant === 'gradient';
 
-  return (
-    <header
-      className={`${styles.navBar} ${isGradient ? styles.gradient : styles.default}`}
-    >
-      {/* Left zone */}
-      <div className={styles.left}>
-        {showBack && (
-          <button className={styles.backBtn} onClick={onBack} aria-label="Orqaga">
-            <BackArrow />
-          </button>
-        )}
-      </div>
+    return (
+      <header
+        ref={ref}
+        className={`${styles.navBar} ${isGradient ? styles.gradient : styles.default} ${className ?? ''}`}
+        {...rest}
+      >
+        {/* Left zone */}
+        <div className={styles.left}>
+          {showBack && (
+            <button className={styles.backBtn} onClick={onBack} aria-label="Orqaga">
+              <BackArrow />
+            </button>
+          )}
+        </div>
 
-      {/* Center zone */}
-      <div className={styles.center}>
-        {children ?? (
-          <span className={styles.title}>{title}</span>
-        )}
-      </div>
+        {/* Center zone */}
+        <div className={styles.center}>
+          {children ?? (
+            <span className={styles.title}>{title}</span>
+          )}
+        </div>
 
-      {/* Right zone */}
-      <div className={styles.right}>
-        {rightActions.map((action) => (
-          <button
-            key={action.key}
-            className={styles.actionBtn}
-            onClick={action.onClick}
-            aria-label={action.ariaLabel ?? action.key}
-          >
-            {action.icon}
-          </button>
-        ))}
-      </div>
-    </header>
-  );
-}
+        {/* Right zone */}
+        <div className={styles.right}>
+          {rightActions.map((action) => (
+            <button
+              key={action.key}
+              className={styles.actionBtn}
+              onClick={action.onClick}
+              aria-label={action.ariaLabel ?? action.key}
+            >
+              {action.icon}
+            </button>
+          ))}
+        </div>
+      </header>
+    );
+  },
+);
 
-export default NavBar;
+NavBar.displayName = 'NavBar';

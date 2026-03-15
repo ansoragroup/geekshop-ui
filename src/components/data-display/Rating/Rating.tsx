@@ -1,11 +1,14 @@
-import { useState, useId } from 'react';
+import { forwardRef, useState, useId, type HTMLAttributes } from 'react';
+import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './Rating.module.scss';
 
 export type RatingSize = 'sm' | 'md' | 'lg';
 
-export interface RatingProps {
+export interface RatingProps extends HTMLAttributes<HTMLDivElement> {
   /** Current rating value (0-5, supports half steps) */
-  value: number;
+  value?: number;
+  /** Default rating value for uncontrolled usage */
+  defaultValue?: number;
   /** Number of reviews / ratings count */
   count?: number;
   /** Max star count */
@@ -18,8 +21,6 @@ export interface RatingProps {
   size?: RatingSize;
   /** Show count text like "4.6 (87 baho)" */
   showCount?: boolean;
-  /** Additional CSS class */
-  className?: string;
 }
 
 const STAR_SIZES: Record<RatingSize, number> = {
@@ -65,59 +66,57 @@ function StarIcon({ size, fill, clipId }: { size: number; fill: 'full' | 'half' 
   );
 }
 
-export function Rating({
-  value,
-  count,
-  max = 5,
-  interactive = false,
-  onChange,
-  size = 'md',
-  showCount = true,
-  className = '',
-}: RatingProps) {
-  const clipId = useId();
-  const [hoverValue, setHoverValue] = useState<number | null>(null);
-  const displayValue = hoverValue ?? value;
-  const starSize = STAR_SIZES[size];
+export const Rating = forwardRef<HTMLDivElement, RatingProps>(
+  ({ value: valueProp, defaultValue: defaultValueProp = 0, count, max = 5, interactive = false, onChange, size = 'md', showCount = true, className = '', ...rest }, ref) => {
+    const clipId = useId();
+    const [value, setValue] = useControllableState({
+      value: valueProp,
+      defaultValue: defaultValueProp,
+      onChange,
+    });
+    const [hoverValue, setHoverValue] = useState<number | null>(null);
+    const displayValue = hoverValue ?? value;
+    const starSize = STAR_SIZES[size];
 
-  const stars = Array.from({ length: max }, (_, i) => {
-    const starIndex = i + 1;
-    let fill: 'full' | 'half' | 'empty';
+    const stars = Array.from({ length: max }, (_, i) => {
+      const starIndex = i + 1;
+      let fill: 'full' | 'half' | 'empty';
 
-    if (displayValue >= starIndex) {
-      fill = 'full';
-    } else if (displayValue >= starIndex - 0.5) {
-      fill = 'half';
-    } else {
-      fill = 'empty';
-    }
+      if (displayValue >= starIndex) {
+        fill = 'full';
+      } else if (displayValue >= starIndex - 0.5) {
+        fill = 'half';
+      } else {
+        fill = 'empty';
+      }
+
+      return (
+        <span
+          key={i}
+          className={`${styles.star} ${interactive ? styles.interactive : ''}`}
+          onClick={interactive ? () => setValue(starIndex) : undefined}
+          onMouseEnter={interactive ? () => setHoverValue(starIndex) : undefined}
+          onMouseLeave={interactive ? () => setHoverValue(null) : undefined}
+          role={interactive ? 'button' : undefined}
+          aria-label={interactive ? `${starIndex} yulduz` : undefined}
+        >
+          <StarIcon size={starSize} fill={fill} clipId={`${clipId}-half-${i}`} />
+        </span>
+      );
+    });
 
     return (
-      <span
-        key={i}
-        className={`${styles.star} ${interactive ? styles.interactive : ''}`}
-        onClick={interactive ? () => onChange?.(starIndex) : undefined}
-        onMouseEnter={interactive ? () => setHoverValue(starIndex) : undefined}
-        onMouseLeave={interactive ? () => setHoverValue(null) : undefined}
-        role={interactive ? 'button' : undefined}
-        aria-label={interactive ? `${starIndex} yulduz` : undefined}
-      >
-        <StarIcon size={starSize} fill={fill} clipId={`${clipId}-half-${i}`} />
-      </span>
+      <div ref={ref} className={`${styles.root} ${styles[`size-${size}`]} ${className}`} {...rest}>
+        <div className={styles.stars}>{stars}</div>
+        {showCount && (
+          <span className={styles.countText}>
+            {value.toFixed(1)}
+            {count !== undefined && <span className={styles.countNumber}> ({count} baho)</span>}
+          </span>
+        )}
+      </div>
     );
-  });
+  }
+);
 
-  return (
-    <div className={`${styles.root} ${styles[`size-${size}`]} ${className}`}>
-      <div className={styles.stars}>{stars}</div>
-      {showCount && (
-        <span className={styles.countText}>
-          {value.toFixed(1)}
-          {count !== undefined && <span className={styles.countNumber}> ({count} baho)</span>}
-        </span>
-      )}
-    </div>
-  );
-}
-
-export default Rating;
+Rating.displayName = 'Rating';

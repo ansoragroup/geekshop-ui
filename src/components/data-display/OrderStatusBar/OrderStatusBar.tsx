@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './OrderStatusBar.module.scss';
 
 export interface OrderStatusItem {
@@ -10,13 +10,11 @@ export interface OrderStatusItem {
   count?: number;
 }
 
-export interface OrderStatusBarProps {
+export interface OrderStatusBarProps extends HTMLAttributes<HTMLDivElement> {
   /** Status items to display */
   statuses: OrderStatusItem[];
   /** Callback when a status is tapped */
   onTap?: (index: number) => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 /* ---------- Default inline SVG icons ---------- */
@@ -67,33 +65,31 @@ export const DEFAULT_ORDER_STATUSES: OrderStatusItem[] = [
   { icon: <ReturnIcon />, label: 'Qaytarish', count: 0 },
 ];
 
-export function OrderStatusBar({
-  statuses = DEFAULT_ORDER_STATUSES,
-  onTap,
-  className = '',
-}: OrderStatusBarProps) {
-  return (
-    <div className={`${styles.root} ${className}`}>
-      {statuses.map((item, i) => (
-        <button
-          key={i}
-          className={styles.item}
-          onClick={() => onTap?.(i)}
-          type="button"
-        >
-          <span className={styles.iconWrap}>
-            {item.icon}
-            {item.count != null && item.count > 0 && (
-              <span className={styles.badge}>
-                {item.count > 99 ? '99+' : item.count}
-              </span>
-            )}
-          </span>
-          <span className={styles.label}>{item.label}</span>
-        </button>
-      ))}
-    </div>
-  );
-}
+export const OrderStatusBar = forwardRef<HTMLDivElement, OrderStatusBarProps>(
+  ({ statuses = DEFAULT_ORDER_STATUSES, onTap, className = '', ...rest }, ref) => {
+    return (
+      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+        {statuses.map((item, i) => (
+          <button
+            key={i}
+            className={styles.item}
+            onClick={() => onTap?.(i)}
+            type="button"
+          >
+            <span className={styles.iconWrap}>
+              {item.icon}
+              {item.count != null && item.count > 0 && (
+                <span className={styles.badge}>
+                  {item.count > 99 ? '99+' : item.count}
+                </span>
+              )}
+            </span>
+            <span className={styles.label}>{item.label}</span>
+          </button>
+        ))}
+      </div>
+    );
+  }
+);
 
-export default OrderStatusBar;
+OrderStatusBar.displayName = 'OrderStatusBar';

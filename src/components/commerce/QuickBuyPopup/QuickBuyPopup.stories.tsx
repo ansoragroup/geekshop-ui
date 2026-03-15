@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { QuickBuyPopup } from './QuickBuyPopup';
 import type { QuickBuyProduct, QuickBuyVariant } from './QuickBuyPopup';
 
@@ -47,6 +48,30 @@ export const Mouse: Story = {
     product: mouseProduct,
     variants: mouseVariants,
     open: true,
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // The dialog should be open
+    const dialog = canvas.getByRole('dialog');
+    await expect(dialog).toBeInTheDocument();
+
+    // First variant (Qora) should be selected by default
+    const qoraRadio = canvas.getByRole('radio', { name: /qora/i });
+    await expect(qoraRadio).toHaveAttribute('aria-checked', 'true');
+
+    // Select a different variant (Oq)
+    const oqRadio = canvas.getByRole('radio', { name: /oq/i });
+    await userEvent.click(oqRadio);
+    await expect(oqRadio).toHaveAttribute('aria-checked', 'true');
+    await expect(qoraRadio).toHaveAttribute('aria-checked', 'false');
+
+    // Click "Savatga qo'shish"
+    const addToCartBtn = canvas.getByRole('button', { name: /savatga/i });
+    await userEvent.click(addToCartBtn);
+    await expect(args.onAddToCart).toHaveBeenCalledWith('white', 1);
   },
 };
 

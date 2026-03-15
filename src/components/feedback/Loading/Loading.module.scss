@@ -98,6 +98,19 @@
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
+// Skeleton line width variants (simulate realistic text block widths)
+.skeletonLineW80 { width: 80%; }
+.skeletonLineW70 { width: 70%; }
+.skeletonLineW60 { width: 60%; }
+.skeletonLineW90 { width: 90%; }
+.skeletonLineW40 { width: 40%; }
+.skeletonLineW35 { width: 35%; }
+
+// Skeleton price line (taller to simulate a price placeholder)
+.skeletonLinePrice {
+  height: 16px;
+}
+
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

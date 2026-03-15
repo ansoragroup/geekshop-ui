@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { TabBar } from './TabBar';
 import type { TabBarProps } from './TabBar';
 
@@ -74,5 +75,41 @@ export const CartBadge99Plus: Story = {
       { key: 'profile', label: 'Profil', icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" /></svg>, activeIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" /></svg> },
     ];
     return <InteractiveTabBar initialTab="home" items={items} />;
+  },
+};
+
+export const SwitchTabsTest: Story = {
+  args: {
+    activeKey: 'home',
+    onChange: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Verify tablist is rendered
+    const tablist = canvas.getByRole('tablist');
+    await expect(tablist).toBeInTheDocument();
+
+    // Verify Home is initially active
+    const homeTab = canvas.getByRole('tab', { name: /bosh sahifa/i });
+    await expect(homeTab).toHaveAttribute('aria-selected', 'true');
+
+    // Click on Kategoriyalar tab
+    const categoriesTab = canvas.getByRole('tab', { name: /kategoriyalar/i });
+    await userEvent.click(categoriesTab);
+    await expect(args.onChange).toHaveBeenCalledWith('categories');
+
+    // Click on Savat tab
+    const cartTab = canvas.getByRole('tab', { name: /savat/i });
+    await userEvent.click(cartTab);
+    await expect(args.onChange).toHaveBeenCalledWith('cart');
+
+    // Click on Profil tab
+    const profileTab = canvas.getByRole('tab', { name: /profil/i });
+    await userEvent.click(profileTab);
+    await expect(args.onChange).toHaveBeenCalledWith('profile');
+
+    // Verify onChange was called 3 times
+    await expect(args.onChange).toHaveBeenCalledTimes(3);
   },
 };

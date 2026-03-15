@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { forwardRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './Toast.module.scss';
 
 export type ToastType = 'success' | 'error' | 'info' | 'loading';
 
-export interface ToastProps {
+export interface ToastProps extends HTMLAttributes<HTMLDivElement> {
   /** Toast message text */
   message: string;
   /** Toast type determines icon and color */
@@ -52,33 +52,31 @@ const iconMap: Record<ToastType, () => JSX.Element> = {
   loading: LoadingSpinner,
 };
 
-export function Toast({
-  message,
-  type = 'info',
-  duration = 2000,
-  visible,
-  onClose,
-}: ToastProps) {
-  useEffect(() => {
-    if (!visible || duration === 0 || type === 'loading') return;
-    const timer = setTimeout(() => {
-      onClose?.();
-    }, duration);
-    return () => clearTimeout(timer);
-  }, [visible, duration, onClose, type]);
+export const Toast = forwardRef<HTMLDivElement, ToastProps>(
+  ({ message, type = 'info', duration = 2000, visible, onClose, className = '', ...rest }, ref) => {
+    useEffect(() => {
+      if (!visible || duration === 0 || type === 'loading') return;
+      const timer = setTimeout(() => {
+        onClose?.();
+      }, duration);
+      return () => clearTimeout(timer);
+    }, [visible, duration, onClose, type]);
 
-  if (!visible) return null;
+    if (!visible) return null;
 
-  const Icon = iconMap[type];
+    const Icon = iconMap[type];
 
-  return (
-    <div className={styles.overlay} role="status" aria-live="assertive" aria-atomic="true">
-      <div className={`${styles.toast} ${styles[`type-${type}`]}`} role="alert">
-        <span className={styles.icon}>
-          <Icon />
-        </span>
-        <span className={styles.message}>{message}</span>
+    return (
+      <div ref={ref} className={`${styles.overlay} ${className}`} role="status" aria-live="assertive" aria-atomic="true" {...rest}>
+        <div className={`${styles.toast} ${styles[`type-${type}`]}`} role="alert">
+          <span className={styles.icon}>
+            <Icon />
+          </span>
+          <span className={styles.message}>{message}</span>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
+
+Toast.displayName = 'Toast';

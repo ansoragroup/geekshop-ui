@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { forwardRef, useState, useCallback, useMemo, type HTMLAttributes } from 'react';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './SkuSelector.module.scss';
 
@@ -22,7 +22,7 @@ export interface SkuSelection {
   quantity: number;
 }
 
-export interface SkuSelectorProps {
+export interface SkuSelectorProps extends HTMLAttributes<HTMLDivElement> {
   product: SkuProduct;
   variants: SkuVariant[];
   onSelect?: (selections: SkuSelection[]) => void;
@@ -35,14 +35,20 @@ function formatPrice(price: number): string {
   return price.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
-export function SkuSelector({
-  product,
-  variants,
-  onSelect,
-  onAddToCart,
-  onClose,
-  open = true,
-}: SkuSelectorProps) {
+export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
+  (
+    {
+      product,
+      variants,
+      onSelect,
+      onAddToCart,
+      onClose,
+      open = true,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
   const [mode, setMode] = useState<'list' | 'imageGrid'>('list');
   const [selections, setSelections] = useState<Record<string, number>>({});
   const [gridSelected, setGridSelected] = useState<string | null>(null);
@@ -115,7 +121,7 @@ export function SkuSelector({
     : null;
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div ref={ref} className={[styles.overlay, className].filter(Boolean).join(' ')} onClick={onClose} {...rest}>
       <div className={styles.sheet} onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className={styles.header}>
@@ -258,4 +264,7 @@ export function SkuSelector({
       </div>
     </div>
   );
-}
+  },
+);
+
+SkuSelector.displayName = 'SkuSelector';

@@ -52,8 +52,6 @@
     "version": "changeset version"
   },
   "dependencies": {
-    "@nutui/icons-react": "^3.0.1",
-    "@nutui/nutui-react": "^2.7.15",
     "lucide-react": "^0.577.0",
     "sass": "^1.98.0"
   },
@@ -83,6 +81,7 @@
     "@vitest/coverage-v8": "^4.1.0",
     "ajv": "^8.18.0",
     "eslint": "^9.39.4",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-storybook": "^10.2.19",

@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
+import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './TabBar.module.scss';
 
 export interface TabBarItem {
@@ -9,11 +10,13 @@ export interface TabBarItem {
   badge?: number;
 }
 
-export interface TabBarProps {
+export interface TabBarProps extends HTMLAttributes<HTMLElement> {
   /** Currently active tab key */
-  activeKey: string;
+  activeKey?: string;
+  /** Default active tab key for uncontrolled usage */
+  defaultActiveKey?: string;
   /** Callback when a tab is tapped */
-  onChange: (key: string) => void;
+  onChange?: (key: string) => void;
   /** Custom tab items (defaults to GeekShop standard tabs) */
   items?: TabBarItem[];
 }
@@ -86,33 +89,41 @@ const DEFAULT_ITEMS: TabBarItem[] = [
   { key: 'profile', label: 'Profil', icon: <UserIcon />, activeIcon: <UserIconFilled /> },
 ];
 
-export function TabBar({ activeKey, onChange, items = DEFAULT_ITEMS }: TabBarProps) {
-  return (
-    <nav className={styles.tabBar} role="tablist">
-      {items.map((item) => {
-        const isActive = item.key === activeKey;
-        return (
-          <button
-            key={item.key}
-            role="tab"
-            aria-selected={isActive}
-            className={`${styles.tabItem} ${isActive ? styles.active : ''}`}
-            onClick={() => onChange(item.key)}
-          >
-            <span className={styles.iconWrap}>
-              {isActive ? item.activeIcon : item.icon}
-              {item.badge != null && item.badge > 0 && (
-                <span className={styles.badge}>
-                  {item.badge > 99 ? '99+' : item.badge}
-                </span>
-              )}
-            </span>
-            <span className={styles.label}>{item.label}</span>
-          </button>
-        );
-      })}
-    </nav>
-  );
-}
+export const TabBar = forwardRef<HTMLElement, TabBarProps>(
+  ({ activeKey: activeKeyProp, defaultActiveKey = '', onChange, items = DEFAULT_ITEMS, className, ...rest }, ref) => {
+    const [activeKey, setActiveKey] = useControllableState({
+      value: activeKeyProp,
+      defaultValue: defaultActiveKey,
+      onChange,
+    });
 
-export default TabBar;
+    return (
+      <nav ref={ref} className={`${styles.tabBar} ${className ?? ''}`} role="tablist" {...rest}>
+        {items.map((item) => {
+          const isActive = item.key === activeKey;
+          return (
+            <button
+              key={item.key}
+              role="tab"
+              aria-selected={isActive}
+              className={`${styles.tabItem} ${isActive ? styles.active : ''}`}
+              onClick={() => setActiveKey(item.key)}
+            >
+              <span className={styles.iconWrap}>
+                {isActive ? item.activeIcon : item.icon}
+                {item.badge != null && item.badge > 0 && (
+                  <span className={styles.badge}>
+                    {item.badge > 99 ? '99+' : item.badge}
+                  </span>
+                )}
+              </span>
+              <span className={styles.label}>{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+    );
+  },
+);
+
+TabBar.displayName = 'TabBar';

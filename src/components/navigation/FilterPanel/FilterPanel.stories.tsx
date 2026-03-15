@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { FilterPanel } from './FilterPanel';
 import type { FilterPanelProps, FilterValues } from './FilterPanel';
 
@@ -166,4 +167,79 @@ export const MinimalFilters: Story = {
       ]}
     />
   ),
+};
+
+export const SelectAndApplyTest: Story = {
+  args: {
+    visible: true,
+    filterGroups: [
+      {
+        key: 'brand',
+        title: 'Brend',
+        type: 'checkbox' as const,
+        options: [
+          { value: 'nvidia', label: 'NVIDIA', count: 45 },
+          { value: 'amd', label: 'AMD', count: 28 },
+          { value: 'intel', label: 'Intel Arc', count: 12 },
+        ],
+      },
+      {
+        key: 'price',
+        title: 'Narx oraligi',
+        type: 'priceRange' as const,
+      },
+    ],
+    onApply: fn(),
+    onReset: fn(),
+    onClose: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Click on NVIDIA checkbox to select it
+    const nvidiaOption = canvas.getByText('NVIDIA');
+    await userEvent.click(nvidiaOption);
+
+    // Click on AMD checkbox to select it
+    const amdOption = canvas.getByText('AMD');
+    await userEvent.click(amdOption);
+
+    // Click the apply button
+    const applyBtn = canvas.getByText("Ko'rsatish");
+    await userEvent.click(applyBtn);
+
+    // Verify onApply was called with the selected values
+    await expect(args.onApply).toHaveBeenCalledTimes(1);
+    await expect(args.onApply).toHaveBeenCalledWith(
+      expect.objectContaining({ brand: expect.arrayContaining(['nvidia', 'amd']) }),
+    );
+  },
+};
+
+export const CloseAndResetTest: Story = {
+  args: {
+    visible: true,
+    filterGroups: [
+      {
+        key: 'brand',
+        title: 'Brend',
+        type: 'checkbox' as const,
+        options: [
+          { value: 'nvidia', label: 'NVIDIA', count: 45 },
+          { value: 'amd', label: 'AMD', count: 28 },
+        ],
+      },
+    ],
+    onApply: fn(),
+    onReset: fn(),
+    onClose: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Click the close button
+    const closeBtn = canvas.getByRole('button', { name: /yopish/i });
+    await userEvent.click(closeBtn);
+    await expect(args.onClose).toHaveBeenCalledTimes(1);
+  },
 };

@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react';
+import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './Popup.module.scss';
 
 export type PopupPosition = 'center' | 'bottom';
 
-export interface PopupProps {
+export interface PopupProps extends HTMLAttributes<HTMLDivElement> {
   /** Whether the popup is visible */
   visible: boolean;
   /** Position of the popup */
@@ -25,51 +25,61 @@ const CloseIcon = () => (
   </svg>
 );
 
-export function Popup({
-  visible,
-  position = 'center',
-  title,
-  closable = true,
-  onClose,
-  children,
-}: PopupProps) {
-  const popupRef = useFocusTrap<HTMLDivElement>(visible, {
-    onEscape: closable ? onClose : undefined,
-  });
+export const Popup = forwardRef<HTMLDivElement, PopupProps>(
+  ({ visible, position = 'center', title, closable = true, onClose, children, className = '', ...rest }, ref) => {
+    const popupRef = useFocusTrap<HTMLDivElement>(visible, {
+      onEscape: closable ? onClose : undefined,
+    });
 
-  if (!visible) return null;
+    const mergedRef = useCallback(
+      (node: HTMLDivElement | null) => {
+        popupRef.current = node;
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+      },
+      [ref, popupRef],
+    );
 
-  const handleOverlayClick = () => {
-    onClose?.();
-  };
+    if (!visible) return null;
 
-  const handleContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
+    const handleOverlayClick = () => {
+      onClose?.();
+    };
 
-  return (
-    <div className={styles.overlay} onClick={handleOverlayClick}>
-      <div
-        ref={popupRef}
-        className={`${styles.popup} ${styles[`position-${position}`]}`}
-        onClick={handleContentClick}
-        role="dialog"
-        aria-modal="true"
-        aria-label={title || 'Popup'}
-        tabIndex={-1}
-      >
-        {(title || closable) && (
-          <div className={styles.header}>
-            <span className={styles.title}>{title}</span>
-            {closable && (
-              <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
-                <CloseIcon />
-              </button>
-            )}
-          </div>
-        )}
-        <div className={styles.body}>{children}</div>
+    const handleContentClick = (e: React.MouseEvent) => {
+      e.stopPropagation();
+    };
+
+    return (
+      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick}>
+        <div
+          ref={mergedRef}
+          className={`${styles.popup} ${styles[`position-${position}`]}`}
+          onClick={handleContentClick}
+          role="dialog"
+          aria-modal="true"
+          aria-label={title || 'Popup'}
+          tabIndex={-1}
+          {...rest}
+        >
+          {(title || closable) && (
+            <div className={styles.header}>
+              <span className={styles.title}>{title}</span>
+              {closable && (
+                <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
+                  <CloseIcon />
+                </button>
+              )}
+            </div>
+          )}
+          <div className={styles.body}>{children}</div>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
+
+Popup.displayName = 'Popup';

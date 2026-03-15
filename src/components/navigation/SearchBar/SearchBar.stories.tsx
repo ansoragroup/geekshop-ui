@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { SearchBar } from './SearchBar';
 import type { SearchBarProps } from './SearchBar';
 
@@ -95,4 +96,48 @@ export const AllVariants: Story = {
       </div>
     </div>
   ),
+};
+
+export const TypeAndSearchTest: Story = {
+  args: {
+    placeholder: 'Mahsulot qidirish...',
+    onChange: fn(),
+    onSearch: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Find the input
+    const input = canvas.getByPlaceholderText('Mahsulot qidirish...');
+    await expect(input).toBeInTheDocument();
+
+    // Type a search query
+    await userEvent.type(input, 'RTX 4090');
+    await expect(input).toHaveValue('RTX 4090');
+
+    // Verify onChange was called for each character
+    await expect(args.onChange).toHaveBeenCalled();
+
+    // Press Enter to trigger search
+    await userEvent.keyboard('{Enter}');
+    await expect(args.onSearch).toHaveBeenCalledWith('RTX 4090');
+  },
+};
+
+export const CameraClickTest: Story = {
+  args: {
+    placeholder: 'Mahsulot qidirish...',
+    onCamera: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Find and click the camera button
+    const cameraBtn = canvas.getByRole('button', { name: /kamera/i });
+    await expect(cameraBtn).toBeInTheDocument();
+    await userEvent.click(cameraBtn);
+
+    // Verify onCamera was called
+    await expect(args.onCamera).toHaveBeenCalledTimes(1);
+  },
 };

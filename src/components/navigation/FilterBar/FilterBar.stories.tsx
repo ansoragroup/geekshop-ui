@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+import { expect, fn, userEvent, within } from 'storybook/test';
 import { FilterBar } from './FilterBar';
 import type { FilterBarProps } from './FilterBar';
 
@@ -89,4 +90,41 @@ export const PriceSortActive: Story = {
       initialFilter="cheap"
     />
   ),
+};
+
+export const SelectFilterTest: Story = {
+  args: {
+    filters: [
+      { key: 'all', label: 'Barchasi' },
+      { key: 'new', label: 'Yangi' },
+      { key: 'popular', label: 'Mashhur' },
+      { key: 'cheap', label: 'Arzon' },
+    ],
+    activeFilter: 'all',
+    onFilterChange: fn(),
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Verify tablist is rendered
+    const tablist = canvas.getByRole('tablist');
+    await expect(tablist).toBeInTheDocument();
+
+    // Verify initial active tab
+    const allTab = canvas.getByRole('tab', { name: /barchasi/i });
+    await expect(allTab).toHaveAttribute('aria-selected', 'true');
+
+    // Click on "Yangi" tab
+    const yangiTab = canvas.getByRole('tab', { name: /yangi/i });
+    await userEvent.click(yangiTab);
+    await expect(args.onFilterChange).toHaveBeenCalledWith('new');
+
+    // Click on "Mashhur" tab
+    const mashhurTab = canvas.getByRole('tab', { name: /mashhur/i });
+    await userEvent.click(mashhurTab);
+    await expect(args.onFilterChange).toHaveBeenCalledWith('popular');
+
+    // Verify onFilterChange was called twice total
+    await expect(args.onFilterChange).toHaveBeenCalledTimes(2);
+  },
 };

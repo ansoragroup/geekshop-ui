@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import CouponCard from './CouponCard'
+import { CouponCard } from './CouponCard'
 
 describe('CouponCard', () => {
   afterEach(cleanup)
@@ -55,16 +55,16 @@ describe('CouponCard', () => {
     const { container } = render(
       <CouponCard discount="-20%" code="COLOR" expiryDate="2025-12-31" color="#00FF00" />,
     )
-    const leftPart = container.querySelector('[class*="leftPart"]')
-    expect(leftPart).toHaveStyle({ background: '#00FF00' })
+    const leftPart = container.querySelector('[class*="leftPart"]') as HTMLElement
+    expect(leftPart.style.getPropertyValue('--gs-coupon-bg')).toBe('#00FF00')
   })
 
   it('applies default color #FF5000 to left part', () => {
     const { container } = render(
       <CouponCard discount="-20%" code="DEFAULT" expiryDate="2025-12-31" />,
     )
-    const leftPart = container.querySelector('[class*="leftPart"]')
-    expect(leftPart).toHaveStyle({ background: '#FF5000' })
+    const leftPart = container.querySelector('[class*="leftPart"]') as HTMLElement
+    expect(leftPart.style.getPropertyValue('--gs-coupon-bg')).toBe('#FF5000')
   })
 
   it('renders large discount values', () => {

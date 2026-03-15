@@ -1,7 +1,7 @@
-import { type FC, type MouseEventHandler } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
 import styles from './SectionHeader.module.scss';
 
-export interface SectionHeaderProps {
+export interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
   /** Section title */
   title: string;
   /** Item count shown next to "see all" (e.g. "20 ta") */
@@ -12,14 +12,22 @@ export interface SectionHeaderProps {
   onViewAll?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const SectionHeader: FC<SectionHeaderProps> = ({
-  title,
-  count,
-  icon,
-  onViewAll,
-}) => {
+export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
+  (
+    {
+      title,
+      count,
+      icon,
+      onViewAll,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+  const rootClass = [styles.sectionHeader, className].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.sectionHeader}>
+    <div ref={ref} className={rootClass} {...rest}>
       <div className={styles.left}>
         {icon && <span className={styles.icon}>{icon}</span>}
         <h3 className={styles.title}>{title}</h3>
@@ -48,6 +56,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({
       )}
     </div>
   );
-};
+  },
+);
 
-export default SectionHeader;
+SectionHeader.displayName = 'SectionHeader';

@@ -1,10 +1,11 @@
+import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Tag.module.scss';
 
 export type TagVariant = 'filled' | 'outlined' | 'light';
 export type TagColor = 'primary' | 'success' | 'warning' | 'error' | 'default';
 export type TagSize = 'sm' | 'md';
 
-export interface TagProps {
+export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   /** Text content of the tag */
   text: string;
   /** Visual variant */
@@ -17,8 +18,6 @@ export interface TagProps {
   closable?: boolean;
   /** Callback when close icon is clicked */
   onClose?: () => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 const CloseIcon = () => (
@@ -27,35 +26,31 @@ const CloseIcon = () => (
   </svg>
 );
 
-export function Tag({
-  text,
-  variant = 'filled',
-  color = 'default',
-  size = 'md',
-  closable = false,
-  onClose,
-  className = '',
-}: TagProps) {
-  return (
-    <span
-      className={`${styles.tag} ${styles[`variant-${variant}`]} ${styles[`color-${color}`]} ${styles[`size-${size}`]} ${className}`}
-    >
-      <span className={styles.text}>{text}</span>
-      {closable && (
-        <button
-          type="button"
-          className={styles.closeBtn}
-          onClick={(e) => {
-            e.stopPropagation();
-            onClose?.();
-          }}
-          aria-label={`Olib tashlash: ${text}`}
-        >
-          <CloseIcon />
-        </button>
-      )}
-    </span>
-  );
-}
+export const Tag = forwardRef<HTMLSpanElement, TagProps>(
+  ({ text, variant = 'filled', color = 'default', size = 'md', closable = false, onClose, className = '', ...rest }, ref) => {
+    return (
+      <span
+        ref={ref}
+        className={`${styles.tag} ${styles[`variant-${variant}`]} ${styles[`color-${color}`]} ${styles[`size-${size}`]} ${className}`}
+        {...rest}
+      >
+        <span className={styles.text}>{text}</span>
+        {closable && (
+          <button
+            type="button"
+            className={styles.closeBtn}
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose?.();
+            }}
+            aria-label={`Olib tashlash: ${text}`}
+          >
+            <CloseIcon />
+          </button>
+        )}
+      </span>
+    );
+  }
+);
 
-export default Tag;
+Tag.displayName = 'Tag';

@@ -167,4 +167,3 @@ export const PullToRefresh = forwardRef<HTMLDivElement, PullToRefreshProps>(
   },
 );
 
-export default PullToRefresh;

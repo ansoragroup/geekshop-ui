@@ -1,7 +1,7 @@
-import { type FC, type MouseEventHandler } from 'react';
+import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './CouponCard.module.scss';
 
-export interface CouponCardProps {
+export interface CouponCardProps extends HTMLAttributes<HTMLDivElement> {
   /** Discount text (e.g. "-10%", "-15%", "50 000") */
   discount: string;
   /** Coupon code */
@@ -20,17 +20,25 @@ function formatPrice(value: number): string {
   return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
 }
 
-const CouponCard: FC<CouponCardProps> = ({
-  discount,
-  code,
-  expiryDate,
-  minAmount,
-  color = '#FF5000',
-  onUse,
-}) => {
+export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
+  (
+    {
+      discount,
+      code,
+      expiryDate,
+      minAmount,
+      color = '#FF5000',
+      onUse,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+  const rootClass = [styles.couponCard, className].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.couponCard}>
-      <div className={styles.leftPart} style={{ background: color }}>
+    <div ref={ref} className={rootClass} {...rest}>
+      <div className={styles.leftPart} style={{ '--gs-coupon-bg': color } as CSSProperties}>
         <div className={styles.discountCircleTop} />
         <div className={styles.discountCircleBottom} />
         <span className={styles.discountText}>{discount}</span>
@@ -59,6 +67,7 @@ const CouponCard: FC<CouponCardProps> = ({
       </div>
     </div>
   );
-};
+  },
+);
 
-export default CouponCard;
+CouponCard.displayName = 'CouponCard';

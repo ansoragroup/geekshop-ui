@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Grid.module.scss';
 
-export interface GridProps {
+export interface GridProps extends HTMLAttributes<HTMLDivElement> {
   /** Number of grid columns */
   columns?: number;
   /** Gap between items (CSS value) */
@@ -10,22 +10,35 @@ export interface GridProps {
   children?: ReactNode;
 }
 
-export function Grid({
-  columns = 2,
-  gap = '8px',
-  children,
-}: GridProps) {
+export const Grid = forwardRef<HTMLDivElement, GridProps>(
+  (
+    {
+      columns = 2,
+      gap = '8px',
+      children,
+      className,
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+  const rootClass = [styles.grid, className].filter(Boolean).join(' ');
+
   return (
     <div
-      className={styles.grid}
+      ref={ref}
+      className={rootClass}
       style={{
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap,
+        ...style,
       }}
+      {...rest}
     >
       {children}
     </div>
   );
-}
+  },
+);
 
-export default Grid;
+Grid.displayName = 'Grid';
