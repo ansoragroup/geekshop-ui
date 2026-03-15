@@ -14,7 +14,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: 24, background: '#fff', borderRadius: 12, maxWidth: 480 }}>
+      <div style={{ padding: 24, background: '#fff', borderRadius: 12, width: 390 }}>
         <Story />
       </div>
     ),

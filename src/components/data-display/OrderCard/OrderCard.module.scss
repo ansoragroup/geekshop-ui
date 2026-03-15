@@ -236,21 +236,6 @@
 // Container Query: Expanded (> 400px)
 // ========================================
 @container (min-width: 401px) {
-  .root {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr auto;
-  }
-
-  .header {
-    grid-column: 1 / -1;
-  }
-
-  .products {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
   .statusBadge {
     font-size: $font-size-md;
   }
@@ -266,14 +251,6 @@
 
   .productPrice {
     font-size: $font-size-lg;
-  }
-
-  .totalRow {
-    grid-column: 1 / -1;
-  }
-
-  .actions {
-    grid-column: 1 / -1;
   }
 
   .totalAmount {

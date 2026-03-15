@@ -86,10 +86,6 @@
 // Container Query: Compact (< 240px)
 // ========================================
 @container (max-width: 239px) {
-  .root {
-    padding: $spacing-md;
-  }
-
   // Hide avatar in compact mode
   .header > :first-child {
     display: none;
@@ -133,44 +129,17 @@
 // Container Query: Expanded (> 360px)
 // ========================================
 @container (min-width: 361px) {
-  .root {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 0 $spacing-lg;
-  }
-
-  // Header spans the avatar column; avatar sits as sidebar
   .header {
-    grid-column: 1 / -1;
-    flex-direction: row;
     gap: $spacing-md;
-  }
-
-  .headerInfo {
-    flex: 1;
   }
 
   .userName {
     font-size: $font-size-lg;
   }
 
-  .ratingRow {
-    grid-column: 2;
-    margin-top: $spacing-xs;
-  }
-
-  .variant {
-    grid-column: 2;
-  }
-
   .content {
-    grid-column: 2;
     font-size: $font-size-md;
     line-height: $line-height-relaxed;
-  }
-
-  .images {
-    grid-column: 2;
   }
 
   .thumbnail {
