@@ -369,4 +369,98 @@ export const ru: TranslationDictionary = {
   'address.deleteBody': 'адрес? Это действие необратимо.',
   'address.deletedToast': 'адрес удалён',
   'address.myAddresses': 'Мои адреса',
+
+  // Select
+  'select.placeholder': 'Выберите',
+  'select.confirm': 'Подтвердить',
+  'select.cancel': 'Отмена',
+  'select.title': 'Выбрать',
+
+  // ImageUploader
+  'imageUploader.add': 'Добавить фото',
+  'imageUploader.delete': 'Удалить фото',
+  'imageUploader.maxCount': 'Максимум {max} фото',
+  'imageUploader.sizeError': 'Размер фото превышает {max}МБ',
+
+  // Chip
+  'chip.delete': 'Удалить: {label}',
+
+  // GroupBuy
+  'groupBuy.joinGroup': 'Вступить в группу',
+  'groupBuy.buyAlone': 'Купить одному',
+  'groupBuy.joined': '{current}/{total} вступили',
+  'groupBuy.timeLeft': 'Осталось {time}',
+  'groupBuy.groupPrice': 'Группа',
+  'groupBuy.soloPrice': 'Одному',
+  'groupBuy.expired': 'Время вышло',
+  'groupBuy.full': 'Группа заполнена',
+
+  // Stock
+  'stock.onlyLeft': 'Осталось только {count} шт.!',
+  'stock.sold': '{percent}% продано',
+  'stock.inStock': 'В наличии',
+  'stock.lowStock': 'Мало осталось',
+  'stock.almostGone': 'Почти распродано!',
+
+  // Shop
+  'shop.follow': 'Подписаться',
+  'shop.following': 'Подписан',
+  'shop.enter': 'Перейти в магазин',
+  'shop.products': '{count} товаров',
+  'shop.followers': '{count} подписчиков',
+  'shop.responseRate': '{rate}% ответов',
+
+  // Delivery
+  'delivery.pending': 'Подготовка',
+  'delivery.shipped': 'Отправлен',
+  'delivery.inTransit': 'В пути',
+  'delivery.delivered': 'Доставлен',
+  'delivery.track': 'Отследить',
+  'delivery.copy': 'Копировать',
+  'delivery.estimated': 'Ориентировочно: {date}',
+  'delivery.lastUpdate': 'Последнее обновление: {time}',
+  'delivery.trackingNumber': 'Трек номер: {number}',
+
+  // Installment
+  'installment.perMonth': '{price}/мес',
+  'installment.months': '{count} мес',
+  'installment.interestFree': 'Без процентов',
+  'installment.from': 'от',
+
+  // SocialProof
+  'socialProof.peopleBought': '{count} человек купили {period}',
+  'socialProof.peopleBoughtDefault': '{count} человек купили',
+  'socialProof.justBought': '{name} купил(а) {time} назад',
+  'socialProof.watching': '{count} человек смотрят сейчас',
+
+  // Auth
+  'auth.welcome': 'Добро пожаловать!',
+  'auth.phonePrompt': 'Введите номер телефона для входа в аккаунт',
+  'auth.sendCode': 'Отправить код',
+  'auth.enterCode': 'Введите код',
+  'auth.codeSentTo': 'Введите код, отправленный на {phone}',
+  'auth.codeNotReceived': 'Не получили код?',
+  'auth.resend': 'Отправить повторно',
+  'auth.resendIn': 'Повторно через ({seconds})',
+  'auth.codeSent': 'Код отправлен повторно',
+  'auth.verify': 'Подтвердить',
+  'auth.loginViaTelegram': 'Войти через Telegram',
+  'auth.or': 'или',
+  'auth.termsAgreement': 'Продолжая, вы соглашаетесь с условиями использования',
+  'auth.register': 'Регистрация',
+  'auth.registerPrompt': 'Зарегистрируйтесь, чтобы сохранить заказ',
+  'auth.enterName': 'Введите ваше имя',
+  'auth.haveAccount': 'Уже есть аккаунт?',
+  'auth.login': 'Войти',
+  'auth.success': 'Успешно!',
+  'auth.loggedIn': 'Вы вошли в аккаунт',
+  'auth.registered': 'Вы зарегистрированы',
+  'auth.startShopping': 'Начать покупки',
+  'auth.invalidCode': 'Неверный код',
+  'auth.phoneLabel': 'Номер телефона',
+  'auth.otpLabel': 'Код подтверждения',
+  'auth.nameLabel': 'Имя',
+  'auth.phonePlaceholder': '90 123 45 67',
+  'page.login': 'Вход',
+  'page.register': 'Регистрация',
 };

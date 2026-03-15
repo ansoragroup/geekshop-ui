@@ -1,0 +1,210 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  font-family: $font-family;
+  container-type: inline-size;
+  width: 100%;
+}
+
+// ---- Header ----
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.packageIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  flex-shrink: 0;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.carrier {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.statusLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+// ---- Progress steps ----
+.progressRow {
+  display: flex;
+  align-items: center;
+  padding: $spacing-xs 0;
+}
+
+.stepGroup {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  &:last-child {
+    flex: 0;
+  }
+}
+
+.stepDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: $color-border;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+}
+
+.stepDotActive {
+  width: 12px;
+  height: 12px;
+}
+
+.stepLine {
+  flex: 1;
+  height: 2px;
+  background: $color-border;
+  margin: 0 $spacing-xxs;
+  transition: background $transition-fast;
+}
+
+.stepLineActive {
+  // color set inline
+}
+
+// ---- Details ----
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.trackingRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.trackingLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: $radius-xs;
+  background: transparent;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
+  }
+}
+
+.detailLine {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+// ---- Track button ----
+.trackBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-height: 44px;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: var(--gs-color-primary);
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ========================================
+// Container Query: Compact (< 300px)
+// ========================================
+@container (max-width: 299px) {
+  .packageIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .carrier {
+    font-size: $font-size-md;
+  }
+
+  .trackBtn {
+    font-size: $font-size-sm;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .stepDot,
+  .stepLine {
+    transition: none;
+  }
+
+  .copyBtn,
+  .trackBtn {
+    transition: none;
+  }
+
+  .trackBtn:active {
+    transform: none;
+  }
+}

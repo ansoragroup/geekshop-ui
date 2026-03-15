@@ -1,0 +1,106 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+.searchWrap {
+  background: $color-bg-white;
+  padding: $spacing-sm $spacing-lg $spacing-md;
+}
+
+.tabsWrap {
+  background: $color-bg-white;
+  padding: 0 $spacing-lg $spacing-md;
+}
+
+.content {
+  padding: $spacing-sm 0;
+}
+
+.faqList {
+  background: $color-bg-white;
+}
+
+.faqItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  cursor: pointer;
+  gap: $spacing-md;
+  transition: background $transition-fast;
+
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.question {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  flex: 1;
+  line-height: $line-height-normal;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+  transition: transform $transition-fast;
+}
+
+.chevronExpanded {
+  transform: rotate(180deg);
+}
+
+.answer {
+  padding: 0 $spacing-lg $spacing-lg;
+  background: $color-bg-white;
+}
+
+.answerText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+  margin: 0;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.noResults {
+  padding: 60px $spacing-lg;
+  text-align: center;
+}
+
+.noResultsText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}
+
+// Support CTA
+.supportSection {
+  margin-top: $spacing-xxl;
+}
+
+.supportContent {
+  padding: $spacing-xl $spacing-lg;
+  text-align: center;
+}
+
+.supportText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-lg;
+}
+
+.supportBtnContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+}

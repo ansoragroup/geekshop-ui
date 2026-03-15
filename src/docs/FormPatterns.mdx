@@ -1,0 +1,533 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Guides/Form Patterns" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SubTitle = ({ children }) => (
+  <h3 style={{ margin: '24px 0 12px', fontSize: 16, color: '#333' }}>
+    {children}
+  </h3>
+);
+
+export const FormField = ({ label, children, error, helper }) => (
+  <div style={{ marginBottom: 16 }}>
+    {label && <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A', marginBottom: 6 }}>{label}</div>}
+    {children}
+    {error && <div style={{ fontSize: 12, color: '#FF3B30', marginTop: 4 }}>{error}</div>}
+    {helper && !error && <div style={{ fontSize: 12, color: '#999', marginTop: 4 }}>{helper}</div>}
+  </div>
+);
+
+export const ComponentCard = ({ name, category, description }) => (
+  <div style={{
+    padding: '12px 16px', background: '#fff', borderRadius: 8, border: '1px solid #eee',
+    display: 'flex', gap: 12, alignItems: 'center',
+  }}>
+    <div style={{
+      padding: '2px 8px', borderRadius: 4, background: '#FFF5F0', color: '#FF5000',
+      fontSize: 11, fontWeight: 600, flexShrink: 0,
+    }}>
+      {category}
+    </div>
+    <div>
+      <span style={{ fontWeight: 600, fontSize: 14, color: '#1A1A1A' }}>{name}</span>
+      <span style={{ fontSize: 13, color: '#666', marginLeft: 8 }}>{description}</span>
+    </div>
+  </div>
+);
+
+# Form Patterns
+
+This guide covers best practices for building forms with `@ansoragroup/ui` components. Learn how to compose form fields, handle validation, and manage controlled vs. uncontrolled state.
+
+---
+
+<SectionTitle>Available Form Components</SectionTitle>
+
+<div style={{ display: 'grid', gap: 8, marginTop: 16 }}>
+  <ComponentCard name="Input" category="form" description="Text input with label, error state, prefix/suffix, clearable" />
+  <ComponentCard name="TextArea" category="form" description="Multi-line text input with character counter" />
+  <ComponentCard name="Checkbox" category="form" description="Single checkbox with label" />
+  <ComponentCard name="Radio / RadioGroup" category="form" description="Radio buttons with group management" />
+  <ComponentCard name="Switch" category="form" description="Toggle switch with label" />
+  <ComponentCard name="Button" category="form" description="Submit, action, and link buttons" />
+  <ComponentCard name="Chip" category="form" description="Selectable chip / tag with remove" />
+  <ComponentCard name="Rating" category="data-display" description="Star rating input (interactive mode)" />
+  <ComponentCard name="QuantityStepper" category="commerce" description="Numeric +/- stepper for quantities" />
+  <ComponentCard name="SkuSelector" category="commerce" description="Product variant selector (color, size)" />
+</div>
+
+---
+
+<SectionTitle>Controlled vs. Uncontrolled</SectionTitle>
+
+All form components support both **controlled** (you manage state) and **uncontrolled** (component manages state) usage via the `useControllableState` hook.
+
+<SubTitle>Uncontrolled (simplest)</SubTitle>
+
+Just provide `defaultValue`. The component manages its own state internally:
+
+```tsx
+import { Input, Checkbox, Switch } from '@ansoragroup/ui'
+
+function SimpleForm() {
+  return (
+    <form>
+      {/* Component manages its own value */}
+      <Input label="Email" defaultValue="" />
+      <Checkbox defaultChecked={false}>Subscribe to newsletter</Checkbox>
+      <Switch defaultChecked={true}>Dark mode</Switch>
+    </form>
+  )
+}
+```
+
+<SubTitle>Controlled (full control)</SubTitle>
+
+Provide `value` + `onChange`. You manage the state:
+
+```tsx
+import { useState } from 'react'
+import { Input, Checkbox, Switch } from '@ansoragroup/ui'
+
+function ControlledForm() {
+  const [email, setEmail] = useState('')
+  const [subscribe, setSubscribe] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
+
+  return (
+    <form>
+      <Input label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <Checkbox checked={subscribe} onChange={setSubscribe}>Subscribe</Checkbox>
+      <Switch checked={darkMode} onChange={setDarkMode}>Dark mode</Switch>
+    </form>
+  )
+}
+```
+
+<SubTitle>How useControllableState Works</SubTitle>
+
+The hook powers all form components internally. It determines whether the component is controlled or uncontrolled based on whether `value` is provided:
+
+```tsx
+import { useControllableState } from '@ansoragroup/ui'
+
+function MyComponent({ value, defaultValue, onChange }) {
+  const [internalValue, setInternalValue] = useControllableState({
+    value,                              // if provided, component is controlled
+    defaultValue: defaultValue ?? '',   // fallback for uncontrolled
+    onChange,                           // called on every change
+  })
+
+  // Use internalValue and setInternalValue everywhere
+  // The hook handles both modes transparently
+}
+```
+
+---
+
+<SectionTitle>Form Field Anatomy</SectionTitle>
+
+A complete form field consists of four parts:
+
+```
+┌─────────────────────────────────────┐
+│  Label                              │   <- Associates with input via htmlFor/id
+├─────────────────────────────────────┤
+│  [ Input field                    ] │   <- The interactive control
+├─────────────────────────────────────┤
+│  Helper text or error message       │   <- Contextual guidance
+└─────────────────────────────────────┘
+```
+
+The `Input` and `TextArea` components have built-in support for all four parts:
+
+```tsx
+<Input
+  label="Email Address"           // label text (auto-generates htmlFor/id)
+  placeholder="you@example.com"   // placeholder
+  helperText="We'll never share"  // helper text below input
+  error="Invalid email format"    // replaces helper text in error state
+/>
+```
+
+When `error` is provided, the input border turns red and the error message replaces the helper text.
+
+---
+
+<SectionTitle>Validation Patterns</SectionTitle>
+
+<SubTitle>Inline Validation (on blur)</SubTitle>
+
+Validate each field as the user leaves it:
+
+```tsx
+import { useState } from 'react'
+import { Input, Button } from '@ansoragroup/ui'
+
+function LoginForm() {
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
+
+  const validateEmail = () => {
+    if (!email) {
+      setEmailError('Email is required')
+    } else if (!email.includes('@')) {
+      setEmailError('Please enter a valid email')
+    } else {
+      setEmailError('')
+    }
+  }
+
+  return (
+    <form>
+      <Input
+        label="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        onBlur={validateEmail}
+        error={emailError}
+      />
+      <Button variant="primary" size="lg" fullWidth type="submit">
+        Sign In
+      </Button>
+    </form>
+  )
+}
+```
+
+<SubTitle>On-Submit Validation</SubTitle>
+
+Validate all fields when the form is submitted:
+
+```tsx
+import { useState } from 'react'
+import { Input, Button } from '@ansoragroup/ui'
+
+function RegisterForm() {
+  const [fields, setFields] = useState({ email: '', password: '' })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const newErrors: Record<string, string> = {}
+
+    if (!fields.email) newErrors.email = 'Email is required'
+    if (!fields.password) newErrors.password = 'Password is required'
+    if (fields.password.length < 8) newErrors.password = 'Minimum 8 characters'
+
+    setErrors(newErrors)
+    if (Object.keys(newErrors).length === 0) {
+      // Submit form
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input
+        label="Email"
+        value={fields.email}
+        onChange={(e) => setFields(f => ({ ...f, email: e.target.value }))}
+        error={errors.email}
+      />
+      <Input
+        label="Password"
+        type="password"
+        value={fields.password}
+        onChange={(e) => setFields(f => ({ ...f, password: e.target.value }))}
+        error={errors.password}
+      />
+      <Button variant="primary" size="lg" fullWidth type="submit">
+        Register
+      </Button>
+    </form>
+  )
+}
+```
+
+---
+
+<SectionTitle>Composition Examples</SectionTitle>
+
+<SubTitle>Login Form</SubTitle>
+
+```tsx
+import { Input, Button } from '@ansoragroup/ui'
+
+function LoginForm() {
+  return (
+    <form style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <Input
+        label="Phone or Email"
+        placeholder="+998 90 123 45 67"
+      />
+      <Input
+        label="Password"
+        type="password"
+        placeholder="Enter password"
+      />
+      <Button variant="primary" size="lg" fullWidth type="submit">
+        Sign In
+      </Button>
+      <Button variant="text" size="md" fullWidth>
+        Forgot Password?
+      </Button>
+    </form>
+  )
+}
+```
+
+<SubTitle>Address Form</SubTitle>
+
+```tsx
+import { useState } from 'react'
+import { Input, Checkbox, Radio, RadioGroup, Button } from '@ansoragroup/ui'
+
+function AddressForm() {
+  const [addressType, setAddressType] = useState('home')
+  const [isDefault, setIsDefault] = useState(false)
+
+  return (
+    <form style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <Input label="Recipient Name" placeholder="John Doe" />
+      <Input label="Phone Number" placeholder="+998 90 123 45 67" type="tel" />
+      <Input label="Street, Building" placeholder="123 Main Street" />
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <Input label="Apartment" placeholder="Apt 4" />
+        <Input label="Postal Code" placeholder="100000" />
+      </div>
+
+      <Input label="City" placeholder="Tashkent" />
+
+      <RadioGroup
+        value={addressType}
+        onChange={setAddressType}
+        label="Address Type"
+      >
+        <Radio value="home">Home</Radio>
+        <Radio value="work">Work</Radio>
+        <Radio value="other">Other</Radio>
+      </RadioGroup>
+
+      <Checkbox checked={isDefault} onChange={setIsDefault}>
+        Set as default address
+      </Checkbox>
+
+      <Button variant="primary" size="lg" fullWidth type="submit">
+        Save Address
+      </Button>
+    </form>
+  )
+}
+```
+
+<SubTitle>Review Form</SubTitle>
+
+```tsx
+import { useState } from 'react'
+import { Rating, TextArea, Button } from '@ansoragroup/ui'
+
+function ReviewForm() {
+  const [rating, setRating] = useState(0)
+  const [review, setReview] = useState('')
+  const [ratingError, setRatingError] = useState('')
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (rating === 0) {
+      setRatingError('Please select a rating')
+      return
+    }
+    // Submit review
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Rate this product</div>
+        <Rating
+          value={rating}
+          onChange={(v) => { setRating(v); setRatingError(''); }}
+          interactive
+          size="lg"
+        />
+        {ratingError && (
+          <div style={{ fontSize: 12, color: '#FF3B30', marginTop: 4 }}>{ratingError}</div>
+        )}
+      </div>
+
+      <TextArea
+        label="Your Review"
+        value={review}
+        onChange={(e) => setReview(e.target.value)}
+        placeholder="Write your review..."
+        maxLength={500}
+        showCount
+        rows={4}
+      />
+
+      <Button
+        variant="primary"
+        size="lg"
+        fullWidth
+        type="submit"
+        disabled={rating === 0}
+      >
+        Submit Review
+      </Button>
+    </form>
+  )
+}
+```
+
+<SubTitle>Settings Form</SubTitle>
+
+```tsx
+import { useState } from 'react'
+import { Switch, Checkbox } from '@ansoragroup/ui'
+
+function SettingsForm() {
+  const [notifications, setNotifications] = useState(true)
+  const [orderUpdates, setOrderUpdates] = useState(true)
+  const [promoAlerts, setPromoAlerts] = useState(false)
+  const [emailNotifs, setEmailNotifs] = useState(true)
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <Switch checked={notifications} onChange={setNotifications} size="md">
+        Push Notifications
+      </Switch>
+
+      {notifications && (
+        <div style={{ paddingLeft: 24, display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <Checkbox checked={orderUpdates} onChange={setOrderUpdates}>
+            Order Updates
+          </Checkbox>
+          <Checkbox checked={promoAlerts} onChange={setPromoAlerts}>
+            Promotions & Discounts
+          </Checkbox>
+        </div>
+      )}
+
+      <Switch checked={emailNotifs} onChange={setEmailNotifs} size="md">
+        Email Notifications
+      </Switch>
+    </div>
+  )
+}
+```
+
+---
+
+<SectionTitle>Error State Handling</SectionTitle>
+
+Form components indicate errors through:
+
+1. **Red border** -- Input/TextArea border color changes to `$color-error`
+2. **Error message** -- Text below the field in red
+3. **ARIA attributes** -- `aria-invalid="true"` and `aria-describedby` linking to the error message
+
+```tsx
+// Error state
+<Input
+  label="Email"
+  value=""
+  error="Email is required"        // Triggers red border + error text
+/>
+
+// Valid state (no error prop or empty string)
+<Input
+  label="Email"
+  value="user@example.com"
+  error=""                          // No error shown
+/>
+```
+
+---
+
+<SectionTitle>Disabled State Handling</SectionTitle>
+
+All form components support a `disabled` prop:
+
+```tsx
+<Input label="Email" disabled value="locked@example.com" />
+<Checkbox disabled checked>Accepted terms</Checkbox>
+<Switch disabled checked>Feature flag</Switch>
+<Radio disabled value="option1">Option 1</Radio>
+<Button disabled>Submit</Button>
+```
+
+Disabled components:
+- Reduce opacity to 0.5
+- Show `cursor: not-allowed`
+- Do not fire `onChange` or `onClick`
+- Set `aria-disabled="true"` and the native `disabled` attribute
+
+---
+
+<SectionTitle>Third-Party Form Libraries</SectionTitle>
+
+All form components spread `...rest` props onto their root or input element, making them compatible with form libraries:
+
+<SubTitle>react-hook-form</SubTitle>
+
+```tsx
+import { useForm } from 'react-hook-form'
+import { Input, Button } from '@ansoragroup/ui'
+
+function HookForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm()
+
+  return (
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <Input
+        label="Email"
+        {...register('email', { required: 'Email is required' })}
+        error={errors.email?.message as string}
+      />
+      <Button variant="primary" type="submit">Submit</Button>
+    </form>
+  )
+}
+```
+
+<SubTitle>Formik</SubTitle>
+
+```tsx
+import { Formik, Form } from 'formik'
+import { Input, Button } from '@ansoragroup/ui'
+
+function FormikForm() {
+  return (
+    <Formik
+      initialValues={{ email: '' }}
+      onSubmit={(values) => console.log(values)}
+    >
+      {({ values, errors, handleChange, handleBlur }) => (
+        <Form>
+          <Input
+            label="Email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.email}
+          />
+          <Button variant="primary" type="submit">Submit</Button>
+        </Form>
+      )}
+    </Formik>
+  )
+}
+```
+
+These integrations work because the components:
+- Accept `name`, `value`, `onChange`, `onBlur` props
+- Spread additional props (`data-*`, `aria-*`, `ref`) onto the underlying `<input>` element
+- Use `forwardRef` for ref access to the native input

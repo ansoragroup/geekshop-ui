@@ -1,0 +1,34 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+.content {
+  padding: $spacing-md;
+}
+
+.dateGroup {
+  margin-bottom: $spacing-md;
+}
+
+.dateLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-md;
+  padding: $spacing-xs 0;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm;
+}
+
+.emptyWrap {
+  padding: 80px $spacing-lg;
+}

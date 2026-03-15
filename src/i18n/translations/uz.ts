@@ -379,4 +379,98 @@ export const uz: TranslationDictionary = {
   'address.deleteBody': "manzilini o'chirishni xohlaysizmi? Bu amalni qaytarib bo'lmaydi.",
   'address.deletedToast': "manzili o'chirildi",
   'address.myAddresses': 'Manzillarim',
+
+  // Select
+  'select.placeholder': 'Tanlang',
+  'select.confirm': 'Tasdiqlash',
+  'select.cancel': 'Bekor qilish',
+  'select.title': 'Tanlash',
+
+  // ImageUploader
+  'imageUploader.add': "Rasm qo'shish",
+  'imageUploader.delete': "Rasmni o'chirish",
+  'imageUploader.maxCount': "Maksimum {max} ta rasm",
+  'imageUploader.sizeError': "Rasm hajmi {max}MB dan oshmasligi kerak",
+
+  // Chip
+  'chip.delete': "O'chirish: {label}",
+
+  // GroupBuy
+  'groupBuy.joinGroup': "Guruhga qo'shilish",
+  'groupBuy.buyAlone': 'Yakka sotib olish',
+  'groupBuy.joined': '{current}/{total} qo\'shildi',
+  'groupBuy.timeLeft': '{time} qoldi',
+  'groupBuy.groupPrice': 'Guruh',
+  'groupBuy.soloPrice': 'Yakka',
+  'groupBuy.expired': 'Muddati tugadi',
+  'groupBuy.full': 'Guruh to\'ldi',
+
+  // Stock
+  'stock.onlyLeft': 'Faqat {count} ta qoldi!',
+  'stock.sold': '{percent}% sotildi',
+  'stock.inStock': 'Mavjud',
+  'stock.lowStock': 'Kam qoldi',
+  'stock.almostGone': 'Deyarli tugadi!',
+
+  // Shop
+  'shop.follow': 'Obuna',
+  'shop.following': "Obuna bo'lgan",
+  'shop.enter': "Do'konga kirish",
+  'shop.products': '{count} ta mahsulot',
+  'shop.followers': '{count} ta obunachi',
+  'shop.responseRate': '{rate}% javob',
+
+  // Delivery
+  'delivery.pending': 'Tayyor qilinmoqda',
+  'delivery.shipped': 'Yuborildi',
+  'delivery.inTransit': "Yo'lda",
+  'delivery.delivered': 'Yetkazildi',
+  'delivery.track': 'Kuzatish',
+  'delivery.copy': 'Nusxa olish',
+  'delivery.estimated': 'Taxminiy: {date}',
+  'delivery.lastUpdate': 'Oxirgi yangilanish: {time}',
+  'delivery.trackingNumber': 'Trek raqam: {number}',
+
+  // Installment
+  'installment.perMonth': '{price}/oy',
+  'installment.months': '{count} oy',
+  'installment.interestFree': 'Foizsiz',
+  'installment.from': 'dan',
+
+  // SocialProof
+  'socialProof.peopleBought': '{count} kishi {period} sotib oldi',
+  'socialProof.peopleBoughtDefault': '{count} kishi sotib oldi',
+  'socialProof.justBought': '{name} {time} oldin sotib oldi',
+  'socialProof.watching': '{count} kishi hozir ko\'rmoqda',
+
+  // Auth
+  'auth.welcome': 'Xush kelibsiz!',
+  'auth.phonePrompt': 'Hisobingizga kirish uchun telefon raqamingizni kiriting',
+  'auth.sendCode': 'Kod yuborish',
+  'auth.enterCode': 'Kodni kiriting',
+  'auth.codeSentTo': '{phone} raqamiga yuborilgan kodni kiriting',
+  'auth.codeNotReceived': 'Kod kelmadimi?',
+  'auth.resend': 'Qayta yuborish',
+  'auth.resendIn': 'Qayta yuborish ({seconds})',
+  'auth.codeSent': 'Kod qayta yuborildi',
+  'auth.verify': 'Tasdiqlash',
+  'auth.loginViaTelegram': 'Telegram orqali kirish',
+  'auth.or': 'yoki',
+  'auth.termsAgreement': 'Davom etish orqali siz foydalanish shartlariga rozilik bildirasiz',
+  'auth.register': "Ro'yxatdan o'tish",
+  'auth.registerPrompt': "Buyurtmangizni saqlash uchun ro'yxatdan o'ting",
+  'auth.enterName': 'Ismingizni kiriting',
+  'auth.haveAccount': 'Allaqachon hisobingiz bormi?',
+  'auth.login': 'Kirish',
+  'auth.success': 'Muvaffaqiyatli!',
+  'auth.loggedIn': 'Hisobingizga kirdingiz',
+  'auth.registered': "Ro'yxatdan o'tdingiz",
+  'auth.startShopping': 'Xarid qilishni boshlash',
+  'auth.invalidCode': "Noto'g'ri kod",
+  'auth.phoneLabel': 'Telefon raqam',
+  'auth.otpLabel': 'Tasdiqlash kodi',
+  'auth.nameLabel': 'Ism',
+  'auth.phonePlaceholder': '90 123 45 67',
+  'page.login': 'Kirish',
+  'page.register': "Ro'yxatdan o'tish",
 };

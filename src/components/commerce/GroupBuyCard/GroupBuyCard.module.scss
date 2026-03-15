@@ -1,0 +1,304 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  font-family: $font-family;
+  transition: box-shadow $transition-fast;
+  container-type: inline-size;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+.disabled {
+  opacity: 0.65;
+}
+
+// ---- Top: image + info ----
+.top {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+}
+
+.image {
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.name {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin: 0;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+}
+
+.groupLabel {
+  color: $color-text-secondary;
+}
+
+.groupPrice {
+  font-weight: $font-weight-bold;
+  color: var(--gs-color-price);
+}
+
+.priceSep {
+  color: $color-text-tertiary;
+}
+
+.soloLabel {
+  color: $color-text-tertiary;
+}
+
+.soloPrice {
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+}
+
+// ---- Progress dots + status ----
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.dotsRow {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-round;
+  transition: background $transition-fast;
+}
+
+.dotFilled {
+  background: var(--gs-color-primary);
+}
+
+.dotEmpty {
+  background: $color-border;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.statusText {
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.statusSep {
+  color: $color-text-tertiary;
+}
+
+.timeText {
+  color: var(--gs-color-primary);
+  font-weight: $font-weight-medium;
+}
+
+// ---- Avatars ----
+.avatars {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.avatarSlot {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-round;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius-round;
+}
+
+.avatarFilled {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarEmpty {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-round;
+  border: 2px dashed $color-border;
+  background: $color-bg-page;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-tertiary;
+}
+
+.remainingLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  font-weight: $font-weight-medium;
+  margin-left: $spacing-xxs;
+}
+
+// ---- Actions ----
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-xs;
+}
+
+.joinBtn {
+  flex: 1;
+  min-height: 44px;
+  border: none;
+  border-radius: $radius-md;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast, opacity $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.soloBtn {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 $spacing-lg;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    border-color: $color-text-tertiary;
+    background: $color-bg-page;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ========================================
+// Container Query: Compact (< 300px)
+// ========================================
+@container (max-width: 299px) {
+  .image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .priceRow {
+    font-size: $font-size-xs;
+  }
+
+  .name {
+    font-size: $font-size-sm;
+    -webkit-line-clamp: 1;
+  }
+
+  .avatarSlot {
+    width: 28px;
+    height: 28px;
+  }
+
+  .joinBtn,
+  .soloBtn {
+    font-size: $font-size-sm;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .dot {
+    transition: none;
+  }
+
+  .joinBtn,
+  .soloBtn {
+    transition: none;
+
+    &:active:not(:disabled) {
+      transform: none;
+    }
+  }
+}

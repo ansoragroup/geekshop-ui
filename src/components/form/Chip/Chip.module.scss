@@ -1,0 +1,140 @@
+@use '../../../theme/tokens' as *;
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-round;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  transition: all $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+// --- Sizes ---
+
+.size-sm {
+  height: 28px;
+  padding: 0 $spacing-sm;
+  font-size: $font-size-xs;
+}
+
+.size-md {
+  height: 36px;
+  padding: 0 $spacing-md;
+  font-size: $font-size-sm;
+}
+
+// --- Variants ---
+
+.variant-outlined {
+  background: transparent;
+  border: 1px solid $color-border;
+  color: $color-text-primary;
+
+  &:hover:not(.disabled) {
+    border-color: $color-text-tertiary;
+  }
+
+  &.selected {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    color: var(--gs-color-primary, #{$color-primary});
+    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+.variant-filled {
+  background: $color-bg-page;
+  border: 1px solid transparent;
+  color: $color-text-primary;
+
+  &:hover:not(.disabled) {
+    background: $color-border;
+  }
+
+  &.selected {
+    background: var(--gs-color-primary, #{$color-primary});
+    color: $color-text-white;
+  }
+}
+
+// --- Icon ---
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: inherit;
+}
+
+// --- Label ---
+
+.label {
+  line-height: 1;
+}
+
+// --- Delete button ---
+
+.deleteBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-left: $spacing-xxs;
+  margin-right: -$spacing-xs;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  border-radius: $radius-round;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity $transition-fast, background $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 1px;
+  }
+}
+
+.variant-filled.selected .deleteBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+// --- Disabled ---
+
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+
+  .deleteBtn {
+    cursor: not-allowed;
+  }
+}
+
+// --- Reduced motion ---
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .deleteBtn {
+    transition: none;
+  }
+}

@@ -12,6 +12,8 @@ export { AppBar } from './navigation/AppBar';
 export { LanguageSwitcher } from './navigation/LanguageSwitcher';
 export { CurrencySwitcher } from './navigation/CurrencySwitcher';
 export { ThemeSwitcher } from './navigation/ThemeSwitcher';
+export { Segmented } from './navigation/Segmented';
+export { Tabs } from './navigation/Tabs';
 
 // Product
 export { PriceDisplay } from './product/PriceDisplay';
@@ -19,6 +21,8 @@ export { ProductCard } from './product/ProductCard';
 export { ProductGrid } from './product/ProductGrid';
 export { ProductCarousel } from './product/ProductCarousel';
 export { ProductImageGallery } from './product/ProductImageGallery';
+export { StockIndicator } from './product/StockIndicator';
+export { InstallmentDisplay } from './product/InstallmentDisplay';
 
 // Commerce
 export { QuantityStepper } from './commerce/QuantityStepper';
@@ -28,6 +32,9 @@ export { ActionBar } from './commerce/ActionBar';
 export { QuickBuyPopup } from './commerce/QuickBuyPopup';
 export { AddressCard } from './commerce/AddressCard';
 export { PaymentMethodCard } from './commerce/PaymentMethodCard';
+export { GroupBuyCard } from './commerce/GroupBuyCard';
+export { ShopCard } from './commerce/ShopCard';
+export { DeliveryCard } from './commerce/DeliveryCard';
 
 // Content
 export { HeroBanner } from './content/HeroBanner';
@@ -38,6 +45,7 @@ export { CouponCard } from './content/CouponCard';
 export { CategoryIcon, CategoryIconRow } from './content/CategoryIcon';
 export { SectionHeader } from './content/SectionHeader';
 export { NoticeBar } from './content/NoticeBar';
+export { SocialProof } from './content/SocialProof';
 
 // Data Display
 export { Badge } from './data-display/Badge';
@@ -53,6 +61,10 @@ export { InfiniteScroll } from './data-display/InfiniteScroll';
 export { Steps } from './data-display/Steps';
 export { Cell } from './data-display/Cell';
 export { AvatarGroup } from './data-display/AvatarGroup';
+export { Timeline } from './data-display/Timeline';
+export { Collapse, CollapsePanel } from './data-display/Collapse';
+export { Progress } from './data-display/Progress';
+export { AuthenticityBadge } from './data-display/AuthenticityBadge';
 
 // Feedback
 export { Toast } from './feedback/Toast';
@@ -65,6 +77,9 @@ export { Skeleton, ProductCardSkeleton } from './feedback/Skeleton';
 export { Swipe } from './feedback/Swipe';
 export { PullToRefresh } from './feedback/PullToRefresh';
 export { Result } from './feedback/Result';
+export { FloatingBubble } from './feedback/FloatingBubble';
+export { ActionSheet } from './feedback/ActionSheet';
+export { Tooltip } from './feedback/Tooltip';
 
 // Form
 export { Button } from './form/Button';
@@ -73,6 +88,11 @@ export { TextArea } from './form/TextArea';
 export { Checkbox } from './form/Checkbox';
 export { Radio, RadioGroup } from './form/Radio';
 export { Switch } from './form/Switch';
+export { Select } from './form/Select';
+export { Chip } from './form/Chip';
+export { ImageUploader } from './form/ImageUploader';
+export { OTPInput } from './form/OTPInput';
+export { TelegramLoginButton } from './form/TelegramLoginButton';
 
 // Layout
 export { Container } from './layout/Container';
@@ -100,6 +120,8 @@ export type { AppBarProps } from './navigation/AppBar';
 export type { LanguageSwitcherProps } from './navigation/LanguageSwitcher';
 export type { CurrencySwitcherProps } from './navigation/CurrencySwitcher';
 export type { ThemeSwitcherProps } from './navigation/ThemeSwitcher';
+export type { SegmentedProps, SegmentedOption } from './navigation/Segmented';
+export type { TabsProps, TabItem, TabsVariant } from './navigation/Tabs';
 
 // Types — Product
 export type { PriceDisplayProps, PriceDisplayVariant, PriceDisplaySize } from './product/PriceDisplay';
@@ -107,6 +129,8 @@ export type { ProductCardProps, ProductCardFlatProps, ProductCardCompoundProps, 
 export type { ProductGridProps } from './product/ProductGrid';
 export type { ProductCarouselProps, CarouselProduct, CarouselTab } from './product/ProductCarousel';
 export type { ProductImageGalleryProps } from './product/ProductImageGallery';
+export type { StockIndicatorProps, StockIndicatorVariant } from './product/StockIndicator';
+export type { InstallmentDisplayProps } from './product/InstallmentDisplay';
 
 // Types — Commerce
 export type { QuantityStepperProps } from './commerce/QuantityStepper';
@@ -116,6 +140,9 @@ export type { ActionBarProps } from './commerce/ActionBar';
 export type { QuickBuyPopupProps, QuickBuyProduct, QuickBuyVariant } from './commerce/QuickBuyPopup';
 export type { AddressCardProps, Address } from './commerce/AddressCard';
 export type { PaymentMethodCardProps, PaymentMethod, PaymentType } from './commerce/PaymentMethodCard';
+export type { GroupBuyCardProps, GroupBuyProduct } from './commerce/GroupBuyCard';
+export type { ShopCardProps } from './commerce/ShopCard';
+export type { DeliveryCardProps, DeliveryStatus } from './commerce/DeliveryCard';
 
 // Types — Content
 export type { HeroBannerProps } from './content/HeroBanner';
@@ -126,6 +153,7 @@ export type { CouponCardProps } from './content/CouponCard';
 export type { CategoryIconProps, CategoryIconRowProps } from './content/CategoryIcon';
 export type { SectionHeaderProps } from './content/SectionHeader';
 export type { NoticeBarProps } from './content/NoticeBar';
+export type { SocialProofProps, SocialProofVariant } from './content/SocialProof';
 
 // Types — Data Display
 export type { BadgeProps, BadgeType, BadgeColor, BadgePosition } from './data-display/Badge';
@@ -141,6 +169,10 @@ export type { InfiniteScrollProps } from './data-display/InfiniteScroll';
 export type { StepsProps, StepItem, StepsDirection, StepsSize } from './data-display/Steps';
 export type { CellProps } from './data-display/Cell';
 export type { AvatarGroupProps, AvatarGroupSize } from './data-display/AvatarGroup';
+export type { TimelineProps, TimelineItem } from './data-display/Timeline';
+export type { CollapseProps, CollapsePanelProps } from './data-display/Collapse';
+export type { ProgressProps, ProgressVariant, ProgressSize } from './data-display/Progress';
+export type { AuthenticityBadgeProps, AuthenticityStatus, AuthenticityType } from './data-display/AuthenticityBadge';
 
 // Types — Feedback
 export type { ToastProps, ToastType } from './feedback/Toast';
@@ -153,6 +185,9 @@ export type { SkeletonProps } from './feedback/Skeleton';
 export type { SwipeProps, SwipeAction } from './feedback/Swipe';
 export type { PullToRefreshProps } from './feedback/PullToRefresh';
 export type { ResultProps, ResultStatus } from './feedback/Result';
+export type { FloatingBubbleProps } from './feedback/FloatingBubble';
+export type { ActionSheetProps, ActionSheetAction } from './feedback/ActionSheet';
+export type { TooltipProps, TooltipPlacement, TooltipTrigger } from './feedback/Tooltip';
 
 // Types — Form
 export type { ButtonProps, ButtonOwnProps, ButtonVariant, ButtonSize } from './form/Button';
@@ -161,6 +196,11 @@ export type { TextAreaProps } from './form/TextArea';
 export type { CheckboxProps } from './form/Checkbox';
 export type { RadioProps, RadioGroupProps } from './form/Radio';
 export type { SwitchProps, SwitchSize } from './form/Switch';
+export type { SelectProps, SelectOption } from './form/Select';
+export type { ChipProps } from './form/Chip';
+export type { ImageUploaderProps } from './form/ImageUploader';
+export type { OTPInputProps } from './form/OTPInput';
+export type { TelegramLoginButtonProps, TelegramAuthData } from './form/TelegramLoginButton';
 
 // Types — Layout
 export type { ContainerProps } from './layout/Container';

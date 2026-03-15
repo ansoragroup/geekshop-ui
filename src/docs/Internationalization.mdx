@@ -1,0 +1,417 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Guides/Internationalization" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SubTitle = ({ children }) => (
+  <h3 style={{ margin: '24px 0 12px', fontSize: 16, color: '#333' }}>
+    {children}
+  </h3>
+);
+
+export const LocaleCard = ({ locale, name, example }) => (
+  <div style={{
+    padding: 16, background: '#fff', borderRadius: 8, border: '1px solid #eee',
+    display: 'flex', alignItems: 'center', gap: 16,
+  }}>
+    <div style={{
+      width: 48, height: 48, borderRadius: '50%', background: '#FFF5F0',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontWeight: 700, fontSize: 16, color: '#FF5000', flexShrink: 0,
+    }}>
+      {locale}
+    </div>
+    <div>
+      <div style={{ fontWeight: 600, fontSize: 14, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontSize: 12, color: '#666', fontFamily: 'monospace' }}>{example}</div>
+    </div>
+  </div>
+);
+
+export const CurrencyCard = ({ code, symbols, example }) => (
+  <div style={{
+    padding: 16, background: '#fff', borderRadius: 8, border: '1px solid #eee',
+  }}>
+    <div style={{ fontWeight: 600, fontSize: 15, color: '#1A1A1A', marginBottom: 4 }}>{code}</div>
+    <div style={{ fontSize: 12, color: '#666', marginBottom: 8 }}>{symbols}</div>
+    <div style={{ fontFamily: 'monospace', fontSize: 13, color: '#FF5000' }}>{example}</div>
+  </div>
+);
+
+# Internationalization (i18n)
+
+`@ansoragroup/ui` ships with built-in localization for Uzbek, Russian, and English. All user-facing strings in components are translatable, and prices format automatically based on locale and currency settings.
+
+---
+
+<SectionTitle>Quick Start</SectionTitle>
+
+Wrap your application with `GeekShopProvider` to configure locale and currency:
+
+```tsx
+import { GeekShopProvider } from '@ansoragroup/ui'
+
+function App() {
+  return (
+    <GeekShopProvider locale="uz" currency="UZS">
+      <YourApp />
+    </GeekShopProvider>
+  )
+}
+```
+
+All components inside the provider will render in the specified locale and format prices in the specified currency.
+
+---
+
+<SectionTitle>Supported Locales</SectionTitle>
+
+<div style={{ display: 'grid', gap: 8, marginTop: 16 }}>
+  <LocaleCard locale="uz" name="O'zbekcha (Uzbek)" example="Savatga qo'shish / 5 200 000 so'm" />
+  <LocaleCard locale="ru" name="Русский (Russian)" example="Добавить в корзину / 5 200 000 сум" />
+  <LocaleCard locale="en" name="English" example="Add to cart / 5,200,000 UZS" />
+</div>
+
+---
+
+<SectionTitle>Supported Currencies</SectionTitle>
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 8, marginTop: 16 }}>
+  <CurrencyCard code="UZS" symbols="so'm (uz) / сум (ru) / UZS (en)" example="5 200 000 so'm" />
+  <CurrencyCard code="USD" symbols="$ (all locales)" example="$49.99" />
+  <CurrencyCard code="RUB" symbols="₽ (all locales)" example="4 500 ₽" />
+  <CurrencyCard code="EUR" symbols="€ (all locales)" example="€42.50" />
+</div>
+
+Currency configuration details:
+
+| Currency | Decimals | Grouping | Symbol Position |
+|---|---|---|---|
+| UZS | 0 | space (1 000 000) | suffix |
+| USD | 2 | comma (1,000.00) | prefix |
+| RUB | 0 | space (1 000) | suffix |
+| EUR | 2 | period (1.000,00) | prefix |
+
+---
+
+<SectionTitle>Translation Function: t()</SectionTitle>
+
+Inside components, use the `useGeekShop` hook to access the `t()` function:
+
+```tsx
+import { useGeekShop } from '@ansoragroup/ui'
+
+function MyComponent() {
+  const { t } = useGeekShop()
+
+  return (
+    <div>
+      <h1>{t('page.home')}</h1>
+      <button>{t('commerce.addToCart')}</button>
+    </div>
+  )
+}
+```
+
+### Interpolation
+
+Translation strings support `{variable}` placeholders:
+
+```tsx
+// Template: 'commerce.inStock' = '{count} in stock'
+t('commerce.inStock', { count: 5 })
+// => "5 in stock" (en)
+// => "5 dona bor" (uz)
+// => "5 в наличии" (ru)
+
+// Template: 'commerce.selected' = 'Selected: {count}'
+t('commerce.selected', { count: 3 })
+// => "Selected: 3" (en)
+
+// Template: 'product.installment' = '{price}/mo'
+t('product.installment', { price: '50 000' })
+// => "50 000/mo" (en)
+```
+
+If a key is not found, the key itself is returned unchanged. This makes it easy to spot missing translations during development.
+
+---
+
+<SectionTitle>Price Formatting: formatPrice()</SectionTitle>
+
+The `formatPrice` function from the hook formats numbers according to the configured locale and currency:
+
+```tsx
+import { useGeekShop } from '@ansoragroup/ui'
+
+function PriceTag() {
+  const { formatPrice } = useGeekShop()
+
+  return (
+    <div>
+      {/* Uses provider's locale and currency */}
+      <span>{formatPrice(5200000)}</span>
+      {/* => "5 200 000 so'm" (uz/UZS) */}
+      {/* => "5 200 000 сум" (ru/UZS) */}
+      {/* => "5,200,000 UZS" (en/UZS) */}
+
+      {/* Override currency for a specific call */}
+      <span>{formatPrice(49.99, { currency: 'USD' })}</span>
+      {/* => "$49.99" */}
+
+      {/* Hide currency symbol */}
+      <span>{formatPrice(5200000, { showCurrency: false })}</span>
+      {/* => "5 200 000" */}
+    </div>
+  )
+}
+```
+
+### Standalone formatPrice
+
+You can also import `formatPrice` as a standalone utility (without provider):
+
+```tsx
+import { formatPrice } from '@ansoragroup/ui'
+
+formatPrice(5200000, 'UZS', 'uz')
+// => "5 200 000 so'm"
+
+formatPrice(49.99, 'USD', 'en')
+// => "$49.99"
+
+formatPrice(4500, 'RUB', 'ru')
+// => "4 500 ₽"
+```
+
+---
+
+<SectionTitle>Using Without Provider</SectionTitle>
+
+All components work without wrapping in `GeekShopProvider`. They will use the defaults:
+- **Locale:** `uz` (Uzbek)
+- **Currency:** `UZS`
+
+```tsx
+// No provider needed for basic usage
+import { PriceDisplay, ActionBar } from '@ansoragroup/ui'
+
+function Page() {
+  return (
+    <div>
+      {/* Renders in Uzbek by default */}
+      <PriceDisplay price={299000} />
+      <ActionBar onCartClick={() => {}} onBuyClick={() => {}} />
+    </div>
+  )
+}
+```
+
+---
+
+<SectionTitle>Custom Translations</SectionTitle>
+
+Override specific translation keys by passing a `translations` prop to the provider:
+
+```tsx
+import { GeekShopProvider } from '@ansoragroup/ui'
+
+const customTranslations = {
+  en: {
+    'commerce.addToCart': 'Add to Bag',    // override
+    'commerce.buyNow': 'Purchase Now',     // override
+    'custom.myKey': 'My custom string',    // add new key
+  },
+  uz: {
+    'commerce.addToCart': "Sumkaga qo'shish",
+  },
+}
+
+function App() {
+  return (
+    <GeekShopProvider locale="en" currency="USD" translations={customTranslations}>
+      <YourApp />
+    </GeekShopProvider>
+  )
+}
+```
+
+Custom translations are merged with built-in ones. Your overrides take precedence.
+
+---
+
+<SectionTitle>Next.js Integration</SectionTitle>
+
+### App Router
+
+```tsx
+// app/providers.tsx
+'use client'
+
+import { GeekShopProvider } from '@ansoragroup/ui'
+
+export function Providers({ locale, children }: { locale: 'uz' | 'ru' | 'en'; children: React.ReactNode }) {
+  return (
+    <GeekShopProvider locale={locale} currency="UZS">
+      {children}
+    </GeekShopProvider>
+  )
+}
+```
+
+```tsx
+// app/[locale]/layout.tsx
+import '@ansoragroup/ui/styles'
+import { Providers } from '../providers'
+
+export default function Layout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
+  return (
+    <html lang={params.locale}>
+      <body>
+        <Providers locale={params.locale as 'uz' | 'ru' | 'en'}>
+          {children}
+        </Providers>
+      </body>
+    </html>
+  )
+}
+```
+
+### Dynamic Locale Switching
+
+```tsx
+'use client'
+
+import { useState } from 'react'
+import { GeekShopProvider, LanguageSwitcher, CurrencySwitcher } from '@ansoragroup/ui'
+import type { Locale, CurrencyCode } from '@ansoragroup/ui'
+
+function App() {
+  const [locale, setLocale] = useState<Locale>('uz')
+  const [currency, setCurrency] = useState<CurrencyCode>('UZS')
+
+  return (
+    <GeekShopProvider locale={locale} currency={currency}>
+      <LanguageSwitcher value={locale} onChange={setLocale} />
+      <CurrencySwitcher value={currency} onChange={setCurrency} />
+      <YourApp />
+    </GeekShopProvider>
+  )
+}
+```
+
+---
+
+<SectionTitle>Translation Key Reference</SectionTitle>
+
+All translation keys are grouped by namespace. The table below shows the English translations. Uzbek and Russian equivalents are included in the library.
+
+<SubTitle>common.*</SubTitle>
+
+| Key | English |
+|---|---|
+| `common.close` | Close |
+| `common.cancel` | Cancel |
+| `common.delete` | Delete |
+| `common.edit` | Edit |
+| `common.save` | Save |
+| `common.back` | Back |
+| `common.viewAll` | View all |
+| `common.apply` | Apply |
+| `common.reset` | Reset |
+| `common.select` | Select |
+| `common.confirm` | Confirm |
+| `common.search` | Search |
+| `common.retry` | Retry |
+| `common.loading` | Loading... |
+| `common.share` | Share |
+| `common.noMoreItems` | No more items |
+| `common.loadFailed` | Failed to load |
+
+<SubTitle>commerce.*</SubTitle>
+
+| Key | English |
+|---|---|
+| `commerce.addToCart` | Add to cart |
+| `commerce.buyNow` | Buy now |
+| `commerce.cart` | Cart |
+| `commerce.contact` | Contact |
+| `commerce.favorite` | Favorite |
+| `commerce.addToFavorites` | Add to favorites |
+| `commerce.removeFromFavorites` | Remove from favorites |
+| `commerce.quantity` | Quantity |
+| `commerce.decrease` | Decrease |
+| `commerce.increase` | Increase |
+| `commerce.selected` | Selected: {count} |
+| `commerce.inStock` | {count} in stock |
+
+<SubTitle>product.*</SubTitle>
+
+| Key | English |
+|---|---|
+| `product.variant` | Variant |
+| `product.installment` | {price}/mo |
+| `product.description` | Description |
+| `product.specifications` | Specifications |
+| `product.reviews` | Reviews |
+| `product.inStock` | In Stock |
+| `product.outOfStock` | Out of Stock |
+| `product.selectVariant` | Select Variant |
+| `product.savings` | Save: {amount} |
+| `product.soldPercent` | {percent}% sold |
+
+<SubTitle>order.*</SubTitle>
+
+| Key | English |
+|---|---|
+| `order.id` | Order #{id} |
+| `order.total` | Total ({count} items): |
+| `order.statusPending` | Pending payment |
+| `order.statusShipping` | Shipping |
+| `order.statusReview` | Review |
+| `order.track` | Track |
+| `order.details` | Details |
+| `order.pay` | Pay |
+| `order.reorder` | Reorder |
+| `order.cancel` | Cancel Order |
+| `order.confirmed` | Order Confirmed! |
+
+<SubTitle>page.*</SubTitle>
+
+| Key | English |
+|---|---|
+| `page.home` | Home |
+| `page.cart` | Cart |
+| `page.checkout` | Checkout |
+| `page.orders` | Orders |
+| `page.profile` | Profile |
+| `page.settings` | Settings |
+| `page.search` | Search |
+| `page.categories` | Categories |
+| `page.wishlist` | Wishlist |
+| `page.notifications` | Notifications |
+| `page.addresses` | Addresses |
+| `page.paymentMethods` | Payment Methods |
+
+<SubTitle>Other Namespaces</SubTitle>
+
+Additional namespaces include: `filter.*`, `coupon.*`, `empty.*`, `input.*`, `search.*`, `settings.*`, `profile.*`, `address.*`, `cart.*`, `checkout.*`, `review.*`, `wishlist.*`, `payment.*`, `notification.*`, `onboarding.*`, `home.*`, `category.*`, `select.*`, `imageUploader.*`, `chip.*`.
+
+See the full translation files at `src/i18n/translations/en.ts`, `uz.ts`, and `ru.ts` for the complete key list.
+
+---
+
+<SectionTitle>GeekShopProvider Props</SectionTitle>
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `locale` | `'uz' \| 'ru' \| 'en'` | `'uz'` | Display language |
+| `currency` | `'UZS' \| 'USD' \| 'RUB' \| 'EUR'` | `'UZS'` | Price formatting currency |
+| `theme` | `'light' \| 'dark'` | - | Force light or dark mode |
+| `translations` | `Partial<Record<Locale, TranslationDictionary>>` | - | Custom translation overrides |
+| `children` | `ReactNode` | - | Application content |

@@ -1,0 +1,356 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Guides/Responsive Behavior" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SubTitle = ({ children }) => (
+  <h3 style={{ margin: '24px 0 12px', fontSize: 16, color: '#333' }}>
+    {children}
+  </h3>
+);
+
+export const BreakpointBar = ({ name, value, description }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 10, padding: '8px 0', borderBottom: '1px solid #f0f0f0' }}>
+    <div style={{ width: 120, flexShrink: 0 }}>
+      <div style={{ fontWeight: 600, fontSize: 14, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 12, color: '#666' }}>{value}px</div>
+    </div>
+    <div style={{
+      width: Math.min(value / 2, 200), height: 24, minWidth: 2,
+      background: 'linear-gradient(135deg, #FF5000, #FF7A33)',
+      borderRadius: 4,
+    }} />
+    <div style={{ fontSize: 13, color: '#666' }}>{description}</div>
+  </div>
+);
+
+export const ComparisonBox = ({ label, type, color }) => (
+  <div style={{
+    padding: 16, background: '#fff', borderRadius: 8, border: `2px solid ${color}`,
+    flex: 1, minWidth: 200,
+  }}>
+    <div style={{ fontWeight: 600, fontSize: 14, color, marginBottom: 8 }}>{label}</div>
+    <div style={{ fontSize: 12, color: '#1A1A1A', fontFamily: 'monospace', background: '#f5f5f5', padding: 8, borderRadius: 4 }}>
+      {type}
+    </div>
+  </div>
+);
+
+# Responsive Behavior
+
+`@ansoragroup/ui` is designed mobile-first for 390px viewport width (iPhone 13/14). Components adapt to available space using **container queries** rather than media queries.
+
+---
+
+<SectionTitle>Mobile-First Philosophy</SectionTitle>
+
+All components are designed for a 390px viewport first. Larger viewport support is additive -- the mobile layout is the default, and wider layouts enhance it.
+
+**Why 390px?**
+- iPhone 13/14/15 logical width
+- Covers 85%+ of mobile devices
+- Optimal for e-commerce product browsing
+
+**Design implications:**
+- Single-column layouts by default
+- Touch-friendly targets (44px minimum)
+- Readable text without zooming (14px base)
+- No horizontal scrolling
+
+---
+
+<SectionTitle>Container Queries vs. Media Queries</SectionTitle>
+
+The library uses **container queries** for component-level responsiveness. This means components adapt to their container width, not the viewport width.
+
+<div style={{ display: 'flex', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
+  <ComparisonBox
+    label="Container Queries (used by this library)"
+    type="@container (min-width: 320px) { ... }"
+    color="#07C160"
+  />
+  <ComparisonBox
+    label="Media Queries (viewport-based)"
+    type="@media (min-width: 768px) { ... }"
+    color="#999"
+  />
+</div>
+
+**Why container queries?**
+- A ProductCard in a 2-column grid needs to be compact at 180px, not at 768px viewport
+- Same component works in sidebar (narrow) and main content (wide)
+- Layout decisions belong to the component's container, not the viewport
+- No breakpoint coordination between parent and child
+
+---
+
+<SectionTitle>How Container Queries Work</SectionTitle>
+
+A component declares itself as a container with `container-type: inline-size`, then its children respond to the container's width:
+
+```scss
+// Component root declares containment
+.card {
+  container-type: inline-size;
+  width: 100%;  // REQUIRED - without this, the container collapses to 0px
+}
+
+// Child elements respond to container width
+@container (max-width: 200px) {
+  .cardBody {
+    padding: 8px;
+    // compact layout
+  }
+}
+
+@container (min-width: 200px) and (max-width: 320px) {
+  .cardBody {
+    padding: 12px;
+    // standard layout
+  }
+}
+
+@container (min-width: 320px) {
+  .cardBody {
+    padding: 16px;
+    // expanded layout
+  }
+}
+```
+
+**Critical rule:** `container-type: inline-size` removes the element from the normal flow for sizing purposes. It MUST have an explicit `width` (usually `width: 100%`) or it will collapse to 0px.
+
+**Second critical rule:** `@container` queries can only style **descendants** of the container element. You cannot style the container element itself from within a `@container` block.
+
+---
+
+<SectionTitle>Breakpoint Tokens</SectionTitle>
+
+These SCSS variables define the standard breakpoints:
+
+<BreakpointBar name="sm" value={375} description="Small phones (iPhone SE, older Android)" />
+<BreakpointBar name="md" value={414} description="Standard phones (iPhone Plus, large Android)" />
+<BreakpointBar name="lg" value={768} description="Tablets (iPad, large Android tablets)" />
+
+```scss
+@use '../../../theme/tokens' as *;
+
+// These are used for page-level media queries (rare)
+// Most components use container queries instead
+$breakpoint-sm: 375px;
+$breakpoint-md: 414px;
+$breakpoint-lg: 768px;
+```
+
+Media queries are reserved for page-level layout decisions (e.g., switching from single to multi-column). Component-level adaptation uses container queries.
+
+---
+
+<SectionTitle>Components with Container Queries</SectionTitle>
+
+These components adapt their layout based on their container width:
+
+| Component | Compact (&lt;200px) | Standard (200-320px) | Expanded (&gt;320px) |
+|---|---|---|---|
+| **ProductCard** | Vertical, minimal info | Vertical, full info | Horizontal layout |
+| **CartItem** | Stacked, small image | Side-by-side, medium image | Side-by-side, large image |
+| **ReviewCard** | Compact text, no images | Full review, thumbnail images | Full review, larger images |
+| **DealCard** | Small badge, tight spacing | Standard deal layout | Expanded with progress bar |
+| **OrderCard** | Minimal order info | Standard order details | Full details with actions |
+
+### ProductCard Example
+
+The ProductCard is the most commonly used container query component. At different widths:
+
+```
+< 200px (compact)        200-320px (standard)       > 320px (expanded)
+┌──────────┐             ┌──────────────┐            ┌──────────────────────┐
+│  [Image] │             │   [Image]    │            │ [Image] │ Title     │
+│  Title   │             │   Title      │            │         │ Price     │
+│  Price   │             │   Price      │            │         │ Rating    │
+└──────────┘             │   ★★★★☆     │            │         │ [Button]  │
+                         └──────────────┘            └──────────────────────┘
+```
+
+---
+
+<SectionTitle>Story Decorator Pattern</SectionTitle>
+
+When writing Storybook stories for components with container queries, you MUST use `width` (not `maxWidth`) in the story decorator. Without an explicit width, container-type elements collapse to 0px.
+
+```tsx
+// CORRECT - use width
+export const Default: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ width: 390 }}>
+        <Story />
+      </div>
+    ),
+  ],
+}
+
+// WRONG - maxWidth alone causes container collapse
+export const Default: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: 390 }}>  {/* Container will be 0px wide! */}
+        <Story />
+      </div>
+    ),
+  ],
+}
+```
+
+**Why?** Storybook's centered layout does not impose width on children. `maxWidth` constrains the maximum but does not define an actual width. Elements with `container-type: inline-size` need a defined intrinsic size to measure against.
+
+### Testing Multiple Widths
+
+To verify a component at different container widths, create stories with different decorator widths:
+
+```tsx
+export const Mobile: Story = {
+  decorators: [(Story) => <div style={{ width: 390 }}><Story /></div>],
+}
+
+export const CompactGrid: Story = {
+  decorators: [(Story) => <div style={{ width: 180 }}><Story /></div>],
+}
+
+export const Tablet: Story = {
+  decorators: [(Story) => <div style={{ width: 768 }}><Story /></div>],
+}
+```
+
+---
+
+<SectionTitle>Layout Components</SectionTitle>
+
+<SubTitle>Container</SubTitle>
+
+The `Container` component provides consistent horizontal padding for page content:
+
+```tsx
+import { Container } from '@ansoragroup/ui'
+
+// Adds 12px horizontal padding (configurable)
+<Container>
+  <ProductGrid products={products} />
+</Container>
+
+// Custom padding
+<Container padding={16}>
+  <h1>Section Title</h1>
+</Container>
+```
+
+<SubTitle>Grid</SubTitle>
+
+The `Grid` component creates responsive multi-column layouts:
+
+```tsx
+import { Grid } from '@ansoragroup/ui'
+
+// 2-column product grid (default)
+<Grid columns={2} gap={8}>
+  <ProductCard product={product1} />
+  <ProductCard product={product2} />
+  <ProductCard product={product3} />
+  <ProductCard product={product4} />
+</Grid>
+
+// Single column on narrow containers
+<Grid columns={1} gap={16}>
+  <CartItem item={item1} />
+  <CartItem item={item2} />
+</Grid>
+```
+
+<SubTitle>Section</SubTitle>
+
+The `Section` component provides consistent vertical spacing between page sections:
+
+```tsx
+import { Section } from '@ansoragroup/ui'
+
+<Section>
+  <SectionHeader title="New Arrivals" onViewAll={() => {}} />
+  <ProductGrid products={newProducts} />
+</Section>
+
+<Section>
+  <SectionHeader title="Recommended" />
+  <ProductCarousel products={recommended} />
+</Section>
+```
+
+---
+
+<SectionTitle>Testing Responsive Behavior</SectionTitle>
+
+### In Storybook
+
+1. Open any story
+2. Use the viewport toolbar (top bar) to switch between device sizes
+3. The default viewports include iPhone 13 (390x844), iPhone SE (375x667), and iPad (768x1024)
+
+### Programmatic Testing
+
+When writing tests, you can set container width to test container query breakpoints:
+
+```tsx
+import { render } from '@testing-library/react'
+
+it('renders compact layout at small width', () => {
+  const { container } = render(
+    <div style={{ width: 180 }}>
+      <ProductCard product={mockProduct} />
+    </div>
+  )
+  // Assert compact layout elements
+})
+
+it('renders expanded layout at large width', () => {
+  const { container } = render(
+    <div style={{ width: 400 }}>
+      <ProductCard product={mockProduct} />
+    </div>
+  )
+  // Assert expanded layout elements
+})
+```
+
+---
+
+<SectionTitle>Safe Area Handling</SectionTitle>
+
+Fixed bottom elements (ActionBar, TabBar) respect the iOS safe area to avoid being hidden behind the home indicator:
+
+```scss
+.bottomBar {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+```
+
+The library exposes this as a token:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.customBottomBar {
+  padding-bottom: $safe-area-bottom; // env(safe-area-inset-bottom, 0px)
+}
+```
+
+Or via CSS custom property:
+
+```css
+.customBottomBar {
+  padding-bottom: var(--gs-safe-area-bottom);
+}
+```

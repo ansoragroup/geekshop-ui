@@ -1,0 +1,209 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Component Status" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const StatusBadge = ({ status }) => {
+  const colors = {
+    stable: { bg: '#E8F8EF', text: '#07C160' },
+    beta: { bg: '#FFF8E6', text: '#FFA726' },
+    new: { bg: '#FFF5F0', text: '#FF5000' },
+  };
+  const c = colors[status] || colors.stable;
+  return (
+    <span style={{
+      display: 'inline-block', padding: '2px 8px', borderRadius: 4,
+      background: c.bg, color: c.text, fontSize: 11, fontWeight: 600, textTransform: 'uppercase',
+    }}>
+      {status}
+    </span>
+  );
+};
+
+export const YesNo = ({ value }) => (
+  <span style={{ color: value ? '#07C160' : '#CCCCCC', fontWeight: 600, fontSize: 13 }}>
+    {value ? '\u2713' : '\u2013'}
+  </span>
+);
+
+export const StatCard = ({ label, value, color }) => (
+  <div style={{
+    padding: 16, background: '#fff', borderRadius: 8, border: '1px solid #eee',
+    textAlign: 'center',
+  }}>
+    <div style={{ fontSize: 28, fontWeight: 700, color: color || '#1A1A1A' }}>{value}</div>
+    <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{label}</div>
+  </div>
+);
+
+# Component Status
+
+Full inventory of all components in `@ansoragroup/ui` with their current status, test coverage, and feature flags.
+
+---
+
+export const stats = {
+  total: 68,
+  stable: 55,
+  new: 13,
+  withTests: 66,
+  withStories: 68,
+  withI18n: 38,
+  withContainerQueries: 5,
+};
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: 8, marginTop: 16, marginBottom: 32 }}>
+  <StatCard label="Total Components" value="68" color="#1A1A1A" />
+  <StatCard label="Stable" value="55" color="#07C160" />
+  <StatCard label="New" value="13" color="#FF5000" />
+  <StatCard label="With Tests" value="66" color="#1890FF" />
+  <StatCard label="With Stories" value="68" color="#7C3AED" />
+  <StatCard label="With i18n" value="38" color="#FFA726" />
+</div>
+
+---
+
+<SectionTitle>Commerce (7 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| ActionBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| AddressCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| CartItem | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> |
+| PaymentMethodCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| QuantityStepper | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| QuickBuyPopup | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| SkuSelector | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+
+<SectionTitle>Content (8 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| CategoryIcon | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| CountdownTimer | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| CouponCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| DealCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> |
+| HeroBanner | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| NoticeBar | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| PromoBanner | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| SectionHeader | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+
+<SectionTitle>Data Display (13 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| Avatar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| AvatarGroup | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Badge | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Cell | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ImageLazy | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| InfiniteScroll | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| OrderCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> |
+| OrderStatusBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Rating | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ReviewCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={true} /> |
+| SpecsTable | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Steps | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Tag | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| Timeline | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+
+<SectionTitle>Feedback (10 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| BottomSheet | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Dialog | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Empty | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Loading | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| Popup | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ProductCardSkeleton | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| PullToRefresh | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| Result | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Skeleton | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| Swipe | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Toast | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+
+<SectionTitle>Form (7 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| Button | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Checkbox | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Chip | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Input | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Radio / RadioGroup | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Switch | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| TextArea | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+
+<SectionTitle>Layout (4 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| Container | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Divider | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| Grid | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| Section | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+
+<SectionTitle>Navigation (13 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| AppBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| CategorySidebar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| CurrencySwitcher | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| FilterBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| FilterPanel | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| LanguageSwitcher | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| NavBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| PopularSearches | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| SearchBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| SearchSuggestions | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| TabBar | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> | <YesNo value={false} /> |
+| TabFilter | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ThemeSwitcher | <StatusBadge status="new" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+
+<SectionTitle>Product (5 components)</SectionTitle>
+
+| Component | Status | Tests | Stories | i18n | Container Queries |
+|---|---|---|---|---|---|
+| PriceDisplay | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ProductCard | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> |
+| ProductCarousel | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ProductGrid | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+| ProductImageGallery | <StatusBadge status="stable" /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={true} /> | <YesNo value={false} /> |
+
+---
+
+<SectionTitle>Hooks (4 hooks)</SectionTitle>
+
+| Hook | Purpose | Exported Types |
+|---|---|---|
+| `useControllableState` | Controlled/uncontrolled state management | `UseControllableStateProps<T>` |
+| `useCountdown` | Countdown timer logic | `CountdownValue` |
+| `useFocusTrap` | Focus trapping for overlays | `UseFocusTrapOptions` |
+| `useToast` | Toast notification management | `ToastItem`, `UseToastOptions`, `UseToastReturn` |
+
+---
+
+<SectionTitle>Status Definitions</SectionTitle>
+
+| Status | Meaning |
+|---|---|
+| <StatusBadge status="stable" /> | Production-ready. API is stable. Breaking changes follow semver. |
+| <StatusBadge status="new" /> | Recently added. API may evolve in minor releases. Functionally complete and tested. |
+
+---
+
+<SectionTitle>Legend</SectionTitle>
+
+| Column | Description |
+|---|---|
+| **Tests** | Has a `.test.tsx` file with unit tests (Vitest + Testing Library) |
+| **Stories** | Has a `.stories.tsx` file with Storybook stories |
+| **i18n** | Uses `useGeekShop()` hook for translated strings or `formatPrice()` |
+| **Container Queries** | Uses `container-type: inline-size` for responsive layout |

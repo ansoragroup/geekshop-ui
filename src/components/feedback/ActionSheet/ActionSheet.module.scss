@@ -1,0 +1,165 @@
+@use '../../../theme/tokens' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: $z-index-modal;
+  animation: overlayIn $transition-fast;
+}
+
+.sheet {
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp $transition-normal;
+  padding-bottom: $safe-area-bottom;
+}
+
+// === Header ===
+.header {
+  background: $color-bg-white;
+  border-radius: $radius-xl $radius-xl 0 0;
+  padding: $spacing-lg $spacing-lg $spacing-md;
+  text-align: center;
+  border-bottom: 1px solid var(--gs-color-border, $color-border);
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xs;
+  line-height: $line-height-normal;
+}
+
+// === Actions ===
+.actions {
+  background: $color-bg-white;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  .header ~ & {
+    border-radius: 0;
+  }
+
+  // When no header, apply top radius
+  &:first-child {
+    border-radius: $radius-xl $radius-xl 0 0;
+  }
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: $spacing-lg;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-lg;
+  color: $color-text-primary;
+  min-height: 52px;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+  border-bottom: 1px solid $color-border-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.actionName {
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+.actionDescription {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xxs;
+  line-height: $line-height-normal;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+
+  &:active {
+    background: none;
+  }
+}
+
+// === Cancel ===
+.cancelWrapper {
+  margin-top: $spacing-sm;
+}
+
+.cancelBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: $spacing-lg;
+  border: none;
+  background: $color-bg-white;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  min-height: 52px;
+  border-radius: 0 0 $radius-xl $radius-xl;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+  }
+}
+
+// === Animations ===
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { animation: none; }
+  .sheet { animation: none; }
+}

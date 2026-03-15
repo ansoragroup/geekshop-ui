@@ -1,0 +1,30 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+.tabsWrap {
+  background: $color-bg-white;
+  padding: 0 $spacing-lg;
+  position: sticky;
+  top: $navbar-height;
+  z-index: $z-index-sticky;
+}
+
+.content {
+  padding: $spacing-md;
+}
+
+.couponList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.emptyWrap {
+  padding: 60px $spacing-lg;
+}

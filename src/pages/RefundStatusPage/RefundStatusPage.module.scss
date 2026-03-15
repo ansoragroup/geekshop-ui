@@ -1,0 +1,62 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+.content {
+  padding: 0;
+}
+
+.resultSection {
+  background: $color-bg-white;
+  padding: $spacing-xxl $spacing-lg;
+}
+
+.amountCard {
+  background: $color-bg-white;
+  padding: $spacing-xl $spacing-lg;
+  text-align: center;
+}
+
+.amountLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.amountValue {
+  font-size: $font-size-price-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+.amountCurrency {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xxs;
+}
+
+.timelineSection {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-lg;
+}
+
+.orderInfo {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+}
+
+.actionSection {
+  padding: $spacing-xl $spacing-lg;
+}

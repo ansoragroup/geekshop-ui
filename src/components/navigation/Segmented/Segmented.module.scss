@@ -1,0 +1,133 @@
+@use '../../../theme/tokens' as *;
+
+.segmented {
+  display: inline-flex;
+}
+
+.block {
+  display: flex;
+  width: 100%;
+
+  .track {
+    width: 100%;
+  }
+
+  .option {
+    flex: 1;
+  }
+}
+
+.track {
+  position: relative;
+  display: inline-flex;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 2px;
+}
+
+.indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: calc(100% - 4px);
+  background: $color-bg-white;
+  border-radius: calc(#{$radius-md} - 2px);
+  box-shadow: $shadow-sm;
+  transition: transform $transition-normal, width $transition-normal;
+  z-index: 0;
+}
+
+.option {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  transition: color $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+    border-radius: calc(#{$radius-md} - 2px);
+  }
+}
+
+.active {
+  color: $color-text-primary;
+  font-weight: $font-weight-semibold;
+}
+
+.optionDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.label {
+  line-height: 1;
+}
+
+// --- Sizes ---
+
+.size-sm {
+  .option {
+    height: 28px;
+    padding: 0 $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  .icon {
+    font-size: $font-size-sm;
+  }
+}
+
+.size-md {
+  .option {
+    height: 36px;
+    padding: 0 $spacing-lg;
+    font-size: $font-size-md;
+  }
+
+  .icon {
+    font-size: $font-size-md;
+  }
+}
+
+.size-lg {
+  .option {
+    height: 44px;
+    padding: 0 $spacing-xl;
+    font-size: $font-size-lg;
+  }
+
+  .icon {
+    font-size: $font-size-lg;
+  }
+}
+
+// --- Reduced motion ---
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: none;
+  }
+
+  .option {
+    transition: none;
+  }
+}
