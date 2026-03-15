@@ -27,7 +27,7 @@ const FlashIcon = () => (
 
 /* ---------- Props ---------- */
 
-export interface FlashSalePageProps {}
+export type FlashSalePageProps = Record<string, never>;
 
 /* ---------- Time slots ---------- */
 
@@ -53,7 +53,7 @@ export const FlashSalePage: React.FC<FlashSalePageProps> = () => {
   const [activeSlot, setActiveSlot] = useState('10:00');
 
   // End time: 2 hours from now for the current slot
-  const endTime = new Date(Date.now() + 2 * 60 * 60 * 1000);
+  const [endTime] = useState(() => new Date(Date.now() + 2 * 60 * 60 * 1000));
 
   const currentSlot = timeSlots.find((s) => s.key === activeSlot);
   const isUpcoming = currentSlot?.status === 'upcoming';

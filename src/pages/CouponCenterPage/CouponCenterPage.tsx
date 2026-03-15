@@ -12,7 +12,7 @@ import styles from './CouponCenterPage.module.scss';
 
 /* ---------- Props ---------- */
 
-export interface CouponCenterPageProps {}
+export type CouponCenterPageProps = Record<string, never>;
 
 /* ---------- Extra mock coupons for "available" ---------- */
 

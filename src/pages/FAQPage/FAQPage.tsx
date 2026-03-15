@@ -36,7 +36,7 @@ const HeadsetIcon = () => (
 
 /* ---------- Props ---------- */
 
-export interface FAQPageProps {}
+export type FAQPageProps = Record<string, never>;
 
 /* ---------- FAQ data ---------- */
 

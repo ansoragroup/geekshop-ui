@@ -174,7 +174,7 @@ export const ReturnRequestPage: React.FC<ReturnRequestPageProps> = ({
               </button>
               {uploadedPhotos.map((photo, i) => (
                 <div key={i} className={styles.uploadedPhoto}>
-                  <img src={photo} alt={`Photo ${i + 1}`} />
+                  <img src={photo} alt={`Upload ${i + 1}`} />
                 </div>
               ))}
             </div>

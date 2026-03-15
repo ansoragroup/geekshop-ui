@@ -41,7 +41,7 @@ const CopyIcon = () => (
 
 /* ---------- Props ---------- */
 
-export interface DeliveryTrackingPageProps {}
+export type DeliveryTrackingPageProps = Record<string, never>;
 
 /* ---------- Delivery timeline data ---------- */
 
