@@ -1,4 +1,5 @@
 import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './DealCard.module.scss';
 
 export interface DealCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -18,10 +19,6 @@ export interface DealCardProps extends HTMLAttributes<HTMLDivElement> {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
-}
-
 export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
   (
     {
@@ -37,6 +34,7 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
     },
     ref,
   ) => {
+  const { t, formatPrice } = useGeekShop();
   const savings = originalPrice - price;
 
   const rootClass = [styles.dealCard, className].filter(Boolean).join(' ');
@@ -61,12 +59,12 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
 
         <div className={styles.priceRow}>
           <span className={styles.currentPrice}>
-            {formatPrice(price)} <span className={styles.currency}>so'm</span>
+            {formatPrice(price)}
           </span>
         </div>
 
         <span className={styles.originalPrice}>
-          {formatPrice(originalPrice)} so'm
+          {formatPrice(originalPrice)}
         </span>
 
         <div className={styles.savingsRow}>
@@ -85,7 +83,7 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
             />
           </svg>
           <span className={styles.savingsText}>
-            Tejash: {formatPrice(savings)} so'm
+            {t('product.savings', { amount: formatPrice(savings) })}
           </span>
         </div>
 
@@ -98,7 +96,7 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
               />
             </div>
             <span className={styles.progressLabel}>
-              {soldPercent}% sotildi
+              {t('product.soldPercent', { percent: soldPercent })}
             </span>
           </div>
         )}

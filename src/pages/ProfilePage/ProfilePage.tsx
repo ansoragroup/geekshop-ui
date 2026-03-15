@@ -10,6 +10,7 @@ import {
   Button,
   TabBar,
   Container,
+  useGeekShop,
 } from '../../components';
 import type { Address, PaymentMethod } from '../../components';
 import styles from './ProfilePage.module.scss';
@@ -156,21 +157,22 @@ export interface ProfilePageProps {
 export const ProfilePage: React.FC<ProfilePageProps> = ({
   newUser = false,
 }) => {
-  const userName = newUser ? 'Mehmon' : 'Jasur Karimov';
+  const { t } = useGeekShop();
+  const userName = newUser ? t('profile.guest') : 'Jasur Karimov';
   const userPhone = newUser ? undefined : '+998 90 123 45 67';
 
   return (
     <div className={styles.page}>
       {/* NavBar */}
       <NavBar
-        title="Profil"
+        title={t('page.profile')}
         showBack={false}
         rightActions={[
           {
             key: 'settings',
             icon: <SettingsIcon />,
             onClick: () => {},
-            ariaLabel: 'Sozlamalar',
+            ariaLabel: t('page.settings'),
           },
         ]}
       />
@@ -188,7 +190,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
             {userPhone ? (
               <div className={styles.userPhone}>{userPhone}</div>
             ) : (
-              <div className={styles.userGuest}>Tizimga kiring yoki ro'yxatdan o'ting</div>
+              <div className={styles.userGuest}>{t('profile.guestPrompt')}</div>
             )}
           </div>
         </div>
@@ -196,17 +198,17 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className={styles.sectionGap} />
 
         {/* Orders & Favorites Section */}
-        <Section title="Buyurtmalar">
+        <Section title={t('profile.orders')}>
           <MenuItem
             icon={<OrdersIcon />}
-            label="Mening buyurtmalarim"
+            label={t('profile.myOrders')}
             badgeCount={newUser ? 0 : 3}
             onClick={() => {}}
           />
           <Divider variant="inset" />
           <MenuItem
             icon={<HeartIcon />}
-            label="Sevimlilar"
+            label={t('profile.favorites')}
             badgeCount={newUser ? 0 : 12}
             onClick={() => {}}
           />
@@ -215,10 +217,10 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className={styles.sectionGap} />
 
         {/* Address Section */}
-        <Section title="Manzillar">
+        <Section title={t('profile.addresses')}>
           <MenuItem
             icon={<LocationIcon />}
-            label="Manzillarim"
+            label={t('profile.myAddresses')}
             onClick={() => {}}
           />
           {!newUser && (
@@ -235,10 +237,10 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className={styles.sectionGap} />
 
         {/* Payment Section */}
-        <Section title="To'lov">
+        <Section title={t('profile.payment')}>
           <MenuItem
             icon={<CreditCardIcon />}
-            label="To'lov usullari"
+            label={t('profile.paymentMethods')}
             onClick={() => {}}
           />
           {!newUser && (
@@ -253,16 +255,16 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className={styles.sectionGap} />
 
         {/* Settings & Help Section */}
-        <Section title="Umumiy">
+        <Section title={t('profile.general')}>
           <MenuItem
             icon={<GearIcon />}
-            label="Sozlamalar"
+            label={t('page.settings')}
             onClick={() => {}}
           />
           <Divider variant="inset" />
           <MenuItem
             icon={<HelpIcon />}
-            label="Yordam"
+            label={t('profile.help')}
             onClick={() => {}}
           />
         </Section>
@@ -273,13 +275,13 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className={styles.logoutSection}>
           <MenuItem
             icon={<LogoutIcon />}
-            label="Chiqish"
+            label={t('settings.logout')}
             onClick={() => {}}
           />
           <Divider variant="full" />
           <div style={{ marginTop: 16 }}>
             <Button variant="secondary" size="full" block onClick={() => {}}>
-              Chiqish
+              {t('settings.logout')}
             </Button>
           </div>
         </div>

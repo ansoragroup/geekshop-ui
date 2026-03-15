@@ -1,4 +1,5 @@
 import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './SectionHeader.module.scss';
 
 export interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
@@ -24,6 +25,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
   const rootClass = [styles.sectionHeader, className].filter(Boolean).join(' ');
 
   return (
@@ -36,7 +38,7 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
       {onViewAll && (
         <button className={styles.viewAll} onClick={onViewAll}>
           {count !== undefined && (
-            <span className={styles.count}>{count} ta</span>
+            <span className={styles.count}>{t('content.count', { count })}</span>
           )}
           <svg
             className={styles.arrow}

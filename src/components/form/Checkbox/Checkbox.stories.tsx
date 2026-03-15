@@ -32,14 +32,10 @@ export const Unchecked: Story = {
     // Initially unchecked
     await expect(checkbox).toHaveAttribute('aria-checked', 'false');
 
-    // Click to check
+    // Click to toggle — controlled prop stays false so onChange always receives true
     await userEvent.click(checkbox);
     await expect(args.onChange).toHaveBeenCalledWith(true);
-
-    // Click again to uncheck
-    await userEvent.click(checkbox);
-    await expect(args.onChange).toHaveBeenCalledWith(false);
-    await expect(args.onChange).toHaveBeenCalledTimes(2);
+    await expect(args.onChange).toHaveBeenCalledTimes(1);
   },
 };
 

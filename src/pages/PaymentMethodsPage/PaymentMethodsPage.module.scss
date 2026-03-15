@@ -1,0 +1,69 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+.navTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// === Empty state ===
+.emptyWrap {
+  padding: 60px $spacing-lg;
+}
+
+// === Sections ===
+.section {
+  padding: 0 $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-md;
+  padding-top: $spacing-lg;
+}
+
+.methodList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+// === Add button ===
+.addBtnWrap {
+  padding: $spacing-lg;
+}
+
+.addBtnContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+}
+
+// === Delete confirmation ===
+.deleteConfirm {
+  padding: $spacing-lg;
+}
+
+.deleteText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  margin: 0 0 $spacing-xl;
+}
+
+.deleteActions {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+}

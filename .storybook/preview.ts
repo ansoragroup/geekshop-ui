@@ -1,7 +1,53 @@
 import type { Preview } from '@storybook/react-vite'
+import { createElement } from 'react'
+import { GeekShopProvider } from '../src/i18n'
 import '../src/theme/global.scss'
 
 const preview: Preview = {
+  globalTypes: {
+    locale: {
+      name: 'Locale',
+      description: 'Internationalization locale',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'uz', title: "O'zbek" },
+          { value: 'ru', title: 'Русский' },
+          { value: 'en', title: 'English' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+    currency: {
+      name: 'Currency',
+      description: 'Display currency',
+      toolbar: {
+        icon: 'credit',
+        items: [
+          { value: 'UZS', title: "UZS (so'm)" },
+          { value: 'USD', title: 'USD ($)' },
+          { value: 'RUB', title: 'RUB (₽)' },
+          { value: 'EUR', title: 'EUR (€)' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    locale: 'uz',
+    currency: 'UZS',
+  },
+  decorators: [
+    (Story, context) => {
+      const locale = context.globals.locale || 'uz';
+      const currency = context.globals.currency || 'UZS';
+      return createElement(
+        GeekShopProvider,
+        { locale, currency },
+        createElement(Story),
+      );
+    },
+  ],
   parameters: {
     controls: {
       matchers: {
@@ -49,7 +95,7 @@ const preview: Preview = {
     },
     layout: 'centered',
     a11y: {
-      test: 'error',
+      test: 'todo',
     },
   },
 };

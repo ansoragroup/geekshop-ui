@@ -1,4 +1,5 @@
 import { forwardRef, useState, useCallback, useMemo, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './SkuSelector.module.scss';
 
@@ -31,10 +32,6 @@ export interface SkuSelectorProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
 }
 
-function formatPrice(price: number): string {
-  return price.toLocaleString('ru-RU').replace(/,/g, ' ');
-}
-
 export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
   (
     {
@@ -49,6 +46,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
     },
     ref,
   ) => {
+  const { t, formatPrice } = useGeekShop();
   const [mode, setMode] = useState<'list' | 'imageGrid'>('list');
   const [selections, setSelections] = useState<Record<string, number>>({});
   const [gridSelected, setGridSelected] = useState<string | null>(null);
@@ -130,12 +128,12 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
           <div className={styles.headerInfo}>
             <div className={styles.priceRange}>
               <span className={styles.priceSymbol}>
-                {formatPrice(product.priceRange[0])} - {formatPrice(product.priceRange[1])} so'm
+                {formatPrice(product.priceRange[0])} - {formatPrice(product.priceRange[1])}
               </span>
             </div>
             <div className={styles.productTitle}>{product.title}</div>
           </div>
-          <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+          <button type="button" className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M5 5L15 15M15 5L5 15" stroke="#999" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
@@ -145,21 +143,21 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
         {/* View mode toggle */}
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Variant</span>
+            <span className={styles.sectionLabel}>{t('product.variant')}</span>
             <div className={styles.viewToggle}>
               <button
                 type="button"
                 className={`${styles.toggleBtn} ${mode === 'list' ? styles.toggleActive : ''}`}
                 onClick={() => setMode('list')}
               >
-                Ro'yxat
+                {t('product.listView')}
               </button>
               <button
                 type="button"
                 className={`${styles.toggleBtn} ${mode === 'imageGrid' ? styles.toggleActive : ''}`}
                 onClick={() => setMode('imageGrid')}
               >
-                Rasmli
+                {t('product.gridView')}
               </button>
             </div>
           </div>
@@ -172,7 +170,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
                   <img src={v.image} alt={v.name} className={styles.listItemImage} />
                   <div className={styles.listItemInfo}>
                     <div className={styles.listItemName}>{v.name}</div>
-                    <div className={styles.listItemStock}>{v.stock} ta mavjud</div>
+                    <div className={styles.listItemStock}>{t('commerce.inStock', { count: v.stock })}</div>
                   </div>
                   <div className={styles.listItemStepper}>
                     <QuantityStepper
@@ -226,11 +224,11 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
                 <div className={styles.imageGridInfo}>
                   <div className={styles.imageGridInfoRow}>
                     <span className={styles.imageGridInfoName}>{selectedVariant.name}</span>
-                    <span className={styles.imageGridInfoStock}>{selectedVariant.stock} ta mavjud</span>
+                    <span className={styles.imageGridInfoStock}>{t('commerce.inStock', { count: selectedVariant.stock })}</span>
                   </div>
-                  <div className={styles.imageGridInfoPrice}>{formatPrice(selectedVariant.price)} so'm</div>
+                  <div className={styles.imageGridInfoPrice}>{formatPrice(selectedVariant.price)}</div>
                   <div className={styles.imageGridStepper}>
-                    <span className={styles.imageGridStepperLabel}>Miqdor</span>
+                    <span className={styles.imageGridStepperLabel}>{t('commerce.quantity')}</span>
                     <QuantityStepper
                       value={selections[selectedVariant.id] || 1}
                       min={1}
@@ -248,9 +246,9 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
         {/* Footer */}
         <div className={styles.footer}>
           <div className={styles.footerInfo}>
-            <span className={styles.footerCount}>Tanlangan: {totalCount} ta</span>
+            <span className={styles.footerCount}>{t('commerce.selected', { count: totalCount })}</span>
             {totalPrice > 0 && (
-              <span className={styles.footerPrice}>{formatPrice(totalPrice)} so'm</span>
+              <span className={styles.footerPrice}>{formatPrice(totalPrice)}</span>
             )}
           </div>
           <button
@@ -259,7 +257,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
             onClick={handleAddToCart}
             disabled={totalCount === 0}
           >
-            Savatga qo'shish
+            {t('commerce.addToCartFull')}
           </button>
         </div>
       </div>

@@ -1,0 +1,168 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Spacing" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SpacingBar = ({ name, value }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 10, padding: '6px 0' }}>
+    <div style={{ width: 100, flexShrink: 0 }}>
+      <div style={{ fontWeight: 600, fontSize: 13, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#999' }}>{value}px</div>
+    </div>
+    <div style={{
+      width: value, height: 24, minWidth: 2,
+      background: 'linear-gradient(135deg, #FF5000, #FF7A33)',
+      borderRadius: 4,
+    }} />
+    <div style={{ fontFamily: 'monospace', fontSize: 12, color: '#666' }}>
+      {value}px
+    </div>
+  </div>
+);
+
+export const RadiusBox = ({ name, value }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+    <div style={{
+      width: 80, height: 80,
+      background: '#FFF5F0',
+      border: '2px solid #FF5000',
+      borderRadius: value,
+    }} />
+    <div style={{ textAlign: 'center' }}>
+      <div style={{ fontWeight: 600, fontSize: 13, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#999' }}>{typeof value === 'number' ? `${value}px` : value}</div>
+    </div>
+  </div>
+);
+
+# Spacing & Border Radius
+
+Consistent spacing and radius tokens ensure visual harmony across all components.
+
+---
+
+<SectionTitle>Spacing Scale</SectionTitle>
+
+The spacing scale uses a progression from 2px to 32px. All spacing values are available as SCSS variables with the `$spacing-*` prefix.
+
+<SpacingBar name="xxs" value={2} />
+<SpacingBar name="xs" value={4} />
+<SpacingBar name="sm" value={8} />
+<SpacingBar name="md" value={12} />
+<SpacingBar name="lg" value={16} />
+<SpacingBar name="xl" value={20} />
+<SpacingBar name="xxl" value={24} />
+<SpacingBar name="xxxl" value={32} />
+
+### Usage Guidelines
+
+| Context | Token | Value |
+|---|---|---|
+| Tight inline spacing (icon + text) | `$spacing-xs` | 4px |
+| Default gap between elements | `$spacing-sm` | 8px |
+| Internal card padding | `$spacing-lg` | 16px |
+| Container horizontal padding | `$spacing-md` | 12px |
+| Section vertical spacing | `$spacing-xxl` | 24px |
+| Page-level section gaps | `$spacing-xxxl` | 32px |
+| Minimum touch target spacing | `$spacing-sm` | 8px |
+
+### SCSS Usage
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.card {
+  padding: $spacing-lg;
+  gap: $spacing-md;
+}
+
+.section {
+  margin-bottom: $spacing-xxl;
+}
+
+.inline {
+  gap: $spacing-xs;
+}
+```
+
+---
+
+<SectionTitle>Border Radius</SectionTitle>
+
+export const RadiusGrid = () => (
+  <div style={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 24,
+    padding: '16px 0',
+  }}>
+    <RadiusBox name="xs" value={4} />
+    <RadiusBox name="sm" value={6} />
+    <RadiusBox name="md" value={8} />
+    <RadiusBox name="lg" value={12} />
+    <RadiusBox name="xl" value={16} />
+    <RadiusBox name="xxl" value={24} />
+    <RadiusBox name="round" value={9999} />
+  </div>
+);
+
+<RadiusGrid />
+
+### Usage Guidelines
+
+| Element | Token | Value |
+|---|---|---|
+| Tags, small badges | `$radius-xs` | 4px |
+| Buttons, inputs | `$radius-sm` | 6px |
+| Cards, dropdowns | `$radius-md` | 8px |
+| Large cards, modals | `$radius-lg` | 12px |
+| Bottom sheets, overlays | `$radius-xl` | 16px |
+| Large banners | `$radius-xxl` | 24px |
+| Pills, circular avatars | `$radius-round` | 9999px |
+
+### SCSS Usage
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.button {
+  border-radius: $radius-sm;
+}
+
+.card {
+  border-radius: $radius-lg;
+}
+
+.pill {
+  border-radius: $radius-round;
+}
+```
+
+---
+
+<SectionTitle>Layout Constants</SectionTitle>
+
+Fixed dimensions used for structural elements:
+
+| Token | Value | Purpose |
+|---|---|---|
+| `$navbar-height` | 44px | Top navigation bar |
+| `$tabbar-height` | 50px | Bottom tab bar |
+| `$action-bar-height` | 56px | Bottom action bar (cart, buy) |
+| `$search-bar-height` | 36px | Search input bar |
+| `$container-padding` | 12px | Page container horizontal padding |
+| `$safe-area-bottom` | `env(safe-area-inset-bottom, 0px)` | iOS safe area |
+
+These are also available as CSS custom properties:
+
+```css
+var(--gs-navbar-height)    /* 44px */
+var(--gs-tabbar-height)    /* 50px */
+var(--gs-action-bar-height) /* 56px */
+var(--gs-safe-area-bottom)  /* env() */
+```

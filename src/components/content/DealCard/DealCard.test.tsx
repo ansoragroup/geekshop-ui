@@ -97,9 +97,11 @@ describe('DealCard', () => {
     expect(onClick).toHaveBeenCalledOnce()
   })
 
-  it('renders currency label "so\'m"', () => {
+  it('renders prices with currency label "so\'m"', () => {
     render(<DealCard {...baseProps} />)
-    const somElements = screen.getAllByText("so'm")
+    // After i18n migration, formatPrice returns the full string with currency included
+    // e.g. "3 500 000 so'm" - so we check for text containing "so'm"
+    const somElements = screen.getAllByText(/so'm/)
     expect(somElements.length).toBeGreaterThanOrEqual(1)
   })
 })

@@ -1,4 +1,5 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
+import { useGeekShop } from '../../../i18n';
 import { PriceDisplay } from '../PriceDisplay';
 import { Rating } from '../../data-display/Rating';
 import styles from './ProductCard.module.scss';
@@ -158,6 +159,7 @@ function ProductCardPrice({
   installment,
   className = '',
 }: ProductCardPriceProps) {
+  const { t, formatPrice } = useGeekShop();
   const hasDiscount = original !== undefined && original > current;
 
   return (
@@ -170,7 +172,7 @@ function ProductCardPrice({
       />
       {installment !== undefined && (
         <span className={styles.soldCount}>
-          {installment.toLocaleString('ru-RU').replace(/,/g, ' ')} so'm/oy
+          {t('product.installment', { price: formatPrice(installment) })}
         </span>
       )}
     </div>

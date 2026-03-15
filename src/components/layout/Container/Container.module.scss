@@ -16,3 +16,11 @@
 .withTabbar {
   padding-bottom: calc(#{$tabbar-height} + #{$safe-area-bottom});
 }
+
+.withActionBar {
+  padding-bottom: calc(#{$action-bar-height} + #{$safe-area-bottom});
+}
+
+.withActionBarAndTabbar {
+  padding-bottom: calc(#{$action-bar-height} + #{$tabbar-height} + #{$safe-area-bottom});
+}

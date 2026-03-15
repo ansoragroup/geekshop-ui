@@ -12,6 +12,7 @@ import {
   Divider,
   CouponCard,
   SectionHeader,
+  useGeekShop,
 } from '../../components';
 import type { Address, PaymentMethod } from '../../components';
 import styles from './CheckoutPage.module.scss';
@@ -107,13 +108,13 @@ const cartItems = [
 
 /* ---------- Price breakdown ---------- */
 
-const priceBreakdown = [
-  { label: 'Mahsulotlar (4 ta)', value: '13 700 000 so\'m' },
-  { label: 'Yetkazib berish', value: 'Bepul' },
-  { label: 'Chegirma', value: '-1 370 000 so\'m' },
-  { label: 'Kupon chegirmasi', value: '-500 000 so\'m' },
-  { label: 'Jami', value: '11 830 000 so\'m' },
-];
+const priceBreakdownData = {
+  subtotal: 13700000,
+  delivery: 0,
+  discount: 1370000,
+  couponDiscount: 500000,
+  total: 11830000,
+};
 
 /* ---------- Plus icon ---------- */
 
@@ -145,6 +146,7 @@ export interface CheckoutPageProps {
 export const CheckoutPage: React.FC<CheckoutPageProps> = ({
   hasCoupon = false,
 }) => {
+  const { t, formatPrice } = useGeekShop();
   const [selectedAddress, setSelectedAddress] = useState('addr-1');
   const [selectedPayment, setSelectedPayment] = useState('pm-1');
   const [couponCode, setCouponCode] = useState('');
@@ -153,14 +155,14 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
   return (
     <div className={styles.page}>
       <NavBar
-        title="Buyurtma berish"
+        title={t('page.checkout')}
         showBack
         onBack={() => {}}
       />
 
       <Container hasNavbar>
         {/* Delivery address section */}
-        <Section title="Yetkazib berish manzili">
+        <Section title={t('checkout.deliveryAddress')}>
           <div className={styles.addressList} role="listbox">
             {addresses.map((addr) => (
               <AddressCard
@@ -178,14 +180,14 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
             className={styles.addButton}
             onClick={() => {}}
           >
-            <PlusIcon /> Yangi manzil qo'shish
+            <PlusIcon /> {t('address.add')}
           </Button>
         </Section>
 
         <Divider />
 
         {/* Payment method section */}
-        <Section title="To'lov usuli">
+        <Section title={t('checkout.paymentMethod')}>
           <div className={styles.paymentList} role="listbox">
             {paymentMethods.map((pm) => (
               <PaymentMethodCard
@@ -202,8 +204,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
         <Divider />
 
         {/* Order items section */}
-        <Section title="Buyurtma mahsulotlari">
-          <SectionHeader title="Mahsulotlar" count={cartItems.length} />
+        <Section title={t('checkout.orderItems')}>
+          <SectionHeader title={t('cart.items')} count={cartItems.length} />
           <div className={styles.itemsList}>
             {cartItems.map((item) => (
               <CartItem
@@ -221,7 +223,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
         <Divider />
 
         {/* Coupon section */}
-        <Section title="Kupon kodi">
+        <Section title={t('checkout.couponCode')}>
           {couponApplied ? (
             <CouponCard
               discount="-5%"
@@ -235,7 +237,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
               <Input
                 value={couponCode}
                 onChange={setCouponCode}
-                placeholder="Kupon kodini kiriting"
+                placeholder={t('checkout.enterCoupon')}
                 leftIcon={<CouponIcon />}
                 clearable
               />
@@ -245,7 +247,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                 disabled={!couponCode.trim()}
                 onClick={() => setCouponApplied(true)}
               >
-                Qo'llash
+                {t('checkout.applyCoupon')}
               </Button>
             </div>
           )}
@@ -254,21 +256,26 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
         <Divider />
 
         {/* Price breakdown */}
-        <Section title="Narx tafsiloti">
-          <SpecsTable specs={priceBreakdown} />
+        <Section title={t('checkout.priceDetails')}>
+          <SpecsTable specs={[
+            { label: t('checkout.subtotal'), value: formatPrice(priceBreakdownData.subtotal) },
+            { label: t('cart.delivery'), value: priceBreakdownData.delivery === 0 ? t('cart.free') : formatPrice(priceBreakdownData.delivery) },
+            { label: t('cart.discount'), value: `-${formatPrice(priceBreakdownData.discount)}` },
+            { label: t('cart.couponDiscount'), value: `-${formatPrice(priceBreakdownData.couponDiscount)}` },
+            { label: t('cart.total'), value: formatPrice(priceBreakdownData.total) },
+          ]} />
         </Section>
 
         {/* Bottom action bar */}
         <div className={styles.bottomBar}>
           <div className={styles.totalSection}>
-            <span className={styles.totalLabel}>Jami:</span>
+            <span className={styles.totalLabel}>{t('cart.total')}:</span>
             <div className={styles.totalPrice}>
-              <span className={styles.totalCurrency}>so'm</span>
-              <span className={styles.totalAmount}>11 830 000</span>
+              <span className={styles.totalAmount}>{formatPrice(priceBreakdownData.total)}</span>
             </div>
           </div>
           <Button variant="primary" size="lg" className={styles.placeOrderBtn}>
-            Buyurtma berish
+            {t('cart.placeOrder')}
           </Button>
         </div>
       </Container>

@@ -1,0 +1,30 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// === Results Area ===
+.resultsArea {
+  padding: $spacing-sm;
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-xs $spacing-md;
+}
+
+.resultsCount {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// === Empty / No Results ===
+.emptyWrap {
+  padding: $spacing-xxxl $spacing-lg;
+}

@@ -1,4 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './AppBar.module.scss';
 
 export interface AppBarProps extends HTMLAttributes<HTMLElement> {
@@ -62,7 +63,7 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
   (
     {
       location = 'Toshkent',
-      searchPlaceholder = 'Mahsulot qidirish...',
+      searchPlaceholder,
       searchValue,
       variant = 'colored',
       backgroundColor,
@@ -80,6 +81,8 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
+    const resolvedPlaceholder = searchPlaceholder ?? t('search.placeholder');
     const isReadOnly = !onSearchChange;
     const backgroundStyle = backgroundColor
       ? { ...style, background: backgroundColor }
@@ -97,7 +100,7 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
           <button
             className={styles.locationBtn}
             onClick={onLocationClick}
-            aria-label={`Joylashuv: ${location}`}
+            aria-label={t('search.location', { location })}
           >
             <LocationIcon />
             <span>{location}</span>
@@ -117,13 +120,13 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
           </span>
 
           {isReadOnly ? (
-            <span className={styles.placeholderText}>{searchPlaceholder}</span>
+            <span className={styles.placeholderText}>{resolvedPlaceholder}</span>
           ) : (
             <input
               className={styles.searchInput}
               type="text"
               value={searchValue ?? ''}
-              placeholder={searchPlaceholder}
+              placeholder={resolvedPlaceholder}
               onChange={(e) => onSearchChange?.(e.target.value)}
               onClick={onSearchClick}
             />
@@ -135,7 +138,7 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
           <button
             className={styles.iconBtn}
             onClick={onScanClick}
-            aria-label="Kamera bilan qidirish"
+            aria-label={t('product.cameraSearch')}
           >
             <ScanIcon />
           </button>
@@ -146,7 +149,7 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
           <button
             className={styles.iconBtn}
             onClick={onDarkModeClick}
-            aria-label="Tungi rejim"
+            aria-label={t('product.nightMode')}
           >
             <MoonIcon />
           </button>

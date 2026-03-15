@@ -1,5 +1,6 @@
 import { forwardRef, useRef, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './InfiniteScroll.module.scss';
 
 export interface InfiniteScrollProps {
@@ -44,6 +45,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
     const sentinelRef = useRef<HTMLDivElement>(null);
     const debounceRef = useRef(false);
 
@@ -92,14 +94,14 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
           <div className={styles.status}>
             {errorContent ?? (
               <div className={styles.errorState}>
-                <span className={styles.errorText}>Failed to load</span>
+                <span className={styles.errorText}>{t('common.loadFailed')}</span>
                 {onRetry && (
                   <button
                     type="button"
                     className={styles.retryButton}
                     onClick={onRetry}
                   >
-                    Retry
+                    {t('common.retry')}
                   </button>
                 )}
               </div>
@@ -114,7 +116,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
             {loadingContent ?? (
               <div className={styles.loadingState}>
                 <span className={styles.spinner} />
-                <span className={styles.loadingText}>Loading...</span>
+                <span className={styles.loadingText}>{t('common.loading')}</span>
               </div>
             )}
           </div>
@@ -125,7 +127,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
         return (
           <div className={styles.status}>
             {endContent ?? (
-              <span className={styles.endText}>No more items</span>
+              <span className={styles.endText}>{t('common.noMoreItems')}</span>
             )}
           </div>
         );

@@ -1,4 +1,5 @@
 import { forwardRef, useCallback } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './PaymentMethodCard.module.scss';
 
 export type PaymentType = 'visa' | 'mastercard' | 'uzcard' | 'humo' | 'click' | 'payme' | 'cash';
@@ -31,11 +32,12 @@ const PAYMENT_ICONS: Record<PaymentType, { bg: string; text: string; label: stri
   humo: { bg: '#5B2D8E', text: '#FFFFFF', label: 'Humo' },
   click: { bg: '#00AEEF', text: '#FFFFFF', label: 'Click' },
   payme: { bg: '#33CCCC', text: '#FFFFFF', label: 'Payme' },
-  cash: { bg: '#F5F5F5', text: '#1A1A1A', label: 'Naqd' },
+  cash: { bg: '#F5F5F5', text: '#1A1A1A', label: '' },
 };
 
-function PaymentIcon({ type }: { type: PaymentType }) {
+function PaymentIcon({ type, cashLabel }: { type: PaymentType; cashLabel?: string }) {
   const config = PAYMENT_ICONS[type];
+  const displayLabel = type === 'cash' && cashLabel ? cashLabel : config.label;
   return (
     <svg
       className={styles.icon}
@@ -51,11 +53,11 @@ function PaymentIcon({ type }: { type: PaymentType }) {
         textAnchor="middle"
         dominantBaseline="central"
         fill={config.text}
-        fontSize={config.label.length > 4 ? '7' : '9'}
+        fontSize={displayLabel.length > 4 ? '7' : '9'}
         fontWeight="700"
         fontFamily="sans-serif"
       >
-        {config.label}
+        {displayLabel}
       </text>
     </svg>
   );
@@ -106,6 +108,8 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
     },
     ref,
   ) {
+    const { t } = useGeekShop();
+
     const handleSelect = useCallback(() => {
       onSelect?.(method);
     }, [onSelect, method]);
@@ -134,13 +138,13 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
         onClick={selectable ? handleSelect : undefined}
         onKeyDown={selectable ? handleKeyDown : undefined}
       >
-        <PaymentIcon type={method.type} />
+        <PaymentIcon type={method.type} cashLabel={t('commerce.cash')} />
 
         <div className={styles.details}>
           <span className={styles.label}>
             {method.label}
             {method.isDefault && (
-              <span className={styles.defaultBadge}>Asosiy</span>
+              <span className={styles.defaultBadge}>{t('common.default')}</span>
             )}
           </span>
           <span className={styles.meta}>
@@ -162,7 +166,7 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
                 e.stopPropagation();
                 handleDelete();
               }}
-              aria-label="O'chirish"
+              aria-label={t('common.delete')}
             >
               <DeleteIcon />
             </button>

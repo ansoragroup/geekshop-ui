@@ -7,6 +7,7 @@ import {
   Rating,
   InfiniteScroll,
   Divider,
+  useGeekShop,
 } from '../../components';
 import styles from './ReviewsPage.module.scss';
 
@@ -121,16 +122,16 @@ const allReviews = [
   },
 ];
 
-/* ---------- Tab definitions ---------- */
+/* ---------- Tab definition keys ---------- */
 
-const tabs = [
-  { key: 'all', label: 'Barchasi', badge: 250 },
-  { key: 'photos', label: 'Rasmli' },
-  { key: '5', label: '5 yulduz' },
-  { key: '4', label: '4 yulduz' },
-  { key: '3', label: '3 yulduz' },
-  { key: '2', label: '2 yulduz' },
-  { key: '1', label: '1 yulduz' },
+const tabKeys = [
+  { key: 'all', labelKey: 'common.all', badge: 250 },
+  { key: 'photos', labelKey: 'review.photoTab' },
+  { key: '5', labelKey: 'review.starTab', labelParams: { count: 5 } },
+  { key: '4', labelKey: 'review.starTab', labelParams: { count: 4 } },
+  { key: '3', labelKey: 'review.starTab', labelParams: { count: 3 } },
+  { key: '2', labelKey: 'review.starTab', labelParams: { count: 2 } },
+  { key: '1', labelKey: 'review.starTab', labelParams: { count: 1 } },
 ];
 
 /* ---------- Star bar chart icon ---------- */
@@ -144,6 +145,7 @@ const StarSmall = () => (
 /* ---------- Component ---------- */
 
 export const ReviewsPage: React.FC = () => {
+  const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState('all');
   const [visibleCount, setVisibleCount] = useState(5);
   const [loading, setLoading] = useState(false);
@@ -170,10 +172,16 @@ export const ReviewsPage: React.FC = () => {
     setVisibleCount(5);
   };
 
+  const tabs = tabKeys.map((tab) => ({
+    key: tab.key,
+    label: t(tab.labelKey, tab.labelParams),
+    badge: tab.badge,
+  }));
+
   return (
     <div className={styles.page}>
       <NavBar
-        title="Sharhlar"
+        title={t('page.reviews')}
         showBack
         onBack={() => {}}
       />
@@ -184,7 +192,7 @@ export const ReviewsPage: React.FC = () => {
           <div className={styles.ratingLeft}>
             <span className={styles.ratingBig}>{averageRating}</span>
             <Rating value={averageRating} size="md" showCount={false} />
-            <span className={styles.ratingTotal}>{totalReviews} ta baho</span>
+            <span className={styles.ratingTotal}>{t('review.ratings', { count: totalReviews })}</span>
           </div>
 
           <div className={styles.ratingBars}>
@@ -219,7 +227,7 @@ export const ReviewsPage: React.FC = () => {
           onLoadMore={handleLoadMore}
           hasMore={hasMore}
           loading={loading}
-          endContent={<span className={styles.endText}>Barcha sharhlar ko'rsatildi</span>}
+          endContent={<span className={styles.endText}>{t('review.allShown')}</span>}
         >
           <div className={styles.reviewsList}>
             {visibleReviews.map((review) => (

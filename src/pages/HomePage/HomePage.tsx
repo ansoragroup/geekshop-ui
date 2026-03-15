@@ -12,6 +12,7 @@ import {
   TabFilter,
   ProductGrid,
   TabBar,
+  useGeekShop,
 } from '../../components';
 import type { ProductCardFlatProps } from '../../components/product/ProductCard';
 import styles from './HomePage.module.scss';
@@ -77,26 +78,27 @@ const MouseIcon = () => (
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
-const categories = [
-  { icon: <GpuIcon />, label: 'Videokartalar', color: '#FF5000' },
-  { icon: <CpuIcon />, label: 'Protsessorlar', color: '#1890FF' },
-  { icon: <MonitorIcon />, label: 'Monitorlar', color: '#722ED1' },
-  { icon: <LaptopIcon />, label: 'Noutbuklar', color: '#07C160' },
-  { icon: <RamIcon />, label: 'Xotira (RAM)', color: '#FF3B30' },
-  { icon: <SsdIcon />, label: 'SSD/HDD', color: '#FFA726' },
-  { icon: <KeyboardIcon />, label: 'Klaviatura', color: '#00BCD4' },
-  { icon: <MouseIcon />, label: 'Sichqoncha', color: '#E91E63' },
+const categoryIcons = [
+  { icon: <GpuIcon />, key: 'category.gpu', color: '#FF5000' },
+  { icon: <CpuIcon />, key: 'category.cpu', color: '#1890FF' },
+  { icon: <MonitorIcon />, key: 'category.monitor', color: '#722ED1' },
+  { icon: <LaptopIcon />, key: 'category.laptop', color: '#07C160' },
+  { icon: <RamIcon />, key: 'category.ram', color: '#FF3B30' },
+  { icon: <SsdIcon />, key: 'category.ssd', color: '#FFA726' },
+  { icon: <KeyboardIcon />, key: 'category.keyboard', color: '#00BCD4' },
+  { icon: <MouseIcon />, key: 'category.mouse', color: '#E91E63' },
 ];
 
-const promoBanners = [
+const promoBannerData = [
   {
-    title: 'Aksiya 50% gacha',
-    subtitle: 'Tanlangan GPU larga',
+    titleKey: 'home.promoDiscount',
+    titleParams: { percent: 50 },
+    subtitleKey: 'home.promoSelected',
     tag: 'HOT',
     gradient: 'linear-gradient(135deg, #FF3B30, #FF6B5A)',
   },
   {
-    title: 'Yangi kelganlar',
+    titleKey: 'home.newArrivals',
     subtitle: 'RTX 50 seriyasi',
     tag: 'NEW',
     gradient: 'linear-gradient(135deg, #1890FF, #45A5FF)',
@@ -131,13 +133,13 @@ const products: ProductCardFlatProps[] = [
   { image: 'https://picsum.photos/seed/casergb/400/500', title: 'Lian Li O11 Dynamic EVO RGB Case', price: 2400000, soldCount: '87 dona sotilgan' },
 ];
 
-const filterTabs = [
-  { key: 'all', label: 'Barchasi' },
-  { key: 'gpu', label: 'Videokartalar' },
-  { key: 'cpu', label: 'Protsessorlar' },
-  { key: 'laptop', label: 'Noutbuklar' },
-  { key: 'monitor', label: 'Monitorlar' },
-  { key: 'ssd', label: 'SSD' },
+const filterTabKeys = [
+  { key: 'all', labelKey: 'common.all' },
+  { key: 'gpu', labelKey: 'category.gpu' },
+  { key: 'cpu', labelKey: 'category.cpu' },
+  { key: 'laptop', labelKey: 'category.laptop' },
+  { key: 'monitor', labelKey: 'category.monitor' },
+  { key: 'ssd', labelKey: 'category.ssd' },
 ];
 
 // ─── Deals section lightning icon ─────────────────────────────────────────────
@@ -164,11 +166,30 @@ export const HomePage: React.FC<HomePageProps> = ({
   appBarVariant = 'colored',
   appBarBackgroundColor,
 }) => {
+  const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState('all');
   const [activeBarTab, setActiveBarTab] = useState('home');
 
   // Countdown: 3 hours from now (stable reference)
   const [dealEndTime] = useState(() => new Date(Date.now() + 3 * 60 * 60 * 1000));
+
+  const categories = categoryIcons.map((c) => ({
+    icon: c.icon,
+    label: t(c.key),
+    color: c.color,
+  }));
+
+  const promoBanners = promoBannerData.map((p) => ({
+    title: t(p.titleKey, p.titleParams),
+    subtitle: p.subtitleKey ? t(p.subtitleKey) : p.subtitle ?? '',
+    tag: p.tag,
+    gradient: p.gradient,
+  }));
+
+  const filterTabs = filterTabKeys.map((f) => ({
+    key: f.key,
+    label: t(f.labelKey),
+  }));
 
   return (
     <div className={styles.homePage}>
@@ -179,21 +200,21 @@ export const HomePage: React.FC<HomePageProps> = ({
         location="Toshkent"
         showLocation
         showScan
-        searchPlaceholder="RTX 4090 qidirish..."
+        searchPlaceholder={t('search.placeholder')}
       />
 
       {/* 2. NoticeBar */}
       <NoticeBar
-        content="Yangi foydalanuvchilar uchun 10% chegirma! Kod: GEEK10"
+        content={t('home.noticeNewUser')}
         mode="scroll"
       />
 
       {/* 3. HeroBanner */}
       <div className={styles.heroBannerSection}>
         <HeroBanner
-          title="Noutbuk Festival"
-          subtitle="500 000 so'mgacha chegirma!"
-          badge="GeekShop Exclusive"
+          title={t('home.bannerTitle')}
+          subtitle={t('home.bannerSubtitle')}
+          badge={t('home.bannerBadge')}
           bgGradient="linear-gradient(135deg, #FF5000 0%, #FF8A33 50%, #FFB366 100%)"
         />
       </div>
@@ -212,7 +233,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <div className={styles.dealsSection}>
         <div className={styles.dealsHeader}>
           <SectionHeader
-            title="Chegirmalar"
+            title={t('home.discounts')}
             icon={<LightningIcon />}
             onViewAll={() => {}}
           />
@@ -239,7 +260,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 8. Recommended section */}
       <div className={styles.recommendedSection}>
         <SectionHeader
-          title="Tavsiya etamiz"
+          title={t('home.recommended')}
           onViewAll={() => {}}
         />
         <div className={styles.tabFilterWrap}>

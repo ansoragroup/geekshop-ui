@@ -1,0 +1,210 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+}
+
+// === Success header ===
+.successHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-xxxl $spacing-xxl $spacing-xxl;
+  background: $color-bg-white;
+  gap: $spacing-md;
+}
+
+// === Checkmark animation ===
+.checkmarkCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-round;
+  background: $color-success;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.checkmarkIcon {
+  color: $color-text-white;
+  animation: checkDraw 0.3s ease 0.3s both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes checkDraw {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.successTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0;
+  margin-top: $spacing-sm;
+}
+
+.successSubtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+// === Info section ===
+.infoSection {
+  background: $color-bg-white;
+  margin-top: $spacing-sm;
+  padding: $spacing-xl $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.infoLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.infoValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.divider {
+  height: 1px;
+  background: $color-border;
+}
+
+// === Order items section ===
+.itemsSection {
+  background: $color-bg-white;
+  margin-top: $spacing-sm;
+  padding: $spacing-xl $spacing-lg;
+}
+
+.itemsTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.itemCard {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.itemImage {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 0;
+  flex: 1;
+}
+
+.itemName {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemMeta {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.itemPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-price;
+}
+
+// === Total ===
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $color-border;
+}
+
+.totalLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.totalPrice {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+// === Actions ===
+.actionsSection {
+  padding: $spacing-xxl $spacing-lg $spacing-xxxl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-top: auto;
+}

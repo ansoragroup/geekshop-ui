@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import { PriceDisplay, formatPrice } from './PriceDisplay'
+import { PriceDisplay } from './PriceDisplay'
+import { formatPrice } from '../../../utils'
 
 describe('formatPrice', () => {
   it('formats numbers with space separators', () => {
@@ -8,11 +9,11 @@ describe('formatPrice', () => {
   })
 
   it('formats small numbers without separators', () => {
-    expect(formatPrice(100)).toBe('100')
+    expect(formatPrice(100)).toMatch(/100\sso'm/)
   })
 
   it('formats zero', () => {
-    expect(formatPrice(0)).toBe('0')
+    expect(formatPrice(0)).toMatch(/0\sso'm/)
   })
 })
 

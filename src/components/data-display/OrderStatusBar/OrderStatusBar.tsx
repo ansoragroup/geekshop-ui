@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './OrderStatusBar.module.scss';
 
 export interface OrderStatusItem {
@@ -11,8 +12,8 @@ export interface OrderStatusItem {
 }
 
 export interface OrderStatusBarProps extends HTMLAttributes<HTMLDivElement> {
-  /** Status items to display */
-  statuses: OrderStatusItem[];
+  /** Status items to display (defaults to translated order statuses) */
+  statuses?: OrderStatusItem[];
   /** Callback when a status is tapped */
   onTap?: (index: number) => void;
 }
@@ -57,6 +58,7 @@ const ReturnIcon = () => (
   </svg>
 );
 
+/** @deprecated Use the component without `statuses` prop to get translated defaults */
 export const DEFAULT_ORDER_STATUSES: OrderStatusItem[] = [
   { icon: <WalletIcon />, label: "To'lov kutilmoqda", count: 0 },
   { icon: <BoxIcon />, label: 'Yuborilmagan', count: 0 },
@@ -65,11 +67,24 @@ export const DEFAULT_ORDER_STATUSES: OrderStatusItem[] = [
   { icon: <ReturnIcon />, label: 'Qaytarish', count: 0 },
 ];
 
+function useTranslatedDefaults(): OrderStatusItem[] {
+  const { t } = useGeekShop();
+  return [
+    { icon: <WalletIcon />, label: t('order.statusPending'), count: 0 },
+    { icon: <BoxIcon />, label: t('order.statusNotShipped'), count: 0 },
+    { icon: <TruckIcon />, label: t('order.statusShipping'), count: 0 },
+    { icon: <StarIcon />, label: t('order.statusReview'), count: 0 },
+    { icon: <ReturnIcon />, label: t('order.statusReturn'), count: 0 },
+  ];
+}
+
 export const OrderStatusBar = forwardRef<HTMLDivElement, OrderStatusBarProps>(
-  ({ statuses = DEFAULT_ORDER_STATUSES, onTap, className = '', ...rest }, ref) => {
+  ({ statuses, onTap, className = '', ...rest }, ref) => {
+    const translatedDefaults = useTranslatedDefaults();
+    const resolvedStatuses = statuses ?? translatedDefaults;
     return (
       <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
-        {statuses.map((item, i) => (
+        {resolvedStatuses.map((item, i) => (
           <button
             key={i}
             className={styles.item}

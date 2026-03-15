@@ -1,5 +1,6 @@
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
+import { useGeekShop } from '../../../i18n';
 import styles from './SearchBar.module.scss';
 
 export interface SearchBarProps extends HTMLAttributes<HTMLDivElement> {
@@ -45,7 +46,7 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
       onChange,
       onSearch,
       onCamera,
-      placeholder = 'Mahsulot qidirish...',
+      placeholder,
       variant = 'default',
       compact = false,
       readOnly = false,
@@ -55,6 +56,9 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
+    const resolvedPlaceholder = placeholder ?? t('search.placeholder');
+
     const [value, setValue] = useControllableState({
       value: valueProp,
       defaultValue: defaultValueProp,
@@ -89,20 +93,20 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
         </span>
 
         {readOnly ? (
-          <span className={styles.placeholderText}>{placeholder}</span>
+          <span className={styles.placeholderText}>{resolvedPlaceholder}</span>
         ) : (
           <input
             className={styles.input}
             type="text"
             value={value}
-            placeholder={placeholder}
+            placeholder={resolvedPlaceholder}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKeyDown}
           />
         )}
 
         {onCamera && (
-          <button className={styles.cameraBtn} onClick={(e) => { e.stopPropagation(); onCamera(); }} aria-label="Kamera bilan qidirish">
+          <button className={styles.cameraBtn} onClick={(e) => { e.stopPropagation(); onCamera(); }} aria-label={t('product.cameraSearch')}>
             <CameraIcon />
           </button>
         )}

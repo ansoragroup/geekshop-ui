@@ -1,4 +1,5 @@
 import { forwardRef, useState, useRef, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import { PriceDisplay } from '../PriceDisplay';
 import styles from './ProductCarousel.module.scss';
 
@@ -59,6 +60,7 @@ export const ProductCarousel = forwardRef<HTMLDivElement, ProductCarouselProps>(
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
     const [internalActiveTab, setInternalActiveTab] = useState(tabs?.[0]?.key ?? '');
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -79,7 +81,7 @@ export const ProductCarousel = forwardRef<HTMLDivElement, ProductCarouselProps>(
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
           <button className={styles.seeAll} onClick={onSeeAll} type="button">
-            <span>Barchasi</span>
+            <span>{t('common.viewAll')}</span>
             <ArrowRightIcon />
           </button>
         </div>

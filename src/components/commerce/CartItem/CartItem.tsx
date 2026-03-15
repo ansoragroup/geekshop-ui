@@ -1,4 +1,5 @@
 import { forwardRef, useState, useRef, useCallback, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './CartItem.module.scss';
 
@@ -12,10 +13,6 @@ export interface CartItemProps extends HTMLAttributes<HTMLDivElement> {
   onSelect?: (selected: boolean) => void;
   onQuantityChange?: (quantity: number) => void;
   onDelete?: () => void;
-}
-
-function formatPrice(price: number): string {
-  return price.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
 export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
@@ -35,6 +32,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
     },
     ref,
   ) => {
+  const { t, formatPrice } = useGeekShop();
   const [translateX, setTranslateX] = useState(0);
   const startXRef = useRef(0);
   const currentXRef = useRef(0);
@@ -83,7 +81,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
               strokeLinejoin="round"
             />
           </svg>
-          <span>O'chirish</span>
+          <span>{t('common.delete')}</span>
         </button>
       </div>
 
@@ -100,7 +98,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
           type="button"
           className={`${styles.checkbox} ${selected ? styles.checkboxChecked : ''}`}
           onClick={() => onSelect?.(!selected)}
-          aria-label={selected ? 'Bekor qilish' : 'Tanlash'}
+          aria-label={selected ? t('common.cancel') : t('common.select')}
         >
           {selected && (
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -123,7 +121,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
           <div className={styles.title}>{title}</div>
           {variant && <div className={styles.variant}>{variant}</div>}
           <div className={styles.bottom}>
-            <span className={styles.price}>{formatPrice(price)} so'm</span>
+            <span className={styles.price}>{formatPrice(price)}</span>
             <QuantityStepper
               value={quantity}
               min={1}

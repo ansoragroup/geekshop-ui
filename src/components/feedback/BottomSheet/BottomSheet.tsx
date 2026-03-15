@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
+import { useGeekShop } from '../../../i18n';
 import styles from './BottomSheet.module.scss';
 
 export interface BottomSheetProps extends HTMLAttributes<HTMLDivElement> {
@@ -23,6 +24,7 @@ const CloseIcon = () => (
 
 export const BottomSheet = forwardRef<HTMLDivElement, BottomSheetProps>(
   ({ visible, title, height = '60vh', onClose, children, className = '', ...rest }, ref) => {
+    const { t } = useGeekShop();
     const sheetRef = useFocusTrap<HTMLDivElement>(visible, {
       onEscape: onClose,
     });
@@ -71,7 +73,7 @@ export const BottomSheet = forwardRef<HTMLDivElement, BottomSheetProps>(
           {(title || onClose) && (
             <div className={styles.header}>
               <span className={styles.title}>{title}</span>
-              <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
+              <button className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>
                 <CloseIcon />
               </button>
             </div>

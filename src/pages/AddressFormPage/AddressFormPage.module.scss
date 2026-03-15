@@ -1,0 +1,83 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// === Form Content ===
+.formContent {
+  padding: $spacing-lg;
+}
+
+// === Section Label ===
+.section {
+  margin-bottom: $spacing-lg;
+}
+
+.sectionLabel {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-md;
+}
+
+// === Address Label Selector (pill buttons) ===
+.labelSelector {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.labelPill {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-round;
+  border: 1.5px solid $color-border;
+  background: $color-bg-card;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.labelPillActive {
+  border-color: $color-primary;
+  background: $color-primary-bg;
+  color: $color-primary;
+}
+
+.labelPillIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// === Form Fields ===
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+// === Default Checkbox ===
+.defaultCheck {
+  margin-top: $spacing-xl;
+}
+
+// === Save Button ===
+.saveWrap {
+  margin-top: $spacing-xxl;
+  padding-bottom: $spacing-xxl;
+}

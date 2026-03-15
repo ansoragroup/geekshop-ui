@@ -213,6 +213,91 @@ return <div ref={containerRef} role="dialog" aria-modal="true">...</div>
 4. **Optimistic UI** — Toast appears immediately on action, don't wait for API
 5. **Safe area** — ActionBar, TabBar respect `env(safe-area-inset-bottom)`
 
+## Mobile Layout & CSS Best Practices
+
+These rules MUST be followed when creating or modifying any component or page. They prevent layout conflicts, overflow issues, and UX problems on mobile viewports (390px).
+
+### 1. Sizing: `min-height` not `height` for containers with dynamic content
+- **NEVER** use `height` on containers that also have `padding` — padding eats into fixed height, crushing content.
+- **ALWAYS** use `min-height` for bars, headers, cards that need a minimum but may grow.
+- Example: ActionBar uses `min-height: $action-bar-height` + `padding`, not `height: $action-bar-height`.
+```scss
+// BAD — padding is inside 56px, content gets 22px on iPhone
+.bar { height: 56px; padding-bottom: $safe-area-bottom; }
+
+// GOOD — 56px minimum, padding adds to total
+.bar { min-height: 56px; padding: $spacing-sm $spacing-md; padding-bottom: calc(#{$spacing-sm} + #{$safe-area-bottom}); }
+```
+
+### 2. Flex layout for variable-width content
+- **CTA buttons MUST use `flex: 1`** to equally share available space. Never rely on text width alone.
+- **Icon groups use `flex-shrink: 0`** — they keep their size, CTA buttons absorb the remaining space.
+- **Always set `min-width: 0`** on flex children that may overflow — without this, flex items refuse to shrink below content size.
+- **Always add `overflow: hidden; text-overflow: ellipsis`** on buttons — text must degrade gracefully if the viewport is too narrow.
+```scss
+// Pattern for action bars with icons + CTA buttons:
+.bar { display: flex; gap: $spacing-md; }
+.icons { flex-shrink: 0; }  // icons don't shrink
+.actions { flex: 1; min-width: 0; display: flex; gap: $spacing-sm; }
+.ctaButton { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+```
+
+### 3. Fixed positioning: safe area and stacking
+- **All `position: fixed; bottom: 0` elements MUST include `padding-bottom: $safe-area-bottom`** — on iPhone with home bar (34px inset), buttons under the indicator are untappable.
+- **Safe area padding MUST be ADDED to content padding**, not included in it. Use `calc()`.
+- **Only ONE bottom fixed bar per page** — ActionBar OR TabBar, never both at `bottom: 0`. If both needed, ActionBar uses `bottom: $tabbar-height`.
+- **No `max-width` on fixed bars** — fixed bars must span the full viewport width. `max-width` creates misalignment with other full-width elements.
+- **Container `hasActionBar` prop** — use it when page has ActionBar to add proper `padding-bottom`.
+- **No magic numbers** — always `calc($action-bar-height + $safe-area-bottom)`, never `100px` or `80px`.
+
+### 4. Z-index stacking order (enforced)
+| Layer | Z-index | Components |
+|---|---|---|
+| Normal flow | 1 | Content |
+| Sticky | 200 | NavBar, AppBar |
+| Fixed | 500 | TabBar, ActionBar |
+| Modal backdrop | 900 | FilterPanel, SkuSelector, QuickBuyPopup |
+| Modal | 1000 | BottomSheet, Popup |
+| Popover | 1100 | Dropdown menus, tooltips, Popup-over-BottomSheet |
+| Toast | 1200 | Toast notifications |
+
+- Never invent new z-index values. Use the token scale.
+- Popup from BottomSheet: use `$z-index-popover` (1100).
+
+### 5. Touch targets (WCAG 2.1 AA, mandatory)
+- **Minimum 44x44px** effective tap area on ALL interactive elements.
+- If visual element is 24px (icon), use `padding` to reach 44px tap area: `width: 44px; height: 44px; padding: 10px;` with 24px icon inside.
+- **Minimum 8px gap** between adjacent tappable elements (`gap: $spacing-sm`).
+- **Verify with `min-height: 44px; min-width: 44px`** — not `height`/`width` which prevent growth.
+
+### 6. Text overflow prevention (i18n-critical)
+- **All buttons with text MUST handle overflow** — text lengths vary 2x between locales (EN "Buy" vs RU "Купить" vs UZ "Sotib olish").
+- **Pattern**: `white-space: nowrap; overflow: hidden; text-overflow: ellipsis;` on buttons.
+- **Font size** on space-constrained elements (ActionBar CTA): use `$font-size-md` (14px) not `$font-size-lg` (16px).
+- **Test in ALL 3 locales** — switch Storybook toolbar to uz, ru, en and verify no truncation on primary CTAs.
+
+### 7. Overlay conflict prevention
+- **Overlays MUST account for fixed bars** — FilterPanel/SkuSelector footer buttons need `padding-bottom` when ActionBar is visible below.
+- **One overlay at a time** — opening a new overlay closes the previous one. Exception: Popup over BottomSheet (uses z-index 1100).
+
+### 8. `box-sizing: border-box` on all fixed elements
+- Without this, `padding` adds to the element's declared width/height, causing it to exceed viewport width.
+- **All `position: fixed` elements MUST have `box-sizing: border-box`.**
+
+### 9. Page Layout Checklist (MUST verify for every page)
+Before marking a page complete, verify ALL of these:
+- [ ] Content scrolls fully — last item visible above all fixed bottom bars
+- [ ] Fixed bars don't overlap each other
+- [ ] Safe area insets on all fixed elements (test with iPhone 13 viewport)
+- [ ] No content hidden behind NavBar/AppBar at top
+- [ ] Touch targets ≥ 44x44px on all interactive elements
+- [ ] CTA buttons fully readable in ALL 3 locales (uz, ru, en) — no truncation
+- [ ] Overlays don't obscure action buttons
+- [ ] `prefers-reduced-motion` respected for animations
+- [ ] No `height` on containers with padding — use `min-height`
+- [ ] No magic numbers — all spacing from tokens
+- [ ] Works on iPhone 13 (390x844) AND iPhone SE (375x667)
+
 ## Visual QA (REQUIRED for every component)
 
 Every component MUST pass visual inspection. Code that compiles is NOT sufficient — you must SEE the rendered result.

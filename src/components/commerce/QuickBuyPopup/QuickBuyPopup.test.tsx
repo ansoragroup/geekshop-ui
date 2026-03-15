@@ -58,14 +58,14 @@ describe('QuickBuyPopup', () => {
 
   it('renders close button with aria-label', () => {
     render(<QuickBuyPopup product={product} open />)
-    expect(screen.getByLabelText('Close')).toBeInTheDocument()
+    expect(screen.getByLabelText('Yopish')).toBeInTheDocument()
   })
 
   it('calls onClose when close button clicked', async () => {
     const onClose = vi.fn()
     const user = userEvent.setup()
     render(<QuickBuyPopup product={product} onClose={onClose} open />)
-    await user.click(screen.getByLabelText('Close'))
+    await user.click(screen.getByLabelText('Yopish'))
     expect(onClose).toHaveBeenCalledOnce()
   })
 
@@ -76,7 +76,7 @@ describe('QuickBuyPopup', () => {
 
   it('renders variant chips as radio buttons', () => {
     render(<QuickBuyPopup product={product} variants={variants} open />)
-    expect(screen.getByRole('radiogroup', { name: 'Select variant' })).toBeInTheDocument()
+    expect(screen.getByRole('radiogroup', { name: 'Variant' })).toBeInTheDocument()
     const radios = screen.getAllByRole('radio')
     expect(radios).toHaveLength(3)
   })

@@ -1,0 +1,193 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  padding-bottom: calc(#{$action-bar-height} + #{$spacing-xl} + #{$safe-area-bottom});
+}
+
+// === Product card ===
+.productCard {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-sm;
+}
+
+.productRow {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-width: 0;
+}
+
+.productTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.productPrice {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+// === Info sections (estimated date, deposit) ===
+.infoSection {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  margin-bottom: 1px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.infoLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.infoValue {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// === Terms section ===
+.termsSection {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-sm;
+}
+
+.termsHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.termsTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.termsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 32px; // align with text after icon
+}
+
+.termsItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  padding: $spacing-xs 0;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: $color-text-tertiary;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+}
+
+// === Variant selector ===
+.selectorSection {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  margin-bottom: 1px;
+}
+
+.selectorLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+}
+
+.selectorTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background: $color-border;
+  }
+}
+
+.selectorValue {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+// === Quantity ===
+.quantitySection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-sm;
+}
+
+.quantityLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+// === Bottom action ===
+.bottomAction {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $spacing-md $spacing-lg;
+  padding-bottom: calc($spacing-md + env(safe-area-inset-bottom, 0px));
+  background: $color-bg-white;
+  border-top: 1px solid $color-border;
+  z-index: $z-index-fixed;
+}

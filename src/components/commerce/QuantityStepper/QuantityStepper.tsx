@@ -1,4 +1,5 @@
 import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './QuantityStepper.module.scss';
 
@@ -29,6 +30,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
   const [value, setValue] = useControllableState<number>({
     value: valueProp,
     defaultValue: defaultValue ?? min,
@@ -96,7 +98,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
         className={`${styles.btn} ${styles.btnMinus} ${isMinDisabled ? styles.btnDisabled : ''}`}
         onClick={handleDecrement}
         disabled={isMinDisabled}
-        aria-label="Kamaytirish"
+        aria-label={t('commerce.decrease')}
       >
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path
@@ -116,7 +118,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         disabled={disabled}
-        aria-label="Miqdor"
+        aria-label={t('commerce.quantity')}
       />
 
       <button
@@ -124,7 +126,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
         className={`${styles.btn} ${styles.btnPlus} ${isMaxDisabled ? styles.btnDisabled : ''}`}
         onClick={handleIncrement}
         disabled={isMaxDisabled}
-        aria-label="Ko'paytirish"
+        aria-label={t('commerce.increase')}
       >
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path

@@ -6,6 +6,7 @@ import {
   ProductGrid,
   TabBar,
   Empty,
+  useGeekShop,
 } from '../../components';
 import type { ProductCardFlatProps } from '../../components/product/ProductCard';
 import styles from './WishlistPage.module.scss';
@@ -84,12 +85,12 @@ const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
   },
 ];
 
-/* ---------- Tab definitions ---------- */
+/* ---------- Tab definition keys ---------- */
 
-const tabs = [
-  { key: 'all', label: 'Barchasi', badge: 8 },
-  { key: 'sale', label: 'Chegirmada', badge: 4 },
-  { key: 'lowstock', label: 'Kam qolgan', badge: 3 },
+const tabKeys = [
+  { key: 'all', labelKey: 'common.all', badge: 8 },
+  { key: 'sale', labelKey: 'wishlist.onSale', badge: 4 },
+  { key: 'lowstock', labelKey: 'wishlist.lowStock', badge: 3 },
 ];
 
 /* ---------- Heart filled icon ---------- */
@@ -130,7 +131,14 @@ export interface WishlistPageProps {
 export const WishlistPage: React.FC<WishlistPageProps> = ({
   empty = false,
 }) => {
+  const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState('all');
+
+  const tabs = tabKeys.map((tab) => ({
+    key: tab.key,
+    label: t(tab.labelKey),
+    badge: tab.badge,
+  }));
 
   const filteredProducts = activeTab === 'all'
     ? wishlistProducts
@@ -141,7 +149,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
   return (
     <div className={styles.page}>
       <NavBar
-        title={`Sevimlilar${!empty ? ' (8)' : ''}`}
+        title={`${t('page.wishlist')}${!empty ? ' (8)' : ''}`}
         showBack
         onBack={() => {}}
         rightActions={
@@ -151,7 +159,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
                   key: 'heart',
                   icon: <HeartFilledIcon />,
                   onClick: () => {},
-                  ariaLabel: 'Sevimlilar',
+                  ariaLabel: t('page.wishlist'),
                 },
               ]
             : []
@@ -162,9 +170,9 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
         {empty ? (
           <Empty
             icon={<WishlistEmptyIcon />}
-            title="Sevimlilar bo'sh"
-            description="Hali hech narsa qo'shilmagan. Mahsulotlar sahifasida yulduzcha belgisini bosib qo'shing!"
-            actionText="Mahsulotlarni ko'rish"
+            title={t('wishlist.empty')}
+            description={t('wishlist.emptyDescription')}
+            actionText={t('wishlist.viewProducts')}
             onAction={() => {}}
           />
         ) : (
@@ -177,8 +185,8 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
 
             {filteredProducts.length === 0 ? (
               <Empty
-                title="Natija topilmadi"
-                description="Bu filtrda sevimli mahsulotlar yo'q"
+                title={t('wishlist.noResults')}
+                description={t('wishlist.noFilterResults')}
               />
             ) : (
               <div className={styles.gridWrapper}>

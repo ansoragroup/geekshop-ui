@@ -1,0 +1,142 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// === Avatar section ===
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-xxl $spacing-lg $spacing-xl;
+  background: $color-bg-white;
+  gap: $spacing-sm;
+}
+
+.avatarWrap {
+  position: relative;
+  cursor: pointer;
+}
+
+.cameraBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: $color-primary;
+  color: $color-text-white;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $color-bg-white;
+}
+
+.changePhotoBtn {
+  background: none;
+  border: none;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  color: $color-primary;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+// === Form section ===
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-xl $spacing-lg;
+  background: $color-bg-white;
+}
+
+// === Gender field ===
+.genderField {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.genderLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+.genderOptions {
+  display: flex;
+  gap: $spacing-xl;
+}
+
+.genderOption {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  padding: $spacing-sm 0;
+}
+
+.radioCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  border: 2px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color $transition-fast;
+
+  .genderSelected & {
+    border-color: $color-primary;
+  }
+}
+
+.radioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: $color-primary;
+}
+
+// === Save button ===
+.saveBtnWrap {
+  padding: $spacing-xxl $spacing-lg;
+}
+
+// === Bottom sheet options ===
+.sheetOptions {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheetOption {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  cursor: pointer;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  transition: background $transition-fast;
+
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.sheetOptionDanger {
+  color: $color-error;
+}

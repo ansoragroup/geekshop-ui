@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import {
   SearchBar,
   PopularSearches,
@@ -8,6 +8,7 @@ import {
   Empty,
   FilterBar,
   InfiniteScroll,
+  useGeekShop,
 } from '../../components';
 import type { ProductCardFlatProps } from '../../components/product/ProductCard';
 import styles from './SearchPage.module.scss';
@@ -89,22 +90,13 @@ const searchResultProducts: ProductCardFlatProps[] = [
   },
 ];
 
-/* ---------- Filter/Tab Definitions ---------- */
+/* ---------- Sold count parser (for "popular" sort) ---------- */
 
-const tabFilterItems = [
-  { key: 'all', label: 'Barchasi' },
-  { key: 'cheap', label: 'Arzon' },
-  { key: 'expensive', label: 'Qimmat' },
-  { key: 'new', label: 'Yangi' },
-  { key: 'popular', label: 'Mashhur' },
-];
-
-const filterBarItems = [
-  { key: 'popular', label: 'Ommabop' },
-  { key: 'price', label: 'Narxi', hasDropdown: true },
-  { key: 'new', label: 'Yangi' },
-  { key: 'rating', label: 'Baho' },
-];
+function parseSoldCount(text?: string): number {
+  if (!text) return 0;
+  const match = text.match(/(\d+)/);
+  return match ? parseInt(match[1], 10) : 0;
+}
 
 /* ---------- SVG Icons ---------- */
 
@@ -144,14 +136,72 @@ export interface SearchPageProps {
 export const SearchPage: React.FC<SearchPageProps> = ({
   state = 'empty',
 }) => {
+  const { t } = useGeekShop();
+
   const [activeTab, setActiveTab] = useState('all');
   const [activeFilter, setActiveFilter] = useState('popular');
   const [searchValue, setSearchValue] = useState(state !== 'empty' ? 'RTX 4090' : '');
 
-  const isTyping = state !== 'empty' && searchValue.length > 0;
+  /* --- Tab / filter definitions (i18n) --- */
+
+  const tabFilterItems = useMemo(() => [
+    { key: 'all', label: t('common.all') },
+    { key: 'cheap', label: t('common.cheap') },
+    { key: 'expensive', label: t('common.expensive') },
+    { key: 'new', label: t('common.new') },
+    { key: 'popular', label: t('common.popular') },
+  ], [t]);
+
+  const filterBarItems = useMemo(() => [
+    { key: 'popular', label: t('common.popular') },
+    { key: 'price', label: t('common.price'), hasDropdown: true },
+    { key: 'new', label: t('common.new') },
+    { key: 'rating', label: t('common.rating') },
+  ], [t]);
+
+  /* --- Sorting --- */
+
+  const sortedProducts = useMemo(() => {
+    const products = [...searchResultProducts];
+    switch (activeTab) {
+      case 'cheap':
+        return products.sort((a, b) => a.price - b.price);
+      case 'expensive':
+        return products.sort((a, b) => b.price - a.price);
+      case 'new':
+        // "new" badge items first, then reverse order (newest = last added)
+        return products.sort((a, b) => {
+          const aNew = a.badge === 'new' ? 1 : 0;
+          const bNew = b.badge === 'new' ? 1 : 0;
+          return bNew - aNew;
+        });
+      case 'popular':
+        // Sort by sold count descending (most popular first)
+        return products.sort(
+          (a, b) => parseSoldCount(b.soldCount) - parseSoldCount(a.soldCount),
+        );
+      default:
+        return products;
+    }
+  }, [activeTab]);
+
+  /* --- Filtering by search query --- */
+
+  const filteredProducts = useMemo(() => {
+    if (!searchValue.trim()) return sortedProducts;
+    const query = searchValue.toLowerCase();
+    return sortedProducts.filter((p) =>
+      p.title.toLowerCase().includes(query),
+    );
+  }, [searchValue, sortedProducts]);
+
+  /* --- State derivation --- */
+
+  const hasQuery = searchValue.trim().length > 0;
+  const showEmpty = state === 'empty' && !hasQuery;
+  const showSuggestions = state === 'empty' && hasQuery;
   const showResults = state === 'withResults';
   const showNoResults = state === 'noResults';
-  const showEmpty = state === 'empty';
 
   const handleLoadMore = useCallback(() => {
     // no-op for storybook
@@ -164,7 +214,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
         <button
           className={styles.backBtn}
           onClick={() => {}}
-          aria-label="Orqaga"
+          aria-label={t('common.back')}
         >
           <BackArrow />
         </button>
@@ -173,7 +223,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
           onChange={setSearchValue}
           onSearch={() => {}}
           onCamera={() => {}}
-          placeholder="Qidirish..."
+          placeholder={t('search.placeholder')}
           variant="filled"
         />
       </div>
@@ -188,11 +238,11 @@ export const SearchPage: React.FC<SearchPageProps> = ({
 
           <div className={styles.historySection}>
             <div className={styles.historyHeader}>
-              <h3 className={styles.historyTitle}>Qidiruv tarixi</h3>
+              <h3 className={styles.historyTitle}>{t('search.history')}</h3>
               <button
                 className={styles.historyClear}
                 onClick={() => {}}
-                aria-label="Tarixni tozalash"
+                aria-label={t('common.delete')}
               >
                 <TrashIcon />
               </button>
@@ -208,8 +258,8 @@ export const SearchPage: React.FC<SearchPageProps> = ({
         </>
       )}
 
-      {/* Typing State: Suggestions */}
-      {isTyping && !showResults && !showNoResults && (
+      {/* Typing State: Suggestions (when empty state + user types) */}
+      {showSuggestions && (
         <SearchSuggestions
           query={searchValue}
           suggestions={suggestionsData}
@@ -234,17 +284,19 @@ export const SearchPage: React.FC<SearchPageProps> = ({
 
           <div className={styles.resultsArea}>
             <div className={styles.resultsHeader}>
-              <span className={styles.resultsCount}>124 ta natija</span>
+              <span className={styles.resultsCount}>
+                {t('search.results', { count: filteredProducts.length })}
+              </span>
             </div>
 
             <InfiniteScroll
               onLoadMore={handleLoadMore}
               hasMore={true}
               loading={false}
-              endContent={<span>Barchasi yuklandi</span>}
+              endContent={<span>{t('search.allLoaded')}</span>}
             >
               <ProductGrid
-                products={searchResultProducts}
+                products={filteredProducts}
                 columns={2}
                 layout="waterfall"
                 gap={8}
@@ -259,9 +311,9 @@ export const SearchPage: React.FC<SearchPageProps> = ({
         <div className={styles.noResults}>
           <Empty
             icon={<SearchEmptyIcon />}
-            title="Natija topilmadi"
-            description={`"${searchValue}" bo'yicha hech narsa topilmadi. Boshqa kalit so'zlarni sinab ko'ring.`}
-            actionText="Ommabop mahsulotlar"
+            title={t('search.noResults')}
+            description={t('search.noResultsDescription', { query: searchValue })}
+            actionText={t('common.popular')}
             onAction={() => {}}
           />
         </div>
@@ -269,5 +321,3 @@ export const SearchPage: React.FC<SearchPageProps> = ({
     </div>
   );
 };
-
-export default SearchPage;

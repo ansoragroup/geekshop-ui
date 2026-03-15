@@ -138,7 +138,7 @@ export const OpenCloseTest: Story = {
     await expect(dialog).toBeInTheDocument();
 
     // Find and click the close button
-    const closeButton = canvas.getByRole('button', { name: /close/i });
+    const closeButton = canvas.getByRole('button', { name: /yopish/i });
     await expect(closeButton).toBeInTheDocument();
     await userEvent.click(closeButton);
 
@@ -164,7 +164,7 @@ export const BottomOpenCloseTest: Story = {
     await expect(dialog).toBeInTheDocument();
 
     // Click close
-    const closeButton = canvas.getByRole('button', { name: /close/i });
+    const closeButton = canvas.getByRole('button', { name: /yopish/i });
     await userEvent.click(closeButton);
     await expect(args.onClose).toHaveBeenCalledTimes(1);
   },

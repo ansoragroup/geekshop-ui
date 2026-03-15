@@ -1,4 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './OrderCard.module.scss';
 
 export type OrderStatus =
@@ -28,7 +29,7 @@ export interface OrderCardProps extends HTMLAttributes<HTMLDivElement> {
   status: OrderStatus;
   /** Products in the order */
   products: OrderProduct[];
-  /** Total amount in so'm */
+  /** Total amount */
   totalAmount: number;
   /** Order date */
   date: string;
@@ -36,34 +37,39 @@ export interface OrderCardProps extends HTMLAttributes<HTMLDivElement> {
   actions?: OrderAction[];
 }
 
-const STATUS_MAP: Record<OrderStatus, { label: string; color: string }> = {
-  pending: { label: "To'lov kutilmoqda", color: '#FFA726' },
-  shipping: { label: 'Yetkazilmoqda', color: '#1890FF' },
-  review: { label: 'Baholash', color: '#07C160' },
-  return: { label: 'Qaytarish', color: '#FF3B30' },
+const STATUS_COLORS: Record<OrderStatus, string> = {
+  pending: '#FFA726',
+  shipping: '#1890FF',
+  review: '#07C160',
+  return: '#FF3B30',
 };
 
-function formatPrice(value: number): string {
-  return value.toLocaleString('ru-RU').replace(/,/g, ' ');
-}
+const STATUS_KEYS: Record<OrderStatus, string> = {
+  pending: 'order.statusPending',
+  shipping: 'order.statusShipping',
+  review: 'order.statusReview',
+  return: 'order.statusReturn',
+};
 
 export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
   ({ orderId, status, products, totalAmount, date, actions, className = '', ...rest }, ref) => {
-    const statusInfo = STATUS_MAP[status];
+    const { t, formatPrice } = useGeekShop();
+    const statusColor = STATUS_COLORS[status];
+    const statusLabel = t(STATUS_KEYS[status]);
 
     return (
       <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
         {/* Status header */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
-            <span className={styles.orderId}>Buyurtma #{orderId}</span>
+            <span className={styles.orderId}>{t('order.id', { id: orderId })}</span>
             <span className={styles.date}>{date}</span>
           </div>
           <span
             className={styles.statusBadge}
-            style={{ color: statusInfo.color }}
+            style={{ color: statusColor }}
           >
-            {statusInfo.label}
+            {statusLabel}
           </span>
         </div>
 
@@ -84,7 +90,7 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
                 )}
                 <div className={styles.productPriceRow}>
                   <span className={styles.productPrice}>
-                    {formatPrice(product.price)} so'm
+                    {formatPrice(product.price)}
                   </span>
                   <span className={styles.productQty}>x{product.quantity}</span>
                 </div>
@@ -96,10 +102,10 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
         {/* Total */}
         <div className={styles.totalRow}>
           <span className={styles.totalLabel}>
-            Jami ({products.reduce((s, p) => s + p.quantity, 0)} ta mahsulot):
+            {t('order.total', { count: products.reduce((s, p) => s + p.quantity, 0) })}
           </span>
           <span className={styles.totalAmount}>
-            {formatPrice(totalAmount)} so'm
+            {formatPrice(totalAmount)}
           </span>
         </div>
 
