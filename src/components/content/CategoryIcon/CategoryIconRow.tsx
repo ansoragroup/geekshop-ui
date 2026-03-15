@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import CategoryIcon, { type CategoryIconProps } from './CategoryIcon';
+import { CategoryIcon, type CategoryIconProps } from './CategoryIcon';
 import styles from './CategoryIcon.module.scss';
 
 export interface CategoryIconRowProps {
@@ -7,7 +7,7 @@ export interface CategoryIconRowProps {
   items: CategoryIconProps[];
 }
 
-const CategoryIconRow: FC<CategoryIconRowProps> = ({ items }) => {
+export const CategoryIconRow: FC<CategoryIconRowProps> = ({ items }) => {
   return (
     <div className={styles.categoryRow}>
       {items.map((item, index) => (
@@ -16,5 +16,3 @@ const CategoryIconRow: FC<CategoryIconRowProps> = ({ items }) => {
     </div>
   );
 };
-
-export default CategoryIconRow;

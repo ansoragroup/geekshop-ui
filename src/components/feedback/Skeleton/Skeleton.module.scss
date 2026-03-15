@@ -1,4 +1,5 @@
 @use '../../../theme/tokens' as *;
+@use 'sass:color';
 
 // === Animations ===
 @keyframes skeleton-pulse {
@@ -57,7 +58,7 @@
   background: linear-gradient(
     90deg,
     $color-bg-skeleton 25%,
-    darken($color-bg-skeleton, 5%) 37%,
+    color.adjust($color-bg-skeleton, $lightness: -5%) 37%,
     $color-bg-skeleton 63%
   );
   background-size: 200% 100%;

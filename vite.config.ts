@@ -14,20 +14,35 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [
     react(),
-    dts({ insertTypesEntry: true }),
+    dts({
+      tsconfigPath: './tsconfig.app.json',
+      outDir: 'dist',
+      insertTypesEntry: true,
+    }),
   ],
   build: {
     lib: {
       entry: path.resolve(dirname, 'src/components/index.ts'),
-      formats: ['es', 'cjs'],
     },
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
-      output: {
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-      },
+      output: [
+        {
+          format: 'es',
+          dir: 'dist/es',
+          entryFileNames: '[name].mjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+        },
+        {
+          format: 'cjs',
+          dir: 'dist/cjs',
+          entryFileNames: '[name].cjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+        },
+      ],
     },
   },
   test: {

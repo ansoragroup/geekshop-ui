@@ -179,5 +179,3 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
     );
   },
 );
-
-export default PaymentMethodCard;

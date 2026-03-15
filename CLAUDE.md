@@ -85,32 +85,37 @@ src/
 - Always test keyboard navigation for interactive components
 - Always test aria attributes
 
-## Design Tokens Reference
+## Design Tokens Reference (source of truth: `src/theme/tokens.scss`)
 
 ### Colors
-- Primary: `$color-primary: #FF4D00` (GeekShop Orange)
-- Primary light: `$color-primary-light: #FFF0E6`
-- Danger: `$color-danger: #FF3B30`
-- Success: `$color-success: #34C759`
-- Warning: `$color-warning: #FF9500`
+- Primary: `$color-primary: #FF5000` (GeekShop Orange)
+- Primary light: `$color-primary-light: #FF7A33`
+- Primary dark: `$color-primary-dark: #E64800`
+- Primary bg: `$color-primary-bg: #FFF5F0`
+- Price: `$color-price: #FF0000`
+- Sale/Danger: `$color-sale: #FF3B30`, `$color-error: #FF3B30`
+- Success: `$color-success: #07C160`
+- Warning: `$color-warning: #FFA726`
+- Info: `$color-info: #1890FF`
 - Text primary: `$color-text-primary: #1A1A1A`
 - Text secondary: `$color-text-secondary: #666666`
-- Text placeholder: `$color-text-placeholder: #999999`
+- Text tertiary: `$color-text-tertiary: #999999`
+- Text placeholder: `$color-text-placeholder: #CCCCCC`
 - Background: `$color-bg-page: #F5F5F5`
 - Background card: `$color-bg-card: #FFFFFF`
-- Border: `$color-border: #E5E5E5`
+- Border: `$color-border: #EEEEEE`
 
-### Spacing (8px base)
-`$spacing-xs: 2px`, `$spacing-sm: 4px`, `$spacing-md: 8px`, `$spacing-lg: 12px`, `$spacing-xl: 16px`, `$spacing-2xl: 24px`, `$spacing-3xl: 32px`
+### Spacing
+`$spacing-xxs: 2px`, `$spacing-xs: 4px`, `$spacing-sm: 8px`, `$spacing-md: 12px`, `$spacing-lg: 16px`, `$spacing-xl: 20px`, `$spacing-xxl: 24px`, `$spacing-xxxl: 32px`
 
 ### Border Radius
-`$radius-xs: 4px` through `$radius-3xl: 24px`, `$radius-round: 9999px`
+`$radius-xs: 4px`, `$radius-sm: 6px`, `$radius-md: 8px`, `$radius-lg: 12px`, `$radius-xl: 16px`, `$radius-xxl: 24px`, `$radius-round: 9999px`
 
 ### Typography
-Base: `$font-size-base: 14px`, sizes from `$font-size-xs: 10px` to `$font-size-2xl: 24px`
+Sizes: `$font-size-xs: 10px`, `$font-size-sm: 12px`, `$font-size-md: 14px`, `$font-size-lg: 16px`, `$font-size-xl: 18px`, `$font-size-xxl: 20px`, `$font-size-xxxl: 24px`
 
 ### Z-index Scale
-`$z-normal: 1`, `$z-dropdown: 100`, `$z-sticky: 200`, `$z-fixed: 300`, `$z-modal-backdrop: 400`, `$z-modal: 500`, `$z-toast: 600`
+`$z-index-normal: 1`, `$z-index-dropdown: 100`, `$z-index-sticky: 200`, `$z-index-fixed: 500`, `$z-index-modal-backdrop: 900`, `$z-index-modal: 1000`, `$z-index-popover: 1100`, `$z-index-toast: 1200`
 
 ## Commands
 ```bash
@@ -248,6 +253,12 @@ When creating a new component, the prompt MUST include a visual layout descripti
 └──────────────────────────────┘
 ```
 Without a visual reference, the agent is guessing what the component should look like.
+
+## Git & Branching Rules
+- **NEVER commit or push to `main`** unless the user explicitly asks for it
+- Work only on branches: `feat/*`, `bugfix/*`, `v0.1.*`
+- Version branches (`v0.1.*`): keep only the last 5 — delete older ones when creating new versions
+- Release flow: merge feat/bugfix to main via PR → tag `v0.1.x` → triggers GitHub Release
 
 ## DO NOT
 - Add `default export` — library uses named exports only
