@@ -68,7 +68,8 @@ export const ProductCard: Story = {
 // --- Grid of product card skeletons ---
 export const ProductGridSkeleton: Story = {
   render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, width: 390, padding: 8, background: '#F5F5F5', borderRadius: 12 }}>
+      <ProductCardSkeleton />
       <ProductCardSkeleton />
       <ProductCardSkeleton />
       <ProductCardSkeleton />
