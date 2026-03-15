@@ -1,0 +1,107 @@
+@use '../../../theme/tokens' as *;
+
+// ========================================
+// Bar Variant
+// ========================================
+.barRoot {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  font-family: $font-family;
+  width: 100%;
+}
+
+.barTrack {
+  width: 100%;
+  height: 6px;
+  background: $color-border-light;
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gs-color-primary), var(--gs-color-primary-light, #{$color-primary-light}));
+  border-radius: $radius-round;
+  transition: width $transition-normal;
+  min-width: 2px;
+}
+
+.barFillUrgent {
+  background: linear-gradient(90deg, var(--gs-color-sale), #FF6B6B);
+}
+
+.barText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.barTextUrgent {
+  color: var(--gs-color-sale);
+  font-weight: $font-weight-semibold;
+}
+
+.barUrgent {
+  .barTrack {
+    background: #FEE2E2;
+  }
+}
+
+// ========================================
+// Text Variant
+// ========================================
+.textRoot {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-family;
+}
+
+.textLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.textUrgent {
+  .textLabel {
+    color: var(--gs-color-sale);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// ========================================
+// Badge Variant
+// ========================================
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xxs $spacing-sm;
+  border-radius: $radius-xs;
+  font-family: $font-family;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
+}
+
+.badgeUrgent {
+  background: #FEE2E2;
+  color: var(--gs-color-sale);
+  font-weight: $font-weight-semibold;
+}
+
+.badgeSoldOut {
+  background: $color-bg-page;
+  color: $color-text-tertiary;
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .barFill {
+    transition: none;
+  }
+}

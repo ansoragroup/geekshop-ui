@@ -1,0 +1,64 @@
+@use '../../../theme/tokens' as *;
+
+$telegram-blue: #0088cc;
+$telegram-blue-hover: #0077b3;
+$telegram-blue-active: #006699;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  border: none;
+  border-radius: $radius-md;
+  background: $telegram-blue;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover:not(.disabled) {
+    background: $telegram-blue-hover;
+  }
+
+  &:active:not(.disabled) {
+    background: $telegram-blue-active;
+  }
+}
+
+.size-sm {
+  height: 36px;
+  padding: 0 $spacing-lg;
+  font-size: $font-size-sm;
+}
+
+.size-md {
+  height: 44px;
+  padding: 0 $spacing-xl;
+  font-size: $font-size-md;
+}
+
+.size-lg {
+  height: 48px;
+  padding: 0 $spacing-xxl;
+  font-size: $font-size-lg;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.widgetContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}

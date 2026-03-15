@@ -1,0 +1,189 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-white;
+  font-family: $font-family;
+}
+
+.content {
+  padding: $spacing-xxl $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: $spacing-xxl $spacing-xl;
+}
+
+.checkoutPrompt {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  text-align: center;
+  line-height: $line-height-relaxed;
+  margin: 0 0 $spacing-xxl;
+}
+
+// --- Form ---
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.phoneRow {
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-end;
+}
+
+.countryCode {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-md $spacing-sm;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  height: 44px;
+  flex-shrink: 0;
+  background: $color-bg-page;
+}
+
+.flag {
+  font-size: $font-size-lg;
+}
+
+.code {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.phoneInput {
+  flex: 1;
+}
+
+// --- Divider ---
+
+.dividerSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin: $spacing-xxl 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: $color-border;
+}
+
+.dividerText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+// --- Login link ---
+
+.loginLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xxl;
+}
+
+.loginText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}
+
+.loginBtn {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-link;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: $font-family;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+// --- OTP step ---
+
+.otpSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+  padding-top: $spacing-xxxl;
+}
+
+.otpTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.otpSubtitle {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0;
+  text-align: center;
+  line-height: $line-height-relaxed;
+}
+
+.resendRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.resendText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.resendLink {
+  font-size: $font-size-sm;
+  color: $color-text-link;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.resendTimer {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}

@@ -1,0 +1,109 @@
+@use '../../../theme/tokens' as *;
+
+// === Inline variant ===
+.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+}
+
+.inlineLabel {
+  font-weight: $font-weight-medium;
+}
+
+.inlineDot {
+  color: $color-text-placeholder;
+}
+
+.inlineVerifier {
+  color: $color-text-tertiary;
+}
+
+// Inline status colors
+.inline.status-verified {
+  .inlineLabel {
+    color: $color-success;
+  }
+}
+
+.inline.status-pending {
+  .inlineLabel {
+    color: $color-warning;
+  }
+}
+
+.inline.status-unverified {
+  .inlineLabel {
+    color: $color-text-tertiary;
+  }
+}
+
+// === Card variant ===
+.card {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  background: var(--gs-color-bg-card, $color-bg-card);
+  border-radius: $radius-lg;
+  border: 1px solid var(--gs-color-border, $color-border);
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 0;
+}
+
+.cardLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
+.cardVerifier {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.cardDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+// Card status colors
+.card.status-verified {
+  border-color: $color-success-light;
+  background: $color-success-light;
+
+  .cardLabel {
+    color: $color-success;
+  }
+}
+
+.card.status-pending {
+  border-color: $color-warning-light;
+  background: $color-warning-light;
+
+  .cardLabel {
+    color: $color-warning;
+  }
+}
+
+.card.status-unverified {
+  .cardLabel {
+    color: $color-text-tertiary;
+  }
+}

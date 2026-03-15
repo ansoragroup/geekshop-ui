@@ -1,0 +1,91 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+.trigger {
+  display: inline-flex;
+}
+
+// === Tooltip ===
+.tooltip {
+  position: absolute;
+  z-index: $z-index-popover;
+  animation: tooltipIn $transition-fast;
+  pointer-events: none;
+}
+
+.content {
+  padding: $spacing-sm $spacing-md;
+  background: rgba(0, 0, 0, 0.8);
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+  max-width: 200px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+// === Arrow ===
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  transform: rotate(45deg);
+}
+
+// === Placements ===
+.placement-top {
+  .arrow {
+    bottom: -4px;
+    left: 50%;
+    margin-left: -4px;
+  }
+}
+
+.placement-bottom {
+  .arrow {
+    top: -4px;
+    left: 50%;
+    margin-left: -4px;
+  }
+}
+
+.placement-left {
+  .arrow {
+    right: -4px;
+    top: 50%;
+    margin-top: -4px;
+  }
+}
+
+.placement-right {
+  .arrow {
+    left: -4px;
+    top: 50%;
+    margin-top: -4px;
+  }
+}
+
+// === Animation ===
+@keyframes tooltipIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    animation: none;
+  }
+}

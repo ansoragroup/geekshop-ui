@@ -369,4 +369,98 @@ export const en: TranslationDictionary = {
   'address.deleteBody': 'address? This action cannot be undone.',
   'address.deletedToast': 'address deleted',
   'address.myAddresses': 'My Addresses',
+
+  // Select
+  'select.placeholder': 'Please select',
+  'select.confirm': 'Confirm',
+  'select.cancel': 'Cancel',
+  'select.title': 'Select',
+
+  // ImageUploader
+  'imageUploader.add': 'Add image',
+  'imageUploader.delete': 'Delete image',
+  'imageUploader.maxCount': 'Maximum {max} images',
+  'imageUploader.sizeError': 'Image size exceeds {max}MB limit',
+
+  // Chip
+  'chip.delete': 'Remove {label}',
+
+  // GroupBuy
+  'groupBuy.joinGroup': 'Join Group',
+  'groupBuy.buyAlone': 'Buy Alone',
+  'groupBuy.joined': '{current}/{total} joined',
+  'groupBuy.timeLeft': '{time} left',
+  'groupBuy.groupPrice': 'Group',
+  'groupBuy.soloPrice': 'Solo',
+  'groupBuy.expired': 'Expired',
+  'groupBuy.full': 'Group Full',
+
+  // Stock
+  'stock.onlyLeft': 'Only {count} left!',
+  'stock.sold': '{percent}% sold',
+  'stock.inStock': 'In Stock',
+  'stock.lowStock': 'Low Stock',
+  'stock.almostGone': 'Almost Gone!',
+
+  // Shop
+  'shop.follow': 'Follow',
+  'shop.following': 'Following',
+  'shop.enter': 'Visit Shop',
+  'shop.products': '{count} products',
+  'shop.followers': '{count} followers',
+  'shop.responseRate': '{rate}% response',
+
+  // Delivery
+  'delivery.pending': 'Preparing',
+  'delivery.shipped': 'Shipped',
+  'delivery.inTransit': 'In Transit',
+  'delivery.delivered': 'Delivered',
+  'delivery.track': 'Track',
+  'delivery.copy': 'Copy',
+  'delivery.estimated': 'Estimated: {date}',
+  'delivery.lastUpdate': 'Last update: {time}',
+  'delivery.trackingNumber': 'Tracking: {number}',
+
+  // Installment
+  'installment.perMonth': '{price}/mo',
+  'installment.months': '{count} months',
+  'installment.interestFree': 'Interest-free',
+  'installment.from': 'from',
+
+  // SocialProof
+  'socialProof.peopleBought': '{count} people bought {period}',
+  'socialProof.peopleBoughtDefault': '{count} people bought this',
+  'socialProof.justBought': '{name} bought {time} ago',
+  'socialProof.watching': '{count} people viewing now',
+
+  // Auth
+  'auth.welcome': 'Welcome!',
+  'auth.phonePrompt': 'Enter your phone number to sign in',
+  'auth.sendCode': 'Send Code',
+  'auth.enterCode': 'Enter Code',
+  'auth.codeSentTo': 'Enter the code sent to {phone}',
+  'auth.codeNotReceived': "Didn't receive the code?",
+  'auth.resend': 'Resend',
+  'auth.resendIn': 'Resend in ({seconds})',
+  'auth.codeSent': 'Code Resent',
+  'auth.verify': 'Verify',
+  'auth.loginViaTelegram': 'Login via Telegram',
+  'auth.or': 'or',
+  'auth.termsAgreement': 'By continuing, you agree to the Terms of Use',
+  'auth.register': 'Register',
+  'auth.registerPrompt': 'Register to save your order',
+  'auth.enterName': 'Enter your name',
+  'auth.haveAccount': 'Already have an account?',
+  'auth.login': 'Login',
+  'auth.success': 'Success!',
+  'auth.loggedIn': 'You are logged in',
+  'auth.registered': 'You are registered',
+  'auth.startShopping': 'Start Shopping',
+  'auth.invalidCode': 'Invalid Code',
+  'auth.phoneLabel': 'Phone Number',
+  'auth.otpLabel': 'Verification Code',
+  'auth.nameLabel': 'Name',
+  'auth.phonePlaceholder': '90 123 45 67',
+  'page.login': 'Login',
+  'page.register': 'Register',
 };

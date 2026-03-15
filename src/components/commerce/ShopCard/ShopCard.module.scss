@@ -1,0 +1,214 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  font-family: $font-family;
+  transition: box-shadow $transition-fast;
+  container-type: inline-size;
+  width: 100%;
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+// ---- Header: logo + name ----
+.header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+.nameArea {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.name {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xxs;
+}
+
+.ratingText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// ---- Stats row ----
+.stats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xxs;
+  flex: 1;
+}
+
+.statValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  text-transform: capitalize;
+}
+
+.statDivider {
+  width: 1px;
+  height: 28px;
+  background: $color-border;
+  flex-shrink: 0;
+}
+
+// ---- Actions ----
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-xs;
+}
+
+.followBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-height: 44px;
+  border: 1px solid var(--gs-color-primary);
+  border-radius: $radius-md;
+  background: transparent;
+  color: var(--gs-color-primary);
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-bg);
+  }
+}
+
+.followBtnActive {
+  border-color: $color-border;
+  color: $color-text-secondary;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+}
+
+.enterBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-height: 44px;
+  border: none;
+  border-radius: $radius-md;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+// ========================================
+// Container Query: Compact (< 300px)
+// ========================================
+@container (max-width: 299px) {
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .name {
+    font-size: $font-size-md;
+  }
+
+  .statValue {
+    font-size: $font-size-md;
+  }
+
+  .followBtn,
+  .enterBtn {
+    font-size: $font-size-sm;
+  }
+}
+
+// ========================================
+// Reduced motion
+// ========================================
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .clickable {
+    &:active {
+      transform: none;
+    }
+  }
+
+  .followBtn,
+  .enterBtn {
+    transition: none;
+  }
+}

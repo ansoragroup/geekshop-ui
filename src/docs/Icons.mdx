@@ -1,0 +1,339 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Guides/Icons" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const IconCell = ({ name, children }) => (
+  <div style={{
+    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+    padding: 12, background: '#fff', borderRadius: 8, border: '1px solid #eee',
+    minWidth: 80,
+  }}>
+    <div style={{ color: '#1A1A1A' }}>{children}</div>
+    <div style={{ fontSize: 11, color: '#666', fontFamily: 'monospace', textAlign: 'center', wordBreak: 'break-all' }}>{name}</div>
+  </div>
+);
+
+export const IconGrid = ({ children }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
+    gap: 8,
+    marginTop: 16,
+  }}>
+    {children}
+  </div>
+);
+
+export const SizeDemo = ({ size, label }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 0' }}>
+    <div style={{
+      width: size, height: size, borderRadius: 4,
+      border: '1px dashed #FF5000', display: 'flex', alignItems: 'center', justifyContent: 'center',
+    }}>
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+      </svg>
+    </div>
+    <div>
+      <div style={{ fontWeight: 600, fontSize: 13 }}>{label}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 12, color: '#666' }}>{size}px</div>
+    </div>
+  </div>
+);
+
+# Icons
+
+`@ansoragroup/ui` uses [lucide-react](https://lucide.dev/) as its icon library. Lucide provides a consistent set of 1000+ icons with a unified stroke style that matches the library's visual language.
+
+---
+
+<SectionTitle>Installation</SectionTitle>
+
+`lucide-react` is a peer dependency. Install it alongside the library:
+
+```bash
+npm install lucide-react
+```
+
+<SectionTitle>Basic Usage</SectionTitle>
+
+Import individual icons by name:
+
+```tsx
+import { ShoppingCart, Heart, Star } from 'lucide-react'
+
+function MyComponent() {
+  return (
+    <div style={{ display: 'flex', gap: 8 }}>
+      <ShoppingCart size={20} />
+      <Heart size={20} />
+      <Star size={20} fill="currentColor" />
+    </div>
+  )
+}
+```
+
+---
+
+<SectionTitle>Size Convention</SectionTitle>
+
+Use these sizes consistently across your application:
+
+<SizeDemo size={16} label="Inline — inside text, labels, badges" />
+<SizeDemo size={20} label="Buttons — inside Button, ActionBar, NavBar" />
+<SizeDemo size={24} label="Standalone — section headers, empty states" />
+
+```tsx
+// Inline (12-16px) — inside text or small badges
+<Tag><Star size={12} /> Featured</Tag>
+
+// Button (20px) — action buttons, navigation
+<Button icon={<ShoppingCart size={20} />}>Add to Cart</Button>
+
+// Standalone (24px) — empty states, section icons
+<Empty icon={<Package size={24} />} />
+```
+
+---
+
+<SectionTitle>Color Convention</SectionTitle>
+
+Icons inherit color from their parent element by default via `stroke="currentColor"`. This ensures they match text color automatically.
+
+```tsx
+// Inherits parent text color (recommended)
+<span style={{ color: '#FF5000' }}>
+  <Heart size={20} /> {/* renders orange */}
+</span>
+
+// Explicit color override
+<Star size={20} stroke="#FFA726" fill="#FFA726" />
+
+// Using CSS custom properties
+<ShoppingCart size={20} style={{ color: 'var(--gs-color-primary)' }} />
+```
+
+**Filled icons** — Some icons like Star and Heart are commonly shown filled. Use the `fill` prop:
+
+```tsx
+<Star size={16} fill="currentColor" />          {/* filled star */}
+<Heart size={16} fill="currentColor" />         {/* filled heart */}
+<Star size={16} fill="none" />                  {/* outline star (default) */}
+```
+
+---
+
+<SectionTitle>Common Icons Reference</SectionTitle>
+
+The icons below are the most frequently used across the library's components. Each name corresponds to a named export from `lucide-react`.
+
+### Commerce & Shopping
+
+<IconGrid>
+  <IconCell name="ShoppingCart">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+  </IconCell>
+  <IconCell name="CreditCard">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+  </IconCell>
+  <IconCell name="Package">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+  </IconCell>
+  <IconCell name="Truck">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+  </IconCell>
+  <IconCell name="Gift">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>
+  </IconCell>
+</IconGrid>
+
+### Navigation & Actions
+
+<IconGrid>
+  <IconCell name="Search">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  </IconCell>
+  <IconCell name="ArrowLeft">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+  </IconCell>
+  <IconCell name="ChevronRight">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </IconCell>
+  <IconCell name="ChevronLeft">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </IconCell>
+  <IconCell name="X">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </IconCell>
+</IconGrid>
+
+### Interaction & Feedback
+
+<IconGrid>
+  <IconCell name="Heart">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+  </IconCell>
+  <IconCell name="Star">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+  </IconCell>
+  <IconCell name="Bell">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+  </IconCell>
+  <IconCell name="Share2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+  </IconCell>
+  <IconCell name="Eye">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+  </IconCell>
+</IconGrid>
+
+### Content & Data
+
+<IconGrid>
+  <IconCell name="Plus">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+  </IconCell>
+  <IconCell name="Minus">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/></svg>
+  </IconCell>
+  <IconCell name="Trash2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+  </IconCell>
+  <IconCell name="Edit3">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  </IconCell>
+  <IconCell name="Check">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  </IconCell>
+</IconGrid>
+
+### Location & Contact
+
+<IconGrid>
+  <IconCell name="MapPin">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+  </IconCell>
+  <IconCell name="Phone">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </IconCell>
+  <IconCell name="Mail">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+  </IconCell>
+  <IconCell name="User">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </IconCell>
+  <IconCell name="Settings">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+  </IconCell>
+</IconGrid>
+
+### Status & Information
+
+<IconGrid>
+  <IconCell name="AlertCircle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+  </IconCell>
+  <IconCell name="Info">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+  </IconCell>
+  <IconCell name="Clock">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+  </IconCell>
+  <IconCell name="Camera">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+  </IconCell>
+  <IconCell name="Image">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+  </IconCell>
+</IconGrid>
+
+---
+
+<SectionTitle>Usage in Components</SectionTitle>
+
+Many library components accept icon props or use icons internally:
+
+### ActionBar
+
+```tsx
+import { ActionBar } from '@ansoragroup/ui'
+import { ShoppingCart, Heart, MessageCircle } from 'lucide-react'
+
+<ActionBar
+  onCartClick={() => {}}
+  onBuyClick={() => {}}
+  onFavoriteClick={() => {}}
+  onContactClick={() => {}}
+/>
+```
+
+The ActionBar, NavBar, and AppBar components use lucide-react icons internally (ShoppingCart, Heart, ArrowLeft, Share2, etc.). You do not need to pass icons directly -- they are built in.
+
+### Button with icon
+
+```tsx
+import { Button } from '@ansoragroup/ui'
+import { ShoppingCart } from 'lucide-react'
+
+<Button
+  variant="primary"
+  size="md"
+  icon={<ShoppingCart size={20} />}
+>
+  Add to Cart
+</Button>
+```
+
+### SearchBar
+
+```tsx
+import { SearchBar } from '@ansoragroup/ui'
+import { Camera } from 'lucide-react'
+
+<SearchBar
+  placeholder="Search products..."
+  onCameraClick={() => {}}
+/>
+```
+
+---
+
+<SectionTitle>Custom Icons</SectionTitle>
+
+If you need an icon not available in lucide-react, create a custom SVG component that matches the library's icon style:
+
+```tsx
+// Match lucide's defaults: 24x24 viewBox, 1.5px stroke
+function CustomIcon({ size = 24, ...props }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      {/* your paths here */}
+    </svg>
+  )
+}
+```
+
+**Style rules for custom icons:**
+- **viewBox:** `0 0 24 24`
+- **stroke-width:** `1.5` (matches lucide default)
+- **stroke-linecap:** `round`
+- **stroke-linejoin:** `round`
+- **fill:** `none` (outline style; use `currentColor` only for intentionally filled icons)
+- **color:** inherit via `stroke="currentColor"`

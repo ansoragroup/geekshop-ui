@@ -1,0 +1,135 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// === Item ===
+.item {
+  display: flex;
+  gap: $spacing-md;
+  position: relative;
+}
+
+// === Rail (dot + line) ===
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-round;
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: background-color $transition-normal, border-color $transition-normal;
+}
+
+.line {
+  flex: 1;
+  width: 2px;
+  min-height: 20px;
+  background: var(--gs-color-border, $color-border);
+  margin: $spacing-xs 0;
+}
+
+// === Status variants ===
+.status-completed {
+  .dot {
+    background: var(--gs-color-success, $color-success);
+    border: 2px solid var(--gs-color-success, $color-success);
+  }
+
+  .line {
+    background: var(--gs-color-success, $color-success);
+  }
+
+  .title {
+    color: $color-text-primary;
+  }
+
+  .time {
+    color: $color-text-secondary;
+  }
+}
+
+.status-active {
+  .dot {
+    background: var(--gs-color-primary, $color-primary);
+    border: 2px solid var(--gs-color-primary, $color-primary);
+    box-shadow: 0 0 0 4px rgba($color-primary, 0.15);
+  }
+
+  .title {
+    color: var(--gs-color-primary, $color-primary);
+    font-weight: $font-weight-semibold;
+  }
+
+  .time {
+    color: var(--gs-color-primary, $color-primary);
+  }
+}
+
+.status-pending {
+  .dot {
+    background: transparent;
+    border: 2px solid var(--gs-color-border, $color-border);
+  }
+
+  .title {
+    color: $color-text-tertiary;
+  }
+
+  .time {
+    color: $color-text-placeholder;
+  }
+}
+
+// === Content ===
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $spacing-xl;
+  min-width: 0;
+  flex: 1;
+}
+
+.time {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-tight;
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacing-xxs;
+}
+
+.title {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-medium;
+  transition: color $transition-normal;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  margin-top: $spacing-xxs;
+}
+
+// === Reduced motion ===
+@media (prefers-reduced-motion: reduce) {
+  .dot,
+  .title {
+    transition: none;
+  }
+}

@@ -1,0 +1,91 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: fixed;
+  z-index: $z-index-fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary, $color-primary);
+  color: $color-text-white;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+  box-shadow: $shadow-lg;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: $shadow-xl;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-text-white;
+    outline-offset: 2px;
+  }
+}
+
+.dragging {
+  cursor: grabbing;
+  transform: scale(1.1);
+  box-shadow: $shadow-xl;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 $spacing-xs;
+  border-radius: $radius-round;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  border: 2px solid $color-bg-white;
+}
+
+// === Reduced motion ===
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+
+  .dragging {
+    transition: none;
+  }
+}

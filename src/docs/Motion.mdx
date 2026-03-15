@@ -1,0 +1,326 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Design Tokens/Motion" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SubTitle = ({ children }) => (
+  <h3 style={{ margin: '24px 0 12px', fontSize: 16, color: '#333' }}>
+    {children}
+  </h3>
+);
+
+export const TransitionDemo = ({ name, variable, value, description }) => (
+  <div style={{
+    display: 'flex', alignItems: 'center', gap: 16, padding: '12px 0',
+    borderBottom: '1px solid #f0f0f0',
+  }}>
+    <div style={{ width: 180, flexShrink: 0 }}>
+      <div style={{ fontWeight: 600, fontSize: 14, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#999' }}>{variable}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#666' }}>{value}</div>
+    </div>
+    <div style={{ fontSize: 13, color: '#666', flex: 1 }}>{description}</div>
+  </div>
+);
+
+export const AnimationBox = ({ label, transition }) => {
+  const boxStyle = {
+    width: 60, height: 60, borderRadius: 8,
+    background: 'linear-gradient(135deg, #FF5000, #FF7A33)',
+    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+    color: '#fff', fontSize: 11, fontWeight: 600, textAlign: 'center',
+    transition: `transform ${transition}`,
+  };
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <div
+        style={boxStyle}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.15)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+      >
+        Hover
+      </div>
+      <div style={{ fontSize: 11, color: '#666', marginTop: 6, fontFamily: 'monospace' }}>{label}</div>
+    </div>
+  );
+};
+
+# Motion
+
+Motion tokens define transition timing and easing for all animated interactions in the library. Animations are intentional and purposeful -- they provide feedback, guide attention, and indicate state changes.
+
+---
+
+<SectionTitle>Transition Tokens</SectionTitle>
+
+<TransitionDemo
+  name="Fast"
+  variable="$transition-fast"
+  value="0.15s ease"
+  description="Micro-interactions: hover states, color changes, opacity toggles. Should feel instant."
+/>
+<TransitionDemo
+  name="Normal"
+  variable="$transition-normal"
+  value="0.25s ease"
+  description="Standard transitions: slide, scale, expand/collapse. The default for most animations."
+/>
+<TransitionDemo
+  name="Slow"
+  variable="$transition-slow"
+  value="0.35s ease"
+  description="Larger movements: bottom sheet slides, page transitions. Gives the eye time to follow."
+/>
+<TransitionDemo
+  name="Spring"
+  variable="$transition-spring"
+  value="0.3s cubic-bezier(0.34, 1.56, 0.64, 1)"
+  description="Bouncy, playful transitions: button press feedback, toggle switches, popping elements. Overshoots slightly."
+/>
+
+### Interactive Demo
+
+Hover over the boxes to see each timing in action:
+
+<div style={{ display: 'flex', gap: 24, padding: '24px 0', flexWrap: 'wrap' }}>
+  <AnimationBox label="fast (0.15s)" transition="0.15s ease" />
+  <AnimationBox label="normal (0.25s)" transition="0.25s ease" />
+  <AnimationBox label="slow (0.35s)" transition="0.35s ease" />
+  <AnimationBox label="spring (0.3s)" transition="0.3s cubic-bezier(0.34, 1.56, 0.64, 1)" />
+</div>
+
+---
+
+<SectionTitle>When to Animate</SectionTitle>
+
+<SubTitle>Animate</SubTitle>
+
+| Scenario | Example | Token |
+|---|---|---|
+| State changes | Button hover, checkbox toggle, switch flip | `$transition-fast` |
+| Overlays appearing | BottomSheet slide-up, Popup fade-in, Dialog scale-in | `$transition-normal` or `$transition-slow` |
+| User feedback | Button press scale, cart count badge bounce | `$transition-spring` |
+| Content transitions | Tab content fade, accordion expand/collapse | `$transition-normal` |
+| Loading indicators | Skeleton shimmer, Loading spinner rotation | Custom keyframes |
+
+<SubTitle>Do NOT Animate</SubTitle>
+
+| Scenario | Reason |
+|---|---|
+| Initial page render | Content should appear instantly. No entrance animations on page load. |
+| Data fetching results | New data should appear immediately. Use Skeleton for loading state instead. |
+| Layout shifts | Avoid animating content that pushes other content around. |
+| Large lists | Do not animate individual list items appearing. Use loading state. |
+| Scroll position | Never animate scroll position unless the user explicitly triggered it. |
+
+---
+
+<SectionTitle>Common Animation Patterns</SectionTitle>
+
+<SubTitle>Button Press Feedback</SubTitle>
+
+The primary button scales down slightly on press to provide tactile feedback:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.button {
+  transition: transform $transition-spring, background-color $transition-fast;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+```
+
+<SubTitle>Overlay Slide-Up (BottomSheet)</SubTitle>
+
+The bottom sheet slides up from the bottom of the viewport:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.overlay {
+  position: fixed;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: transform $transition-slow;
+
+  &.open {
+    transform: translateY(0);
+  }
+}
+
+.backdrop {
+  opacity: 0;
+  transition: opacity $transition-normal;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+```
+
+<SubTitle>Popup / Dialog Fade + Scale</SubTitle>
+
+Popups fade in and scale up slightly from 95% to 100%:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.popup {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity $transition-normal, transform $transition-normal;
+
+  &.open {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+```
+
+<SubTitle>Toast Slide-In</SubTitle>
+
+Toasts slide in from the top:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.toast {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform $transition-normal, opacity $transition-fast;
+
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+```
+
+<SubTitle>Result Checkmark Scale-In</SubTitle>
+
+The success checkmark in the Result component scales in with a spring bounce:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.checkmark {
+  transform: scale(0);
+  transition: transform $transition-spring;
+
+  &.visible {
+    transform: scale(1);
+  }
+}
+```
+
+<SubTitle>Skeleton Shimmer</SubTitle>
+
+The skeleton loading animation uses a keyframe for the shimmer effect:
+
+```scss
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gs-bg-skeleton) 25%,
+    #e8e8e8 50%,
+    var(--gs-bg-skeleton) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+```
+
+---
+
+<SectionTitle>prefers-reduced-motion</SectionTitle>
+
+**All animations in the library respect `prefers-reduced-motion: reduce`.** When the user has enabled reduced motion in their operating system settings, transitions and animations are disabled.
+
+The library applies this globally:
+
+```scss
+// Applied at the component level
+@media (prefers-reduced-motion: reduce) {
+  .animated-element {
+    animation: none;
+    transition: none;
+  }
+}
+```
+
+**What changes with reduced motion enabled:**
+
+| Component | Normal Behavior | Reduced Motion |
+|---|---|---|
+| BottomSheet | Slides up with animation | Appears/disappears instantly |
+| Popup / Dialog | Fades in with scale | Appears/disappears instantly |
+| Toast | Slides in from top | Appears/disappears instantly |
+| Button | Scale feedback on press | No visual feedback on press |
+| Loading spinner | Rotates continuously | Static indicator |
+| Skeleton shimmer | Gradient animation | Static gray background |
+| CountdownTimer | Digit flip animation | Instant digit change |
+| Swipe | Smooth drag transition | Instant position change |
+| PullToRefresh | Pull-down animation | Instant state change |
+
+---
+
+<SectionTitle>SCSS Usage</SectionTitle>
+
+Import transition tokens from the theme:
+
+```scss
+@use '../../../theme/tokens' as *;
+
+// Use transition tokens directly
+.card {
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// Combine multiple transitions
+.button {
+  transition: background-color $transition-fast,
+              transform $transition-spring,
+              box-shadow $transition-fast;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// Always include reduced motion override
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
+```
+
+### Token Reference
+
+| SCSS Variable | Value | Easing | Duration |
+|---|---|---|---|
+| `$transition-fast` | `0.15s ease` | ease | 150ms |
+| `$transition-normal` | `0.25s ease` | ease | 250ms |
+| `$transition-slow` | `0.35s ease` | ease | 350ms |
+| `$transition-spring` | `0.3s cubic-bezier(0.34, 1.56, 0.64, 1)` | spring (overshoot) | 300ms |
