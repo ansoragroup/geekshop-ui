@@ -1,16 +1,35 @@
 export type ThemePreset = 'default' | 'teal' | 'red' | 'yellow' | 'green' | 'monochrome';
 
+export interface ThemePresetColors {
+  // Primary family
+  primary: string;
+  primaryLight: string;
+  primaryDark: string;
+  primaryBg: string;
+  primaryGradient: string;
+  primaryGradientHeader: string;
+  // Price (should harmonize with theme, not always red)
+  price: string;
+  priceDark: string;
+  // Sale/error
+  sale: string;
+  error: string;
+  // Success
+  success: string;
+  successLight: string;
+  // Warning
+  warning: string;
+  warningLight: string;
+  // Info
+  info: string;
+  // Text link (usually matches primary)
+  textLink: string;
+}
+
 export interface ThemePresetConfig {
   name: ThemePreset;
   label: string;
-  colors: {
-    primary: string;
-    primaryLight: string;
-    primaryDark: string;
-    primaryBg: string;
-    primaryGradient: string;
-    primaryGradientHeader: string;
-  };
+  colors: ThemePresetColors;
 }
 
 export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
@@ -24,6 +43,16 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       primaryBg: '#FFF5F0',
       primaryGradient: 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
       primaryGradientHeader: 'linear-gradient(180deg, #FF5000 0%, #FF8A56 50%, #FFB088 100%)',
+      price: '#FF0000',
+      priceDark: '#E8380D',
+      sale: '#FF3B30',
+      error: '#FF3B30',
+      success: '#07C160',
+      successLight: '#E8F8EF',
+      warning: '#FFA726',
+      warningLight: '#FFF8E6',
+      info: '#1890FF',
+      textLink: '#FF5000',
     },
   },
   teal: {
@@ -36,6 +65,16 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       primaryBg: '#E6FAFA',
       primaryGradient: 'linear-gradient(135deg, #00CBCC 0%, #33D6D6 100%)',
       primaryGradientHeader: 'linear-gradient(180deg, #00CBCC 0%, #4DE0E0 50%, #99EDED 100%)',
+      price: '#FF6B6B',
+      priceDark: '#E55A5A',
+      sale: '#FF6B6B',
+      error: '#FF6B6B',
+      success: '#2DD4A8',
+      successLight: '#E6F9F3',
+      warning: '#FFB347',
+      warningLight: '#FFF5E6',
+      info: '#00CBCC',
+      textLink: '#00CBCC',
     },
   },
   red: {
@@ -48,6 +87,16 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       primaryBg: '#FFEBEE',
       primaryGradient: 'linear-gradient(135deg, #E53935 0%, #EF5350 100%)',
       primaryGradientHeader: 'linear-gradient(180deg, #E53935 0%, #EF6C6B 50%, #F5A3A2 100%)',
+      price: '#E53935',
+      priceDark: '#C62828',
+      sale: '#FF6D00',
+      error: '#D32F2F',
+      success: '#43A047',
+      successLight: '#E8F5E9',
+      warning: '#F9A825',
+      warningLight: '#FFF8E1',
+      info: '#1976D2',
+      textLink: '#E53935',
     },
   },
   yellow: {
@@ -60,6 +109,16 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       primaryBg: '#FFF8E1',
       primaryGradient: 'linear-gradient(135deg, #FFB300 0%, #FFC233 100%)',
       primaryGradientHeader: 'linear-gradient(180deg, #FFB300 0%, #FFCF56 50%, #FFE088 100%)',
+      price: '#E65100',
+      priceDark: '#BF4400',
+      sale: '#E65100',
+      error: '#D32F2F',
+      success: '#2E7D32',
+      successLight: '#E8F5E9',
+      warning: '#FFB300',
+      warningLight: '#FFF8E1',
+      info: '#0277BD',
+      textLink: '#E6A100',
     },
   },
   green: {
@@ -72,6 +131,16 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       primaryBg: '#E8F8EF',
       primaryGradient: 'linear-gradient(135deg, #07C160 0%, #2BD17A 100%)',
       primaryGradientHeader: 'linear-gradient(180deg, #07C160 0%, #4DDB8D 50%, #99EBB9 100%)',
+      price: '#E53935',
+      priceDark: '#C62828',
+      sale: '#E53935',
+      error: '#E53935',
+      success: '#07C160',
+      successLight: '#E8F8EF',
+      warning: '#FF9800',
+      warningLight: '#FFF3E0',
+      info: '#0288D1',
+      textLink: '#07C160',
     },
   },
   monochrome: {
@@ -84,6 +153,16 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       primaryBg: '#F5F5F5',
       primaryGradient: 'linear-gradient(135deg, #1A1A1A 0%, #333333 100%)',
       primaryGradientHeader: 'linear-gradient(180deg, #1A1A1A 0%, #4D4D4D 50%, #808080 100%)',
+      price: '#1A1A1A',
+      priceDark: '#000000',
+      sale: '#666666',
+      error: '#F44336',
+      success: '#4CAF50',
+      successLight: '#E8F5E9',
+      warning: '#FF9800',
+      warningLight: '#FFF3E0',
+      info: '#2196F3',
+      textLink: '#1A1A1A',
     },
   },
 };

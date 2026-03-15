@@ -43,7 +43,7 @@
 }
 
 .variant-danger {
-  background: $color-error;
+  background: var(--gs-color-error);
   color: $color-text-white;
 
   &:hover:not(.disabled):not(.loading) {

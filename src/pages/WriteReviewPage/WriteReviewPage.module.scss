@@ -78,7 +78,7 @@
   display: block;
   margin-top: $spacing-sm;
   font-size: $font-size-sm;
-  color: $color-error;
+  color: var(--gs-color-error);
 }
 
 // === Text section ===

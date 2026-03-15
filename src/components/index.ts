@@ -50,21 +50,29 @@ export { SpecsTable } from './data-display/SpecsTable';
 export { OrderStatusBar } from './data-display/OrderStatusBar';
 export { ImageLazy } from './data-display/ImageLazy';
 export { InfiniteScroll } from './data-display/InfiniteScroll';
+export { Steps } from './data-display/Steps';
+export { Cell } from './data-display/Cell';
+export { AvatarGroup } from './data-display/AvatarGroup';
 
 // Feedback
 export { Toast } from './feedback/Toast';
 export { Popup } from './feedback/Popup';
+export { Dialog } from './feedback/Dialog';
 export { BottomSheet } from './feedback/BottomSheet';
 export { Loading } from './feedback/Loading';
 export { Empty } from './feedback/Empty';
 export { Skeleton, ProductCardSkeleton } from './feedback/Skeleton';
 export { Swipe } from './feedback/Swipe';
 export { PullToRefresh } from './feedback/PullToRefresh';
+export { Result } from './feedback/Result';
 
 // Form
 export { Button } from './form/Button';
 export { Input } from './form/Input';
+export { TextArea } from './form/TextArea';
 export { Checkbox } from './form/Checkbox';
+export { Radio, RadioGroup } from './form/Radio';
+export { Switch } from './form/Switch';
 
 // Layout
 export { Container } from './layout/Container';
@@ -130,21 +138,29 @@ export type { SpecsTableProps, SpecItem } from './data-display/SpecsTable';
 export type { OrderStatusBarProps, OrderStatusItem } from './data-display/OrderStatusBar';
 export type { ImageLazyProps } from './data-display/ImageLazy';
 export type { InfiniteScrollProps } from './data-display/InfiniteScroll';
+export type { StepsProps, StepItem, StepsDirection, StepsSize } from './data-display/Steps';
+export type { CellProps } from './data-display/Cell';
+export type { AvatarGroupProps, AvatarGroupSize } from './data-display/AvatarGroup';
 
 // Types — Feedback
 export type { ToastProps, ToastType } from './feedback/Toast';
 export type { PopupProps, PopupPosition } from './feedback/Popup';
+export type { DialogProps, DialogConfirmType } from './feedback/Dialog';
 export type { BottomSheetProps } from './feedback/BottomSheet';
 export type { LoadingProps, LoadingType } from './feedback/Loading';
 export type { EmptyProps } from './feedback/Empty';
 export type { SkeletonProps } from './feedback/Skeleton';
 export type { SwipeProps, SwipeAction } from './feedback/Swipe';
 export type { PullToRefreshProps } from './feedback/PullToRefresh';
+export type { ResultProps, ResultStatus } from './feedback/Result';
 
 // Types — Form
 export type { ButtonProps, ButtonOwnProps, ButtonVariant, ButtonSize } from './form/Button';
 export type { InputProps } from './form/Input';
+export type { TextAreaProps } from './form/TextArea';
 export type { CheckboxProps } from './form/Checkbox';
+export type { RadioProps, RadioGroupProps } from './form/Radio';
+export type { SwitchProps, SwitchSize } from './form/Switch';
 
 // Types — Layout
 export type { ContainerProps } from './layout/Container';

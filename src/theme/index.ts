@@ -133,17 +133,59 @@ export function getTheme(): 'light' | 'dark' {
   return 'light';
 }
 
+const ALL_PRESET_PROPS = [
+  '--gs-color-primary',
+  '--gs-color-primary-light',
+  '--gs-color-primary-dark',
+  '--gs-color-primary-bg',
+  '--gs-color-primary-gradient',
+  '--gs-color-primary-gradient-header',
+  '--gs-color-price',
+  '--gs-color-price-dark',
+  '--gs-color-sale',
+  '--gs-color-error',
+  '--gs-color-success',
+  '--gs-color-success-light',
+  '--gs-color-warning',
+  '--gs-color-warning-light',
+  '--gs-color-info',
+  '--gs-text-link',
+] as const;
+
 export function setThemePreset(preset: ThemePreset): void {
   const config = THEME_PRESETS[preset];
   if (!config) return;
 
   const root = document.documentElement;
-  root.style.setProperty('--gs-color-primary', config.colors.primary);
-  root.style.setProperty('--gs-color-primary-light', config.colors.primaryLight);
-  root.style.setProperty('--gs-color-primary-dark', config.colors.primaryDark);
-  root.style.setProperty('--gs-color-primary-bg', config.colors.primaryBg);
-  root.style.setProperty('--gs-color-primary-gradient', config.colors.primaryGradient);
-  root.style.setProperty('--gs-color-primary-gradient-header', config.colors.primaryGradientHeader);
+
+  // For default preset, remove all inline overrides to revert to CSS-defined defaults
+  if (preset === 'default') {
+    ALL_PRESET_PROPS.forEach(p => root.style.removeProperty(p));
+    delete root.dataset.gsPreset;
+    return;
+  }
+
+  const c = config.colors;
+
+  // Primary
+  root.style.setProperty('--gs-color-primary', c.primary);
+  root.style.setProperty('--gs-color-primary-light', c.primaryLight);
+  root.style.setProperty('--gs-color-primary-dark', c.primaryDark);
+  root.style.setProperty('--gs-color-primary-bg', c.primaryBg);
+  root.style.setProperty('--gs-color-primary-gradient', c.primaryGradient);
+  root.style.setProperty('--gs-color-primary-gradient-header', c.primaryGradientHeader);
+
+  // Semantic
+  root.style.setProperty('--gs-color-price', c.price);
+  root.style.setProperty('--gs-color-price-dark', c.priceDark);
+  root.style.setProperty('--gs-color-sale', c.sale);
+  root.style.setProperty('--gs-color-error', c.error);
+  root.style.setProperty('--gs-color-success', c.success);
+  root.style.setProperty('--gs-color-success-light', c.successLight);
+  root.style.setProperty('--gs-color-warning', c.warning);
+  root.style.setProperty('--gs-color-warning-light', c.warningLight);
+  root.style.setProperty('--gs-color-info', c.info);
+  root.style.setProperty('--gs-text-link', c.textLink);
 
   root.dataset.gsPreset = preset;
 }

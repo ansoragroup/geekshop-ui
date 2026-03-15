@@ -100,7 +100,7 @@
 .productPrice {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 .productQty {
@@ -126,7 +126,7 @@
 .totalAmount {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 // --- Actions ---

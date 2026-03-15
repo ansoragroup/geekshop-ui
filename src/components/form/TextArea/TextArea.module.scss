@@ -1,0 +1,101 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.textareaWrap {
+  display: flex;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  transition: border-color $transition-fast;
+
+  &:focus-within {
+    border-color: var(--gs-color-primary, #{$color-primary});
+  }
+}
+
+.textarea {
+  flex: 1;
+  min-height: 88px;
+  max-height: 300px;
+  padding: $spacing-md;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+  line-height: $line-height-normal;
+  resize: vertical;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:disabled {
+    color: $color-text-tertiary;
+    cursor: not-allowed;
+    resize: none;
+  }
+}
+
+// ---- Footer ----
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-sm;
+}
+
+.footerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error);
+  line-height: $line-height-normal;
+}
+
+.helper {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  flex-shrink: 0;
+}
+
+// ---- Error state ----
+
+.hasError {
+  .textareaWrap {
+    border-color: var(--gs-color-error);
+  }
+}
+
+// ---- Disabled state ----
+
+.disabled {
+  .textareaWrap {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+  }
+}

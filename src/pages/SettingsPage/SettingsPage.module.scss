@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use '../../theme/tokens' as *;
 
 .page {
@@ -115,9 +114,9 @@
 }
 
 .deleteBtn {
-  background: $color-error !important;
+  background: var(--gs-color-error) !important;
 
   &:active {
-    background: color.adjust($color-error, $lightness: -5%) !important;
+    background: color-mix(in srgb, var(--gs-color-error) 90%, black) !important;
   }
 }

@@ -24,7 +24,7 @@
   width: 80px;
   height: 80px;
   border-radius: $radius-round;
-  background: $color-success;
+  background: var(--gs-color-success);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +175,7 @@
 .itemPrice {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 // === Total ===
@@ -197,7 +197,7 @@
 .totalPrice {
   font-size: $font-size-xl;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 // === Actions ===

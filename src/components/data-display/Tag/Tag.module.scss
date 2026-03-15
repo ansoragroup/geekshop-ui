@@ -68,17 +68,17 @@
   }
 
   &.color-success {
-    background-color: $color-success;
+    background-color: var(--gs-color-success);
     color: $color-text-white;
   }
 
   &.color-warning {
-    background-color: $color-warning;
+    background-color: var(--gs-color-warning);
     color: $color-text-white;
   }
 
   &.color-error {
-    background-color: $color-error;
+    background-color: var(--gs-color-error);
     color: $color-text-white;
   }
 
@@ -99,18 +99,18 @@
   }
 
   &.color-success {
-    border-color: $color-success;
-    color: $color-success;
+    border-color: var(--gs-color-success);
+    color: var(--gs-color-success);
   }
 
   &.color-warning {
-    border-color: $color-warning;
-    color: $color-warning;
+    border-color: var(--gs-color-warning);
+    color: var(--gs-color-warning);
   }
 
   &.color-error {
-    border-color: $color-error;
-    color: $color-error;
+    border-color: var(--gs-color-error);
+    color: var(--gs-color-error);
   }
 
   &.color-default {
@@ -127,18 +127,18 @@
   }
 
   &.color-success {
-    background-color: $color-success-light;
-    color: $color-success;
+    background-color: var(--gs-color-success-light);
+    color: var(--gs-color-success);
   }
 
   &.color-warning {
-    background-color: $color-warning-light;
+    background-color: var(--gs-color-warning-light);
     color: #E69500;
   }
 
   &.color-error {
     background-color: #FFF0F0;
-    color: $color-error;
+    color: var(--gs-color-error);
   }
 
   &.color-default {

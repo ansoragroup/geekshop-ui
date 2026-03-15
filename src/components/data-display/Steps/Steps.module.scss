@@ -1,0 +1,209 @@
+@use '../../../theme/tokens' as *;
+
+// === Root ===
+.root {
+  display: flex;
+  width: 100%;
+}
+
+// === Direction variants ===
+.direction-horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+
+  .step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .connector {
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--gs-color-border, $color-border);
+    z-index: 0;
+    transform: translateX(-50%);
+  }
+
+  .connectorCompleted {
+    background: var(--gs-color-success);
+  }
+
+  .indicator {
+    position: relative;
+    z-index: 1;
+  }
+
+  .content {
+    margin-top: $spacing-sm;
+  }
+}
+
+.direction-vertical {
+  flex-direction: column;
+
+  .step {
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: $spacing-xxl;
+
+    &:last-child {
+      padding-bottom: 0;
+
+      .connector {
+        display: none;
+      }
+    }
+  }
+
+  .connector {
+    position: absolute;
+    left: 11px;
+    top: 28px;
+    width: 2px;
+    height: calc(100% - 28px);
+    background: var(--gs-color-border, $color-border);
+  }
+
+  .connectorCompleted {
+    background: var(--gs-color-success);
+  }
+
+  .content {
+    margin-left: $spacing-md;
+    padding-top: $spacing-xxs;
+  }
+}
+
+// === Step ===
+.step {
+  display: flex;
+  position: relative;
+}
+
+// === Indicator (circle) ===
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-round;
+  transition: background-color $transition-normal, border-color $transition-normal;
+}
+
+.dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-round;
+}
+
+// === Status variants ===
+.status-completed {
+  .indicator {
+    background: var(--gs-color-success);
+    color: $color-text-white;
+  }
+
+  .title {
+    color: $color-text-primary;
+  }
+}
+
+.status-active {
+  .indicator {
+    background: var(--gs-color-primary, $color-primary);
+    color: $color-text-white;
+  }
+
+  .dot {
+    background: $color-text-white;
+  }
+
+  .title {
+    color: var(--gs-color-primary, $color-primary);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.status-pending {
+  .indicator {
+    background: transparent;
+    border: 2px solid var(--gs-color-border, $color-border);
+  }
+
+  .dot {
+    background: $color-text-placeholder;
+  }
+
+  .title {
+    color: $color-text-tertiary;
+  }
+}
+
+// === Content ===
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  transition: color $transition-normal;
+}
+
+.description {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  margin-top: $spacing-xxs;
+}
+
+// === Size variants ===
+.size-sm {
+  .indicator {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .title {
+    font-size: $font-size-xs;
+  }
+
+  .description {
+    font-size: $font-size-xs;
+  }
+
+  &.direction-horizontal .connector {
+    top: 10px;
+  }
+
+  &.direction-vertical .connector {
+    left: 9px;
+    top: 24px;
+    height: calc(100% - 24px);
+  }
+}
+
+// === Reduced motion ===
+@media (prefers-reduced-motion: reduce) {
+  .indicator,
+  .title {
+    transition: none;
+  }
+}

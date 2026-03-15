@@ -70,5 +70,5 @@
 .totalPrice {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }

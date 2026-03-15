@@ -19,7 +19,7 @@
 .icon {
   width: 20px;
   height: 20px;
-  color: $color-sale;
+  color: var(--gs-color-sale);
   flex-shrink: 0;
 }
 
@@ -42,7 +42,7 @@
   min-width: 30px;
   height: 28px;
   padding: 0 $spacing-xs;
-  background: $color-sale;
+  background: var(--gs-color-sale);
   color: $color-text-white;
   font-size: $font-size-md;
   font-weight: $font-weight-bold;
@@ -58,7 +58,7 @@
 .separator {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-sale;
+  color: var(--gs-color-sale);
   line-height: 1;
 }
 

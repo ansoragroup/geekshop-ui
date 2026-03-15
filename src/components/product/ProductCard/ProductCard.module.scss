@@ -42,7 +42,7 @@
   display: inline-flex;
   align-items: center;
   padding: 2px $spacing-sm;
-  background: $color-sale;
+  background: var(--gs-color-sale);
   color: $color-text-white;
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
@@ -65,7 +65,7 @@
 }
 
 .badge-new {
-  background: $color-success;
+  background: var(--gs-color-success);
   color: $color-text-white;
 }
 

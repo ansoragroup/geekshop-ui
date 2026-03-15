@@ -90,13 +90,13 @@
 
 .totalCurrency {
   font-size: $font-size-sm;
-  color: $color-price;
+  color: var(--gs-color-price);
   font-weight: $font-weight-bold;
 }
 
 .totalAmount {
   font-size: $font-size-price-md;
-  color: $color-price;
+  color: var(--gs-color-price);
   font-weight: $font-weight-bold;
 }
 
