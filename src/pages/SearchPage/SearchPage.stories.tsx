@@ -15,18 +15,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof SearchPage>;
 
+/** Empty state showing popular searches and search history */
 export const Empty: Story = {
   args: {
     state: 'empty',
   },
 };
 
+/** Results with working TabFilter sorting and live search filtering */
 export const WithResults: Story = {
   args: {
     state: 'withResults',
   },
 };
 
+/** No results found for the search query */
 export const NoResults: Story = {
   args: {
     state: 'noResults',

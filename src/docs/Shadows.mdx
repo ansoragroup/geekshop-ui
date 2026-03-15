@@ -1,0 +1,136 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Shadows" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const ShadowCard = ({ name, variable, value }) => (
+  <div style={{
+    background: '#FFFFFF',
+    borderRadius: 12,
+    padding: 24,
+    boxShadow: value,
+    marginBottom: 20,
+    border: '1px solid #f5f5f5',
+  }}>
+    <div style={{ fontWeight: 600, fontSize: 15, color: '#1A1A1A', marginBottom: 4 }}>{name}</div>
+    <div style={{ fontFamily: 'monospace', fontSize: 12, color: '#666', marginBottom: 4 }}>{variable}</div>
+    <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#999' }}>{value}</div>
+  </div>
+);
+
+# Shadows
+
+Shadow tokens provide elevation cues. They are defined in `src/theme/tokens.scss` and exposed as CSS custom properties (`--gs-shadow-*`). Dark mode uses stronger shadows to compensate for darker backgrounds.
+
+---
+
+<SectionTitle>Shadow Scale</SectionTitle>
+
+<div style={{ maxWidth: 500, margin: '24px 0' }}>
+
+<ShadowCard
+  name="Small (sm)"
+  variable="--gs-shadow-sm"
+  value="0 1px 4px rgba(0, 0, 0, 0.04)"
+/>
+
+<ShadowCard
+  name="Medium (md)"
+  variable="--gs-shadow-md"
+  value="0 2px 8px rgba(0, 0, 0, 0.06)"
+/>
+
+<ShadowCard
+  name="Large (lg)"
+  variable="--gs-shadow-lg"
+  value="0 4px 16px rgba(0, 0, 0, 0.08)"
+/>
+
+<ShadowCard
+  name="Extra Large (xl)"
+  variable="--gs-shadow-xl"
+  value="0 8px 24px rgba(0, 0, 0, 0.12)"
+/>
+
+<ShadowCard
+  name="Bottom Bar"
+  variable="--gs-shadow-bottom-bar"
+  value="0 -2px 8px rgba(0, 0, 0, 0.06)"
+/>
+
+</div>
+
+---
+
+<SectionTitle>Usage Guidelines</SectionTitle>
+
+| Shadow | SCSS Variable | CSS Variable | Use Case |
+|---|---|---|---|
+| **sm** | `$shadow-sm` | `--gs-shadow-sm` | Cards at rest, subtle elevation |
+| **md** | `$shadow-md` | `--gs-shadow-md` | Hover states, dropdown menus |
+| **lg** | `$shadow-lg` | `--gs-shadow-lg` | Modals, popovers, floating elements |
+| **xl** | `$shadow-xl` | `--gs-shadow-xl` | Full-screen overlays, mobile frame |
+| **bottom-bar** | `$shadow-bottom-bar` | `--gs-shadow-bottom-bar` | Fixed bottom bars (ActionBar, TabBar) |
+
+### When to Use Each Level
+
+- **sm**: Default card elevation. Most cards in the UI sit at this level. The shadow is barely visible and just lifts the card from the page background.
+- **md**: Interactive states. When a card is hovered or a dropdown opens, use md shadow to indicate interactivity.
+- **lg**: Overlays that need clear separation from the page. Modals, bottom sheets, and popovers.
+- **xl**: Maximum elevation. Used for the Storybook mobile frame wrapper and full-screen overlays.
+- **bottom-bar**: Specialized shadow that casts upward. Used exclusively for fixed bottom navigation (TabBar, ActionBar).
+
+---
+
+<SectionTitle>Dark Mode Shadows</SectionTitle>
+
+In dark mode, shadows use higher opacity values to remain visible against dark backgrounds:
+
+| Token | Light Mode | Dark Mode |
+|---|---|---|
+| `--gs-shadow-sm` | `0 1px 4px rgba(0,0,0,0.04)` | `0 1px 4px rgba(0,0,0,0.2)` |
+| `--gs-shadow-md` | `0 2px 8px rgba(0,0,0,0.06)` | `0 2px 8px rgba(0,0,0,0.3)` |
+| `--gs-shadow-lg` | `0 4px 16px rgba(0,0,0,0.08)` | `0 4px 16px rgba(0,0,0,0.35)` |
+| `--gs-shadow-xl` | `0 8px 24px rgba(0,0,0,0.12)` | `0 8px 24px rgba(0,0,0,0.4)` |
+| `--gs-shadow-bottom-bar` | `0 -2px 8px rgba(0,0,0,0.06)` | `0 -2px 8px rgba(0,0,0,0.3)` |
+
+---
+
+<SectionTitle>SCSS Usage</SectionTitle>
+
+```scss
+@use '../../../theme/tokens' as *;
+
+.card {
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.modal {
+  box-shadow: $shadow-lg;
+}
+
+.bottom-bar {
+  box-shadow: $shadow-bottom-bar;
+}
+```
+
+For theme-aware shadows (that adjust automatically in dark mode), use the CSS custom properties:
+
+```scss
+.card {
+  box-shadow: var(--gs-shadow-sm);
+
+  &:hover {
+    box-shadow: var(--gs-shadow-md);
+  }
+}
+```

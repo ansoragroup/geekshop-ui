@@ -1,0 +1,210 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// === Product card ===
+.productCard {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-bg-white;
+}
+
+.productImage {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-page;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-width: 0;
+}
+
+.productName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.productVariant {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// === Section title ===
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md;
+}
+
+.optional {
+  font-weight: $font-weight-regular;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+// === Rating section ===
+.ratingSection {
+  padding: $spacing-xl $spacing-lg;
+  background: $color-bg-white;
+  text-align: center;
+}
+
+.ratingWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.errorText {
+  display: block;
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-error;
+}
+
+// === Text section ===
+.textSection {
+  padding: $spacing-xl $spacing-lg;
+  background: $color-bg-white;
+}
+
+.textareaWrap {
+  position: relative;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  resize: vertical;
+  outline: none;
+  transition: border-color $transition-fast;
+  line-height: $line-height-normal;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.charCount {
+  display: block;
+  text-align: right;
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// === Image section ===
+.imageSection {
+  padding: $spacing-xl $spacing-lg;
+  background: $color-bg-white;
+}
+
+.imageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.imageThumbnail {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeImageBtn {
+  position: absolute;
+  top: $spacing-xxs;
+  right: $spacing-xxs;
+  width: 22px;
+  height: 22px;
+  border-radius: $radius-round;
+  background: rgba(0, 0, 0, 0.5);
+  color: $color-text-white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.addImageBtn {
+  width: 72px;
+  height: 72px;
+  border-radius: $radius-md;
+  border: 1px dashed $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-text-tertiary;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.imageHint {
+  display: block;
+  margin-top: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.fileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+// === Submit button ===
+.submitWrap {
+  padding: $spacing-xxl $spacing-lg;
+}

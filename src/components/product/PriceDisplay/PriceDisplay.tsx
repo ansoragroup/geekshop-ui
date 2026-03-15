@@ -1,4 +1,5 @@
 import { forwardRef, type CSSProperties, type HTMLAttributes } from 'react';
+import { useGeekShop, CURRENCY_CONFIGS } from '../../../i18n';
 import styles from './PriceDisplay.module.scss';
 
 export type PriceDisplayVariant = 'default' | 'sale' | 'range';
@@ -13,7 +14,7 @@ export interface PriceDisplayProps extends HTMLAttributes<HTMLDivElement> {
   minPrice?: number;
   /** Max price for range variant */
   maxPrice?: number;
-  /** Currency label */
+  /** Currency label (overrides context currency when provided as a custom string) */
   currency?: string;
   /** Display variant */
   variant?: PriceDisplayVariant;
@@ -25,14 +26,6 @@ export interface PriceDisplayProps extends HTMLAttributes<HTMLDivElement> {
   color?: string;
 }
 
-/**
- * Formats a number in Uzbek style with space separators.
- * e.g. 5200000 => "5 200 000"
- */
-export function formatPrice(value: number): string {
-  return value.toLocaleString('ru-RU').replace(/,/g, ' ');
-}
-
 export const PriceDisplay = forwardRef<HTMLDivElement, PriceDisplayProps>(
   (
     {
@@ -40,7 +33,7 @@ export const PriceDisplay = forwardRef<HTMLDivElement, PriceDisplayProps>(
       originalPrice,
       minPrice,
       maxPrice,
-      currency = "so'm",
+      currency: currencyOverride,
       variant = 'default',
       size = 'md',
       showCurrency = true,
@@ -51,20 +44,26 @@ export const PriceDisplay = forwardRef<HTMLDivElement, PriceDisplayProps>(
     },
     ref,
   ) => {
+    const { formatPrice, locale, currency: contextCurrency } = useGeekShop();
     const rootStyle: CSSProperties = color ? { ...style, color } : style ?? {};
+
+    // Resolve currency label: prop override > context-derived symbol
+    const currencyLabel = currencyOverride ?? CURRENCY_CONFIGS[contextCurrency].symbol[locale];
+
+    const formatNumber = (value: number) => formatPrice(value, { showCurrency: false });
 
     const renderPrice = () => {
       if (variant === 'range' && minPrice !== undefined && maxPrice !== undefined) {
         return (
           <span className={styles.priceValue}>
-            {formatPrice(minPrice)}
+            {formatNumber(minPrice)}
             <span className={styles.rangeSeparator}>~</span>
-            {formatPrice(maxPrice)}
+            {formatNumber(maxPrice)}
           </span>
         );
       }
 
-      return <span className={styles.priceValue}>{formatPrice(price)}</span>;
+      return <span className={styles.priceValue}>{formatNumber(price)}</span>;
     };
 
     return (
@@ -75,14 +74,14 @@ export const PriceDisplay = forwardRef<HTMLDivElement, PriceDisplayProps>(
         {...rest}
       >
         <span className={styles.currentPrice}>
-          {showCurrency && <span className={styles.currency}>{currency}</span>}
+          {showCurrency && <span className={styles.currency}>{currencyLabel}</span>}
           {renderPrice()}
         </span>
 
         {variant === 'sale' && originalPrice !== undefined && (
           <span className={styles.originalPrice}>
-            {showCurrency && <span className={styles.originalCurrency}>{currency}</span>}
-            <span className={styles.originalValue}>{formatPrice(originalPrice)}</span>
+            {showCurrency && <span className={styles.originalCurrency}>{currencyLabel}</span>}
+            <span className={styles.originalValue}>{formatNumber(originalPrice)}</span>
           </span>
         )}
       </div>

@@ -43,7 +43,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByText('Yuklanmoqda...')).toBeInTheDocument();
   });
 
   it('shows custom loading content', () => {
@@ -66,7 +66,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.getByText('No more items')).toBeInTheDocument();
+    expect(screen.getByText("Boshqa ma'lumot yo'q")).toBeInTheDocument();
   });
 
   it('shows custom end content', () => {
@@ -88,7 +88,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.getByText('Failed to load')).toBeInTheDocument();
+    expect(screen.getByText("Yuklab bo'lmadi")).toBeInTheDocument();
   });
 
   it('shows retry button on error when onRetry is provided', () => {
@@ -97,7 +97,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.getByText('Retry')).toBeInTheDocument();
+    expect(screen.getByText('Qayta urinish')).toBeInTheDocument();
   });
 
   it('calls onRetry when retry button is clicked', async () => {
@@ -108,7 +108,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    await user.click(screen.getByText('Retry'));
+    await user.click(screen.getByText('Qayta urinish'));
     expect(onRetry).toHaveBeenCalledOnce();
   });
 
@@ -118,7 +118,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.queryByText('Retry')).toBeNull();
+    expect(screen.queryByText('Qayta urinish')).toBeNull();
   });
 
   it('shows custom error content', () => {
@@ -141,7 +141,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    const retryBtn = screen.getByText('Retry');
+    const retryBtn = screen.getByText('Qayta urinish');
     expect(retryBtn).toHaveAttribute('type', 'button');
   });
 
@@ -179,7 +179,7 @@ describe('InfiniteScroll', () => {
     // The sentinel is a div with no text content
     // With error=true, hasMore=true, no sentinel should appear
     // Observer should not be called for sentinel
-    expect(screen.getByText('Failed to load')).toBeInTheDocument();
+    expect(screen.getByText("Yuklab bo'lmadi")).toBeInTheDocument();
   });
 
   it('does not show sentinel when hasMore is false', () => {
@@ -188,7 +188,7 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.getByText('No more items')).toBeInTheDocument();
+    expect(screen.getByText("Boshqa ma'lumot yo'q")).toBeInTheDocument();
   });
 
   it('shows nothing in status area when hasMore and not loading/error', () => {
@@ -197,8 +197,8 @@ describe('InfiniteScroll', () => {
         <div>Items</div>
       </InfiniteScroll>,
     );
-    expect(screen.queryByText('Loading...')).toBeNull();
-    expect(screen.queryByText('No more items')).toBeNull();
-    expect(screen.queryByText('Failed to load')).toBeNull();
+    expect(screen.queryByText('Yuklanmoqda...')).toBeNull();
+    expect(screen.queryByText("Boshqa ma'lumot yo'q")).toBeNull();
+    expect(screen.queryByText("Yuklab bo'lmadi")).toBeNull();
   });
 });

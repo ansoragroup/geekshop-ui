@@ -5,7 +5,8 @@
   min-height: 100vh;
   background: $color-bg-page;
   font-family: $font-family;
-  padding-bottom: calc($action-bar-height + 20px);
+  // Account for fixed ActionBar + safe area + extra breathing room
+  padding-bottom: calc(#{$action-bar-height} + #{$safe-area-bottom} + #{$spacing-lg});
 }
 
 // === Product info block ===
@@ -115,6 +116,12 @@
   font-size: $font-size-md;
   color: $color-text-secondary;
   font-weight: $font-weight-medium;
+}
+
+.skuTriggerValue {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xxs;
 }
 
 // === Quantity row ===

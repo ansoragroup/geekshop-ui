@@ -20,9 +20,9 @@ describe('ProductImageGallery', () => {
 
   it('renders images with correct alt text', () => {
     render(<ProductImageGallery images={images} />)
-    expect(screen.getByAltText('Product 1')).toBeInTheDocument()
-    expect(screen.getByAltText('Product 2')).toBeInTheDocument()
-    expect(screen.getByAltText('Product 3')).toBeInTheDocument()
+    expect(screen.getByAltText('Mahsulot 1')).toBeInTheDocument()
+    expect(screen.getByAltText('Mahsulot 2')).toBeInTheDocument()
+    expect(screen.getByAltText('Mahsulot 3')).toBeInTheDocument()
   })
 
   it('renders images with correct src', () => {
@@ -46,20 +46,20 @@ describe('ProductImageGallery', () => {
   // Dot indicators
   it('renders dot indicators for multiple images', () => {
     render(<ProductImageGallery images={images} />)
-    const dots = screen.getAllByLabelText(/Image \d+/)
+    const dots = screen.getAllByLabelText(/Mahsulot \d+/)
     expect(dots).toHaveLength(3)
   })
 
   it('does not render dots for a single image', () => {
     render(<ProductImageGallery images={['/img/1.jpg']} />)
-    expect(screen.queryByLabelText('Image 1')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText('Mahsulot 1')).not.toBeInTheDocument()
   })
 
   it('renders dot buttons with aria labels', () => {
     render(<ProductImageGallery images={images} />)
-    expect(screen.getByLabelText('Image 1')).toBeInTheDocument()
-    expect(screen.getByLabelText('Image 2')).toBeInTheDocument()
-    expect(screen.getByLabelText('Image 3')).toBeInTheDocument()
+    expect(screen.getByLabelText('Mahsulot 1')).toBeInTheDocument()
+    expect(screen.getByLabelText('Mahsulot 2')).toBeInTheDocument()
+    expect(screen.getByLabelText('Mahsulot 3')).toBeInTheDocument()
   })
 
   // Top bar buttons
@@ -133,7 +133,7 @@ describe('ProductImageGallery', () => {
     const user = userEvent.setup()
 
     render(<ProductImageGallery images={images} onIndexChange={onIndexChange} />)
-    await user.click(screen.getByLabelText('Image 3'))
+    await user.click(screen.getByLabelText('Mahsulot 3'))
 
     expect(onIndexChange).toHaveBeenCalledWith(2)
   })

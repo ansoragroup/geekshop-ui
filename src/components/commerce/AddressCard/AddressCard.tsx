@@ -1,4 +1,5 @@
 import { forwardRef, useCallback } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './AddressCard.module.scss';
 
 export interface Address {
@@ -74,6 +75,8 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
     },
     ref,
   ) {
+    const { t } = useGeekShop();
+
     const handleSelect = useCallback(() => {
       onSelect?.(address);
     }, [onSelect, address]);
@@ -131,7 +134,7 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
             )}
           </div>
           {address.isDefault && (
-            <span className={styles.defaultBadge}>Asosiy</span>
+            <span className={styles.defaultBadge}>{t('common.default')}</span>
           )}
         </div>
 
@@ -154,10 +157,10 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
                   e.stopPropagation();
                   handleEdit();
                 }}
-                aria-label="Tahrirlash"
+                aria-label={t('common.edit')}
               >
                 <EditIcon />
-                <span>Tahrirlash</span>
+                <span>{t('common.edit')}</span>
               </button>
             )}
             {deletable && (
@@ -168,10 +171,10 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
                   e.stopPropagation();
                   handleDelete();
                 }}
-                aria-label="O'chirish"
+                aria-label={t('common.delete')}
               >
                 <DeleteIcon />
-                <span>O'chirish</span>
+                <span>{t('common.delete')}</span>
               </button>
             )}
           </div>

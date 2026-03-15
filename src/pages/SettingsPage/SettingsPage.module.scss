@@ -1,0 +1,123 @@
+@use 'sass:color';
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// === Menu Items ===
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-bg-white;
+  cursor: pointer;
+  transition: background $transition-fast;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: $font-family;
+
+  &:active {
+    background: $color-bg-page;
+  }
+}
+
+.menuLabel {
+  flex: 1;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.menuTrailing {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: $color-text-placeholder;
+  flex-shrink: 0;
+}
+
+// === Info Row (Version, etc.) ===
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  background: $color-bg-white;
+}
+
+.infoLabel {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.infoValue {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}
+
+// === Checkbox Group ===
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-lg $spacing-lg;
+  background: $color-bg-white;
+}
+
+// === Switcher Wrapper ===
+.switcherWrap {
+  padding: $spacing-sm $spacing-lg $spacing-lg;
+  background: $color-bg-white;
+}
+
+// === Section Gap ===
+.sectionGap {
+  height: $spacing-sm;
+  background: $color-bg-page;
+}
+
+// === Logout Section ===
+.logoutSection {
+  padding: $spacing-xxl $spacing-lg;
+}
+
+// === Delete Account Popup ===
+.deleteConfirm {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+  padding: $spacing-sm 0;
+}
+
+.deleteWarning {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.deleteActions {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+}
+
+.deleteBtn {
+  background: $color-error !important;
+
+  &:active {
+    background: color.adjust($color-error, $lightness: -5%) !important;
+  }
+}

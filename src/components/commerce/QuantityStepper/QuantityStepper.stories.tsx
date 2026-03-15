@@ -43,15 +43,11 @@ export const Default: Story = {
 
     await expect(decrementBtn).toBeDisabled();
 
-    // Click increment
+    // Click increment — controlled value stays at 1, so onChange always receives 2
     await userEvent.click(incrementBtn);
     await expect(args.onChange).toHaveBeenCalledWith(2);
 
-    // Click increment again
-    await userEvent.click(incrementBtn);
-    await expect(args.onChange).toHaveBeenCalledWith(3);
-
-    await expect(args.onChange).toHaveBeenCalledTimes(2);
+    await expect(args.onChange).toHaveBeenCalledTimes(1);
   },
 };
 

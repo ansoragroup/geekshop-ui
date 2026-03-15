@@ -1,4 +1,5 @@
 import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './CouponCard.module.scss';
 
 export interface CouponCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -16,10 +17,6 @@ export interface CouponCardProps extends HTMLAttributes<HTMLDivElement> {
   onUse?: MouseEventHandler<HTMLButtonElement>;
 }
 
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
-}
-
 export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
   (
     {
@@ -34,6 +31,7 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
     },
     ref,
   ) => {
+  const { t, formatPrice } = useGeekShop();
   const rootClass = [styles.couponCard, className].filter(Boolean).join(' ');
 
   return (
@@ -44,7 +42,7 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
         <span className={styles.discountText}>{discount}</span>
         {minAmount && (
           <span className={styles.minAmount}>
-            {formatPrice(minAmount)} so'm dan
+            {t('coupon.minAmount', { amount: formatPrice(minAmount) })}
           </span>
         )}
       </div>
@@ -57,12 +55,12 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
 
       <div className={styles.rightPart}>
         <div className={styles.codeRow}>
-          <span className={styles.codeLabel}>Kod:</span>
+          <span className={styles.codeLabel}>{t('coupon.code')}</span>
           <span className={styles.codeValue}>{code}</span>
         </div>
-        <span className={styles.expiry}>Muddati: {expiryDate}</span>
+        <span className={styles.expiry}>{t('coupon.expiry', { date: expiryDate })}</span>
         <button className={styles.useButton} onClick={onUse}>
-          Foydalanish
+          {t('coupon.use')}
         </button>
       </div>
     </div>

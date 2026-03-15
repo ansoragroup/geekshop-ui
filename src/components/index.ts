@@ -9,6 +9,8 @@ export { FilterBar } from './navigation/FilterBar';
 export { FilterPanel } from './navigation/FilterPanel';
 export { TabFilter } from './navigation/TabFilter';
 export { AppBar } from './navigation/AppBar';
+export { LanguageSwitcher } from './navigation/LanguageSwitcher';
+export { CurrencySwitcher } from './navigation/CurrencySwitcher';
 
 // Product
 export { PriceDisplay } from './product/PriceDisplay';
@@ -86,6 +88,8 @@ export type { FilterBarProps, FilterBarItem } from './navigation/FilterBar';
 export type { FilterPanelProps, FilterOption, FilterGroup, FilterValues } from './navigation/FilterPanel';
 export type { TabFilterProps, TabFilterItem } from './navigation/TabFilter';
 export type { AppBarProps } from './navigation/AppBar';
+export type { LanguageSwitcherProps } from './navigation/LanguageSwitcher';
+export type { CurrencySwitcherProps } from './navigation/CurrencySwitcher';
 
 // Types — Product
 export type { PriceDisplayProps, PriceDisplayVariant, PriceDisplaySize } from './product/PriceDisplay';
@@ -151,3 +155,12 @@ export type { UseControllableStateProps } from '../hooks/useControllableState';
 export type { CountdownValue } from '../hooks/useCountdown';
 export type { UseFocusTrapOptions } from '../hooks/useFocusTrap';
 export type { ToastItem, UseToastOptions, UseToastReturn } from '../hooks/useToast';
+
+// i18n
+export { GeekShopProvider, useGeekShop } from '../i18n';
+export type { GeekShopProviderProps } from '../i18n';
+export type { Locale, CurrencyCode, CurrencyConfig } from '../i18n';
+export { CURRENCY_CONFIGS, TRANSLATIONS } from '../i18n';
+
+// Utils
+export { formatPrice } from '../utils';

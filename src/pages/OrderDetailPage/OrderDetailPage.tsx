@@ -10,24 +10,18 @@ import {
   Button,
   Badge,
   Divider,
+  useGeekShop,
 } from '../../components';
 import type { Address, PaymentMethod } from '../../components';
 import styles from './OrderDetailPage.module.scss';
 
 /* ---------- Delivery step tracker ---------- */
 
-interface DeliveryStep {
-  label: string;
-  date?: string;
-  completed: boolean;
-  active: boolean;
-}
-
-const deliverySteps: DeliveryStep[] = [
-  { label: "To'landi", date: '12 mart', completed: true, active: false },
-  { label: 'Yuborildi', date: '13 mart', completed: true, active: false },
-  { label: 'Yetkazilmoqda', date: '14 mart', completed: false, active: true },
-  { label: 'Yetkazildi', completed: false, active: false },
+const deliveryStepKeys = [
+  { labelKey: 'order.paid', date: '12 mart', completed: true, active: false },
+  { labelKey: 'order.shipped', date: '13 mart', completed: true, active: false },
+  { labelKey: 'order.shipping', date: '14 mart', completed: false, active: true },
+  { labelKey: 'order.delivered', completed: false, active: false },
 ];
 
 /* ---------- Order items ---------- */
@@ -61,12 +55,12 @@ const orderItems = [
 
 /* ---------- Order summary ---------- */
 
-const orderSummary = [
-  { label: 'Mahsulotlar (4 ta)', value: '13 700 000 so\'m' },
-  { label: 'Yetkazib berish', value: 'Bepul' },
-  { label: 'Chegirma', value: '-1 370 000 so\'m' },
-  { label: 'Jami', value: '12 330 000 so\'m' },
-];
+const orderSummaryData = {
+  subtotal: 13700000,
+  delivery: 0,
+  discount: 1370000,
+  total: 12330000,
+};
 
 /* ---------- Address ---------- */
 
@@ -113,6 +107,7 @@ export interface OrderDetailPageProps {
 export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
   status = 'shipping',
 }) => {
+  const { t, formatPrice } = useGeekShop();
   const [, setCopied] = useState(false);
 
   const handleCopyOrderId = () => {
@@ -122,10 +117,10 @@ export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
 
   const statusLabel =
     status === 'shipping'
-      ? 'Yetkazilmoqda'
+      ? t('order.shipping')
       : status === 'delivered'
-        ? 'Yetkazildi'
-        : "To'lov kutilmoqda";
+        ? t('order.delivered')
+        : t('order.statusPending');
 
   const statusColor =
     status === 'shipping'
@@ -133,6 +128,11 @@ export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
       : status === 'delivered'
         ? 'success'
         : 'warning';
+
+  const deliverySteps = deliveryStepKeys.map((step) => ({
+    ...step,
+    label: t(step.labelKey),
+  }));
 
   const steps = deliverySteps.map((step, i) => {
     if (status === 'delivered') {
@@ -147,7 +147,7 @@ export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
   return (
     <div className={styles.page}>
       <NavBar
-        title={`Buyurtma #GS-2026031401`}
+        title={t('order.id', { id: 'GS-2026031401' })}
         showBack
         onBack={() => {}}
         rightActions={[
@@ -160,7 +160,7 @@ export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
               </svg>
             ),
             onClick: handleCopyOrderId,
-            ariaLabel: 'Nusxa olish',
+            ariaLabel: t('order.copy'),
           },
         ]}
       />
@@ -206,7 +206,7 @@ export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
         <Divider />
 
         {/* Order items */}
-        <Section title="Buyurtma mahsulotlari">
+        <Section title={t('checkout.orderItems')}>
           <div className={styles.itemsList}>
             {orderItems.map((item) => (
               <CartItem
@@ -224,31 +224,36 @@ export const OrderDetailPage: React.FC<OrderDetailPageProps> = ({
         <Divider />
 
         {/* Order summary */}
-        <Section title="Buyurtma xulosasi">
-          <SpecsTable specs={orderSummary} />
+        <Section title={t('order.summary')}>
+          <SpecsTable specs={[
+            { label: t('checkout.subtotal'), value: formatPrice(orderSummaryData.subtotal) },
+            { label: t('cart.delivery'), value: orderSummaryData.delivery === 0 ? t('cart.free') : formatPrice(orderSummaryData.delivery) },
+            { label: t('cart.discount'), value: `-${formatPrice(orderSummaryData.discount)}` },
+            { label: t('cart.total'), value: formatPrice(orderSummaryData.total) },
+          ]} />
         </Section>
 
         <Divider />
 
         {/* Delivery address */}
-        <Section title="Yetkazib berish manzili">
+        <Section title={t('checkout.deliveryAddress')}>
           <AddressCard address={deliveryAddress} />
         </Section>
 
         <Divider />
 
         {/* Payment method */}
-        <Section title="To'lov usuli">
+        <Section title={t('checkout.paymentMethod')}>
           <PaymentMethodCard method={paymentMethod} />
         </Section>
 
         {/* Bottom action buttons */}
         <div className={styles.bottomActions}>
           <Button variant="secondary" size="lg" block>
-            Sotuvchiga yozish
+            {t('order.contactSeller')}
           </Button>
           <Button variant="primary" size="lg" block>
-            Qayta buyurtma berish
+            {t('order.reorderFull')}
           </Button>
         </div>
       </Container>

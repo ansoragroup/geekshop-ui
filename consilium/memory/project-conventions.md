@@ -1,54 +1,80 @@
 # Project Conventions
-<!-- Coding conventions discovered or established. Auto-maintained by Phase 8. -->
-<!-- Discovered session 20260315 -->
+<!-- Auto-maintained by consilium Phase 8. Source: CLAUDE.md + audit findings. -->
 
-## File Structure
-- Component folder: PascalCase (`ProductCard/`)
-- Required files: `.tsx`, `.module.scss`, `.stories.tsx`, `.test.tsx`, `index.ts`
-- All 55 components have 100% file completeness
+## Code Style
+- Named exports only (no `export default`). Enforced by ESLint `no-restricted-syntax` rule.
+- TypeScript strict mode. No `any` type — use `unknown` or proper generics.
+- React 17+ JSX transform — do NOT import React (except for hooks).
 
-## Component Pattern
-```tsx
-export interface ComponentNameProps extends HTMLAttributes<HTMLDivElement> { ... }
-export const ComponentName = React.forwardRef<HTMLElement, ComponentNameProps>(
-  ({ prop1, prop2, ...rest }, ref) => {
-    return <div ref={ref} {...rest} className={styles.root} />
-  }
-)
-ComponentName.displayName = 'ComponentName'
-```
-
-## Exports
-- Named exports only (NO default exports)
-- Each `index.ts`: exports component + Props type
-- Barrel: `src/components/index.ts` groups by category
+## Component Structure
+- Every component: `ComponentName.tsx`, `ComponentName.module.scss`, `ComponentName.stories.tsx`, `ComponentName.test.tsx`, `index.ts`
+- Interactive components MUST use `React.forwardRef`
+- ALL components spread `...rest` native HTML props onto root element
+- Props interface exported as `{ComponentName}Props`
+- CSS Modules with `.module.scss` extension
 
 ## Styling
-- `@use '../../../theme/tokens' as *` — always first line
-- CSS Modules with `.root` as main class
-- `var(--gs-*)` for themeable values, `$var` for compile-time
-- container-type: inline-size on card components (CartItem, DealCard, OrderCard, ReviewCard, ProductCard)
+- Import tokens: `@use '../../../theme/tokens' as *`
+- CSS Custom Properties: `var(--gs-*)` for themeable values
+- SCSS vars for compile-time values (breakpoints, z-index)
+- Container queries: `container-type: inline-size` for responsive components (MUST pair with `width: 100%`)
+- No deprecated Sass: use `@use 'sass:color'` and `color.adjust()` / `color.scale()`
+- No inline styles — use CSS custom property bridge pattern for dynamic values
+
+## i18n
+- All user-facing strings use `useGeekShop().t('key')` — no hardcoded text
+- All price formatting uses `useGeekShop().formatPrice()` — no local formatPrice functions
+- Default locale: uz (Uzbek Latin), default currency: UZS
 
 ## Stories
-- `satisfies Meta<typeof ComponentName>` pattern
-- `tags: ['autodocs']` required
-- Decorators use `width` not `maxWidth`
+- Use `satisfies Meta<typeof Component>` pattern
+- Include `tags: ['autodocs']`
+- Story decorators: use `width`, never just `maxWidth` (container queries collapse)
+- Interactive components: add `play` function for interaction testing
 
 ## Testing
-- Vitest + @testing-library/react + jest-dom
-- jsdom environment for unit tests
-- Playwright/Chromium for Storybook browser tests
+- Interactive components: 85%+ coverage, test keyboard navigation + aria attributes
+- Display components: 60%+ coverage
+- Hooks: 95%+ coverage
 
-## Token Import
-- SCSS: `@use '../../../theme/tokens' as *`
-- Source of truth: `src/theme/tokens.scss` (NOT CLAUDE.md — there are documented discrepancies)
+## Git
+- NEVER commit/push to main unless explicitly asked
+- Branches: feat/*, bugfix/*, v0.1.*
+- Keep last 5 version branches
 
-## Known Deviations from CLAUDE.md Rules
-1. Only 11/55 components use forwardRef (should be all interactive)
-2. Only 9/55 components spread ...rest props
-3. 4 components have default exports (AddressCard, PaymentMethodCard, CategoryIcon, CategoryIconRow)
-4. 0 components use useControllableState
-5. CountdownTimer doesn't use useCountdown hook
-6. Skeleton.module.scss uses deprecated darken()
-7. 0 stories have play functions
-8. ~20/55 props types exported from main barrel
+## Build
+- Vite library mode with preserveModules (rollupOptions.output as array)
+- Separate dist/es/ and dist/cjs/ directories
+- Package exports: "." → components, "./styles" → CSS
+
+## CSS Layout Rules (Mobile-First — 390px viewport)
+
+### Sizing
+- `min-height` not `height` on containers with padding (padding inside fixed height crushes content)
+- `box-sizing: border-box` on ALL `position: fixed` elements
+- No magic numbers — always token-based `calc()` for padding
+
+### Flex Layout
+- CTA buttons: `flex: 1` to share space equally, `min-width: 0` to allow shrinking
+- Icon groups: `flex-shrink: 0` — icons keep size, buttons absorb remaining space
+- All buttons: `overflow: hidden; text-overflow: ellipsis` for i18n safety
+
+### Fixed Positioning
+- `padding-bottom: $safe-area-bottom` on ALL `position: fixed; bottom: 0` — mandatory
+- Safe area padding ADDED to content padding via `calc()`, never included in height
+- No `max-width` on fixed bars — must span full viewport
+- One bottom bar rule: ActionBar at `bottom: $tabbar-height` if TabBar also present
+
+### Touch Targets
+- Min 44x44px interactive area (use `min-height`/`min-width`, not `height`/`width`)
+- Min 8px gap between adjacent tappable elements
+
+### Z-index Scale
+- sticky: 200, fixed: 500, modal-backdrop: 900, modal: 1000, popover: 1100, toast: 1200
+
+### i18n Text
+- Test ALL components in uz, ru, en — text length varies 2x between locales
+- CTA buttons: `$font-size-md` (14px) on constrained bars, not `$font-size-lg`
+
+### Page Completion Checklist
+Every page must pass: content scrolls past all fixed bars, safe area on all fixed elements, 44px touch targets, CTA readable in all 3 locales, no magic numbers, works on 390px and 375px

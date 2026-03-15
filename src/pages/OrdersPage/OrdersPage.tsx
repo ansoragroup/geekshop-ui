@@ -7,18 +7,19 @@ import {
   InfiniteScroll,
   TabBar,
   Container,
+  useGeekShop,
 } from '../../components';
 import type { OrderStatus } from '../../components/data-display/OrderCard/OrderCard';
 import styles from './OrdersPage.module.scss';
 
-/* ---------- Tab definitions ---------- */
+/* ---------- Tab definition keys ---------- */
 
-const tabs = [
-  { key: 'all', label: 'Barchasi' },
-  { key: 'pending', label: "To'lov kutilmoqda" },
-  { key: 'shipping', label: 'Yetkazilmoqda' },
-  { key: 'delivered', label: 'Yetkazildi' },
-  { key: 'cancelled', label: 'Bekor qilingan' },
+const tabKeys = [
+  { key: 'all', labelKey: 'common.all' },
+  { key: 'pending', labelKey: 'order.statusPending' },
+  { key: 'shipping', labelKey: 'order.shipping' },
+  { key: 'delivered', labelKey: 'order.delivered' },
+  { key: 'cancelled', labelKey: 'order.cancelled' },
 ];
 
 /* ---------- Order data ---------- */
@@ -35,7 +36,7 @@ interface OrderData {
     quantity: number;
   }[];
   totalAmount: number;
-  actions: { label: string; type: 'primary' | 'default'; onClick: () => void }[];
+  actions: { labelKey: string; type: 'primary' | 'default'; onClick: () => void }[];
   filterKey: string;
 }
 
@@ -56,8 +57,8 @@ const allOrders: OrderData[] = [
     ],
     totalAmount: 5200000,
     actions: [
-      { label: 'Kuzatish', type: 'primary', onClick: () => {} },
-      { label: 'Batafsil', type: 'default', onClick: () => {} },
+      { labelKey: 'order.track', type: 'primary', onClick: () => {} },
+      { labelKey: 'order.details', type: 'default', onClick: () => {} },
     ],
   },
   {
@@ -83,8 +84,8 @@ const allOrders: OrderData[] = [
     ],
     totalAmount: 6300000,
     actions: [
-      { label: 'Baholash', type: 'primary', onClick: () => {} },
-      { label: 'Batafsil', type: 'default', onClick: () => {} },
+      { labelKey: 'order.rate', type: 'primary', onClick: () => {} },
+      { labelKey: 'order.details', type: 'default', onClick: () => {} },
     ],
   },
   {
@@ -103,8 +104,8 @@ const allOrders: OrderData[] = [
     ],
     totalAmount: 5600000,
     actions: [
-      { label: 'Qayta buyurtma', type: 'primary', onClick: () => {} },
-      { label: 'Batafsil', type: 'default', onClick: () => {} },
+      { labelKey: 'order.reorder', type: 'primary', onClick: () => {} },
+      { labelKey: 'order.details', type: 'default', onClick: () => {} },
     ],
   },
   {
@@ -123,8 +124,8 @@ const allOrders: OrderData[] = [
     ],
     totalAmount: 4800000,
     actions: [
-      { label: "To'lash", type: 'primary', onClick: () => {} },
-      { label: 'Bekor qilish', type: 'default', onClick: () => {} },
+      { labelKey: 'order.pay', type: 'primary', onClick: () => {} },
+      { labelKey: 'order.cancel', type: 'default', onClick: () => {} },
     ],
   },
 ];
@@ -155,8 +156,14 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({
   empty = false,
   initialTab = 'all',
 }) => {
+  const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState(initialTab);
   const [hasMore, setHasMore] = useState(true);
+
+  const tabs = tabKeys.map((tab) => ({
+    key: tab.key,
+    label: t(tab.labelKey),
+  }));
 
   const filteredOrders = empty
     ? []
@@ -172,7 +179,7 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({
   return (
     <div className={styles.page}>
       <NavBar
-        title="Buyurtmalar"
+        title={t('page.orders')}
         showBack
         onBack={() => {}}
       />
@@ -188,16 +195,16 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({
         {filteredOrders.length === 0 ? (
           <Empty
             icon={<OrdersEmptyIcon />}
-            title="Buyurtmalar yo'q"
-            description="Hali hech qanday buyurtma bermagansiz. Mahsulotlarni ko'rib chiqing!"
-            actionText="Xarid qilish"
+            title={t('order.empty')}
+            description={t('order.emptyDescription')}
+            actionText={t('cart.shopNow')}
             onAction={() => {}}
           />
         ) : (
           <InfiniteScroll
             onLoadMore={handleLoadMore}
             hasMore={hasMore}
-            endContent={<span>Barcha buyurtmalar yuklandi</span>}
+            endContent={<span>{t('order.allLoaded')}</span>}
           >
             <div className={styles.list}>
               {filteredOrders.map((order) => (
@@ -208,7 +215,7 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({
                   products={order.products}
                   totalAmount={order.totalAmount}
                   date={order.date}
-                  actions={order.actions}
+                  actions={order.actions.map((a) => ({ ...a, label: t(a.labelKey) }))}
                 />
               ))}
             </div>

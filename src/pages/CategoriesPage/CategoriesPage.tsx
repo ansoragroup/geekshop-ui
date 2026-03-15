@@ -4,6 +4,7 @@ import {
   SearchBar,
   CategorySidebar,
   TabBar,
+  useGeekShop,
 } from '../../components';
 import type { ProductCardFlatProps } from '../../components/product/ProductCard/ProductCard';
 import { ProductCard } from '../../components';
@@ -146,7 +147,7 @@ interface CategoryBannerConfig {
 
 const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
   gpu: {
-    title: 'Videokartalar',
+    title: 'category.gpu',
     gradient: 'linear-gradient(135deg, #059669 0%, #34D399 100%)',
     productCount: 4,
     icon: (
@@ -158,7 +159,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   cpu: {
-    title: 'Protsessorlar',
+    title: 'category.cpu',
     gradient: 'linear-gradient(135deg, #2563EB 0%, #60A5FA 100%)',
     productCount: 4,
     icon: (
@@ -170,7 +171,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   monitor: {
-    title: 'Monitorlar',
+    title: 'category.monitor',
     gradient: 'linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)',
     productCount: 3,
     icon: (
@@ -181,7 +182,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   laptop: {
-    title: 'Noutbuklar',
+    title: 'category.laptop',
     gradient: 'linear-gradient(135deg, #DC2626 0%, #F87171 100%)',
     productCount: 5,
     icon: (
@@ -192,7 +193,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   ram: {
-    title: 'Operativ xotira',
+    title: 'category.operativeMemory',
     gradient: 'linear-gradient(135deg, #D97706 0%, #FBBF24 100%)',
     productCount: 6,
     icon: (
@@ -204,7 +205,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   storage: {
-    title: 'SSD/HDD',
+    title: 'category.ssd',
     gradient: 'linear-gradient(135deg, #0891B2 0%, #67E8F9 100%)',
     productCount: 8,
     icon: (
@@ -215,7 +216,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   motherboard: {
-    title: 'Ona platalar',
+    title: 'category.motherboard',
     gradient: 'linear-gradient(135deg, #4338CA 0%, #818CF8 100%)',
     productCount: 3,
     icon: (
@@ -228,7 +229,7 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     ),
   },
   periphery: {
-    title: 'Periferiya',
+    title: 'category.periphery',
     gradient: 'linear-gradient(135deg, #BE185D 0%, #F472B6 100%)',
     productCount: 12,
     icon: (
@@ -320,6 +321,7 @@ export interface CategoriesPageProps {
 export const CategoriesPage: React.FC<CategoriesPageProps> = ({
   showSearch = false,
 }) => {
+  const { t } = useGeekShop();
   const [activeCategory, setActiveCategory] = useState('gpu');
   const [searchValue, setSearchValue] = useState('');
 
@@ -339,14 +341,14 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
 
   return (
     <div className={styles.page}>
-      <NavBar title="Kategoriyalar" showBack={false} />
+      <NavBar title={t('page.categories')} showBack={false} />
 
       {showSearch && (
         <div className={styles.searchWrap}>
           <SearchBar
             value={searchValue}
             onChange={setSearchValue}
-            placeholder="Kategoriyada qidirish..."
+            placeholder={t('category.searchPlaceholder')}
             variant="filled"
           />
         </div>
@@ -365,9 +367,9 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
             style={{ background: banner.gradient }}
           >
             <div className={styles.bannerText}>
-              <h2 className={styles.bannerTitle}>{banner.title}</h2>
+              <h2 className={styles.bannerTitle}>{t(banner.title)}</h2>
               <span className={styles.bannerCount}>
-                {banner.productCount} ta mahsulot
+                {t('category.productCount', { count: banner.productCount })}
               </span>
             </div>
             <div className={styles.bannerIcon}>{banner.icon}</div>
@@ -376,7 +378,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
           {/* Subcategories */}
           {subcategories.length > 0 && (
             <div className={styles.subcategoriesSection}>
-              <h3 className={styles.sectionTitle}>Turkumlar</h3>
+              <h3 className={styles.sectionTitle}>{t('category.subcategories')}</h3>
               <div className={styles.subcategoriesRow}>
                 {subcategories.map((sub) => (
                   <button
@@ -400,7 +402,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
           {/* Popular Products - Horizontal Scroll */}
           {popularProducts.length > 0 && (
             <div className={styles.productsSection}>
-              <h3 className={styles.sectionTitle}>Ommabop</h3>
+              <h3 className={styles.sectionTitle}>{t('common.popular')}</h3>
               <div className={styles.horizontalScroll}>
                 {popularProducts.map((product, i) => (
                   <div key={i} className={styles.scrollCard}>
@@ -434,7 +436,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
 
           {/* View All Button */}
           <button type="button" className={styles.viewAllBtn}>
-            Barchasini ko'rish
+            {t('common.viewAll')}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>

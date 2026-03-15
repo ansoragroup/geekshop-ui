@@ -47,6 +47,20 @@ describe('Container', () => {
     expect(classNames.length).toBe(3);
   });
 
+  it('adds action bar class when hasActionBar is true', () => {
+    const { container } = render(<Container hasActionBar>Content</Container>);
+    const el = container.firstElementChild as HTMLElement;
+    const classNames = el.className.split(/\s+/).filter(Boolean);
+    expect(classNames.length).toBe(2);
+  });
+
+  it('adds action bar and tabbar class when both are true', () => {
+    const { container } = render(<Container hasActionBar hasTabbar>Content</Container>);
+    const el = container.firstElementChild as HTMLElement;
+    const classNames = el.className.split(/\s+/).filter(Boolean);
+    expect(classNames.length).toBe(2);
+  });
+
   it('renders without children', () => {
     const { container } = render(<Container />);
     expect(container.firstElementChild).toBeTruthy();

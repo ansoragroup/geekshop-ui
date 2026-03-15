@@ -85,7 +85,7 @@ export const Clearable: Story = {
     await expect(input).toHaveValue('RTX 4060');
 
     // Click the clear button
-    const clearButton = canvas.getByRole('button', { name: /clear input/i });
+    const clearButton = canvas.getByRole('button', { name: /tozalash/i });
     await userEvent.click(clearButton);
 
     // After clearing, the input should be empty

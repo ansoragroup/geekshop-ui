@@ -35,3 +35,11 @@ export const OutOfStock: Story = {
     outOfStock: true,
   },
 };
+
+export const PreOrder: Story = {
+  args: {
+    withDiscount: false,
+    outOfStock: false,
+    preOrder: true,
+  },
+};

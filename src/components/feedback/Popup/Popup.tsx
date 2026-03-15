@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
+import { useGeekShop } from '../../../i18n';
 import styles from './Popup.module.scss';
 
 export type PopupPosition = 'center' | 'bottom';
@@ -27,6 +28,7 @@ const CloseIcon = () => (
 
 export const Popup = forwardRef<HTMLDivElement, PopupProps>(
   ({ visible, position = 'center', title, closable = true, onClose, children, className = '', ...rest }, ref) => {
+    const { t } = useGeekShop();
     const popupRef = useFocusTrap<HTMLDivElement>(visible, {
       onEscape: closable ? onClose : undefined,
     });
@@ -71,7 +73,7 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
             <div className={styles.header}>
               <span className={styles.title}>{title}</span>
               {closable && (
-                <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
+                <button className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>
                   <CloseIcon />
                 </button>
               )}

@@ -8,6 +8,7 @@ import {
   Badge,
   Swipe,
   Empty,
+  useGeekShop,
 } from '../../components';
 import styles from './NotificationsPage.module.scss';
 
@@ -113,13 +114,13 @@ const notifications: Notification[] = [
   },
 ];
 
-/* ---------- Tab definitions ---------- */
+/* ---------- Tab definition keys ---------- */
 
-const tabs = [
-  { key: 'all', label: 'Barchasi', badge: 2 },
-  { key: 'order', label: 'Buyurtmalar' },
-  { key: 'promo', label: 'Aksiyalar' },
-  { key: 'system', label: 'Tizim' },
+const tabKeys = [
+  { key: 'all', labelKey: 'common.all', badge: 2 },
+  { key: 'order', labelKey: 'page.orders' },
+  { key: 'promo', labelKey: 'notification.promos' },
+  { key: 'system', labelKey: 'notification.system' },
 ];
 
 /* ---------- Notifications empty icon ---------- */
@@ -154,6 +155,7 @@ export interface NotificationsPageProps {
 export const NotificationsPage: React.FC<NotificationsPageProps> = ({
   empty = false,
 }) => {
+  const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState('all');
   const [dismissedIds, setDismissedIds] = useState<Set<string>>(new Set());
 
@@ -167,10 +169,16 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
 
   const unreadCount = activeNotifications.filter((n) => !n.read).length;
 
+  const tabs = tabKeys.map((tab) => ({
+    key: tab.key,
+    label: t(tab.labelKey),
+    badge: tab.badge,
+  }));
+
   return (
     <div className={styles.page}>
       <NavBar
-        title="Xabarnomalar"
+        title={t('page.notifications')}
         showBack={false}
         rightActions={
           unreadCount > 0
@@ -184,7 +192,7 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
                     </svg>
                   ),
                   onClick: () => {},
-                  ariaLabel: "Barchasini o'qilgan qilish",
+                  ariaLabel: t('notification.markAllReadLabel'),
                 },
               ]
             : []
@@ -202,8 +210,8 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
         {activeNotifications.length === 0 ? (
           <Empty
             icon={<BellEmptyIcon />}
-            title={empty ? 'Xabarnomalar yo\'q' : 'Bu bo\'limda xabarnoma yo\'q'}
-            description={empty ? 'Yangi xabarnomalar bu yerda ko\'rsatiladi' : undefined}
+            title={empty ? t('notification.empty') : t('notification.noNotifSection')}
+            description={empty ? t('notification.newNotifDescription') : undefined}
           />
         ) : (
           <div className={styles.notifList}>
@@ -213,7 +221,7 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
                 rightActions={[
                   {
                     key: 'dismiss',
-                    label: "O'chirish",
+                    label: t('common.delete'),
                     backgroundColor: '#FF3B30',
                     onClick: () => handleDismiss(notif.id),
                   },

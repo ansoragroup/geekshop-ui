@@ -10,6 +10,7 @@ import {
   Empty,
   TabBar,
   Button,
+  useGeekShop,
 } from '../../components';
 import { emptyIcons } from '../../components/feedback/Empty/Empty';
 import type { SwipeAction } from '../../components';
@@ -55,10 +56,6 @@ const initialCartItems: CartItemData[] = [
   },
 ];
 
-function formatPrice(value: number): string {
-  return value.toLocaleString('ru-RU').replace(/,/g, ' ');
-}
-
 export interface CartPageProps {
   empty?: boolean;
   hasCoupon?: boolean;
@@ -68,6 +65,7 @@ export const CartPage: React.FC<CartPageProps> = ({
   empty = false,
   hasCoupon = false,
 }) => {
+  const { t, formatPrice } = useGeekShop();
   const [items, setItems] = useState<CartItemData[]>(initialCartItems);
 
   const allSelected = items.length > 0 && items.every((i) => i.selected);
@@ -103,32 +101,32 @@ export const CartPage: React.FC<CartPageProps> = ({
   const deleteActions = (id: number): SwipeAction[] => [
     {
       key: 'delete',
-      label: "O'chirish",
+      label: t('common.delete'),
       backgroundColor: '#FF3B30',
       onClick: () => handleDelete(id),
     },
   ];
 
   const priceSummary = [
-    { label: 'Mahsulotlar', value: `${formatPrice(subtotal)} so'm` },
-    { label: 'Yetkazib berish', value: delivery === 0 ? 'Bepul' : `${formatPrice(delivery)} so'm` },
+    { label: t('cart.items'), value: formatPrice(subtotal) },
+    { label: t('cart.delivery'), value: delivery === 0 ? t('cart.free') : formatPrice(delivery) },
     ...(hasCoupon
-      ? [{ label: 'Kupon chegirmasi', value: `-${formatPrice(discount)} so'm` }]
+      ? [{ label: t('cart.couponDiscount'), value: `-${formatPrice(discount)}` }]
       : []),
-    { label: 'Jami', value: `${formatPrice(total)} so'm` },
+    { label: t('cart.total'), value: formatPrice(total) },
   ];
 
   return (
     <div className={styles.page}>
-      <NavBar title="Savat" showBack onBack={() => {}} />
+      <NavBar title={t('page.cart')} showBack onBack={() => {}} />
 
       {empty ? (
         <div className={styles.emptyWrap}>
           <Empty
             icon={emptyIcons.cart}
-            title="Savatingiz bo'sh"
-            description="Hali hech narsa qo'shilmagan. Keling, kompyuter qismlarini ko'rib chiqamiz!"
-            actionText="Xarid qilish"
+            title={t('cart.empty')}
+            description={t('cart.emptyDescription')}
+            actionText={t('cart.shopNow')}
             onAction={() => {}}
           />
         </div>
@@ -138,7 +136,7 @@ export const CartPage: React.FC<CartPageProps> = ({
           <div className={styles.selectAll}>
             <Checkbox
               checked={allSelected}
-              label="Barchasini tanlash"
+              label={t('cart.selectAll')}
               onChange={handleSelectAll}
             />
           </div>
@@ -193,19 +191,19 @@ export const CartPage: React.FC<CartPageProps> = ({
             <div className={styles.actionLeft}>
               <Checkbox
                 checked={allSelected}
-                label="Barchasi"
+                label={t('common.all')}
                 onChange={handleSelectAll}
               />
             </div>
             <div className={styles.actionRight}>
               <div className={styles.totalBlock}>
-                <span className={styles.totalLabel}>Jami:</span>
+                <span className={styles.totalLabel}>{t('cart.total')}:</span>
                 <span className={styles.totalPrice}>
-                  {formatPrice(total)} so'm
+                  {formatPrice(total)}
                 </span>
               </div>
               <Button variant="primary" size="md">
-                Buyurtma berish ({selectedItems.length})
+                {t('cart.placeOrder')} ({selectedItems.length})
               </Button>
             </div>
           </div>

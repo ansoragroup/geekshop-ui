@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './Empty.module.scss';
 
 export interface EmptyProps extends HTMLAttributes<HTMLDivElement> {
@@ -52,14 +53,17 @@ export const emptyIcons = {
 } as const;
 
 export const Empty = forwardRef<HTMLDivElement, EmptyProps>(
-  ({ icon, title = 'Ma\'lumot topilmadi', description, actionText, onAction, className = '', ...rest }, ref) => {
+  ({ icon, title, description, actionText, onAction, className = '', ...rest }, ref) => {
+    const { t } = useGeekShop();
+    const resolvedTitle = title ?? t('empty.default');
+
     return (
       <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
         <div className={styles.icon}>
           {icon ?? <DefaultEmptyIcon />}
         </div>
 
-        <h3 className={styles.title}>{title}</h3>
+        <h3 className={styles.title}>{resolvedTitle}</h3>
 
         {description && (
           <p className={styles.description}>{description}</p>

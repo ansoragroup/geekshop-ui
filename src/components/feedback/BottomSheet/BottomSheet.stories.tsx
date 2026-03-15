@@ -128,8 +128,8 @@ export const OpenCloseTest: Story = {
     const dialog = canvas.getByRole('dialog', { name: /test bottom sheet/i });
     await expect(dialog).toBeInTheDocument();
 
-    // Find and click the close button
-    const closeButton = canvas.getByRole('button', { name: /close/i });
+    // Find and click the close button (aria-label is "Yopish" in uz locale)
+    const closeButton = canvas.getByRole('button', { name: /yopish/i });
     await expect(closeButton).toBeInTheDocument();
     await userEvent.click(closeButton);
 

@@ -61,17 +61,17 @@ describe('Input', () => {
 
   it('renders the clear button when clearable and has value', () => {
     render(<Input value="hello" clearable onChange={() => {}} />)
-    expect(screen.getByRole('button', { name: 'Clear input' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Tozalash' })).toBeInTheDocument()
   })
 
   it('does not render clear button when value is empty', () => {
     render(<Input value="" clearable />)
-    expect(screen.queryByRole('button', { name: 'Clear input' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Tozalash' })).not.toBeInTheDocument()
   })
 
   it('does not render clear button when disabled', () => {
     render(<Input value="hello" clearable disabled />)
-    expect(screen.queryByRole('button', { name: 'Clear input' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Tozalash' })).not.toBeInTheDocument()
   })
 
   it('calls onChange with empty string when clear is clicked', async () => {
@@ -79,7 +79,7 @@ describe('Input', () => {
     const user = userEvent.setup()
 
     render(<Input value="hello" clearable onChange={onChange} />)
-    await user.click(screen.getByRole('button', { name: 'Clear input' }))
+    await user.click(screen.getByRole('button', { name: 'Tozalash' }))
 
     expect(onChange).toHaveBeenCalledWith('')
   })

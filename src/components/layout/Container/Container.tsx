@@ -6,6 +6,8 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   hasNavbar?: boolean;
   /** Whether to add bottom padding for tabbar */
   hasTabbar?: boolean;
+  /** Whether to add bottom padding for action bar (e.g. ProductDetailPage) */
+  hasActionBar?: boolean;
   /** Page content */
   children?: ReactNode;
 }
@@ -15,6 +17,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
     {
       hasNavbar = false,
       hasTabbar = false,
+      hasActionBar = false,
       children,
       className,
       ...rest
@@ -24,7 +27,9 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
   const classNames = [
     styles.container,
     hasNavbar && styles.withNavbar,
-    hasTabbar && styles.withTabbar,
+    hasTabbar && !hasActionBar && styles.withTabbar,
+    hasActionBar && !hasTabbar && styles.withActionBar,
+    hasActionBar && hasTabbar && styles.withActionBarAndTabbar,
     className,
   ].filter(Boolean).join(' ');
 

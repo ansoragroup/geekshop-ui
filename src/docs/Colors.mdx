@@ -1,0 +1,196 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Colors" />
+
+export const ColorSwatch = ({ name, cssVar, value }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8, padding: '6px 0' }}>
+    <div style={{
+      width: 48, height: 48, borderRadius: 8, flexShrink: 0,
+      background: value, border: '1px solid #ddd',
+    }} />
+    <div style={{ minWidth: 0 }}>
+      <div style={{ fontWeight: 600, fontSize: 13, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 12, color: '#666' }}>{cssVar}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#999' }}>{value}</div>
+    </div>
+  </div>
+);
+
+export const ColorGrid = ({ children }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+    gap: 4,
+  }}>
+    {children}
+  </div>
+);
+
+export const GradientSwatch = ({ name, cssVar, value }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8, padding: '6px 0' }}>
+    <div style={{
+      width: 80, height: 48, borderRadius: 8, flexShrink: 0,
+      background: value, border: '1px solid #ddd',
+    }} />
+    <div style={{ minWidth: 0 }}>
+      <div style={{ fontWeight: 600, fontSize: 13, color: '#1A1A1A' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 12, color: '#666' }}>{cssVar}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: 11, color: '#999', wordBreak: 'break-all' }}>{value}</div>
+    </div>
+  </div>
+);
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SubTitle = ({ children }) => (
+  <h3 style={{ margin: '24px 0 12px', fontSize: 16, color: '#333' }}>
+    {children}
+  </h3>
+);
+
+# Colors
+
+All colors are defined as SCSS variables in `src/theme/tokens.scss` and exposed as CSS custom properties with the `--gs-*` prefix in `src/theme/global.scss`. Use CSS custom properties in your overrides for full theme support including dark mode.
+
+---
+
+<SectionTitle>Brand / Primary</SectionTitle>
+
+<ColorGrid>
+  <ColorSwatch name="Primary" cssVar="--gs-color-primary" value="#FF5000" />
+  <ColorSwatch name="Primary Light" cssVar="--gs-color-primary-light" value="#FF7A33" />
+  <ColorSwatch name="Primary Dark" cssVar="--gs-color-primary-dark" value="#E64800" />
+  <ColorSwatch name="Primary Background" cssVar="--gs-color-primary-bg" value="#FFF5F0" />
+</ColorGrid>
+
+<SectionTitle>Gradients</SectionTitle>
+
+<GradientSwatch name="Primary Gradient" cssVar="--gs-color-primary-gradient" value="linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)" />
+<GradientSwatch name="Header Gradient" cssVar="--gs-color-primary-gradient-header" value="linear-gradient(180deg, #FF5000 0%, #FF8A56 50%, #FFB088 100%)" />
+
+<SectionTitle>Semantic</SectionTitle>
+
+<SubTitle>Price / Sale</SubTitle>
+
+<ColorGrid>
+  <ColorSwatch name="Price" cssVar="--gs-color-price" value="#FF0000" />
+  <ColorSwatch name="Price Dark" cssVar="--gs-color-price-dark" value="#E8380D" />
+  <ColorSwatch name="Sale" cssVar="--gs-color-sale" value="#FF3B30" />
+</ColorGrid>
+
+<SubTitle>Status</SubTitle>
+
+<ColorGrid>
+  <ColorSwatch name="Success" cssVar="--gs-color-success" value="#07C160" />
+  <ColorSwatch name="Success Light" cssVar="--gs-color-success-light" value="#E8F8EF" />
+  <ColorSwatch name="Warning" cssVar="--gs-color-warning" value="#FFA726" />
+  <ColorSwatch name="Warning Light" cssVar="--gs-color-warning-light" value="#FFF8E6" />
+  <ColorSwatch name="Error" cssVar="--gs-color-error" value="#FF3B30" />
+  <ColorSwatch name="Info" cssVar="--gs-color-info" value="#1890FF" />
+</ColorGrid>
+
+<SectionTitle>Text</SectionTitle>
+
+<ColorGrid>
+  <ColorSwatch name="Text Primary" cssVar="--gs-text-primary" value="#1A1A1A" />
+  <ColorSwatch name="Text Secondary" cssVar="--gs-text-secondary" value="#666666" />
+  <ColorSwatch name="Text Tertiary" cssVar="--gs-text-tertiary" value="#999999" />
+  <ColorSwatch name="Text Placeholder" cssVar="--gs-text-placeholder" value="#CCCCCC" />
+  <ColorSwatch name="Text White" cssVar="--gs-text-white" value="#FFFFFF" />
+  <ColorSwatch name="Text Link" cssVar="--gs-text-link" value="#FF5000" />
+</ColorGrid>
+
+<SectionTitle>Backgrounds</SectionTitle>
+
+<ColorGrid>
+  <ColorSwatch name="Page Background" cssVar="--gs-bg-page" value="#F5F5F5" />
+  <ColorSwatch name="White" cssVar="--gs-bg-white" value="#FFFFFF" />
+  <ColorSwatch name="Card" cssVar="--gs-bg-card" value="#FFFFFF" />
+  <ColorSwatch name="Overlay" cssVar="--gs-bg-overlay" value="rgba(0, 0, 0, 0.5)" />
+  <ColorSwatch name="Skeleton" cssVar="--gs-bg-skeleton" value="#F0F0F0" />
+</ColorGrid>
+
+<SectionTitle>Borders</SectionTitle>
+
+<ColorGrid>
+  <ColorSwatch name="Border" cssVar="--gs-border-color" value="#EEEEEE" />
+  <ColorSwatch name="Border Light" cssVar="--gs-border-color-light" value="#F5F5F5" />
+  <ColorSwatch name="Divider" cssVar="--gs-divider-color" value="#F0F0F0" />
+</ColorGrid>
+
+---
+
+<SectionTitle>Dark Mode</SectionTitle>
+
+Dark mode colors are activated automatically via `prefers-color-scheme: dark` or manually with `data-theme="dark"` on the root element. Below are the dark mode equivalents.
+
+export const DarkModeComparison = () => (
+  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 16 }}>
+    <div>
+      <h4 style={{ marginBottom: 12, fontSize: 14, color: '#666' }}>Light Mode</h4>
+      <div style={{ background: '#F5F5F5', borderRadius: 12, padding: 16, border: '1px solid #eee' }}>
+        <ColorSwatch name="Primary" cssVar="--gs-color-primary" value="#FF5000" />
+        <ColorSwatch name="Text Primary" cssVar="--gs-text-primary" value="#1A1A1A" />
+        <ColorSwatch name="Text Secondary" cssVar="--gs-text-secondary" value="#666666" />
+        <ColorSwatch name="Background" cssVar="--gs-bg-page" value="#F5F5F5" />
+        <ColorSwatch name="Card" cssVar="--gs-bg-card" value="#FFFFFF" />
+        <ColorSwatch name="Border" cssVar="--gs-border-color" value="#EEEEEE" />
+        <ColorSwatch name="Price" cssVar="--gs-color-price" value="#FF0000" />
+        <ColorSwatch name="Success" cssVar="--gs-color-success" value="#07C160" />
+      </div>
+    </div>
+    <div>
+      <h4 style={{ marginBottom: 12, fontSize: 14, color: '#666' }}>Dark Mode</h4>
+      <div style={{ background: '#121212', borderRadius: 12, padding: 16, border: '1px solid #333' }}>
+        <div style={{ filter: 'none' }}>
+          <ColorSwatch name="Primary" cssVar="--gs-color-primary" value="#FF6B33" />
+          <ColorSwatch name="Text Primary" cssVar="--gs-text-primary" value="#E5E5E5" />
+          <ColorSwatch name="Text Secondary" cssVar="--gs-text-secondary" value="#A0A0A0" />
+          <ColorSwatch name="Background" cssVar="--gs-bg-page" value="#121212" />
+          <ColorSwatch name="Card" cssVar="--gs-bg-card" value="#1E1E1E" />
+          <ColorSwatch name="Border" cssVar="--gs-border-color" value="#333333" />
+          <ColorSwatch name="Price" cssVar="--gs-color-price" value="#FF4D4D" />
+          <ColorSwatch name="Success" cssVar="--gs-color-success" value="#2ED573" />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+<DarkModeComparison />
+
+### Full Dark Mode Token Reference
+
+| Token | Light | Dark |
+|---|---|---|
+| `--gs-color-primary` | `#FF5000` | `#FF6B33` |
+| `--gs-color-primary-light` | `#FF7A33` | `#3D2A1A` |
+| `--gs-color-primary-dark` | `#E64800` | `#CC5200` |
+| `--gs-color-primary-bg` | `#FFF5F0` | `#2A1A10` |
+| `--gs-color-price` | `#FF0000` | `#FF4D4D` |
+| `--gs-color-price-dark` | `#E8380D` | `#FF6B5C` |
+| `--gs-color-sale` | `#FF3B30` | `#FF5247` |
+| `--gs-color-success` | `#07C160` | `#2ED573` |
+| `--gs-color-success-light` | `#E8F8EF` | `#1A2E1F` |
+| `--gs-color-warning` | `#FFA726` | `#FFB84D` |
+| `--gs-color-warning-light` | `#FFF8E6` | `#2E2510` |
+| `--gs-color-error` | `#FF3B30` | `#FF5247` |
+| `--gs-color-info` | `#1890FF` | `#40A9FF` |
+| `--gs-text-primary` | `#1A1A1A` | `#E5E5E5` |
+| `--gs-text-secondary` | `#666666` | `#A0A0A0` |
+| `--gs-text-tertiary` | `#999999` | `#707070` |
+| `--gs-text-placeholder` | `#CCCCCC` | `#555555` |
+| `--gs-text-white` | `#FFFFFF` | `#E5E5E5` |
+| `--gs-text-link` | `#FF5000` | `#FF6B33` |
+| `--gs-bg-page` | `#F5F5F5` | `#121212` |
+| `--gs-bg-white` | `#FFFFFF` | `#1E1E1E` |
+| `--gs-bg-card` | `#FFFFFF` | `#1E1E1E` |
+| `--gs-bg-overlay` | `rgba(0,0,0,0.5)` | `rgba(0,0,0,0.7)` |
+| `--gs-bg-skeleton` | `#F0F0F0` | `#2A2A2A` |
+| `--gs-border-color` | `#EEEEEE` | `#333333` |
+| `--gs-border-color-light` | `#F5F5F5` | `#2A2A2A` |
+| `--gs-divider-color` | `#F0F0F0` | `#2E2E2E` |

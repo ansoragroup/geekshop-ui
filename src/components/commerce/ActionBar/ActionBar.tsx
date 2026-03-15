@@ -1,4 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './ActionBar.module.scss';
 
 export interface ActionBarProps extends HTMLAttributes<HTMLDivElement> {
@@ -26,6 +27,7 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
   const classNames = [styles.bar, className].filter(Boolean).join(' ');
 
   return (
@@ -33,7 +35,7 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
       {/* Left side: icon buttons */}
       <div className={styles.icons}>
         {/* Customer service */}
-        <button type="button" className={styles.iconBtn} onClick={onChat} aria-label="Aloqa">
+        <button type="button" className={styles.iconBtn} onClick={onChat} aria-label={t('commerce.contact')}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
               d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z"
@@ -49,11 +51,11 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
               strokeLinecap="round"
             />
           </svg>
-          <span className={styles.iconLabel}>Aloqa</span>
+          <span className={styles.iconLabel}>{t('commerce.contact')}</span>
         </button>
 
         {/* Cart */}
-        <button type="button" className={styles.iconBtn} onClick={onCart} aria-label="Savat">
+        <button type="button" className={styles.iconBtn} onClick={onCart} aria-label={t('commerce.cart')}>
           <div className={styles.iconWrap}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -77,7 +79,7 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
               </span>
             )}
           </div>
-          <span className={styles.iconLabel}>Savat</span>
+          <span className={styles.iconLabel}>{t('commerce.cart')}</span>
         </button>
 
         {/* Favorite */}
@@ -85,7 +87,7 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
           type="button"
           className={styles.iconBtn}
           onClick={onFavorite}
-          aria-label={isFavorite ? "Sevimlilardan o'chirish" : "Sevimlilarga qo'shish"}
+          aria-label={isFavorite ? t('commerce.removeFromFavorites') : t('commerce.addToFavorites')}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
@@ -97,17 +99,17 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
               fill={isFavorite ? '#FF0000' : 'none'}
             />
           </svg>
-          <span className={styles.iconLabel}>Sevimli</span>
+          <span className={styles.iconLabel}>{t('commerce.favorite')}</span>
         </button>
       </div>
 
       {/* Right side: action buttons */}
       <div className={styles.actions}>
         <button type="button" className={styles.addToCartBtn} onClick={onAddToCart}>
-          Savatga
+          {t('commerce.addToCart')}
         </button>
         <button type="button" className={styles.buyNowBtn} onClick={onBuyNow}>
-          Sotib olish
+          {t('commerce.buyNow')}
         </button>
       </div>
     </div>

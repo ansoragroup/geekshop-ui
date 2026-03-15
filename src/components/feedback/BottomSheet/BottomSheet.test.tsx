@@ -63,7 +63,7 @@ describe('BottomSheet', () => {
     const user = userEvent.setup()
 
     render(<BottomSheet visible title="Closable" onClose={onClose} />)
-    await user.click(screen.getByRole('button', { name: 'Close' }))
+    await user.click(screen.getByRole('button', { name: 'Yopish' }))
 
     expect(onClose).toHaveBeenCalledOnce()
   })

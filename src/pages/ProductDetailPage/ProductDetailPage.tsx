@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   ProductImageGallery,
   PriceDisplay,
@@ -12,8 +12,11 @@ import {
   ReviewCard,
   Divider,
   ActionBar,
+  BottomSheet,
+  Toast,
+  useGeekShop,
 } from '../../components';
-import type { SkuVariant, SkuProduct } from '../../components/commerce/SkuSelector/SkuSelector';
+import type { SkuVariant, SkuProduct, SkuSelection } from '../../components/commerce/SkuSelector/SkuSelector';
 import styles from './ProductDetailPage.module.scss';
 
 /* ---------- Product data ---------- */
@@ -31,6 +34,7 @@ interface ProductData {
   reviewCount: number;
   inStock: boolean;
   stock: number;
+  preOrder?: boolean;
   specs: { label: string; value: string }[];
 }
 
@@ -64,7 +68,35 @@ const defaultProduct: ProductData = {
   ],
 };
 
-/* ---------- SKU data for imageGrid variant ---------- */
+const preOrderProduct: ProductData = {
+  title: 'MSI GeForce RTX 5070 Ti 12GB GDDR7',
+  images: [
+    'https://picsum.photos/seed/rtx5070/750/750',
+    'https://picsum.photos/seed/rtx5070-2/750/750',
+    'https://picsum.photos/seed/rtx5070-3/750/750',
+  ],
+  price: 12500000,
+  sku: 'GS-MSI-5070TI-12G',
+  brand: 'MSI',
+  isOfficial: true,
+  rating: 0,
+  reviewCount: 0,
+  inStock: false,
+  stock: 0,
+  preOrder: true,
+  specs: [
+    { label: 'Arxitektura', value: 'NVIDIA Blackwell' },
+    { label: 'Video xotira', value: '12GB GDDR7' },
+    { label: 'Xotira shinasi', value: '192-bit' },
+    { label: 'Boost chastota', value: '2800 MHz' },
+    { label: 'TDP', value: '250W' },
+    { label: 'Sovutish', value: 'Uch ventilyatorli' },
+    { label: 'Ulanish', value: 'PCIe 5.0 x16' },
+    { label: 'Kafolat', value: '3 yil' },
+  ],
+};
+
+/* ---------- SKU data for variant selector ---------- */
 
 const skuProduct: SkuProduct = {
   title: 'MSI GeForce RTX 4060 Ventus 2X 8GB',
@@ -144,6 +176,13 @@ const sampleReviews = [
   },
 ];
 
+/* ---------- Chevron icon ---------- */
+const ChevronRight = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 18l6-6-6-6" />
+  </svg>
+);
+
 /* ---------- Component ---------- */
 
 export interface ProductDetailPageProps {
@@ -151,25 +190,70 @@ export interface ProductDetailPageProps {
   withDiscount?: boolean;
   /** Show out of stock state */
   outOfStock?: boolean;
+  /** Show pre-order mode */
+  preOrder?: boolean;
 }
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   withDiscount = true,
   outOfStock = false,
+  preOrder = false,
 }) => {
+  const { t } = useGeekShop();
   const [quantity, setQuantity] = useState(1);
+  const [skuSheetOpen, setSkuSheetOpen] = useState(false);
+  const [selectedVariantName, setSelectedVariantName] = useState<string | null>(null);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
 
+  const baseProduct = preOrder ? preOrderProduct : defaultProduct;
   const product = {
-    ...defaultProduct,
-    ...(withDiscount
+    ...baseProduct,
+    ...(withDiscount && !preOrder
       ? {}
       : { originalPrice: undefined, discount: undefined }),
     ...(outOfStock ? { inStock: false, stock: 0 } : {}),
   };
 
+  const showToast = useCallback((message: string) => {
+    setToastMessage(message);
+    setToastVisible(true);
+  }, []);
+
+  const handleOpenSkuSheet = useCallback(() => {
+    setSkuSheetOpen(true);
+  }, []);
+
+  const handleCloseSkuSheet = useCallback(() => {
+    setSkuSheetOpen(false);
+  }, []);
+
+  const handleAddToCart = useCallback((selections: SkuSelection[]) => {
+    handleCloseSkuSheet();
+    if (selections.length > 0) {
+      const variant = skuVariants.find((v) => v.id === selections[0].variantId);
+      if (variant) {
+        setSelectedVariantName(variant.name);
+      }
+    }
+    showToast(t('product.addedToCart'));
+  }, [handleCloseSkuSheet, showToast, t]);
+
+  const handleActionBarAddToCart = useCallback(() => {
+    if (!outOfStock) {
+      handleOpenSkuSheet();
+    }
+  }, [outOfStock, handleOpenSkuSheet]);
+
+  const handleActionBarBuyNow = useCallback(() => {
+    if (!outOfStock) {
+      handleOpenSkuSheet();
+    }
+  }, [outOfStock, handleOpenSkuSheet]);
+
   return (
     <div className={styles.page}>
-      {/* Image Gallery (has its own back/share/fav buttons) */}
+      {/* Image Gallery */}
       <ProductImageGallery
         images={product.images}
         onBack={() => {}}
@@ -182,7 +266,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <PriceDisplay
           price={product.price}
           originalPrice={product.originalPrice}
-          variant={withDiscount ? 'sale' : 'default'}
+          variant={withDiscount && !preOrder ? 'sale' : 'default'}
           size="lg"
         />
         <div className={styles.sku}>SKU: {product.sku}</div>
@@ -195,21 +279,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
-          Rasmiy kafolat
+          {t('product.warranty')}
         </span>
         <span className={styles.trustBadge}>
           <svg className={styles.trustIcon} viewBox="0 0 24 24" fill="none" stroke="#1890FF" strokeWidth="2">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
-          Sifat tekshirilgan
+          {t('product.qualityChecked')}
         </span>
         <span className={styles.trustBadge}>
           <svg className={styles.trustIcon} viewBox="0 0 24 24" fill="none" stroke="#FF5000" strokeWidth="2">
             <polyline points="1 4 1 10 7 10"/>
             <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
           </svg>
-          Bepul qaytarish
+          {t('product.freeReturn')}
         </span>
       </div>
 
@@ -219,42 +303,57 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <div className={styles.tagsRow}>
           <Badge type="text" content={product.brand} color="primary" position="inline" />
           {product.isOfficial && (
-            <Badge type="text" content="Rasmiy" color="success" position="inline" />
+            <Badge type="text" content={t('product.official')} color="success" position="inline" />
           )}
-          {withDiscount && product.discount && (
+          {withDiscount && !preOrder && product.discount && (
             <Badge type="text" content={product.discount} color="error" position="inline" />
           )}
-          {outOfStock ? (
-            <span className={styles.outOfStock}>Mavjud emas</span>
-          ) : (
-            <Badge type="text" content="Mavjud" color="success" position="inline" />
+          {preOrder && (
+            <Badge type="text" content={t('product.preOrder')} color="primary" position="inline" />
           )}
+          {outOfStock ? (
+            <span className={styles.outOfStock}>{t('product.outOfStock')}</span>
+          ) : !preOrder ? (
+            <Badge type="text" content={t('product.inStock')} color="success" position="inline" />
+          ) : null}
         </div>
-        <div className={styles.ratingRow}>
-          <Rating value={product.rating} count={product.reviewCount} size="sm" />
-        </div>
+        {!preOrder && product.rating > 0 && (
+          <div className={styles.ratingRow}>
+            <Rating value={product.rating} count={product.reviewCount} size="sm" />
+          </div>
+        )}
       </div>
 
       <Divider />
 
-      {/* SKU Selector */}
-      {!outOfStock && (
-        <SkuSelector
-          product={skuProduct}
-          variants={skuVariants}
-          open={true}
-          onClose={() => {}}
-          onAddToCart={() => {}}
-        />
+      {/* Variant selector trigger row */}
+      {!outOfStock && !preOrder && (
+        <>
+          <button
+            type="button"
+            className={styles.skuTrigger}
+            onClick={handleOpenSkuSheet}
+            aria-label={t('product.selectVariant')}
+          >
+            <div>
+              <div className={styles.skuTriggerLabel}>{t('product.selectVariant')}</div>
+              <div className={styles.skuTriggerValue}>
+                {selectedVariantName
+                  ? t('product.selectedVariant', { variant: selectedVariantName })
+                  : t('product.chooseVariant')}
+              </div>
+            </div>
+            <ChevronRight />
+          </button>
+          <Divider />
+        </>
       )}
 
-      <Divider />
-
       {/* Quantity */}
-      {!outOfStock && (
+      {!outOfStock && !preOrder && (
         <>
           <div className={styles.quantityRow}>
-            <span className={styles.quantityLabel}>Miqdor</span>
+            <span className={styles.quantityLabel}>{t('commerce.quantity')}</span>
             <QuantityStepper
               value={quantity}
               min={1}
@@ -267,19 +366,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       )}
 
       {/* Description section */}
-      <Section title="Tavsif">
+      <Section title={t('product.description')}>
         <div className={styles.descriptionContent}>
-          <h4 className={styles.descHeading}>Mahsulot haqida</h4>
+          <h4 className={styles.descHeading}>{t('product.about')}</h4>
           <p>
-            MSI GeForce RTX 4060 Ventus 2X 8GB — NVIDIA Ada Lovelace arxitekturasiga
-            asoslangan eng so'nggi grafik karta. Ray tracing, DLSS 3.0 va boshqa
-            zamonaviy texnologiyalarni qo'llab-quvvatlaydi.
+            {product.title} — NVIDIA Ada Lovelace arxitekturasiga
+            asoslangan eng so&apos;nggi grafik karta. Ray tracing, DLSS 3.0 va boshqa
+            zamonaviy texnologiyalarni qo&apos;llab-quvvatlaydi.
           </p>
           <ul className={styles.descList}>
             <li className={styles.descItem}>NVIDIA Ada Lovelace arxitekturasi</li>
             <li className={styles.descItem}>8GB GDDR6 video xotira</li>
             <li className={styles.descItem}>128-bit xotira shinasi</li>
-            <li className={styles.descItem}>Ray Tracing va DLSS 3.0 qo'llab-quvvatlaydi</li>
+            <li className={styles.descItem}>Ray Tracing va DLSS 3.0 qo&apos;llab-quvvatlaydi</li>
             <li className={styles.descItem}>Ikki ventilyatorli sovutish tizimi</li>
             <li className={styles.descItem}>3 yil rasmiy kafolat</li>
           </ul>
@@ -290,45 +389,81 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
       {/* Specs section */}
       <Section>
-        <SectionHeader title="Xususiyatlar" count={product.specs.length} onViewAll={() => {}} />
+        <SectionHeader title={t('product.specifications')} count={product.specs.length} onViewAll={() => {}} />
         <SpecsTable specs={product.specs} />
       </Section>
 
       <Divider />
 
       {/* Reviews section */}
-      <Section>
-        <SectionHeader
-          title="Baholar"
-          count={product.reviewCount}
-          onViewAll={() => {}}
+      {!preOrder && (
+        <Section>
+          <SectionHeader
+            title={t('product.reviews')}
+            count={product.reviewCount}
+            onViewAll={() => {}}
+          />
+          <div className={styles.reviewsList}>
+            {sampleReviews.map((review, i) => (
+              <ReviewCard
+                key={i}
+                user={review.user}
+                rating={review.rating}
+                variant={review.variant}
+                content={review.content}
+                images={review.images}
+                date={review.date}
+              />
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* SKU Selector BottomSheet */}
+      <BottomSheet
+        visible={skuSheetOpen}
+        title={t('product.selectVariant')}
+        height="80vh"
+        onClose={handleCloseSkuSheet}
+      >
+        <SkuSelector
+          product={skuProduct}
+          variants={skuVariants}
+          open={true}
+          onClose={handleCloseSkuSheet}
+          onAddToCart={handleAddToCart}
         />
-        <div className={styles.reviewsList}>
-          {sampleReviews.map((review, i) => (
-            <ReviewCard
-              key={i}
-              user={review.user}
-              rating={review.rating}
-              variant={review.variant}
-              content={review.content}
-              images={review.images}
-              date={review.date}
-            />
-          ))}
-        </div>
-      </Section>
+      </BottomSheet>
+
+      {/* Toast */}
+      <Toast
+        message={toastMessage}
+        type="success"
+        visible={toastVisible}
+        duration={2000}
+        onClose={() => setToastVisible(false)}
+      />
 
       {/* Action Bar */}
-      <ActionBar
-        onAddToCart={() => {}}
-        onBuyNow={() => {}}
-        onChat={() => {}}
-        onCart={() => {}}
-        onFavorite={() => {}}
-        cartCount={2}
-      />
+      {preOrder ? (
+        <ActionBar
+          onAddToCart={handleActionBarAddToCart}
+          onBuyNow={handleActionBarBuyNow}
+          onChat={() => {}}
+          onCart={() => {}}
+          onFavorite={() => {}}
+          cartCount={0}
+        />
+      ) : (
+        <ActionBar
+          onAddToCart={handleActionBarAddToCart}
+          onBuyNow={handleActionBarBuyNow}
+          onChat={() => {}}
+          onCart={() => {}}
+          onFavorite={() => {}}
+          cartCount={2}
+        />
+      )}
     </div>
   );
 };
-
-export default ProductDetailPage;

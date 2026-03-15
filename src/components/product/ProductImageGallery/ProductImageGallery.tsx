@@ -1,4 +1,5 @@
 import { forwardRef, useState, useRef, useCallback, useEffect, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './ProductImageGallery.module.scss';
 
 export interface ProductImageGalleryProps extends HTMLAttributes<HTMLDivElement> {
@@ -79,6 +80,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
     const [internalIndex, setInternalIndex] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
     const isScrollingRef = useRef(false);
@@ -137,18 +139,18 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
       <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
         {/* Top overlay controls */}
         <div className={styles.topBar}>
-          <button className={styles.iconButton} onClick={onBack} type="button" aria-label="Orqaga">
+          <button className={styles.iconButton} onClick={onBack} type="button" aria-label={t('common.back')}>
             <BackIcon />
           </button>
           <div className={styles.topBarRight}>
-            <button className={styles.iconButton} onClick={onShare} type="button" aria-label="Ulashish">
+            <button className={styles.iconButton} onClick={onShare} type="button" aria-label={t('common.share')}>
               <ShareIcon />
             </button>
             <button
               className={`${styles.iconButton} ${isFavorited ? styles.favorited : ''}`}
               onClick={onFavorite}
               type="button"
-              aria-label="Sevimli"
+              aria-label={t('commerce.favorite')}
             >
               <HeartIcon filled={isFavorited} />
             </button>
@@ -159,7 +161,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
         <div className={styles.scrollContainer} ref={scrollRef} onScroll={handleScroll}>
           {images.map((src, i) => (
             <div key={i} className={styles.slide}>
-              <img src={src} alt={`Product ${i + 1}`} className={styles.image} />
+              <img src={src} alt={t('product.image', { index: i + 1 })} className={styles.image} />
             </div>
           ))}
         </div>
@@ -180,7 +182,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
                 type="button"
                 className={`${styles.dot} ${i === currentIndex ? styles.dotActive : ''}`}
                 onClick={() => goToIndex(i)}
-                aria-label={`Image ${i + 1}`}
+                aria-label={t('product.image', { index: i + 1 })}
               />
             ))}
           </div>

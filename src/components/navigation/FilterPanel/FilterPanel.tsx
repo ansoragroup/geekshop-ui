@@ -1,4 +1,5 @@
 import { forwardRef, useState, type HTMLAttributes } from 'react';
+import { useGeekShop, CURRENCY_CONFIGS } from '../../../i18n';
 import styles from './FilterPanel.module.scss';
 
 export interface FilterOption {
@@ -68,6 +69,9 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
     },
     ref,
   ) => {
+    const { t, locale, currency } = useGeekShop();
+    const currencySymbol = CURRENCY_CONFIGS[currency].symbol[locale];
+
     const [localValues, setLocalValues] = useState<FilterValues>(externalValues);
 
     if (!visible) return null;
@@ -124,11 +128,11 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
         {...rest}
       >
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-        <div className={styles.panel} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="Filtr">
+        <div className={styles.panel} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={t('filter.title')}>
           {/* Header */}
           <div className={styles.header}>
-            <span className={styles.headerTitle}>Filtr</span>
-            <button className={styles.closeBtn} onClick={onClose} aria-label="Yopish">
+            <span className={styles.headerTitle}>{t('filter.title')}</span>
+            <button className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>
               <CloseIcon />
             </button>
           </div>
@@ -168,24 +172,24 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
                       <input
                         type="text"
                         inputMode="numeric"
-                        placeholder="Minimal"
+                        placeholder={t('filter.minPrice')}
                         value={getPriceValue(group.key, 'min')}
                         onChange={(e) => setPriceRange(group.key, 'min', e.target.value)}
                         className={styles.input}
                       />
-                      <span className={styles.currency}>so'm</span>
+                      <span className={styles.currency}>{currencySymbol}</span>
                     </div>
                     <span className={styles.rangeSeparator}>—</span>
                     <div className={styles.priceInput}>
                       <input
                         type="text"
                         inputMode="numeric"
-                        placeholder="Maksimal"
+                        placeholder={t('filter.maxPrice')}
                         value={getPriceValue(group.key, 'max')}
                         onChange={(e) => setPriceRange(group.key, 'max', e.target.value)}
                         className={styles.input}
                       />
-                      <span className={styles.currency}>so'm</span>
+                      <span className={styles.currency}>{currencySymbol}</span>
                     </div>
                   </div>
                 )}
@@ -196,10 +200,10 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
           {/* Footer actions */}
           <div className={styles.footer}>
             <button className={styles.resetBtn} onClick={handleReset}>
-              Tozalash
+              {t('common.reset')}
             </button>
             <button className={styles.applyBtn} onClick={handleApply}>
-              Ko'rsatish
+              {t('common.apply')}
             </button>
           </div>
         </div>

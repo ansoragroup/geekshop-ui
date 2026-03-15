@@ -1,4 +1,5 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './NavBar.module.scss';
 
 export interface NavBarAction {
@@ -67,6 +68,7 @@ export const NavBar = forwardRef<HTMLElement, NavBarProps>(
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
     const isGradient = variant === 'gradient';
 
     return (
@@ -78,7 +80,7 @@ export const NavBar = forwardRef<HTMLElement, NavBarProps>(
         {/* Left zone */}
         <div className={styles.left}>
           {showBack && (
-            <button className={styles.backBtn} onClick={onBack} aria-label="Orqaga">
+            <button className={styles.backBtn} onClick={onBack} aria-label={t('common.back')}>
               <BackArrow />
             </button>
           )}

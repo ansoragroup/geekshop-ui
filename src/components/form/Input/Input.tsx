@@ -1,5 +1,6 @@
 import { forwardRef, useRef, useImperativeHandle, useId } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
+import { useGeekShop } from '../../../i18n';
 import styles from './Input.module.scss';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'size'> {
@@ -51,6 +52,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
+    const { t } = useGeekShop();
     const internalRef = useRef<HTMLInputElement>(null);
     useImperativeHandle(ref, () => internalRef.current!, []);
 
@@ -104,7 +106,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               className={styles.clearBtn}
               onClick={handleClear}
               type="button"
-              aria-label="Clear input"
+              aria-label={t('input.clear')}
             >
               <ClearIcon />
             </button>

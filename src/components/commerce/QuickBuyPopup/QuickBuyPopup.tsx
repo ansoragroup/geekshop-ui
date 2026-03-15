@@ -1,4 +1,5 @@
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
+import { useGeekShop } from '../../../i18n';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './QuickBuyPopup.module.scss';
@@ -23,10 +24,6 @@ export interface QuickBuyPopupProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
 }
 
-function formatPrice(price: number): string {
-  return price.toLocaleString('ru-RU').replace(/,/g, ' ');
-}
-
 export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
   (
     {
@@ -40,6 +37,7 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
     },
     ref,
   ) => {
+  const { t, formatPrice } = useGeekShop();
   const [quantity, setQuantity] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState<string | null>(
     variants.length > 0 ? variants[0].id : null
@@ -68,7 +66,7 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
         aria-label={`Quick buy: ${product.title}`}
         tabIndex={-1}
       >
-        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Close">
+        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M5 5L15 15M15 5L5 15" stroke="#999" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
@@ -79,15 +77,15 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
         </div>
 
         <div className={styles.priceSection}>
-          <span className={styles.price}>{formatPrice(product.price)} so'm</span>
+          <span className={styles.price}>{formatPrice(product.price)}</span>
         </div>
 
         <div className={styles.title}>{product.title}</div>
 
         {variants.length > 0 && (
           <div className={styles.variantSection}>
-            <div className={styles.sectionLabel}>Variant</div>
-            <div className={styles.chips} role="radiogroup" aria-label="Select variant">
+            <div className={styles.sectionLabel}>{t('product.variant')}</div>
+            <div className={styles.chips} role="radiogroup" aria-label={t('product.variant')}>
               {variants.map((v) => (
                 <button
                   type="button"
@@ -106,7 +104,7 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
 
         <div className={styles.quantitySection}>
           <div className={styles.quantityRow}>
-            <span className={styles.sectionLabel}>Miqdor</span>
+            <span className={styles.sectionLabel}>{t('commerce.quantity')}</span>
             <div className={styles.quantityRight}>
               <QuantityStepper
                 value={quantity}
@@ -115,14 +113,14 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
                 onChange={setQuantity}
                 size="md"
               />
-              <span className={styles.stockText}>({product.stock} ta mavjud)</span>
+              <span className={styles.stockText}>({t('commerce.inStock', { count: product.stock })})</span>
             </div>
           </div>
         </div>
 
         <div className={styles.footer}>
           <button type="button" className={styles.addToCartBtn} onClick={handleAddToCart}>
-            Savatga qo'shish
+            {t('commerce.addToCartFull')}
           </button>
         </div>
       </div>

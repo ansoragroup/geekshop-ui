@@ -1,0 +1,308 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Theming" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+# Theming
+
+`@ansoragroup/ui` is fully themeable via CSS Custom Properties. Every color, shadow, and layout dimension is exposed as a `--gs-*` variable that you can override in your application.
+
+---
+
+<SectionTitle>How It Works</SectionTitle>
+
+The library defines all design tokens as SCSS variables in `src/theme/tokens.scss`. These are then exposed as CSS Custom Properties in `src/theme/global.scss` on the `:root` selector.
+
+```
+tokens.scss (SCSS vars) --> global.scss (CSS custom props) --> components (consume via var())
+```
+
+Components reference these custom properties using `var(--gs-*)`, making them overridable from your application's CSS without modifying the library source.
+
+---
+
+<SectionTitle>CSS Custom Property Reference</SectionTitle>
+
+### Colors
+
+| Variable | Default (Light) | Description |
+|---|---|---|
+| `--gs-color-primary` | `#FF5000` | Brand primary color |
+| `--gs-color-primary-light` | `#FF7A33` | Lighter primary shade |
+| `--gs-color-primary-dark` | `#E64800` | Darker primary shade |
+| `--gs-color-primary-bg` | `#FFF5F0` | Primary tinted background |
+| `--gs-color-primary-gradient` | `linear-gradient(135deg, #FF5000, #FF7A33)` | Primary gradient |
+| `--gs-color-primary-gradient-header` | `linear-gradient(180deg, #FF5000, #FF8A56, #FFB088)` | Header gradient |
+| `--gs-color-price` | `#FF0000` | Price text color |
+| `--gs-color-price-dark` | `#E8380D` | Darker price variant |
+| `--gs-color-sale` | `#FF3B30` | Sale badge / discount |
+| `--gs-color-success` | `#07C160` | Success states |
+| `--gs-color-success-light` | `#E8F8EF` | Success background |
+| `--gs-color-warning` | `#FFA726` | Warning states |
+| `--gs-color-warning-light` | `#FFF8E6` | Warning background |
+| `--gs-color-error` | `#FF3B30` | Error states |
+| `--gs-color-info` | `#1890FF` | Info states |
+
+### Text
+
+| Variable | Default (Light) | Description |
+|---|---|---|
+| `--gs-text-primary` | `#1A1A1A` | Primary text |
+| `--gs-text-secondary` | `#666666` | Secondary / helper text |
+| `--gs-text-tertiary` | `#999999` | Tertiary / disabled text |
+| `--gs-text-placeholder` | `#CCCCCC` | Input placeholders |
+| `--gs-text-white` | `#FFFFFF` | Text on dark backgrounds |
+| `--gs-text-link` | `#FF5000` | Link text |
+
+### Backgrounds
+
+| Variable | Default (Light) | Description |
+|---|---|---|
+| `--gs-bg-page` | `#F5F5F5` | Page background |
+| `--gs-bg-white` | `#FFFFFF` | White surfaces |
+| `--gs-bg-card` | `#FFFFFF` | Card backgrounds |
+| `--gs-bg-overlay` | `rgba(0,0,0,0.5)` | Modal overlay |
+| `--gs-bg-skeleton` | `#F0F0F0` | Skeleton loading bg |
+
+### Borders
+
+| Variable | Default (Light) | Description |
+|---|---|---|
+| `--gs-border-color` | `#EEEEEE` | Default border |
+| `--gs-border-color-light` | `#F5F5F5` | Subtle border |
+| `--gs-divider-color` | `#F0F0F0` | Divider lines |
+
+### Shadows
+
+| Variable | Default (Light) | Description |
+|---|---|---|
+| `--gs-shadow-sm` | `0 1px 4px rgba(0,0,0,0.04)` | Subtle card shadow |
+| `--gs-shadow-md` | `0 2px 8px rgba(0,0,0,0.06)` | Medium elevation |
+| `--gs-shadow-lg` | `0 4px 16px rgba(0,0,0,0.08)` | High elevation |
+| `--gs-shadow-xl` | `0 8px 24px rgba(0,0,0,0.12)` | Maximum elevation |
+| `--gs-shadow-bottom-bar` | `0 -2px 8px rgba(0,0,0,0.06)` | Upward shadow for bars |
+
+### Layout
+
+| Variable | Default | Description |
+|---|---|---|
+| `--gs-navbar-height` | `44px` | Navigation bar height |
+| `--gs-tabbar-height` | `50px` | Tab bar height |
+| `--gs-action-bar-height` | `56px` | Action bar height |
+| `--gs-safe-area-bottom` | `env(safe-area-inset-bottom, 0px)` | iOS safe area |
+
+---
+
+<SectionTitle>Customizing the Theme</SectionTitle>
+
+Override any CSS custom property in your application's global CSS. Place overrides **after** the `@ansoragroup/ui/styles` import so they take precedence.
+
+```css
+/* your-app/globals.css */
+
+:root {
+  /* Change brand color to blue */
+  --gs-color-primary: #2563EB;
+  --gs-color-primary-light: #60A5FA;
+  --gs-color-primary-dark: #1D4ED8;
+  --gs-color-primary-bg: #EFF6FF;
+  --gs-color-primary-gradient: linear-gradient(135deg, #2563EB, #60A5FA);
+  --gs-text-link: #2563EB;
+
+  /* Increase card border radius */
+  /* Note: border-radius tokens are SCSS-only and compiled at build time.
+     Override them per-component if needed. */
+}
+```
+
+### Example: Green-themed Store
+
+```css
+:root {
+  --gs-color-primary: #10B981;
+  --gs-color-primary-light: #34D399;
+  --gs-color-primary-dark: #059669;
+  --gs-color-primary-bg: #ECFDF5;
+  --gs-color-primary-gradient: linear-gradient(135deg, #10B981, #34D399);
+  --gs-text-link: #10B981;
+}
+```
+
+---
+
+<SectionTitle>Dark Mode</SectionTitle>
+
+### Automatic (System Preference)
+
+Dark mode activates automatically when the user's OS is set to dark mode. This works via `@media (prefers-color-scheme: dark)` in the library CSS. No code changes needed.
+
+### Manual (Attribute-based)
+
+Set `data-theme="dark"` on the `<html>` element to force dark mode:
+
+```html
+<html data-theme="dark">
+```
+
+Set `data-theme="light"` to force light mode regardless of OS preference:
+
+```html
+<html data-theme="light">
+```
+
+### Toggle Implementation
+
+```tsx
+function ThemeToggle() {
+  const [isDark, setIsDark] = useState(false)
+
+  const toggle = () => {
+    const next = !isDark
+    setIsDark(next)
+    document.documentElement.setAttribute('data-theme', next ? 'dark' : 'light')
+  }
+
+  return (
+    <button onClick={toggle}>
+      {isDark ? 'Light Mode' : 'Dark Mode'}
+    </button>
+  )
+}
+```
+
+### Custom Dark Mode Colors
+
+Override dark mode tokens by scoping to `[data-theme="dark"]`:
+
+```css
+[data-theme="dark"] {
+  --gs-color-primary: #818CF8;
+  --gs-color-primary-light: #312E81;
+  --gs-color-primary-dark: #6366F1;
+  --gs-bg-page: #0F172A;
+  --gs-bg-card: #1E293B;
+}
+```
+
+---
+
+<SectionTitle>next-themes Integration</SectionTitle>
+
+If you use [next-themes](https://github.com/pacocoursey/next-themes) for theme management in Next.js:
+
+```tsx
+// app/layout.tsx (App Router)
+import { ThemeProvider } from 'next-themes'
+import '@ansoragroup/ui/styles'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+Key settings:
+- `attribute="data-theme"` -- matches the library's `[data-theme]` selectors
+- `defaultTheme="system"` -- respects OS preference
+- `enableSystem` -- enables automatic switching
+- `disableTransitionOnChange` -- prevents flash of unstyled content during theme switch
+
+Use the `useTheme` hook to build a theme toggle:
+
+```tsx
+import { useTheme } from 'next-themes'
+
+function ThemeSwitch() {
+  const { theme, setTheme } = useTheme()
+
+  return (
+    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  )
+}
+```
+
+---
+
+<SectionTitle>Scoped Theming</SectionTitle>
+
+You can apply different themes to different sections of the page using `data-theme` on any container element:
+
+```html
+<div data-theme="dark" style="padding: 24px; border-radius: 12px;">
+  <!-- These components render in dark mode -->
+  <ProductCard ... />
+  <Button variant="primary">Buy Now</Button>
+</div>
+
+<!-- Rest of the page stays in light mode -->
+<ProductCard ... />
+```
+
+This works because the CSS custom properties cascade. A `data-theme="dark"` on a parent element sets all `--gs-*` variables for its descendants.
+
+### Scoped Brand Override
+
+Create a promo section with a different brand color:
+
+```css
+.promo-section {
+  --gs-color-primary: #E91E63;
+  --gs-color-primary-light: #F06292;
+  --gs-color-primary-dark: #C2185B;
+  --gs-color-primary-bg: #FCE4EC;
+  --gs-color-primary-gradient: linear-gradient(135deg, #E91E63, #F06292);
+}
+```
+
+```html
+<div class="promo-section">
+  <!-- All components here use pink instead of orange -->
+  <Button variant="primary">Limited Offer</Button>
+  <HeroBanner ... />
+</div>
+```
+
+---
+
+<SectionTitle>CSS-only vs SCSS Tokens</SectionTitle>
+
+| Aspect | CSS Custom Properties (`--gs-*`) | SCSS Variables (`$*`) |
+|---|---|---|
+| Themeable at runtime | Yes | No (compiled at build) |
+| Available in your CSS | Yes | No (library internal) |
+| Used for | Colors, shadows, layout dims | Spacing, radii, z-index, breakpoints, typography |
+| Dark mode aware | Yes | No |
+| Overridable by consumers | Yes | No |
+
+**Rule of thumb:** If it changes with the theme (colors, shadows), it uses CSS custom properties. If it is structural and constant (spacing, radius, breakpoints), it is an SCSS variable compiled at build time.
+
+To override SCSS-only values, you would need to target specific components:
+
+```css
+/* Override border-radius on all cards */
+.gs-card,
+[class*="card"] {
+  border-radius: 16px;
+}
+```

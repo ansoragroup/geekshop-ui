@@ -1,0 +1,199 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Getting Started" />
+
+# Getting Started
+
+## Prerequisites
+
+- React 18+ or React 19
+- Node.js 18+
+
+## Installation
+
+### 1. Configure GitHub Packages registry
+
+`@ansoragroup/ui` is published to GitHub Packages. Create or update an `.npmrc` file in your project root:
+
+```
+@ansoragroup:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+You need a GitHub personal access token with `read:packages` scope. Set it as the `GITHUB_TOKEN` environment variable or replace `${GITHUB_TOKEN}` with the token directly (not recommended for shared repos).
+
+### 2. Install the package
+
+```bash
+npm install @ansoragroup/ui
+```
+
+### 3. Import styles
+
+Import the library styles **once** in your application entry point:
+
+```tsx
+import '@ansoragroup/ui/styles'
+```
+
+This imports the compiled CSS that includes the global reset, CSS custom properties, and all component styles.
+
+---
+
+## Framework Setup
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+import '@ansoragroup/ui/styles'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+### Next.js (Pages Router)
+
+```tsx
+// pages/_app.tsx
+import '@ansoragroup/ui/styles'
+import type { AppProps } from 'next/app'
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
+}
+```
+
+### Vite
+
+```tsx
+// src/main.tsx
+import '@ansoragroup/ui/styles'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
+```
+
+---
+
+## Basic Usage
+
+```tsx
+import { Button, ProductCard, PriceDisplay } from '@ansoragroup/ui'
+
+function MyComponent() {
+  return (
+    <div>
+      <Button variant="primary" size="md" onClick={() => alert('Clicked!')}>
+        Add to Cart
+      </Button>
+
+      <PriceDisplay
+        price={299000}
+        originalPrice={399000}
+        currency="UZS"
+      />
+    </div>
+  )
+}
+```
+
+---
+
+## Internationalization (i18n)
+
+Wrap your app with `GeekShopProvider` to configure locale and currency:
+
+```tsx
+import { GeekShopProvider } from '@ansoragroup/ui'
+
+function App() {
+  return (
+    <GeekShopProvider locale="ru" currency="UZS">
+      <YourApp />
+    </GeekShopProvider>
+  )
+}
+```
+
+Supported locales: `en`, `ru`, `uz`
+
+Supported currencies: `UZS`, `USD`, `RUB`
+
+---
+
+## Dark Mode
+
+### Automatic (OS preference)
+
+Dark mode works automatically via `prefers-color-scheme`. No extra setup needed -- the CSS custom properties adjust automatically.
+
+### Manual control
+
+Set the `data-theme` attribute on the `<html>` element:
+
+```html
+<!-- Light mode -->
+<html data-theme="light">
+
+<!-- Dark mode -->
+<html data-theme="dark">
+```
+
+### With next-themes
+
+```tsx
+import { ThemeProvider } from 'next-themes'
+
+function App() {
+  return (
+    <ThemeProvider attribute="data-theme" defaultTheme="system">
+      <YourApp />
+    </ThemeProvider>
+  )
+}
+```
+
+---
+
+## TypeScript
+
+All types are included in the package. No need to install `@types/` packages.
+
+Every component exports its props interface:
+
+```tsx
+import type { ButtonProps, ProductCardProps } from '@ansoragroup/ui'
+```
+
+---
+
+## Tree Shaking
+
+Tree shaking works automatically with any modern bundler (Vite, webpack 5, Next.js, Rollup).
+
+The library is built with `preserveModules`, so only the components you import get included in your bundle:
+
+```tsx
+// Only Button code is included in your bundle
+import { Button } from '@ansoragroup/ui'
+```
+
+Both ESM (`import`) and CJS (`require`) outputs are available:
+
+| Format | Entry |
+|---|---|
+| ESM | `dist/es/components/index.mjs` |
+| CJS | `dist/cjs/components/index.cjs` |
+| Types | `dist/components/index.d.ts` |

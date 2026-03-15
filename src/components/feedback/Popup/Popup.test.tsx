@@ -44,19 +44,19 @@ describe('Popup', () => {
 
   it('renders close button by default (closable=true)', () => {
     render(<Popup visible={true} title="Test">Body</Popup>);
-    expect(screen.getByLabelText('Close')).toBeInTheDocument();
+    expect(screen.getByLabelText('Yopish')).toBeInTheDocument();
   });
 
   it('does not render close button when closable is false', () => {
     render(<Popup visible={true} title="Test" closable={false}>Body</Popup>);
-    expect(screen.queryByLabelText('Close')).toBeNull();
+    expect(screen.queryByLabelText('Yopish')).toBeNull();
   });
 
   it('calls onClose when close button is clicked', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
     render(<Popup visible={true} title="Test" onClose={onClose}>Body</Popup>);
-    await user.click(screen.getByLabelText('Close'));
+    await user.click(screen.getByLabelText('Yopish'));
     expect(onClose).toHaveBeenCalledOnce();
   });
 
