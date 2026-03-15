@@ -16,7 +16,7 @@
   }
 
   &.gradient {
-    background: $color-primary-gradient;
+    background: var(--gs-color-primary-gradient);
     color: $color-text-white;
   }
 }

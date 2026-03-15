@@ -39,8 +39,8 @@
     white-space: nowrap;
 
     &:hover {
-      border-color: $color-primary;
-      color: $color-primary;
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
     }
 
     &:active {
@@ -48,8 +48,8 @@
     }
 
     &.active {
-      border-color: $color-primary;
-      background: $color-primary;
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary);
       color: $color-text-white;
       font-weight: $font-weight-medium;
     }
@@ -110,7 +110,7 @@
     }
 
     &.active {
-      color: $color-primary;
+      color: var(--gs-color-primary);
       font-weight: $font-weight-semibold;
     }
   }
@@ -123,7 +123,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: $color-primary;
+    background: var(--gs-color-primary);
     border-radius: $radius-round;
     border-bottom: none;
 
@@ -140,14 +140,14 @@
     height: 16px;
     padding: 0 $spacing-xs;
     border-radius: $radius-round;
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
     font-size: $font-size-xs;
     font-weight: $font-weight-bold;
-    color: $color-primary;
+    color: var(--gs-color-primary);
     line-height: 1;
 
     &.badgeActive {
-      background: $color-primary;
+      background: var(--gs-color-primary);
       color: $color-text-white;
     }
   }

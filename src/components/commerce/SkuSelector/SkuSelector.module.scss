@@ -255,7 +255,7 @@
 }
 
 .imageGridCardSelected {
-  border-color: $color-primary;
+  border-color: var(--gs-color-primary);
 }
 
 .hotBadge {
@@ -299,7 +299,7 @@
   width: 24px;
   height: 24px;
   border-radius: $radius-md 0 0 0;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,7 +318,7 @@
 }
 
 .imageGridLabelSelected {
-  background: $color-primary;
+  background: var(--gs-color-primary);
   color: $color-text-white;
   font-weight: $font-weight-semibold;
 }
@@ -396,7 +396,7 @@
 
 .addToCartBtn {
   padding: $spacing-sm $spacing-xxl;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   color: $color-text-white;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
@@ -405,7 +405,7 @@
 
   &:active {
     transform: scale(0.97);
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }
 

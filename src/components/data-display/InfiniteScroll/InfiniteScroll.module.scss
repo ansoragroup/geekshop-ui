@@ -34,7 +34,7 @@
   width: 18px;
   height: 18px;
   border: 2px solid $color-border;
-  border-top-color: $color-primary;
+  border-top-color: var(--gs-color-primary);
   border-radius: $radius-round;
   animation: spin 0.7s linear infinite;
 }
@@ -76,16 +76,16 @@
   font-family: $font-family;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   background: none;
-  border: 1px solid $color-primary;
+  border: 1px solid var(--gs-color-primary);
   border-radius: $radius-sm;
   padding: $spacing-xs $spacing-md;
   cursor: pointer;
   transition: background-color $transition-fast;
 
   &:hover {
-    background-color: $color-primary-bg;
+    background-color: var(--gs-color-primary-bg);
   }
 
   &:active {
@@ -97,7 +97,7 @@
 @media (prefers-reduced-motion: reduce) {
   .spinner {
     animation: none;
-    border-top-color: $color-primary;
+    border-top-color: var(--gs-color-primary);
     opacity: 0.6;
   }
 }

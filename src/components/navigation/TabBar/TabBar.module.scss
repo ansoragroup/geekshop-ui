@@ -38,7 +38,7 @@
   }
 
   &.active {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 }
 

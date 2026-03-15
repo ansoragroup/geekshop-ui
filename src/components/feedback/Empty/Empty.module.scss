@@ -33,7 +33,7 @@
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   color: $color-text-white;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   border: none;
   border-radius: $radius-xxl;
   cursor: pointer;

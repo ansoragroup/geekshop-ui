@@ -111,7 +111,7 @@
   }
 
   &:focus {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 }
 
@@ -180,8 +180,8 @@
 
   &:hover,
   &:focus-visible {
-    border-color: $color-primary;
-    color: $color-primary;
+    border-color: var(--gs-color-primary);
+    color: var(--gs-color-primary);
   }
 
   &:active {

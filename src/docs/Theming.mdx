@@ -98,6 +98,30 @@ Components reference these custom properties using `var(--gs-*)`, making them ov
 
 ---
 
+<SectionTitle>Theme Presets</SectionTitle>
+
+The library ships with 6 predefined color themes that you can apply with a single function call:
+
+| Preset | Primary Color | Description |
+|---|---|---|
+| `default` | `#FF5000` | GeekShop Orange (baseline) |
+| `teal` | `#00CBCC` | Cyan/teal, modern tech feel |
+| `red` | `#E53935` | Classic e-commerce red |
+| `yellow` | `#FFB300` | Warm gold |
+| `green` | `#07C160` | Fresh green |
+| `monochrome` | `#1A1A1A` | Minimal black/white |
+
+```tsx
+import { setThemePreset } from '@ansoragroup/ui';
+
+// Apply a preset — all primary-* CSS custom properties update instantly
+setThemePreset('teal');
+```
+
+There is also a ready-to-use `ThemeSwitcher` component and full documentation on the [Theme Presets](?path=/docs/docs-theme-presets--docs) page.
+
+---
+
 <SectionTitle>Customizing the Theme</SectionTitle>
 
 Override any CSS custom property in your application's global CSS. Place overrides **after** the `@ansoragroup/ui/styles` import so they take precedence.

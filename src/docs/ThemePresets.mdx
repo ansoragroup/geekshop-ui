@@ -1,0 +1,187 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Theme Presets" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const PresetSwatch = ({ color, name, label }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', background: '#fff', borderRadius: 8, border: '1px solid #eee' }}>
+    <div style={{ width: 40, height: 40, borderRadius: '50%', background: color, flexShrink: 0, border: '2px solid rgba(0,0,0,0.1)' }} />
+    <div>
+      <div style={{ fontWeight: 600, fontSize: 14, color: '#1A1A1A' }}>{label}</div>
+      <div style={{ fontSize: 12, color: '#999', fontFamily: 'monospace' }}>{color}</div>
+    </div>
+    <code style={{ marginLeft: 'auto', fontSize: 11, color: '#666', background: '#f5f5f5', padding: '2px 6px', borderRadius: 4 }}>{name}</code>
+  </div>
+);
+
+# Theme Presets
+
+`@ansoragroup/ui` ships with 6 predefined color themes. Apply any theme with a single function call -- no CSS overrides needed.
+
+---
+
+<SectionTitle>Available Presets</SectionTitle>
+
+<div style={{ display: 'grid', gap: 8 }}>
+  <PresetSwatch color="#FF5000" name="default" label="GeekShop Orange" />
+  <PresetSwatch color="#00CBCC" name="teal" label="Teal Tech" />
+  <PresetSwatch color="#E53935" name="red" label="Classic Red" />
+  <PresetSwatch color="#FFB300" name="yellow" label="Warm Gold" />
+  <PresetSwatch color="#07C160" name="green" label="Fresh Green" />
+  <PresetSwatch color="#1A1A1A" name="monochrome" label="Monochrome" />
+</div>
+
+---
+
+<SectionTitle>Quick Start</SectionTitle>
+
+Apply a theme preset with one line:
+
+```tsx
+import { setThemePreset } from '@ansoragroup/ui';
+
+// Apply teal theme
+setThemePreset('teal');
+```
+
+This overrides the following CSS custom properties on `:root`:
+- `--gs-color-primary`
+- `--gs-color-primary-light`
+- `--gs-color-primary-dark`
+- `--gs-color-primary-bg`
+- `--gs-color-primary-gradient`
+- `--gs-color-primary-gradient-header`
+
+All components that use these variables will update automatically.
+
+---
+
+<SectionTitle>Reading the Current Preset</SectionTitle>
+
+```tsx
+import { getThemePreset } from '@ansoragroup/ui';
+
+const current = getThemePreset(); // 'default' | 'teal' | 'red' | ...
+```
+
+---
+
+<SectionTitle>ThemeSwitcher Component</SectionTitle>
+
+A ready-to-use visual component that renders color circles for each preset:
+
+```tsx
+import { ThemeSwitcher } from '@ansoragroup/ui';
+
+function Settings() {
+  return (
+    <div>
+      <h3>Choose a theme</h3>
+      <ThemeSwitcher />
+    </div>
+  );
+}
+```
+
+With controlled state:
+
+```tsx
+import { ThemeSwitcher, type ThemePreset } from '@ansoragroup/ui';
+import { useState } from 'react';
+
+function Settings() {
+  const [theme, setTheme] = useState<ThemePreset>('default');
+
+  return (
+    <ThemeSwitcher
+      value={theme}
+      onChange={setTheme}
+    />
+  );
+}
+```
+
+Props:
+- `value?: ThemePreset` -- controlled value
+- `defaultValue?: ThemePreset` -- uncontrolled default (default: `'default'`)
+- `onChange?: (preset: ThemePreset) => void` -- change callback
+- `size?: 'sm' | 'md'` -- swatch size (default: `'md'`)
+- `applyOnChange?: boolean` -- whether to call `setThemePreset()` automatically (default: `true`)
+
+---
+
+<SectionTitle>Accessing Preset Data</SectionTitle>
+
+All preset configurations are available as a constant:
+
+```tsx
+import { THEME_PRESETS, type ThemePresetConfig } from '@ansoragroup/ui';
+
+// Access a specific preset
+const teal = THEME_PRESETS.teal;
+console.log(teal.colors.primary); // '#00CBCC'
+console.log(teal.label);          // 'Teal Tech'
+
+// Iterate all presets
+Object.values(THEME_PRESETS).forEach((preset: ThemePresetConfig) => {
+  console.log(`${preset.name}: ${preset.colors.primary}`);
+});
+```
+
+---
+
+<SectionTitle>Works with Dark Mode</SectionTitle>
+
+Theme presets work alongside dark mode. `setThemePreset()` overrides `--gs-color-primary-*` variables which cascade into both light and dark modes.
+
+```tsx
+import { setTheme, setThemePreset } from '@ansoragroup/ui';
+
+// Set both independently
+setThemePreset('teal');  // brand colors
+setTheme('dark');        // dark mode
+```
+
+---
+
+<SectionTitle>Persistence</SectionTitle>
+
+Theme presets are applied at runtime via inline styles on `<html>`. They do NOT persist across page loads. To persist the user's choice:
+
+```tsx
+import { setThemePreset, type ThemePreset } from '@ansoragroup/ui';
+
+// Save to localStorage
+function applyAndSave(preset: ThemePreset) {
+  setThemePreset(preset);
+  localStorage.setItem('gs-theme-preset', preset);
+}
+
+// Restore on page load
+const saved = localStorage.getItem('gs-theme-preset') as ThemePreset | null;
+if (saved) setThemePreset(saved);
+```
+
+---
+
+<SectionTitle>Custom Presets</SectionTitle>
+
+The 6 built-in presets cover common e-commerce brand colors. For a fully custom brand color, use CSS custom property overrides instead:
+
+```css
+:root {
+  --gs-color-primary: #7C3AED;
+  --gs-color-primary-light: #A78BFA;
+  --gs-color-primary-dark: #5B21B6;
+  --gs-color-primary-bg: #F5F3FF;
+  --gs-color-primary-gradient: linear-gradient(135deg, #7C3AED, #A78BFA);
+  --gs-color-primary-gradient-header: linear-gradient(180deg, #7C3AED, #9F67FF, #C4A0FF);
+}
+```
+
+See the [Theming](?path=/docs/docs-theming--docs) page for full CSS custom property documentation.

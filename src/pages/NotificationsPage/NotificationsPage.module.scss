@@ -28,7 +28,7 @@
 }
 
 .notifUnread {
-  background: rgba($color-primary, 0.02);
+  background: color-mix(in srgb, var(--gs-color-primary) 2%, transparent);
 }
 
 .notifAvatar {
@@ -66,7 +66,7 @@
   width: 8px;
   height: 8px;
   border-radius: $radius-round;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   flex-shrink: 0;
 }
 

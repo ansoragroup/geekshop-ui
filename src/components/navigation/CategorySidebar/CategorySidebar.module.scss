@@ -42,7 +42,7 @@
   }
 
   &.active {
-    color: $color-primary;
+    color: var(--gs-color-primary);
     background: $color-bg-white;
 
     // Orange left border indicator
@@ -55,7 +55,7 @@
       width: 3px;
       height: 24px;
       border-radius: 0 3px 3px 0;
-      background: $color-primary;
+      background: var(--gs-color-primary);
     }
   }
 }

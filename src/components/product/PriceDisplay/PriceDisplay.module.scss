@@ -116,6 +116,6 @@
 
 .variant-range {
   .currentPrice {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 }

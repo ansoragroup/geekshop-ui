@@ -39,8 +39,8 @@
   transition: all $transition-fast;
 
   &:hover {
-    border-color: $color-primary;
-    background: $color-primary-bg;
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:active {
@@ -48,11 +48,11 @@
   }
 
   &.top {
-    border-color: rgba($color-primary, 0.3);
-    background: $color-primary-bg;
+    border-color: color-mix(in srgb, var(--gs-color-primary) 30%, transparent);
+    background: var(--gs-color-primary-bg);
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--gs-color-primary);
     }
   }
 }
@@ -70,7 +70,7 @@
   line-height: 1;
 
   &.rankTop {
-    background: $color-primary;
+    background: var(--gs-color-primary);
     color: $color-text-white;
     border-radius: $radius-xs;
   }

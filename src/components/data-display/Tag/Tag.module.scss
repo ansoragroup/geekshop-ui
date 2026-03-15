@@ -63,7 +63,7 @@
 // Filled
 .variant-filled {
   &.color-primary {
-    background-color: $color-primary;
+    background-color: var(--gs-color-primary);
     color: $color-text-white;
   }
 
@@ -94,8 +94,8 @@
   border: 1px solid;
 
   &.color-primary {
-    border-color: $color-primary;
-    color: $color-primary;
+    border-color: var(--gs-color-primary);
+    color: var(--gs-color-primary);
   }
 
   &.color-success {
@@ -122,8 +122,8 @@
 // Light (soft background)
 .variant-light {
   &.color-primary {
-    background-color: $color-primary-bg;
-    color: $color-primary;
+    background-color: var(--gs-color-primary-bg);
+    color: var(--gs-color-primary);
   }
 
   &.color-success {

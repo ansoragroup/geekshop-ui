@@ -28,7 +28,7 @@
   right: 0;
   width: 28px;
   height: 28px;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   color: $color-text-white;
   border-radius: $radius-round;
   display: flex;
@@ -42,7 +42,7 @@
   border: none;
   font-family: $font-family;
   font-size: $font-size-sm;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   cursor: pointer;
   padding: $spacing-xs $spacing-sm;
 
@@ -100,7 +100,7 @@
   transition: border-color $transition-fast;
 
   .genderSelected & {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 }
 
@@ -108,7 +108,7 @@
   width: 10px;
   height: 10px;
   border-radius: $radius-round;
-  background: $color-primary;
+  background: var(--gs-color-primary);
 }
 
 // === Save button ===

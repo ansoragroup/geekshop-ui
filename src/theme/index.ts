@@ -1,3 +1,5 @@
+import { THEME_PRESETS, type ThemePreset } from './presets';
+
 export const tokens = {
   color: {
     primary: '#FF5000',
@@ -129,4 +131,23 @@ export function getTheme(): 'light' | 'dark' {
   if (document.documentElement.getAttribute('data-theme') === 'dark') return 'dark';
   if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
   return 'light';
+}
+
+export function setThemePreset(preset: ThemePreset): void {
+  const config = THEME_PRESETS[preset];
+  if (!config) return;
+
+  const root = document.documentElement;
+  root.style.setProperty('--gs-color-primary', config.colors.primary);
+  root.style.setProperty('--gs-color-primary-light', config.colors.primaryLight);
+  root.style.setProperty('--gs-color-primary-dark', config.colors.primaryDark);
+  root.style.setProperty('--gs-color-primary-bg', config.colors.primaryBg);
+  root.style.setProperty('--gs-color-primary-gradient', config.colors.primaryGradient);
+  root.style.setProperty('--gs-color-primary-gradient-header', config.colors.primaryGradientHeader);
+
+  root.dataset.gsPreset = preset;
+}
+
+export function getThemePreset(): ThemePreset {
+  return (document.documentElement.dataset.gsPreset as ThemePreset) || 'default';
 }

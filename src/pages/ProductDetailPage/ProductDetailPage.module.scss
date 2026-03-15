@@ -38,7 +38,7 @@
 
 .reviewLink {
   font-size: $font-size-sm;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   cursor: pointer;
   margin-left: $spacing-sm;
   text-decoration: underline;
@@ -174,7 +174,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: $color-primary;
+    background: var(--gs-color-primary);
     margin-top: 7px;
     flex-shrink: 0;
   }
