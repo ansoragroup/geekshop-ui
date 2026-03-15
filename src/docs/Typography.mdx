@@ -110,20 +110,90 @@ The system font stack renders the platform's native typeface -- San Francisco on
 
 <SectionTitle>Usage Guidelines</SectionTitle>
 
-| Element | Size | Weight | Line Height |
-|---|---|---|---|
-| Page title | `xxxl` (24px) | Bold (700) | Tight (1.2) |
-| Section header | `xxl` (20px) | Semibold (600) | Tight (1.2) |
-| Card title | `lg` (16px) | Semibold (600) | Normal (1.5) |
-| Body text | `md` (14px) | Regular (400) | Normal (1.5) |
-| Secondary text | `sm` (12px) | Regular (400) | Normal (1.5) |
-| Caption / label | `xs` (10px) | Regular (400) | Normal (1.5) |
-| Primary price | `price-xl` (30px) | Bold (700) | Tight (1.2) |
-| Card price | `price-md` (18px) | Bold (700) | Tight (1.2) |
-| Inline price | `price-sm` (14px) | Bold (700) | Tight (1.2) |
-| Button text | `md` (14px) | Semibold (600) | Tight (1.2) |
-| Tab / nav label | `sm` (12px) | Medium (500) | Tight (1.2) |
-| Badge text | `xs` (10px) | Medium (500) | Tight (1.2) |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Element</th>
+      <th style={{ padding: '8px 12px' }}>Size</th>
+      <th style={{ padding: '8px 12px' }}>Weight</th>
+      <th style={{ padding: '8px 12px' }}>Line Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Page title</td>
+      <td style={{ padding: '8px 12px' }}><code>xxxl</code> (24px)</td>
+      <td style={{ padding: '8px 12px' }}>Bold (700)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Section header</td>
+      <td style={{ padding: '8px 12px' }}><code>xxl</code> (20px)</td>
+      <td style={{ padding: '8px 12px' }}>Semibold (600)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Card title</td>
+      <td style={{ padding: '8px 12px' }}><code>lg</code> (16px)</td>
+      <td style={{ padding: '8px 12px' }}>Semibold (600)</td>
+      <td style={{ padding: '8px 12px' }}>Normal (1.5)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Body text</td>
+      <td style={{ padding: '8px 12px' }}><code>md</code> (14px)</td>
+      <td style={{ padding: '8px 12px' }}>Regular (400)</td>
+      <td style={{ padding: '8px 12px' }}>Normal (1.5)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Secondary text</td>
+      <td style={{ padding: '8px 12px' }}><code>sm</code> (12px)</td>
+      <td style={{ padding: '8px 12px' }}>Regular (400)</td>
+      <td style={{ padding: '8px 12px' }}>Normal (1.5)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Caption / label</td>
+      <td style={{ padding: '8px 12px' }}><code>xs</code> (10px)</td>
+      <td style={{ padding: '8px 12px' }}>Regular (400)</td>
+      <td style={{ padding: '8px 12px' }}>Normal (1.5)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Primary price</td>
+      <td style={{ padding: '8px 12px' }}><code>price-xl</code> (30px)</td>
+      <td style={{ padding: '8px 12px' }}>Bold (700)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Card price</td>
+      <td style={{ padding: '8px 12px' }}><code>price-md</code> (18px)</td>
+      <td style={{ padding: '8px 12px' }}>Bold (700)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Inline price</td>
+      <td style={{ padding: '8px 12px' }}><code>price-sm</code> (14px)</td>
+      <td style={{ padding: '8px 12px' }}>Bold (700)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Button text</td>
+      <td style={{ padding: '8px 12px' }}><code>md</code> (14px)</td>
+      <td style={{ padding: '8px 12px' }}>Semibold (600)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Tab / nav label</td>
+      <td style={{ padding: '8px 12px' }}><code>sm</code> (12px)</td>
+      <td style={{ padding: '8px 12px' }}>Medium (500)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Badge text</td>
+      <td style={{ padding: '8px 12px' }}><code>xs</code> (10px)</td>
+      <td style={{ padding: '8px 12px' }}>Medium (500)</td>
+      <td style={{ padding: '8px 12px' }}>Tight (1.2)</td>
+    </tr>
+  </tbody>
+</table>
 
 ### SCSS Token Usage
 

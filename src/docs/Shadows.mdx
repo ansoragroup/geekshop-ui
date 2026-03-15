@@ -69,13 +69,48 @@ Shadow tokens provide elevation cues. They are defined in `src/theme/tokens.scss
 
 <SectionTitle>Usage Guidelines</SectionTitle>
 
-| Shadow | SCSS Variable | CSS Variable | Use Case |
-|---|---|---|---|
-| **sm** | `$shadow-sm` | `--gs-shadow-sm` | Cards at rest, subtle elevation |
-| **md** | `$shadow-md` | `--gs-shadow-md` | Hover states, dropdown menus |
-| **lg** | `$shadow-lg` | `--gs-shadow-lg` | Modals, popovers, floating elements |
-| **xl** | `$shadow-xl` | `--gs-shadow-xl` | Full-screen overlays, mobile frame |
-| **bottom-bar** | `$shadow-bottom-bar` | `--gs-shadow-bottom-bar` | Fixed bottom bars (ActionBar, TabBar) |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Shadow</th>
+      <th style={{ padding: '8px 12px' }}>SCSS Variable</th>
+      <th style={{ padding: '8px 12px' }}>CSS Variable</th>
+      <th style={{ padding: '8px 12px' }}>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><strong>sm</strong></td>
+      <td style={{ padding: '8px 12px' }}><code>$shadow-sm</code></td>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-sm</code></td>
+      <td style={{ padding: '8px 12px' }}>Cards at rest, subtle elevation</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><strong>md</strong></td>
+      <td style={{ padding: '8px 12px' }}><code>$shadow-md</code></td>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-md</code></td>
+      <td style={{ padding: '8px 12px' }}>Hover states, dropdown menus</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><strong>lg</strong></td>
+      <td style={{ padding: '8px 12px' }}><code>$shadow-lg</code></td>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-lg</code></td>
+      <td style={{ padding: '8px 12px' }}>Modals, popovers, floating elements</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><strong>xl</strong></td>
+      <td style={{ padding: '8px 12px' }}><code>$shadow-xl</code></td>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-xl</code></td>
+      <td style={{ padding: '8px 12px' }}>Full-screen overlays, mobile frame</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><strong>bottom-bar</strong></td>
+      <td style={{ padding: '8px 12px' }}><code>$shadow-bottom-bar</code></td>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-bottom-bar</code></td>
+      <td style={{ padding: '8px 12px' }}>Fixed bottom bars (ActionBar, TabBar)</td>
+    </tr>
+  </tbody>
+</table>
 
 ### When to Use Each Level
 
@@ -91,13 +126,42 @@ Shadow tokens provide elevation cues. They are defined in `src/theme/tokens.scss
 
 In dark mode, shadows use higher opacity values to remain visible against dark backgrounds:
 
-| Token | Light Mode | Dark Mode |
-|---|---|---|
-| `--gs-shadow-sm` | `0 1px 4px rgba(0,0,0,0.04)` | `0 1px 4px rgba(0,0,0,0.2)` |
-| `--gs-shadow-md` | `0 2px 8px rgba(0,0,0,0.06)` | `0 2px 8px rgba(0,0,0,0.3)` |
-| `--gs-shadow-lg` | `0 4px 16px rgba(0,0,0,0.08)` | `0 4px 16px rgba(0,0,0,0.35)` |
-| `--gs-shadow-xl` | `0 8px 24px rgba(0,0,0,0.12)` | `0 8px 24px rgba(0,0,0,0.4)` |
-| `--gs-shadow-bottom-bar` | `0 -2px 8px rgba(0,0,0,0.06)` | `0 -2px 8px rgba(0,0,0,0.3)` |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Token</th>
+      <th style={{ padding: '8px 12px' }}>Light Mode</th>
+      <th style={{ padding: '8px 12px' }}>Dark Mode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-sm</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 1px 4px rgba(0,0,0,0.04)</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 1px 4px rgba(0,0,0,0.2)</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-md</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 2px 8px rgba(0,0,0,0.06)</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 2px 8px rgba(0,0,0,0.3)</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-lg</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 4px 16px rgba(0,0,0,0.08)</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 4px 16px rgba(0,0,0,0.35)</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-xl</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 8px 24px rgba(0,0,0,0.12)</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 8px 24px rgba(0,0,0,0.4)</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-bottom-bar</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 -2px 8px rgba(0,0,0,0.06)</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 -2px 8px rgba(0,0,0,0.3)</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
