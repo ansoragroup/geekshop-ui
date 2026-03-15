@@ -3,37 +3,100 @@
     "PreToolUse": [
       {
         "matcher": "Write|Edit",
-        "command": "bash .claude/hooks/enforce-component-rules.sh"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/enforce-component-rules.sh",
+            "timeout": 5,
+            "statusMessage": "Checking component rules..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash consilium/hooks/pre-commit.sh",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
-        "command": "bash .claude/hooks/post-edit-reminder.sh"
-      }
-    ],
-    "TeammateIdle": [
-      {
-        "command": "bash consilium/hooks/teammate-idle.sh",
-        "description": "Auto-assign work when teammate goes idle"
-      }
-    ],
-    "TaskCompleted": [
-      {
-        "command": "bash consilium/hooks/task-completed.sh",
-        "description": "Run quality gates on completed tasks"
-      }
-    ],
-    "PreCommit": [
-      {
-        "command": "bash consilium/hooks/pre-commit.sh",
-        "description": "Verify file boundaries before commit"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/post-edit-reminder.sh",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "SessionStart": [
       {
-        "command": "bash consilium/hooks/session-start.sh",
-        "description": "Initialize consilium workspace and load evolution state"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash consilium/hooks/session-start.sh",
+            "timeout": 15,
+            "statusMessage": "Initializing consilium workspace..."
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash consilium/hooks/pre-compact.sh",
+            "timeout": 10,
+            "statusMessage": "Saving state before compaction..."
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash consilium/hooks/post-compact.sh",
+            "timeout": 10,
+            "statusMessage": "Restoring context..."
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash consilium/hooks/task-completed.sh",
+            "timeout": 120,
+            "statusMessage": "Running quality gates..."
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash consilium/hooks/teammate-idle.sh",
+            "timeout": 5
+          }
+        ]
       }
     ]
   },

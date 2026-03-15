@@ -1,8 +1,12 @@
 import { useState, useCallback, useEffect } from 'react';
+import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './QuantityStepper.module.scss';
 
 export interface QuantityStepperProps {
-  value: number;
+  /** Controlled value */
+  value?: number;
+  /** Default value for uncontrolled usage */
+  defaultValue?: number;
   min?: number;
   max?: number;
   onChange?: (value: number) => void;
@@ -11,13 +15,20 @@ export interface QuantityStepperProps {
 }
 
 export function QuantityStepper({
-  value,
+  value: valueProp,
+  defaultValue,
   min = 1,
   max = 99,
   onChange,
   size = 'md',
   disabled = false,
 }: QuantityStepperProps) {
+  const [value, setValue] = useControllableState<number>({
+    value: valueProp,
+    defaultValue: defaultValue ?? min,
+    onChange,
+  });
+
   const [inputValue, setInputValue] = useState(String(value));
 
   useEffect(() => {
@@ -31,17 +42,17 @@ export function QuantityStepper({
     if (value > min) {
       const next = value - 1;
       setInputValue(String(next));
-      onChange?.(next);
+      setValue(next);
     }
-  }, [value, min, onChange]);
+  }, [value, min, setValue]);
 
   const handleIncrement = useCallback(() => {
     if (value < max) {
       const next = value + 1;
       setInputValue(String(next));
-      onChange?.(next);
+      setValue(next);
     }
-  }, [value, max, onChange]);
+  }, [value, max, setValue]);
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,9 +68,9 @@ export function QuantityStepper({
     if (num > max) num = max;
     setInputValue(String(num));
     if (num !== value) {
-      onChange?.(num);
+      setValue(num);
     }
-  }, [inputValue, min, max, value, onChange]);
+  }, [inputValue, min, max, value, setValue]);
 
   return (
     <div

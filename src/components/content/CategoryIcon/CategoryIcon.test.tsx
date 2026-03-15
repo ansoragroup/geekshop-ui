@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import CategoryIcon from './CategoryIcon'
+import { CategoryIcon } from './CategoryIcon'
 
 const TestIcon = () => <svg data-testid="test-icon" />
 

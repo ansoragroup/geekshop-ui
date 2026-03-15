@@ -1,4 +1,5 @@
-import { type FC, useState, useEffect, useRef, useCallback } from 'react';
+import { type FC, useEffect, useRef } from 'react';
+import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './CountdownTimer.module.scss';
 
 export interface CountdownTimerProps {
@@ -10,59 +11,31 @@ export interface CountdownTimerProps {
   onEnd?: () => void;
 }
 
-function getTimeRemaining(endTime: Date): {
-  hours: string;
-  minutes: string;
-  seconds: string;
-  total: number;
-} {
-  const total = Math.max(0, endTime.getTime() - Date.now());
-  const seconds = Math.floor((total / 1000) % 60);
-  const minutes = Math.floor((total / 1000 / 60) % 60);
-  const hours = Math.floor(total / 1000 / 60 / 60);
-
-  return {
-    hours: String(hours).padStart(2, '0'),
-    minutes: String(minutes).padStart(2, '0'),
-    seconds: String(seconds).padStart(2, '0'),
-    total,
-  };
-}
-
 const CountdownTimer: FC<CountdownTimerProps> = ({
   endTime,
   label = 'Chegirmalar',
   onEnd,
 }) => {
-  const end = endTime instanceof Date ? endTime : new Date(endTime);
-  const [time, setTime] = useState(() => getTimeRemaining(end));
-  const [tick, setTick] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { days, hours, minutes, seconds, isExpired } = useCountdown(endTime);
   const endedRef = useRef(false);
 
-  const handleEnd = useCallback(() => {
-    if (!endedRef.current) {
+  // Derive tick from seconds parity — toggles every second for CSS animation
+  const tick = seconds % 2 === 1;
+
+  // Fire onEnd once when countdown expires
+  useEffect(() => {
+    if (isExpired && !endedRef.current) {
       endedRef.current = true;
       onEnd?.();
     }
-  }, [onEnd]);
+  }, [isExpired, onEnd]);
 
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      const remaining = getTimeRemaining(end);
-      setTime(remaining);
-      setTick((prev) => !prev);
-
-      if (remaining.total <= 0) {
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        handleEnd();
-      }
-    }, 1000);
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [end, handleEnd]);
+  const totalHours = days * 24 + hours;
+  const display = {
+    hours: String(totalHours).padStart(2, '0'),
+    minutes: String(minutes).padStart(2, '0'),
+    seconds: String(seconds).padStart(2, '0'),
+  };
 
   return (
     <div className={styles.countdownTimer}>
@@ -91,15 +64,15 @@ const CountdownTimer: FC<CountdownTimerProps> = ({
 
       <div className={styles.timerArea}>
         <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
-          {time.hours}
+          {display.hours}
         </span>
         <span className={styles.separator}>:</span>
         <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
-          {time.minutes}
+          {display.minutes}
         </span>
         <span className={styles.separator}>:</span>
         <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
-          {time.seconds}
+          {display.seconds}
         </span>
       </div>
     </div>

@@ -1,7 +1,16 @@
 #!/bin/bash
-# consilium/hooks/pre-commit.sh
-# Verifies file boundaries and runs pre-commit checks.
-# Exit 0 = ok, Exit 2 = violation (block commit)
+# PreToolUse(Bash) hook: enforce consilium file boundaries on git commits
+# Reads tool input from stdin JSON (Claude Code hook protocol)
+# Only activates during consilium sessions when an agent runs git commit
+# Exit 0 = ok, Exit 2 = violation (block the tool call)
+
+INPUT=$(cat)
+COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')
+
+# Only intercept git commit commands
+if [[ ! "$COMMAND" =~ ^git\ commit ]]; then
+  exit 0
+fi
 
 PLAN="/tmp/consilium/current/phase4/PLAN.md"
 ERRORS=""
@@ -33,7 +42,7 @@ if [ -f "$PLAN" ] && [ -n "$CLAUDE_CODE_AGENT_NAME" ]; then
 fi
 
 if [ -n "$ERRORS" ]; then
-    echo -e "FILE BOUNDARY VIOLATIONS DETECTED:\n$ERRORS"
+    echo -e "FILE BOUNDARY VIOLATIONS DETECTED:\n$ERRORS" >&2
     exit 2
 fi
 

@@ -180,5 +180,3 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
     );
   },
 );
-
-export default AddressCard;

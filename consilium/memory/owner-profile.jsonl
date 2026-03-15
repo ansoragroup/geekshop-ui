@@ -1,0 +1,5 @@
+
+{"session_id":"20260315","type":"task_description_style","value":"terse_delegating","evidence":"User said 'lets run then consilium and do all recomended steps' — minimal instruction, trusts system to self-direct","confidence":0.8}
+{"session_id":"20260315","type":"stack_preference","value":"react_component_library","evidence":"Project is React 19 + TypeScript + Vite + SCSS Modules + Storybook + Vitest","confidence":0.95}
+{"session_id":"20260315","type":"quality_bar","value":"visual_verification_required","evidence":"Claude Code memory: feedback_visual_qa.md states always verify components visually via Playwright screenshots","confidence":0.9}
+{"session_id":"20260315","type":"correction","value":"never_delete_without_permission","evidence":"Global CLAUDE.md contains explicit angry feedback about unauthorized deletion of Docker containers","confidence":1.0}

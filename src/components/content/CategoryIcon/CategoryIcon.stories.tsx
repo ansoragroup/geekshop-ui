@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import CategoryIcon from './CategoryIcon';
-import CategoryIconRow from './CategoryIconRow';
+import { CategoryIcon } from './CategoryIcon';
+import { CategoryIconRow } from './CategoryIconRow';
 
 /* Inline SVG icons for PC parts categories */
 const LaptopIcon = () => (

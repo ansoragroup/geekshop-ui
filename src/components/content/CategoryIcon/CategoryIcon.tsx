@@ -12,7 +12,7 @@ export interface CategoryIconProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-const CategoryIcon: FC<CategoryIconProps> = ({
+export const CategoryIcon: FC<CategoryIconProps> = ({
   icon,
   label,
   color = '#FF5000',
@@ -38,5 +38,3 @@ const CategoryIcon: FC<CategoryIconProps> = ({
     </div>
   );
 };
-
-export default CategoryIcon;

@@ -70,4 +70,4 @@
 - [ ] i18n support (string context provider)
 - [ ] RTL support
 - [ ] Visual regression testing (Chromatic/Percy)
-- [ ] Community setup (Discord/Telegram links, GitHub Projects roadmap)
+- [ ] Community setup (GitHub Projects roadmap)

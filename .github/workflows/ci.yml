@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [main]
+    branches: [main, 'feat/**', 'bugfix/**', 'v0.1.*']
   pull_request:
     branches: [main]
 
@@ -34,8 +34,21 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - run: npx tsc --noEmit
 
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - run: npx vitest run --project unit
+
   build:
     name: Build Library
+    needs: [lint, typecheck, test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,8 +58,13 @@ jobs:
           cache: npm
       - run: npm ci --legacy-peer-deps
       - run: npm run build:lib
-      - name: Check bundle size
+      - name: Verify dist structure
         run: |
+          echo "=== Checking dist output ==="
+          test -f dist/es/components/index.mjs || { echo "::error::Missing dist/es/components/index.mjs"; exit 1; }
+          test -f dist/cjs/components/index.cjs || { echo "::error::Missing dist/cjs/components/index.cjs"; exit 1; }
+          echo "ESM entry: $(ls -la dist/es/components/index.mjs)"
+          echo "CJS entry: $(ls -la dist/cjs/components/index.cjs)"
           TOTAL=$(du -sk dist/ | cut -f1)
           echo "Total dist size: ${TOTAL}KB"
           if [ "$TOTAL" -gt 2048 ]; then
