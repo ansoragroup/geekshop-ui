@@ -100,23 +100,75 @@ Hover over the boxes to see each timing in action:
 
 <SubTitle>Animate</SubTitle>
 
-| Scenario | Example | Token |
-|---|---|---|
-| State changes | Button hover, checkbox toggle, switch flip | `$transition-fast` |
-| Overlays appearing | BottomSheet slide-up, Popup fade-in, Dialog scale-in | `$transition-normal` or `$transition-slow` |
-| User feedback | Button press scale, cart count badge bounce | `$transition-spring` |
-| Content transitions | Tab content fade, accordion expand/collapse | `$transition-normal` |
-| Loading indicators | Skeleton shimmer, Loading spinner rotation | Custom keyframes |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Scenario</th>
+      <th style={{ padding: '8px 12px' }}>Example</th>
+      <th style={{ padding: '8px 12px' }}>Token</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>State changes</td>
+      <td style={{ padding: '8px 12px' }}>Button hover, checkbox toggle, switch flip</td>
+      <td style={{ padding: '8px 12px' }}><code>$transition-fast</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Overlays appearing</td>
+      <td style={{ padding: '8px 12px' }}>BottomSheet slide-up, Popup fade-in, Dialog scale-in</td>
+      <td style={{ padding: '8px 12px' }}><code>$transition-normal</code> or <code>$transition-slow</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>User feedback</td>
+      <td style={{ padding: '8px 12px' }}>Button press scale, cart count badge bounce</td>
+      <td style={{ padding: '8px 12px' }}><code>$transition-spring</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Content transitions</td>
+      <td style={{ padding: '8px 12px' }}>Tab content fade, accordion expand/collapse</td>
+      <td style={{ padding: '8px 12px' }}><code>$transition-normal</code></td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Loading indicators</td>
+      <td style={{ padding: '8px 12px' }}>Skeleton shimmer, Loading spinner rotation</td>
+      <td style={{ padding: '8px 12px' }}>Custom keyframes</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>Do NOT Animate</SubTitle>
 
-| Scenario | Reason |
-|---|---|
-| Initial page render | Content should appear instantly. No entrance animations on page load. |
-| Data fetching results | New data should appear immediately. Use Skeleton for loading state instead. |
-| Layout shifts | Avoid animating content that pushes other content around. |
-| Large lists | Do not animate individual list items appearing. Use loading state. |
-| Scroll position | Never animate scroll position unless the user explicitly triggered it. |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Scenario</th>
+      <th style={{ padding: '8px 12px' }}>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Initial page render</td>
+      <td style={{ padding: '8px 12px' }}>Content should appear instantly. No entrance animations on page load.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Data fetching results</td>
+      <td style={{ padding: '8px 12px' }}>New data should appear immediately. Use Skeleton for loading state instead.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Layout shifts</td>
+      <td style={{ padding: '8px 12px' }}>Avoid animating content that pushes other content around.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Large lists</td>
+      <td style={{ padding: '8px 12px' }}>Do not animate individual list items appearing. Use loading state.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Scroll position</td>
+      <td style={{ padding: '8px 12px' }}>Never animate scroll position unless the user explicitly triggered it.</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -263,17 +315,62 @@ The library applies this globally:
 
 **What changes with reduced motion enabled:**
 
-| Component | Normal Behavior | Reduced Motion |
-|---|---|---|
-| BottomSheet | Slides up with animation | Appears/disappears instantly |
-| Popup / Dialog | Fades in with scale | Appears/disappears instantly |
-| Toast | Slides in from top | Appears/disappears instantly |
-| Button | Scale feedback on press | No visual feedback on press |
-| Loading spinner | Rotates continuously | Static indicator |
-| Skeleton shimmer | Gradient animation | Static gray background |
-| CountdownTimer | Digit flip animation | Instant digit change |
-| Swipe | Smooth drag transition | Instant position change |
-| PullToRefresh | Pull-down animation | Instant state change |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Component</th>
+      <th style={{ padding: '8px 12px' }}>Normal Behavior</th>
+      <th style={{ padding: '8px 12px' }}>Reduced Motion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>BottomSheet</td>
+      <td style={{ padding: '8px 12px' }}>Slides up with animation</td>
+      <td style={{ padding: '8px 12px' }}>Appears/disappears instantly</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Popup / Dialog</td>
+      <td style={{ padding: '8px 12px' }}>Fades in with scale</td>
+      <td style={{ padding: '8px 12px' }}>Appears/disappears instantly</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Toast</td>
+      <td style={{ padding: '8px 12px' }}>Slides in from top</td>
+      <td style={{ padding: '8px 12px' }}>Appears/disappears instantly</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Button</td>
+      <td style={{ padding: '8px 12px' }}>Scale feedback on press</td>
+      <td style={{ padding: '8px 12px' }}>No visual feedback on press</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Loading spinner</td>
+      <td style={{ padding: '8px 12px' }}>Rotates continuously</td>
+      <td style={{ padding: '8px 12px' }}>Static indicator</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Skeleton shimmer</td>
+      <td style={{ padding: '8px 12px' }}>Gradient animation</td>
+      <td style={{ padding: '8px 12px' }}>Static gray background</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>CountdownTimer</td>
+      <td style={{ padding: '8px 12px' }}>Digit flip animation</td>
+      <td style={{ padding: '8px 12px' }}>Instant digit change</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Swipe</td>
+      <td style={{ padding: '8px 12px' }}>Smooth drag transition</td>
+      <td style={{ padding: '8px 12px' }}>Instant position change</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>PullToRefresh</td>
+      <td style={{ padding: '8px 12px' }}>Pull-down animation</td>
+      <td style={{ padding: '8px 12px' }}>Instant state change</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -318,9 +415,39 @@ Import transition tokens from the theme:
 
 ### Token Reference
 
-| SCSS Variable | Value | Easing | Duration |
-|---|---|---|---|
-| `$transition-fast` | `0.15s ease` | ease | 150ms |
-| `$transition-normal` | `0.25s ease` | ease | 250ms |
-| `$transition-slow` | `0.35s ease` | ease | 350ms |
-| `$transition-spring` | `0.3s cubic-bezier(0.34, 1.56, 0.64, 1)` | spring (overshoot) | 300ms |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>SCSS Variable</th>
+      <th style={{ padding: '8px 12px' }}>Value</th>
+      <th style={{ padding: '8px 12px' }}>Easing</th>
+      <th style={{ padding: '8px 12px' }}>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>$transition-fast</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0.15s ease</code></td>
+      <td style={{ padding: '8px 12px' }}>ease</td>
+      <td style={{ padding: '8px 12px' }}>150ms</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>$transition-normal</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0.25s ease</code></td>
+      <td style={{ padding: '8px 12px' }}>ease</td>
+      <td style={{ padding: '8px 12px' }}>250ms</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>$transition-slow</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0.35s ease</code></td>
+      <td style={{ padding: '8px 12px' }}>ease</td>
+      <td style={{ padding: '8px 12px' }}>350ms</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>$transition-spring</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0.3s cubic-bezier(0.34, 1.56, 0.64, 1)</code></td>
+      <td style={{ padding: '8px 12px' }}>spring (overshoot)</td>
+      <td style={{ padding: '8px 12px' }}>300ms</td>
+    </tr>
+  </tbody>
+</table>

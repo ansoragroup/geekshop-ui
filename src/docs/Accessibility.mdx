@@ -98,48 +98,184 @@ Every interactive component supports keyboard operation. Here is a reference of 
 
 <SubTitle>Buttons & Clickable Elements</SubTitle>
 
-| Component | Key | Action |
-|---|---|---|
-| Button | `Enter`, `Space` | Activate |
-| ProductCard | `Enter` | Navigate to product |
-| DealCard | `Enter` | Navigate to deal |
-| CouponCard | `Enter`, `Space` | Copy/use coupon |
-| CartItem | `Enter` on swipe actions | Delete/favorite |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Component</th>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Button</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code>, <code>Space</code></td>
+      <td style={{ padding: '8px 12px' }}>Activate</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>ProductCard</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code></td>
+      <td style={{ padding: '8px 12px' }}>Navigate to product</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>DealCard</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code></td>
+      <td style={{ padding: '8px 12px' }}>Navigate to deal</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>CouponCard</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code>, <code>Space</code></td>
+      <td style={{ padding: '8px 12px' }}>Copy/use coupon</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>CartItem</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code> on swipe actions</td>
+      <td style={{ padding: '8px 12px' }}>Delete/favorite</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>Form Controls</SubTitle>
 
-| Component | Key | Action |
-|---|---|---|
-| Input | Standard text input keys | Type, select, copy/paste |
-| TextArea | Standard text input keys | Multi-line editing |
-| Checkbox | `Space` | Toggle checked state |
-| Radio | `Space` | Select option |
-| Switch | `Space` | Toggle on/off |
-| QuantityStepper | `Enter`/`Space` on +/- | Increment/decrement |
-| Rating | `Enter`/`Space` on star | Set rating |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Component</th>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Input</td>
+      <td style={{ padding: '8px 12px' }}>Standard text input keys</td>
+      <td style={{ padding: '8px 12px' }}>Type, select, copy/paste</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>TextArea</td>
+      <td style={{ padding: '8px 12px' }}>Standard text input keys</td>
+      <td style={{ padding: '8px 12px' }}>Multi-line editing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Checkbox</td>
+      <td style={{ padding: '8px 12px' }}><code>Space</code></td>
+      <td style={{ padding: '8px 12px' }}>Toggle checked state</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Radio</td>
+      <td style={{ padding: '8px 12px' }}><code>Space</code></td>
+      <td style={{ padding: '8px 12px' }}>Select option</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Switch</td>
+      <td style={{ padding: '8px 12px' }}><code>Space</code></td>
+      <td style={{ padding: '8px 12px' }}>Toggle on/off</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>QuantityStepper</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code>/<code>Space</code> on +/-</td>
+      <td style={{ padding: '8px 12px' }}>Increment/decrement</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Rating</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code>/<code>Space</code> on star</td>
+      <td style={{ padding: '8px 12px' }}>Set rating</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>Navigation</SubTitle>
 
-| Component | Key | Action |
-|---|---|---|
-| TabBar | `Tab` between items | Navigate tabs |
-| TabFilter | `Tab` between filters | Navigate filters |
-| FilterPanel | `Tab` through options | Navigate filter options |
-| CategorySidebar | `Tab` through categories | Navigate categories |
-| SearchBar | `Enter` | Submit search |
-| SearchBar | `Escape` | Clear input |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Component</th>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>TabBar</td>
+      <td style={{ padding: '8px 12px' }}><code>Tab</code> between items</td>
+      <td style={{ padding: '8px 12px' }}>Navigate tabs</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>TabFilter</td>
+      <td style={{ padding: '8px 12px' }}><code>Tab</code> between filters</td>
+      <td style={{ padding: '8px 12px' }}>Navigate filters</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>FilterPanel</td>
+      <td style={{ padding: '8px 12px' }}><code>Tab</code> through options</td>
+      <td style={{ padding: '8px 12px' }}>Navigate filter options</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>CategorySidebar</td>
+      <td style={{ padding: '8px 12px' }}><code>Tab</code> through categories</td>
+      <td style={{ padding: '8px 12px' }}>Navigate categories</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>SearchBar</td>
+      <td style={{ padding: '8px 12px' }}><code>Enter</code></td>
+      <td style={{ padding: '8px 12px' }}>Submit search</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>SearchBar</td>
+      <td style={{ padding: '8px 12px' }}><code>Escape</code></td>
+      <td style={{ padding: '8px 12px' }}>Clear input</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>Overlays</SubTitle>
 
-| Component | Key | Action |
-|---|---|---|
-| Popup | `Escape` | Close popup |
-| Dialog | `Escape` | Close dialog |
-| BottomSheet | `Escape` | Close sheet |
-| QuickBuyPopup | `Escape` | Close popup |
-| Toast | Auto-dismiss | No keyboard action needed |
-| All overlays | `Tab` | Cycle through focusable elements (trapped) |
-| All overlays | `Shift+Tab` | Reverse cycle (trapped) |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Component</th>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Popup</td>
+      <td style={{ padding: '8px 12px' }}><code>Escape</code></td>
+      <td style={{ padding: '8px 12px' }}>Close popup</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Dialog</td>
+      <td style={{ padding: '8px 12px' }}><code>Escape</code></td>
+      <td style={{ padding: '8px 12px' }}>Close dialog</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>BottomSheet</td>
+      <td style={{ padding: '8px 12px' }}><code>Escape</code></td>
+      <td style={{ padding: '8px 12px' }}>Close sheet</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>QuickBuyPopup</td>
+      <td style={{ padding: '8px 12px' }}><code>Escape</code></td>
+      <td style={{ padding: '8px 12px' }}>Close popup</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Toast</td>
+      <td style={{ padding: '8px 12px' }}>Auto-dismiss</td>
+      <td style={{ padding: '8px 12px' }}>No keyboard action needed</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>All overlays</td>
+      <td style={{ padding: '8px 12px' }}><code>Tab</code></td>
+      <td style={{ padding: '8px 12px' }}>Cycle through focusable elements (trapped)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>All overlays</td>
+      <td style={{ padding: '8px 12px' }}><code>Shift+Tab</code></td>
+      <td style={{ padding: '8px 12px' }}>Reverse cycle (trapped)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -149,36 +285,132 @@ The library uses these ARIA attributes consistently:
 
 <SubTitle>Roles</SubTitle>
 
-| Attribute | Components | Purpose |
-|---|---|---|
-| `role="button"` | Clickable divs (ProductCard, DealCard, CouponCard) | Indicates the element is interactive |
-| `role="dialog"` | Popup, Dialog | Identifies modal dialogs |
-| `role="alert"` | Toast | Announces notifications to screen readers |
-| `role="tablist"` | TabBar, TabFilter | Groups tab navigation |
-| `role="tab"` | Individual tabs | Identifies each tab |
-| `role="navigation"` | NavBar, AppBar | Identifies navigation regions |
-| `role="search"` | SearchBar | Identifies search functionality |
-| `role="img"` | Rating (star display) | Indicates decorative images |
-| `role="progressbar"` | Loading | Indicates loading progress |
-| `role="list"` / `role="listitem"` | FilterPanel options, Steps | List semantics |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Attribute</th>
+      <th style={{ padding: '8px 12px' }}>Components</th>
+      <th style={{ padding: '8px 12px' }}>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="button"</code></td>
+      <td style={{ padding: '8px 12px' }}>Clickable divs (ProductCard, DealCard, CouponCard)</td>
+      <td style={{ padding: '8px 12px' }}>Indicates the element is interactive</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="dialog"</code></td>
+      <td style={{ padding: '8px 12px' }}>Popup, Dialog</td>
+      <td style={{ padding: '8px 12px' }}>Identifies modal dialogs</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="alert"</code></td>
+      <td style={{ padding: '8px 12px' }}>Toast</td>
+      <td style={{ padding: '8px 12px' }}>Announces notifications to screen readers</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="tablist"</code></td>
+      <td style={{ padding: '8px 12px' }}>TabBar, TabFilter</td>
+      <td style={{ padding: '8px 12px' }}>Groups tab navigation</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="tab"</code></td>
+      <td style={{ padding: '8px 12px' }}>Individual tabs</td>
+      <td style={{ padding: '8px 12px' }}>Identifies each tab</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="navigation"</code></td>
+      <td style={{ padding: '8px 12px' }}>NavBar, AppBar</td>
+      <td style={{ padding: '8px 12px' }}>Identifies navigation regions</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="search"</code></td>
+      <td style={{ padding: '8px 12px' }}>SearchBar</td>
+      <td style={{ padding: '8px 12px' }}>Identifies search functionality</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="img"</code></td>
+      <td style={{ padding: '8px 12px' }}>Rating (star display)</td>
+      <td style={{ padding: '8px 12px' }}>Indicates decorative images</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="progressbar"</code></td>
+      <td style={{ padding: '8px 12px' }}>Loading</td>
+      <td style={{ padding: '8px 12px' }}>Indicates loading progress</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>role="list"</code> / <code>role="listitem"</code></td>
+      <td style={{ padding: '8px 12px' }}>FilterPanel options, Steps</td>
+      <td style={{ padding: '8px 12px' }}>List semantics</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>States & Properties</SubTitle>
 
-| Attribute | Usage |
-|---|---|
-| `aria-label` | All interactive elements that lack visible text (icon buttons, close buttons) |
-| `aria-modal="true"` | Popup, Dialog, BottomSheet, QuickBuyPopup |
-| `aria-live="assertive"` | Toast notifications |
-| `aria-checked` | Checkbox, Switch, Radio |
-| `aria-selected` | TabBar items, TabFilter items, SkuSelector options |
-| `aria-expanded` | FilterPanel, BottomSheet |
-| `aria-disabled` | Disabled buttons, inputs |
-| `aria-invalid` | Input, TextArea (in error state) |
-| `aria-describedby` | Form inputs linked to error messages |
-| `aria-hidden="true"` | Decorative elements, overlay backdrops |
-| `aria-valuemin/max/now` | QuantityStepper, Rating |
-| `tabIndex={0}` | Clickable non-button elements |
-| `tabIndex={-1}` | Elements removed from tab order (hidden content) |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Attribute</th>
+      <th style={{ padding: '8px 12px' }}>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-label</code></td>
+      <td style={{ padding: '8px 12px' }}>All interactive elements that lack visible text (icon buttons, close buttons)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-modal="true"</code></td>
+      <td style={{ padding: '8px 12px' }}>Popup, Dialog, BottomSheet, QuickBuyPopup</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-live="assertive"</code></td>
+      <td style={{ padding: '8px 12px' }}>Toast notifications</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-checked</code></td>
+      <td style={{ padding: '8px 12px' }}>Checkbox, Switch, Radio</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-selected</code></td>
+      <td style={{ padding: '8px 12px' }}>TabBar items, TabFilter items, SkuSelector options</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-expanded</code></td>
+      <td style={{ padding: '8px 12px' }}>FilterPanel, BottomSheet</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-disabled</code></td>
+      <td style={{ padding: '8px 12px' }}>Disabled buttons, inputs</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-invalid</code></td>
+      <td style={{ padding: '8px 12px' }}>Input, TextArea (in error state)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-describedby</code></td>
+      <td style={{ padding: '8px 12px' }}>Form inputs linked to error messages</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-hidden="true"</code></td>
+      <td style={{ padding: '8px 12px' }}>Decorative elements, overlay backdrops</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>aria-valuemin/max/now</code></td>
+      <td style={{ padding: '8px 12px' }}>QuantityStepper, Rating</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>tabIndex={'{0}'}</code></td>
+      <td style={{ padding: '8px 12px' }}>Clickable non-button elements</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>tabIndex={'{-1}'}</code></td>
+      <td style={{ padding: '8px 12px' }}>Elements removed from tab order (hidden content)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -265,14 +497,54 @@ Decorative elements (icons next to labels, background patterns) use `aria-hidden
 
 All text colors meet WCAG AA contrast ratios against their backgrounds:
 
-| Text Color | Background | Ratio | Passes |
-|---|---|---|---|
-| `#1A1A1A` (primary) | `#FFFFFF` (card) | 16.3:1 | AA + AAA |
-| `#666666` (secondary) | `#FFFFFF` (card) | 5.7:1 | AA |
-| `#999999` (tertiary) | `#FFFFFF` (card) | 3.0:1 | AA (large text only) |
-| `#FFFFFF` (white) | `#FF5000` (primary) | 3.4:1 | AA (large text) |
-| `#FF0000` (price) | `#FFFFFF` (card) | 4.0:1 | AA (large text, bold) |
-| `#07C160` (success) | `#FFFFFF` (card) | 4.2:1 | AA (large text) |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Text Color</th>
+      <th style={{ padding: '8px 12px' }}>Background</th>
+      <th style={{ padding: '8px 12px' }}>Ratio</th>
+      <th style={{ padding: '8px 12px' }}>Passes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>#1A1A1A</code> (primary)</td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code> (card)</td>
+      <td style={{ padding: '8px 12px' }}>16.3:1</td>
+      <td style={{ padding: '8px 12px' }}>AA + AAA</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>#666666</code> (secondary)</td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code> (card)</td>
+      <td style={{ padding: '8px 12px' }}>5.7:1</td>
+      <td style={{ padding: '8px 12px' }}>AA</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>#999999</code> (tertiary)</td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code> (card)</td>
+      <td style={{ padding: '8px 12px' }}>3.0:1</td>
+      <td style={{ padding: '8px 12px' }}>AA (large text only)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code> (white)</td>
+      <td style={{ padding: '8px 12px' }}><code>#FF5000</code> (primary)</td>
+      <td style={{ padding: '8px 12px' }}>3.4:1</td>
+      <td style={{ padding: '8px 12px' }}>AA (large text)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>#FF0000</code> (price)</td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code> (card)</td>
+      <td style={{ padding: '8px 12px' }}>4.0:1</td>
+      <td style={{ padding: '8px 12px' }}>AA (large text, bold)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>#07C160</code> (success)</td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code> (card)</td>
+      <td style={{ padding: '8px 12px' }}>4.2:1</td>
+      <td style={{ padding: '8px 12px' }}>AA (large text)</td>
+    </tr>
+  </tbody>
+</table>
 
 **Note:** Tertiary text (`#999999`) only passes for large text (18px+ or 14px+ bold). It is used for captions and metadata that are always rendered at small sizes alongside primary text, providing visual hierarchy without being the sole information source.
 

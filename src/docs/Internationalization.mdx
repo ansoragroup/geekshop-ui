@@ -90,12 +90,42 @@ All components inside the provider will render in the specified locale and forma
 
 Currency configuration details:
 
-| Currency | Decimals | Grouping | Symbol Position |
-|---|---|---|---|
-| UZS | 0 | space (1 000 000) | suffix |
-| USD | 2 | comma (1,000.00) | prefix |
-| RUB | 0 | space (1 000) | suffix |
-| EUR | 2 | period (1.000,00) | prefix |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Currency</th>
+      <th style={{ padding: '8px 12px' }}>Decimals</th>
+      <th style={{ padding: '8px 12px' }}>Grouping</th>
+      <th style={{ padding: '8px 12px' }}>Symbol Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>UZS</td>
+      <td style={{ padding: '8px 12px' }}>0</td>
+      <td style={{ padding: '8px 12px' }}>space (1 000 000)</td>
+      <td style={{ padding: '8px 12px' }}>suffix</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>USD</td>
+      <td style={{ padding: '8px 12px' }}>2</td>
+      <td style={{ padding: '8px 12px' }}>comma (1,000.00)</td>
+      <td style={{ padding: '8px 12px' }}>prefix</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>RUB</td>
+      <td style={{ padding: '8px 12px' }}>0</td>
+      <td style={{ padding: '8px 12px' }}>space (1 000)</td>
+      <td style={{ padding: '8px 12px' }}>suffix</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>EUR</td>
+      <td style={{ padding: '8px 12px' }}>2</td>
+      <td style={{ padding: '8px 12px' }}>period (1.000,00)</td>
+      <td style={{ padding: '8px 12px' }}>prefix</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -313,90 +343,316 @@ All translation keys are grouped by namespace. The table below shows the English
 
 <SubTitle>common.*</SubTitle>
 
-| Key | English |
-|---|---|
-| `common.close` | Close |
-| `common.cancel` | Cancel |
-| `common.delete` | Delete |
-| `common.edit` | Edit |
-| `common.save` | Save |
-| `common.back` | Back |
-| `common.viewAll` | View all |
-| `common.apply` | Apply |
-| `common.reset` | Reset |
-| `common.select` | Select |
-| `common.confirm` | Confirm |
-| `common.search` | Search |
-| `common.retry` | Retry |
-| `common.loading` | Loading... |
-| `common.share` | Share |
-| `common.noMoreItems` | No more items |
-| `common.loadFailed` | Failed to load |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.close</code></td>
+      <td style={{ padding: '8px 12px' }}>Close</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.cancel</code></td>
+      <td style={{ padding: '8px 12px' }}>Cancel</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.delete</code></td>
+      <td style={{ padding: '8px 12px' }}>Delete</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.edit</code></td>
+      <td style={{ padding: '8px 12px' }}>Edit</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.save</code></td>
+      <td style={{ padding: '8px 12px' }}>Save</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.back</code></td>
+      <td style={{ padding: '8px 12px' }}>Back</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.viewAll</code></td>
+      <td style={{ padding: '8px 12px' }}>View all</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.apply</code></td>
+      <td style={{ padding: '8px 12px' }}>Apply</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.reset</code></td>
+      <td style={{ padding: '8px 12px' }}>Reset</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.select</code></td>
+      <td style={{ padding: '8px 12px' }}>Select</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.confirm</code></td>
+      <td style={{ padding: '8px 12px' }}>Confirm</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.search</code></td>
+      <td style={{ padding: '8px 12px' }}>Search</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.retry</code></td>
+      <td style={{ padding: '8px 12px' }}>Retry</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.loading</code></td>
+      <td style={{ padding: '8px 12px' }}>Loading...</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.share</code></td>
+      <td style={{ padding: '8px 12px' }}>Share</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.noMoreItems</code></td>
+      <td style={{ padding: '8px 12px' }}>No more items</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>common.loadFailed</code></td>
+      <td style={{ padding: '8px 12px' }}>Failed to load</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>commerce.*</SubTitle>
 
-| Key | English |
-|---|---|
-| `commerce.addToCart` | Add to cart |
-| `commerce.buyNow` | Buy now |
-| `commerce.cart` | Cart |
-| `commerce.contact` | Contact |
-| `commerce.favorite` | Favorite |
-| `commerce.addToFavorites` | Add to favorites |
-| `commerce.removeFromFavorites` | Remove from favorites |
-| `commerce.quantity` | Quantity |
-| `commerce.decrease` | Decrease |
-| `commerce.increase` | Increase |
-| `commerce.selected` | Selected: {count} |
-| `commerce.inStock` | {count} in stock |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.addToCart</code></td>
+      <td style={{ padding: '8px 12px' }}>Add to cart</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.buyNow</code></td>
+      <td style={{ padding: '8px 12px' }}>Buy now</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.cart</code></td>
+      <td style={{ padding: '8px 12px' }}>Cart</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.contact</code></td>
+      <td style={{ padding: '8px 12px' }}>Contact</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.favorite</code></td>
+      <td style={{ padding: '8px 12px' }}>Favorite</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.addToFavorites</code></td>
+      <td style={{ padding: '8px 12px' }}>Add to favorites</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.removeFromFavorites</code></td>
+      <td style={{ padding: '8px 12px' }}>Remove from favorites</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.quantity</code></td>
+      <td style={{ padding: '8px 12px' }}>Quantity</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.decrease</code></td>
+      <td style={{ padding: '8px 12px' }}>Decrease</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.increase</code></td>
+      <td style={{ padding: '8px 12px' }}>Increase</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.selected</code></td>
+      <td style={{ padding: '8px 12px' }}>{'Selected: {count}'}</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>commerce.inStock</code></td>
+      <td style={{ padding: '8px 12px' }}>{'{count} in stock'}</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>product.*</SubTitle>
 
-| Key | English |
-|---|---|
-| `product.variant` | Variant |
-| `product.installment` | {price}/mo |
-| `product.description` | Description |
-| `product.specifications` | Specifications |
-| `product.reviews` | Reviews |
-| `product.inStock` | In Stock |
-| `product.outOfStock` | Out of Stock |
-| `product.selectVariant` | Select Variant |
-| `product.savings` | Save: {amount} |
-| `product.soldPercent` | {percent}% sold |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.variant</code></td>
+      <td style={{ padding: '8px 12px' }}>Variant</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.installment</code></td>
+      <td style={{ padding: '8px 12px' }}>{'{price}/mo'}</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.description</code></td>
+      <td style={{ padding: '8px 12px' }}>Description</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.specifications</code></td>
+      <td style={{ padding: '8px 12px' }}>Specifications</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.reviews</code></td>
+      <td style={{ padding: '8px 12px' }}>Reviews</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.inStock</code></td>
+      <td style={{ padding: '8px 12px' }}>In Stock</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.outOfStock</code></td>
+      <td style={{ padding: '8px 12px' }}>Out of Stock</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.selectVariant</code></td>
+      <td style={{ padding: '8px 12px' }}>Select Variant</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.savings</code></td>
+      <td style={{ padding: '8px 12px' }}>{'Save: {amount}'}</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>product.soldPercent</code></td>
+      <td style={{ padding: '8px 12px' }}>{'{percent}% sold'}</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>order.*</SubTitle>
 
-| Key | English |
-|---|---|
-| `order.id` | Order #{id} |
-| `order.total` | Total ({count} items): |
-| `order.statusPending` | Pending payment |
-| `order.statusShipping` | Shipping |
-| `order.statusReview` | Review |
-| `order.track` | Track |
-| `order.details` | Details |
-| `order.pay` | Pay |
-| `order.reorder` | Reorder |
-| `order.cancel` | Cancel Order |
-| `order.confirmed` | Order Confirmed! |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.id</code></td>
+      <td style={{ padding: '8px 12px' }}>{'Order #{id}'}</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.total</code></td>
+      <td style={{ padding: '8px 12px' }}>{'Total ({count} items):'}</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.statusPending</code></td>
+      <td style={{ padding: '8px 12px' }}>Pending payment</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.statusShipping</code></td>
+      <td style={{ padding: '8px 12px' }}>Shipping</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.statusReview</code></td>
+      <td style={{ padding: '8px 12px' }}>Review</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.track</code></td>
+      <td style={{ padding: '8px 12px' }}>Track</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.details</code></td>
+      <td style={{ padding: '8px 12px' }}>Details</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.pay</code></td>
+      <td style={{ padding: '8px 12px' }}>Pay</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.reorder</code></td>
+      <td style={{ padding: '8px 12px' }}>Reorder</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.cancel</code></td>
+      <td style={{ padding: '8px 12px' }}>Cancel Order</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>order.confirmed</code></td>
+      <td style={{ padding: '8px 12px' }}>Order Confirmed!</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>page.*</SubTitle>
 
-| Key | English |
-|---|---|
-| `page.home` | Home |
-| `page.cart` | Cart |
-| `page.checkout` | Checkout |
-| `page.orders` | Orders |
-| `page.profile` | Profile |
-| `page.settings` | Settings |
-| `page.search` | Search |
-| `page.categories` | Categories |
-| `page.wishlist` | Wishlist |
-| `page.notifications` | Notifications |
-| `page.addresses` | Addresses |
-| `page.paymentMethods` | Payment Methods |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Key</th>
+      <th style={{ padding: '8px 12px' }}>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.home</code></td>
+      <td style={{ padding: '8px 12px' }}>Home</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.cart</code></td>
+      <td style={{ padding: '8px 12px' }}>Cart</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.checkout</code></td>
+      <td style={{ padding: '8px 12px' }}>Checkout</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.orders</code></td>
+      <td style={{ padding: '8px 12px' }}>Orders</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.profile</code></td>
+      <td style={{ padding: '8px 12px' }}>Profile</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.settings</code></td>
+      <td style={{ padding: '8px 12px' }}>Settings</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.search</code></td>
+      <td style={{ padding: '8px 12px' }}>Search</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.categories</code></td>
+      <td style={{ padding: '8px 12px' }}>Categories</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.wishlist</code></td>
+      <td style={{ padding: '8px 12px' }}>Wishlist</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.notifications</code></td>
+      <td style={{ padding: '8px 12px' }}>Notifications</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.addresses</code></td>
+      <td style={{ padding: '8px 12px' }}>Addresses</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>page.paymentMethods</code></td>
+      <td style={{ padding: '8px 12px' }}>Payment Methods</td>
+    </tr>
+  </tbody>
+</table>
 
 <SubTitle>Other Namespaces</SubTitle>
 
@@ -408,10 +664,45 @@ See the full translation files at `src/i18n/translations/en.ts`, `uz.ts`, and `r
 
 <SectionTitle>GeekShopProvider Props</SectionTitle>
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `locale` | `'uz' \| 'ru' \| 'en'` | `'uz'` | Display language |
-| `currency` | `'UZS' \| 'USD' \| 'RUB' \| 'EUR'` | `'UZS'` | Price formatting currency |
-| `theme` | `'light' \| 'dark'` | - | Force light or dark mode |
-| `translations` | `Partial<Record<Locale, TranslationDictionary>>` | - | Custom translation overrides |
-| `children` | `ReactNode` | - | Application content |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Prop</th>
+      <th style={{ padding: '8px 12px' }}>Type</th>
+      <th style={{ padding: '8px 12px' }}>Default</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>locale</code></td>
+      <td style={{ padding: '8px 12px' }}><code>{"'uz' | 'ru' | 'en'"}</code></td>
+      <td style={{ padding: '8px 12px' }}><code>'uz'</code></td>
+      <td style={{ padding: '8px 12px' }}>Display language</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>currency</code></td>
+      <td style={{ padding: '8px 12px' }}><code>{"'UZS' | 'USD' | 'RUB' | 'EUR'"}</code></td>
+      <td style={{ padding: '8px 12px' }}><code>'UZS'</code></td>
+      <td style={{ padding: '8px 12px' }}>Price formatting currency</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>theme</code></td>
+      <td style={{ padding: '8px 12px' }}><code>{"'light' | 'dark'"}</code></td>
+      <td style={{ padding: '8px 12px' }}>-</td>
+      <td style={{ padding: '8px 12px' }}>Force light or dark mode</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>translations</code></td>
+      <td style={{ padding: '8px 12px' }}><code>{'Partial<Record<Locale, TranslationDictionary>>'}</code></td>
+      <td style={{ padding: '8px 12px' }}>-</td>
+      <td style={{ padding: '8px 12px' }}>Custom translation overrides</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>children</code></td>
+      <td style={{ padding: '8px 12px' }}><code>ReactNode</code></td>
+      <td style={{ padding: '8px 12px' }}>-</td>
+      <td style={{ padding: '8px 12px' }}>Application content</td>
+    </tr>
+  </tbody>
+</table>

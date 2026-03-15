@@ -30,71 +30,277 @@ Components reference these custom properties using `var(--gs-*)`, making them ov
 
 ### Colors
 
-| Variable | Default (Light) | Description |
-|---|---|---|
-| `--gs-color-primary` | `#FF5000` | Brand primary color |
-| `--gs-color-primary-light` | `#FF7A33` | Lighter primary shade |
-| `--gs-color-primary-dark` | `#E64800` | Darker primary shade |
-| `--gs-color-primary-bg` | `#FFF5F0` | Primary tinted background |
-| `--gs-color-primary-gradient` | `linear-gradient(135deg, #FF5000, #FF7A33)` | Primary gradient |
-| `--gs-color-primary-gradient-header` | `linear-gradient(180deg, #FF5000, #FF8A56, #FFB088)` | Header gradient |
-| `--gs-color-price` | `#FF0000` | Price text color |
-| `--gs-color-price-dark` | `#E8380D` | Darker price variant |
-| `--gs-color-sale` | `#FF3B30` | Sale badge / discount |
-| `--gs-color-success` | `#07C160` | Success states |
-| `--gs-color-success-light` | `#E8F8EF` | Success background |
-| `--gs-color-warning` | `#FFA726` | Warning states |
-| `--gs-color-warning-light` | `#FFF8E6` | Warning background |
-| `--gs-color-error` | `#FF3B30` | Error states |
-| `--gs-color-info` | `#1890FF` | Info states |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Variable</th>
+      <th style={{ padding: '8px 12px' }}>Default (Light)</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-primary</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF5000</code></td>
+      <td style={{ padding: '8px 12px' }}>Brand primary color</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-primary-light</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF7A33</code></td>
+      <td style={{ padding: '8px 12px' }}>Lighter primary shade</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-primary-dark</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#E64800</code></td>
+      <td style={{ padding: '8px 12px' }}>Darker primary shade</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-primary-bg</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFF5F0</code></td>
+      <td style={{ padding: '8px 12px' }}>Primary tinted background</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-primary-gradient</code></td>
+      <td style={{ padding: '8px 12px' }}><code>linear-gradient(135deg, #FF5000, #FF7A33)</code></td>
+      <td style={{ padding: '8px 12px' }}>Primary gradient</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-primary-gradient-header</code></td>
+      <td style={{ padding: '8px 12px' }}><code>linear-gradient(180deg, #FF5000, #FF8A56, #FFB088)</code></td>
+      <td style={{ padding: '8px 12px' }}>Header gradient</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-price</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF0000</code></td>
+      <td style={{ padding: '8px 12px' }}>Price text color</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-price-dark</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#E8380D</code></td>
+      <td style={{ padding: '8px 12px' }}>Darker price variant</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-sale</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF3B30</code></td>
+      <td style={{ padding: '8px 12px' }}>Sale badge / discount</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-success</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#07C160</code></td>
+      <td style={{ padding: '8px 12px' }}>Success states</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-success-light</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#E8F8EF</code></td>
+      <td style={{ padding: '8px 12px' }}>Success background</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-warning</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFA726</code></td>
+      <td style={{ padding: '8px 12px' }}>Warning states</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-warning-light</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFF8E6</code></td>
+      <td style={{ padding: '8px 12px' }}>Warning background</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-error</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF3B30</code></td>
+      <td style={{ padding: '8px 12px' }}>Error states</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-color-info</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#1890FF</code></td>
+      <td style={{ padding: '8px 12px' }}>Info states</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Text
 
-| Variable | Default (Light) | Description |
-|---|---|---|
-| `--gs-text-primary` | `#1A1A1A` | Primary text |
-| `--gs-text-secondary` | `#666666` | Secondary / helper text |
-| `--gs-text-tertiary` | `#999999` | Tertiary / disabled text |
-| `--gs-text-placeholder` | `#CCCCCC` | Input placeholders |
-| `--gs-text-white` | `#FFFFFF` | Text on dark backgrounds |
-| `--gs-text-link` | `#FF5000` | Link text |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Variable</th>
+      <th style={{ padding: '8px 12px' }}>Default (Light)</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-text-primary</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#1A1A1A</code></td>
+      <td style={{ padding: '8px 12px' }}>Primary text</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-text-secondary</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#666666</code></td>
+      <td style={{ padding: '8px 12px' }}>Secondary / helper text</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-text-tertiary</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#999999</code></td>
+      <td style={{ padding: '8px 12px' }}>Tertiary / disabled text</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-text-placeholder</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#CCCCCC</code></td>
+      <td style={{ padding: '8px 12px' }}>Input placeholders</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-text-white</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code></td>
+      <td style={{ padding: '8px 12px' }}>Text on dark backgrounds</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-text-link</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF5000</code></td>
+      <td style={{ padding: '8px 12px' }}>Link text</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Backgrounds
 
-| Variable | Default (Light) | Description |
-|---|---|---|
-| `--gs-bg-page` | `#F5F5F5` | Page background |
-| `--gs-bg-white` | `#FFFFFF` | White surfaces |
-| `--gs-bg-card` | `#FFFFFF` | Card backgrounds |
-| `--gs-bg-overlay` | `rgba(0,0,0,0.5)` | Modal overlay |
-| `--gs-bg-skeleton` | `#F0F0F0` | Skeleton loading bg |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Variable</th>
+      <th style={{ padding: '8px 12px' }}>Default (Light)</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-bg-page</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#F5F5F5</code></td>
+      <td style={{ padding: '8px 12px' }}>Page background</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-bg-white</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code></td>
+      <td style={{ padding: '8px 12px' }}>White surfaces</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-bg-card</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFFFFF</code></td>
+      <td style={{ padding: '8px 12px' }}>Card backgrounds</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-bg-overlay</code></td>
+      <td style={{ padding: '8px 12px' }}><code>rgba(0,0,0,0.5)</code></td>
+      <td style={{ padding: '8px 12px' }}>Modal overlay</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-bg-skeleton</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#F0F0F0</code></td>
+      <td style={{ padding: '8px 12px' }}>Skeleton loading bg</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Borders
 
-| Variable | Default (Light) | Description |
-|---|---|---|
-| `--gs-border-color` | `#EEEEEE` | Default border |
-| `--gs-border-color-light` | `#F5F5F5` | Subtle border |
-| `--gs-divider-color` | `#F0F0F0` | Divider lines |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Variable</th>
+      <th style={{ padding: '8px 12px' }}>Default (Light)</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-border-color</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#EEEEEE</code></td>
+      <td style={{ padding: '8px 12px' }}>Default border</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-border-color-light</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#F5F5F5</code></td>
+      <td style={{ padding: '8px 12px' }}>Subtle border</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-divider-color</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#F0F0F0</code></td>
+      <td style={{ padding: '8px 12px' }}>Divider lines</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Shadows
 
-| Variable | Default (Light) | Description |
-|---|---|---|
-| `--gs-shadow-sm` | `0 1px 4px rgba(0,0,0,0.04)` | Subtle card shadow |
-| `--gs-shadow-md` | `0 2px 8px rgba(0,0,0,0.06)` | Medium elevation |
-| `--gs-shadow-lg` | `0 4px 16px rgba(0,0,0,0.08)` | High elevation |
-| `--gs-shadow-xl` | `0 8px 24px rgba(0,0,0,0.12)` | Maximum elevation |
-| `--gs-shadow-bottom-bar` | `0 -2px 8px rgba(0,0,0,0.06)` | Upward shadow for bars |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Variable</th>
+      <th style={{ padding: '8px 12px' }}>Default (Light)</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-sm</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 1px 4px rgba(0,0,0,0.04)</code></td>
+      <td style={{ padding: '8px 12px' }}>Subtle card shadow</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-md</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 2px 8px rgba(0,0,0,0.06)</code></td>
+      <td style={{ padding: '8px 12px' }}>Medium elevation</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-lg</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 4px 16px rgba(0,0,0,0.08)</code></td>
+      <td style={{ padding: '8px 12px' }}>High elevation</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-xl</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 8px 24px rgba(0,0,0,0.12)</code></td>
+      <td style={{ padding: '8px 12px' }}>Maximum elevation</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-shadow-bottom-bar</code></td>
+      <td style={{ padding: '8px 12px' }}><code>0 -2px 8px rgba(0,0,0,0.06)</code></td>
+      <td style={{ padding: '8px 12px' }}>Upward shadow for bars</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Layout
 
-| Variable | Default | Description |
-|---|---|---|
-| `--gs-navbar-height` | `44px` | Navigation bar height |
-| `--gs-tabbar-height` | `50px` | Tab bar height |
-| `--gs-action-bar-height` | `56px` | Action bar height |
-| `--gs-safe-area-bottom` | `env(safe-area-inset-bottom, 0px)` | iOS safe area |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Variable</th>
+      <th style={{ padding: '8px 12px' }}>Default</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-navbar-height</code></td>
+      <td style={{ padding: '8px 12px' }}><code>44px</code></td>
+      <td style={{ padding: '8px 12px' }}>Navigation bar height</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-tabbar-height</code></td>
+      <td style={{ padding: '8px 12px' }}><code>50px</code></td>
+      <td style={{ padding: '8px 12px' }}>Tab bar height</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-action-bar-height</code></td>
+      <td style={{ padding: '8px 12px' }}><code>56px</code></td>
+      <td style={{ padding: '8px 12px' }}>Action bar height</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>--gs-safe-area-bottom</code></td>
+      <td style={{ padding: '8px 12px' }}><code>env(safe-area-inset-bottom, 0px)</code></td>
+      <td style={{ padding: '8px 12px' }}>iOS safe area</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -102,14 +308,47 @@ Components reference these custom properties using `var(--gs-*)`, making them ov
 
 The library ships with 6 predefined color themes that you can apply with a single function call:
 
-| Preset | Primary Color | Description |
-|---|---|---|
-| `default` | `#FF5000` | GeekShop Orange (baseline) |
-| `teal` | `#00CBCC` | Cyan/teal, modern tech feel |
-| `red` | `#E53935` | Classic e-commerce red |
-| `yellow` | `#FFB300` | Warm gold |
-| `green` | `#07C160` | Fresh green |
-| `monochrome` | `#1A1A1A` | Minimal black/white |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Preset</th>
+      <th style={{ padding: '8px 12px' }}>Primary Color</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>default</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FF5000</code></td>
+      <td style={{ padding: '8px 12px' }}>GeekShop Orange (baseline)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>teal</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#00CBCC</code></td>
+      <td style={{ padding: '8px 12px' }}>Cyan/teal, modern tech feel</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>red</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#E53935</code></td>
+      <td style={{ padding: '8px 12px' }}>Classic e-commerce red</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>yellow</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#FFB300</code></td>
+      <td style={{ padding: '8px 12px' }}>Warm gold</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>green</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#07C160</code></td>
+      <td style={{ padding: '8px 12px' }}>Fresh green</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>monochrome</code></td>
+      <td style={{ padding: '8px 12px' }}><code>#1A1A1A</code></td>
+      <td style={{ padding: '8px 12px' }}>Minimal black/white</td>
+    </tr>
+  </tbody>
+</table>
 
 ```tsx
 import { setThemePreset } from '@ansoragroup/ui';
@@ -311,13 +550,42 @@ Create a promo section with a different brand color:
 
 <SectionTitle>CSS-only vs SCSS Tokens</SectionTitle>
 
-| Aspect | CSS Custom Properties (`--gs-*`) | SCSS Variables (`$*`) |
-|---|---|---|
-| Themeable at runtime | Yes | No (compiled at build) |
-| Available in your CSS | Yes | No (library internal) |
-| Used for | Colors, shadows, layout dims | Spacing, radii, z-index, breakpoints, typography |
-| Dark mode aware | Yes | No |
-| Overridable by consumers | Yes | No |
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Aspect</th>
+      <th style={{ padding: '8px 12px' }}>CSS Custom Properties (<code>{'--gs-*'}</code>)</th>
+      <th style={{ padding: '8px 12px' }}>SCSS Variables (<code>{'$*'}</code>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Themeable at runtime</td>
+      <td style={{ padding: '8px 12px' }}>Yes</td>
+      <td style={{ padding: '8px 12px' }}>No (compiled at build)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Available in your CSS</td>
+      <td style={{ padding: '8px 12px' }}>Yes</td>
+      <td style={{ padding: '8px 12px' }}>No (library internal)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Used for</td>
+      <td style={{ padding: '8px 12px' }}>Colors, shadows, layout dims</td>
+      <td style={{ padding: '8px 12px' }}>Spacing, radii, z-index, breakpoints, typography</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Dark mode aware</td>
+      <td style={{ padding: '8px 12px' }}>Yes</td>
+      <td style={{ padding: '8px 12px' }}>No</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Overridable by consumers</td>
+      <td style={{ padding: '8px 12px' }}>Yes</td>
+      <td style={{ padding: '8px 12px' }}>No</td>
+    </tr>
+  </tbody>
+</table>
 
 **Rule of thumb:** If it changes with the theme (colors, shadows), it uses CSS custom properties. If it is structural and constant (spacing, radius, breakpoints), it is an SCSS variable compiled at build time.
 
