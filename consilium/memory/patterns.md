@@ -48,3 +48,13 @@
 19. **i18n-safe button pattern.** `flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;` — button fills available space, truncates only in extreme cases, never overflows container.
 
 20. **Fixed bar self-test: must pass 3 locales.** After creating/modifying any fixed bar (ActionBar, TabBar, bottom bars), switch Storybook locale toolbar to uz → ru → en and verify no truncation, no overflow, proper spacing in each.
+
+## Session 20260315 — Full Library Expansion (v0.3.0)
+
+21. **6-agent parallel wave for library expansion.** Split by domain: form components, commerce components, feedback+data-display, pages, docs, auth. Zero file conflicts. 20 components + 10 pages + 7 docs in one wave.
+
+22. **Automated i18n key audit.** `grep -roh "t('[^']*')" src/ | sort -u` extracts all used keys. `comm -23 used.txt defined.txt` finds missing. Run after every agent wave.
+
+23. **color-mix() for CSS var opacity.** `color-mix(in srgb, var(--gs-color-primary) 50%, transparent)` replaces `rgba($color-primary, 0.5)` when using CSS custom properties.
+
+24. **Reusable Table component for MDX docs.** `export const Table = ({ headers, rows }) => <table>...</table>` reduces boilerplate in large doc pages like ComponentStatus.mdx.

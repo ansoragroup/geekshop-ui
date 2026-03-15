@@ -52,3 +52,17 @@
 21. **Test i18n in ALL locales for layout.** Russian "В корзину" is 2x longer than English "Cart" — buttons that fit in English overflow in Russian. Always verify ActionBar/NavBar in uz, ru, en before shipping.
 
 22. **`text-overflow: ellipsis` is a safety net, not a design choice.** If CTA text is being truncated, the layout is wrong. Ellipsis should only trigger on extreme edge cases, not normal locales.
+
+## Session 20260315 — Full Library Expansion (v0.3.0)
+
+23. **Storybook test import path matters.** `storybook/test` (without @) is correct for Storybook 10. `@storybook/test` causes dynamic import failures. Always match existing story files' import pattern.
+
+24. **SCSS $color-* vars must use CSS custom properties for theming.** Components using `$color-primary` compile to hardcoded hex. `setThemePreset()` changes `--gs-color-primary` CSS var but components ignore it. ALL themeable colors must use `var(--gs-color-*)`.
+
+25. **rgba() with CSS vars requires color-mix().** SCSS `rgba($color-primary, 0.5)` cannot accept CSS custom properties. Convert to `color-mix(in srgb, var(--gs-color-primary) 50%, transparent)`.
+
+26. **MDX v3 tables must be JSX.** Markdown tables in MDX files near JSX blocks render as raw text. Convert ALL tables to `<table>` JSX elements. Use a reusable `<Table>` helper for large tables.
+
+27. **Full theme palettes are essential.** Only changing primary colors makes themes look half-done — price stays red, success stays green. Each theme preset needs ALL 16 semantic colors harmonized.
+
+28. **i18n key audit must happen after every agent wave.** 71 keys were missing after the 6-agent expansion wave. Automated `grep t('...')` + `comm` diff against uz.ts catches all gaps.

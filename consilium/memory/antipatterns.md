@@ -32,3 +32,11 @@
 7. **Don't forget `min-width: 0` on flex children.** Without it, flex items can't shrink below their intrinsic content width, causing the parent to overflow. This is the #1 cause of "content pushes out of container" bugs.
 
 8. **Don't assume one locale fits all.** Text lengths vary 2x across locales. "Buy" (EN) = 3 chars, "Купить" (RU) = 6 chars, "Sotib olish" (UZ) = 11 chars. Always test the longest locale.
+
+## Session 20260315 — Full Library Expansion
+
+9. **Don't use SCSS vars for themeable colors.** `$color-primary` compiles to `#FF5000` at build time. CSS custom properties `var(--gs-color-primary)` are read at runtime and respond to theme changes.
+
+10. **Don't assume markdown tables work in MDX.** MDX v3 breaks markdown tables near JSX. Always use `<table>` JSX elements in MDX files.
+
+11. **Don't ship theme presets with only primary colors.** Users see "theme broken" when price/success/warning colors don't match. Each preset needs ALL 16 semantic colors.
