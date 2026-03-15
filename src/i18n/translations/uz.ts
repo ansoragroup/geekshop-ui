@@ -473,4 +473,93 @@ export const uz: TranslationDictionary = {
   'auth.phonePlaceholder': '90 123 45 67',
   'page.login': 'Kirish',
   'page.register': "Ro'yxatdan o'tish",
+  'page.returnRequest': 'Qaytarish so\'rovi',
+  'page.refundStatus': 'Qaytarish holati',
+  'page.deliveryTracking': 'Yetkazib berishni kuzatish',
+  'page.couponCenter': 'Kuponlar markazi',
+  'page.browsingHistory': "Ko'rish tarixi",
+  'page.faq': "Ko'p so'raladigan savollar",
+  'page.flashSale': 'Chaqmoq aksiya',
+
+  // Common (new)
+  'common.continue': 'Davom etish',
+  'common.copy': 'Nusxa olish',
+  'common.currency': 'Valyuta',
+
+  // Return request
+  'return.selectItems': 'Mahsulotlarni tanlang',
+  'return.selectItemsDesc': 'Qaytarmoqchi bo\'lgan mahsulotlarni tanlang',
+  'return.selectReason': 'Sababni tanlang',
+  'return.uploadPhotos': 'Rasmlarni yuklang',
+  'return.confirm': 'Tasdiqlash',
+  'return.whyReturn': 'Qaytarish sababi nima?',
+  'return.addEvidence': 'Rasmlar va tavsif qo\'shing',
+  'return.addPhotos': 'Rasm qo\'shish',
+  'return.descriptionLabel': 'Tavsif',
+  'return.descriptionPlaceholder': 'Muammoni batafsil tasvirlab bering...',
+  'return.reviewSummary': 'So\'rovni tekshiring',
+  'return.selectedItems': 'Tanlangan mahsulotlar',
+  'return.reason': 'Sabab',
+  'return.photos': 'Rasmlar',
+  'return.photosCount': 'ta rasm',
+  'return.refundAmount': 'Qaytarish summasi',
+  'return.description': 'Tavsif',
+  'return.submit': 'So\'rov yuborish',
+
+  // Refund status
+  'refund.processing': 'So\'rov ko\'rib chiqilmoqda',
+  'refund.processingDesc': 'Qaytarish so\'rovingiz ko\'rib chiqilmoqda. Bu 1-3 ish kuni davom etishi mumkin.',
+  'refund.approved': 'Qaytarish tasdiqlandi',
+  'refund.approvedDesc': 'Qaytarish so\'rovingiz tasdiqlandi. Pullaringiz tez orada qaytariladi.',
+  'refund.refunded': 'Pullar qaytarildi',
+  'refund.refundedDesc': 'Pullar hisobingizga qaytarildi.',
+  'refund.rejected': 'Qaytarish rad etildi',
+  'refund.rejectedDesc': 'Afsuski, qaytarish so\'rovingiz rad etildi. Qo\'shimcha ma\'lumot uchun qo\'llab-quvvatlash xizmatiga murojaat qiling.',
+  'refund.amount': 'Qaytarish summasi',
+  'refund.timeline': 'Qaytarish jarayoni',
+  'refund.stepRequested': 'So\'rov yuborildi',
+  'refund.stepReviewed': 'Ko\'rib chiqildi',
+  'refund.stepApproved': 'Tasdiqlandi',
+  'refund.stepRefunded': 'Pul qaytarildi',
+  'refund.orderInfo': 'Buyurtma ma\'lumotlari',
+  'refund.method': 'Qaytarish usuli',
+  'refund.itemCount': 'Mahsulotlar soni',
+  'refund.contactSupport': 'Qo\'llab-quvvatlashga murojaat',
+
+  // Delivery tracking (additions)
+  'delivery.contactCourier': 'Kuryerga qo\'ng\'iroq',
+  'delivery.estimatedDelivery': 'Taxminiy yetkazish vaqti',
+  'delivery.mapPlaceholder': 'Xarita bu yerda ko\'rsatiladi',
+  'delivery.timeline': 'Yetkazish tarixi',
+
+  // Coupon (additions)
+  'coupon.available': 'Mavjud kuponlar',
+  'coupon.myCoupons': 'Mening kuponlarim',
+  'coupon.expired': 'Muddati tugagan',
+  'coupon.empty': 'Kuponlar topilmadi',
+  'coupon.emptyDesc': 'Hozircha mavjud kuponlar yo\'q.',
+
+  // Browsing history
+  'history.clearAll': 'Tarixni tozalash',
+  'history.empty': 'Tarix bo\'sh',
+  'history.emptyDesc': 'Siz hali hech qanday mahsulotni ko\'rmagansiz.',
+  'history.goShopping': 'Xarid qilishga o\'tish',
+
+  // FAQ
+  'faq.searchPlaceholder': 'Savollarni qidirish...',
+  'faq.noResults': 'Natija topilmadi',
+  'faq.cantFind': 'Javob topa olmadingizmi?',
+  'faq.contactSupport': 'Qo\'llab-quvvatlashga murojaat qiling',
+
+  // Flash sale
+  'flashSale.title': 'Chaqmoq aksiya',
+  'flashSale.endsIn': 'Tugashiga',
+  'flashSale.live': 'Jonli',
+  'flashSale.upcoming': 'Kutilmoqda',
+  'flashSale.upcomingDesc': 'Bu aksiya hali boshlanmagan. Boshlanishi haqida xabar olish uchun tugmani bosing.',
+  'flashSale.notifyMe': 'Xabar bering',
+
+  // Order (additions)
+  'order.date': 'Buyurtma sanasi',
+  'order.orderId': 'Buyurtma raqami',
 };
