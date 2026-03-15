@@ -463,4 +463,93 @@ export const ru: TranslationDictionary = {
   'auth.phonePlaceholder': '90 123 45 67',
   'page.login': 'Вход',
   'page.register': 'Регистрация',
+  'page.returnRequest': 'Заявка на возврат',
+  'page.refundStatus': 'Статус возврата',
+  'page.deliveryTracking': 'Отслеживание доставки',
+  'page.couponCenter': 'Центр купонов',
+  'page.browsingHistory': 'История просмотров',
+  'page.faq': 'Часто задаваемые вопросы',
+  'page.flashSale': 'Молниеносная распродажа',
+
+  // Common (new)
+  'common.continue': 'Продолжить',
+  'common.copy': 'Копировать',
+  'common.currency': 'Валюта',
+
+  // Return request
+  'return.selectItems': 'Выберите товары',
+  'return.selectItemsDesc': 'Выберите товары для возврата',
+  'return.selectReason': 'Выберите причину',
+  'return.uploadPhotos': 'Загрузите фото',
+  'return.confirm': 'Подтверждение',
+  'return.whyReturn': 'Почему хотите вернуть?',
+  'return.addEvidence': 'Добавьте фото и описание',
+  'return.addPhotos': 'Добавить фото',
+  'return.descriptionLabel': 'Описание',
+  'return.descriptionPlaceholder': 'Подробно опишите проблему...',
+  'return.reviewSummary': 'Проверьте заявку',
+  'return.selectedItems': 'Выбранные товары',
+  'return.reason': 'Причина',
+  'return.photos': 'Фотографии',
+  'return.photosCount': 'фото',
+  'return.refundAmount': 'Сумма возврата',
+  'return.description': 'Описание',
+  'return.submit': 'Отправить заявку',
+
+  // Refund status
+  'refund.processing': 'Заявка рассматривается',
+  'refund.processingDesc': 'Ваша заявка на возврат рассматривается. Это может занять 1-3 рабочих дня.',
+  'refund.approved': 'Возврат одобрен',
+  'refund.approvedDesc': 'Ваша заявка одобрена. Средства скоро будут возвращены.',
+  'refund.refunded': 'Средства возвращены',
+  'refund.refundedDesc': 'Средства возвращены на ваш счёт.',
+  'refund.rejected': 'Возврат отклонён',
+  'refund.rejectedDesc': 'К сожалению, ваша заявка отклонена. Обратитесь в поддержку для уточнения.',
+  'refund.amount': 'Сумма возврата',
+  'refund.timeline': 'Процесс возврата',
+  'refund.stepRequested': 'Заявка отправлена',
+  'refund.stepReviewed': 'Рассмотрена',
+  'refund.stepApproved': 'Одобрена',
+  'refund.stepRefunded': 'Средства возвращены',
+  'refund.orderInfo': 'Информация о заказе',
+  'refund.method': 'Способ возврата',
+  'refund.itemCount': 'Количество товаров',
+  'refund.contactSupport': 'Связаться с поддержкой',
+
+  // Delivery tracking (additions)
+  'delivery.contactCourier': 'Позвонить курьеру',
+  'delivery.estimatedDelivery': 'Ориентировочное время доставки',
+  'delivery.mapPlaceholder': 'Карта будет отображена здесь',
+  'delivery.timeline': 'История доставки',
+
+  // Coupon (additions)
+  'coupon.available': 'Доступные купоны',
+  'coupon.myCoupons': 'Мои купоны',
+  'coupon.expired': 'Истёкшие',
+  'coupon.empty': 'Купонов не найдено',
+  'coupon.emptyDesc': 'Пока нет доступных купонов.',
+
+  // Browsing history
+  'history.clearAll': 'Очистить историю',
+  'history.empty': 'История пуста',
+  'history.emptyDesc': 'Вы ещё не просматривали товары.',
+  'history.goShopping': 'Перейти к покупкам',
+
+  // FAQ
+  'faq.searchPlaceholder': 'Поиск по вопросам...',
+  'faq.noResults': 'Ничего не найдено',
+  'faq.cantFind': 'Не нашли ответ?',
+  'faq.contactSupport': 'Обратитесь в поддержку',
+
+  // Flash sale
+  'flashSale.title': 'Молниеносная распродажа',
+  'flashSale.endsIn': 'До конца',
+  'flashSale.live': 'Сейчас',
+  'flashSale.upcoming': 'Скоро',
+  'flashSale.upcomingDesc': 'Эта распродажа ещё не началась. Нажмите кнопку, чтобы получить уведомление.',
+  'flashSale.notifyMe': 'Уведомить',
+
+  // Order (additions)
+  'order.date': 'Дата заказа',
+  'order.orderId': 'Номер заказа',
 };

@@ -463,4 +463,93 @@ export const en: TranslationDictionary = {
   'auth.phonePlaceholder': '90 123 45 67',
   'page.login': 'Login',
   'page.register': 'Register',
+  'page.returnRequest': 'Return Request',
+  'page.refundStatus': 'Refund Status',
+  'page.deliveryTracking': 'Delivery Tracking',
+  'page.couponCenter': 'Coupon Center',
+  'page.browsingHistory': 'Browsing History',
+  'page.faq': 'FAQ',
+  'page.flashSale': 'Flash Sale',
+
+  // Common (new)
+  'common.continue': 'Continue',
+  'common.copy': 'Copy',
+  'common.currency': 'Currency',
+
+  // Return request
+  'return.selectItems': 'Select Items',
+  'return.selectItemsDesc': 'Select items you want to return',
+  'return.selectReason': 'Select Reason',
+  'return.uploadPhotos': 'Upload Photos',
+  'return.confirm': 'Confirm',
+  'return.whyReturn': 'Why are you returning?',
+  'return.addEvidence': 'Add photos and description',
+  'return.addPhotos': 'Add Photos',
+  'return.descriptionLabel': 'Description',
+  'return.descriptionPlaceholder': 'Describe the issue in detail...',
+  'return.reviewSummary': 'Review Your Request',
+  'return.selectedItems': 'Selected Items',
+  'return.reason': 'Reason',
+  'return.photos': 'Photos',
+  'return.photosCount': 'photos',
+  'return.refundAmount': 'Refund Amount',
+  'return.description': 'Description',
+  'return.submit': 'Submit Request',
+
+  // Refund status
+  'refund.processing': 'Request Under Review',
+  'refund.processingDesc': 'Your return request is being reviewed. This may take 1-3 business days.',
+  'refund.approved': 'Refund Approved',
+  'refund.approvedDesc': 'Your return request has been approved. Funds will be returned shortly.',
+  'refund.refunded': 'Refund Complete',
+  'refund.refundedDesc': 'Funds have been returned to your account.',
+  'refund.rejected': 'Refund Rejected',
+  'refund.rejectedDesc': 'Unfortunately, your return request was rejected. Contact support for details.',
+  'refund.amount': 'Refund Amount',
+  'refund.timeline': 'Refund Timeline',
+  'refund.stepRequested': 'Request Submitted',
+  'refund.stepReviewed': 'Reviewed',
+  'refund.stepApproved': 'Approved',
+  'refund.stepRefunded': 'Refunded',
+  'refund.orderInfo': 'Order Information',
+  'refund.method': 'Refund Method',
+  'refund.itemCount': 'Item Count',
+  'refund.contactSupport': 'Contact Support',
+
+  // Delivery tracking (additions)
+  'delivery.contactCourier': 'Call Courier',
+  'delivery.estimatedDelivery': 'Estimated Delivery',
+  'delivery.mapPlaceholder': 'Map will be displayed here',
+  'delivery.timeline': 'Delivery Timeline',
+
+  // Coupon (additions)
+  'coupon.available': 'Available Coupons',
+  'coupon.myCoupons': 'My Coupons',
+  'coupon.expired': 'Expired',
+  'coupon.empty': 'No Coupons Found',
+  'coupon.emptyDesc': 'No coupons available at the moment.',
+
+  // Browsing history
+  'history.clearAll': 'Clear History',
+  'history.empty': 'History is Empty',
+  'history.emptyDesc': 'You haven\'t browsed any products yet.',
+  'history.goShopping': 'Go Shopping',
+
+  // FAQ
+  'faq.searchPlaceholder': 'Search questions...',
+  'faq.noResults': 'No Results Found',
+  'faq.cantFind': 'Can\'t find an answer?',
+  'faq.contactSupport': 'Contact Support',
+
+  // Flash sale
+  'flashSale.title': 'Flash Sale',
+  'flashSale.endsIn': 'Ends in',
+  'flashSale.live': 'Live',
+  'flashSale.upcoming': 'Upcoming',
+  'flashSale.upcomingDesc': 'This sale hasn\'t started yet. Tap to get notified when it begins.',
+  'flashSale.notifyMe': 'Notify Me',
+
+  // Order (additions)
+  'order.date': 'Order Date',
+  'order.orderId': 'Order ID',
 };
