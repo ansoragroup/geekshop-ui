@@ -170,7 +170,7 @@ describe('InfiniteScroll', () => {
   });
 
   it('does not show sentinel when error is true', () => {
-    const { container } = render(
+    render(
       <InfiniteScroll onLoadMore={vi.fn()} hasMore error>
         <div>Items</div>
       </InfiniteScroll>,

@@ -84,7 +84,7 @@ describe('FilterPanel', () => {
 
   it('toggles checkbox on click', async () => {
     const user = userEvent.setup()
-    const { container } = render(<FilterPanel filterGroups={[checkboxGroup]} />)
+    render(<FilterPanel filterGroups={[checkboxGroup]} />)
 
     await user.click(screen.getByText('NVIDIA'))
 
@@ -174,7 +174,7 @@ describe('FilterPanel', () => {
 
   // Pre-filled values
   it('renders with pre-filled checkbox values', () => {
-    const { container } = render(
+    render(
       <FilterPanel
         filterGroups={[checkboxGroup]}
         values={{ brand: ['nvidia'] }}
