@@ -23,6 +23,8 @@ export interface ProductCardFlatProps {
   badge?: ProductBadge;
   /** Sold count text, e.g. "700+ sotilgan" */
   soldCount?: string;
+  /** Image aspect ratio override, e.g. "auto" for natural height (waterfall), "1/1" for square (default) */
+  imageAspectRatio?: string;
   /** Click handler */
   onClick?: () => void;
   /** Additional CSS class */
@@ -232,7 +234,7 @@ export function ProductCard(props: ProductCardProps) {
   }
 
   // Flat API: existing behavior (backward-compatible)
-  const { image, title, price, originalPrice, discount, badge, soldCount } =
+  const { image, title, price, originalPrice, discount, badge, soldCount, imageAspectRatio } =
     props as ProductCardFlatProps;
   const hasDiscount = originalPrice !== undefined && originalPrice > price;
 
@@ -250,7 +252,7 @@ export function ProductCard(props: ProductCardProps) {
       tabIndex={0}
     >
       {/* Image container */}
-      <div className={styles.imageWrapper}>
+      <div className={styles.imageWrapper} style={imageAspectRatio ? { aspectRatio: imageAspectRatio } : undefined}>
         <img src={image} alt={title} className={styles.image} loading="lazy" />
 
         {/* Discount badge */}

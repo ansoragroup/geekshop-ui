@@ -179,7 +179,7 @@
   flex-shrink: 0;
 }
 
-// Grid view
+// Grid view (chips variant)
 .gridView {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -226,6 +226,145 @@
   color: $color-price;
   font-weight: $font-weight-medium;
   margin-top: 2px;
+}
+
+// ─── ImageGrid variant (1688/Taobao style) ──────────────────────────
+
+.imageGridView {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+}
+
+.imageGridCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  cursor: pointer;
+  background: $color-bg-white;
+  padding: 0;
+  transition: border-color $transition-fast;
+  text-align: left;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.imageGridCardSelected {
+  border-color: $color-primary;
+}
+
+.hotBadge {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 2;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 0 0 $radius-md 0;
+  background: $color-sale;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.imageGridImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: $color-bg-page;
+}
+
+.imageGridImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imageGridCheck {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-md 0 0 0;
+  background: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageGridLabel {
+  padding: $spacing-sm $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background $transition-fast, color $transition-fast;
+  line-height: 1.4;
+}
+
+.imageGridLabelSelected {
+  background: $color-primary;
+  color: $color-text-white;
+  font-weight: $font-weight-semibold;
+}
+
+// Selected variant info panel
+.imageGridInfo {
+  margin-top: $spacing-lg;
+  padding: $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.imageGridInfoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-xs;
+}
+
+.imageGridInfoName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.imageGridInfoStock {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.imageGridInfoPrice {
+  font-size: $font-size-price-md;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+  margin-bottom: $spacing-md;
+}
+
+.imageGridStepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.imageGridStepperLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
 }
 
 // Footer

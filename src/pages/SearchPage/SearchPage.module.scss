@@ -1,0 +1,115 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-white;
+  font-family: $font-family;
+}
+
+// === Search Bar Wrapper ===
+.searchBarWrapper {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-white;
+  border-bottom: 1px solid $color-border-light;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+  cursor: pointer;
+  color: $color-text-primary;
+}
+
+.backIcon {
+  width: 24px;
+  height: 24px;
+}
+
+// === History Section ===
+.historySection {
+  padding: 0 $spacing-lg $spacing-lg;
+}
+
+.historyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.historyTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.historyClear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $color-text-tertiary;
+  padding: $spacing-xs;
+}
+
+.historyClearIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.historyTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.historyTag {
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-page;
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  cursor: pointer;
+  border: none;
+  font-family: $font-family;
+  transition: background $transition-fast;
+
+  &:active {
+    background: $color-border;
+  }
+}
+
+// === Results Area ===
+.resultsArea {
+  padding: $spacing-sm;
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-xs $spacing-md;
+}
+
+.resultsCount {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// === No Results ===
+.noResults {
+  padding: $spacing-xxxl $spacing-lg;
+}

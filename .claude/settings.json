@@ -1,0 +1,93 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "bash .claude/hooks/enforce-component-rules.sh"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "bash .claude/hooks/post-edit-reminder.sh"
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "command": "bash consilium/hooks/teammate-idle.sh",
+        "description": "Auto-assign work when teammate goes idle"
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "command": "bash consilium/hooks/task-completed.sh",
+        "description": "Run quality gates on completed tasks"
+      }
+    ],
+    "PreCommit": [
+      {
+        "command": "bash consilium/hooks/pre-commit.sh",
+        "description": "Verify file boundaries before commit"
+      }
+    ],
+    "SessionStart": [
+      {
+        "command": "bash consilium/hooks/session-start.sh",
+        "description": "Initialize consilium workspace and load evolution state"
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Write(/tmp/consilium/**)",
+      "Write(src/**)",
+      "Write(tests/**)",
+      "Write(test/**)",
+      "Write(consilium/memory/**)",
+      "Bash(cat *)",
+      "Bash(find *)",
+      "Bash(ls *)",
+      "Bash(tree *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(date *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git show*)",
+      "Bash(npm test*)",
+      "Bash(npm run lint*)",
+      "Bash(npm run build*)",
+      "Bash(npm run type*)",
+      "Bash(npx tsc*)",
+      "Bash(npx eslint*)",
+      "Bash(npx vitest*)",
+      "Bash(npx prettier*)",
+      "Bash(npx storybook*)",
+      "Bash(docker compose*)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(ln *)",
+      "Bash(chmod +x *)",
+      "Bash(jq *)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(sudo *)",
+      "Bash(chmod 777*)",
+      "Bash(docker rm*)",
+      "Bash(docker stop*)",
+      "Bash(docker kill*)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
+}

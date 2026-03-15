@@ -1,0 +1,60 @@
+@use '../../theme/tokens' as *;
+
+.homePage {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  padding-bottom: calc($tabbar-height + $spacing-lg);
+  overflow-x: hidden;
+}
+
+.heroBannerSection {
+  padding: $spacing-md;
+}
+
+.promoSection {
+  padding: 0 $spacing-md $spacing-lg;
+}
+
+.categorySection {
+  background: $color-bg-white;
+  padding: $spacing-lg $spacing-md;
+  margin-bottom: $spacing-sm;
+}
+
+.dealsSection {
+  background: $color-bg-white;
+  padding: $spacing-lg 0;
+  margin-bottom: $spacing-sm;
+}
+
+.dealsHeader {
+  padding: 0 $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.dealsScroll {
+  display: flex;
+  gap: $spacing-sm;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 $spacing-md;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.couponSection {
+  padding: $spacing-md;
+}
+
+.recommendedSection {
+  padding: $spacing-lg $spacing-md;
+}
+
+.tabFilterWrap {
+  margin-bottom: $spacing-md;
+}

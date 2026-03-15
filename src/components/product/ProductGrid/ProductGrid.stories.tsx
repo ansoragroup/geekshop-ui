@@ -63,6 +63,69 @@ const sampleProducts: ProductCardFlatProps[] = [
   },
 ];
 
+// Products with varied image aspect ratios for waterfall demo
+const waterfallProducts: ProductCardFlatProps[] = [
+  {
+    image: 'https://picsum.photos/seed/wf-tall1/400/560',
+    title: 'Xiaomi Mi Band 8 Pro Smart Bracelet',
+    price: 490_000,
+    originalPrice: 590_000,
+    discount: '-17%',
+    badge: 'hot',
+    soldCount: '2400+ sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-short1/400/300',
+    title: 'Baseus 65W GaN USB-C Charger',
+    price: 245_000,
+    soldCount: '800+ sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-tall2/400/600',
+    title: 'Samsung Galaxy S24 Ultra Case Silicone Cover Original',
+    price: 189_000,
+    originalPrice: 250_000,
+    discount: '-24%',
+    badge: 'top',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-med1/400/400',
+    title: 'Logitech G Pro X Superlight Wireless Mouse',
+    price: 1_350_000,
+    badge: 'new',
+    soldCount: '450+ sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-short2/400/280',
+    title: 'Ugreen USB-C Hub 7-in-1 Adapter',
+    price: 385_000,
+    originalPrice: 420_000,
+    discount: '-8%',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-tall3/400/520',
+    title: 'Anker Soundcore Liberty 4 NC True Wireless Earbuds',
+    price: 890_000,
+    soldCount: '1500+ sotilgan',
+    badge: 'hot',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-med2/400/450',
+    title: 'Apple AirPods Pro 2nd Gen USB-C',
+    price: 3_200_000,
+    originalPrice: 3_500_000,
+    discount: '-9%',
+    badge: 'top',
+    soldCount: '3200+ sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/wf-short3/400/320',
+    title: 'Keychron K2 Pro Mechanical Keyboard',
+    price: 1_100_000,
+    badge: 'new',
+  },
+];
+
 const meta = {
   title: 'Product/ProductGrid',
   component: ProductGrid,
@@ -116,4 +179,37 @@ export const WideGap: Story = {
     columns: 2,
     gap: 16,
   },
+};
+
+// --- Waterfall / masonry layout ---
+export const WaterfallLayout: Story = {
+  args: {
+    products: waterfallProducts,
+    layout: 'waterfall',
+    columns: 2,
+    gap: 8,
+  },
+};
+
+// --- Grid vs Waterfall comparison ---
+export const GridVsWaterfall: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ textAlign: 'center', padding: '8px 0', fontSize: 14, fontWeight: 600 }}>Grid</h3>
+        <ProductGrid products={waterfallProducts.slice(0, 6)} layout="grid" columns={2} gap={8} />
+      </div>
+      <div style={{ flex: 1 }}>
+        <h3 style={{ textAlign: 'center', padding: '8px 0', fontSize: 14, fontWeight: 600 }}>Waterfall</h3>
+        <ProductGrid products={waterfallProducts.slice(0, 6)} layout="waterfall" columns={2} gap={8} />
+      </div>
+    </div>
+  ),
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: 800, margin: '0 auto', background: '#F5F5F5', minHeight: '100vh' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };

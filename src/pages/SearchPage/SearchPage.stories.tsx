@@ -1,33 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SearchPage } from './SearchPage';
 
-const meta: Meta<typeof SearchPage> = {
+const meta = {
   title: 'Pages/SearchPage',
   component: SearchPage,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'iPhone13' },
     backgrounds: { default: 'White' },
   },
-};
+} satisfies Meta<typeof SearchPage>;
 
 export default meta;
 type Story = StoryObj<typeof SearchPage>;
 
-export const EmptyState: Story = {
+export const Empty: Story = {
   args: {
     state: 'empty',
   },
 };
 
-export const TypingSuggestions: Story = {
+export const WithResults: Story = {
   args: {
-    state: 'typing',
+    state: 'withResults',
   },
 };
 
-export const SearchResults: Story = {
+export const NoResults: Story = {
   args: {
-    state: 'results',
+    state: 'noResults',
   },
 };

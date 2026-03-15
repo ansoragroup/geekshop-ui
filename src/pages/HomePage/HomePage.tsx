@@ -1,212 +1,267 @@
-import React from 'react';
-import './HomePage.scss';
+import { useState } from 'react';
+import {
+  AppBar,
+  NoticeBar,
+  HeroBanner,
+  PromoBanner,
+  CategoryIconRow,
+  SectionHeader,
+  CountdownTimer,
+  DealCard,
+  CouponCard,
+  TabFilter,
+  ProductGrid,
+  TabBar,
+} from '../../components';
+import type { ProductCardFlatProps } from '../../components/product/ProductCard';
+import styles from './HomePage.module.scss';
+
+// ─── Category icon SVGs ───────────────────────────────────────────────────────
+
+const GpuIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="6" width="16" height="12" rx="2" />
+    <path d="M8 6V4M12 6V4M16 6V4M8 18v2M12 18v2M16 18v2" />
+  </svg>
+);
+
+const CpuIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" />
+    <rect x="9" y="9" width="6" height="6" />
+    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+  </svg>
+);
+
+const MonitorIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2" />
+    <path d="M8 21h8M12 17v4" />
+  </svg>
+);
+
+const LaptopIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v8H4V6z" />
+    <path d="M2 17h20a1 1 0 01-1 1H3a1 1 0 01-1-1z" />
+  </svg>
+);
+
+const RamIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="1" />
+    <path d="M6 10v4M10 10v4M14 10v4M18 10v4" />
+  </svg>
+);
+
+const SsdIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="M7 9h4M7 12h6" />
+  </svg>
+);
+
+const KeyboardIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="6" width="20" height="12" rx="2" />
+    <path d="M6 10h0M10 10h0M14 10h0M18 10h0M8 14h8" />
+  </svg>
+);
+
+const MouseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="6" y="3" width="12" height="18" rx="6" />
+    <path d="M12 3v6" />
+  </svg>
+);
+
+// ─── Static data ──────────────────────────────────────────────────────────────
 
 const categories = [
-  { name: 'Videokartalar', emoji: '🎮', bg: '#FFF0E6' },
-  { name: 'Protsessorlar', emoji: '⚡', bg: '#E6F0FF' },
-  { name: 'Monitorlar', emoji: '🖥️', bg: '#F0E6FF' },
-  { name: 'Noutbuklar', emoji: '💻', bg: '#E6FFE6' },
-  { name: 'Xotira (RAM)', emoji: '🧩', bg: '#FFE6E6' },
-  { name: 'SSD/HDD', emoji: '💾', bg: '#FFF5E6' },
-  { name: 'Klaviatura', emoji: '⌨️', bg: '#E6FFFF' },
-  { name: 'Sichqoncha', emoji: '🖱️', bg: '#FFE6F5' },
+  { icon: <GpuIcon />, label: 'Videokartalar', color: '#FF5000' },
+  { icon: <CpuIcon />, label: 'Protsessorlar', color: '#1890FF' },
+  { icon: <MonitorIcon />, label: 'Monitorlar', color: '#722ED1' },
+  { icon: <LaptopIcon />, label: 'Noutbuklar', color: '#07C160' },
+  { icon: <RamIcon />, label: 'Xotira (RAM)', color: '#FF3B30' },
+  { icon: <SsdIcon />, label: 'SSD/HDD', color: '#FFA726' },
+  { icon: <KeyboardIcon />, label: 'Klaviatura', color: '#00BCD4' },
+  { icon: <MouseIcon />, label: 'Sichqoncha', color: '#E91E63' },
+];
+
+const promoBanners = [
+  {
+    title: 'Aksiya 50% gacha',
+    subtitle: 'Tanlangan GPU larga',
+    tag: 'HOT',
+    gradient: 'linear-gradient(135deg, #FF3B30, #FF6B5A)',
+  },
+  {
+    title: 'Yangi kelganlar',
+    subtitle: 'RTX 50 seriyasi',
+    tag: 'NEW',
+    gradient: 'linear-gradient(135deg, #1890FF, #45A5FF)',
+  },
 ];
 
 const deals = [
-  { id: 1, name: 'RTX 4060 Ti', price: '4 200 000', original: '5 800 000', discount: '-28%', seed: 'rtx4060' },
-  { id: 2, name: 'Ryzen 7 5800X', price: '2 100 000', original: '3 200 000', discount: '-34%', seed: 'ryzen5800' },
-  { id: 3, name: 'Samsung 27"', price: '3 400 000', original: '4 100 000', discount: '-17%', seed: 'monitor27' },
-  { id: 4, name: 'DDR5 32GB', price: '1 600 000', original: '2 000 000', discount: '-20%', seed: 'ddr5ram' },
-  { id: 5, name: 'NVMe SSD 1TB', price: '850 000', original: '1 200 000', discount: '-29%', seed: 'nvmessd' },
+  { image: 'https://picsum.photos/seed/rtx4060/240/240', title: 'RTX 4060 Ti', price: 4200000, originalPrice: 5800000, discount: 28, soldPercent: 72 },
+  { image: 'https://picsum.photos/seed/ryzen5800/240/240', title: 'Ryzen 7 5800X', price: 2100000, originalPrice: 3200000, discount: 34, soldPercent: 58 },
+  { image: 'https://picsum.photos/seed/monitor27/240/240', title: 'Samsung 27"', price: 3400000, originalPrice: 4100000, discount: 17, soldPercent: 45 },
+  { image: 'https://picsum.photos/seed/ddr5ram/240/240', title: 'DDR5 32GB', price: 1600000, originalPrice: 2000000, discount: 20, soldPercent: 83 },
+  { image: 'https://picsum.photos/seed/nvmessd/240/240', title: 'NVMe SSD 1TB', price: 850000, originalPrice: 1200000, discount: 29, soldPercent: 61 },
 ];
 
-const products = [
-  { id: 1, title: 'MSI GeForce RTX 4070 Super 12GB GDDR6X', price: '8 900 000', sales: '234 dona sotilgan', rating: '4.8', tag: 'official', seed: 'gpu4070' },
-  { id: 2, title: 'AMD Ryzen 9 7950X Protsessor 16 yadro', price: '5 600 000', sales: '189 dona sotilgan', rating: '4.9', tag: 'sale', seed: 'ryzen9' },
-  { id: 3, title: 'ASUS ROG Swift 27" 2K 165Hz Monitor', price: '4 800 000', sales: '156 dona sotilgan', rating: '4.7', tag: 'official', seed: 'rogmonitor' },
-  { id: 4, title: 'Corsair Vengeance DDR5 32GB 6000MHz', price: '2 200 000', sales: '312 dona sotilgan', rating: '4.6', tag: 'sale', seed: 'corsairram' },
-  { id: 5, title: 'Samsung 990 Pro NVMe 2TB SSD', price: '2 800 000', sales: '278 dona sotilgan', rating: '4.8', tag: 'official', seed: 'samsung990' },
-  { id: 6, title: 'ASUS ROG Strix B650E-F Motherboard', price: '3 400 000', sales: '98 dona sotilgan', rating: '4.5', seed: 'rogstrix' },
+const products: ProductCardFlatProps[] = [
+  // Distribution: index%2=0 → left col (standard), index%2=1 → right col (taller)
+  // Left col (standard height images):
+  { image: 'https://picsum.photos/seed/gpu4070/400/400', title: 'MSI GeForce RTX 4070 Super 12GB GDDR6X', price: 8900000, soldCount: '234 dona sotilgan', badge: 'top' },
+  // Right col (taller images):
+  { image: 'https://picsum.photos/seed/ryzen9/400/560', title: 'AMD Ryzen 9 7950X Protsessor 16 yadro', price: 5600000, soldCount: '189 dona sotilgan', badge: 'hot' },
+  // Left:
+  { image: 'https://picsum.photos/seed/rogmonitor/400/400', title: 'ASUS ROG Swift 27" 2K 165Hz Monitor', price: 4800000, soldCount: '156 dona sotilgan', badge: 'top' },
+  // Right:
+  { image: 'https://picsum.photos/seed/corsairram/400/520', title: 'Corsair Vengeance DDR5 32GB 6000MHz', price: 2200000, soldCount: '312 dona sotilgan', badge: 'new' },
+  // Left:
+  { image: 'https://picsum.photos/seed/samsung990/400/400', title: 'Samsung 990 Pro NVMe 2TB SSD', price: 2800000, soldCount: '278 dona sotilgan', badge: 'top' },
+  // Right:
+  { image: 'https://picsum.photos/seed/rogstrix/400/540', title: 'ASUS ROG Strix B650E-F Motherboard', price: 3400000, soldCount: '98 dona sotilgan' },
+  // Left:
+  { image: 'https://picsum.photos/seed/cooler360/400/400', title: 'NZXT Kraken X63 RGB 280mm AIO Cooler', price: 1900000, soldCount: '145 dona sotilgan', badge: 'new' },
+  // Right:
+  { image: 'https://picsum.photos/seed/casergb/400/500', title: 'Lian Li O11 Dynamic EVO RGB Case', price: 2400000, soldCount: '87 dona sotilgan' },
 ];
 
-const filterTabs = ['Barchasi', 'Videokartalar', 'Protsessorlar', 'Noutbuklar', 'Monitorlar', 'SSD'];
+const filterTabs = [
+  { key: 'all', label: 'Barchasi' },
+  { key: 'gpu', label: 'Videokartalar' },
+  { key: 'cpu', label: 'Protsessorlar' },
+  { key: 'laptop', label: 'Noutbuklar' },
+  { key: 'monitor', label: 'Monitorlar' },
+  { key: 'ssd', label: 'SSD' },
+];
 
-export const HomePage: React.FC = () => {
+// ─── Deals section lightning icon ─────────────────────────────────────────────
+
+const LightningIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#FF0000' }}>
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+  </svg>
+);
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export interface HomePageProps {
+  /** ProductGrid layout mode */
+  gridLayout?: 'grid' | 'waterfall';
+  /** AppBar variant */
+  appBarVariant?: 'colored' | 'transparent';
+  /** AppBar custom background color */
+  appBarBackgroundColor?: string;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({
+  gridLayout = 'waterfall',
+  appBarVariant = 'colored',
+  appBarBackgroundColor,
+}) => {
+  const [activeTab, setActiveTab] = useState('all');
+  const [activeBarTab, setActiveBarTab] = useState('home');
+
+  // Countdown: 3 hours from now
+  const dealEndTime = new Date(Date.now() + 3 * 60 * 60 * 1000);
+
   return (
-    <div className="home-page">
-      {/* NavBar */}
-      <header className="home-page__navbar">
-        <span className="home-page__logo">GeekShop</span>
-        <div className="home-page__search-bar">
-          <svg className="home-page__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.35-4.35"/>
-          </svg>
-          <input className="home-page__search-input" placeholder="RTX 4090 qidirish..." readOnly />
-        </div>
-        <div className="home-page__nav-icons">
-          <svg className="home-page__nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
-            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
-          </svg>
-          <svg className="home-page__nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-          </svg>
-        </div>
-      </header>
+    <div className={styles.homePage}>
+      {/* 1. AppBar */}
+      <AppBar
+        variant={appBarVariant}
+        backgroundColor={appBarBackgroundColor}
+        location="Toshkent"
+        showLocation
+        showScan
+        searchPlaceholder="RTX 4090 qidirish..."
+      />
 
-      {/* Hero Banner */}
-      <div className="home-page__hero">
-        <span className="home-page__hero-badge">GeekShop Exclusive</span>
-        <h2 className="home-page__hero-title">Noutbuk Festival</h2>
-        <p className="home-page__hero-subtitle">500 000 so'mgacha chegirma!</p>
-        <div className="home-page__hero-decoration" />
+      {/* 2. NoticeBar */}
+      <NoticeBar
+        content="Yangi foydalanuvchilar uchun 10% chegirma! Kod: GEEK10"
+        mode="scroll"
+      />
+
+      {/* 3. HeroBanner */}
+      <div className={styles.heroBannerSection}>
+        <HeroBanner
+          title="Noutbuk Festival"
+          subtitle="500 000 so'mgacha chegirma!"
+          badge="GeekShop Exclusive"
+          bgGradient="linear-gradient(135deg, #FF5000 0%, #FF8A33 50%, #FFB366 100%)"
+        />
       </div>
 
-      {/* Promo Cards */}
-      <div className="home-page__promos">
-        <div className="home-page__promo-card home-page__promo-card--sale">
-          <span className="home-page__promo-badge">HOT</span>
-          <div className="home-page__promo-title">Aksiya 50% gacha</div>
-          <div className="home-page__promo-subtitle">Tanlangan GPU larga</div>
-        </div>
-        <div className="home-page__promo-card home-page__promo-card--new">
-          <span className="home-page__promo-badge">NEW</span>
-          <div className="home-page__promo-title">Yangi kelganlar</div>
-          <div className="home-page__promo-subtitle">RTX 50 seriyasi</div>
-        </div>
+      {/* 4. PromoBanner row */}
+      <div className={styles.promoSection}>
+        <PromoBanner items={promoBanners} />
       </div>
 
-      {/* Categories */}
-      <div className="home-page__categories">
-        <div className="home-page__categories-scroll">
-          {categories.map((cat) => (
-            <div key={cat.name} className="home-page__category-item">
-              <div className="home-page__category-icon" style={{ background: cat.bg }}>
-                {cat.emoji}
-              </div>
-              <span className="home-page__category-name">{cat.name}</span>
-            </div>
+      {/* 5. CategoryIcon row */}
+      <div className={styles.categorySection}>
+        <CategoryIconRow items={categories} />
+      </div>
+
+      {/* 6. Deals section */}
+      <div className={styles.dealsSection}>
+        <div className={styles.dealsHeader}>
+          <SectionHeader
+            title="Chegirmalar"
+            icon={<LightningIcon />}
+            onViewAll={() => {}}
+          />
+          <CountdownTimer endTime={dealEndTime} label="" />
+        </div>
+        <div className={styles.dealsScroll}>
+          {deals.map((deal, i) => (
+            <DealCard key={i} {...deal} />
           ))}
         </div>
       </div>
 
-      {/* Deals Section */}
-      <div className="home-page__deals">
-        <div className="home-page__deals-header">
-          <div className="home-page__deals-title-row">
-            <svg className="home-page__deals-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-            </svg>
-            <span className="home-page__deals-title">Chegirmalar</span>
-            <div className="home-page__deals-countdown">
-              <span className="home-page__countdown-block">02</span>
-              <span className="home-page__countdown-sep">:</span>
-              <span className="home-page__countdown-block">45</span>
-              <span className="home-page__countdown-sep">:</span>
-              <span className="home-page__countdown-block">18</span>
-            </div>
-          </div>
-          <span className="home-page__deals-more">
-            Barchasi
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="m9 18 6-6-6-6"/>
-            </svg>
-          </span>
-        </div>
-        <div className="home-page__deals-scroll">
-          {deals.map((deal) => (
-            <div key={deal.id} className="home-page__deal-card">
-              <img className="home-page__deal-image" src={`https://picsum.photos/seed/${deal.seed}/240/240`} alt={deal.name} />
-              <div className="home-page__deal-price">{deal.price}</div>
-              <div className="home-page__deal-original">{deal.original}</div>
-              <span className="home-page__deal-badge">{deal.discount}</span>
-            </div>
-          ))}
-        </div>
+      {/* 7. CouponCard */}
+      <div className={styles.couponSection}>
+        <CouponCard
+          discount="-10%"
+          code="GEEK10"
+          expiryDate="2026-04-01"
+          minAmount={500000}
+          color="#FF5000"
+        />
       </div>
 
-      {/* Recommended Section */}
-      <div className="home-page__recommended">
-        <div className="home-page__recommended-header">
-          <h3 className="home-page__recommended-title">Tavsiya etamiz</h3>
+      {/* 8. Recommended section */}
+      <div className={styles.recommendedSection}>
+        <SectionHeader
+          title="Tavsiya etamiz"
+          onViewAll={() => {}}
+        />
+        <div className={styles.tabFilterWrap}>
+          <TabFilter
+            tabs={filterTabs}
+            activeTab={activeTab}
+            onChange={setActiveTab}
+          />
         </div>
-        <div className="home-page__filter-tabs">
-          {filterTabs.map((tab, i) => (
-            <span
-              key={tab}
-              className={`home-page__filter-tab ${i === 0 ? 'home-page__filter-tab--active' : ''}`}
-            >
-              {tab}
-            </span>
-          ))}
-        </div>
-        <div className="home-page__product-grid">
-          {products.map((product) => (
-            <div key={product.id} className="home-page__product-card">
-              <img
-                className="home-page__product-image"
-                src={`https://picsum.photos/seed/${product.seed}/400/400`}
-                alt={product.title}
-              />
-              <div className="home-page__product-info">
-                {product.tag && (
-                  <span className={`home-page__product-tag home-page__product-tag--${product.tag}`}>
-                    {product.tag === 'official' ? 'Rasmiy' : 'Chegirma'}
-                  </span>
-                )}
-                <div className="home-page__product-title">{product.title}</div>
-                <div className="home-page__product-price-row">
-                  <span className="home-page__product-currency">so'm</span>
-                  <span className="home-page__product-price">{product.price}</span>
-                </div>
-                <div className="home-page__product-meta">
-                  <span className="home-page__product-sales">{product.sales}</span>
-                  <span className="home-page__product-rating">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    {product.rating}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProductGrid
+          products={products}
+          layout={gridLayout}
+          columns={2}
+          gap={8}
+        />
       </div>
 
-      {/* TabBar */}
-      <nav className="home-page__tabbar">
-        <div className="home-page__tab-item">
-          <svg className="home-page__tab-icon home-page__tab-icon--active" viewBox="0 0 24 24" fill="currentColor">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          </svg>
-          <span className="home-page__tab-label home-page__tab-label--active">Bosh sahifa</span>
-        </div>
-        <div className="home-page__tab-item">
-          <svg className="home-page__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="3" y="3" width="7" height="7"/>
-            <rect x="14" y="3" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/>
-          </svg>
-          <span className="home-page__tab-label">Kategoriyalar</span>
-        </div>
-        <div className="home-page__tab-item">
-          <svg className="home-page__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-          </svg>
-          <span className="home-page__tab-label">Savat</span>
-        </div>
-        <div className="home-page__tab-item">
-          <svg className="home-page__tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-          <span className="home-page__tab-label">Profil</span>
-        </div>
-      </nav>
+      {/* 9. TabBar */}
+      <TabBar
+        activeKey={activeBarTab}
+        onChange={setActiveBarTab}
+      />
     </div>
   );
 };

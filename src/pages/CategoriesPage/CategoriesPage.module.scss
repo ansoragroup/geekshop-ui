@@ -1,0 +1,195 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc($tabbar-height + 16px);
+}
+
+.searchWrap {
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-white;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-sm;
+  background: $color-bg-page;
+}
+
+// ─── Category Banner ────────────────────────────────────────────────
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg $spacing-xl;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-md;
+  min-height: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  z-index: 1;
+}
+
+.bannerTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.bannerCount {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: $font-weight-regular;
+}
+
+.bannerIcon {
+  flex-shrink: 0;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+// ─── Subcategories ──────────────────────────────────────────────────
+
+.subcategoriesSection {
+  margin-bottom: $spacing-lg;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md 0;
+  padding-left: $spacing-xs;
+}
+
+.subcategoriesRow {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: $spacing-xs;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.subcategoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  min-width: 64px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.subcategoryIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform $transition-fast;
+}
+
+.subcategoryLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ─── Products Horizontal Scroll ─────────────────────────────────────
+
+.productsSection {
+  margin-bottom: $spacing-lg;
+}
+
+.horizontalScroll {
+  display: flex;
+  gap: $spacing-sm;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: $spacing-xs;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scrollCard {
+  flex-shrink: 0;
+  width: 140px;
+  scroll-snap-align: start;
+}
+
+.miniCard {
+  width: 100%;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $color-bg-white;
+  box-shadow: $shadow-sm;
+}
+
+// ─── View All Button ────────────────────────────────────────────────
+
+.viewAllBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  margin-top: $spacing-sm;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background: $color-bg-page;
+    transform: scale(0.98);
+  }
+}

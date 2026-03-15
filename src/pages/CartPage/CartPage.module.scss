@@ -1,0 +1,74 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  padding-bottom: calc($tabbar-height + $action-bar-height + 16px);
+}
+
+.emptyWrap {
+  padding: 60px $spacing-lg;
+}
+
+.selectAll {
+  background: $color-bg-white;
+  padding: $spacing-md $spacing-lg;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.couponSection {
+  padding: $spacing-md $spacing-lg;
+}
+
+.summary {
+  padding: $spacing-md $spacing-lg;
+  background: $color-bg-white;
+}
+
+.actionBar {
+  position: fixed;
+  bottom: $tabbar-height;
+  left: 0;
+  right: 0;
+  background: $color-bg-white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  box-shadow: $shadow-bottom-bar;
+  z-index: $z-index-fixed;
+  padding-bottom: $safe-area-bottom;
+}
+
+.actionLeft {
+  flex-shrink: 0;
+}
+
+.actionRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.totalBlock {
+  text-align: right;
+}
+
+.totalLabel {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.totalPrice {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}

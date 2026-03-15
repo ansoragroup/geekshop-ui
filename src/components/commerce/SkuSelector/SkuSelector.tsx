@@ -8,6 +8,7 @@ export interface SkuVariant {
   image: string;
   price: number;
   stock: number;
+  hotRank?: number;
 }
 
 export interface SkuProduct {
@@ -24,7 +25,6 @@ export interface SkuSelection {
 export interface SkuSelectorProps {
   product: SkuProduct;
   variants: SkuVariant[];
-  viewMode?: 'list' | 'grid';
   onSelect?: (selections: SkuSelection[]) => void;
   onAddToCart?: (selections: SkuSelection[]) => void;
   onClose?: () => void;
@@ -38,13 +38,12 @@ function formatPrice(price: number): string {
 export function SkuSelector({
   product,
   variants,
-  viewMode: initialViewMode = 'list',
   onSelect,
   onAddToCart,
   onClose,
   open = true,
 }: SkuSelectorProps) {
-  const [mode, setMode] = useState<'list' | 'grid'>(initialViewMode);
+  const [mode, setMode] = useState<'list' | 'imageGrid'>('list');
   const [selections, setSelections] = useState<Record<string, number>>({});
   const [gridSelected, setGridSelected] = useState<string | null>(null);
 
@@ -55,8 +54,8 @@ export function SkuSelector({
 
   const totalPrice = useMemo(() => {
     return Object.entries(selections).reduce((sum, [id, qty]) => {
-      const variant = variants.find((v) => v.id === id);
-      return sum + (variant ? variant.price * qty : 0);
+      const v = variants.find((vr) => vr.id === id);
+      return sum + (v ? v.price * qty : 0);
     }, 0);
   }, [selections, variants]);
 
@@ -90,12 +89,19 @@ export function SkuSelector({
 
   const handleGridSelect = useCallback(
     (variantId: string) => {
-      setGridSelected(variantId);
-      if (!selections[variantId]) {
-        handleQuantityChange(variantId, 1);
+      if (gridSelected === variantId) {
+        // Deselect: set qty to 0
+        setGridSelected(null);
+        handleQuantityChange(variantId, 0);
+      } else {
+        // Select: set qty to 1 if not already selected
+        setGridSelected(variantId);
+        if (!selections[variantId]) {
+          handleQuantityChange(variantId, 1);
+        }
       }
     },
-    [selections, handleQuantityChange]
+    [gridSelected, selections, handleQuantityChange]
   );
 
   const handleAddToCart = useCallback(() => {
@@ -103,6 +109,10 @@ export function SkuSelector({
   }, [onAddToCart, selectionArray]);
 
   if (!open) return null;
+
+  const selectedVariant = gridSelected
+    ? variants.find((v) => v.id === gridSelected)
+    : null;
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -139,10 +149,10 @@ export function SkuSelector({
               </button>
               <button
                 type="button"
-                className={`${styles.toggleBtn} ${mode === 'grid' ? styles.toggleActive : ''}`}
-                onClick={() => setMode('grid')}
+                className={`${styles.toggleBtn} ${mode === 'imageGrid' ? styles.toggleActive : ''}`}
+                onClick={() => setMode('imageGrid')}
               >
-                Katta rasm
+                Rasmli
               </button>
             </div>
           </div>
@@ -150,19 +160,19 @@ export function SkuSelector({
           {/* List view */}
           {mode === 'list' && (
             <div className={styles.listView}>
-              {variants.map((variant) => (
-                <div key={variant.id} className={styles.listItem}>
-                  <img src={variant.image} alt={variant.name} className={styles.listItemImage} />
+              {variants.map((v) => (
+                <div key={v.id} className={styles.listItem}>
+                  <img src={v.image} alt={v.name} className={styles.listItemImage} />
                   <div className={styles.listItemInfo}>
-                    <div className={styles.listItemName}>{variant.name}</div>
-                    <div className={styles.listItemStock}>{variant.stock} ta mavjud</div>
+                    <div className={styles.listItemName}>{v.name}</div>
+                    <div className={styles.listItemStock}>{v.stock} ta mavjud</div>
                   </div>
                   <div className={styles.listItemStepper}>
                     <QuantityStepper
-                      value={selections[variant.id] || 0}
+                      value={selections[v.id] || 0}
                       min={0}
-                      max={variant.stock}
-                      onChange={(qty) => handleQuantityChange(variant.id, qty)}
+                      max={v.stock}
+                      onChange={(qty) => handleQuantityChange(v.id, qty)}
                       size="sm"
                     />
                   </div>
@@ -171,22 +181,60 @@ export function SkuSelector({
             </div>
           )}
 
-          {/* Grid view */}
-          {mode === 'grid' && (
-            <div className={styles.gridView}>
-              {variants.map((variant) => (
-                <button
-                  type="button"
-                  key={variant.id}
-                  className={`${styles.gridItem} ${gridSelected === variant.id ? styles.gridItemSelected : ''}`}
-                  onClick={() => handleGridSelect(variant.id)}
-                >
-                  <img src={variant.image} alt={variant.name} className={styles.gridItemImage} />
-                  <div className={styles.gridItemName}>{variant.name}</div>
-                  <div className={styles.gridItemPrice}>{formatPrice(variant.price)} so'm</div>
-                </button>
-              ))}
-            </div>
+          {/* Image Grid view (1688/Taobao style) */}
+          {mode === 'imageGrid' && (
+            <>
+              <div className={styles.imageGridView}>
+                {variants.map((v) => {
+                  const isSelected = gridSelected === v.id;
+                  return (
+                    <button
+                      type="button"
+                      key={v.id}
+                      className={`${styles.imageGridCard} ${isSelected ? styles.imageGridCardSelected : ''}`}
+                      onClick={() => handleGridSelect(v.id)}
+                    >
+                      {v.hotRank && (
+                        <span className={styles.hotBadge}>{v.hotRank}</span>
+                      )}
+                      <div className={styles.imageGridImageWrap}>
+                        <img src={v.image} alt={v.name} className={styles.imageGridImage} />
+                        {isSelected && (
+                          <div className={styles.imageGridCheck}>
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                              <path d="M5 10l3.5 3.5L15 7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className={`${styles.imageGridLabel} ${isSelected ? styles.imageGridLabelSelected : ''}`}>
+                        {v.name}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selectedVariant && (
+                <div className={styles.imageGridInfo}>
+                  <div className={styles.imageGridInfoRow}>
+                    <span className={styles.imageGridInfoName}>{selectedVariant.name}</span>
+                    <span className={styles.imageGridInfoStock}>{selectedVariant.stock} ta mavjud</span>
+                  </div>
+                  <div className={styles.imageGridInfoPrice}>{formatPrice(selectedVariant.price)} so'm</div>
+                  <div className={styles.imageGridStepper}>
+                    <span className={styles.imageGridStepperLabel}>Miqdor</span>
+                    <QuantityStepper
+                      value={selections[selectedVariant.id] || 1}
+                      min={1}
+                      max={selectedVariant.stock}
+                      onChange={(qty) => handleQuantityChange(selectedVariant.id, qty)}
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
 

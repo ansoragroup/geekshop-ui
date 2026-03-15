@@ -1,15 +1,28 @@
-import React from 'react';
-import './SearchPage.scss';
+import React, { useState, useCallback } from 'react';
+import {
+  SearchBar,
+  PopularSearches,
+  SearchSuggestions,
+  TabFilter,
+  ProductGrid,
+  Empty,
+  FilterBar,
+  InfiniteScroll,
+} from '../../components';
+import type { ProductCardFlatProps } from '../../components/product/ProductCard';
+import styles from './SearchPage.module.scss';
 
-const popularSearches = [
-  { rank: 1, text: 'RTX 4090', hot: true },
-  { rank: 2, text: 'Ryzen 9 7950X', hot: true },
-  { rank: 3, text: 'DDR5 RAM', hot: true },
-  { rank: 4, text: 'NVMe SSD 2TB', hot: false },
-  { rank: 5, text: 'Gaming Monitor 165Hz', hot: false },
-  { rank: 6, text: 'RTX 4060 Ti', hot: false },
-  { rank: 7, text: 'Mechanical Keyboard', hot: false },
-  { rank: 8, text: 'Intel i9 14900K', hot: false },
+/* ---------- Data ---------- */
+
+const popularSearchData = [
+  { rank: 1, text: 'RTX 4090' },
+  { rank: 2, text: 'Ryzen 9 7950X' },
+  { rank: 3, text: 'DDR5 RAM' },
+  { rank: 4, text: 'NVMe SSD 2TB' },
+  { rank: 5, text: 'Gaming Monitor 165Hz' },
+  { rank: 6, text: 'RTX 4060 Ti' },
+  { rank: 7, text: 'Mechanical Keyboard' },
+  { rank: 8, text: 'Intel i9 14900K' },
 ];
 
 const historyTags = [
@@ -20,164 +33,237 @@ const historyTags = [
   'DDR5 32GB',
 ];
 
-const suggestions = [
-  { text: 'RTX 4090 Founders Edition', highlight: 'RTX 4090' },
-  { text: 'RTX 4090 ASUS ROG Strix', highlight: 'RTX 4090' },
-  { text: 'RTX 4090 MSI Suprim X', highlight: 'RTX 4090' },
-  { text: 'RTX 4090 Gigabyte Aorus', highlight: 'RTX 4090' },
-  { text: 'RTX 4090 sovutgich', highlight: 'RTX 4090' },
+const suggestionsData = [
+  { id: 'sug-1', text: 'RTX 4090 Founders Edition' },
+  { id: 'sug-2', text: 'RTX 4090 ASUS ROG Strix' },
+  { id: 'sug-3', text: 'RTX 4090 MSI Suprim X' },
+  { id: 'sug-4', text: 'RTX 4090 Gigabyte Aorus' },
+  { id: 'sug-5', text: 'RTX 4090 sovutgich' },
 ];
 
-const searchResults = [
-  { id: 1, title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB', price: '19 800 000', sales: '45 dona sotilgan', seed: 'search-rtx4090' },
-  { id: 2, title: 'ASUS ROG Strix RTX 4090 OC 24GB', price: '22 500 000', sales: '32 dona sotilgan', seed: 'search-asus4090' },
-  { id: 3, title: 'MSI Suprim X RTX 4090 24GB GDDR6X', price: '21 200 000', sales: '28 dona sotilgan', seed: 'search-msi4090' },
-  { id: 4, title: 'Gigabyte Aorus RTX 4090 Master 24GB', price: '23 100 000', sales: '19 dona sotilgan', seed: 'search-giga4090' },
+const searchResultProducts: ProductCardFlatProps[] = [
+  {
+    image: 'https://picsum.photos/seed/search-rtx4090/400/400',
+    title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB',
+    price: 19800000,
+    originalPrice: 21000000,
+    discount: '-6%',
+    badge: 'hot',
+    soldCount: '45 dona sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/search-asus4090/400/400',
+    title: 'ASUS ROG Strix RTX 4090 OC 24GB',
+    price: 22500000,
+    badge: 'top',
+    soldCount: '32 dona sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/search-msi4090/400/400',
+    title: 'MSI Suprim X RTX 4090 24GB GDDR6X',
+    price: 21200000,
+    originalPrice: 23000000,
+    discount: '-8%',
+    soldCount: '28 dona sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/search-giga4090/400/400',
+    title: 'Gigabyte Aorus RTX 4090 Master 24GB',
+    price: 23100000,
+    badge: 'new',
+    soldCount: '19 dona sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/search-evga4090/400/500',
+    title: 'EVGA GeForce RTX 4090 FTW3 Ultra Gaming 24GB',
+    price: 24500000,
+    soldCount: '12 dona sotilgan',
+  },
+  {
+    image: 'https://picsum.photos/seed/search-zotac4090/400/350',
+    title: 'Zotac Gaming RTX 4090 Trinity OC 24GB',
+    price: 20900000,
+    originalPrice: 22000000,
+    discount: '-5%',
+    soldCount: '22 dona sotilgan',
+  },
 ];
 
-interface SearchPageProps {
-  state?: 'empty' | 'typing' | 'results';
+/* ---------- Filter/Tab Definitions ---------- */
+
+const tabFilterItems = [
+  { key: 'all', label: 'Barchasi' },
+  { key: 'cheap', label: 'Arzon' },
+  { key: 'expensive', label: 'Qimmat' },
+  { key: 'new', label: 'Yangi' },
+  { key: 'popular', label: 'Mashhur' },
+];
+
+const filterBarItems = [
+  { key: 'popular', label: 'Ommabop' },
+  { key: 'price', label: 'Narxi', hasDropdown: true },
+  { key: 'new', label: 'Yangi' },
+  { key: 'rating', label: 'Baho' },
+];
+
+/* ---------- SVG Icons ---------- */
+
+const BackArrow = () => (
+  <svg className={styles.backIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m15 18-6-6 6-6" />
+  </svg>
+);
+
+const TrashIcon = () => (
+  <svg className={styles.historyClearIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="3 6 5 6 21 6" />
+    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  </svg>
+);
+
+const SearchEmptyIcon = () => (
+  <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+    <circle cx="60" cy="60" r="50" fill="#F5F5F5" />
+    <circle cx="54" cy="54" r="18" stroke="#CCCCCC" strokeWidth="3" fill="none" />
+    <path d="M67 67l12 12" stroke="#CCCCCC" strokeWidth="3" strokeLinecap="round" />
+    <path d="M48 50h12M48 58h8" stroke="#D4D4D4" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+/* ---------- Props ---------- */
+
+export type SearchPageState = 'empty' | 'withResults' | 'noResults';
+
+export interface SearchPageProps {
+  /** Which visual state to render */
+  state?: SearchPageState;
 }
 
-export const SearchPage: React.FC<SearchPageProps> = ({ state = 'empty' }) => {
+/* ---------- Component ---------- */
+
+export const SearchPage: React.FC<SearchPageProps> = ({
+  state = 'empty',
+}) => {
+  const [activeTab, setActiveTab] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('popular');
+  const [searchValue, setSearchValue] = useState(state !== 'empty' ? 'RTX 4090' : '');
+
+  const isTyping = state !== 'empty' && searchValue.length > 0;
+  const showResults = state === 'withResults';
+  const showNoResults = state === 'noResults';
+  const showEmpty = state === 'empty';
+
+  const handleLoadMore = useCallback(() => {
+    // no-op for storybook
+  }, []);
+
   return (
-    <div className="search-page">
-      {/* Search Bar */}
-      <div className="search-page__search-bar">
-        <svg className="search-page__back" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-        <div className="search-page__input-wrapper">
-          <svg className="search-page__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="m21 21-4.35-4.35"/>
-          </svg>
-          <input
-            className="search-page__input"
-            placeholder="Qidirish..."
-            defaultValue={state !== 'empty' ? 'RTX 4090' : ''}
-            readOnly
-          />
-          {state !== 'empty' && (
-            <svg className="search-page__clear-btn" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="10" fill="#CCC"/>
-              <path d="m15 9-6 6M9 9l6 6" stroke="#FFF" strokeWidth="2"/>
-            </svg>
-          )}
-        </div>
-        <svg className="search-page__camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
+    <div className={styles.page}>
+      {/* Search Bar Area */}
+      <div className={styles.searchBarWrapper}>
+        <button
+          className={styles.backBtn}
+          onClick={() => {}}
+          aria-label="Orqaga"
+        >
+          <BackArrow />
+        </button>
+        <SearchBar
+          value={searchValue}
+          onChange={setSearchValue}
+          onSearch={() => {}}
+          onCamera={() => {}}
+          placeholder="Qidirish..."
+          variant="filled"
+        />
       </div>
 
-      {/* State: Empty (popular + history) */}
-      {state === 'empty' && (
+      {/* Empty State: Popular Searches + History */}
+      {showEmpty && (
         <>
-          {/* Popular Searches */}
-          <div className="search-page__popular">
-            <div className="search-page__popular-header">
-              <h3 className="search-page__popular-title">Ommabop qidiruvlar</h3>
-              <span className="search-page__popular-refresh">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="23 4 23 10 17 10"/>
-                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-                </svg>
-                Yangilash
-              </span>
-            </div>
-            <div className="search-page__popular-tags">
-              {popularSearches.map((item) => (
-                <span key={item.rank} className="search-page__popular-tag">
-                  <span
-                    className={`search-page__tag-rank ${
-                      item.rank <= 3
-                        ? item.rank === 1
-                          ? 'search-page__tag-rank--hot'
-                          : 'search-page__tag-rank--hot'
-                        : 'search-page__tag-rank--cool'
-                    }`}
-                    style={item.rank <= 3 ? undefined : undefined}
-                  >
-                    {item.rank}
-                  </span>
-                  {item.text}
-                </span>
-              ))}
-            </div>
-          </div>
+          <PopularSearches
+            searches={popularSearchData}
+            onSelect={() => {}}
+          />
 
-          {/* Search History */}
-          <div className="search-page__history">
-            <div className="search-page__history-header">
-              <h3 className="search-page__history-title">Qidiruv tarixi</h3>
-              <svg className="search-page__history-clear" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="3 6 5 6 21 6"/>
-                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-              </svg>
+          <div className={styles.historySection}>
+            <div className={styles.historyHeader}>
+              <h3 className={styles.historyTitle}>Qidiruv tarixi</h3>
+              <button
+                className={styles.historyClear}
+                onClick={() => {}}
+                aria-label="Tarixni tozalash"
+              >
+                <TrashIcon />
+              </button>
             </div>
-            <div className="search-page__history-tags">
+            <div className={styles.historyTags}>
               {historyTags.map((tag) => (
-                <span key={tag} className="search-page__history-tag">{tag}</span>
+                <button key={tag} className={styles.historyTag} onClick={() => {}}>
+                  {tag}
+                </button>
               ))}
             </div>
           </div>
         </>
       )}
 
-      {/* State: Typing (suggestions) */}
-      {state === 'typing' && (
-        <div className="search-page__suggestions">
-          {suggestions.map((item) => (
-            <div key={item.text} className="search-page__suggestion-item">
-              <svg className="search-page__suggestion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.35-4.35"/>
-              </svg>
-              <span className="search-page__suggestion-text">
-                <span className="search-page__suggestion-highlight">{item.highlight}</span>
-                {item.text.replace(item.highlight, '')}
-              </span>
-              <svg className="search-page__suggestion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="17 11 12 6 7 11"/>
-                <polyline points="17 18 12 13 7 18"/>
-              </svg>
-            </div>
-          ))}
-        </div>
+      {/* Typing State: Suggestions */}
+      {isTyping && !showResults && !showNoResults && (
+        <SearchSuggestions
+          query={searchValue}
+          suggestions={suggestionsData}
+          onSelect={() => {}}
+        />
       )}
 
-      {/* State: Results */}
-      {state === 'results' && (
-        <div className="search-page__results">
-          <div className="search-page__results-header">
-            <span className="search-page__results-count">124 ta natija</span>
-            <div className="search-page__results-sort">
-              <button className="search-page__sort-btn search-page__sort-btn--active">Ommabop</button>
-              <button className="search-page__sort-btn">Narxi</button>
-              <button className="search-page__sort-btn">Yangi</button>
-              <button className="search-page__sort-btn">Baho</button>
+      {/* Results State */}
+      {showResults && (
+        <>
+          <TabFilter
+            tabs={tabFilterItems}
+            activeTab={activeTab}
+            onChange={setActiveTab}
+          />
+
+          <FilterBar
+            filters={filterBarItems}
+            activeFilter={activeFilter}
+            onFilterChange={setActiveFilter}
+          />
+
+          <div className={styles.resultsArea}>
+            <div className={styles.resultsHeader}>
+              <span className={styles.resultsCount}>124 ta natija</span>
             </div>
+
+            <InfiniteScroll
+              onLoadMore={handleLoadMore}
+              hasMore={true}
+              loading={false}
+              endContent={<span>Barchasi yuklandi</span>}
+            >
+              <ProductGrid
+                products={searchResultProducts}
+                columns={2}
+                layout="waterfall"
+                gap={8}
+              />
+            </InfiniteScroll>
           </div>
-          <div className="search-page__results-grid">
-            {searchResults.map((product) => (
-              <div key={product.id} className="search-page__result-card">
-                <img
-                  className="search-page__result-image"
-                  src={`https://picsum.photos/seed/${product.seed}/400/400`}
-                  alt={product.title}
-                />
-                <div className="search-page__result-info">
-                  <div className="search-page__result-title">{product.title}</div>
-                  <div className="search-page__result-price-row">
-                    <span className="search-page__result-currency">so'm</span>
-                    <span className="search-page__result-price">{product.price}</span>
-                  </div>
-                  <span className="search-page__result-sales">{product.sales}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+        </>
+      )}
+
+      {/* No Results State */}
+      {showNoResults && (
+        <div className={styles.noResults}>
+          <Empty
+            icon={<SearchEmptyIcon />}
+            title="Natija topilmadi"
+            description={`"${searchValue}" bo'yicha hech narsa topilmadi. Boshqa kalit so'zlarni sinab ko'ring.`}
+            actionText="Ommabop mahsulotlar"
+            onAction={() => {}}
+          />
         </div>
       )}
     </div>

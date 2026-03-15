@@ -1,0 +1,15 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+.list {
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}

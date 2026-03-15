@@ -1,151 +1,218 @@
-import React from 'react';
-import './CartPage.scss';
+import { useState } from 'react';
+import {
+  NavBar,
+  Swipe,
+  CartItem,
+  Checkbox,
+  Divider,
+  SpecsTable,
+  CouponCard,
+  Empty,
+  TabBar,
+  Button,
+} from '../../components';
+import { emptyIcons } from '../../components/feedback/Empty/Empty';
+import type { SwipeAction } from '../../components';
+import styles from './CartPage.module.scss';
 
-const cartItems = [
+interface CartItemData {
+  id: number;
+  name: string;
+  variant: string;
+  price: number;
+  quantity: number;
+  selected: boolean;
+  image: string;
+}
+
+const initialCartItems: CartItemData[] = [
   {
     id: 1,
     name: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
     variant: '8GB / Qora',
-    price: '5 200 000',
+    price: 5200000,
     quantity: 1,
-    checked: true,
-    seed: 'cart-gpu',
+    selected: true,
+    image: 'https://picsum.photos/seed/cart-gpu/160/160',
   },
   {
     id: 2,
     name: 'AMD Ryzen 7 7800X3D Protsessor AM5',
     variant: '8 yadro / 16 ip',
-    price: '4 100 000',
+    price: 4100000,
     quantity: 1,
-    checked: true,
-    seed: 'cart-cpu',
+    selected: true,
+    image: 'https://picsum.photos/seed/cart-cpu/160/160',
   },
   {
     id: 3,
     name: 'Corsair Vengeance DDR5 32GB (2x16GB) 6000MHz',
     variant: '32GB / RGB',
-    price: '2 200 000',
+    price: 2200000,
     quantity: 2,
-    checked: false,
-    seed: 'cart-ram',
+    selected: false,
+    image: 'https://picsum.photos/seed/cart-ram/160/160',
   },
 ];
 
-interface CartPageProps {
-  empty?: boolean;
+function formatPrice(value: number): string {
+  return value.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
-export const CartPage: React.FC<CartPageProps> = ({ empty = false }) => {
-  const checkedItems = cartItems.filter((i) => i.checked);
-  const totalPrice = '11 500 000';
-  const totalCount = checkedItems.length;
+export interface CartPageProps {
+  empty?: boolean;
+  hasCoupon?: boolean;
+}
+
+export const CartPage: React.FC<CartPageProps> = ({
+  empty = false,
+  hasCoupon = false,
+}) => {
+  const [items, setItems] = useState<CartItemData[]>(initialCartItems);
+
+  const allSelected = items.length > 0 && items.every((i) => i.selected);
+  const selectedItems = items.filter((i) => i.selected);
+  const subtotal = selectedItems.reduce(
+    (sum, i) => sum + i.price * i.quantity,
+    0,
+  );
+  const delivery = 0;
+  const discount = hasCoupon ? Math.round(subtotal * 0.1) : 0;
+  const total = subtotal - discount + delivery;
+
+  const handleSelectAll = (checked: boolean) => {
+    setItems((prev) => prev.map((i) => ({ ...i, selected: checked })));
+  };
+
+  const handleItemSelect = (id: number, selected: boolean) => {
+    setItems((prev) =>
+      prev.map((i) => (i.id === id ? { ...i, selected } : i)),
+    );
+  };
+
+  const handleQuantityChange = (id: number, quantity: number) => {
+    setItems((prev) =>
+      prev.map((i) => (i.id === id ? { ...i, quantity } : i)),
+    );
+  };
+
+  const handleDelete = (id: number) => {
+    setItems((prev) => prev.filter((i) => i.id !== id));
+  };
+
+  const deleteActions = (id: number): SwipeAction[] => [
+    {
+      key: 'delete',
+      label: "O'chirish",
+      backgroundColor: '#FF3B30',
+      onClick: () => handleDelete(id),
+    },
+  ];
+
+  const priceSummary = [
+    { label: 'Mahsulotlar', value: `${formatPrice(subtotal)} so'm` },
+    { label: 'Yetkazib berish', value: delivery === 0 ? 'Bepul' : `${formatPrice(delivery)} so'm` },
+    ...(hasCoupon
+      ? [{ label: 'Kupon chegirmasi', value: `-${formatPrice(discount)} so'm` }]
+      : []),
+    { label: 'Jami', value: `${formatPrice(total)} so'm` },
+  ];
 
   return (
-    <div className="cart-page">
-      {/* NavBar */}
-      <header className="cart-page__navbar">
-        <svg className="cart-page__back" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-        <span className="cart-page__title">Savat</span>
-        {!empty && <span className="cart-page__edit">Tahrirlash</span>}
-        {empty && <span style={{ width: 24 }} />}
-      </header>
+    <div className={styles.page}>
+      <NavBar title="Savat" showBack onBack={() => {}} />
 
       {empty ? (
-        /* Empty State */
-        <div className="cart-page__empty">
-          <svg className="cart-page__empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-          </svg>
-          <h3 className="cart-page__empty-title">Savatingiz bo'sh</h3>
-          <p className="cart-page__empty-text">
-            Hali hech narsa qo'shilmagan.{'\n'}Keling, kompyuter qismlarini ko'rib chiqamiz!
-          </p>
-          <button className="cart-page__empty-btn">Xarid qilish</button>
+        <div className={styles.emptyWrap}>
+          <Empty
+            icon={emptyIcons.cart}
+            title="Savatingiz bo'sh"
+            description="Hali hech narsa qo'shilmagan. Keling, kompyuter qismlarini ko'rib chiqamiz!"
+            actionText="Xarid qilish"
+            onAction={() => {}}
+          />
         </div>
       ) : (
         <>
           {/* Select All */}
-          <div className="cart-page__select-all">
-            <div className="cart-page__checkbox cart-page__checkbox--checked">
-              <svg className="cart-page__checkbox-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-            </div>
-            <span className="cart-page__select-label">Barchasini tanlash</span>
+          <div className={styles.selectAll}>
+            <Checkbox
+              checked={allSelected}
+              label="Barchasini tanlash"
+              onChange={handleSelectAll}
+            />
           </div>
 
+          <Divider />
+
           {/* Cart Items */}
-          <div className="cart-page__items">
-            {cartItems.map((item) => (
-              <div key={item.id} className="cart-page__item">
-                <div className={`cart-page__checkbox ${item.checked ? 'cart-page__checkbox--checked' : ''}`}>
-                  {item.checked && (
-                    <svg className="cart-page__checkbox-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                  )}
-                </div>
-                <img
-                  className="cart-page__item-image"
-                  src={`https://picsum.photos/seed/${item.seed}/160/160`}
-                  alt={item.name}
+          <div className={styles.items}>
+            {items.map((item) => (
+              <Swipe key={item.id} rightActions={deleteActions(item.id)}>
+                <CartItem
+                  image={item.image}
+                  title={item.name}
+                  variant={item.variant}
+                  price={item.price}
+                  quantity={item.quantity}
+                  selected={item.selected}
+                  onSelect={(sel) => handleItemSelect(item.id, sel)}
+                  onQuantityChange={(qty) =>
+                    handleQuantityChange(item.id, qty)
+                  }
+                  onDelete={() => handleDelete(item.id)}
                 />
-                <div className="cart-page__item-content">
-                  <div className="cart-page__item-name">{item.name}</div>
-                  <span className="cart-page__item-variant">{item.variant}</span>
-                  <div className="cart-page__item-bottom">
-                    <div className="cart-page__item-price-row">
-                      <span className="cart-page__item-currency">so'm</span>
-                      <span className="cart-page__item-price">{item.price}</span>
-                    </div>
-                    <div className="cart-page__quantity">
-                      <button className={`cart-page__qty-btn ${item.quantity <= 1 ? 'cart-page__qty-btn--disabled' : ''}`}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                      </button>
-                      <span className="cart-page__qty-value">{item.quantity}</span>
-                      <button className="cart-page__qty-btn">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <line x1="12" y1="5" x2="12" y2="19"/>
-                          <line x1="5" y1="12" x2="19" y2="12"/>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </Swipe>
             ))}
           </div>
 
-          {/* Action Bar */}
-          <div className="cart-page__action-bar">
-            <div className="cart-page__action-checkbox">
-              <div className="cart-page__checkbox cart-page__checkbox--checked">
-                <svg className="cart-page__checkbox-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span className="cart-page__action-select-text">Barchasi</span>
+          <Divider />
+
+          {/* Coupon */}
+          {hasCoupon && (
+            <div className={styles.couponSection}>
+              <CouponCard
+                discount="-10%"
+                code="GEEK2026"
+                expiryDate="2026-04-01"
+                minAmount={5000000}
+                onUse={() => {}}
+              />
             </div>
-            <div className="cart-page__action-summary">
-              <span className="cart-page__action-total-label">Jami:</span>
-              <div className="cart-page__action-total-row">
-                <span className="cart-page__action-currency">so'm</span>
-                <span className="cart-page__action-total">{totalPrice}</span>
-              </div>
+          )}
+
+          {/* Price summary */}
+          <div className={styles.summary}>
+            <SpecsTable specs={priceSummary} />
+          </div>
+
+          <Divider />
+
+          {/* Bottom action */}
+          <div className={styles.actionBar}>
+            <div className={styles.actionLeft}>
+              <Checkbox
+                checked={allSelected}
+                label="Barchasi"
+                onChange={handleSelectAll}
+              />
             </div>
-            <button className="cart-page__action-btn">
-              Buyurtma berish
-              <span className="cart-page__action-count">({totalCount})</span>
-            </button>
+            <div className={styles.actionRight}>
+              <div className={styles.totalBlock}>
+                <span className={styles.totalLabel}>Jami:</span>
+                <span className={styles.totalPrice}>
+                  {formatPrice(total)} so'm
+                </span>
+              </div>
+              <Button variant="primary" size="md">
+                Buyurtma berish ({selectedItems.length})
+              </Button>
+            </div>
           </div>
         </>
       )}
+
+      <TabBar activeKey="cart" onChange={() => {}} />
     </div>
   );
 };

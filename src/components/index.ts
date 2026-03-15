@@ -8,6 +8,7 @@ export { PopularSearches } from './navigation/PopularSearches';
 export { FilterBar } from './navigation/FilterBar';
 export { FilterPanel } from './navigation/FilterPanel';
 export { TabFilter } from './navigation/TabFilter';
+export { AppBar } from './navigation/AppBar';
 
 // Product
 export { PriceDisplay } from './product/PriceDisplay';
@@ -73,6 +74,9 @@ export { useControllableState } from '../hooks/useControllableState';
 export { useCountdown } from '../hooks/useCountdown';
 export { useFocusTrap } from '../hooks/useFocusTrap';
 export { useToast } from '../hooks/useToast';
+
+// Types — Navigation
+export type { AppBarProps } from './navigation/AppBar';
 
 // Types — Commerce
 export type { QuickBuyPopupProps, QuickBuyProduct, QuickBuyVariant } from './commerce/QuickBuyPopup';
