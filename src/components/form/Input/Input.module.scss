@@ -24,7 +24,7 @@
   transition: border-color $transition-fast;
 
   &:focus-within {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 }
 

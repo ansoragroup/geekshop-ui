@@ -52,9 +52,9 @@
 }
 
 .labelPillActive {
-  border-color: $color-primary;
-  background: $color-primary-bg;
-  color: $color-primary;
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
 }
 
 .labelPillIcon {

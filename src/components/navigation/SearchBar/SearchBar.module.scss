@@ -5,7 +5,7 @@
   align-items: center;
   height: $search-bar-height;
   padding: 0 $spacing-md;
-  border: 2px solid $color-primary;
+  border: 2px solid var(--gs-color-primary);
   border-radius: 20px;
   background: $color-bg-white;
   gap: $spacing-sm;
@@ -13,7 +13,7 @@
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
   &:focus-within {
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--gs-color-primary) 12%, transparent);
   }
 
   &.filled {
@@ -21,9 +21,9 @@
     background: $color-bg-page;
 
     &:focus-within {
-      border-color: $color-primary;
+      border-color: var(--gs-color-primary);
       background: $color-bg-white;
-      box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--gs-color-primary) 12%, transparent);
     }
   }
 
@@ -82,8 +82,8 @@
   transition: color $transition-fast, background $transition-fast;
 
   &:hover {
-    color: $color-primary;
-    background: $color-primary-bg;
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:active {

@@ -24,21 +24,21 @@
 
 // --- Variants ---
 .variant-primary {
-  background: $color-primary;
+  background: var(--gs-color-primary);
   color: $color-text-white;
 
   &:hover:not(.disabled):not(.loading) {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }
 
 .variant-secondary {
   background: $color-bg-white;
-  color: $color-primary;
-  border: 1.5px solid $color-primary;
+  color: var(--gs-color-primary);
+  border: 1.5px solid var(--gs-color-primary);
 
   &:hover:not(.disabled):not(.loading) {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -53,10 +53,10 @@
 
 .variant-text {
   background: transparent;
-  color: $color-primary;
+  color: var(--gs-color-primary);
 
   &:hover:not(.disabled):not(.loading) {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 

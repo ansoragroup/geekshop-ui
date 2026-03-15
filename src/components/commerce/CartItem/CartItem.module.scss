@@ -62,8 +62,8 @@
 }
 
 .checkboxChecked {
-  background: $color-primary;
-  border-color: $color-primary;
+  background: var(--gs-color-primary);
+  border-color: var(--gs-color-primary);
 }
 
 // Image

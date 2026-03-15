@@ -46,7 +46,7 @@
   }
 
   &.active {
-    color: $color-primary;
+    color: var(--gs-color-primary);
     font-weight: $font-weight-semibold;
   }
 }
@@ -62,7 +62,7 @@
   transition: color $transition-fast, transform $transition-fast;
 
   &.arrowActive {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 }
 
@@ -73,6 +73,6 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   border-radius: $radius-round;
 }

@@ -23,8 +23,8 @@
 }
 
 .selected {
-  border-color: $color-primary;
-  background: $color-primary-bg;
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
 }
 
 // ---- Header row: radio + label tag ... default badge ----
@@ -57,14 +57,14 @@
 }
 
 .radioSelected {
-  border-color: $color-primary;
+  border-color: var(--gs-color-primary);
 }
 
 .radioDot {
   width: 10px;
   height: 10px;
   border-radius: $radius-round;
-  background: $color-primary;
+  background: var(--gs-color-primary);
 }
 
 // Label tag (Home, Work)
@@ -72,8 +72,8 @@
   flex-shrink: 0;
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
-  color: $color-primary;
-  background: $color-primary-bg;
+  color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
   padding: 2px $spacing-sm;
   border-radius: $radius-xs;
   line-height: $line-height-normal;
@@ -85,7 +85,7 @@
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $color-text-white;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   padding: 2px $spacing-sm;
   border-radius: $radius-xs;
   line-height: $line-height-normal;

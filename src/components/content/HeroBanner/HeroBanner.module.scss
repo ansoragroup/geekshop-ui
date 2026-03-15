@@ -9,7 +9,7 @@
   cursor: pointer;
   user-select: none;
   transition: transform $transition-fast;
-  background: var(--gs-hero-bg, $color-primary-gradient);
+  background: var(--gs-hero-bg, var(--gs-color-primary-gradient));
 
   &:active {
     transform: scale(0.98);

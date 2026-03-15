@@ -17,8 +17,8 @@
 }
 
 .selected {
-  border-color: $color-primary;
-  box-shadow: 0 0 0 1px $color-primary;
+  border-color: var(--gs-color-primary);
+  box-shadow: 0 0 0 1px var(--gs-color-primary);
 }
 
 // Payment icon
@@ -49,7 +49,7 @@
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $color-text-white;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   padding: 1px $spacing-sm;
   border-radius: $radius-xs;
 }
@@ -114,8 +114,8 @@
 }
 
 .radioSelected {
-  background: $color-primary;
-  border-color: $color-primary;
+  background: var(--gs-color-primary);
+  border-color: var(--gs-color-primary);
 }
 
 // Payment type color accents on selected

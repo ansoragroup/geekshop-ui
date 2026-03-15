@@ -34,8 +34,8 @@
   width: 40px;
   height: 40px;
   border-radius: $radius-round;
-  background: $color-primary-bg;
-  color: $color-primary;
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,8 +76,8 @@
   }
 
   &Active {
-    background: $color-primary;
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+    background: var(--gs-color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--gs-color-primary) 20%, transparent);
     width: 12px;
     height: 12px;
   }
@@ -107,7 +107,7 @@
   font-weight: $font-weight-medium;
 
   &Active {
-    color: $color-primary;
+    color: var(--gs-color-primary);
     font-weight: $font-weight-semibold;
   }
 }

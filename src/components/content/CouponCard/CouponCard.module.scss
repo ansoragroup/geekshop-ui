@@ -20,7 +20,7 @@
   flex-shrink: 0;
   padding: $spacing-lg $spacing-md;
   position: relative;
-  background: var(--gs-coupon-bg, $color-primary);
+  background: var(--gs-coupon-bg, var(--gs-color-primary));
 }
 
 .discountText {
@@ -115,7 +115,7 @@
 .useButton {
   align-self: flex-start;
   padding: $spacing-xs $spacing-lg;
-  background: $color-primary;
+  background: var(--gs-color-primary);
   color: $color-text-white;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
@@ -126,6 +126,6 @@
   white-space: nowrap;
 
   &:active {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }

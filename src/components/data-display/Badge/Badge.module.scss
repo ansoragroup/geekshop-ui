@@ -45,7 +45,7 @@
 
 // --- Colors ---
 .color-primary {
-  background-color: $color-primary;
+  background-color: var(--gs-color-primary);
 }
 
 .color-success {

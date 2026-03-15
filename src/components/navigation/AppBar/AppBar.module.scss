@@ -16,7 +16,7 @@
 
 // --- Colored variant ---
 .colored {
-  background: $color-primary;
+  background: var(--gs-color-primary);
   color: $color-text-white;
 
   .searchInput {
