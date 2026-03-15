@@ -8,7 +8,6 @@ import {
   Badge,
   Swipe,
   Empty,
-  Divider,
 } from '../../components';
 import styles from './NotificationsPage.module.scss';
 

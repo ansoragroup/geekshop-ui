@@ -40,8 +40,13 @@ export const ImageLazy = forwardRef<HTMLImageElement, ImageLazyProps>(
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState(false);
     const [inView, setInView] = useState(false);
-    const [activeSrc, setActiveSrc] = useState(src);
     const containerRef = useRef<HTMLDivElement>(null);
+    const [trackedSrc, setTrackedSrc] = useState(src);
+    if (trackedSrc !== src) {
+      setTrackedSrc(src);
+      setLoaded(false);
+      setError(false);
+    }
 
     useEffect(() => {
       const node = containerRef.current;
@@ -61,22 +66,13 @@ export const ImageLazy = forwardRef<HTMLImageElement, ImageLazyProps>(
       return () => observer.disconnect();
     }, []);
 
-    // When src prop changes, reset to new source
-    useEffect(() => {
-      setActiveSrc(src);
-      setLoaded(false);
-      setError(false);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-    }, [src]);
-
     const handleLoad = () => setLoaded(true);
 
     const handleError = () => {
       setError(true);
-      if (fallback) {
-        setActiveSrc(fallback);
-      }
     };
+
+    const activeSrc = error && fallback ? fallback : src;
 
     const isPlaceholderColor =
       placeholder && (placeholder.startsWith('#') || placeholder.startsWith('rgb'));

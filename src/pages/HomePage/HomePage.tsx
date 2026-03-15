@@ -167,8 +167,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   const [activeTab, setActiveTab] = useState('all');
   const [activeBarTab, setActiveBarTab] = useState('home');
 
-  // Countdown: 3 hours from now
-  const dealEndTime = new Date(Date.now() + 3 * 60 * 60 * 1000);
+  // Countdown: 3 hours from now (stable reference)
+  const [dealEndTime] = useState(() => new Date(Date.now() + 3 * 60 * 60 * 1000));
 
   return (
     <div className={styles.homePage}>

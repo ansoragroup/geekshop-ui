@@ -136,7 +136,7 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
     ? wishlistProducts
     : wishlistProducts.filter((p) => p.tags.includes(activeTab));
 
-  const productsForGrid = filteredProducts.map(({ tags: _tags, ...rest }) => rest);
+  const productsForGrid = filteredProducts.map(({ tags, ...rest }) => { void tags; return rest; });
 
   return (
     <div className={styles.page}>
