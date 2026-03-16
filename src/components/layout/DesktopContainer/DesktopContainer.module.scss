@@ -1,0 +1,25 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  width: 100%;
+  max-width: var(--dc-max-width, #{$desktop-content-max-width});
+  margin: 0 auto;
+  padding-left: var(--dc-padding, #{$desktop-content-padding});
+  padding-right: var(--dc-padding, #{$desktop-content-padding});
+  box-sizing: border-box;
+}
+
+.fullWidth {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--dc-max-width, #{$desktop-content-max-width});
+  margin: 0 auto;
+  padding-left: var(--dc-padding, #{$desktop-content-padding});
+  padding-right: var(--dc-padding, #{$desktop-content-padding});
+  box-sizing: border-box;
+}

@@ -118,3 +118,26 @@ $container-padding: 12px;
 $breakpoint-sm: 375px;
 $breakpoint-md: 414px;
 $breakpoint-lg: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-desktop-lg: 1440px;
+
+// === Desktop Layout ===
+$desktop-content-max-width: 1200px;
+$desktop-content-padding: 24px;
+$desktop-sidebar-width: 240px;
+$desktop-header-height: 64px;
+$desktop-topbar-height: 32px;
+$desktop-footer-min-height: 200px;
+
+// === Desktop Spacing (larger than mobile) ===
+$desktop-spacing-sm: 12px;
+$desktop-spacing-md: 16px;
+$desktop-spacing-lg: 24px;
+$desktop-spacing-xl: 32px;
+$desktop-spacing-xxl: 48px;
+
+// === Desktop Typography ===
+$desktop-font-size-h1: 32px;
+$desktop-font-size-h2: 24px;
+$desktop-font-size-h3: 20px;
+$desktop-font-size-body: 14px;

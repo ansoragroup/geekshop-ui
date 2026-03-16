@@ -1,0 +1,21 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  gap: var(--tcl-gap, #{$desktop-spacing-lg});
+  width: 100%;
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.sidebar {
+  width: var(--tcl-sidebar-width, #{$desktop-sidebar-width});
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}

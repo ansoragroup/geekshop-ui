@@ -1,0 +1,75 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--gs-bg-page);
+}
+
+.topBar {
+  width: 100%;
+  min-height: $desktop-topbar-height;
+  background: var(--gs-text-primary);
+  color: var(--gs-text-white);
+  font-size: $font-size-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  min-height: $desktop-header-height;
+  background: var(--gs-bg-white);
+  border-bottom: 1px solid var(--gs-border-color);
+  box-shadow: $shadow-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bodyWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.body {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: $desktop-spacing-lg $desktop-content-padding;
+  display: flex;
+  gap: $desktop-spacing-lg;
+  box-sizing: border-box;
+}
+
+.hasSidebar {
+  // sidebar + main side by side
+}
+
+.sidebarRight {
+  flex-direction: row-reverse;
+}
+
+.sidebar {
+  width: $desktop-sidebar-width;
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer {
+  width: 100%;
+  min-height: $desktop-footer-min-height;
+  background: var(--gs-text-primary);
+  color: var(--gs-text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

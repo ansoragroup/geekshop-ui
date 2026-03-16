@@ -107,12 +107,17 @@ export { Container } from './layout/Container';
 export { Section } from './layout/Section';
 export { Divider } from './layout/Divider';
 export { Grid } from './layout/Grid';
+export { DesktopContainer } from './layout/DesktopContainer';
+export { DesktopShell } from './layout/DesktopShell';
+export { DesktopGrid } from './layout/DesktopGrid';
+export { TwoColumnLayout } from './layout/TwoColumnLayout';
 
 // Hooks
 export { useControllableState } from '../hooks/useControllableState';
 export { useCountdown } from '../hooks/useCountdown';
 export { useFocusTrap } from '../hooks/useFocusTrap';
 export { useToast } from '../hooks/useToast';
+export { useBreakpointReload } from '../hooks/useBreakpointReload';
 
 // Types — Navigation
 export type { TabBarProps, TabBarItem } from './navigation/TabBar';
@@ -223,6 +228,10 @@ export type { ContainerProps } from './layout/Container';
 export type { SectionProps } from './layout/Section';
 export type { DividerProps, DividerVariant } from './layout/Divider';
 export type { GridProps } from './layout/Grid';
+export type { DesktopContainerProps } from './layout/DesktopContainer';
+export type { DesktopShellProps } from './layout/DesktopShell';
+export type { DesktopGridProps } from './layout/DesktopGrid';
+export type { TwoColumnLayoutProps } from './layout/TwoColumnLayout';
 
 // Types — Hooks
 export type { UseControllableStateProps } from '../hooks/useControllableState';
@@ -233,7 +242,7 @@ export type { ToastItem, UseToastOptions, UseToastReturn } from '../hooks/useToa
 // i18n
 export { GeekShopProvider, useGeekShop } from '../i18n';
 export type { GeekShopProviderProps } from '../i18n';
-export type { Locale, CurrencyCode, CurrencyConfig } from '../i18n';
+export type { Locale, CurrencyCode, CurrencyConfig, Platform } from '../i18n';
 export { CURRENCY_CONFIGS, TRANSLATIONS } from '../i18n';
 
 // Theme Presets

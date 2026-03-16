@@ -626,6 +626,18 @@ export const uz: TranslationDictionary = {
   'calendar.prevMonth': 'Oldingi oy',
   'calendar.nextMonth': 'Keyingi oy',
 
+  // Desktop
+  'desktop.home': 'Bosh sahifa',
+  'desktop.categories': 'Kategoriyalar',
+  'desktop.help': 'Yordam',
+  'desktop.account': 'Hisob',
+  'desktop.sellerCenter': 'Sotuvchi markazi',
+  'desktop.welcomeGuest': 'Xush kelibsiz, mehmon!',
+  'desktop.allCategories': 'Barcha kategoriyalar',
+  'desktop.backToTop': 'Yuqoriga',
+  'desktop.showMore': "Ko'proq ko'rsatish",
+  'desktop.copyright': '© 2026 GeekShop. Barcha huquqlar himoyalangan.',
+
   // Form validation
   'form.required': "Bu maydon to'ldirilishi shart",
   'form.minLength': 'Qiymat juda qisqa',

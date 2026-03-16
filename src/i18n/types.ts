@@ -12,5 +12,8 @@ export interface CurrencyConfig {
   numberLocale: string;
 }
 
+/** Platform type */
+export type Platform = 'mobile' | 'desktop';
+
 /** Translation dictionary shape */
 export type TranslationDictionary = Record<string, string>;
