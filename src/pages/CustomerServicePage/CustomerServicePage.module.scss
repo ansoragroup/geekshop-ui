@@ -1,0 +1,149 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+}
+
+// Messages area - scrollable
+.messagesArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-lg 0;
+  padding-bottom: calc(60px + $spacing-lg + #{$safe-area-bottom});
+}
+
+// Bot intro
+.botIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xl 0;
+}
+
+.botName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// Message rows
+.messageRow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $spacing-lg;
+}
+
+.messageBot {
+  align-items: flex-start;
+}
+
+.messageUser {
+  align-items: flex-end;
+}
+
+// Bubbles
+.bubble {
+  max-width: 80%;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-lg;
+  line-height: $line-height-normal;
+}
+
+.bubbleBot {
+  background: $color-bg-white;
+  border-bottom-left-radius: $radius-xs;
+}
+
+.bubbleUser {
+  background: var(--gs-color-primary, $color-primary);
+  border-bottom-right-radius: $radius-xs;
+}
+
+.bubbleText {
+  margin: 0;
+  font-size: $font-size-md;
+}
+
+.bubbleBot .bubbleText {
+  color: $color-text-primary;
+}
+
+.bubbleUser .bubbleText {
+  color: $color-text-white;
+}
+
+// Action button inside bot bubble
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: $color-primary-bg;
+  color: var(--gs-color-primary, $color-primary);
+  border: 1px solid var(--gs-color-primary, $color-primary);
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 36px;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+// Timestamp
+.timestamp {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-xxs;
+  padding: 0 $spacing-xs;
+}
+
+// FAQ section
+.faqSection {
+  margin-top: $spacing-xl;
+}
+
+.faqTitle {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-md;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-sm;
+}
+
+// Input bar (fixed at bottom)
+.inputBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  padding-bottom: calc(#{$spacing-md} + #{$safe-area-bottom});
+  background: $color-bg-white;
+  border-top: 1px solid $color-border;
+  z-index: $z-index-fixed;
+  box-sizing: border-box;
+}
+
+.inputWrap {
+  flex: 1;
+  min-width: 0;
+}

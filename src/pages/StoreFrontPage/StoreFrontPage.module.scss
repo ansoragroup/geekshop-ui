@@ -1,0 +1,34 @@
+@use '../../theme/tokens' as *;
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $color-bg-page;
+  font-family: $font-family;
+}
+
+// Shop card section
+.shopSection {
+  background: $color-bg-white;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-sm;
+}
+
+// Banner section
+.bannerSection {
+  margin-bottom: $spacing-sm;
+}
+
+// Tab filter (sticky below NavBar)
+.tabsWrap {
+  background: $color-bg-white;
+  padding: $spacing-md $spacing-lg;
+  position: sticky;
+  top: $navbar-height;
+  z-index: $z-index-sticky;
+}
+
+// Product content
+.content {
+  padding: $spacing-md;
+}

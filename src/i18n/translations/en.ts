@@ -552,4 +552,74 @@ export const en: TranslationDictionary = {
   // Order (additions)
   'order.date': 'Order Date',
   'order.orderId': 'Order ID',
+
+  // ShareSheet
+  'shareSheet.title': 'Share',
+  'shareSheet.copyLink': 'Copy Link',
+  'shareSheet.copied': 'Copied!',
+  'shareSheet.telegram': 'Telegram',
+  'shareSheet.whatsapp': 'WhatsApp',
+  'shareSheet.twitter': 'Twitter',
+  'shareSheet.facebook': 'Facebook',
+  'shareSheet.email': 'Email',
+  'shareSheet.sms': 'SMS',
+
+  // ComparisonTable
+  'comparison.remove': 'Remove',
+  'comparison.best': 'Best',
+
+  // StoreFrontPage
+  'page.storeFront': 'Shop',
+  'storeFront.discount': 'Up to {percent}% off!',
+  'storeFront.messageToSeller': 'Message Seller',
+  'storeFront.allProducts': 'All',
+  'storeFront.newProducts': 'New',
+  'storeFront.popularProducts': 'Popular',
+  'storeFront.discountProducts': 'Sale',
+  'storeFront.groupsAvailable': '{count} groups available today',
+
+  // GroupBuyPage
+  'page.groupBuy': 'Group Buy',
+  'groupBuy.todayGroups': '{count} groups available today',
+  'groupBuy.allFilter': 'All',
+  'groupBuy.endingFilter': 'Ending Soon',
+  'groupBuy.newFilter': 'New',
+  'groupBuy.cheapFilter': 'Cheapest',
+
+  // CustomerServicePage
+  'page.customerService': 'Help Center',
+  'customerService.botName': 'GeekShop Assistant',
+  'customerService.greeting': 'Hello! How can I help you?',
+  'customerService.faqTitle': 'Frequently asked:',
+  'customerService.orderStatus': 'Order Status',
+  'customerService.paymentIssue': 'Payment Issue',
+  'customerService.returnItem': 'Returns',
+  'customerService.deliveryInfo': 'Delivery',
+  'customerService.inputPlaceholder': 'Type a message...',
+  'customerService.send': 'Send',
+  'customerService.trackOrder': 'Track Order',
+  'customerService.userMessage': 'Where is order #12345?',
+  'customerService.botReply': 'Your order is currently at the Tashkent warehouse. Estimated delivery: March 18, 2026',
+
+  // CascadePicker
+  'cascadePicker.title': 'Select',
+  'cascadePicker.placeholder': 'Select',
+  'cascadePicker.column': 'Column',
+
+  // DatePicker
+  'datePicker.title': 'Select Date',
+  'datePicker.placeholder': 'Select date',
+  'datePicker.prevMonth': 'Previous month',
+  'datePicker.nextMonth': 'Next month',
+
+  // Calendar
+  'calendar.prevMonth': 'Previous month',
+  'calendar.nextMonth': 'Next month',
+
+  // Form validation
+  'form.required': 'This field is required',
+  'form.minLength': 'Value is too short',
+  'form.maxLength': 'Value is too long',
+  'form.pattern': 'Invalid format',
+  'form.invalid': 'Invalid value',
 };

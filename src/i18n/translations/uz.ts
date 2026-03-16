@@ -562,4 +562,74 @@ export const uz: TranslationDictionary = {
   // Order (additions)
   'order.date': 'Buyurtma sanasi',
   'order.orderId': 'Buyurtma raqami',
+
+  // ShareSheet
+  'shareSheet.title': 'Ulashish',
+  'shareSheet.copyLink': 'Havolani nusxalash',
+  'shareSheet.copied': 'Nusxalandi!',
+  'shareSheet.telegram': 'Telegram',
+  'shareSheet.whatsapp': 'WhatsApp',
+  'shareSheet.twitter': 'Twitter',
+  'shareSheet.facebook': 'Facebook',
+  'shareSheet.email': 'Email',
+  'shareSheet.sms': 'SMS',
+
+  // ComparisonTable
+  'comparison.remove': "O'chirish",
+  'comparison.best': 'Eng yaxshi',
+
+  // StoreFrontPage
+  'page.storeFront': "Do'kon",
+  'storeFront.discount': "Chegirma {percent}% gacha!",
+  'storeFront.messageToSeller': 'Sotuvchiga yozish',
+  'storeFront.allProducts': 'Barchasi',
+  'storeFront.newProducts': 'Yangi',
+  'storeFront.popularProducts': 'Mashhur',
+  'storeFront.discountProducts': 'Chegirma',
+  'storeFront.groupsAvailable': "Bugun {count} ta guruh mavjud",
+
+  // GroupBuyPage
+  'page.groupBuy': 'Guruhli xarid',
+  'groupBuy.todayGroups': "Bugun {count} ta guruh mavjud",
+  'groupBuy.allFilter': 'Barchasi',
+  'groupBuy.endingFilter': 'Tugayapti',
+  'groupBuy.newFilter': 'Yangi',
+  'groupBuy.cheapFilter': 'Arzon',
+
+  // CustomerServicePage
+  'page.customerService': 'Yordam markazi',
+  'customerService.botName': 'GeekShop yordamchisi',
+  'customerService.greeting': 'Assalomu alaykum! Sizga qanday yordam bera olaman?',
+  'customerService.faqTitle': "Tez-tez so'raladigan:",
+  'customerService.orderStatus': 'Buyurtma holati',
+  'customerService.paymentIssue': "To'lov muammosi",
+  'customerService.returnItem': 'Qaytarish',
+  'customerService.deliveryInfo': 'Yetkazish',
+  'customerService.inputPlaceholder': 'Xabar yozing...',
+  'customerService.send': 'Yuborish',
+  'customerService.trackOrder': 'Buyurtmani kuzatish',
+  'customerService.userMessage': 'Buyurtma #12345 qaerga yetdi?',
+  'customerService.botReply': "Buyurtmangiz hozirda Toshkent omborida. Taxminiy yetkazish: 18-mart, 2026",
+
+  // CascadePicker
+  'cascadePicker.title': 'Tanlang',
+  'cascadePicker.placeholder': 'Tanlang',
+  'cascadePicker.column': 'Ustun',
+
+  // DatePicker
+  'datePicker.title': 'Sanani tanlang',
+  'datePicker.placeholder': 'Sanani tanlang',
+  'datePicker.prevMonth': 'Oldingi oy',
+  'datePicker.nextMonth': 'Keyingi oy',
+
+  // Calendar
+  'calendar.prevMonth': 'Oldingi oy',
+  'calendar.nextMonth': 'Keyingi oy',
+
+  // Form validation
+  'form.required': "Bu maydon to'ldirilishi shart",
+  'form.minLength': 'Qiymat juda qisqa',
+  'form.maxLength': 'Qiymat juda uzun',
+  'form.pattern': "Noto'g'ri format",
+  'form.invalid': "Noto'g'ri qiymat",
 };

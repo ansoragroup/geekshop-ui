@@ -552,4 +552,74 @@ export const ru: TranslationDictionary = {
   // Order (additions)
   'order.date': 'Дата заказа',
   'order.orderId': 'Номер заказа',
+
+  // ShareSheet
+  'shareSheet.title': 'Поделиться',
+  'shareSheet.copyLink': 'Копировать ссылку',
+  'shareSheet.copied': 'Скопировано!',
+  'shareSheet.telegram': 'Telegram',
+  'shareSheet.whatsapp': 'WhatsApp',
+  'shareSheet.twitter': 'Twitter',
+  'shareSheet.facebook': 'Facebook',
+  'shareSheet.email': 'Email',
+  'shareSheet.sms': 'SMS',
+
+  // ComparisonTable
+  'comparison.remove': 'Удалить',
+  'comparison.best': 'Лучший',
+
+  // StoreFrontPage
+  'page.storeFront': 'Магазин',
+  'storeFront.discount': 'Скидки до {percent}%!',
+  'storeFront.messageToSeller': 'Написать продавцу',
+  'storeFront.allProducts': 'Все',
+  'storeFront.newProducts': 'Новинки',
+  'storeFront.popularProducts': 'Популярные',
+  'storeFront.discountProducts': 'Скидки',
+  'storeFront.groupsAvailable': 'Сегодня {count} групп доступно',
+
+  // GroupBuyPage
+  'page.groupBuy': 'Групповая покупка',
+  'groupBuy.todayGroups': 'Сегодня доступно {count} групп',
+  'groupBuy.allFilter': 'Все',
+  'groupBuy.endingFilter': 'Заканчиваются',
+  'groupBuy.newFilter': 'Новые',
+  'groupBuy.cheapFilter': 'Дешёвые',
+
+  // CustomerServicePage
+  'page.customerService': 'Центр помощи',
+  'customerService.botName': 'Помощник GeekShop',
+  'customerService.greeting': 'Здравствуйте! Чем могу помочь?',
+  'customerService.faqTitle': 'Часто задаваемые:',
+  'customerService.orderStatus': 'Статус заказа',
+  'customerService.paymentIssue': 'Проблема с оплатой',
+  'customerService.returnItem': 'Возврат',
+  'customerService.deliveryInfo': 'Доставка',
+  'customerService.inputPlaceholder': 'Введите сообщение...',
+  'customerService.send': 'Отправить',
+  'customerService.trackOrder': 'Отследить заказ',
+  'customerService.userMessage': 'Где заказ #12345?',
+  'customerService.botReply': 'Ваш заказ сейчас на складе в Ташкенте. Ориентировочная доставка: 18 марта, 2026',
+
+  // CascadePicker
+  'cascadePicker.title': 'Выберите',
+  'cascadePicker.placeholder': 'Выберите',
+  'cascadePicker.column': 'Колонка',
+
+  // DatePicker
+  'datePicker.title': 'Выберите дату',
+  'datePicker.placeholder': 'Выберите дату',
+  'datePicker.prevMonth': 'Предыдущий месяц',
+  'datePicker.nextMonth': 'Следующий месяц',
+
+  // Calendar
+  'calendar.prevMonth': 'Предыдущий месяц',
+  'calendar.nextMonth': 'Следующий месяц',
+
+  // Form validation
+  'form.required': 'Это поле обязательно',
+  'form.minLength': 'Значение слишком короткое',
+  'form.maxLength': 'Значение слишком длинное',
+  'form.pattern': 'Неверный формат',
+  'form.invalid': 'Неверное значение',
 };
