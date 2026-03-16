@@ -58,7 +58,7 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
     const statusLabel = t(STATUS_KEYS[status]);
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <article ref={ref} className={`${styles.root} ${className}`} {...rest}>
         {/* Status header */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
@@ -82,6 +82,8 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
                 alt={product.title}
                 className={styles.productImage}
                 loading="lazy"
+                width={72}
+                height={72}
               />
               <div className={styles.productInfo}>
                 <span className={styles.productTitle}>{product.title}</span>
@@ -123,7 +125,7 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
             ))}
           </div>
         )}
-      </div>
+      </article>
     );
   }
 );

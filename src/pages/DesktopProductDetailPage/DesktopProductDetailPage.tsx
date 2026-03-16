@@ -1,0 +1,243 @@
+import { useState } from 'react';
+import {
+  DesktopShell,
+  TopBar,
+  DesktopHeader,
+  MegaMenu,
+  Footer,
+  Breadcrumbs,
+  ProductImageGallery,
+  PriceDisplay,
+  Rating,
+  QuantityStepper,
+  Button,
+  Tabs,
+  SpecsTable,
+  ReviewCard,
+} from '../../components';
+import type { MegaMenuCategory, ReviewCardUser } from '../../components';
+import styles from './DesktopProductDetailPage.module.scss';
+
+// ─── Static data ──────────────────────────────────────────────────────────────
+
+const megaMenuCategories: MegaMenuCategory[] = [
+  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
+  { label: 'Processors', subcategories: [{ label: 'AMD Ryzen 7000' }, { label: 'Intel 14th Gen' }] },
+  { label: 'Monitors', subcategories: [{ label: '4K Monitors' }, { label: '2K 165Hz' }] },
+  { label: 'Laptops', subcategories: [{ label: 'Gaming' }, { label: 'Ultrabook' }] },
+  { label: 'Memory (RAM)' },
+  { label: 'Storage' },
+  { label: 'Peripherals' },
+  { label: 'Cases & Cooling' },
+];
+
+const footerColumns = [
+  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
+  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
+  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
+];
+
+const productImages = [
+  'https://picsum.photos/seed/pdp-main/600/600',
+  'https://picsum.photos/seed/pdp-angle/600/600',
+  'https://picsum.photos/seed/pdp-back/600/600',
+  'https://picsum.photos/seed/pdp-box/600/600',
+  'https://picsum.photos/seed/pdp-ports/600/600',
+];
+
+const specs = [
+  { label: 'GPU', value: 'NVIDIA GeForce RTX 4070 Super' },
+  { label: 'Memory', value: '12GB GDDR6X' },
+  { label: 'Memory Bus', value: '192-bit' },
+  { label: 'Base Clock', value: '1980 MHz' },
+  { label: 'Boost Clock', value: '2475 MHz' },
+  { label: 'CUDA Cores', value: '7168' },
+  { label: 'RT Cores', value: '56 (3rd Gen)' },
+  { label: 'TDP', value: '220W' },
+  { label: 'Power Connector', value: '1x 16-pin' },
+  { label: 'Display Outputs', value: '3x DP 1.4a, 1x HDMI 2.1' },
+  { label: 'Dimensions', value: '308 x 120 x 52 mm' },
+  { label: 'Warranty', value: '3 years' },
+];
+
+const reviews = [
+  {
+    user: { name: 'Dilshod Rahimov', avatar: 'https://picsum.photos/seed/user-1/64/64' } as ReviewCardUser,
+    rating: 5,
+    content: 'Excellent GPU! Runs all games at ultra settings 1440p 60+ FPS. Temperature stays under 65C. Highly recommended for the price.',
+    date: '14 March, 2026',
+    variant: '12GB / Black',
+    images: ['https://picsum.photos/seed/review-img-1/200/200', 'https://picsum.photos/seed/review-img-2/200/200'],
+  },
+  {
+    user: { name: 'Nodira Karimova' } as ReviewCardUser,
+    rating: 4,
+    content: 'Good product, but the box arrived slightly damaged. The card itself works perfectly. Delivery took 2 days within Tashkent.',
+    date: '12 March, 2026',
+    variant: '12GB / Black',
+  },
+  {
+    user: { name: 'Bekzod Tursunov', avatar: 'https://picsum.photos/seed/user-3/64/64' } as ReviewCardUser,
+    rating: 5,
+    content: 'Best value for money. Massive upgrade from my GTX 1660. DLSS 3 technology works great and significantly boosts FPS.',
+    date: '10 March, 2026',
+    variant: '12GB / Black',
+    images: ['https://picsum.photos/seed/review-img-3/200/200'],
+  },
+];
+
+const skuColors = ['Black', 'White'];
+const skuMemory = ['12GB GDDR6X'];
+
+// ─── Shared shell slots ──────────────────────────────────────────────────────
+
+const DesktopTopBar = () => (
+  <TopBar
+    leftItems={[<span key="w">Welcome to GeekShop!</span>, <span key="s">Seller Center</span>, <span key="h">Help</span>]}
+    rightItems={[
+      <button key="l" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>EN</button>,
+      <button key="c" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>USD</button>,
+    ]}
+  />
+);
+
+const DesktopHeaderBar = () => (
+  <DesktopHeader
+    logo={<span style={{ fontWeight: 700, fontSize: 20, color: '#FF5000' }}>GeekShop</span>}
+    searchPlaceholder="Search products..."
+    cartCount={3}
+    wishlistCount={5}
+  />
+);
+
+const DesktopMegaMenuBar = () => (
+  <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }, { label: 'Top Brands' }]} />
+);
+
+const DesktopFooterSection = () => (
+  <Footer columns={footerColumns} copyrightText="\u00A9 2026 GeekShop. All rights reserved." />
+);
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export const DesktopProductDetailPage: React.FC = () => {
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('specs');
+  const [selectedColor, setSelectedColor] = useState('Black');
+
+  return (
+    <DesktopShell
+      topBar={<DesktopTopBar />}
+      header={
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+          <DesktopHeaderBar />
+          <DesktopMegaMenuBar />
+        </div>
+      }
+      footer={<DesktopFooterSection />}
+    >
+      {/* Breadcrumbs */}
+      <div className={styles.breadcrumbs}>
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'Graphics Cards', href: '#' },
+            { label: 'NVIDIA RTX 4070 Super', href: '#' },
+            { label: 'MSI GeForce RTX 4070 Super' },
+          ]}
+        />
+      </div>
+
+      {/* Product detail: image left, info right */}
+      <div className={styles.productLayout}>
+        {/* Left: Image Gallery */}
+        <div className={styles.imageSection}>
+          <ProductImageGallery images={productImages} />
+        </div>
+
+        {/* Right: Product Info */}
+        <div className={styles.infoSection}>
+          <h1 className={styles.productTitle}>MSI GeForce RTX 4070 Super 12GB GDDR6X Gaming X Slim</h1>
+          <div className={styles.ratingRow}>
+            <Rating value={4.6} count={234} />
+            <span className={styles.stockLabel}>In Stock</span>
+          </div>
+          <div className={styles.priceRow}>
+            <PriceDisplay price={8900000} originalPrice={12000000} variant="sale" size="lg" />
+          </div>
+
+          {/* SKU Selection - Color */}
+          <div className={styles.skuSection}>
+            <div className={styles.skuLabel}>Color</div>
+            <div className={styles.skuOptions}>
+              {skuColors.map((color) => (
+                <button
+                  key={color}
+                  type="button"
+                  className={`${styles.skuOption} ${selectedColor === color ? styles.skuOptionActive : ''}`}
+                  onClick={() => setSelectedColor(color)}
+                >
+                  {color}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* SKU Selection - Memory */}
+          <div className={styles.skuSection}>
+            <div className={styles.skuLabel}>Memory</div>
+            <div className={styles.skuOptions}>
+              {skuMemory.map((mem) => (
+                <button
+                  key={mem}
+                  type="button"
+                  className={`${styles.skuOption} ${styles.skuOptionActive}`}
+                >
+                  {mem}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Quantity */}
+          <div className={styles.quantityRow}>
+            <span className={styles.skuLabel}>Quantity</span>
+            <QuantityStepper value={quantity} onChange={setQuantity} min={1} max={10} />
+          </div>
+
+          {/* Actions */}
+          <div className={styles.actionRow}>
+            <Button variant="outline" size="lg" style={{ flex: 1 }}>Add to Cart</Button>
+            <Button variant="primary" size="lg" style={{ flex: 1 }}>Buy Now</Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs: Specs, Reviews */}
+      <div className={styles.tabsSection}>
+        <Tabs
+          activeKey={activeTab}
+          onChange={setActiveTab}
+          items={[
+            {
+              key: 'specs',
+              label: 'Specifications',
+              children: <SpecsTable specs={specs} />,
+            },
+            {
+              key: 'reviews',
+              label: `Reviews (${reviews.length})`,
+              children: (
+                <div className={styles.reviewsList}>
+                  {reviews.map((review, i) => (
+                    <ReviewCard key={i} {...review} />
+                  ))}
+                </div>
+              ),
+            },
+          ]}
+        />
+      </div>
+    </DesktopShell>
+  );
+};

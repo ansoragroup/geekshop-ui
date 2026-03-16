@@ -1,6 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .couponCard {
+  container-type: inline-size;
   display: flex;
   width: 100%;
   background: $color-bg-white;
@@ -8,6 +9,32 @@
   overflow: hidden;
   box-shadow: $shadow-sm;
   position: relative;
+}
+
+// ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .leftPart {
+    width: 140px;
+    padding: $spacing-lg $desktop-spacing-md;
+  }
+
+  .discountText {
+    font-size: $font-size-xxl;
+  }
+
+  .codeValue {
+    font-size: $font-size-lg;
+  }
+
+  .rightPart {
+    padding: $spacing-lg $desktop-spacing-lg $spacing-lg $spacing-md;
+  }
+
+  .useButton {
+    font-size: $font-size-md;
+  }
 }
 
 .leftPart {

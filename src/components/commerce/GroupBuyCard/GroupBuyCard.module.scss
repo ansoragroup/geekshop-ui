@@ -282,6 +282,42 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .image {
+    width: 88px;
+    height: 88px;
+  }
+
+  .name {
+    font-size: $font-size-lg;
+  }
+
+  .priceRow {
+    font-size: $font-size-md;
+  }
+
+  .avatarSlot {
+    width: 40px;
+    height: 40px;
+  }
+
+  .top {
+    gap: $desktop-spacing-md;
+  }
+
+  .statusRow {
+    font-size: $font-size-md;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

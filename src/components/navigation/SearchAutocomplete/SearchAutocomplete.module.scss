@@ -1,0 +1,307 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+// Input wrapper
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+  border: 1px solid transparent;
+  gap: $spacing-sm;
+  transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: var(--gs-color-primary);
+    background: $color-bg-white;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--gs-color-primary) 12%, transparent);
+  }
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  line-height: 1;
+  min-width: 0;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-text-secondary;
+    background: $color-border;
+  }
+}
+
+// Dropdown
+.dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  width: 100%;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  z-index: $z-index-dropdown;
+  overflow: hidden;
+  animation: dropdownIn 0.15s ease;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Sections
+.section {
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.sectionTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clearAllBtn {
+  padding: $spacing-xs $spacing-sm;
+  border: none;
+  background: none;
+  color: var(--gs-color-primary);
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  cursor: pointer;
+  border-radius: $radius-xs;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+}
+
+// Recent chips
+.recentChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-round;
+  background: $color-bg-white;
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: background $transition-fast, border-color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: $color-primary-bg;
+    border-color: var(--gs-color-primary);
+    color: var(--gs-color-primary);
+  }
+}
+
+// Suggestions
+.suggestionList {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-sm 0;
+  border: none;
+  background: none;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  cursor: pointer;
+  text-align: left;
+  border-radius: $radius-xs;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+}
+
+.suggestionText {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestionArrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+}
+
+// Products
+.productList {
+  display: flex;
+  flex-direction: column;
+}
+
+.productItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  width: 100%;
+  padding: $spacing-sm 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: $radius-xs;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+}
+
+.productImage {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-page;
+}
+
+.productInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.productTitle {
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-price);
+}
+
+// View all
+.viewAllBtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-xs;
+  width: 100%;
+  padding: $spacing-sm 0;
+  padding-top: $spacing-md;
+  border: none;
+  background: none;
+  color: var(--gs-color-primary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    animation: none;
+  }
+
+  .inputWrapper,
+  .clearBtn,
+  .clearAllBtn,
+  .chip,
+  .suggestionItem,
+  .productItem,
+  .viewAllBtn {
+    transition: none;
+  }
+}

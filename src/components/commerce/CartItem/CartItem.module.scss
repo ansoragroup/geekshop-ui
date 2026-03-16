@@ -186,6 +186,37 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .content {
+    gap: $desktop-spacing-md;
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+  }
+
+  .variant {
+    font-size: $font-size-md;
+  }
+
+  .price {
+    font-size: $font-size-xl;
+  }
+
+  .bottom {
+    margin-top: $spacing-sm;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

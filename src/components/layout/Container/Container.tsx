@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Container.module.scss';
 
-export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+export interface ContainerProps extends HTMLAttributes<HTMLElement> {
   /** Whether to add top padding for navbar */
   hasNavbar?: boolean;
   /** Whether to add bottom padding for tabbar */
@@ -12,7 +12,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export const Container = forwardRef<HTMLDivElement, ContainerProps>(
+export const Container = forwardRef<HTMLElement, ContainerProps>(
   (
     {
       hasNavbar = false,
@@ -34,9 +34,9 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
   ].filter(Boolean).join(' ');
 
   return (
-    <div ref={ref} className={classNames} {...rest}>
+    <main ref={ref} className={classNames} {...rest}>
       {children}
-    </div>
+    </main>
   );
   },
 );

@@ -114,7 +114,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
         </button>
 
         {/* Product image */}
-        <img src={image} alt={title} className={styles.image} />
+        <img src={image} alt={title} className={styles.image} width={80} height={80} />
 
         {/* Info */}
         <div className={styles.info}>

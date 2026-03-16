@@ -1,0 +1,28 @@
+@use '../../theme/tokens' as *;
+
+.heroBanner {
+  margin-bottom: $desktop-spacing-lg;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.section {
+  margin-bottom: $desktop-spacing-xl;
+}
+
+.dealsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $desktop-spacing-md;
+}
+
+.dealsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $desktop-spacing-md;
+}
+
+.productGridWrap {
+  margin-top: $desktop-spacing-md;
+}

@@ -14,6 +14,16 @@ export { CurrencySwitcher } from './navigation/CurrencySwitcher';
 export { ThemeSwitcher } from './navigation/ThemeSwitcher';
 export { Segmented } from './navigation/Segmented';
 export { Tabs } from './navigation/Tabs';
+export { TopBar } from './navigation/TopBar';
+export { DesktopHeader } from './navigation/DesktopHeader';
+export { MegaMenu } from './navigation/MegaMenu';
+export { Breadcrumbs } from './navigation/Breadcrumbs';
+export { Pagination } from './navigation/Pagination';
+export { BackToTop } from './navigation/BackToTop';
+export { UserDropdown } from './navigation/UserDropdown';
+export { SearchAutocomplete } from './navigation/SearchAutocomplete';
+export { DesktopSidebar } from './navigation/DesktopSidebar';
+export { Dropdown } from './navigation/Dropdown';
 
 // Product
 export { PriceDisplay } from './product/PriceDisplay';
@@ -23,6 +33,7 @@ export { ProductCarousel } from './product/ProductCarousel';
 export { ProductImageGallery } from './product/ProductImageGallery';
 export { StockIndicator } from './product/StockIndicator';
 export { InstallmentDisplay } from './product/InstallmentDisplay';
+export { ProductListItem } from './product/ProductListItem';
 
 // Commerce
 export { QuantityStepper } from './commerce/QuantityStepper';
@@ -35,6 +46,7 @@ export { PaymentMethodCard } from './commerce/PaymentMethodCard';
 export { GroupBuyCard } from './commerce/GroupBuyCard';
 export { ShopCard } from './commerce/ShopCard';
 export { DeliveryCard } from './commerce/DeliveryCard';
+export { MiniCart } from './commerce/MiniCart';
 
 // Content
 export { HeroBanner } from './content/HeroBanner';
@@ -85,6 +97,7 @@ export { ActionSheet } from './feedback/ActionSheet';
 export { Tooltip } from './feedback/Tooltip';
 export { ShareSheet } from './feedback/ShareSheet';
 export { Popover } from './feedback/Popover';
+export { Modal } from './feedback/Modal';
 
 // Form
 export { Button } from './form/Button';
@@ -111,6 +124,7 @@ export { DesktopContainer } from './layout/DesktopContainer';
 export { DesktopShell } from './layout/DesktopShell';
 export { DesktopGrid } from './layout/DesktopGrid';
 export { TwoColumnLayout } from './layout/TwoColumnLayout';
+export { Footer } from './layout/Footer';
 
 // Hooks
 export { useControllableState } from '../hooks/useControllableState';
@@ -135,6 +149,16 @@ export type { CurrencySwitcherProps } from './navigation/CurrencySwitcher';
 export type { ThemeSwitcherProps } from './navigation/ThemeSwitcher';
 export type { SegmentedProps, SegmentedOption } from './navigation/Segmented';
 export type { TabsProps, TabItem, TabsVariant } from './navigation/Tabs';
+export type { TopBarProps } from './navigation/TopBar';
+export type { DesktopHeaderProps } from './navigation/DesktopHeader';
+export type { MegaMenuProps, MegaMenuCategory, MegaMenuSubcategory } from './navigation/MegaMenu';
+export type { BreadcrumbsProps, BreadcrumbItem } from './navigation/Breadcrumbs';
+export type { PaginationProps } from './navigation/Pagination';
+export type { BackToTopProps } from './navigation/BackToTop';
+export type { UserDropdownProps, UserDropdownItem } from './navigation/UserDropdown';
+export type { SearchAutocompleteProps, SearchProduct } from './navigation/SearchAutocomplete';
+export type { DesktopSidebarProps, SidebarCategory, SidebarBrand } from './navigation/DesktopSidebar';
+export type { DropdownProps, DropdownItem } from './navigation/Dropdown';
 
 // Types — Product
 export type { PriceDisplayProps, PriceDisplayVariant, PriceDisplaySize } from './product/PriceDisplay';
@@ -144,6 +168,7 @@ export type { ProductCarouselProps, CarouselProduct, CarouselTab } from './produ
 export type { ProductImageGalleryProps } from './product/ProductImageGallery';
 export type { StockIndicatorProps, StockIndicatorVariant } from './product/StockIndicator';
 export type { InstallmentDisplayProps } from './product/InstallmentDisplay';
+export type { ProductListItemProps } from './product/ProductListItem';
 
 // Types — Commerce
 export type { QuantityStepperProps } from './commerce/QuantityStepper';
@@ -156,6 +181,7 @@ export type { PaymentMethodCardProps, PaymentMethod, PaymentType } from './comme
 export type { GroupBuyCardProps, GroupBuyProduct } from './commerce/GroupBuyCard';
 export type { ShopCardProps } from './commerce/ShopCard';
 export type { DeliveryCardProps, DeliveryStatus } from './commerce/DeliveryCard';
+export type { MiniCartProps, MiniCartItem } from './commerce/MiniCart';
 
 // Types — Content
 export type { HeroBannerProps } from './content/HeroBanner';
@@ -206,6 +232,7 @@ export type { ActionSheetProps, ActionSheetAction } from './feedback/ActionSheet
 export type { TooltipProps, TooltipPlacement, TooltipTrigger } from './feedback/Tooltip';
 export type { ShareSheetProps, SharePlatform } from './feedback/ShareSheet';
 export type { PopoverProps, PopoverPlacement, PopoverTrigger } from './feedback/Popover';
+export type { ModalProps } from './feedback/Modal';
 
 // Types — Form
 export type { ButtonProps, ButtonOwnProps, ButtonVariant, ButtonSize } from './form/Button';
@@ -232,6 +259,7 @@ export type { DesktopContainerProps } from './layout/DesktopContainer';
 export type { DesktopShellProps } from './layout/DesktopShell';
 export type { DesktopGridProps } from './layout/DesktopGrid';
 export type { TwoColumnLayoutProps } from './layout/TwoColumnLayout';
+export type { FooterProps, FooterColumn, FooterLink, FooterSocial } from './layout/Footer';
 
 // Types — Hooks
 export type { UseControllableStateProps } from '../hooks/useControllableState';

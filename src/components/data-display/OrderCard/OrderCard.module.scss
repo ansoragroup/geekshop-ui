@@ -259,6 +259,49 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .productImage {
+    width: 96px;
+    height: 96px;
+  }
+
+  .productTitle {
+    font-size: $font-size-xl;
+  }
+
+  .productPrice {
+    font-size: $font-size-xl;
+  }
+
+  .totalAmount {
+    font-size: $font-size-xxl;
+  }
+
+  .header {
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .products {
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .totalRow {
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .actions {
+    padding: 0 $desktop-spacing-lg $desktop-spacing-lg;
+  }
+
+  .actionBtn {
+    height: 36px;
+    font-size: $font-size-md;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

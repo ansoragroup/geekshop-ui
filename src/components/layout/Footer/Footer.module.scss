@@ -1,0 +1,249 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  width: 100%;
+  min-height: $desktop-footer-min-height;
+  background: $color-text-primary;
+  color: $color-text-white;
+  font-family: $font-family;
+}
+
+.content {
+  max-width: $desktop-content-max-width;
+  margin: 0 auto;
+  padding: $desktop-spacing-xxl $desktop-content-padding 0;
+  box-sizing: border-box;
+}
+
+// ─── Top Section: Logo + Columns ───────────────────────────────────────
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-lg;
+  padding-bottom: $desktop-spacing-lg;
+}
+
+.logoArea {
+  flex-shrink: 0;
+}
+
+.defaultLogo {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+}
+
+.columnsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $desktop-spacing-lg;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.columnTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+  margin: 0;
+  line-height: $line-height-normal;
+}
+
+.columnLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.columnLinkItem {
+  line-height: $line-height-normal;
+}
+
+.link,
+.linkButton {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  transition: color $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text-white;
+  }
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+// ─── Social Links ──────────────────────────────────────────────────────
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: $font-size-sm;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-text-white;
+  }
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+// ─── Newsletter ────────────────────────────────────────────────────────
+
+.newsletter {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: $desktop-spacing-lg 0;
+}
+
+.newsletterInner {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-lg;
+  flex-wrap: wrap;
+}
+
+.newsletterLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-white;
+  white-space: nowrap;
+}
+
+.newsletterForm {
+  display: flex;
+  flex: 1;
+  min-width: 280px;
+  gap: $spacing-sm;
+}
+
+.newsletterInput {
+  flex: 1;
+  min-height: 44px;
+  padding: $spacing-sm $spacing-lg;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.1);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-family: inherit;
+  outline: none;
+  transition: border-color $transition-fast;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.newsletterButton {
+  min-height: 44px;
+  min-width: 120px;
+  padding: $spacing-sm $spacing-xl;
+  background: $color-primary;
+  color: $color-text-white;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}
+
+// ─── Bottom Bar ────────────────────────────────────────────────────────
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: $desktop-spacing-md 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.copyright {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bottomLinks {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+// ─── Responsive ────────────────────────────────────────────────────────
+
+@media (max-width: $breakpoint-lg) {
+  .columnsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .newsletterInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .newsletterForm {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .columnsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// ─── Reduced Motion ───────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .linkButton,
+  .socialLink,
+  .newsletterInput,
+  .newsletterButton {
+    transition: none;
+  }
+}

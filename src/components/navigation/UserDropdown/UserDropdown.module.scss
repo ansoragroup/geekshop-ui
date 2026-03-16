@@ -1,0 +1,261 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+// Trigger button
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+  cursor: pointer;
+  transition: background $transition-fast, box-shadow $transition-fast;
+  overflow: hidden;
+
+  &:hover {
+    background: $color-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-round;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-secondary;
+}
+
+// Dropdown panel
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + $spacing-sm);
+  width: 240px;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  z-index: $z-index-dropdown;
+  overflow: hidden;
+  animation: dropdownIn 0.15s ease;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// User header
+.userHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  border-bottom: 1px solid $color-border;
+}
+
+.headerAvatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-round;
+  overflow: hidden;
+  background: $color-bg-page;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerAvatarImg {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-round;
+  object-fit: cover;
+}
+
+.headerAvatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-secondary;
+}
+
+.headerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.headerName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerEmail {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Menu groups
+.menuGroup {
+  padding: $spacing-xs 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// Menu items
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  width: 100%;
+  padding: $spacing-sm $spacing-lg;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  text-align: left;
+  transition: background $transition-fast;
+  min-height: 40px;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.menuItemDanger {
+  color: $color-error;
+
+  &:hover {
+    background: rgba($color-error, 0.06);
+  }
+}
+
+.menuItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.menuItemLabel {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Guest actions
+.guestActions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+}
+
+.signInBtn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: $radius-md;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.registerBtn {
+  width: 100%;
+  height: 40px;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    border-color: $color-text-tertiary;
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    animation: none;
+  }
+
+  .trigger,
+  .menuItem,
+  .signInBtn,
+  .registerBtn {
+    transition: none;
+  }
+}

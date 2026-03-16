@@ -1,0 +1,230 @@
+@use '../../../theme/tokens' as *;
+
+.megaMenu {
+  width: 100%;
+  background: $color-bg-card;
+  border-bottom: 1px solid $color-border;
+  font-family: $font-family;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+// --- All Categories trigger ---
+.triggerWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 44px;
+  padding: 0 $spacing-lg;
+  border: none;
+  background: none;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  color: $color-text-primary;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+    border-radius: $radius-xs;
+  }
+}
+
+// --- Nav items ---
+.navList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 $spacing-lg;
+  border: none;
+  background: none;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-secondary;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+    border-radius: $radius-xs;
+  }
+}
+
+// --- Dropdown panel ---
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: $z-index-dropdown;
+  display: flex;
+  justify-content: center;
+  background: $color-bg-card;
+  box-shadow: $shadow-lg;
+  border-top: 1px solid $color-border;
+}
+
+.dropdownContent {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: flex;
+  box-sizing: border-box;
+  min-height: 320px;
+}
+
+// --- Category list (left sidebar) ---
+.categoryList {
+  width: $desktop-sidebar-width;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: $spacing-sm 0;
+  border-right: 1px solid $color-border;
+}
+
+.categoryItem {
+  margin: 0;
+}
+
+.categoryItemActive {
+  .categoryLink {
+    background: $color-primary-bg;
+    color: $color-primary;
+  }
+}
+
+.categoryLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  text-decoration: none;
+  transition: background $transition-fast, color $transition-fast;
+  cursor: pointer;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+
+  &:hover {
+    background: $color-primary-bg;
+    color: $color-primary;
+  }
+}
+
+.categoryIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.categoryLabel {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+// --- Subcategory panel (right) ---
+.subcategoryPanel {
+  flex: 1;
+  padding: $desktop-spacing-lg;
+}
+
+.subcategoryTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-lg;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1px solid $color-border;
+}
+
+.subcategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md $spacing-lg;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subcategoryLink {
+  display: block;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  text-decoration: none;
+  padding: $spacing-xs 0;
+  transition: color $transition-fast;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .navLink,
+  .categoryLink,
+  .subcategoryLink {
+    transition: none;
+  }
+}

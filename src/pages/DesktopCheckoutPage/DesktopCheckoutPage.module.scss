@@ -1,0 +1,132 @@
+@use '../../theme/tokens' as *;
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.stepsWrapper {
+  margin-bottom: $desktop-spacing-xl;
+  padding: $desktop-spacing-lg $desktop-spacing-xxl;
+  background: var(--gs-bg-white);
+  border-radius: $radius-lg;
+}
+
+.formSection {
+  margin-bottom: $desktop-spacing-xl;
+}
+
+.formSectionTitle {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-md;
+}
+
+.addressList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.paymentList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+// ─── Order Summary ─────────────────────────────────────────────────────────
+
+.summaryCard {
+  background: var(--gs-bg-white);
+  border-radius: $radius-lg;
+  padding: $desktop-spacing-lg;
+  border: 1px solid var(--gs-border-color);
+}
+
+.summaryTitle {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-md;
+}
+
+// ─── Mini cart items ───────────────────────────────────────────────────────
+
+.miniCartList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.miniCartItem {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  align-items: flex-start;
+}
+
+.miniCartImage {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.miniCartInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.miniCartName {
+  font-size: $font-size-sm;
+  color: var(--gs-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miniCartVariant {
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+}
+
+.miniCartPrice {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  font-weight: $font-weight-medium;
+}
+
+// ─── Summary totals ────────────────────────────────────────────────────────
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-md;
+  color: var(--gs-text-secondary);
+}
+
+.summaryDivider {
+  height: 1px;
+  background: var(--gs-border-color);
+  margin: $desktop-spacing-sm 0;
+}
+
+.summaryTotal {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+}
+
+.freeLabel {
+  color: $color-success;
+  font-weight: $font-weight-medium;
+}

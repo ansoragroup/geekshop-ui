@@ -188,6 +188,35 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .content {
+    padding: $desktop-spacing-md;
+    gap: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+    min-height: auto;
+  }
+
+  .soldCount {
+    font-size: $font-size-md;
+  }
+
+  .discountBadge,
+  .badge {
+    font-size: $font-size-sm;
+    padding: $spacing-xxs $spacing-md;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

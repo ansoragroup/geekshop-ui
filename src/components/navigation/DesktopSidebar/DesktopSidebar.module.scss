@@ -1,0 +1,253 @@
+@use '../../../theme/tokens' as *;
+
+.sidebar {
+  width: $desktop-sidebar-width;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  border: 1px solid $color-border;
+}
+
+// Sections
+.section {
+  padding-bottom: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-md 0;
+  line-height: $line-height-tight;
+}
+
+// Categories
+.categoryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  background: none;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  cursor: pointer;
+  text-align: left;
+  transition: background $transition-fast, color $transition-fast;
+  position: relative;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.categoryActive {
+  color: var(--gs-color-primary);
+  font-weight: $font-weight-medium;
+  background: $color-primary-bg;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 18px;
+    border-radius: 0 3px 3px 0;
+    background: var(--gs-color-primary);
+  }
+}
+
+.categoryLabel {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.categoryCount {
+  flex-shrink: 0;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+}
+
+// Price range
+.priceInputs {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.priceInput {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 $spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-bg-white;
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  color: $color-text-primary;
+  outline: none;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:focus {
+    border-color: var(--gs-color-primary);
+  }
+
+  // Hide number input spinner
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.priceSeparator {
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+// Brands
+.brandList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.brandItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xs 0;
+  cursor: pointer;
+  border-radius: $radius-xs;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+  }
+}
+
+.brandCheckbox {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--gs-color-primary);
+}
+
+.brandLabel {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  user-select: none;
+}
+
+// Rating
+.ratingList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.ratingItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: $spacing-xs $spacing-sm;
+  border: none;
+  background: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  text-align: left;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.ratingActive {
+  background: $color-primary-bg;
+}
+
+.ratingStars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.starFilled {
+  display: flex;
+  color: $color-warning;
+}
+
+.starEmpty {
+  display: flex;
+  color: $color-border;
+}
+
+.ratingLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// Empty state
+.emptyState {
+  padding: $spacing-xxl $spacing-lg;
+  text-align: center;
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .categoryItem,
+  .brandItem,
+  .ratingItem,
+  .priceInput {
+    transition: none;
+  }
+}

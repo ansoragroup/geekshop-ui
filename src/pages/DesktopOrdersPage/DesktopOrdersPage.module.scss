@@ -1,0 +1,45 @@
+@use '../../theme/tokens' as *;
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-lg;
+}
+
+.tabFilterWrap {
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $desktop-spacing-xxl;
+  background: var(--gs-bg-white);
+  border-radius: $radius-lg;
+  border: 1px solid var(--gs-border-color);
+}
+
+.emptyText {
+  font-size: $font-size-lg;
+  color: var(--gs-text-tertiary);
+  margin: 0;
+}
+
+.paginationWrap {
+  display: flex;
+  justify-content: center;
+  padding: $desktop-spacing-lg 0;
+}

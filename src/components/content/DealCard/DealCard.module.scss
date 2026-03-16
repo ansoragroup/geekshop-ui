@@ -234,6 +234,41 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .infoArea {
+    padding: $desktop-spacing-lg;
+    gap: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+  }
+
+  .currentPrice {
+    font-size: $font-size-xl;
+  }
+
+  .originalPrice {
+    font-size: $font-size-md;
+  }
+
+  .savingsText {
+    font-size: $font-size-md;
+  }
+
+  .savingsIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .progressLabel {
+    font-size: $font-size-sm;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

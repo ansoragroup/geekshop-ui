@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Section.module.scss';
 
-export interface SectionProps extends HTMLAttributes<HTMLDivElement> {
+export interface SectionProps extends HTMLAttributes<HTMLElement> {
   /** Section title header */
   title?: string;
   /** Custom padding (CSS value) */
@@ -10,7 +10,7 @@ export interface SectionProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export const Section = forwardRef<HTMLDivElement, SectionProps>(
+export const Section = forwardRef<HTMLElement, SectionProps>(
   (
     {
       title,
@@ -25,7 +25,7 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
   const rootClass = [styles.section, className].filter(Boolean).join(' ');
 
   return (
-    <div ref={ref} className={rootClass} {...rest}>
+    <section ref={ref} className={rootClass} aria-label={title} {...rest}>
       {title && (
         <div className={styles.header}>
           <h3 className={styles.title}>{title}</h3>
@@ -34,7 +34,7 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
       <div className={styles.body} style={bodyStyle}>
         {children}
       </div>
-    </div>
+    </section>
   );
   },
 );

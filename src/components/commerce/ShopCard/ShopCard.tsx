@@ -99,6 +99,8 @@ export const ShopCard = forwardRef<HTMLDivElement, ShopCardProps>(
             src={logo}
             alt={name}
             loading="lazy"
+            width={48}
+            height={48}
           />
           <div className={styles.nameArea}>
             <span className={styles.name}>{name}</span>

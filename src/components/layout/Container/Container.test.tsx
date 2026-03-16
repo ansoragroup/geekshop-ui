@@ -12,9 +12,9 @@ describe('Container', () => {
     expect(screen.getByText('Page Content')).toBeInTheDocument();
   });
 
-  it('renders a div element', () => {
+  it('renders a main element', () => {
     const { container } = render(<Container>Content</Container>);
-    expect(container.firstElementChild?.tagName).toBe('DIV');
+    expect(container.firstElementChild?.tagName).toBe('MAIN');
   });
 
   it('does not add navbar/tabbar classes by default', () => {
