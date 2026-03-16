@@ -65,6 +65,9 @@ export { Timeline } from './data-display/Timeline';
 export { Collapse, CollapsePanel } from './data-display/Collapse';
 export { Progress } from './data-display/Progress';
 export { AuthenticityBadge } from './data-display/AuthenticityBadge';
+export { ComparisonTable } from './data-display/ComparisonTable';
+export { QRCode } from './data-display/QRCode';
+export { Calendar } from './data-display/Calendar';
 
 // Feedback
 export { Toast } from './feedback/Toast';
@@ -80,6 +83,8 @@ export { Result } from './feedback/Result';
 export { FloatingBubble } from './feedback/FloatingBubble';
 export { ActionSheet } from './feedback/ActionSheet';
 export { Tooltip } from './feedback/Tooltip';
+export { ShareSheet } from './feedback/ShareSheet';
+export { Popover } from './feedback/Popover';
 
 // Form
 export { Button } from './form/Button';
@@ -89,10 +94,13 @@ export { Checkbox } from './form/Checkbox';
 export { Radio, RadioGroup } from './form/Radio';
 export { Switch } from './form/Switch';
 export { Select } from './form/Select';
+export { CascadePicker } from './form/CascadePicker';
+export { DatePicker } from './form/DatePicker';
 export { Chip } from './form/Chip';
 export { ImageUploader } from './form/ImageUploader';
 export { OTPInput } from './form/OTPInput';
 export { TelegramLoginButton } from './form/TelegramLoginButton';
+export { Form, FormItem, useFormContext } from './form/Form';
 
 // Layout
 export { Container } from './layout/Container';
@@ -173,6 +181,9 @@ export type { TimelineProps, TimelineItem } from './data-display/Timeline';
 export type { CollapseProps, CollapsePanelProps } from './data-display/Collapse';
 export type { ProgressProps, ProgressVariant, ProgressSize } from './data-display/Progress';
 export type { AuthenticityBadgeProps, AuthenticityStatus, AuthenticityType } from './data-display/AuthenticityBadge';
+export type { ComparisonTableProps, ComparisonProduct, ComparisonSpec } from './data-display/ComparisonTable';
+export type { QRCodeProps, QRCodeErrorLevel } from './data-display/QRCode';
+export type { CalendarProps, CalendarMarkedDate } from './data-display/Calendar';
 
 // Types — Feedback
 export type { ToastProps, ToastType } from './feedback/Toast';
@@ -188,6 +199,8 @@ export type { ResultProps, ResultStatus } from './feedback/Result';
 export type { FloatingBubbleProps } from './feedback/FloatingBubble';
 export type { ActionSheetProps, ActionSheetAction } from './feedback/ActionSheet';
 export type { TooltipProps, TooltipPlacement, TooltipTrigger } from './feedback/Tooltip';
+export type { ShareSheetProps, SharePlatform } from './feedback/ShareSheet';
+export type { PopoverProps, PopoverPlacement, PopoverTrigger } from './feedback/Popover';
 
 // Types — Form
 export type { ButtonProps, ButtonOwnProps, ButtonVariant, ButtonSize } from './form/Button';
@@ -197,10 +210,13 @@ export type { CheckboxProps } from './form/Checkbox';
 export type { RadioProps, RadioGroupProps } from './form/Radio';
 export type { SwitchProps, SwitchSize } from './form/Switch';
 export type { SelectProps, SelectOption } from './form/Select';
+export type { CascadePickerProps, CascadeOption } from './form/CascadePicker';
+export type { DatePickerProps } from './form/DatePicker';
 export type { ChipProps } from './form/Chip';
 export type { ImageUploaderProps } from './form/ImageUploader';
 export type { OTPInputProps } from './form/OTPInput';
 export type { TelegramLoginButtonProps, TelegramAuthData } from './form/TelegramLoginButton';
+export type { FormProps, FormItemProps, FormHandle, FormContextValue, ValidationRule, ValidationRuleType } from './form/Form';
 
 // Types — Layout
 export type { ContainerProps } from './layout/Container';

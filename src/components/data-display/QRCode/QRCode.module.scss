@@ -1,0 +1,20 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  svg {
+    display: block;
+  }
+}
+
+.logo {
+  position: absolute;
+  object-fit: contain;
+  border-radius: $radius-sm;
+  background: $color-bg-white;
+  padding: 2px;
+}

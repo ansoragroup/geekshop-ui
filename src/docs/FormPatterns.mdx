@@ -41,26 +41,258 @@ export const ComponentCard = ({ name, category, description }) => (
   </div>
 );
 
+export const CodeBlock = ({ children }) => (
+  <div style={{ background: '#1A1A1A', borderRadius: 8, padding: 16, marginTop: 8, marginBottom: 16, overflow: 'auto' }}>
+    <pre style={{ margin: 0, color: '#E0E0E0', fontSize: 13, lineHeight: 1.5 }}>{children}</pre>
+  </div>
+);
+
+export const InfoBox = ({ children, type = 'info' }) => {
+  const colors = {
+    info: { bg: '#E6F7FF', border: '#1890FF', icon: 'i' },
+    tip: { bg: '#E8F8EF', border: '#07C160', icon: '!' },
+    warning: { bg: '#FFF8E6', border: '#FFA726', icon: '!' },
+  };
+  const c = colors[type] || colors.info;
+  return (
+    <div style={{
+      padding: '12px 16px', background: c.bg, borderLeft: `3px solid ${c.border}`,
+      borderRadius: 4, fontSize: 13, lineHeight: 1.6, marginBottom: 16,
+    }}>
+      {children}
+    </div>
+  );
+};
+
 # Form Patterns
 
-This guide covers best practices for building forms with `@ansoragroup/ui` components. Learn how to compose form fields, handle validation, and manage controlled vs. uncontrolled state.
+This guide covers best practices for building forms with `@ansoragroup/ui` components. Learn how to compose form fields, handle validation, and integrate with popular form libraries.
 
 ---
 
 <SectionTitle>Available Form Components</SectionTitle>
 
 <div style={{ display: 'grid', gap: 8, marginTop: 16 }}>
+  <ComponentCard name="Form / FormItem" category="form" description="Form wrapper with validation context + field wrapper with label, error, help text" />
   <ComponentCard name="Input" category="form" description="Text input with label, error state, prefix/suffix, clearable" />
   <ComponentCard name="TextArea" category="form" description="Multi-line text input with character counter" />
   <ComponentCard name="Checkbox" category="form" description="Single checkbox with label" />
   <ComponentCard name="Radio / RadioGroup" category="form" description="Radio buttons with group management" />
   <ComponentCard name="Switch" category="form" description="Toggle switch with label" />
+  <ComponentCard name="Select" category="form" description="Bottom sheet select with single/multi mode" />
+  <ComponentCard name="OTPInput" category="form" description="One-time password input for verification codes" />
   <ComponentCard name="Button" category="form" description="Submit, action, and link buttons" />
   <ComponentCard name="Chip" category="form" description="Selectable chip / tag with remove" />
+  <ComponentCard name="ImageUploader" category="form" description="Image upload with preview and delete" />
   <ComponentCard name="Rating" category="data-display" description="Star rating input (interactive mode)" />
   <ComponentCard name="QuantityStepper" category="commerce" description="Numeric +/- stepper for quantities" />
   <ComponentCard name="SkuSelector" category="commerce" description="Product variant selector (color, size)" />
 </div>
+
+---
+
+<SectionTitle>Form + FormItem (Built-in Validation)</SectionTitle>
+
+The `Form` component provides a validation context, and `FormItem` wraps individual fields with labels, error messages, and help text. This is the simplest way to build validated forms without any external library.
+
+<SubTitle>Basic Usage</SubTitle>
+
+```tsx
+import { useRef, useState } from 'react'
+import { Form, FormItem, Input, Button } from '@ansoragroup/ui'
+import type { FormHandle } from '@ansoragroup/ui'
+
+function RegisterForm() {
+  const formRef = useRef<FormHandle>(null)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+
+  return (
+    <Form
+      ref={formRef}
+      onSubmit={(values) => console.log('Submitted:', values)}
+      onError={(errors) => console.log('Errors:', errors)}
+      initialValues={{ name: '', email: '' }}
+    >
+      <FormItem name="name" label="Name" required>
+        <Input
+          placeholder="John Doe"
+          value={name}
+          onChange={(v) => {
+            setName(v)
+            formRef.current?.setFieldValue('name', v)
+          }}
+        />
+      </FormItem>
+
+      <FormItem name="email" label="Email" required>
+        <Input
+          placeholder="you@example.com"
+          value={email}
+          onChange={(v) => {
+            setEmail(v)
+            formRef.current?.setFieldValue('email', v)
+          }}
+        />
+      </FormItem>
+
+      <Button variant="primary" size="lg" block type="submit">
+        Register
+      </Button>
+    </Form>
+  )
+}
+```
+
+<SubTitle>Validation Rules</SubTitle>
+
+`FormItem` accepts a `rules` array with the following rule types:
+
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, marginBottom: 16 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Type</th>
+      <th style={{ padding: '8px 12px' }}>Value</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>required</code></td>
+      <td style={{ padding: '8px 12px' }}>-</td>
+      <td style={{ padding: '8px 12px' }}>Field cannot be empty. Also triggered by the <code>required</code> prop.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>minLength</code></td>
+      <td style={{ padding: '8px 12px' }}><code>number</code></td>
+      <td style={{ padding: '8px 12px' }}>Minimum string length.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>maxLength</code></td>
+      <td style={{ padding: '8px 12px' }}><code>number</code></td>
+      <td style={{ padding: '8px 12px' }}>Maximum string length.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>pattern</code></td>
+      <td style={{ padding: '8px 12px' }}><code>RegExp | string</code></td>
+      <td style={{ padding: '8px 12px' }}>Value must match the regex pattern.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>custom</code></td>
+      <td style={{ padding: '8px 12px' }}><code>validator function</code></td>
+      <td style={{ padding: '8px 12px' }}>Custom validator: return <code>true</code> for valid, <code>false</code> or an error string for invalid.</td>
+    </tr>
+  </tbody>
+</table>
+
+```tsx
+<FormItem
+  name="email"
+  label="Email"
+  required
+  rules={[
+    {
+      type: 'pattern',
+      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      message: 'Please enter a valid email address',
+    },
+  ]}
+>
+  <Input placeholder="you@example.com" value={email} onChange={setEmail} />
+</FormItem>
+
+<FormItem
+  name="password"
+  label="Password"
+  required
+  rules={[
+    { type: 'minLength', value: 8, message: 'At least 8 characters' },
+    {
+      type: 'custom',
+      message: 'Must contain a number',
+      validator: (val) => typeof val === 'string' && /\d/.test(val),
+    },
+  ]}
+  helpText="Minimum 8 characters with at least one number"
+>
+  <Input type="password" value={password} onChange={setPassword} />
+</FormItem>
+```
+
+<SubTitle>FormItem Features</SubTitle>
+
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, marginBottom: 16 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Prop</th>
+      <th style={{ padding: '8px 12px' }}>Type</th>
+      <th style={{ padding: '8px 12px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>name</code></td>
+      <td style={{ padding: '8px 12px' }}><code>string</code></td>
+      <td style={{ padding: '8px 12px' }}>Field identifier (required). Must match key in <code>initialValues</code>.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>label</code></td>
+      <td style={{ padding: '8px 12px' }}><code>string</code></td>
+      <td style={{ padding: '8px 12px' }}>Label text displayed above (or left of) the field.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>required</code></td>
+      <td style={{ padding: '8px 12px' }}><code>boolean</code></td>
+      <td style={{ padding: '8px 12px' }}>Adds required asterisk and implicit required rule.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>rules</code></td>
+      <td style={{ padding: '8px 12px' }}><code>ValidationRule[]</code></td>
+      <td style={{ padding: '8px 12px' }}>Array of validation rules.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>error</code></td>
+      <td style={{ padding: '8px 12px' }}><code>string</code></td>
+      <td style={{ padding: '8px 12px' }}>Manual error override (e.g., from server validation).</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>helpText</code></td>
+      <td style={{ padding: '8px 12px' }}><code>string</code></td>
+      <td style={{ padding: '8px 12px' }}>Helper text shown below the field. Hidden when error is present.</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}><code>labelPosition</code></td>
+      <td style={{ padding: '8px 12px' }}><code>'top' | 'left'</code></td>
+      <td style={{ padding: '8px 12px' }}>Label layout. Default: <code>'top'</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<SubTitle>Imperative Form Handle</SubTitle>
+
+Access the Form's imperative methods via `ref`:
+
+```tsx
+import { useRef } from 'react'
+import type { FormHandle } from '@ansoragroup/ui'
+
+const formRef = useRef<FormHandle>(null)
+
+// Submit programmatically
+formRef.current?.submit()
+
+// Reset to initial values
+formRef.current?.reset()
+
+// Validate without submitting (returns errors object)
+const errors = formRef.current?.validate()
+
+// Set a single field value
+formRef.current?.setFieldValue('email', 'new@example.com')
+
+// Get all current values
+const values = formRef.current?.getValues()
+```
 
 ---
 
@@ -102,7 +334,7 @@ function ControlledForm() {
 
   return (
     <form>
-      <Input label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <Input label="Email" value={email} onChange={setEmail} />
       <Checkbox checked={subscribe} onChange={setSubscribe}>Subscribe</Checkbox>
       <Switch checked={darkMode} onChange={setDarkMode}>Dark mode</Switch>
     </form>
@@ -136,35 +368,98 @@ function MyComponent({ value, defaultValue, onChange }) {
 A complete form field consists of four parts:
 
 ```
-┌─────────────────────────────────────┐
-│  Label                              │   <- Associates with input via htmlFor/id
-├─────────────────────────────────────┤
-│  [ Input field                    ] │   <- The interactive control
-├─────────────────────────────────────┤
-│  Helper text or error message       │   <- Contextual guidance
-└─────────────────────────────────────┘
++-----------------------------------------+
+|  Label *                                |   <- Associates with input via htmlFor/id
++-----------------------------------------+
+|  [ Input field                        ] |   <- The interactive control
++-----------------------------------------+
+|  Error message or helper text           |   <- Contextual guidance
++-----------------------------------------+
 ```
 
-The `Input` and `TextArea` components have built-in support for all four parts:
+The `FormItem` component provides label, required asterisk, error display, and help text for any child component:
 
 ```tsx
-<Input
-  label="Email Address"           // label text (auto-generates htmlFor/id)
-  placeholder="you@example.com"   // placeholder
-  helperText="We'll never share"  // helper text below input
-  error="Invalid email format"    // replaces helper text in error state
-/>
+<FormItem
+  name="email"
+  label="Email Address"
+  required
+  helpText="We'll never share your email"
+  rules={[{ type: 'pattern', value: /email-regex/, message: 'Invalid email' }]}
+>
+  <Input placeholder="you@example.com" value={email} onChange={setEmail} />
+</FormItem>
 ```
 
-When `error` is provided, the input border turns red and the error message replaces the helper text.
+When validation fails, the error message replaces the helper text and the `role="alert"` attribute ensures screen readers announce the error.
 
 ---
 
 <SectionTitle>Validation Patterns</SectionTitle>
 
+<SubTitle>Form Component Validation (recommended)</SubTitle>
+
+Use `Form` + `FormItem` for declarative validation:
+
+```tsx
+import { useRef, useState } from 'react'
+import { Form, FormItem, Input, Button } from '@ansoragroup/ui'
+import type { FormHandle } from '@ansoragroup/ui'
+
+function LoginForm() {
+  const formRef = useRef<FormHandle>(null)
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
+
+  return (
+    <Form
+      ref={formRef}
+      onSubmit={(values) => login(values)}
+      onError={(errors) => console.log(errors)}
+      initialValues={{ phone: '', password: '' }}
+    >
+      <FormItem name="phone" label="Phone Number" required>
+        <Input
+          placeholder="+998 90 123 45 67"
+          type="tel"
+          value={phone}
+          onChange={(v) => {
+            setPhone(v)
+            formRef.current?.setFieldValue('phone', v)
+          }}
+        />
+      </FormItem>
+
+      <FormItem
+        name="password"
+        label="Password"
+        required
+        rules={[
+          { type: 'minLength', value: 6, message: 'At least 6 characters' },
+        ]}
+      >
+        <Input
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={(v) => {
+            setPassword(v)
+            formRef.current?.setFieldValue('password', v)
+          }}
+        />
+      </FormItem>
+
+      <Button variant="primary" size="lg" block type="submit">
+        Sign In
+      </Button>
+    </Form>
+  )
+}
+```
+
 <SubTitle>Inline Validation (on blur)</SubTitle>
 
-Validate each field as the user leaves it:
+Validate each field as the user leaves it, without the `Form` wrapper:
 
 ```tsx
 import { useState } from 'react'
@@ -189,11 +484,11 @@ function LoginForm() {
       <Input
         label="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={setEmail}
         onBlur={validateEmail}
         error={emailError}
       />
-      <Button variant="primary" size="lg" fullWidth type="submit">
+      <Button variant="primary" size="lg" block type="submit">
         Sign In
       </Button>
     </form>
@@ -232,23 +527,214 @@ function RegisterForm() {
       <Input
         label="Email"
         value={fields.email}
-        onChange={(e) => setFields(f => ({ ...f, email: e.target.value }))}
+        onChange={(v) => setFields(f => ({ ...f, email: v }))}
         error={errors.email}
       />
       <Input
         label="Password"
         type="password"
         value={fields.password}
-        onChange={(e) => setFields(f => ({ ...f, password: e.target.value }))}
+        onChange={(v) => setFields(f => ({ ...f, password: v }))}
         error={errors.password}
       />
-      <Button variant="primary" size="lg" fullWidth type="submit">
+      <Button variant="primary" size="lg" block type="submit">
         Register
       </Button>
     </form>
   )
 }
 ```
+
+---
+
+<SectionTitle>Third-Party Form Libraries</SectionTitle>
+
+All form components spread `...rest` props onto their root or input element, making them fully compatible with external form libraries. You do NOT need to use our `Form` / `FormItem` wrappers -- the individual components work standalone.
+
+<SubTitle>react-hook-form</SubTitle>
+
+<InfoBox type="tip">
+  <strong>Recommended for complex forms.</strong> react-hook-form provides superior performance by minimizing re-renders. Use the <code>Controller</code> component for components with custom <code>onChange</code> signatures.
+</InfoBox>
+
+```tsx
+import { useForm, Controller } from 'react-hook-form'
+import { Input, Select, Checkbox, Button } from '@ansoragroup/ui'
+
+interface CheckoutFormValues {
+  name: string
+  email: string
+  city: string
+  agreeToTerms: boolean
+}
+
+function CheckoutForm() {
+  const { control, handleSubmit, formState: { errors } } = useForm<CheckoutFormValues>({
+    defaultValues: {
+      name: '',
+      email: '',
+      city: '',
+      agreeToTerms: false,
+    },
+  })
+
+  const onSubmit = (data: CheckoutFormValues) => {
+    console.log('Order data:', data)
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <Controller
+        name="name"
+        control={control}
+        rules={{ required: 'Name is required' }}
+        render={({ field }) => (
+          <Input
+            label="Ism"
+            placeholder="John Doe"
+            value={field.value}
+            onChange={field.onChange}
+            onBlur={field.onBlur}
+            error={errors.name?.message}
+          />
+        )}
+      />
+
+      <Controller
+        name="email"
+        control={control}
+        rules={{
+          required: 'Email is required',
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: 'Invalid email',
+          },
+        }}
+        render={({ field }) => (
+          <Input
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            value={field.value}
+            onChange={field.onChange}
+            onBlur={field.onBlur}
+            error={errors.email?.message}
+          />
+        )}
+      />
+
+      <Controller
+        name="city"
+        control={control}
+        rules={{ required: 'Please select a city' }}
+        render={({ field }) => (
+          <Select
+            label="Shahar"
+            options={[
+              { value: 'tashkent', label: 'Toshkent' },
+              { value: 'samarkand', label: 'Samarqand' },
+              { value: 'bukhara', label: 'Buxoro' },
+            ]}
+            value={field.value}
+            onChange={field.onChange}
+            error={errors.city?.message}
+          />
+        )}
+      />
+
+      <Controller
+        name="agreeToTerms"
+        control={control}
+        rules={{ required: 'You must agree to the terms' }}
+        render={({ field }) => (
+          <Checkbox
+            checked={field.value}
+            onChange={field.onChange}
+            label="I agree to the Terms of Use"
+          />
+        )}
+      />
+
+      <Button variant="primary" size="lg" block type="submit">
+        Place Order
+      </Button>
+    </form>
+  )
+}
+```
+
+<SubTitle>Formik</SubTitle>
+
+```tsx
+import { Formik, Form as FormikForm, Field } from 'formik'
+import { Input, Select, Button } from '@ansoragroup/ui'
+
+interface FormValues {
+  name: string
+  email: string
+  city: string
+}
+
+function FormikCheckout() {
+  return (
+    <Formik<FormValues>
+      initialValues={{ name: '', email: '', city: '' }}
+      validate={(values) => {
+        const errors: Partial<Record<keyof FormValues, string>> = {}
+        if (!values.name) errors.name = 'Name is required'
+        if (!values.email) errors.email = 'Email is required'
+        if (values.email && !values.email.includes('@')) errors.email = 'Invalid email'
+        return errors
+      }}
+      onSubmit={(values) => console.log('Formik submit:', values)}
+    >
+      {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
+        <FormikForm style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Input
+            label="Ism"
+            name="name"
+            placeholder="John Doe"
+            value={values.name}
+            onChange={(v) => setFieldValue('name', v)}
+            onBlur={handleBlur}
+            error={touched.name ? errors.name : undefined}
+          />
+
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            value={values.email}
+            onChange={(v) => setFieldValue('email', v)}
+            onBlur={handleBlur}
+            error={touched.email ? errors.email : undefined}
+          />
+
+          <Select
+            label="Shahar"
+            options={[
+              { value: 'tashkent', label: 'Toshkent' },
+              { value: 'samarkand', label: 'Samarqand' },
+            ]}
+            value={values.city}
+            onChange={(v) => setFieldValue('city', v)}
+            error={touched.city ? errors.city : undefined}
+          />
+
+          <Button variant="primary" size="lg" block type="submit">
+            Submit
+          </Button>
+        </FormikForm>
+      )}
+    </Formik>
+  )
+}
+```
+
+<InfoBox type="info">
+  Both integrations work because our components accept <code>name</code>, <code>value</code>, <code>onChange</code>, <code>onBlur</code> props, spread additional props (<code>data-*</code>, <code>aria-*</code>, <code>ref</code>) onto the underlying element, and use <code>forwardRef</code> for ref access.
+</InfoBox>
 
 ---
 
@@ -271,10 +757,10 @@ function LoginForm() {
         type="password"
         placeholder="Enter password"
       />
-      <Button variant="primary" size="lg" fullWidth type="submit">
+      <Button variant="primary" size="lg" block type="submit">
         Sign In
       </Button>
-      <Button variant="text" size="md" fullWidth>
+      <Button variant="text" size="md" block>
         Forgot Password?
       </Button>
     </form>
@@ -319,7 +805,7 @@ function AddressForm() {
         Set as default address
       </Checkbox>
 
-      <Button variant="primary" size="lg" fullWidth type="submit">
+      <Button variant="primary" size="lg" block type="submit">
         Save Address
       </Button>
     </form>
@@ -375,7 +861,7 @@ function ReviewForm() {
       <Button
         variant="primary"
         size="lg"
-        fullWidth
+        block
         type="submit"
         disabled={rating === 0}
       >
@@ -449,6 +935,16 @@ Form components indicate errors through:
 />
 ```
 
+When using `FormItem`, error display is automatic:
+
+```tsx
+// FormItem automatically shows error text with role="alert"
+<FormItem name="email" label="Email" required>
+  <Input value={email} onChange={setEmail} />
+</FormItem>
+// On validation failure -> shows red error text below the input
+```
+
 ---
 
 <SectionTitle>Disabled State Handling</SectionTitle>
@@ -468,66 +964,3 @@ Disabled components:
 - Show `cursor: not-allowed`
 - Do not fire `onChange` or `onClick`
 - Set `aria-disabled="true"` and the native `disabled` attribute
-
----
-
-<SectionTitle>Third-Party Form Libraries</SectionTitle>
-
-All form components spread `...rest` props onto their root or input element, making them compatible with form libraries:
-
-<SubTitle>react-hook-form</SubTitle>
-
-```tsx
-import { useForm } from 'react-hook-form'
-import { Input, Button } from '@ansoragroup/ui'
-
-function HookForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm()
-
-  return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
-      <Input
-        label="Email"
-        {...register('email', { required: 'Email is required' })}
-        error={errors.email?.message as string}
-      />
-      <Button variant="primary" type="submit">Submit</Button>
-    </form>
-  )
-}
-```
-
-<SubTitle>Formik</SubTitle>
-
-```tsx
-import { Formik, Form } from 'formik'
-import { Input, Button } from '@ansoragroup/ui'
-
-function FormikForm() {
-  return (
-    <Formik
-      initialValues={{ email: '' }}
-      onSubmit={(values) => console.log(values)}
-    >
-      {({ values, errors, handleChange, handleBlur }) => (
-        <Form>
-          <Input
-            label="Email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={errors.email}
-          />
-          <Button variant="primary" type="submit">Submit</Button>
-        </Form>
-      )}
-    </Formik>
-  )
-}
-```
-
-These integrations work because the components:
-- Accept `name`, `value`, `onChange`, `onBlur` props
-- Spread additional props (`data-*`, `aria-*`, `ref`) onto the underlying `<input>` element
-- Use `forwardRef` for ref access to the native input

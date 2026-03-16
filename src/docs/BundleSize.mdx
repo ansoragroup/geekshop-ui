@@ -1,0 +1,249 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Bundle Size" />
+
+export const SectionTitle = ({ children }) => (
+  <h2 style={{ margin: '32px 0 16px', paddingBottom: 8, borderBottom: '2px solid #FF5000', fontSize: 20, color: '#1A1A1A' }}>
+    {children}
+  </h2>
+);
+
+export const SubTitle = ({ children }) => (
+  <h3 style={{ margin: '24px 0 12px', fontSize: 16, color: '#333' }}>
+    {children}
+  </h3>
+);
+
+export const InfoBox = ({ children, type = 'info' }) => {
+  const colors = {
+    info: { bg: '#E6F7FF', border: '#1890FF' },
+    tip: { bg: '#E8F8EF', border: '#07C160' },
+    warning: { bg: '#FFF8E6', border: '#FFA726' },
+  };
+  const c = colors[type] || colors.info;
+  return (
+    <div style={{
+      padding: '12px 16px', background: c.bg, borderLeft: `3px solid ${c.border}`,
+      borderRadius: 4, fontSize: 13, lineHeight: 1.6, marginBottom: 16,
+    }}>
+      {children}
+    </div>
+  );
+};
+
+export const SizeBar = ({ label, sizeKB, maxKB = 160, gzipKB }) => (
+  <div style={{ marginBottom: 12 }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4 }}>
+      <span style={{ fontWeight: 600, color: '#1A1A1A' }}>{label}</span>
+      <span style={{ color: '#666' }}>{sizeKB} KB {gzipKB ? `(~${gzipKB} KB gzip)` : ''}</span>
+    </div>
+    <div style={{ height: 8, background: '#F0F0F0', borderRadius: 4, overflow: 'hidden' }}>
+      <div style={{
+        height: '100%',
+        width: `${Math.min((sizeKB / maxKB) * 100, 100)}%`,
+        background: sizeKB > 100 ? '#FFA726' : '#07C160',
+        borderRadius: 4,
+        transition: 'width 0.3s ease',
+      }} />
+    </div>
+  </div>
+);
+
+# Bundle Size
+
+`@ansoragroup/ui` is built with **Vite in library mode** using `preserveModules`, which means each component is output as a separate module. This enables your bundler to **tree-shake** unused components automatically.
+
+---
+
+<SectionTitle>How Tree-Shaking Works</SectionTitle>
+
+The library outputs ES modules with `preserveModules`, meaning each component gets its own file in the `dist/` directory. When you import specific components, your bundler (Vite, Webpack, Rollup, etc.) only includes what you actually use.
+
+```tsx
+// Only Button and its dependencies are bundled (~2 KB)
+import { Button } from '@ansoragroup/ui'
+
+// Button + Input are bundled (~4 KB)
+import { Button, Input } from '@ansoragroup/ui'
+
+// Both forms are equivalent — tree-shaking works either way
+import { Button } from '@ansoragroup/ui'
+// is the same as
+import { Button } from '@ansoragroup/ui/dist/es/components/form/Button'
+```
+
+<InfoBox type="tip">
+  You do <strong>not</strong> need deep imports like <code>@ansoragroup/ui/dist/es/components/form/Button</code>. The barrel export at <code>@ansoragroup/ui</code> is fully tree-shakeable. Use the simple import.
+</InfoBox>
+
+---
+
+<SectionTitle>Size by Category (uncompressed ES modules)</SectionTitle>
+
+These are the total sizes of each component category's ES module output. Individual components are significantly smaller. Sizes measured after `npm run build:lib`.
+
+<SizeBar label="Data Display" sizeKB={140} gzipKB={45} />
+<SizeBar label="Navigation" sizeKB={132} gzipKB={42} />
+<SizeBar label="Form" sizeKB={104} gzipKB={35} />
+<SizeBar label="Feedback" sizeKB={104} gzipKB={35} />
+<SizeBar label="Commerce" sizeKB={100} gzipKB={33} />
+<SizeBar label="Content" sizeKB={76} gzipKB={25} />
+<SizeBar label="Product" sizeKB={64} gzipKB={21} />
+<SizeBar label="Layout" sizeKB={32} gzipKB={11} />
+
+<SubTitle>Shared Dependencies</SubTitle>
+
+<SizeBar label="i18n (translations)" sizeKB={84} gzipKB={20} />
+<SizeBar label="Hooks" sizeKB={16} gzipKB={5} />
+<SizeBar label="Theme" sizeKB={8} gzipKB={3} />
+
+---
+
+<SectionTitle>Individual Component Sizes (gzip)</SectionTitle>
+
+These are approximate gzip sizes for individual components. The actual size in your bundle depends on which shared dependencies are already included.
+
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
+      <th style={{ padding: '8px 12px' }}>Component</th>
+      <th style={{ padding: '8px 12px' }}>Category</th>
+      <th style={{ padding: '8px 12px', textAlign: 'right' }}>Gzip Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Button</td>
+      <td style={{ padding: '8px 12px' }}>form</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~0.6 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Input</td>
+      <td style={{ padding: '8px 12px' }}>form</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~0.7 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Form + FormItem</td>
+      <td style={{ padding: '8px 12px' }}>form</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~1.4 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Select</td>
+      <td style={{ padding: '8px 12px' }}>form</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~1.6 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Checkbox</td>
+      <td style={{ padding: '8px 12px' }}>form</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~0.4 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Switch</td>
+      <td style={{ padding: '8px 12px' }}>form</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~0.5 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>ProductCard</td>
+      <td style={{ padding: '8px 12px' }}>product</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~1.1 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>ActionBar</td>
+      <td style={{ padding: '8px 12px' }}>commerce</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~1.2 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>SkuSelector</td>
+      <td style={{ padding: '8px 12px' }}>commerce</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~1.6 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>FilterPanel</td>
+      <td style={{ padding: '8px 12px' }}>navigation</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~1.3 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>BottomSheet</td>
+      <td style={{ padding: '8px 12px' }}>feedback</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~0.8 KB</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #eee' }}>
+      <td style={{ padding: '8px 12px' }}>Toast</td>
+      <td style={{ padding: '8px 12px' }}>feedback</td>
+      <td style={{ padding: '8px 12px', textAlign: 'right' }}>~0.6 KB</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+<SectionTitle>Styles</SectionTitle>
+
+The library uses **CSS Modules** compiled to standard CSS. When you import `@ansoragroup/ui/styles`, you get the complete stylesheet including the CSS custom properties (theme tokens) and all component styles.
+
+```tsx
+// In your app's entry point
+import '@ansoragroup/ui/styles'
+```
+
+<InfoBox type="info">
+  The styles import includes <strong>all</strong> component CSS regardless of which components you use. This is expected for a design system -- CSS is highly compressible and the total gzip size is small. Future versions may support CSS-in-JS extraction for per-component styles.
+</InfoBox>
+
+---
+
+<SectionTitle>Optimization Tips</SectionTitle>
+
+<SubTitle>1. Use named imports (default behavior)</SubTitle>
+
+```tsx
+// Tree-shakeable -- only imports Button
+import { Button } from '@ansoragroup/ui'
+```
+
+<SubTitle>2. Lazy-load heavy components</SubTitle>
+
+For components used in modals or below-the-fold, use React.lazy:
+
+```tsx
+import { lazy, Suspense } from 'react'
+import { Loading } from '@ansoragroup/ui'
+
+const ProductImageGallery = lazy(() =>
+  import('@ansoragroup/ui').then(m => ({ default: m.ProductImageGallery as any }))
+)
+
+function ProductPage() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <ProductImageGallery images={images} />
+    </Suspense>
+  )
+}
+```
+
+<SubTitle>3. i18n: only include needed locales</SubTitle>
+
+The translation files are the largest part of the bundle (~20 KB gzip for all 3 locales). If your app only uses one locale, the other translation objects are tree-shaken away since they are not referenced by the component code directly -- they are loaded through the provider.
+
+```tsx
+// The GeekShopProvider only loads the locale you specify
+<GeekShopProvider locale="uz" currency="UZS">
+  <App />
+</GeekShopProvider>
+```
+
+<SubTitle>4. Analyze your bundle</SubTitle>
+
+Use your bundler's analysis tools to verify tree-shaking:
+
+```bash
+# Vite
+npx vite-bundle-visualizer
+
+# Webpack
+npx webpack-bundle-analyzer stats.json
+
+# Rollup
+npx rollup-plugin-visualizer
+```

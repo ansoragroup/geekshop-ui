@@ -1,0 +1,164 @@
+@use '../../../theme/tokens' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: $z-index-modal;
+  animation: overlayIn $transition-fast;
+}
+
+.sheet {
+  width: 100%;
+  background: $color-bg-white;
+  border-radius: $radius-xl $radius-xl 0 0;
+  animation: slideUp $transition-normal;
+  padding-bottom: $safe-area-bottom;
+}
+
+// === Drag Handle ===
+.dragHandle {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-sm 0;
+}
+
+.dragBar {
+  width: 36px;
+  height: 4px;
+  background: $color-border;
+  border-radius: $radius-round;
+}
+
+// === Header ===
+.header {
+  padding: 0 $spacing-lg $spacing-md;
+  text-align: center;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+// === Platforms Grid ===
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $spacing-md $spacing-lg $spacing-lg;
+  gap: $spacing-xl;
+  justify-content: flex-start;
+}
+
+.platformBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: $spacing-xs;
+  font-family: $font-family;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 64px;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: 2px;
+    border-radius: $radius-md;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.platformIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-round;
+  transition: transform $transition-fast;
+
+  .platformBtn:active & {
+    transform: scale(0.95);
+  }
+}
+
+.platformName {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  white-space: nowrap;
+}
+
+// === Copy Link ===
+.copySection {
+  padding: 0 $spacing-lg $spacing-lg;
+  border-top: 1px solid $color-border;
+  margin-top: $spacing-xs;
+  padding-top: $spacing-md;
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  min-height: 44px;
+  padding: $spacing-md $spacing-lg;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  transition: background $transition-fast, border-color $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    background: $color-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+  }
+
+  &.copied {
+    border-color: $color-success;
+    color: $color-success;
+    background: $color-success-light;
+  }
+}
+
+// === Animations ===
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { animation: none; }
+  .sheet { animation: none; }
+  .platformIcon { transition: none; }
+  .copyBtn { transition: none; }
+}

@@ -1,0 +1,71 @@
+@use '../../../theme/tokens' as *;
+
+// ---- Form ----
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+// ---- FormItem ----
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $spacing-md;
+
+  .label {
+    flex-shrink: 0;
+    min-width: 80px;
+    padding-top: $spacing-sm;
+  }
+
+  .control {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.required {
+  color: var(--gs-color-error);
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error);
+  line-height: $line-height-normal;
+}
+
+.helpText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+// ---- Error state ----
+
+.hasError {
+  .label {
+    color: $color-text-primary; // keep label color even in error state
+  }
+}

@@ -1,0 +1,288 @@
+@use '../../../theme/tokens' as *;
+
+// --- Root ---
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+// --- Label ---
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+// --- Trigger ---
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  height: 44px;
+  padding: 0 $spacing-md;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  transition: border-color $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+
+  &:focus-visible {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    outline: none;
+  }
+
+  &:disabled {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+  }
+}
+
+.triggerText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-text-primary;
+}
+
+.triggerPlaceholder {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-text-placeholder;
+}
+
+.triggerChevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+// --- Error ---
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  line-height: $line-height-normal;
+}
+
+.hasError .trigger {
+  border-color: var(--gs-color-error, #{$color-error});
+}
+
+// --- Disabled ---
+
+.disabled .label {
+  color: $color-text-tertiary;
+}
+
+// --- Overlay + Sheet ---
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: $z-index-modal;
+  animation: overlayIn $transition-fast;
+}
+
+.sheet {
+  width: 100%;
+  max-height: 70vh;
+  background: $color-bg-white;
+  border-radius: $radius-xl $radius-xl 0 0;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp $transition-normal;
+  overflow: hidden;
+}
+
+.dragHandle {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-sm 0;
+  cursor: grab;
+}
+
+.dragBar {
+  width: 36px;
+  height: 4px;
+  background: $color-border;
+  border-radius: $radius-round;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-xs $spacing-lg $spacing-md;
+  min-height: 44px;
+}
+
+.headerTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  flex: 1;
+  text-align: center;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+  cursor: pointer;
+  transition: background $transition-fast;
+  border: none;
+
+  &:hover {
+    background: $color-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+// --- Columns ---
+
+.columnsContainer {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-top: 1px solid $color-border-light;
+  border-bottom: 1px solid $color-border-light;
+  min-height: 240px;
+  max-height: 360px;
+}
+
+.column {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-right: 1px solid $color-border-light;
+  padding: $spacing-xs 0;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: $spacing-sm $spacing-md;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  text-align: left;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+  }
+}
+
+.optionSelected {
+  color: var(--gs-color-primary, #{$color-primary});
+  font-weight: $font-weight-medium;
+  background: $color-primary-bg;
+}
+
+.optionDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.optionLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// --- Footer ---
+
+.footer {
+  padding: $spacing-md $spacing-lg;
+  padding-bottom: calc(#{$spacing-md} + #{$safe-area-bottom});
+}
+
+.confirmBtn {
+  width: 100%;
+  min-height: 44px;
+  background: var(--gs-color-primary, #{$color-primary});
+  color: $color-text-white;
+  border: none;
+  border-radius: $radius-md;
+  font-family: $font-family;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// --- Animations ---
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { animation: none; }
+  .sheet { animation: none; }
+  .confirmBtn { transition: none; }
+}

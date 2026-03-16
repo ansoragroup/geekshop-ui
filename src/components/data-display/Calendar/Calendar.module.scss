@@ -1,0 +1,215 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  width: 100%;
+}
+
+// --- Month Navigation ---
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+  }
+}
+
+.monthLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// --- Day Headers ---
+
+.dayHeaders {
+  display: grid;
+  gap: 0;
+  margin-bottom: $spacing-xs;
+}
+
+.dayHeader {
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  padding: $spacing-xs 0;
+}
+
+.weekHeader {
+  text-align: center;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-placeholder;
+  padding: $spacing-xs 0;
+}
+
+// --- Weeks ---
+
+.weeksContainer {
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+.weekRow {
+  display: grid;
+  gap: $spacing-xxs;
+}
+
+.weekNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xs;
+  color: $color-text-placeholder;
+  min-height: 44px;
+}
+
+// --- Days ---
+
+.dayEmpty {
+  min-height: 44px;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 0;
+  padding: $spacing-xs $spacing-xxs;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: $font-family;
+  border-radius: $radius-md;
+  transition: background $transition-fast, color $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+  gap: $spacing-xxs;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+  }
+}
+
+.dayNumber {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: 1;
+}
+
+.dayToday {
+  .dayNumber {
+    color: var(--gs-color-primary, #{$color-primary});
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.daySelected {
+  background: var(--gs-color-primary, #{$color-primary});
+
+  .dayNumber {
+    color: $color-text-white;
+    font-weight: $font-weight-semibold;
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+.dayInRange {
+  background: $color-primary-bg;
+  border-radius: 0;
+
+  .dayNumber {
+    color: var(--gs-color-primary, #{$color-primary});
+  }
+}
+
+.dayRangeStart {
+  border-radius: $radius-md 0 0 $radius-md;
+}
+
+.dayRangeEnd {
+  border-radius: 0 $radius-md $radius-md 0;
+}
+
+.dayDisabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.dayDot {
+  width: 4px;
+  height: 4px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary, #{$color-primary});
+}
+
+.dayLabel {
+  font-size: $font-size-xs;
+  line-height: 1;
+  color: var(--gs-color-primary, #{$color-primary});
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+// Range end styling when also selected
+.daySelected.dayRangeStart {
+  border-radius: $radius-md 0 0 $radius-md;
+}
+
+.daySelected.dayRangeEnd {
+  border-radius: 0 $radius-md $radius-md 0;
+}
+
+// Single date in range mode (only start selected)
+.daySelected.dayRangeStart.dayRangeEnd,
+.daySelected:not(.dayRangeStart):not(.dayRangeEnd):not(.dayInRange) {
+  border-radius: $radius-md;
+}
+
+// --- Animations ---
+
+@media (prefers-reduced-motion: reduce) {
+  .day { transition: none; }
+  .navBtn { transition: none; }
+}
