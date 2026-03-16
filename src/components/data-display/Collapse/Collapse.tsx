@@ -21,7 +21,7 @@ export interface CollapsePanelProps {
   children: ReactNode;
 }
 
-export interface CollapseProps extends HTMLAttributes<HTMLDivElement> {
+export interface CollapseProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Currently active panel key(s) */
   activeKey?: string | string[];
   /** Default active key(s) for uncontrolled usage */

@@ -23,7 +23,7 @@ export interface SkuSelection {
   quantity: number;
 }
 
-export interface SkuSelectorProps extends HTMLAttributes<HTMLDivElement> {
+export interface SkuSelectorProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   product: SkuProduct;
   variants: SkuVariant[];
   onSelect?: (selections: SkuSelection[]) => void;

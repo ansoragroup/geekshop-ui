@@ -119,6 +119,7 @@ export const tokens = {
 export type Theme = 'light' | 'dark' | 'auto';
 
 export function setTheme(theme: Theme) {
+  if (typeof document === 'undefined') return; // SSR no-op
   if (theme === 'auto') {
     document.documentElement.removeAttribute('data-theme');
     // Falls back to prefers-color-scheme media query in global.scss
@@ -128,6 +129,7 @@ export function setTheme(theme: Theme) {
 }
 
 export function getTheme(): 'light' | 'dark' {
+  if (typeof document === 'undefined' || typeof window === 'undefined') return 'light'; // SSR fallback
   if (document.documentElement.getAttribute('data-theme') === 'dark') return 'dark';
   if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
   return 'light';
@@ -153,6 +155,7 @@ const ALL_PRESET_PROPS = [
 ] as const;
 
 export function setThemePreset(preset: ThemePreset): void {
+  if (typeof document === 'undefined') return; // SSR no-op
   const config = THEME_PRESETS[preset];
   if (!config) return;
 
@@ -191,5 +194,6 @@ export function setThemePreset(preset: ThemePreset): void {
 }
 
 export function getThemePreset(): ThemePreset {
+  if (typeof document === 'undefined') return 'default'; // SSR fallback
   return (document.documentElement.dataset.gsPreset as ThemePreset) || 'default';
 }

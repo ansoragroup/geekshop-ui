@@ -3,7 +3,7 @@ import { useGeekShop } from '../../../i18n';
 import { QuantityStepper } from '../QuantityStepper';
 import styles from './CartItem.module.scss';
 
-export interface CartItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface CartItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   image: string;
   title: string;
   variant?: string;

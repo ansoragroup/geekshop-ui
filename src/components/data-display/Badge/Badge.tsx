@@ -5,7 +5,7 @@ export type BadgeType = 'dot' | 'count' | 'text';
 export type BadgeColor = 'primary' | 'success' | 'error' | 'warning' | 'info';
 export type BadgePosition = 'top-right' | 'top-left' | 'inline';
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'content' | 'color'> {
   /** Badge type: dot, count, or text label */
   type?: BadgeType;
   /** Content to display (number for count, string for text) */

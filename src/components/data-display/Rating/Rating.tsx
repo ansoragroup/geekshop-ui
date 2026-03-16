@@ -4,7 +4,7 @@ import styles from './Rating.module.scss';
 
 export type RatingSize = 'sm' | 'md' | 'lg';
 
-export interface RatingProps extends HTMLAttributes<HTMLDivElement> {
+export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Current rating value (0-5, supports half steps) */
   value?: number;
   /** Default rating value for uncontrolled usage */
