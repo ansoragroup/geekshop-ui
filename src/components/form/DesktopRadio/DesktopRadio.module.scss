@@ -1,0 +1,128 @@
+@use '../../../theme/tokens' as *;
+
+// ---- RadioGroup ----
+
+.group {
+  display: flex;
+  gap: $desktop-spacing-sm;
+}
+
+.direction-vertical {
+  flex-direction: column;
+}
+
+.direction-horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $desktop-spacing-lg;
+}
+
+// ---- Radio ----
+
+.radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: $desktop-spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  border: 1.5px solid transparent;
+  transition: background $transition-fast, border-color $transition-fast;
+
+  &:hover:not(.disabled) {
+    background: $color-bg-page;
+  }
+}
+
+.radio.checked {
+  background: $color-primary-bg;
+  border-color: var(--gs-color-primary, #{$color-primary});
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  &:focus-visible + .circle {
+    box-shadow: 0 0 0 3px $color-primary-bg;
+  }
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+  box-sizing: border-box;
+  margin-top: 2px;
+}
+
+.circleUnchecked {
+  border: 2px solid $color-border;
+  background: transparent;
+}
+
+.circleChecked {
+  border: 2px solid var(--gs-color-primary, #{$color-primary});
+  background: transparent;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary, #{$color-primary});
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 0;
+}
+
+.label {
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// ---- Disabled ----
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+
+  .label {
+    color: $color-text-tertiary;
+  }
+
+  .description {
+    color: $color-text-tertiary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radio,
+  .circle {
+    transition: none;
+  }
+}

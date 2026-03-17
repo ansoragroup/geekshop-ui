@@ -1,0 +1,125 @@
+@use '../../../theme/tokens' as *;
+@use 'sass:color';
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  user-select: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  &:focus-within {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+  }
+}
+
+// ─── Size Variants ───────────────────────────────────────────────────────────
+
+.sm {
+  .btn {
+    width: 28px;
+    height: 28px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .input {
+    width: 60px;
+    height: 28px;
+    font-size: $font-size-sm;
+  }
+}
+
+.md {
+  .btn {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .input {
+    width: 80px;
+    height: 36px;
+    font-size: $font-size-md;
+  }
+}
+
+// ─── Button ──────────────────────────────────────────────────────────────────
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: $color-bg-white;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-page;
+  }
+
+  &:active:not(:disabled) {
+    background: color.adjust($color-bg-page, $lightness: -3%);
+  }
+}
+
+.btnDisabled {
+  color: $color-text-placeholder;
+  background: $color-bg-page;
+  cursor: not-allowed;
+}
+
+// ─── Input ───────────────────────────────────────────────────────────────────
+
+.input {
+  text-align: center;
+  border: none;
+  border-left: 1px solid $color-border;
+  border-right: 1px solid $color-border;
+  background: $color-bg-white;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  outline: none;
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &:disabled {
+    color: $color-text-placeholder;
+    background: $color-bg-page;
+  }
+}
+
+// ─── Disabled State ──────────────────────────────────────────────────────────
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

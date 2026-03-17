@@ -1,0 +1,158 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  gap: $desktop-spacing-lg;
+  align-items: flex-start;
+}
+
+// ─── Preview Image ───────────────────────────────────────────────────────────
+
+.previewWrapper {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// ─── Variant Groups ──────────────────────────────────────────────────────────
+
+.variantGroups {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.variantGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.variantLabel {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.selectedValue {
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+// ─── Options (Chip Group) ────────────────────────────────────────────────────
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  height: 36px;
+  padding: 0 $desktop-spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-white;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
+  user-select: none;
+
+  &:hover:not(.chipDisabled) {
+    border-color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.chipSelected {
+  border-color: $color-primary;
+  background: $color-primary-bg;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.chipDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chipOutOfStock {
+  .chipText {
+    text-decoration: line-through;
+  }
+}
+
+.chipImage {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-xs;
+  object-fit: cover;
+}
+
+.chipText {
+  font-size: $desktop-font-size-body;
+  color: inherit;
+  white-space: nowrap;
+}
+
+// ─── Stock & Price Line ──────────────────────────────────────────────────────
+
+.stockLine {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding-top: $spacing-sm;
+}
+
+.stockText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.stockLow {
+  color: $color-warning;
+  font-weight: $font-weight-medium;
+}
+
+.stockEmpty {
+  color: $color-error;
+  font-weight: $font-weight-medium;
+}
+
+.stockSeparator {
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.priceText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .chip {
+    transition: none;
+  }
+}

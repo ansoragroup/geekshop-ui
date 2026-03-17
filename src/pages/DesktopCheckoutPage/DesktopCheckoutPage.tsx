@@ -7,12 +7,13 @@ import {
   Breadcrumbs,
   TwoColumnLayout,
   Steps,
-  AddressCard,
-  PaymentMethodCard,
+  DesktopAddressCard,
+  DesktopPaymentMethodCard,
+  DesktopOrderSummary,
   Button,
 } from '../../components';
-import type { Address, PaymentMethod } from '../../components';
-import { mockAddresses, mockPaymentMethods, mockCartItems, formatPrice } from '../_shared/mockData';
+import type { DesktopAddress, DesktopPaymentMethod } from '../../components';
+import { mockAddresses, mockPaymentMethods, mockCartItems } from '../_shared/mockData';
 import styles from './DesktopCheckoutPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -66,45 +67,19 @@ export const DesktopCheckoutPage: React.FC = () => {
   const total = subtotal + shipping;
 
   const orderSummary = (
-    <div className={styles.summaryCard}>
-      <h2 className={styles.summaryTitle}>Order Summary</h2>
-
-      {/* Mini cart items */}
-      <div className={styles.miniCartList}>
-        {selectedCartItems.map((item) => (
-          <div key={item.id} className={styles.miniCartItem}>
-            <img src={item.image} alt={item.name} className={styles.miniCartImage} />
-            <div className={styles.miniCartInfo}>
-              <span className={styles.miniCartName}>{item.name}</span>
-              <span className={styles.miniCartVariant}>{item.variant}</span>
-              <span className={styles.miniCartPrice}>{formatPrice(item.price)} UZS x{item.quantity}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.summaryDivider} />
-
-      <div className={styles.summaryRows}>
-        <div className={styles.summaryRow}>
-          <span>Subtotal</span>
-          <span>{formatPrice(subtotal)} UZS</span>
-        </div>
-        <div className={styles.summaryRow}>
-          <span>Shipping</span>
-          <span className={styles.freeLabel}>Free</span>
-        </div>
-        <div className={styles.summaryDivider} />
-        <div className={`${styles.summaryRow} ${styles.summaryTotal}`}>
-          <span>Total</span>
-          <span>{formatPrice(total)} UZS</span>
-        </div>
-      </div>
-
-      <Button variant="primary" size="lg" style={{ width: '100%', marginTop: 16 }}>
-        Place Order
-      </Button>
-    </div>
+    <DesktopOrderSummary
+      subtotal={subtotal}
+      shipping={shipping}
+      total={total}
+      itemCount={selectedCartItems.length}
+      ctaText="Place Order"
+      onCheckout={() => {}}
+      trustBadges={[
+        { icon: 'shipping', text: 'Free shipping on orders over 5,000,000 UZS' },
+        { icon: 'secure', text: 'Secure checkout' },
+        { icon: 'returns', text: '14-day returns' },
+      ]}
+    />
   );
 
   return (
@@ -134,13 +109,13 @@ export const DesktopCheckoutPage: React.FC = () => {
         <div className={styles.formSection}>
           <h2 className={styles.formSectionTitle}>Shipping Address</h2>
           <div className={styles.addressList}>
-            {mockAddresses.map((addr: Address) => (
-              <AddressCard
+            {(mockAddresses as unknown as DesktopAddress[]).map((addr) => (
+              <DesktopAddressCard
                 key={addr.id}
                 address={addr}
                 selected={selectedAddress === addr.id}
                 selectable
-                onSelect={(a) => setSelectedAddress(a.id)}
+                onSelect={() => setSelectedAddress(addr.id)}
               />
             ))}
           </div>
@@ -153,13 +128,13 @@ export const DesktopCheckoutPage: React.FC = () => {
         <div className={styles.formSection}>
           <h2 className={styles.formSectionTitle}>Payment Method</h2>
           <div className={styles.paymentList}>
-            {mockPaymentMethods.map((method: PaymentMethod) => (
-              <PaymentMethodCard
+            {(mockPaymentMethods as unknown as DesktopPaymentMethod[]).map((method) => (
+              <DesktopPaymentMethodCard
                 key={method.id}
                 method={method}
                 selected={selectedPayment === method.id}
                 selectable
-                onSelect={(m) => setSelectedPayment(m.id)}
+                onSelect={() => setSelectedPayment(method.id)}
               />
             ))}
           </div>

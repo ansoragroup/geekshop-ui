@@ -1,0 +1,175 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 36px;
+  padding: 0 $spacing-md;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-round;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+// --- Color variants ---
+
+.color-default {
+  background: $color-bg-page;
+  border: 1px solid $color-border;
+  color: $color-text-primary;
+
+  &:hover:not(.disabled) {
+    border-color: $color-text-tertiary;
+    background: $color-border-light;
+  }
+
+  &.selected {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    color: var(--gs-color-primary, #{$color-primary});
+    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+.color-primary {
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  border: 1px solid transparent;
+  color: var(--gs-color-primary, #{$color-primary});
+
+  &:hover:not(.disabled) {
+    background: var(--gs-color-primary, #{$color-primary});
+    color: $color-text-white;
+  }
+
+  &.selected {
+    background: var(--gs-color-primary, #{$color-primary});
+    color: $color-text-white;
+  }
+}
+
+.color-success {
+  background: $color-success-light;
+  border: 1px solid transparent;
+  color: $color-success;
+
+  &.selected {
+    background: $color-success;
+    color: $color-text-white;
+  }
+}
+
+.color-warning {
+  background: $color-warning-light;
+  border: 1px solid transparent;
+  color: $color-warning;
+
+  &.selected {
+    background: $color-warning;
+    color: $color-text-white;
+  }
+}
+
+.color-error {
+  background: rgba($color-error, 0.08);
+  border: 1px solid transparent;
+  color: $color-error;
+
+  &.selected {
+    background: $color-error;
+    color: $color-text-white;
+  }
+}
+
+// --- Icon ---
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: inherit;
+}
+
+// --- Label ---
+
+.label {
+  line-height: 1;
+}
+
+// --- Close button ---
+
+.closeBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-left: $spacing-xxs;
+  margin-right: -$spacing-xs;
+  width: 22px;
+  height: 22px;
+  background: none;
+  border: none;
+  border-radius: $radius-round;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity $transition-fast, background $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 1px;
+  }
+}
+
+// Show close button on chip hover
+.closable {
+  &:hover .closeBtn,
+  &:focus-within .closeBtn {
+    display: inline-flex;
+  }
+}
+
+// When selected with color-primary or other filled styles, adjust close hover
+.color-primary.selected .closeBtn:hover,
+.color-success.selected .closeBtn:hover,
+.color-warning.selected .closeBtn:hover,
+.color-error.selected .closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+// --- Disabled ---
+
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+
+  .closeBtn {
+    cursor: not-allowed;
+  }
+}
+
+// --- Reduced motion ---
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .closeBtn {
+    transition: none;
+  }
+}

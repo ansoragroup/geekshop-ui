@@ -1,0 +1,137 @@
+@use '../../theme/tokens' as *;
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
+
+.heroSection {
+  margin-bottom: $desktop-spacing-xl;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+// ─── Trust Strip ──────────────────────────────────────────────────────────────
+
+.trustStrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $desktop-spacing-xxl;
+  padding: $desktop-spacing-lg 0;
+  margin-bottom: $desktop-spacing-xl;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+}
+
+// ─── Section (generic spacing) ────────────────────────────────────────────────
+
+.section {
+  padding: $desktop-spacing-xxl 0;
+  margin-bottom: $desktop-spacing-xl;
+}
+
+// ─── Trending Tabs ────────────────────────────────────────────────────────────
+
+.trendingTabs {
+  margin-top: $desktop-spacing-md;
+}
+
+.trendingGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $desktop-spacing-lg;
+  padding-top: $desktop-spacing-lg;
+}
+
+// ─── Flash Deals ──────────────────────────────────────────────────────────────
+
+.flashDealsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.dealsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $desktop-spacing-lg;
+}
+
+// ─── Category Row ─────────────────────────────────────────────────────────────
+
+.categoryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $desktop-spacing-lg $desktop-spacing-xl;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+}
+
+// ─── Social Proof + Rating Strip ──────────────────────────────────────────────
+
+.socialProofStrip {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-xxl;
+  padding: $desktop-spacing-xxl;
+  margin-bottom: $desktop-spacing-xl;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+}
+
+.socialProofLeft {
+  flex: 3;
+  min-width: 0;
+}
+
+.socialProofRight {
+  flex: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding-left: $desktop-spacing-xxl;
+  border-left: 1px solid $color-border;
+}
+
+.ratingLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+// ─── Reviews Grid ─────────────────────────────────────────────────────────────
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $desktop-spacing-lg;
+  margin-top: $desktop-spacing-lg;
+}
+
+// ─── Segmented Wrapper ────────────────────────────────────────────────────────
+
+.segmentedWrapper {
+  margin: $desktop-spacing-md 0 $desktop-spacing-lg;
+}
+
+// ─── Group Buy Grid ───────────────────────────────────────────────────────────
+
+.groupBuyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $desktop-spacing-lg;
+  margin-top: $desktop-spacing-lg;
+}
+
+// ─── Coupons Grid ─────────────────────────────────────────────────────────────
+
+.couponsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $desktop-spacing-md;
+}

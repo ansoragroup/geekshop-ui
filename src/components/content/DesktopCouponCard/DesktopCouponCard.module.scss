@@ -1,0 +1,231 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ─────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: stretch;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  min-height: 80px;
+  transition: box-shadow $transition-normal;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// ─── Discount Block (left ticket section) ─────────────────────────────────────
+
+.discountBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  flex-shrink: 0;
+  padding: $desktop-spacing-md $spacing-lg;
+  gap: $spacing-xxs;
+}
+
+.discountValue {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  line-height: $line-height-tight;
+  text-align: center;
+}
+
+.discountLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// ─── Color Variants ───────────────────────────────────────────────────────────
+
+.color-orange {
+  background: var(--gs-color-primary);
+}
+
+.color-red {
+  background: var(--gs-color-sale);
+}
+
+.color-green {
+  background: var(--gs-color-success);
+}
+
+.color-blue {
+  background: var(--gs-color-info);
+}
+
+// ─── Cutouts (semi-circle ticket effect) ──────────────────────────────────────
+
+.cutoutTop,
+.cutoutBottom {
+  position: absolute;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background: $color-bg-card;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.cutoutTop {
+  top: -8px;
+}
+
+.cutoutBottom {
+  bottom: -8px;
+}
+
+// ─── Dashed Divider ───────────────────────────────────────────────────────────
+
+.divider {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: $spacing-md 0;
+}
+
+.dashedLine {
+  width: 0;
+  height: 100%;
+  border-left: 2px dashed $color-border;
+}
+
+// ─── Details Block (right section) ────────────────────────────────────────────
+
+.detailsBlock {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: $desktop-spacing-md $desktop-spacing-lg $desktop-spacing-md $desktop-spacing-md;
+  gap: $desktop-spacing-lg;
+  min-width: 0;
+}
+
+.detailsContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-width: 0;
+}
+
+// ─── Code Row ─────────────────────────────────────────────────────────────────
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.codeLabel {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.codeValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: 1px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+// ─── Min Amount ───────────────────────────────────────────────────────────────
+
+.minAmount {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// ─── Meta Row (categories + expiry) ───────────────────────────────────────────
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.categories {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+}
+
+.metaSeparator {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.expiry {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+}
+
+// ─── Action Block ─────────────────────────────────────────────────────────────
+
+.actionBlock {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.applyButton {
+  padding: $spacing-sm $desktop-spacing-lg;
+  min-height: 36px;
+  background: transparent;
+  color: var(--gs-color-primary);
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  border: 2px solid var(--gs-color-primary);
+  border-radius: $radius-md;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary);
+    color: $color-text-white;
+  }
+
+  &:active {
+    background: var(--gs-color-primary-dark);
+    border-color: var(--gs-color-primary-dark);
+    color: $color-text-white;
+  }
+}
+
+.appliedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: var(--gs-color-success);
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+}
+
+// ─── Reduced Motion ───────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .applyButton {
+    transition: none;
+  }
+}

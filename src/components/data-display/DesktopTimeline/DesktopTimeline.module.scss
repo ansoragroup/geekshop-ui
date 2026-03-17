@@ -1,0 +1,189 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ───────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// ─── Item ───────────────────────────────────────────────────────────────────
+
+.item {
+  display: flex;
+  position: relative;
+}
+
+// ─── Rail (dot + line) ──────────────────────────────────────────────────────
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: $radius-round;
+  flex-shrink: 0;
+  margin-top: 5px;
+  border: 2px solid $color-border;
+  background: $color-bg-card;
+  transition: background-color $transition-normal, border-color $transition-normal;
+}
+
+.line {
+  flex: 1;
+  width: 2px;
+  min-height: 24px;
+  background: $color-border;
+  margin: $spacing-xs 0;
+}
+
+// ─── Content card ───────────────────────────────────────────────────────────
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $desktop-spacing-md;
+  margin-bottom: $desktop-spacing-md;
+  flex: 1;
+  min-width: 0;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+.date {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-xxs;
+}
+
+.title {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+.content {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  margin-top: $spacing-xs;
+}
+
+// ─── Color variants (dot) ───────────────────────────────────────────────────
+
+.color_primary {
+  .dot {
+    background: var(--gs-color-primary, $color-primary);
+    border-color: var(--gs-color-primary, $color-primary);
+    color: $color-text-white;
+  }
+
+  .line {
+    background: rgba($color-primary, 0.2);
+  }
+}
+
+.color_success {
+  .dot {
+    background: var(--gs-color-success, $color-success);
+    border-color: var(--gs-color-success, $color-success);
+    color: $color-text-white;
+  }
+
+  .line {
+    background: rgba($color-success, 0.2);
+  }
+}
+
+.color_warning {
+  .dot {
+    background: var(--gs-color-warning, $color-warning);
+    border-color: var(--gs-color-warning, $color-warning);
+    color: $color-text-white;
+  }
+}
+
+.color_error {
+  .dot {
+    background: var(--gs-color-error, $color-error);
+    border-color: var(--gs-color-error, $color-error);
+    color: $color-text-white;
+  }
+}
+
+.color_default {
+  .dot {
+    background: $color-bg-card;
+    border-color: $color-border;
+  }
+}
+
+// ─── Left mode ──────────────────────────────────────────────────────────────
+
+.mode_left {
+  .item {
+    gap: $desktop-spacing-md;
+  }
+}
+
+// ─── Alternate mode ─────────────────────────────────────────────────────────
+
+.mode_alternate {
+  position: relative;
+
+  // Center the rail
+  .rail {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .itemLeft {
+    padding-right: calc(50% + 24px);
+
+    .card {
+      margin-right: 0;
+    }
+  }
+
+  .itemRight {
+    padding-left: calc(50% + 24px);
+
+    .card {
+      margin-left: 0;
+    }
+  }
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .dot,
+  .card {
+    transition: none;
+  }
+}

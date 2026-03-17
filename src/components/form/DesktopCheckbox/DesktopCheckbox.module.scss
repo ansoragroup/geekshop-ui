@@ -1,0 +1,81 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  font-family: $font-family;
+  padding: $spacing-xs 0;
+
+  &:hover:not(.disabled) .unchecked {
+    border-color: var(--gs-color-primary, #{$color-primary});
+  }
+
+  &:hover:not(.disabled) .checked {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+
+  &:focus-visible + .box {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+}
+
+.unchecked {
+  border: 2px solid $color-border;
+  background: transparent;
+}
+
+.checked {
+  border: none;
+  background: var(--gs-color-primary, #{$color-primary});
+}
+
+.label {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+}
+
+// --- Disabled ---
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+
+  .label {
+    color: $color-text-tertiary;
+  }
+}
+
+// --- Reduced motion ---
+
+@media (prefers-reduced-motion: reduce) {
+  .box {
+    transition: none;
+  }
+}

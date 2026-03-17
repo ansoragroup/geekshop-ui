@@ -1,0 +1,109 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  overflow: hidden;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  border-bottom: 1px solid $color-border;
+}
+
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+}
+
+// ─── Body ────────────────────────────────────────────────────────────────────
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── Grid ────────────────────────────────────────────────────────────────────
+
+.grid {
+  display: grid;
+  width: 100%;
+}
+
+.twoColumns {
+  grid-template-columns: 1fr 1fr;
+}
+
+.singleColumn {
+  grid-template-columns: 1fr;
+}
+
+// ─── Spec Row ────────────────────────────────────────────────────────────────
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  gap: $desktop-spacing-md;
+  padding: $spacing-sm $desktop-spacing-lg;
+  min-height: 36px;
+}
+
+.specRowEven {
+  background: $color-bg-card;
+}
+
+.specRowOdd {
+  background: $color-bg-page;
+}
+
+.specLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.specValue {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-medium;
+  word-break: break-word;
+}
+
+// ─── Groups ──────────────────────────────────────────────────────────────────
+
+.group {
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-border;
+  }
+}
+
+.groupTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  padding: $desktop-spacing-sm $desktop-spacing-lg;
+  background: $color-primary-bg;
+  border-bottom: 1px solid $color-border;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .specRow {
+    transition: none;
+  }
+}

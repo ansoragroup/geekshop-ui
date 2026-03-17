@@ -2,20 +2,23 @@
 
 .dealCard {
   container-type: inline-size;
-  display: flex;
-  flex-direction: column;
   width: 140px;
   flex-shrink: 0;
-  background: $color-bg-white;
-  border-radius: $radius-lg;
-  overflow: hidden;
   cursor: pointer;
   transition: transform $transition-fast;
-  box-shadow: $shadow-sm;
 
   &:active {
     transform: scale(0.97);
   }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
 }
 
 .imageArea {
@@ -180,7 +183,7 @@
 // ========================================
 @container (min-width: 200px) and (max-width: 320px) {
   // Default vertical card layout
-  .dealCard {
+  .inner {
     width: auto;
   }
 }
@@ -189,7 +192,7 @@
 // Container Query: Expanded (> 320px)
 // ========================================
 @container (min-width: 321px) {
-  .dealCard {
+  .inner {
     flex-direction: row;
     width: auto;
   }
@@ -278,6 +281,10 @@
     &:active {
       transform: none;
     }
+  }
+
+  .inner {
+    transition: none;
   }
 
   .progressFill {

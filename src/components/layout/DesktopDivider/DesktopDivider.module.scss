@@ -1,0 +1,71 @@
+@use '../../../theme/tokens' as *;
+
+// --- Horizontal ---
+.horizontal {
+  width: 100%;
+  height: 1px;
+  background: var(--divider-color, #{$color-divider});
+}
+
+.solid.horizontal {
+  border: none;
+}
+
+.dashed.horizontal {
+  background: none;
+  border-top: 1px dashed var(--divider-color, #{$color-divider});
+  height: 0;
+}
+
+// --- With label ---
+.withLabel {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  width: 100%;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--divider-color, #{$color-divider});
+
+  .dashed & {
+    background: none;
+    border-top: 1px dashed var(--divider-color, #{$color-divider});
+    height: 0;
+  }
+}
+
+.label {
+  font-size: $desktop-font-size-body;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+  font-weight: $font-weight-medium;
+  padding: 0 $spacing-xs;
+}
+
+// --- Vertical ---
+.vertical {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background: var(--divider-color, #{$color-divider});
+  vertical-align: middle;
+  margin: 0 $desktop-spacing-sm;
+  flex-shrink: 0;
+}
+
+.dashed.vertical {
+  background: none;
+  border-left: 1px dashed var(--divider-color, #{$color-divider});
+  width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .horizontal,
+  .vertical,
+  .withLabel {
+    transition: none;
+  }
+}

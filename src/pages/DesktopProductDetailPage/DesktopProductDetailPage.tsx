@@ -6,16 +6,17 @@ import {
   MegaMenu,
   Footer,
   Breadcrumbs,
-  ProductImageGallery,
+  DesktopProductImageGallery,
   PriceDisplay,
   Rating,
-  QuantityStepper,
+  DesktopQuantityStepper,
   Button,
   Tabs,
-  SpecsTable,
-  ReviewCard,
+  DesktopSpecsTable,
+  DesktopReviewCard,
+  DesktopSkuSelector,
 } from '../../components';
-import type { MegaMenuCategory, ReviewCardUser } from '../../components';
+import type { MegaMenuCategory, ReviewUser } from '../../components';
 import styles from './DesktopProductDetailPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -62,7 +63,7 @@ const specs = [
 
 const reviews = [
   {
-    user: { name: 'Dilshod Rahimov', avatar: 'https://picsum.photos/seed/user-1/64/64' } as ReviewCardUser,
+    user: { name: 'Dilshod Rahimov', avatar: 'https://picsum.photos/seed/user-1/64/64' } as ReviewUser,
     rating: 5,
     content: 'Excellent GPU! Runs all games at ultra settings 1440p 60+ FPS. Temperature stays under 65C. Highly recommended for the price.',
     date: '14 March, 2026',
@@ -70,14 +71,14 @@ const reviews = [
     images: ['https://picsum.photos/seed/review-img-1/200/200', 'https://picsum.photos/seed/review-img-2/200/200'],
   },
   {
-    user: { name: 'Nodira Karimova' } as ReviewCardUser,
+    user: { name: 'Nodira Karimova' } as ReviewUser,
     rating: 4,
     content: 'Good product, but the box arrived slightly damaged. The card itself works perfectly. Delivery took 2 days within Tashkent.',
     date: '12 March, 2026',
     variant: '12GB / Black',
   },
   {
-    user: { name: 'Bekzod Tursunov', avatar: 'https://picsum.photos/seed/user-3/64/64' } as ReviewCardUser,
+    user: { name: 'Bekzod Tursunov', avatar: 'https://picsum.photos/seed/user-3/64/64' } as ReviewUser,
     rating: 5,
     content: 'Best value for money. Massive upgrade from my GTX 1660. DLSS 3 technology works great and significantly boosts FPS.',
     date: '10 March, 2026',
@@ -86,8 +87,6 @@ const reviews = [
   },
 ];
 
-const skuColors = ['Black', 'White'];
-const skuMemory = ['12GB GDDR6X'];
 
 // ─── Shared shell slots ──────────────────────────────────────────────────────
 
@@ -152,7 +151,7 @@ export const DesktopProductDetailPage: React.FC = () => {
       <div className={styles.productLayout}>
         {/* Left: Image Gallery */}
         <div className={styles.imageSection}>
-          <ProductImageGallery images={productImages} />
+          <DesktopProductImageGallery images={productImages} />
         </div>
 
         {/* Right: Product Info */}
@@ -166,43 +165,22 @@ export const DesktopProductDetailPage: React.FC = () => {
             <PriceDisplay price={8900000} originalPrice={12000000} variant="sale" size="lg" />
           </div>
 
-          {/* SKU Selection - Color */}
-          <div className={styles.skuSection}>
-            <div className={styles.skuLabel}>Color</div>
-            <div className={styles.skuOptions}>
-              {skuColors.map((color) => (
-                <button
-                  key={color}
-                  type="button"
-                  className={`${styles.skuOption} ${selectedColor === color ? styles.skuOptionActive : ''}`}
-                  onClick={() => setSelectedColor(color)}
-                >
-                  {color}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* SKU Selection - Memory */}
-          <div className={styles.skuSection}>
-            <div className={styles.skuLabel}>Memory</div>
-            <div className={styles.skuOptions}>
-              {skuMemory.map((mem) => (
-                <button
-                  key={mem}
-                  type="button"
-                  className={`${styles.skuOption} ${styles.skuOptionActive}`}
-                >
-                  {mem}
-                </button>
-              ))}
-            </div>
-          </div>
+          {/* SKU Selection */}
+          <DesktopSkuSelector
+            variants={[
+              { name: 'Color', options: [{ value: 'Black' }, { value: 'White' }] },
+              { name: 'Memory', options: [{ value: '12GB GDDR6X' }] },
+            ]}
+            selectedValues={{ Color: selectedColor, Memory: '12GB GDDR6X' }}
+            onSelect={(name, value) => { if (name === 'Color') setSelectedColor(value); }}
+            stock={12}
+            price={8900000}
+          />
 
           {/* Quantity */}
           <div className={styles.quantityRow}>
             <span className={styles.skuLabel}>Quantity</span>
-            <QuantityStepper value={quantity} onChange={setQuantity} min={1} max={10} />
+            <DesktopQuantityStepper value={quantity} onChange={setQuantity} min={1} max={10} />
           </div>
 
           {/* Actions */}
@@ -222,7 +200,7 @@ export const DesktopProductDetailPage: React.FC = () => {
             {
               key: 'specs',
               label: 'Specifications',
-              children: <SpecsTable specs={specs} />,
+              children: <DesktopSpecsTable specs={specs} columns={2} />,
             },
             {
               key: 'reviews',
@@ -230,7 +208,7 @@ export const DesktopProductDetailPage: React.FC = () => {
               children: (
                 <div className={styles.reviewsList}>
                   {reviews.map((review, i) => (
-                    <ReviewCard key={i} {...review} />
+                    <DesktopReviewCard key={i} {...review} />
                   ))}
                 </div>
               ),

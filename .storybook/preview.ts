@@ -81,7 +81,16 @@ const preview: Preview = {
       return createElement(
         GeekShopProvider,
         { locale, currency, platform },
-        createElement(Story),
+        createElement(
+          'div',
+          {
+            'data-platform': platform,
+            style: platform === 'desktop'
+              ? { width: '100%', minWidth: 800 }
+              : undefined,
+          },
+          createElement(Story),
+        ),
       );
     },
   ],

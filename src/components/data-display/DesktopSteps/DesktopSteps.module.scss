@@ -1,0 +1,221 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ───────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  width: 100%;
+}
+
+.spacer {
+  display: none;
+}
+
+// ─── Horizontal ─────────────────────────────────────────────────────────────
+
+.direction_horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+
+  .step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .connector {
+    position: absolute;
+    top: 16px;
+    right: 50%;
+    width: 100%;
+    height: 2px;
+    background: $color-border;
+    z-index: 0;
+    transform: translateX(-50%);
+    transition: background-color $transition-normal;
+  }
+
+  .connectorCompleted {
+    background: var(--gs-color-success, $color-success);
+  }
+
+  .connectorError {
+    background: var(--gs-color-error, $color-error);
+  }
+
+  .indicator {
+    position: relative;
+    z-index: 1;
+  }
+
+  .content {
+    margin-top: $spacing-sm;
+  }
+}
+
+// ─── Vertical ───────────────────────────────────────────────────────────────
+
+.direction_vertical {
+  flex-direction: column;
+
+  .step {
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: $desktop-spacing-xl;
+
+    &:last-child {
+      padding-bottom: 0;
+
+      .connector {
+        display: none;
+      }
+    }
+  }
+
+  .connector {
+    position: absolute;
+    left: 15px;
+    top: 36px;
+    width: 2px;
+    height: calc(100% - 36px);
+    background: $color-border;
+    transition: background-color $transition-normal;
+  }
+
+  .connectorCompleted {
+    background: var(--gs-color-success, $color-success);
+  }
+
+  .connectorError {
+    background: var(--gs-color-error, $color-error);
+  }
+
+  .content {
+    margin-left: $desktop-spacing-md;
+    padding-top: $spacing-xxs;
+  }
+}
+
+// ─── Step ───────────────────────────────────────────────────────────────────
+
+.step {
+  display: flex;
+  position: relative;
+}
+
+// ─── Indicator ──────────────────────────────────────────────────────────────
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+}
+
+.activeDot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: $color-text-white;
+}
+
+.stepNumber {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+}
+
+// ─── Status variants ────────────────────────────────────────────────────────
+
+.status_completed {
+  .indicator {
+    background: var(--gs-color-success, $color-success);
+    color: $color-text-white;
+  }
+
+  .title {
+    color: $color-text-primary;
+  }
+}
+
+.status_active {
+  .indicator {
+    background: var(--gs-color-primary, $color-primary);
+    color: $color-text-white;
+    box-shadow: 0 0 0 4px rgba($color-primary, 0.15);
+  }
+
+  .title {
+    color: var(--gs-color-primary, $color-primary);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.status_error {
+  .indicator {
+    background: var(--gs-color-error, $color-error);
+    color: $color-text-white;
+  }
+
+  .title {
+    color: var(--gs-color-error, $color-error);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.status_pending {
+  .indicator {
+    background: transparent;
+    border: 2px solid $color-border;
+    color: $color-text-placeholder;
+  }
+
+  .title {
+    color: $color-text-tertiary;
+  }
+
+  .description {
+    color: $color-text-placeholder;
+  }
+}
+
+// ─── Content ────────────────────────────────────────────────────────────────
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  transition: color $transition-normal;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  margin-top: $spacing-xxs;
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator,
+  .title,
+  .connector {
+    transition: none;
+  }
+}

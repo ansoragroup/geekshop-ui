@@ -1,0 +1,161 @@
+@use 'sass:color';
+@use '../../../theme/tokens' as *;
+
+// ─── Backdrop ────────────────────────────────────────────────────────────────
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-index-modal-backdrop;
+  animation: backdropIn $transition-fast;
+  box-sizing: border-box;
+  padding: $desktop-spacing-lg;
+}
+
+// ─── Dialog ──────────────────────────────────────────────────────────────────
+
+.dialog {
+  width: 440px;
+  max-width: calc(100vw - #{$desktop-spacing-xxl} * 2);
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-xl;
+  z-index: $z-index-modal;
+  animation: dialogIn $transition-normal;
+  overflow: hidden;
+}
+
+// ─── Title ───────────────────────────────────────────────────────────────────
+
+.title {
+  padding: $desktop-spacing-lg $desktop-spacing-lg $spacing-sm;
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: $line-height-normal;
+}
+
+// ─── Body ────────────────────────────────────────────────────────────────────
+
+.body {
+  padding: $spacing-sm $desktop-spacing-lg $desktop-spacing-lg;
+  font-size: $desktop-font-size-body;
+  color: $color-text-secondary;
+  line-height: $line-height-relaxed;
+}
+
+// ─── Actions ─────────────────────────────────────────────────────────────────
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  border-top: 1px solid $color-border;
+}
+
+.cancelBtn,
+.confirmBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $desktop-spacing-lg;
+  min-height: 40px;
+  border-radius: $radius-md;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background $transition-fast, box-shadow $transition-fast;
+  white-space: nowrap;
+}
+
+.cancelBtn {
+  background: $color-bg-card;
+  color: $color-text-secondary;
+  border: 1px solid $color-border;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.confirm-primary {
+  background: $color-primary;
+  color: $color-text-white;
+  border: none;
+
+  &:hover {
+    background: $color-primary-dark;
+    box-shadow: $shadow-sm;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.confirm-danger {
+  background: $color-error;
+  color: $color-text-white;
+  border: none;
+
+  &:hover {
+    background: color.adjust($color-error, $lightness: -8%);
+    box-shadow: $shadow-sm;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-error;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Animations ──────────────────────────────────────────────────────────────
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop {
+    animation: none;
+  }
+
+  .dialog {
+    animation: none;
+  }
+
+  .cancelBtn,
+  .confirmBtn {
+    transition: none;
+  }
+}

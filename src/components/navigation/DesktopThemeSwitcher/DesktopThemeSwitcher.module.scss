@@ -1,0 +1,219 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  font-family: $font-family;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// =====================
+// Toggle variant
+// =====================
+.toggleRoot {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  gap: $spacing-xxs;
+}
+
+.toggleOption {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $desktop-spacing-md;
+  border: none;
+  border-radius: $radius-sm;
+  background: none;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all $transition-fast;
+  min-height: 36px;
+
+  &:hover:not(.toggleActive) {
+    background: rgba($color-bg-white, 0.7);
+    color: $color-text-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+  }
+
+  &.toggleActive {
+    background: $color-bg-white;
+    color: var(--gs-color-primary, $color-primary);
+    font-weight: $font-weight-semibold;
+    box-shadow: $shadow-sm;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.toggleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.toggleLabel {
+  line-height: $line-height-normal;
+}
+
+// =====================
+// Dropdown variant
+// =====================
+.dropdownRoot {
+  position: relative;
+  display: inline-flex;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $desktop-spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-white;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all $transition-fast;
+  min-height: 40px;
+
+  &:hover {
+    border-color: var(--gs-color-primary, $color-primary);
+    background: var(--gs-color-primary-bg, $color-primary-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: 2px;
+  }
+
+  &.open {
+    border-color: var(--gs-color-primary, $color-primary);
+    box-shadow: 0 0 0 1px var(--gs-color-primary, $color-primary);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.triggerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.triggerLabel {
+  flex: 1;
+}
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  color: $color-text-tertiary;
+  transition: transform $transition-fast;
+
+  &.chevronOpen {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  min-width: 180px;
+  background: $color-bg-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  z-index: $z-index-dropdown;
+  overflow: hidden;
+  padding: $spacing-xs 0;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $desktop-spacing-md;
+  cursor: pointer;
+  transition: background $transition-fast;
+  outline: none;
+
+  &:hover,
+  &.optionFocused {
+    background: var(--gs-color-primary-bg, $color-primary-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+  }
+
+  &.optionActive {
+    color: var(--gs-color-primary, $color-primary);
+  }
+}
+
+.optionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.optionLabel {
+  flex: 1;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+
+  .optionActive & {
+    color: var(--gs-color-primary, $color-primary);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.checkmark {
+  display: inline-flex;
+  align-items: center;
+  color: var(--gs-color-primary, $color-primary);
+  flex-shrink: 0;
+}
+
+// === Reduced motion ===
+@media (prefers-reduced-motion: reduce) {
+  .toggleOption,
+  .trigger,
+  .chevron,
+  .option {
+    transition: none;
+  }
+}

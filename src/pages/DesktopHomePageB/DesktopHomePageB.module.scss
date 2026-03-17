@@ -1,0 +1,35 @@
+@use '../../theme/tokens' as *;
+
+.section {
+  padding: $desktop-spacing-xxl 0;
+
+  &:first-child {
+    padding-top: $desktop-spacing-lg;
+  }
+}
+
+.stepsContainer {
+  margin-top: $desktop-spacing-lg;
+  padding: $desktop-spacing-lg;
+  background: var(--gs-bg-card);
+  border-radius: $radius-lg;
+  border: 1px solid var(--gs-border);
+}
+
+.suppliersGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $desktop-spacing-md;
+  margin-top: $desktop-spacing-lg;
+}
+
+.productGridArea {
+  margin-top: $desktop-spacing-md;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $desktop-spacing-lg;
+  margin-top: $desktop-spacing-lg;
+}

@@ -19,6 +19,12 @@
             "type": "command",
             "command": "bash consilium/hooks/pre-commit.sh",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/block-push-main.sh",
+            "timeout": 3,
+            "statusMessage": "Checking push target..."
           }
         ]
       }
@@ -31,6 +37,12 @@
             "type": "command",
             "command": "bash .claude/hooks/post-edit-reminder.sh",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/typecheck-after-edit.sh",
+            "timeout": 30,
+            "statusMessage": "Type checking..."
           }
         ]
       }
@@ -83,6 +95,11 @@
             "command": "bash consilium/hooks/task-completed.sh",
             "timeout": 120,
             "statusMessage": "Running quality gates..."
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/agent-done-qa-reminder.sh",
+            "timeout": 5
           }
         ]
       }

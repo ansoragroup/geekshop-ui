@@ -189,30 +189,40 @@
 // Container Query: Desktop (>= 600px)
 // ========================================
 @container (min-width: 600px) {
-  .image {
-    width: 120px;
-    height: 120px;
-  }
-
   .content {
     gap: $desktop-spacing-md;
     padding: $desktop-spacing-md $desktop-spacing-lg;
   }
 
+  .image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
   .title {
+    flex: 1 1 100%;
     font-size: $font-size-lg;
+    -webkit-line-clamp: 1;
   }
 
   .variant {
     font-size: $font-size-md;
   }
 
-  .price {
-    font-size: $font-size-xl;
+  .bottom {
+    flex: 1 1 100%;
+    margin-top: 0;
   }
 
-  .bottom {
-    margin-top: $spacing-sm;
+  .price {
+    font-size: $font-size-xl;
   }
 }
 

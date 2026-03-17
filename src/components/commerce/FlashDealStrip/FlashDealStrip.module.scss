@@ -1,0 +1,283 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  width: 100%;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $color-border;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  padding: $desktop-spacing-sm $desktop-spacing-lg;
+  background: linear-gradient(135deg, #FF5000 0%, #FF3B30 100%);
+  color: $color-text-white;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.5px;
+}
+
+// ─── Countdown ───────────────────────────────────────────────────────────────
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-left: auto;
+}
+
+.countdownLabel {
+  font-size: $font-size-sm;
+  margin-right: $spacing-xs;
+}
+
+.countdownDigit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: $radius-xs;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdownSep {
+  font-weight: $font-weight-bold;
+  font-size: $font-size-md;
+}
+
+// ─── View All ────────────────────────────────────────────────────────────────
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  background: none;
+  border: none;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+// ─── Strip Wrapper ───────────────────────────────────────────────────────────
+
+.stripWrapper {
+  position: relative;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+}
+
+// ─── Scroll Arrows ───────────────────────────────────────────────────────────
+
+.scrollArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: $color-bg-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-round;
+  cursor: pointer;
+  z-index: $z-index-normal;
+  color: $color-text-primary;
+  box-shadow: $shadow-md;
+  transition: box-shadow $transition-fast, border-color $transition-fast;
+  padding: 0;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    border-color: $color-primary-light;
+  }
+}
+
+.scrollArrowLeft {
+  left: $spacing-sm;
+}
+
+.scrollArrowRight {
+  right: $spacing-sm;
+}
+
+// ─── Strip (horizontal scroll) ──────────────────────────────────────────────
+
+.strip {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ─── Deal Card ───────────────────────────────────────────────────────────────
+
+.dealCard {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  scroll-snap-align: start;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+}
+
+// ─── Card Image ──────────────────────────────────────────────────────────────
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $color-bg-skeleton;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cardDiscount {
+  position: absolute;
+  top: $spacing-xs;
+  left: $spacing-xs;
+  padding: 1px $spacing-xs;
+  background: $color-sale;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-xs;
+  line-height: $line-height-tight;
+}
+
+// ─── Card Prices ─────────────────────────────────────────────────────────────
+
+.cardPrices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  width: 100%;
+}
+
+.cardSalePrice {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+  line-height: $line-height-tight;
+}
+
+.cardOriginalPrice {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  line-height: $line-height-tight;
+}
+
+// ─── Progress Bar ────────────────────────────────────────────────────────────
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: #FFE0D0;
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF5000, #FF3B30);
+  border-radius: $radius-round;
+  transition: width $transition-normal;
+}
+
+.soldLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+}
+
+// ─── Buy Button ──────────────────────────────────────────────────────────────
+
+.buyBtn {
+  width: 100%;
+  min-height: 32px;
+  background: $color-primary;
+  color: $color-text-white;
+  border: none;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background $transition-fast;
+  letter-spacing: 0.5px;
+  padding: $spacing-xs $spacing-sm;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .progressFill {
+    transition: none;
+  }
+
+  .dealCard,
+  .scrollArrow,
+  .viewAll,
+  .buyBtn {
+    transition: none;
+  }
+
+  .strip {
+    scroll-behavior: auto;
+  }
+}

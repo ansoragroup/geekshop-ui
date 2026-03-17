@@ -7,34 +7,11 @@ import {
   Footer,
   Breadcrumbs,
   DesktopSidebar,
-  ProductGrid,
-  ProductListItem,
+  DesktopProductGrid,
   Pagination,
-  Segmented,
 } from '../../components';
-import type { MegaMenuCategory, SidebarCategory, SidebarBrand } from '../../components';
-import type { ProductCardFlatProps } from '../../components/product/ProductCard';
+import type { MegaMenuCategory, SidebarCategory, SidebarBrand, DesktopProductGridItem } from '../../components';
 import styles from './DesktopCategoryPage.module.scss';
-
-// ─── Icons ────────────────────────────────────────────────────────────────────
-
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-    <rect x="0" y="0" width="7" height="7" rx="1" />
-    <rect x="9" y="0" width="7" height="7" rx="1" />
-    <rect x="0" y="9" width="7" height="7" rx="1" />
-    <rect x="9" y="9" width="7" height="7" rx="1" />
-  </svg>
-);
-
-const ListIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-    <rect x="0" y="0" width="16" height="3" rx="1" />
-    <rect x="0" y="4.5" width="16" height="3" rx="1" />
-    <rect x="0" y="9" width="16" height="3" rx="1" />
-    <rect x="0" y="13" width="16" height="3" rx="1" />
-  </svg>
-);
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
@@ -76,31 +53,20 @@ const sidebarBrands: SidebarBrand[] = [
   { label: 'Sapphire', value: 'sapphire', checked: false },
 ];
 
-const gridProducts: ProductCardFlatProps[] = [
-  { image: 'https://picsum.photos/seed/cat-gpu1/400/400', title: 'MSI GeForce RTX 4070 Super Gaming X Slim 12GB', price: 8900000, originalPrice: 9800000, soldCount: '234 sold', badge: 'top' },
-  { image: 'https://picsum.photos/seed/cat-gpu2/400/400', title: 'ASUS ROG Strix RTX 4060 Ti OC 8GB GDDR6', price: 5200000, originalPrice: 6500000, soldCount: '187 sold', badge: 'hot' },
-  { image: 'https://picsum.photos/seed/cat-gpu3/400/400', title: 'Gigabyte RTX 4060 Eagle OC 8GB GDDR6', price: 4200000, soldCount: '312 sold', badge: 'new' },
-  { image: 'https://picsum.photos/seed/cat-gpu4/400/400', title: 'MSI RTX 4080 Super Ventus 3X OC 16GB', price: 14500000, originalPrice: 16200000, soldCount: '56 sold', badge: 'top' },
-  { image: 'https://picsum.photos/seed/cat-gpu5/400/400', title: 'ASUS Dual RTX 4060 OC 8GB GDDR6', price: 3900000, soldCount: '278 sold' },
-  { image: 'https://picsum.photos/seed/cat-gpu6/400/400', title: 'Zotac RTX 4070 Twin Edge 12GB GDDR6X', price: 7800000, originalPrice: 8500000, soldCount: '123 sold' },
-  { image: 'https://picsum.photos/seed/cat-gpu7/400/400', title: 'Sapphire RX 7800 XT Pulse 16GB', price: 6200000, soldCount: '98 sold', badge: 'hot' },
-  { image: 'https://picsum.photos/seed/cat-gpu8/400/400', title: 'MSI RTX 4060 Ti Ventus 2X 8GB GDDR6', price: 4800000, originalPrice: 5600000, soldCount: '201 sold' },
-  { image: 'https://picsum.photos/seed/cat-gpu9/400/400', title: 'ASUS TUF RTX 4070 OC 12GB GDDR6X', price: 7500000, soldCount: '145 sold', badge: 'top' },
-  { image: 'https://picsum.photos/seed/cat-gpu10/400/400', title: 'Gigabyte RX 7600 Gaming OC 8GB', price: 3200000, soldCount: '367 sold', badge: 'new' },
-  { image: 'https://picsum.photos/seed/cat-gpu11/400/400', title: 'EVGA RTX 4060 XC Gaming 8GB GDDR6', price: 3800000, soldCount: '89 sold' },
-  { image: 'https://picsum.photos/seed/cat-gpu12/400/400', title: 'MSI RTX 4090 Suprim X 24GB GDDR6X', price: 22000000, originalPrice: 24500000, soldCount: '34 sold', badge: 'top' },
+const products: DesktopProductGridItem[] = [
+  { id: '1', images: ['https://picsum.photos/seed/cat-gpu1/400/400'], title: 'MSI GeForce RTX 4070 Super Gaming X Slim 12GB', shopName: 'TechZone', price: 8900000, originalPrice: 9800000, discount: '-10%', rating: 4.5, soldCount: '234', freeShipping: true },
+  { id: '2', images: ['https://picsum.photos/seed/cat-gpu2/400/400'], title: 'ASUS ROG Strix RTX 4060 Ti OC 8GB GDDR6', shopName: 'GPU World', price: 5200000, originalPrice: 6500000, discount: '-20%', rating: 4.3, soldCount: '187', freeShipping: true },
+  { id: '3', images: ['https://picsum.photos/seed/cat-gpu3/400/400'], title: 'Gigabyte RTX 4060 Eagle OC 8GB GDDR6', shopName: 'PC Parts', price: 4200000, rating: 4.2, soldCount: '312', freeShipping: false },
+  { id: '4', images: ['https://picsum.photos/seed/cat-gpu4/400/400'], title: 'MSI RTX 4080 Super Ventus 3X OC 16GB', shopName: 'TechZone', price: 14500000, originalPrice: 16200000, discount: '-10%', rating: 4.7, soldCount: '56', freeShipping: true },
+  { id: '5', images: ['https://picsum.photos/seed/cat-gpu5/400/400'], title: 'ASUS Dual RTX 4060 OC 8GB GDDR6', shopName: 'GPU World', price: 3900000, rating: 4.1, soldCount: '278', freeShipping: false },
+  { id: '6', images: ['https://picsum.photos/seed/cat-gpu6/400/400'], title: 'Zotac RTX 4070 Twin Edge 12GB GDDR6X', shopName: 'Zotac Store', price: 7800000, originalPrice: 8500000, discount: '-8%', rating: 4.4, soldCount: '123', freeShipping: true },
+  { id: '7', images: ['https://picsum.photos/seed/cat-gpu7/400/400'], title: 'Sapphire RX 7800 XT Pulse 16GB', shopName: 'AMD Shop', price: 6200000, rating: 4.6, soldCount: '98', freeShipping: true },
+  { id: '8', images: ['https://picsum.photos/seed/cat-gpu8/400/400'], title: 'MSI RTX 4060 Ti Ventus 2X 8GB GDDR6', shopName: 'TechZone', price: 4800000, originalPrice: 5600000, discount: '-14%', rating: 4.3, soldCount: '201', freeShipping: false },
+  { id: '9', images: ['https://picsum.photos/seed/cat-gpu9/400/400'], title: 'ASUS TUF RTX 4070 OC 12GB GDDR6X', shopName: 'GPU World', price: 7500000, rating: 4.5, soldCount: '145', freeShipping: true },
+  { id: '10', images: ['https://picsum.photos/seed/cat-gpu10/400/400'], title: 'Gigabyte RX 7600 Gaming OC 8GB', shopName: 'PC Parts', price: 3200000, rating: 4.0, soldCount: '367', freeShipping: false },
+  { id: '11', images: ['https://picsum.photos/seed/cat-gpu11/400/400'], title: 'EVGA RTX 4060 XC Gaming 8GB GDDR6', shopName: 'EVGA Direct', price: 3800000, rating: 4.2, soldCount: '89', freeShipping: false },
+  { id: '12', images: ['https://picsum.photos/seed/cat-gpu12/400/400'], title: 'MSI RTX 4090 Suprim X 24GB GDDR6X', shopName: 'TechZone', price: 22000000, originalPrice: 24500000, discount: '-10%', rating: 4.9, soldCount: '34', freeShipping: true },
 ];
-
-const listProducts = gridProducts.map((p) => ({
-  image: p.image,
-  title: p.title,
-  price: p.price,
-  originalPrice: p.originalPrice,
-  rating: 4.0 + Math.random(),
-  reviewCount: Math.floor(Math.random() * 200) + 10,
-  inStock: true,
-  freeShipping: p.price > 5000000,
-}));
 
 // ─── Shared shell slots ──────────────────────────────────────────────────────
 
@@ -173,35 +139,25 @@ export const DesktopCategoryPage: React.FC = () => {
 
       {/* Page header */}
       <div className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Graphics Cards <span className={styles.productCount}>(42 products)</span></h1>
-        <div className={styles.viewToggle}>
-          <Segmented
-            options={[
-              { value: 'grid', label: 'Grid', icon: <GridIcon /> },
-              { value: 'list', label: 'List', icon: <ListIcon /> },
-            ]}
-            value={viewMode}
-            onChange={setViewMode}
-          />
-        </div>
+        <h1 className={styles.pageTitle}>Graphics Cards</h1>
       </div>
 
-      {/* Product grid or list */}
+      {/* Product grid with built-in toolbar */}
       <div className={styles.productsArea}>
-        {viewMode === 'grid' ? (
-          <ProductGrid
-            products={gridProducts}
-            layout="grid"
-            columns={4}
-            gap={16}
-          />
-        ) : (
-          <div className={styles.listView}>
-            {listProducts.map((product, i) => (
-              <ProductListItem key={i} {...product} />
-            ))}
-          </div>
-        )}
+        <DesktopProductGrid
+          products={products}
+          totalCount={42}
+          viewMode={viewMode as 'grid' | 'list'}
+          columns={4}
+          onViewModeChange={setViewMode}
+          sortOptions={[
+            { id: 'relevance', label: 'Relevance' },
+            { id: 'price-asc', label: 'Price: Low to High' },
+            { id: 'price-desc', label: 'Price: High to Low' },
+            { id: 'rating', label: 'Rating' },
+          ]}
+          activeSortId="relevance"
+        />
       </div>
 
       {/* Pagination */}

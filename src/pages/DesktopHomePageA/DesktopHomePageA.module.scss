@@ -1,0 +1,110 @@
+@use '../../theme/tokens' as *;
+
+// ─── Sections ─────────────────────────────────────────────────────────────────
+
+.section {
+  margin-bottom: $desktop-spacing-xxl;
+}
+
+// ─── Category Icon Row ────────────────────────────────────────────────────────
+
+.categoryIconRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: $desktop-spacing-lg 0;
+  background: var(--gs-bg-white);
+  border-radius: $radius-lg;
+  border: 1px solid var(--gs-border-color);
+  padding: $desktop-spacing-lg $desktop-spacing-xl;
+}
+
+// ─── Coupon Grid ──────────────────────────────────────────────────────────────
+
+.couponGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $desktop-spacing-md;
+  margin-top: $desktop-spacing-md;
+}
+
+// ─── Group Buy Grid ───────────────────────────────────────────────────────────
+
+.groupBuyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $desktop-spacing-lg;
+  margin-top: $desktop-spacing-md;
+}
+
+// ─── Shop Grid ────────────────────────────────────────────────────────────────
+
+.shopGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $desktop-spacing-md;
+  margin-top: $desktop-spacing-md;
+}
+
+// ─── Segmented Controls ───────────────────────────────────────────────────────
+
+.segmentedWrapper {
+  margin: $desktop-spacing-md 0 $desktop-spacing-lg;
+}
+
+// ─── Social Proof ─────────────────────────────────────────────────────────────
+
+.socialProofWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: $desktop-spacing-xl;
+  padding: $desktop-spacing-md;
+  background: $color-primary-bg;
+  border-radius: $radius-lg;
+}
+
+// ─── Side Panel Cards (banner) ────────────────────────────────────────────────
+
+.sidePanelCard {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+  height: 100%;
+  justify-content: center;
+}
+
+.todaysPick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm;
+  background: var(--gs-bg-white);
+  border-radius: $radius-md;
+  border: 1px solid var(--gs-border-color);
+}
+
+.todaysPickImage {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}
+
+.todaysPickTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-primary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.todaysPickPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+}

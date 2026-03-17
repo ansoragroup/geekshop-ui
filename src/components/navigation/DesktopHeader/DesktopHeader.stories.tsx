@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopHeader } from './DesktopHeader';
 
 const meta = {
-  title: 'Navigation/DesktopHeader',
+  title: 'Navigation (Desktop)/DesktopHeader',
   component: DesktopHeader,
   tags: ['autodocs'],
   parameters: {

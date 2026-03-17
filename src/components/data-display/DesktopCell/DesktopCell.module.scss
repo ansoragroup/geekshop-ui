@@ -1,0 +1,119 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  background: var(--gs-color-bg-card, $color-bg-card);
+  gap: $desktop-spacing-md;
+  position: relative;
+  font-family: $font-family;
+}
+
+// --- Interactive state ---
+.interactive {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color $transition-fast, box-shadow $transition-fast;
+  border-radius: $radius-md;
+
+  &:hover {
+    background: var(--gs-color-bg-page, $color-bg-page);
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    background: var(--gs-color-border, $color-border);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+    border-radius: $radius-md;
+  }
+}
+
+// --- Border ---
+.border {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: $desktop-spacing-lg;
+    right: $desktop-spacing-lg;
+    height: 1px;
+    background: var(--gs-color-border, $color-border);
+  }
+}
+
+// --- Icon ---
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: var(--gs-color-text-secondary, $color-text-secondary);
+}
+
+// --- Content ---
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: $spacing-xxs;
+}
+
+.title {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: var(--gs-color-text-primary, $color-text-primary);
+  line-height: $line-height-tight;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: var(--gs-color-text-tertiary, $color-text-tertiary);
+  line-height: $line-height-normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// --- Value ---
+.value {
+  flex-shrink: 0;
+  font-size: $desktop-font-size-body;
+  color: var(--gs-color-text-secondary, $color-text-secondary);
+  line-height: $line-height-tight;
+  font-weight: $font-weight-medium;
+}
+
+// --- Arrow ---
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gs-color-text-placeholder, $color-text-placeholder);
+  transition: transform $transition-fast;
+}
+
+.interactive:hover .arrow {
+  transform: translateX(2px);
+  color: var(--gs-color-text-tertiary, $color-text-tertiary);
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .interactive,
+  .arrow {
+    transition: none;
+  }
+}

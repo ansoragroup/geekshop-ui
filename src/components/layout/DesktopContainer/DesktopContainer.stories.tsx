@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopContainer } from './DesktopContainer';
 
 const meta = {
-  title: 'Layout/DesktopContainer',
+  title: 'Layout (Desktop)/DesktopContainer',
   component: DesktopContainer,
   tags: ['autodocs'],
   parameters: {

@@ -1,0 +1,80 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+}
+
+.boxes {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  justify-content: center;
+}
+
+.box {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  color: $color-text-primary;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  text-align: center;
+  caret-color: var(--gs-color-primary, #{$color-primary});
+  outline: none;
+
+  &:hover:not(.disabled):not(.error) {
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-visible {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    box-shadow: 0 0 0 3px $color-primary-bg;
+    outline: none;
+  }
+}
+
+.box.filled {
+  border-color: var(--gs-color-primary, #{$color-primary});
+}
+
+.box.active {
+  border-color: var(--gs-color-primary, #{$color-primary});
+  box-shadow: 0 0 0 3px $color-primary-bg;
+}
+
+.box.error {
+  border-color: var(--gs-color-error, #{$color-error});
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba($color-error, 0.15);
+  }
+}
+
+.box.disabled {
+  background: $color-bg-page;
+  border-color: $color-border-light;
+  color: $color-text-tertiary;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  text-align: center;
+  line-height: $line-height-normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box {
+    transition: none;
+  }
+}

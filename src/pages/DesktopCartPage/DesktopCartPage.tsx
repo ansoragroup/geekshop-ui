@@ -6,11 +6,11 @@ import {
   Footer,
   Breadcrumbs,
   TwoColumnLayout,
-  CartItem,
-  CouponCard,
-  Button,
+  DesktopCartItem,
+  DesktopCouponCard,
+  DesktopOrderSummary,
 } from '../../components';
-import { mockCartItems, formatPrice } from '../_shared/mockData';
+import { mockCartItems } from '../_shared/mockData';
 import type { CartItemData } from '../_shared/types';
 import styles from './DesktopCartPage.module.scss';
 
@@ -71,32 +71,20 @@ export const DesktopCartPage: React.FC = () => {
   const total = subtotal + shipping + tax;
 
   const orderSummary = (
-    <div className={styles.summaryCard}>
-      <h2 className={styles.summaryTitle}>Order Summary</h2>
-      <div className={styles.summaryRows}>
-        <div className={styles.summaryRow}>
-          <span>Subtotal ({selectedItems.length} items)</span>
-          <span>{formatPrice(subtotal)} UZS</span>
-        </div>
-        <div className={styles.summaryRow}>
-          <span>Shipping</span>
-          <span className={shipping === 0 ? styles.freeLabel : ''}>{shipping === 0 ? 'Free' : `${formatPrice(shipping)} UZS`}</span>
-        </div>
-        <div className={styles.summaryRow}>
-          <span>Tax (12%)</span>
-          <span>{formatPrice(tax)} UZS</span>
-        </div>
-        <div className={styles.summaryDivider} />
-        <div className={`${styles.summaryRow} ${styles.summaryTotal}`}>
-          <span>Total</span>
-          <span>{formatPrice(total)} UZS</span>
-        </div>
-      </div>
-      <Button variant="primary" size="lg" style={{ width: '100%', marginTop: 16 }}>
-        Proceed to Checkout
-      </Button>
-      <p className={styles.shippingNote}>Free shipping on orders over 5,000,000 UZS</p>
-    </div>
+    <DesktopOrderSummary
+      subtotal={subtotal}
+      shipping={shipping}
+      tax={tax}
+      total={total}
+      itemCount={selectedItems.length}
+      ctaText="Proceed to Checkout"
+      onCheckout={() => {}}
+      trustBadges={[
+        { icon: 'shipping', text: 'Free shipping on orders over 5,000,000 UZS' },
+        { icon: 'secure', text: 'Secure checkout' },
+        { icon: 'returns', text: '14-day returns' },
+      ]}
+    />
   );
 
   return (
@@ -122,7 +110,7 @@ export const DesktopCartPage: React.FC = () => {
         {/* Cart items */}
         <div className={styles.cartList}>
           {cartItems.map((item) => (
-            <CartItem
+            <DesktopCartItem
               key={item.id}
               image={item.image}
               title={item.name}
@@ -140,12 +128,12 @@ export const DesktopCartPage: React.FC = () => {
         {/* Coupon section */}
         <div className={styles.couponSection}>
           <h3 className={styles.sectionTitle}>Have a coupon?</h3>
-          <CouponCard
+          <DesktopCouponCard
             discount="-10%"
             code="GEEK10"
             expiryDate="2026-04-01"
-            minAmount={500000}
-            color="#FF5000"
+            minAmount="Orders over 500,000 so'm"
+            color="orange"
           />
         </div>
       </TwoColumnLayout>

@@ -2,19 +2,22 @@
 
 .root {
   container-type: inline-size;
+  width: 100%;
+  cursor: pointer;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.inner {
   display: flex;
   flex-direction: column;
   background: $color-bg-card;
   border-radius: $radius-lg;
   box-shadow: $shadow-md;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform $transition-fast, box-shadow $transition-fast;
-
-  &:active {
-    transform: scale(0.98);
-    box-shadow: $shadow-sm;
-  }
 }
 
 // --- Image ---
@@ -155,7 +158,7 @@
 // Container Query: Expanded (> 320px)
 // ========================================
 @container (min-width: 321px) {
-  .root {
+  .inner {
     flex-direction: row;
   }
 

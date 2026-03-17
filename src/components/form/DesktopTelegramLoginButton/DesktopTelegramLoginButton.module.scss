@@ -1,0 +1,85 @@
+@use '../../../theme/tokens' as *;
+
+$telegram-blue: #0088cc;
+$telegram-blue-hover: #0077b3;
+$telegram-blue-active: #006699;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  border: none;
+  border-radius: $radius-md;
+  background: $telegram-blue;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background $transition-fast, box-shadow $transition-fast;
+  white-space: nowrap;
+
+  &:hover:not(.disabled) {
+    background: $telegram-blue-hover;
+    box-shadow: $shadow-sm;
+  }
+
+  &:active:not(.disabled) {
+    background: $telegram-blue-active;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $telegram-blue;
+    outline-offset: 2px;
+  }
+}
+
+.size-sm {
+  height: 36px;
+  padding: 0 $desktop-spacing-md;
+  font-size: $font-size-sm;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.size-md {
+  height: 44px;
+  padding: 0 $desktop-spacing-lg;
+  font-size: $desktop-font-size-body;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.size-lg {
+  height: 52px;
+  padding: 0 $desktop-spacing-xl;
+  font-size: $font-size-lg;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

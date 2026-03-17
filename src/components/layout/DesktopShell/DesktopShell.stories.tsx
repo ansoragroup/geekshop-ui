@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopShell } from './DesktopShell';
 
 const meta = {
-  title: 'Layout/DesktopShell',
+  title: 'Layout (Desktop)/DesktopShell',
   component: DesktopShell,
   tags: ['autodocs'],
   parameters: {

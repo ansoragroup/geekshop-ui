@@ -1,0 +1,185 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  padding: $desktop-spacing-md 0;
+  border-bottom: 1px solid $color-border;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba($color-bg-page, 0.5);
+  }
+}
+
+.outOfStock {
+  opacity: 0.6;
+}
+
+// ─── Checkbox ────────────────────────────────────────────────────────────────
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid $color-border;
+  border-radius: $radius-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.checkboxChecked {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $color-text-white;
+}
+
+// ─── Image ───────────────────────────────────────────────────────────────────
+
+.imageWrapper {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// ─── Info ────────────────────────────────────────────────────────────────────
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: $radius-xs;
+  }
+}
+
+.variant {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.stockBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+}
+
+.inStock {
+  color: $color-success;
+}
+
+.noStock {
+  color: $color-error;
+}
+
+.shippingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xxs;
+  font-size: $font-size-xs;
+  color: $color-info;
+}
+
+// ─── Quantity ────────────────────────────────────────────────────────────────
+
+.quantity {
+  flex-shrink: 0;
+}
+
+// ─── Price ───────────────────────────────────────────────────────────────────
+
+.price {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+  white-space: nowrap;
+  min-width: 120px;
+  text-align: right;
+}
+
+// ─── Delete Button ───────────────────────────────────────────────────────────
+
+.deleteBtn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-md;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    color: $color-error;
+    background: rgba($color-error, 0.08);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .checkbox,
+  .deleteBtn {
+    transition: none;
+  }
+}

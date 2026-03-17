@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopGrid } from './DesktopGrid';
 
 const meta = {
-  title: 'Layout/DesktopGrid',
+  title: 'Layout (Desktop)/DesktopGrid',
   component: DesktopGrid,
   tags: ['autodocs'],
   parameters: {

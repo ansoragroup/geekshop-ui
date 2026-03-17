@@ -1,0 +1,84 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ───────────────────────────────────────────────────────────────────
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  font-family: $font-family;
+}
+
+// ─── Stars row ──────────────────────────────────────────────────────────────
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xxs;
+}
+
+// ─── Individual star ────────────────────────────────────────────────────────
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.interactive {
+  cursor: pointer;
+  transition: transform $transition-fast;
+  border-radius: $radius-xs;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Info (value + count) ───────────────────────────────────────────────────
+
+.info {
+  display: inline-flex;
+  align-items: baseline;
+  gap: $spacing-xs;
+}
+
+.valueText {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.countText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+}
+
+// ─── Hover preview ──────────────────────────────────────────────────────────
+
+.hoverPreview {
+  font-size: $font-size-sm;
+  color: var(--gs-color-primary, $color-primary);
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive {
+    transition: none;
+  }
+}

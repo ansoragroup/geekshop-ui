@@ -6,10 +6,10 @@ import {
   Footer,
   Breadcrumbs,
   TabFilter,
-  OrderCard,
+  DesktopOrderCard,
   Pagination,
 } from '../../components';
-import type { OrderStatus } from '../../components';
+import type { DesktopOrderStatus, DesktopOrderAction } from '../../components';
 import { mockOrders } from '../_shared/mockData';
 import styles from './DesktopOrdersPage.module.scss';
 
@@ -30,14 +30,14 @@ const orderFilterTabs = [
   { key: 'return', label: 'Returns' },
 ];
 
-// Map page-level status to component-level OrderStatus
-const statusMap: Record<string, OrderStatus> = {
-  pending: 'pending',
-  shipping: 'shipping',
-  review: 'review',
-  return: 'return',
-  delivered: 'review', // delivered shows in review tab
-};
+// Map page-level status to DesktopOrderStatus
+function mapStatus(pageStatus: string): DesktopOrderStatus {
+  switch (pageStatus) {
+    case 'review': return 'delivered';
+    case 'return': return 'returned';
+    default: return pageStatus as DesktopOrderStatus;
+  }
+}
 
 // ─── Shared shell slots ──────────────────────────────────────────────────────
 
@@ -66,40 +66,33 @@ const DesktopFooterSection = () => (
 
 // ─── Action helpers ──────────────────────────────────────────────────────────
 
-function getOrderActions(status: string) {
+function getOrderActions(status: string): DesktopOrderAction[] {
   switch (status) {
     case 'pending':
       return [
-        { label: 'Pay Now', type: 'primary' as const, onClick: () => {} },
-        { label: 'Cancel', onClick: () => {} },
+        { id: 'pay', label: 'Pay Now', variant: 'primary' },
+        { id: 'cancel', label: 'Cancel', variant: 'danger' },
       ];
     case 'shipping':
       return [
-        { label: 'Track Order', type: 'primary' as const, onClick: () => {} },
+        { id: 'track', label: 'Track Order', variant: 'primary' },
       ];
     case 'delivered':
       return [
-        { label: 'Write Review', type: 'primary' as const, onClick: () => {} },
-        { label: 'Buy Again', onClick: () => {} },
+        { id: 'review', label: 'Write Review', variant: 'primary' },
+        { id: 'rebuy', label: 'Buy Again', variant: 'secondary' },
       ];
     case 'review':
       return [
-        { label: 'Write Review', type: 'primary' as const, onClick: () => {} },
+        { id: 'review', label: 'Write Review', variant: 'primary' },
       ];
     case 'cancelled':
       return [
-        { label: 'Buy Again', type: 'primary' as const, onClick: () => {} },
+        { id: 'rebuy', label: 'Buy Again', variant: 'primary' },
       ];
     default:
       return [];
   }
-}
-
-function mapStatus(pageStatus: string): OrderStatus {
-  if (pageStatus in statusMap) return statusMap[pageStatus];
-  if (pageStatus === 'delivered') return 'review';
-  if (pageStatus === 'cancelled') return 'pending';
-  return 'pending';
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -142,20 +135,19 @@ export const DesktopOrdersPage: React.FC = () => {
           </div>
         )}
         {filteredOrders.map((order) => (
-          <OrderCard
+          <DesktopOrderCard
             key={order.id}
             orderId={order.id}
             status={mapStatus(order.status)}
             products={order.items.map((item) => ({
+              id: item.id,
               image: item.image,
               title: item.name,
-              variant: item.variant,
-              price: item.price,
-              quantity: item.quantity,
             }))}
             totalAmount={order.totalPrice}
             date={order.date}
             actions={getOrderActions(order.status)}
+            onAction={(actionId) => console.log('action', actionId)}
           />
         ))}
       </div>

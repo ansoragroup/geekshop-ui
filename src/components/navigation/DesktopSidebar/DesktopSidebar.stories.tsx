@@ -25,7 +25,7 @@ const sampleBrands: SidebarBrand[] = [
 ];
 
 const meta = {
-  title: 'Navigation/DesktopSidebar',
+  title: 'Navigation (Desktop)/DesktopSidebar',
   component: DesktopSidebar,
   tags: ['autodocs'],
   parameters: {

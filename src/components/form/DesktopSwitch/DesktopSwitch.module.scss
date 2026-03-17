@@ -1,0 +1,161 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: $desktop-spacing-sm;
+}
+
+// ---- Track ----
+
+.track {
+  position: relative;
+  border: none;
+  border-radius: $radius-round;
+  cursor: pointer;
+  padding: 3px;
+  transition: background $transition-fast;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+
+  &:hover:not([aria-disabled='true']) {
+    filter: brightness(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+.size-md {
+  width: 44px;
+  height: 24px;
+}
+
+.size-sm {
+  width: 36px;
+  height: 20px;
+}
+
+// ---- States ----
+
+.off {
+  background: #d1d5db;
+}
+
+.on {
+  background: var(--gs-color-primary, #{$color-primary});
+}
+
+// ---- Thumb ----
+
+.thumb {
+  display: block;
+  background: $color-bg-white;
+  border-radius: $radius-round;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-fast;
+}
+
+.size-md .thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.size-sm .thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.on .thumb {
+  // md: 44 - 6 (padding) - 18 = 20px
+  // sm: 36 - 6 (padding) - 14 = 16px
+}
+
+.size-md.on .thumb {
+  transform: translateX(20px);
+}
+
+.size-sm.on .thumb {
+  transform: translateX(16px);
+}
+
+.off .thumb {
+  transform: translateX(0);
+}
+
+// ---- Inline labels ----
+
+.inlineLabel {
+  position: absolute;
+  font-size: 9px;
+  font-weight: $font-weight-semibold;
+  color: $color-bg-white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.on .inlineLabel {
+  left: 7px;
+}
+
+.off .inlineLabel {
+  right: 7px;
+  color: $color-text-tertiary;
+}
+
+// ---- Text wrap ----
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  padding-top: 2px;
+}
+
+.label {
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  cursor: pointer;
+  user-select: none;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// ---- Disabled ----
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+
+  .track {
+    cursor: not-allowed;
+  }
+
+  .label {
+    cursor: not-allowed;
+    color: $color-text-tertiary;
+  }
+
+  .description {
+    color: $color-text-tertiary;
+  }
+}
+
+// ---- Reduced motion ----
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .thumb {
+    transition: none;
+  }
+}

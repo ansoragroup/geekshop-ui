@@ -1,0 +1,89 @@
+@use '../../../theme/tokens' as *;
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  padding: $desktop-spacing-sm $desktop-spacing-md;
+  background: $color-bg-white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  min-width: 320px;
+  max-width: 480px;
+  border-left: 3px solid transparent;
+  animation: slideIn $transition-normal;
+}
+
+.type-success {
+  border-left-color: $color-success;
+}
+
+.type-error {
+  border-left-color: $color-error;
+}
+
+.type-warning {
+  border-left-color: $color-warning;
+}
+
+.type-info {
+  border-left-color: $color-info;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.message {
+  flex: 1;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  min-width: 0;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+    color: $color-text-secondary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+  .closeBtn { transition: none; }
+}

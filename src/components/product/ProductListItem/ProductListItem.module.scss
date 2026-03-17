@@ -235,11 +235,20 @@
   }
 }
 
-// Wide (600px+): larger image
+// Wide (600px+): larger image, inline actions
 @container (min-width: 600px) {
+  .root {
+    flex-wrap: wrap;
+  }
+
   .imageContainer {
     width: 160px;
     height: 160px;
+  }
+
+  .content {
+    flex: 1 1 0;
+    min-width: 200px;
   }
 
   .title {
@@ -248,6 +257,13 @@
 
   .price {
     font-size: $font-size-xxl;
+  }
+
+  .actions {
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 0;
   }
 }
 

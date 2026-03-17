@@ -1,0 +1,154 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ───────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: $desktop-spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+}
+
+// ─── Step ───────────────────────────────────────────────────────────────────
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+// ─── Indicator (circle) ─────────────────────────────────────────────────────
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+}
+
+.stepNumber {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+}
+
+// ─── Connector line ─────────────────────────────────────────────────────────
+
+.connector {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 18px);
+  right: calc(-50% + 18px);
+  height: 2px;
+  background: $color-border;
+  z-index: 0;
+  transition: background-color $transition-normal;
+}
+
+.connectorCompleted {
+  background: var(--gs-color-success, $color-success);
+}
+
+// ─── Label group ────────────────────────────────────────────────────────────
+
+.labelGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $spacing-sm;
+  text-align: center;
+  gap: $spacing-xxs;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  transition: color $transition-normal;
+}
+
+.date {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+}
+
+// ─── Status variants ────────────────────────────────────────────────────────
+
+.status_completed {
+  .circle {
+    background: var(--gs-color-success, $color-success);
+    color: $color-text-white;
+    border: 2px solid var(--gs-color-success, $color-success);
+  }
+
+  .label {
+    color: $color-text-primary;
+  }
+
+  .date {
+    color: $color-text-secondary;
+  }
+}
+
+.status_active {
+  .circle {
+    background: var(--gs-color-primary, $color-primary);
+    color: $color-text-white;
+    border: 2px solid var(--gs-color-primary, $color-primary);
+    box-shadow: 0 0 0 4px rgba($color-primary, 0.15);
+  }
+
+  .label {
+    color: var(--gs-color-primary, $color-primary);
+    font-weight: $font-weight-semibold;
+  }
+
+  .date {
+    color: var(--gs-color-primary, $color-primary);
+  }
+}
+
+.status_pending {
+  .circle {
+    background: $color-bg-card;
+    color: $color-text-placeholder;
+    border: 2px solid $color-border;
+  }
+
+  .label {
+    color: $color-text-tertiary;
+  }
+
+  .date {
+    color: $color-text-placeholder;
+  }
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .circle,
+  .connector,
+  .label {
+    transition: none;
+  }
+}
