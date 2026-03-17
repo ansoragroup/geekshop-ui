@@ -209,6 +209,16 @@ export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardP
             <span className={styles.discountBadge}>{discount}</span>
           )}
 
+          {/* Wishlist heart (always visible, top-right of image) */}
+          <button
+            type="button"
+            className={styles.wishlistBtn}
+            onClick={(e) => handleAction(e, onWishlist)}
+            aria-label="Add to wishlist"
+          >
+            <HeartIcon />
+          </button>
+
           {/* Image carousel arrows (visible on hover) */}
           {displayImages.length > 1 && isHovered && (
             <>
@@ -331,6 +341,15 @@ export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardP
               <span>Free shipping</span>
             </div>
           )}
+
+          {/* Add to cart button */}
+          <button
+            type="button"
+            className={styles.addToCartBtn}
+            onClick={(e) => handleAction(e, onAddToCart)}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     );

@@ -7,7 +7,7 @@
   width: 100%;
   min-height: $desktop-header-height;
   background: $color-bg-white;
-  box-shadow: $shadow-sm;
+  box-shadow: $modern-shadow-card;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
 
 .content {
   width: 100%;
-  max-width: $desktop-content-max-width;
+  max-width: $modern-content-width;
   padding: 0 $desktop-content-padding;
   display: flex;
   align-items: center;
@@ -48,16 +48,45 @@
   white-space: nowrap;
 }
 
+// --- Katalog Button ---
+.catalogBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 44px;
+  padding: 0 $desktop-spacing-md;
+  border: none;
+  border-radius: $modern-radius-button;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
 // --- Search bar ---
 .searchBar {
   flex: 1;
   max-width: 50%;
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 48px;
   background: $color-bg-page;
   border: 1px solid $color-border;
-  border-radius: $radius-round;
+  border-radius: $modern-radius-input;
   overflow: hidden;
   transition: border-color $transition-fast;
 
@@ -97,12 +126,13 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 $spacing-lg;
+  padding: 0 $spacing-xl;
   border: none;
   background: $color-primary;
   color: $color-text-white;
   cursor: pointer;
   flex-shrink: 0;
+  border-radius: 0 $modern-radius-input $modern-radius-input 0;
   transition: background $transition-fast;
 
   &:hover {
@@ -115,24 +145,26 @@
   }
 }
 
-// --- Action icons ---
+// --- Action icons with text labels ---
 .actions {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: $spacing-lg;
   flex-shrink: 0;
 }
 
 .actionBtn {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0;
+  gap: $spacing-xxs;
+  min-width: 48px;
+  min-height: 48px;
+  padding: $spacing-xs;
   border: none;
-  border-radius: $radius-md;
+  border-radius: $modern-radius-button;
   background: none;
   color: $color-text-secondary;
   cursor: pointer;
@@ -149,10 +181,18 @@
   }
 }
 
+.actionLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  color: inherit;
+  white-space: nowrap;
+}
+
 .badge {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 0;
+  right: 0;
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
@@ -170,7 +210,8 @@
 @media (prefers-reduced-motion: reduce) {
   .searchBar,
   .searchButton,
-  .actionBtn {
+  .actionBtn,
+  .catalogBtn {
     transition: none;
   }
 }

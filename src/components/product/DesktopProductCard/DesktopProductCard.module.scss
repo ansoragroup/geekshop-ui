@@ -7,15 +7,15 @@
   flex-direction: column;
   width: 100%;
   background: $color-bg-card;
-  border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border-radius: $modern-radius-card;
+  border: none;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow $transition-normal, border-color $transition-normal, transform $transition-fast;
+  box-shadow: $modern-shadow-card;
+  transition: box-shadow $transition-normal, transform $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-lg;
-    border-color: $color-primary-light;
+    box-shadow: $modern-shadow-card-hover;
     transform: translateY(-2px);
   }
 }
@@ -25,7 +25,8 @@
 .imageArea {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
+  min-height: 200px;
   overflow: hidden;
   background: $color-bg-skeleton;
 }
@@ -54,9 +55,36 @@
   color: $color-text-white;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  border-radius: $radius-xs;
+  border-radius: $modern-radius-button;
   line-height: $line-height-tight;
   z-index: $z-index-normal;
+}
+
+// ─── Wishlist Heart (top-right of image) ────────────────────────────────────
+
+.wishlistBtn {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: $radius-round;
+  background: rgba(255, 255, 255, 0.9);
+  color: $color-text-secondary;
+  cursor: pointer;
+  z-index: $z-index-normal;
+  padding: 0;
+  box-shadow: $modern-shadow-card;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-sale;
+    background: $color-bg-white;
+  }
 }
 
 // ─── Carousel Arrows ─────────────────────────────────────────────────────────
@@ -249,6 +277,32 @@
   line-height: $line-height-tight;
 }
 
+// ─── Add to Cart Button ─────────────────────────────────────────────────────
+
+.addToCartBtn {
+  width: 100%;
+  min-height: 40px;
+  border: none;
+  border-radius: $modern-radius-button;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  margin-top: auto;
+  padding: $spacing-sm $spacing-lg;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
 // ─── Reduced Motion ──────────────────────────────────────────────────────────
 
 @media (prefers-reduced-motion: reduce) {
@@ -266,7 +320,15 @@
 
   .dot,
   .carouselArrow,
-  .actionBtn {
+  .actionBtn,
+  .wishlistBtn,
+  .addToCartBtn {
     transition: none;
+  }
+
+  .addToCartBtn {
+    &:active {
+      transform: none;
+    }
   }
 }

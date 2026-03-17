@@ -24,6 +24,8 @@ export interface DesktopHeaderProps extends HTMLAttributes<HTMLElement> {
   onUserClick?: () => void;
   /** Callback when logo is clicked */
   onLogoClick?: () => void;
+  /** Callback when "Katalog" button is clicked */
+  onCatalogClick?: () => void;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -36,13 +38,13 @@ const SearchIcon = () => (
 );
 
 const HeartIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
   </svg>
 );
 
 const PackageIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
     <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
     <line x1="12" y1="22.08" x2="12" y2="12" />
@@ -50,7 +52,7 @@ const PackageIcon = () => (
 );
 
 const CartIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="9" cy="21" r="1" />
     <circle cx="20" cy="21" r="1" />
     <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
@@ -58,9 +60,18 @@ const CartIcon = () => (
 );
 
 const UserIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
     <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+
+const GridIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="7" height="7" />
+    <rect x="14" y="3" width="7" height="7" />
+    <rect x="3" y="14" width="7" height="7" />
+    <rect x="14" y="14" width="7" height="7" />
   </svg>
 );
 
@@ -78,6 +89,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
       onCartClick,
       onUserClick,
       onLogoClick,
+      onCatalogClick,
       className,
       ...rest
     },
@@ -113,6 +125,17 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
             {logo ?? <span className={styles.logoText}>GeekShop</span>}
           </div>
 
+          {/* Katalog button */}
+          <button
+            type="button"
+            className={styles.catalogBtn}
+            onClick={onCatalogClick}
+            aria-label="Open catalog"
+          >
+            <GridIcon />
+            Katalog
+          </button>
+
           {/* Search bar */}
           <form className={styles.searchBar} onSubmit={handleSubmit} role="search">
             <span className={styles.searchIcon}>
@@ -131,7 +154,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
             </button>
           </form>
 
-          {/* Action icons */}
+          {/* Action icons with text labels */}
           <div className={styles.actions}>
             <button
               className={styles.actionBtn}
@@ -139,6 +162,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
               aria-label={wishlistCount ? `Wishlist (${wishlistCount} items)` : 'Wishlist'}
             >
               <HeartIcon />
+              <span className={styles.actionLabel}>Wishlist</span>
               {wishlistCount != null && wishlistCount > 0 && (
                 <span className={styles.badge}>{wishlistCount > 99 ? '99+' : wishlistCount}</span>
               )}
@@ -150,6 +174,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
               aria-label="Orders"
             >
               <PackageIcon />
+              <span className={styles.actionLabel}>Orders</span>
             </button>
 
             <button
@@ -158,6 +183,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
               aria-label={cartCount ? `Cart (${cartCount} items)` : 'Cart'}
             >
               <CartIcon />
+              <span className={styles.actionLabel}>Cart</span>
               {cartCount != null && cartCount > 0 && (
                 <span className={styles.badge}>{cartCount > 99 ? '99+' : cartCount}</span>
               )}
@@ -169,6 +195,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
               aria-label="User account"
             >
               <UserIcon />
+              <span className={styles.actionLabel}>Sign in</span>
             </button>
           </div>
         </div>

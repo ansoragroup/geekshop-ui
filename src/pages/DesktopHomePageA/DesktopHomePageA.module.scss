@@ -1,110 +1,387 @@
 @use '../../theme/tokens' as *;
 
-// ─── Sections ─────────────────────────────────────────────────────────────────
+// ─── Page ────────────────────────────────────────────────────────────────────
+
+.page {
+  background: $modern-bg-page;
+  min-height: 100vh;
+}
+
+// ─── Content Wrapper (centered, max-width) ───────────────────────────────────
+
+.content {
+  max-width: $modern-content-width;
+  margin: 0 auto;
+  padding: 0 $desktop-content-padding;
+}
+
+// ─── Sections ────────────────────────────────────────────────────────────────
 
 .section {
+  margin-bottom: $modern-section-gap;
+}
+
+.sectionSmall {
   margin-bottom: $desktop-spacing-xxl;
 }
 
-// ─── Category Icon Row ────────────────────────────────────────────────────────
+// ─── Category Quick Links ────────────────────────────────────────────────────
 
-.categoryIconRow {
+.categoryBar {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: $desktop-spacing-lg 0;
-  background: var(--gs-bg-white);
-  border-radius: $radius-lg;
-  border: 1px solid var(--gs-border-color);
-  padding: $desktop-spacing-lg $desktop-spacing-xl;
-}
-
-// ─── Coupon Grid ──────────────────────────────────────────────────────────────
-
-.couponGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $desktop-spacing-md;
-  margin-top: $desktop-spacing-md;
-}
-
-// ─── Group Buy Grid ───────────────────────────────────────────────────────────
-
-.groupBuyGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $desktop-spacing-lg;
-  margin-top: $desktop-spacing-md;
-}
-
-// ─── Shop Grid ────────────────────────────────────────────────────────────────
-
-.shopGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $desktop-spacing-md;
-  margin-top: $desktop-spacing-md;
-}
-
-// ─── Segmented Controls ───────────────────────────────────────────────────────
-
-.segmentedWrapper {
-  margin: $desktop-spacing-md 0 $desktop-spacing-lg;
-}
-
-// ─── Social Proof ─────────────────────────────────────────────────────────────
-
-.socialProofWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: $desktop-spacing-xl;
-  padding: $desktop-spacing-md;
-  background: $color-primary-bg;
-  border-radius: $radius-lg;
-}
-
-// ─── Side Panel Cards (banner) ────────────────────────────────────────────────
-
-.sidePanelCard {
-  display: flex;
-  flex-direction: column;
-  gap: $desktop-spacing-sm;
-  height: 100%;
-  justify-content: center;
-}
-
-.todaysPick {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-sm;
-  background: var(--gs-bg-white);
-  border-radius: $radius-md;
-  border: 1px solid var(--gs-border-color);
+  gap: $spacing-sm;
+  overflow-x: auto;
+  padding: $desktop-spacing-sm 0;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.todaysPickImage {
-  width: 100%;
-  max-width: 140px;
-  height: auto;
-  border-radius: $radius-sm;
-  object-fit: cover;
-}
-
-.todaysPickTitle {
-  font-size: $font-size-sm;
+.categoryChip {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: $spacing-sm $desktop-spacing-md;
+  font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: var(--gs-text-primary);
-  text-align: center;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  border-radius: $spacing-sm;
+  cursor: pointer;
+  transition: background $transition-fast;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  line-height: $line-height-normal;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
 }
 
-.todaysPickPrice {
-  font-size: $font-size-md;
+.categoryChipIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.moreChip {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: $spacing-sm $desktop-spacing-md;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  background: transparent;
+  border: none;
+  border-radius: $spacing-sm;
+  cursor: pointer;
+  transition: background $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+// ─── Promo Quick Cards ───────────────────────────────────────────────────────
+
+.promoRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $modern-card-gap;
+}
+
+.promoCard {
+  background: $color-bg-card;
+  border-radius: $modern-radius-card;
+  box-shadow: $modern-shadow-card;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  cursor: pointer;
+  transition: box-shadow $transition-fast, transform $transition-fast;
+  border: none;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $modern-shadow-card-hover;
+    transform: translateY(-1px);
+  }
+}
+
+.promoIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.promoIconBlue {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+.promoIconGreen {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.promoIconPurple {
+  background: #f3e8fd;
+  color: #7c3aed;
+}
+
+.promoIconOrange {
+  background: #fef3e2;
+  color: #e65100;
+}
+
+.promoText {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+// ─── Section Title (Uzum style) ──────────────────────────────────────────────
+
+.sectionTitle {
+  font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  margin-bottom: $desktop-spacing-lg;
+  line-height: $line-height-tight;
+}
+
+.sectionArrow {
+  width: 20px;
+  height: 20px;
+  color: $color-text-tertiary;
+  transition: transform $transition-fast;
+
+  .sectionTitle:hover & {
+    transform: translateX(2px);
+    color: $color-text-primary;
+  }
+}
+
+// ─── Product Grid ────────────────────────────────────────────────────────────
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $modern-card-gap;
+}
+
+// ─── Show More Button ────────────────────────────────────────────────────────
+
+.showMoreBtn {
+  width: 100%;
+  padding: $desktop-spacing-md;
+  margin-top: $desktop-spacing-lg;
+  background: transparent;
+  border: 1px solid $color-border;
+  border-radius: $modern-radius-button;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-bg-card;
+    border-color: $color-text-tertiary;
+    color: $color-text-primary;
+  }
+}
+
+// ─── Promo Banner ────────────────────────────────────────────────────────────
+
+.promoBanner {
+  width: 100%;
+  height: 200px;
+  border-radius: $modern-radius-banner;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 $desktop-spacing-xxl;
+  cursor: pointer;
+}
+
+.promoBannerGradient {
+  background: linear-gradient(135deg, #ff8a00 0%, #ffb74d 50%, #ffe082 100%);
+}
+
+.promoBannerContent {
+  position: relative;
+  z-index: 1;
+}
+
+.promoBannerTitle {
+  font-size: 28px;
+  font-weight: $font-weight-bold;
+  color: #ffffff;
+  margin-bottom: $spacing-sm;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.promoBannerSubtitle {
+  font-size: $font-size-lg;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.promoBannerImages {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: $desktop-spacing-md;
+}
+
+.promoBannerImg {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: $radius-lg;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+// ─── Recommended Carousel ────────────────────────────────────────────────────
+
+.recommendedWrapper {
+  position: relative;
+}
+
+.recommendedScroll {
+  display: flex;
+  gap: $modern-card-gap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: $spacing-xs 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.recommendedCard {
+  flex: 0 0 calc((100% - #{$modern-card-gap} * 4) / 5);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.carouselArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: $z-index-normal;
+  transition: box-shadow $transition-fast;
+  color: $color-text-primary;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+.carouselArrowLeft {
+  left: -20px;
+}
+
+.carouselArrowRight {
+  right: -20px;
+}
+
+// ─── Category Showcase ───────────────────────────────────────────────────────
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $modern-card-gap;
+}
+
+.categoryCard {
+  background: $color-bg-card;
+  border-radius: $modern-radius-card;
+  box-shadow: $modern-shadow-card;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow $transition-fast, transform $transition-fast;
+  border: none;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+
+  &:hover {
+    box-shadow: $modern-shadow-card-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.categoryCardImage {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.categoryCardBody {
+  padding: $desktop-spacing-md;
+}
+
+.categoryCardName {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.categoryCardCount {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// ─── Footer Spacing ──────────────────────────────────────────────────────────
+
+.footerArea {
+  margin-top: $modern-section-gap;
+}
+
+// ─── Responsive ──────────────────────────────────────────────────────────────
+
+@media (max-width: 1100px) {
+  .productGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .recommendedCard {
+    flex: 0 0 calc((100% - #{$modern-card-gap} * 3) / 4);
+  }
 }

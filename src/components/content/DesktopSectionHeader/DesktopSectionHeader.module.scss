@@ -47,7 +47,7 @@
 }
 
 .title {
-  font-size: $desktop-font-size-h3;
+  font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
   color: $color-text-primary;
   line-height: $line-height-tight;
@@ -72,17 +72,16 @@
   align-items: center;
   gap: $spacing-xs;
   flex-shrink: 0;
-  padding: $spacing-sm $spacing-md;
+  padding: 0;
   border: none;
   background: none;
   cursor: pointer;
   color: $color-text-tertiary;
-  border-radius: $radius-md;
-  transition: color $transition-fast, background $transition-fast;
+  border-radius: 0;
+  transition: color $transition-fast;
 
   &:hover {
     color: var(--gs-color-primary);
-    background: $color-primary-bg;
   }
 }
 
@@ -115,19 +114,18 @@
 
 .tab {
   padding: $spacing-sm $desktop-spacing-md;
-  border: 1px solid $color-border;
-  background: $color-bg-card;
+  border: none;
+  background: $color-bg-page;
   color: $color-text-secondary;
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  border-radius: $radius-round;
+  border-radius: $modern-radius-chip;
   cursor: pointer;
   white-space: nowrap;
-  transition: all $transition-fast;
+  transition: color $transition-fast, background $transition-fast;
 
   &:hover {
     color: var(--gs-color-primary);
-    border-color: var(--gs-color-primary);
     background: $color-primary-bg;
   }
 }
@@ -135,12 +133,10 @@
 .tabActive {
   background: var(--gs-color-primary);
   color: $color-text-white;
-  border-color: var(--gs-color-primary);
 
   &:hover {
     background: var(--gs-color-primary-dark);
     color: $color-text-white;
-    border-color: var(--gs-color-primary-dark);
   }
 }
 

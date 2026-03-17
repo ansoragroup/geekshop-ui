@@ -5,14 +5,15 @@
 .root {
   display: flex;
   background: $color-bg-card;
-  border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border-radius: $modern-radius-card;
+  border: none;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: $modern-shadow-card;
   transition: box-shadow $transition-normal, transform $transition-normal;
 
   &:hover {
-    box-shadow: $shadow-lg;
+    box-shadow: $modern-shadow-card-hover;
     transform: translateY(-2px);
   }
 }
@@ -21,8 +22,8 @@
 
 .imageArea {
   position: relative;
-  width: 150px;
-  min-height: 150px;
+  width: 180px;
+  min-height: 180px;
   flex-shrink: 0;
   background: $color-bg-skeleton;
   overflow: hidden;
@@ -101,7 +102,7 @@
 }
 
 .currentPrice {
-  font-size: $font-size-xl;
+  font-size: $font-size-xxl;
   font-weight: $font-weight-bold;
   color: var(--gs-color-price);
   line-height: $line-height-tight;
@@ -190,7 +191,7 @@
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   border: none;
-  border-radius: $radius-md;
+  border-radius: $modern-radius-button;
   cursor: pointer;
   white-space: nowrap;
   transition: background $transition-fast;

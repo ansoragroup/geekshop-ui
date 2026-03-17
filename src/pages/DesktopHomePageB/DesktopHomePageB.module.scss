@@ -1,35 +1,721 @@
 @use '../../theme/tokens' as *;
 
-.section {
-  padding: $desktop-spacing-xxl 0;
+// ─── Alifshop Colors ───────────────────────────────────────────────────────
+$alif-yellow: #FFC845;
+$alif-yellow-hover: #FFB81F;
+$alif-bg: #f2f5f8;
+$alif-dark: #1a1a1a;
+$alif-dark-card: #24272c;
+$alif-orange-btn: #FF5000;
+$alif-orange-btn-hover: #E64800;
 
-  &:first-child {
-    padding-top: $desktop-spacing-lg;
+// ─── Page ───────────────────────────────────────────────────────────────────
+.page {
+  background: $alif-bg;
+  min-height: 100vh;
+  font-family: $font-family;
+}
+
+.contentWrap {
+  max-width: $modern-content-width;
+  margin: 0 auto;
+  padding: 0 $desktop-spacing-lg;
+  box-sizing: border-box;
+}
+
+// ─── Custom Header ──────────────────────────────────────────────────────────
+.header {
+  background: $color-bg-card;
+  box-shadow: $modern-shadow-card;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+.headerInner {
+  max-width: $modern-content-width;
+  margin: 0 auto;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-lg;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.catalogBtn {
+  background: $alif-yellow;
+  color: $color-text-primary;
+  border: none;
+  border-radius: $modern-radius-button;
+  padding: $desktop-spacing-sm $desktop-spacing-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-md;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  white-space: nowrap;
+  min-height: 44px;
+  flex-shrink: 0;
+  transition: filter $transition-fast;
+
+  &:hover {
+    filter: brightness(0.93);
   }
 }
 
-.stepsContainer {
-  margin-top: $desktop-spacing-lg;
-  padding: $desktop-spacing-lg;
-  background: var(--gs-bg-card);
-  border-radius: $radius-lg;
-  border: 1px solid var(--gs-border);
+.searchWrapper {
+  flex: 1;
+  position: relative;
+  min-width: 0;
 }
 
-.suppliersGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $desktop-spacing-md;
-  margin-top: $desktop-spacing-lg;
+.searchInput {
+  width: 100%;
+  height: 48px;
+  border: 2px solid $color-border;
+  border-radius: $modern-radius-input;
+  padding: 0 48px 0 $desktop-spacing-md;
+  font-size: $desktop-font-size-body;
+  box-sizing: border-box;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:focus {
+    border-color: $alif-yellow;
+    outline: none;
+  }
 }
 
-.productGridArea {
-  margin-top: $desktop-spacing-md;
+.searchIcon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-text-tertiary;
+  pointer-events: none;
 }
 
-.reviewsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.headerActions {
+  display: flex;
+  align-items: center;
   gap: $desktop-spacing-lg;
-  margin-top: $desktop-spacing-lg;
+  flex-shrink: 0;
+}
+
+.headerAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  position: relative;
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.headerActionIcon {
+  position: relative;
+}
+
+.headerActionBadge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: $color-primary;
+  color: #fff;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  min-width: 16px;
+  height: 16px;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.headerActionLabel {
+  font-size: $font-size-sm;
+  white-space: nowrap;
+}
+
+// ─── Category Bar ───────────────────────────────────────────────────────────
+.categoryBar {
+  background: $color-bg-card;
+  border-bottom: 1px solid $color-divider;
+}
+
+.categoryBarInner {
+  max-width: $modern-content-width;
+  margin: 0 auto;
+  padding: 0 $desktop-spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-lg;
+  overflow-x: auto;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-sm $desktop-spacing-md;
+  white-space: nowrap;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: color $transition-fast;
+  flex-shrink: 0;
+  min-height: 44px;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.categoryItemIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-md;
+  object-fit: cover;
+}
+
+.categoryArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $color-bg-page;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: $color-text-secondary;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-border;
+    color: $color-text-primary;
+  }
+}
+
+// ─── Sections ───────────────────────────────────────────────────────────────
+.mainContent {
+  padding: $desktop-spacing-xl 0;
+}
+
+.section {
+  margin-bottom: $modern-section-gap;
+}
+
+.sectionTitle {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin-bottom: $desktop-spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.sectionTitleArrow {
+  font-size: $font-size-xl;
+  color: $color-text-tertiary;
+}
+
+// ─── Banner / Hero ──────────────────────────────────────────────────────────
+.heroBanner {
+  border-radius: $modern-radius-banner;
+  overflow: hidden;
+}
+
+// ─── Product Carousel ───────────────────────────────────────────────────────
+.carouselWrap {
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  gap: $modern-card-gap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: $spacing-xs;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.carouselArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $color-bg-card;
+  box-shadow: $shadow-lg;
+  border: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-text-primary;
+  transition: all $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-xl;
+    background: $color-bg-page;
+  }
+}
+
+.carouselArrowLeft {
+  left: -16px;
+}
+
+.carouselArrowRight {
+  right: -16px;
+}
+
+// ─── Product Card (Alifshop Style) ─────────────────────────────────────────
+.productCard {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 220px;
+  background: $color-bg-card;
+  border-radius: $modern-radius-card;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow $transition-normal;
+  box-shadow: $modern-shadow-card;
+
+  &:hover {
+    box-shadow: $modern-shadow-card-hover;
+  }
+}
+
+.productCardWide {
+  width: 100%;
+}
+
+.productImageWrap {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: $color-bg-skeleton;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-normal;
+
+  .productCard:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.discountBadge {
+  position: absolute;
+  top: $spacing-sm;
+  left: $spacing-sm;
+  background: $color-sale;
+  color: #fff;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-xs;
+  line-height: 1.3;
+}
+
+.heartBtn {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-text-tertiary;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-sale;
+    background: #fff;
+  }
+}
+
+.productBody {
+  padding: $desktop-spacing-sm;
+}
+
+.productTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: $spacing-sm;
+  min-height: 42px;
+}
+
+.productPriceRow {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-xs;
+}
+
+.productPrice {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.productOldPrice {
+  font-size: $font-size-sm;
+  color: $color-sale;
+  text-decoration: line-through;
+}
+
+.installmentText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-bottom: $spacing-sm;
+}
+
+.addToCartBtn {
+  width: 100%;
+  padding: $spacing-sm 0;
+  border: none;
+  border-radius: $modern-radius-button;
+  background: $alif-orange-btn;
+  color: #fff;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-fast;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+
+  &:hover {
+    background: $alif-orange-btn-hover;
+  }
+}
+
+// ─── Promo Banners ──────────────────────────────────────────────────────────
+.promoBannerFull {
+  border-radius: $modern-radius-banner;
+  min-height: 180px;
+  padding: $desktop-spacing-xl $desktop-spacing-xxl;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.promoBannerContent {
+  position: relative;
+  z-index: 1;
+  max-width: 50%;
+}
+
+.promoBannerTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-sm;
+  line-height: $line-height-tight;
+}
+
+.promoBannerSubtitle {
+  font-size: $desktop-font-size-body;
+  opacity: 0.9;
+  line-height: $line-height-normal;
+}
+
+.promoBannerImage {
+  position: absolute;
+  right: $desktop-spacing-xxl;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.miniBannerRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $modern-card-gap;
+}
+
+.miniBanner {
+  border-radius: $modern-radius-banner;
+  min-height: 160px;
+  padding: $desktop-spacing-xl $desktop-spacing-xxl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.miniBannerTitle {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-sm;
+}
+
+.miniBannerSubtitle {
+  font-size: $desktop-font-size-body;
+  opacity: 0.85;
+}
+
+// ─── Product Grid (5-col) ───────────────────────────────────────────────────
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $modern-card-gap;
+}
+
+// ─── Footer ─────────────────────────────────────────────────────────────────
+.footer {
+  background: $alif-dark;
+  color: #fff;
+  margin-top: $modern-section-gap;
+}
+
+.footerInner {
+  max-width: $modern-content-width;
+  margin: 0 auto;
+  padding: $desktop-spacing-xxl $desktop-spacing-lg;
+  box-sizing: border-box;
+}
+
+.footerTop {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr;
+  gap: $desktop-spacing-xxl;
+  padding-bottom: $desktop-spacing-xxl;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.footerLogo {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.footerDesc {
+  font-size: $font-size-md;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: $line-height-relaxed;
+}
+
+.footerSocials {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  margin-top: $spacing-sm;
+}
+
+.footerSocialBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.footerColumnTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: #fff;
+  margin-bottom: $spacing-sm;
+}
+
+.footerLink {
+  font-size: $font-size-md;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  transition: color $transition-fast;
+  line-height: $line-height-relaxed;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.footerAppSection {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.footerAppTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-sm;
+}
+
+.footerQR {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border-radius: $radius-md;
+  padding: $spacing-sm;
+  box-sizing: border-box;
+}
+
+.footerQRImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.footerAppBadges {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.footerAppBadge {
+  height: 36px;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $desktop-spacing-lg;
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footerPayments {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  align-items: center;
+}
+
+.paymentIcon {
+  width: 40px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $radius-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: $font-weight-semibold;
+}
+
+// ─── Responsive ─────────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .productImage {
+    transition: none;
+  }
+
+  .productCard,
+  .miniBanner,
+  .promoBannerFull {
+    transition: none;
+  }
 }

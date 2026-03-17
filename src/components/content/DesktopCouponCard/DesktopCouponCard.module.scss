@@ -6,14 +6,15 @@
   display: flex;
   align-items: stretch;
   background: $color-bg-card;
-  border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border-radius: $modern-radius-card;
+  border: none;
   overflow: hidden;
   min-height: 80px;
+  box-shadow: $modern-shadow-card;
   transition: box-shadow $transition-normal;
 
   &:hover {
-    box-shadow: $shadow-md;
+    box-shadow: $modern-shadow-card-hover;
   }
 }
 
@@ -25,16 +26,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 120px;
+  width: 130px;
   flex-shrink: 0;
-  padding: $desktop-spacing-md $spacing-lg;
-  gap: $spacing-xxs;
+  padding: $desktop-spacing-lg $desktop-spacing-md;
+  gap: $spacing-xs;
 }
 
 .discountValue {
-  font-size: $font-size-xxl;
+  font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
-  color: $color-text-white;
   line-height: $line-height-tight;
   text-align: center;
 }
@@ -42,27 +42,42 @@
 .discountLabel {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-// ─── Color Variants ───────────────────────────────────────────────────────────
+// ─── Color Variants (pastel / softer backgrounds) ────────────────────────────
 
 .color-orange {
-  background: var(--gs-color-primary);
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  .discountValue,
+  .discountLabel {
+    color: $color-primary;
+  }
 }
 
 .color-red {
-  background: var(--gs-color-sale);
+  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+  .discountValue,
+  .discountLabel {
+    color: $color-sale;
+  }
 }
 
 .color-green {
-  background: var(--gs-color-success);
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  .discountValue,
+  .discountLabel {
+    color: $color-success;
+  }
 }
 
 .color-blue {
-  background: var(--gs-color-info);
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  .discountValue,
+  .discountLabel {
+    color: $color-info;
+  }
 }
 
 // ─── Cutouts (semi-circle ticket effect) ──────────────────────────────────────
@@ -73,7 +88,7 @@
   right: -8px;
   width: 16px;
   height: 16px;
-  background: $color-bg-card;
+  background: $color-bg-white;
   border-radius: 50%;
   z-index: 2;
 }
@@ -107,7 +122,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  padding: $desktop-spacing-md $desktop-spacing-lg $desktop-spacing-md $desktop-spacing-md;
+  padding: $desktop-spacing-lg $desktop-spacing-lg $desktop-spacing-lg $desktop-spacing-md;
   gap: $desktop-spacing-lg;
   min-width: 0;
 }
@@ -185,13 +200,13 @@
 
 .applyButton {
   padding: $spacing-sm $desktop-spacing-lg;
-  min-height: 36px;
+  min-height: 40px;
   background: transparent;
   color: var(--gs-color-primary);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   border: 2px solid var(--gs-color-primary);
-  border-radius: $radius-md;
+  border-radius: $modern-radius-button;
   cursor: pointer;
   white-space: nowrap;
   transition: background $transition-fast, color $transition-fast;

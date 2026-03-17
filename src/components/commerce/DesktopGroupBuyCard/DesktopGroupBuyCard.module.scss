@@ -8,12 +8,13 @@
   gap: $desktop-spacing-lg;
   padding: $desktop-spacing-lg;
   background: $color-bg-card;
-  border-radius: $radius-lg;
-  border: 1px solid $color-border;
-  transition: border-color $transition-fast, box-shadow $transition-fast;
+  border-radius: $modern-radius-card;
+  border: none;
+  box-shadow: $modern-shadow-card;
+  transition: box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: $modern-shadow-card-hover;
   }
 }
 
@@ -26,7 +27,7 @@
 .image {
   width: 120px;
   height: 120px;
-  border-radius: $radius-md;
+  border-radius: $modern-radius-button;
   object-fit: cover;
   flex-shrink: 0;
   background: $color-bg-skeleton;
@@ -212,7 +213,7 @@
   width: 100%;
   min-height: 40px;
   border: none;
-  border-radius: $radius-md;
+  border-radius: $modern-radius-button;
   background: var(--gs-color-primary);
   color: $color-text-white;
   font-size: $desktop-font-size-body;
@@ -244,7 +245,7 @@
   width: 100%;
   min-height: 40px;
   border: 1px solid $color-border;
-  border-radius: $radius-md;
+  border-radius: $modern-radius-button;
   background: $color-bg-card;
   color: $color-text-primary;
   font-size: $desktop-font-size-body;
