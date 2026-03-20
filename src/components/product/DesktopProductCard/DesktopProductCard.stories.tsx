@@ -12,13 +12,11 @@ const meta = {
   argTypes: {
     onClick: { action: 'clicked' },
     onAddToCart: { action: 'add to cart' },
-    onWishlist: { action: 'wishlist' },
-    onCompare: { action: 'compare' },
-    onQuickView: { action: 'quick view' },
+    onWishlist: { action: 'wishlist toggled' },
   },
   decorators: [
     (Story) => (
-      <div style={{ width: 230, padding: 16 }}>
+      <div style={{ width: 240, padding: 16 }}>
         <Story />
       </div>
     ),
@@ -28,134 +26,202 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const defaultImages = [
-  'https://picsum.photos/seed/gpu1/400/400',
-  'https://picsum.photos/seed/gpu1b/400/400',
-  'https://picsum.photos/seed/gpu1c/400/400',
-];
+// ─── Default ────────────────────────────────────────────────────────────────
 
 export const Default: Story = {
   args: {
-    images: defaultImages,
-    title: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
-    shopName: 'TechZone Official',
-    price: 8_900_000,
-    originalPrice: 12_000_000,
-    discount: '-26%',
-    rating: 4.5,
-    soldCount: '234',
-    installmentPrice: '742 000',
-    freeShipping: true,
-  },
-};
-
-export const NoDiscount: Story = {
-  args: {
-    images: ['https://picsum.photos/seed/cpu1/400/400'],
-    title: 'AMD Ryzen 7 7800X3D Processor',
-    shopName: 'ComputerWorld',
-    price: 6_350_000,
+    image: 'https://picsum.photos/seed/phone1/400/400',
+    title: 'Samsung Galaxy S24 Ultra 12/256GB Titanium Gray',
+    price: 15_990_000,
+    originalPrice: 18_990_000,
+    discount: '-16%',
+    installmentPrice: 1_332_500,
+    installmentLabel: "so'm/oyiga",
     rating: 4.8,
-    soldCount: '189',
-  },
-};
-
-export const SingleImage: Story = {
-  args: {
-    images: ['https://picsum.photos/seed/ssd1/400/400'],
-    title: 'Samsung 990 EVO SSD 1TB NVMe M.2',
-    shopName: 'Digital Plaza',
-    price: 1_290_000,
-    originalPrice: 1_500_000,
-    discount: '-14%',
-    rating: 4.3,
-    soldCount: '512',
-    freeShipping: true,
-  },
-};
-
-export const WithInstallment: Story = {
-  args: {
-    images: [
-      'https://picsum.photos/seed/laptop1/400/400',
-      'https://picsum.photos/seed/laptop1b/400/400',
+    reviewCount: 12453,
+    badges: [
+      { label: 'ORIGINAL', color: 'green' },
     ],
-    title: 'MacBook Air M3 15" 16GB 512GB Space Gray',
-    shopName: 'Apple Store Tashkent',
-    price: 22_900_000,
-    originalPrice: 24_500_000,
-    discount: '-7%',
+    ctaText: 'Savatga',
+    freeShipping: true,
+    deliveryText: 'Ertaga',
+  },
+};
+
+// ─── Uzum Style ─────────────────────────────────────────────────────────────
+
+export const UzumStyle: Story = {
+  name: 'Uzum.uz Style',
+  args: {
+    image: 'https://picsum.photos/seed/headphones2/400/400',
+    title: 'Apple AirPods Pro 2 USB-C simsiz minigarnituralari',
+    price: 2_520_000,
+    originalPrice: 2_990_000,
+    discount: '-16%',
+    installmentPrice: 210_000,
+    installmentLabel: "so'm/oyiga",
     rating: 4.9,
-    soldCount: '78',
-    installmentPrice: '1 908 000',
-    freeShipping: true,
+    reviewCount: 41123,
+    badges: [
+      { label: 'ORIGINAL', color: 'blue' },
+      { label: 'ARZON NARX', color: 'green' },
+    ],
+    ctaText: 'Ertaga',
+    ctaColor: '#7B2BFC',
+    deliveryText: 'Ertaga yetkaziladi',
   },
 };
 
-export const MinimalInfo: Story = {
-  args: {
-    images: ['https://picsum.photos/seed/mouse1/400/400'],
-    title: 'Logitech G Pro X Superlight 2',
-    shopName: 'GamerShop',
-    price: 1_650_000,
-  },
-};
+// ─── Alifshop Style ─────────────────────────────────────────────────────────
 
-export const LongTitle: Story = {
+export const AlifshopStyle: Story = {
+  name: 'Alifshop.uz Style',
   args: {
-    images: ['https://picsum.photos/seed/monitor1/400/400'],
-    title: 'ASUS ROG Swift PG27AQDM 27" OLED 240Hz 0.03ms G-SYNC Compatible Gaming Monitor',
-    shopName: 'ASUS Authorized Reseller',
-    price: 15_800_000,
-    originalPrice: 18_200_000,
-    discount: '-13%',
+    image: 'https://picsum.photos/seed/laptop2/400/400',
+    title: 'MacBook Air M3 15" 16GB 512GB Space Gray noutbuk',
+    price: 14_110_000,
+    originalPrice: 17_110_000,
+    discount: '-17%',
+    installmentPrice: 1_028_850,
+    installmentLabel: "so'm/oyga",
     rating: 4.7,
-    soldCount: '42',
-    installmentPrice: '1 316 000',
-    freeShipping: true,
+    reviewCount: 892,
+    badges: [
+      { label: "Rozыgrish", color: 'green' },
+    ],
+    ctaText: 'Savatga',
+    ctaColor: '#FF5000',
   },
 };
 
-export const GridLayout: Story = {
-  name: 'Grid (4 cards)',
+// ─── Ozon Style ─────────────────────────────────────────────────────────────
+
+export const OzonStyle: Story = {
+  name: 'Ozon.ru Style',
+  args: {
+    image: 'https://picsum.photos/seed/tablet1/400/400',
+    title: 'iPad Pro 13" M4 256GB Wi-Fi Space Black plansheti',
+    price: 2_665_380,
+    originalPrice: 10_809_590,
+    discount: '-75%',
+    rating: 4.9,
+    reviewCount: 57800,
+    badges: [
+      { label: 'Rasprodazha', color: 'green' },
+    ],
+    ctaText: 'V korzinu',
+    ctaColor: '#005BFF',
+    deliveryText: 'Dostavka zavtra',
+  },
+};
+
+// ─── Grid (5 cards) ─────────────────────────────────────────────────────────
+
+export const Grid: Story = {
+  name: 'Grid (5 cards)',
   decorators: [
     (Story) => (
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 230px)', gap: 16, padding: 16 }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 230px)',
+          gap: 16,
+          padding: 16,
+          width: 1280,
+        }}
+      >
         <Story />
         <DesktopProductCard
-          images={['https://picsum.photos/seed/kb1/400/400']}
-          title="Keychron Q1 Pro Mechanical Keyboard"
-          shopName="KeyboardLab"
-          price={2_450_000}
-          rating={4.6}
-          soldCount="87"
+          image="https://picsum.photos/seed/watch1/400/400"
+          title="Apple Watch Ultra 2 49mm Titanium Orange Alpine"
+          price={12_500_000}
+          originalPrice={14_800_000}
+          discount="-15%"
+          installmentPrice={1_041_000}
+          installmentLabel="so'm/oyiga"
+          rating={4.8}
+          reviewCount={3245}
+          badges={[{ label: 'ORIGINAL', color: 'blue' }]}
+          ctaText="Savatga"
+          ctaColor="#7B2BFC"
+        />
+        <DesktopProductCard
+          image="https://picsum.photos/seed/sneaker1/400/400"
+          title="Nike Air Max 90 erkaklar krossovkasi oq rang"
+          price={1_290_000}
+          rating={4.5}
+          reviewCount={8920}
+          ctaText="Savatga"
+          ctaColor="#FF5000"
           freeShipping
         />
         <DesktopProductCard
-          images={['https://picsum.photos/seed/headset1/400/400']}
-          title="Sony WH-1000XM5 Wireless Headphones"
-          shopName="AudioWorld"
-          price={4_200_000}
-          originalPrice={4_800_000}
+          image="https://picsum.photos/seed/cam1/400/400"
+          title="Sony Alpha A7 IV Mirrorless kamera 28-70mm kit"
+          price={32_900_000}
+          originalPrice={38_000_000}
           discount="-13%"
-          rating={4.8}
-          soldCount="320"
-          installmentPrice="350 000"
+          installmentPrice={2_741_000}
+          installmentLabel="so'm/oyiga"
+          rating={4.9}
+          reviewCount={1560}
+          badges={[
+            { label: 'TOP', color: 'red' },
+            { label: 'ORIGINAL', color: 'green' },
+          ]}
+          ctaText="V korzinu"
+          ctaColor="#005BFF"
+          deliveryText="Dostavka zavtra"
         />
         <DesktopProductCard
-          images={['https://picsum.photos/seed/chair1/400/400']}
-          title="Herman Miller Aeron Remastered"
-          shopName="OfficePro"
+          image="https://picsum.photos/seed/chair2/400/400"
+          title="Herman Miller Aeron ergonomik ofis kresloasi"
           price={18_500_000}
           rating={4.9}
-          soldCount="15"
-          installmentPrice="1 541 000"
+          reviewCount={456}
+          installmentPrice={1_541_000}
+          installmentLabel="so'm/oyiga"
+          ctaText="Savatga"
           freeShipping
+          deliveryText="Ertaga"
         />
       </div>
     ),
   ],
   args: {
     ...Default.args,
+  },
+};
+
+// ─── No Discount ────────────────────────────────────────────────────────────
+
+export const NoDiscount: Story = {
+  args: {
+    image: 'https://picsum.photos/seed/speaker1/400/400',
+    title: 'JBL Flip 6 portativ bluetooth dinamik qora',
+    price: 890_000,
+    rating: 4.3,
+    reviewCount: 2340,
+    ctaText: 'Savatga',
+  },
+};
+
+// ─── Wishlisted ─────────────────────────────────────────────────────────────
+
+export const Wishlisted: Story = {
+  args: {
+    image: 'https://picsum.photos/seed/bag1/400/400',
+    title: 'Louis Vuitton Neverfull MM Monogram sumka ayollar uchun',
+    price: 28_900_000,
+    originalPrice: 32_000_000,
+    discount: '-10%',
+    rating: 5.0,
+    reviewCount: 178,
+    isWishlisted: true,
+    badges: [
+      { label: 'PREMIUM', color: 'purple' },
+    ],
+    ctaText: 'Savatga',
+    ctaColor: '#7B2BFC',
   },
 };

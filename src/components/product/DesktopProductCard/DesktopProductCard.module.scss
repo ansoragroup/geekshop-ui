@@ -20,29 +20,29 @@
   }
 }
 
-// ─── Image Area ──────────────────────────────────────────────────────────────
+// ─── Image Container ────────────────────────────────────────────────────────
 
-.imageArea {
+.imageContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  min-height: 200px;
+  aspect-ratio: 1 / 1;
+  background: #fafafa;
   overflow: hidden;
-  background: $color-bg-skeleton;
 }
 
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 12px;
   transition: transform $transition-normal;
 
   .root:hover & {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 }
 
-// ─── Discount Badge ──────────────────────────────────────────────────────────
+// ─── Discount Badge (top left of image) ─────────────────────────────────────
 
 .discountBadge {
   position: absolute;
@@ -50,17 +50,17 @@
   left: $spacing-sm;
   display: inline-flex;
   align-items: center;
-  padding: $spacing-xxs $spacing-sm;
+  padding: 2px $spacing-sm;
   background: $color-sale;
   color: $color-text-white;
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
   font-weight: $font-weight-bold;
-  border-radius: $modern-radius-button;
+  border-radius: $radius-sm;
   line-height: $line-height-tight;
-  z-index: $z-index-normal;
+  z-index: 2;
 }
 
-// ─── Wishlist Heart (top-right of image) ────────────────────────────────────
+// ─── Wishlist Heart (top right of image) ────────────────────────────────────
 
 .wishlistBtn {
   position: absolute;
@@ -74,178 +74,75 @@
   border: none;
   border-radius: $radius-round;
   background: rgba(255, 255, 255, 0.9);
-  color: $color-text-secondary;
+  color: $color-text-tertiary;
   cursor: pointer;
-  z-index: $z-index-normal;
+  z-index: 2;
   padding: 0;
-  box-shadow: $modern-shadow-card;
-  transition: color $transition-fast, background $transition-fast;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: color $transition-fast, background $transition-fast, transform $transition-fast;
 
   &:hover {
     color: $color-sale;
     background: $color-bg-white;
+    transform: scale(1.1);
+  }
+
+  &.wishlisted {
+    color: $color-sale;
   }
 }
 
-// ─── Carousel Arrows ─────────────────────────────────────────────────────────
+// ─── Product Badges (bottom of image) ───────────────────────────────────────
 
-.carouselArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: $radius-round;
-  cursor: pointer;
-  z-index: $z-index-normal;
-  color: $color-text-primary;
-  box-shadow: $shadow-md;
-  transition: background $transition-fast;
-  padding: 0;
-
-  &:hover {
-    background: $color-bg-white;
-  }
-}
-
-.arrowLeft {
-  left: $spacing-sm;
-}
-
-.arrowRight {
-  right: $spacing-sm;
-}
-
-// ─── Image Dots ──────────────────────────────────────────────────────────────
-
-.dots {
+.badgeRow {
   position: absolute;
   bottom: $spacing-sm;
-  left: 50%;
-  transform: translateX(-50%);
+  left: $spacing-sm;
   display: flex;
-  gap: $spacing-xs;
-  z-index: $z-index-normal;
+  gap: 4px;
+  z-index: 2;
 }
 
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: $radius-round;
-  background: rgba(255, 255, 255, 0.5);
-  transition: background $transition-fast;
+.badge {
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  padding: 2px 6px;
+  border-radius: $radius-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: $line-height-tight;
+  white-space: nowrap;
 }
 
-.dotActive {
-  background: $color-bg-white;
-}
-
-// ─── Quick Actions Overlay ───────────────────────────────────────────────────
-
-.quickActions {
-  position: absolute;
-  bottom: $spacing-md;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: $spacing-sm;
-  padding: $spacing-xs $spacing-sm;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: $radius-md;
-  box-shadow: $shadow-md;
-  z-index: $z-index-normal;
-}
-
-.actionBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: $radius-sm;
-  background: transparent;
-  color: $color-text-secondary;
-  cursor: pointer;
-  transition: color $transition-fast, background $transition-fast;
-  padding: 0;
-
-  &:hover {
-    color: $color-primary;
-    background: $color-primary-bg;
-  }
-}
-
-// ─── Content ─────────────────────────────────────────────────────────────────
+// ─── Content Area ───────────────────────────────────────────────────────────
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: $desktop-spacing-sm;
-  gap: $spacing-xs;
+  padding: $desktop-spacing-sm $desktop-spacing-sm $desktop-spacing-md;
+  gap: 4px;
+  flex: 1;
 }
 
-.shopName {
-  font-size: $font-size-xs;
-  color: $color-text-tertiary;
-  line-height: $line-height-tight;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+// ─── Price Block ────────────────────────────────────────────────────────────
 
-.title {
-  font-size: $desktop-font-size-body;
-  font-weight: $font-weight-regular;
-  color: $color-text-primary;
-  line-height: $line-height-normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-height: calc($desktop-font-size-body * $line-height-normal * 2);
-  margin: 0;
-}
-
-// ─── Rating Row ──────────────────────────────────────────────────────────────
-
-.ratingRow {
+.priceBlock {
   display: flex;
-  align-items: center;
-  gap: $spacing-sm;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.stars {
-  font-size: $font-size-sm;
-  color: $color-warning;
-  letter-spacing: 1px;
-}
-
-.soldCount {
-  font-size: $font-size-xs;
-  color: $color-text-tertiary;
-}
-
-// ─── Price Row ───────────────────────────────────────────────────────────────
-
-.priceRow {
-  display: flex;
-  align-items: baseline;
-  gap: $spacing-sm;
-  flex-wrap: wrap;
-}
-
-.currentPrice {
+.price {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: $color-text-primary;
   line-height: $line-height-tight;
+}
+
+.oldPriceRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
 }
 
 .originalPrice {
@@ -255,47 +152,120 @@
   line-height: $line-height-tight;
 }
 
-// ─── Installment ─────────────────────────────────────────────────────────────
+.discountPercent {
+  font-size: $font-size-sm;
+  color: $color-sale;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
+// ─── Installment ────────────────────────────────────────────────────────────
 
 .installment {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  width: fit-content;
+  background: $color-success-light;
+  color: $color-success;
+  line-height: $line-height-normal;
+}
+
+// ─── Title ──────────────────────────────────────────────────────────────────
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(#{$font-size-sm} * #{$line-height-normal} * 2);
+  margin: 2px 0 0;
+}
+
+// ─── Rating Row ─────────────────────────────────────────────────────────────
+
+.ratingRow {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: 3px;
   font-size: $font-size-xs;
-  color: $color-info;
+  color: $color-text-secondary;
   line-height: $line-height-tight;
 }
 
-// ─── Free Shipping ───────────────────────────────────────────────────────────
+.star {
+  color: $color-warning;
+  display: flex;
+  align-items: center;
+}
 
-.freeShipping {
+.ratingValue {
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  font-size: $font-size-xs;
+}
+
+.reviewCount {
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+}
+
+// ─── Delivery Row ───────────────────────────────────────────────────────────
+
+.deliveryRow {
   display: flex;
   align-items: center;
   gap: $spacing-xs;
+}
+
+.deliveryText {
   font-size: $font-size-xs;
   color: $color-success;
+  font-weight: $font-weight-medium;
   line-height: $line-height-tight;
 }
 
-// ─── Add to Cart Button ─────────────────────────────────────────────────────
+// ─── Spacer ─────────────────────────────────────────────────────────────────
 
-.addToCartBtn {
+.spacer {
+  flex: 1;
+  min-height: 4px;
+}
+
+// ─── CTA Button ─────────────────────────────────────────────────────────────
+
+.ctaButton {
   width: 100%;
-  min-height: 40px;
+  min-height: 36px;
   border: none;
   border-radius: $modern-radius-button;
-  background: var(--gs-color-primary);
+  background: $color-primary;
   color: $color-text-white;
-  font-size: $font-size-md;
+  font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
   cursor: pointer;
-  margin-top: auto;
-  padding: $spacing-sm $spacing-lg;
-  transition: background $transition-fast;
+  padding: $spacing-sm 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: $spacing-sm;
+  transition: filter $transition-fast, transform $transition-fast;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    filter: brightness(1.05);
   }
 
   &:active {
@@ -303,7 +273,7 @@
   }
 }
 
-// ─── Reduced Motion ──────────────────────────────────────────────────────────
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
 
 @media (prefers-reduced-motion: reduce) {
   .root {
@@ -316,17 +286,18 @@
 
   .image {
     transition: none;
+
+    .root:hover & {
+      transform: none;
+    }
   }
 
-  .dot,
-  .carouselArrow,
-  .actionBtn,
   .wishlistBtn,
-  .addToCartBtn {
+  .ctaButton {
     transition: none;
   }
 
-  .addToCartBtn {
+  .ctaButton {
     &:active {
       transform: none;
     }

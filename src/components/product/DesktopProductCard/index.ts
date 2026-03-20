@@ -1,2 +1,2 @@
 export { DesktopProductCard } from './DesktopProductCard';
-export type { DesktopProductCardProps } from './DesktopProductCard';
+export type { DesktopProductCardProps, DesktopProductCardBadge } from './DesktopProductCard';

@@ -4,9 +4,8 @@ import { describe, it, expect, vi } from 'vitest';
 import { DesktopProductCard } from './DesktopProductCard';
 
 const defaultProps = {
-  images: ['/img/gpu1.jpg', '/img/gpu2.jpg', '/img/gpu3.jpg'],
+  image: '/img/gpu1.jpg',
   title: 'RTX 4060 8GB',
-  shopName: 'TechZone',
   price: 8_900_000,
 };
 
@@ -14,11 +13,6 @@ describe('DesktopProductCard', () => {
   it('renders the product title', () => {
     render(<DesktopProductCard {...defaultProps} />);
     expect(screen.getByText('RTX 4060 8GB')).toBeInTheDocument();
-  });
-
-  it('renders the shop name', () => {
-    render(<DesktopProductCard {...defaultProps} />);
-    expect(screen.getByText('TechZone')).toBeInTheDocument();
   });
 
   it('renders the product image', () => {
@@ -30,7 +24,7 @@ describe('DesktopProductCard', () => {
 
   it('renders with role button and tabIndex 0', () => {
     render(<DesktopProductCard {...defaultProps} />);
-    const card = screen.getByRole('button');
+    const card = screen.getByRole('button', { name: /RTX 4060/i });
     expect(card).toHaveAttribute('tabindex', '0');
   });
 
@@ -39,7 +33,7 @@ describe('DesktopProductCard', () => {
     const user = userEvent.setup();
 
     render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
-    await user.click(screen.getByRole('button'));
+    await user.click(screen.getByRole('button', { name: /RTX 4060/i }));
 
     expect(onClick).toHaveBeenCalledOnce();
   });
@@ -49,7 +43,7 @@ describe('DesktopProductCard', () => {
     const user = userEvent.setup();
 
     render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
-    screen.getByRole('button').focus();
+    screen.getByRole('button', { name: /RTX 4060/i }).focus();
     await user.keyboard('{Enter}');
 
     expect(onClick).toHaveBeenCalledOnce();
@@ -60,7 +54,7 @@ describe('DesktopProductCard', () => {
     const user = userEvent.setup();
 
     render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
-    screen.getByRole('button').focus();
+    screen.getByRole('button', { name: /RTX 4060/i }).focus();
     await user.keyboard(' ');
 
     expect(onClick).toHaveBeenCalledOnce();
@@ -83,68 +77,87 @@ describe('DesktopProductCard', () => {
     expect(container.querySelector('[class*="originalPrice"]')).toBeInTheDocument();
   });
 
-  it('renders rating stars when rating is provided', () => {
-    render(<DesktopProductCard {...defaultProps} rating={4.5} />);
-    expect(screen.getByLabelText(/Rating: 4.5 out of 5/)).toBeInTheDocument();
+  it('renders discount percent next to original price', () => {
+    render(
+      <DesktopProductCard {...defaultProps} originalPrice={12_000_000} discount="-26%" />,
+    );
+    const discountElements = screen.getAllByText('-26%');
+    expect(discountElements.length).toBeGreaterThanOrEqual(1);
   });
 
-  it('renders sold count when provided', () => {
-    render(<DesktopProductCard {...defaultProps} soldCount="234" />);
-    expect(screen.getByText('234 sold')).toBeInTheDocument();
+  it('renders rating and review count when provided', () => {
+    render(<DesktopProductCard {...defaultProps} rating={4.5} reviewCount={1234} />);
+    expect(screen.getByText('4.5')).toBeInTheDocument();
+    expect(screen.getByText('(1 234)')).toBeInTheDocument();
   });
 
   it('renders installment price when provided', () => {
-    render(<DesktopProductCard {...defaultProps} installmentPrice="742 000" />);
-    expect(screen.getByText(/742 000\/mo/)).toBeInTheDocument();
+    render(<DesktopProductCard {...defaultProps} installmentPrice={742000} />);
+    expect(screen.getByText(/742.000/)).toBeInTheDocument();
   });
 
-  it('renders free shipping badge when enabled', () => {
-    render(<DesktopProductCard {...defaultProps} freeShipping />);
-    expect(screen.getByText('Free shipping')).toBeInTheDocument();
+  it('renders badges at bottom of image when provided', () => {
+    render(
+      <DesktopProductCard
+        {...defaultProps}
+        badges={[
+          { label: 'ORIGINAL', color: 'green' },
+          { label: 'ARZON NARX', color: 'blue' },
+        ]}
+      />,
+    );
+    expect(screen.getByText('ORIGINAL')).toBeInTheDocument();
+    expect(screen.getByText('ARZON NARX')).toBeInTheDocument();
   });
 
-  it('shows carousel arrows on hover when multiple images exist', async () => {
-    const user = userEvent.setup();
+  it('renders CTA button with default text', () => {
     render(<DesktopProductCard {...defaultProps} />);
-
-    await user.hover(screen.getByRole('button'));
-
-    expect(screen.getByLabelText('Previous image')).toBeInTheDocument();
-    expect(screen.getByLabelText('Next image')).toBeInTheDocument();
+    expect(screen.getByText('Savatga')).toBeInTheDocument();
   });
 
-  it('shows quick action buttons on hover', async () => {
-    const user = userEvent.setup();
-    render(<DesktopProductCard {...defaultProps} />);
-
-    await user.hover(screen.getByRole('button'));
-
-    expect(screen.getByLabelText('Add to cart')).toBeInTheDocument();
-    expect(screen.getByLabelText('Add to wishlist')).toBeInTheDocument();
-    expect(screen.getByLabelText('Compare')).toBeInTheDocument();
-    expect(screen.getByLabelText('Quick view')).toBeInTheDocument();
+  it('renders CTA button with custom text', () => {
+    render(<DesktopProductCard {...defaultProps} ctaText="Ertaga" />);
+    expect(screen.getByText('Ertaga')).toBeInTheDocument();
   });
 
-  it('calls onAddToCart when cart action is clicked', async () => {
+  it('calls onAddToCart when CTA button is clicked', async () => {
     const onAddToCart = vi.fn();
     const user = userEvent.setup();
 
     render(<DesktopProductCard {...defaultProps} onAddToCart={onAddToCart} />);
-    await user.hover(screen.getByRole('button'));
-    await user.click(screen.getByLabelText('Add to cart'));
+    await user.click(screen.getByText('Savatga'));
 
     expect(onAddToCart).toHaveBeenCalledOnce();
   });
 
-  it('calls onWishlist when wishlist action is clicked', async () => {
+  it('renders wishlist button with correct label when not wishlisted', () => {
+    render(<DesktopProductCard {...defaultProps} />);
+    expect(screen.getByLabelText('Add to wishlist')).toBeInTheDocument();
+  });
+
+  it('renders wishlist button with correct label when wishlisted', () => {
+    render(<DesktopProductCard {...defaultProps} isWishlisted />);
+    expect(screen.getByLabelText('Remove from wishlist')).toBeInTheDocument();
+  });
+
+  it('calls onWishlist when wishlist button is clicked', async () => {
     const onWishlist = vi.fn();
     const user = userEvent.setup();
 
     render(<DesktopProductCard {...defaultProps} onWishlist={onWishlist} />);
-    await user.hover(screen.getByRole('button'));
     await user.click(screen.getByLabelText('Add to wishlist'));
 
     expect(onWishlist).toHaveBeenCalledOnce();
+  });
+
+  it('renders delivery text when provided', () => {
+    render(<DesktopProductCard {...defaultProps} deliveryText="Ertaga" />);
+    expect(screen.getByText('Ertaga')).toBeInTheDocument();
+  });
+
+  it('renders free shipping text when enabled and no delivery text', () => {
+    render(<DesktopProductCard {...defaultProps} freeShipping />);
+    expect(screen.getByText('Bepul yetkazib berish')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
@@ -154,36 +167,9 @@ describe('DesktopProductCard', () => {
     expect(container.firstElementChild?.className).toContain('my-card');
   });
 
-  it('does not render carousel arrows for single image', async () => {
-    const user = userEvent.setup();
-    render(<DesktopProductCard {...defaultProps} images={['/img/single.jpg']} />);
-
-    await user.hover(screen.getByRole('button'));
-
-    expect(screen.queryByLabelText('Previous image')).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('Next image')).not.toBeInTheDocument();
-  });
-
-  it('navigates to next image when right arrow is clicked', async () => {
-    const user = userEvent.setup();
-    render(<DesktopProductCard {...defaultProps} />);
-
-    await user.hover(screen.getByRole('button'));
-    await user.click(screen.getByLabelText('Next image'));
-
-    const img = screen.getByRole('img');
-    expect(img).toHaveAttribute('src', '/img/gpu2.jpg');
-  });
-
-  it('navigates to previous image when left arrow is clicked', async () => {
-    const user = userEvent.setup();
-    render(<DesktopProductCard {...defaultProps} />);
-
-    await user.hover(screen.getByRole('button'));
-    // Go to last image (wraps around)
-    await user.click(screen.getByLabelText('Previous image'));
-
-    const img = screen.getByRole('img');
-    expect(img).toHaveAttribute('src', '/img/gpu3.jpg');
+  it('applies custom CTA color via style', () => {
+    render(<DesktopProductCard {...defaultProps} ctaColor="#7B2BFC" />);
+    const ctaBtn = screen.getByText('Savatga').closest('button');
+    expect(ctaBtn).toHaveStyle({ background: '#7B2BFC' });
   });
 });

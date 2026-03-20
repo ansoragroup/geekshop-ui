@@ -7,23 +7,20 @@ import type { DesktopProductGridItem, SortOption } from './DesktopProductGrid';
 const defaultProducts: DesktopProductGridItem[] = [
   {
     id: '1',
-    images: ['/img/prod1.jpg'],
+    image: '/img/prod1.jpg',
     title: 'RTX 4060 GPU',
-    shopName: 'TechZone',
     price: 8_900_000,
   },
   {
     id: '2',
-    images: ['/img/prod2.jpg'],
+    image: '/img/prod2.jpg',
     title: 'Ryzen 7 CPU',
-    shopName: 'ComputerWorld',
     price: 6_350_000,
   },
   {
     id: '3',
-    images: ['/img/prod3.jpg'],
+    image: '/img/prod3.jpg',
     title: 'Samsung SSD 1TB',
-    shopName: 'DigitalPlaza',
     price: 1_290_000,
   },
 ];

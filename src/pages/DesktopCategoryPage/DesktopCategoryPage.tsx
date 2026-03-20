@@ -54,18 +54,18 @@ const sidebarBrands: SidebarBrand[] = [
 ];
 
 const products: DesktopProductGridItem[] = [
-  { id: '1', images: ['https://picsum.photos/seed/cat-gpu1/400/400'], title: 'MSI GeForce RTX 4070 Super Gaming X Slim 12GB', shopName: 'TechZone', price: 8900000, originalPrice: 9800000, discount: '-10%', rating: 4.5, soldCount: '234', freeShipping: true },
-  { id: '2', images: ['https://picsum.photos/seed/cat-gpu2/400/400'], title: 'ASUS ROG Strix RTX 4060 Ti OC 8GB GDDR6', shopName: 'GPU World', price: 5200000, originalPrice: 6500000, discount: '-20%', rating: 4.3, soldCount: '187', freeShipping: true },
-  { id: '3', images: ['https://picsum.photos/seed/cat-gpu3/400/400'], title: 'Gigabyte RTX 4060 Eagle OC 8GB GDDR6', shopName: 'PC Parts', price: 4200000, rating: 4.2, soldCount: '312', freeShipping: false },
-  { id: '4', images: ['https://picsum.photos/seed/cat-gpu4/400/400'], title: 'MSI RTX 4080 Super Ventus 3X OC 16GB', shopName: 'TechZone', price: 14500000, originalPrice: 16200000, discount: '-10%', rating: 4.7, soldCount: '56', freeShipping: true },
-  { id: '5', images: ['https://picsum.photos/seed/cat-gpu5/400/400'], title: 'ASUS Dual RTX 4060 OC 8GB GDDR6', shopName: 'GPU World', price: 3900000, rating: 4.1, soldCount: '278', freeShipping: false },
-  { id: '6', images: ['https://picsum.photos/seed/cat-gpu6/400/400'], title: 'Zotac RTX 4070 Twin Edge 12GB GDDR6X', shopName: 'Zotac Store', price: 7800000, originalPrice: 8500000, discount: '-8%', rating: 4.4, soldCount: '123', freeShipping: true },
-  { id: '7', images: ['https://picsum.photos/seed/cat-gpu7/400/400'], title: 'Sapphire RX 7800 XT Pulse 16GB', shopName: 'AMD Shop', price: 6200000, rating: 4.6, soldCount: '98', freeShipping: true },
-  { id: '8', images: ['https://picsum.photos/seed/cat-gpu8/400/400'], title: 'MSI RTX 4060 Ti Ventus 2X 8GB GDDR6', shopName: 'TechZone', price: 4800000, originalPrice: 5600000, discount: '-14%', rating: 4.3, soldCount: '201', freeShipping: false },
-  { id: '9', images: ['https://picsum.photos/seed/cat-gpu9/400/400'], title: 'ASUS TUF RTX 4070 OC 12GB GDDR6X', shopName: 'GPU World', price: 7500000, rating: 4.5, soldCount: '145', freeShipping: true },
-  { id: '10', images: ['https://picsum.photos/seed/cat-gpu10/400/400'], title: 'Gigabyte RX 7600 Gaming OC 8GB', shopName: 'PC Parts', price: 3200000, rating: 4.0, soldCount: '367', freeShipping: false },
-  { id: '11', images: ['https://picsum.photos/seed/cat-gpu11/400/400'], title: 'EVGA RTX 4060 XC Gaming 8GB GDDR6', shopName: 'EVGA Direct', price: 3800000, rating: 4.2, soldCount: '89', freeShipping: false },
-  { id: '12', images: ['https://picsum.photos/seed/cat-gpu12/400/400'], title: 'MSI RTX 4090 Suprim X 24GB GDDR6X', shopName: 'TechZone', price: 22000000, originalPrice: 24500000, discount: '-10%', rating: 4.9, soldCount: '34', freeShipping: true },
+  { id: '1', image: 'https://picsum.photos/seed/cat-gpu1/400/400', title: 'MSI GeForce RTX 4070 Super Gaming X Slim 12GB', price: 8900000, originalPrice: 9800000, discount: '-10%', rating: 4.5, reviewCount: 234, freeShipping: true },
+  { id: '2', image: 'https://picsum.photos/seed/cat-gpu2/400/400', title: 'ASUS ROG Strix RTX 4060 Ti OC 8GB GDDR6', price: 5200000, originalPrice: 6500000, discount: '-20%', rating: 4.3, reviewCount: 187, freeShipping: true },
+  { id: '3', image: 'https://picsum.photos/seed/cat-gpu3/400/400', title: 'Gigabyte RTX 4060 Eagle OC 8GB GDDR6', price: 4200000, rating: 4.2, reviewCount: 312, freeShipping: false },
+  { id: '4', image: 'https://picsum.photos/seed/cat-gpu4/400/400', title: 'MSI RTX 4080 Super Ventus 3X OC 16GB', price: 14500000, originalPrice: 16200000, discount: '-10%', rating: 4.7, reviewCount: 56, freeShipping: true },
+  { id: '5', image: 'https://picsum.photos/seed/cat-gpu5/400/400', title: 'ASUS Dual RTX 4060 OC 8GB GDDR6', price: 3900000, rating: 4.1, reviewCount: 278, freeShipping: false },
+  { id: '6', image: 'https://picsum.photos/seed/cat-gpu6/400/400', title: 'Zotac RTX 4070 Twin Edge 12GB GDDR6X', price: 7800000, originalPrice: 8500000, discount: '-8%', rating: 4.4, reviewCount: 123, freeShipping: true },
+  { id: '7', image: 'https://picsum.photos/seed/cat-gpu7/400/400', title: 'Sapphire RX 7800 XT Pulse 16GB', price: 6200000, rating: 4.6, reviewCount: 98, freeShipping: true },
+  { id: '8', image: 'https://picsum.photos/seed/cat-gpu8/400/400', title: 'MSI RTX 4060 Ti Ventus 2X 8GB GDDR6', price: 4800000, originalPrice: 5600000, discount: '-14%', rating: 4.3, reviewCount: 201, freeShipping: false },
+  { id: '9', image: 'https://picsum.photos/seed/cat-gpu9/400/400', title: 'ASUS TUF RTX 4070 OC 12GB GDDR6X', price: 7500000, rating: 4.5, reviewCount: 145, freeShipping: true },
+  { id: '10', image: 'https://picsum.photos/seed/cat-gpu10/400/400', title: 'Gigabyte RX 7600 Gaming OC 8GB', price: 3200000, rating: 4.0, reviewCount: 367, freeShipping: false },
+  { id: '11', image: 'https://picsum.photos/seed/cat-gpu11/400/400', title: 'EVGA RTX 4060 XC Gaming 8GB GDDR6', price: 3800000, rating: 4.2, reviewCount: 89, freeShipping: false },
+  { id: '12', image: 'https://picsum.photos/seed/cat-gpu12/400/400', title: 'MSI RTX 4090 Suprim X 24GB GDDR6X', price: 22000000, originalPrice: 24500000, discount: '-10%', rating: 4.9, reviewCount: 34, freeShipping: true },
 ];
 
 // ─── Shared shell slots ──────────────────────────────────────────────────────

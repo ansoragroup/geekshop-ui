@@ -7,16 +7,18 @@ import styles from './DesktopProductGrid.module.scss';
 
 export interface DesktopProductGridItem {
   id: string;
-  images: string[];
+  image: string;
   title: string;
-  shopName: string;
   price: number;
   originalPrice?: number;
   discount?: string;
   rating?: number;
-  soldCount?: string;
-  installmentPrice?: string;
+  reviewCount?: number;
+  installmentPrice?: number;
+  installmentLabel?: string;
   freeShipping?: boolean;
+  ctaText?: string;
+  ctaColor?: string;
 }
 
 export interface SortOption {
@@ -220,16 +222,18 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
             {products.map((product) => (
               <DesktopProductCard
                 key={product.id}
-                images={product.images}
+                image={product.image}
                 title={product.title}
-                shopName={product.shopName}
                 price={product.price}
                 originalPrice={product.originalPrice}
                 discount={product.discount}
                 rating={product.rating}
-                soldCount={product.soldCount}
+                reviewCount={product.reviewCount}
                 installmentPrice={product.installmentPrice}
+                installmentLabel={product.installmentLabel}
                 freeShipping={product.freeShipping}
+                ctaText={product.ctaText}
+                ctaColor={product.ctaColor}
                 onClick={() => onProductClick?.(product)}
                 onAddToCart={() => onAddToCart?.(product)}
               />
@@ -240,7 +244,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
             {products.map((product) => (
               <ProductListItem
                 key={product.id}
-                image={product.images[0] ?? ''}
+                image={product.image}
                 title={product.title}
                 price={product.price}
                 originalPrice={product.originalPrice}
