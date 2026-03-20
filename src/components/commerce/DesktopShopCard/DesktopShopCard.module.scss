@@ -1,0 +1,217 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  border: none;
+  box-shadow: $desktop-shadow-card;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $desktop-shadow-card-hover;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+// ─── Logo ────────────────────────────────────────────────────────────────────
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: $desktop-radius-button;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+// ─── Info (Name + Rating) ───────────────────────────────────────────────────
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.ratingText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// ─── Stats ──────────────────────────────────────────────────────────────────
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xxs;
+}
+
+.statValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.statDivider {
+  width: 1px;
+  height: 28px;
+  background: $color-border;
+  flex-shrink: 0;
+}
+
+// ─── Actions ─────────────────────────────────────────────────────────────────
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-left: $desktop-spacing-md;
+  flex-shrink: 0;
+}
+
+.chatBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid $color-border;
+  border-radius: $desktop-radius-button;
+  background: $color-bg-card;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.followBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  height: 40px;
+  padding: 0 $desktop-spacing-md;
+  border: 1px solid var(--gs-color-primary);
+  border-radius: $desktop-radius-button;
+  background: transparent;
+  color: var(--gs-color-primary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast, color $transition-fast, border-color $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.followBtnActive {
+  border-color: $color-border;
+  color: $color-text-secondary;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+}
+
+.enterBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  height: 40px;
+  padding: 0 $desktop-spacing-md;
+  border: none;
+  border-radius: $desktop-radius-button;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .chatBtn,
+  .followBtn,
+  .enterBtn {
+    transition: none;
+  }
+}

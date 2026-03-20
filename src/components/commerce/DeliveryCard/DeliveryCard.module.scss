@@ -191,6 +191,36 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .packageIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .carrier {
+    font-size: $font-size-xl;
+  }
+
+  .trackingLabel {
+    font-size: $font-size-md;
+  }
+
+  .detailLine {
+    font-size: $font-size-md;
+  }
+
+  .headerLeft {
+    gap: $desktop-spacing-md;
+  }
+
+  .details {
+    gap: $spacing-sm;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

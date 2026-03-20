@@ -1,0 +1,237 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: $desktop-spacing-lg;
+  padding: $desktop-spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+// ─── Header Section (Left) ──────────────────────────────────────────────────
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  flex-shrink: 0;
+}
+
+.packageIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  flex-shrink: 0;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.carrier {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+}
+
+.statusLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+// ─── Center Section ─────────────────────────────────────────────────────────
+
+.centerSection {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+// ─── Progress Row ───────────────────────────────────────────────────────────
+
+.progressRow {
+  display: flex;
+  align-items: flex-start;
+  padding-top: $spacing-xs;
+}
+
+.stepGroup {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+
+  &:last-child {
+    flex: 0;
+  }
+}
+
+.stepDotWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.stepDot {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-round;
+  background: $color-border;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+}
+
+.stepDotActive {
+  width: 14px;
+  height: 14px;
+}
+
+.stepLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+.stepLine {
+  flex: 1;
+  height: 2px;
+  background: $color-border;
+  margin: 6px $spacing-xs 0;
+  transition: background $transition-fast;
+}
+
+.stepLineActive {
+  // color set inline via style prop
+}
+
+// ─── Details Row ────────────────────────────────────────────────────────────
+
+.detailsRow {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  flex-wrap: wrap;
+}
+
+.trackingInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.trackingLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: $radius-xs;
+  background: transparent;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.detailItem {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  white-space: nowrap;
+
+  &::before {
+    content: '\00b7';
+    margin-right: $spacing-sm;
+    color: $color-text-placeholder;
+  }
+}
+
+// ─── Track Button (Right) ───────────────────────────────────────────────────
+
+.trackBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  height: 40px;
+  padding: 0 $desktop-spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: var(--gs-color-primary);
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .stepDot,
+  .stepLine,
+  .copyBtn,
+  .trackBtn {
+    transition: none;
+  }
+
+  .trackBtn:active {
+    transform: none;
+  }
+}

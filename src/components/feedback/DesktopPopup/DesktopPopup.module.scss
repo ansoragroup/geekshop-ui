@@ -1,0 +1,97 @@
+@use '../../../theme/tokens' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-index-modal;
+  animation: overlayIn $transition-fast;
+}
+
+.popup {
+  position: relative;
+  background: $color-bg-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-xl;
+  max-width: calc(100vw - 96px);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: popupIn $transition-normal;
+  overflow: hidden;
+}
+
+.closeBtn {
+  position: absolute;
+  top: $desktop-spacing-md;
+  right: $desktop-spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  border: none;
+  z-index: 1;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $color-border;
+    color: $color-text-secondary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.header {
+  padding: $desktop-spacing-lg $desktop-spacing-lg 0;
+  padding-right: 56px; // leave room for close button
+}
+
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: $line-height-tight;
+}
+
+.body {
+  padding: $desktop-spacing-lg;
+  overflow-y: auto;
+  flex: 1;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { animation: none; }
+  .popup { animation: none; }
+  .closeBtn { transition: none; }
+}

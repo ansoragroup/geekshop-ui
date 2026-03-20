@@ -2,19 +2,22 @@
 
 .root {
   container-type: inline-size;
+  width: 100%;
+  cursor: pointer;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.inner {
   display: flex;
   flex-direction: column;
   background: $color-bg-card;
   border-radius: $radius-lg;
   box-shadow: $shadow-md;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform $transition-fast, box-shadow $transition-fast;
-
-  &:active {
-    transform: scale(0.98);
-    box-shadow: $shadow-sm;
-  }
 }
 
 // --- Image ---
@@ -155,7 +158,7 @@
 // Container Query: Expanded (> 320px)
 // ========================================
 @container (min-width: 321px) {
-  .root {
+  .inner {
     flex-direction: row;
   }
 
@@ -184,6 +187,35 @@
 
   .soldCount {
     font-size: $font-size-sm;
+  }
+}
+
+// ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .content {
+    padding: $desktop-spacing-md;
+    gap: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+    min-height: auto;
+  }
+
+  .soldCount {
+    font-size: $font-size-md;
+  }
+
+  .discountBadge,
+  .badge {
+    font-size: $font-size-sm;
+    padding: $spacing-xxs $spacing-md;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 4 / 3;
   }
 }
 

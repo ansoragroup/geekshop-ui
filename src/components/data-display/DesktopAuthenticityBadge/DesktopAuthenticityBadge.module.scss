@@ -1,0 +1,131 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $desktop-spacing-sm;
+  border-radius: $radius-round;
+  font-family: $font-family;
+  cursor: default;
+  position: relative;
+  transition: background $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+}
+
+.dot {
+  color: $color-text-placeholder;
+  font-size: $desktop-font-size-body;
+}
+
+.verifier {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+// --- Status variants ---
+.status-verified {
+  background: $color-success-light;
+
+  .label {
+    color: $color-success;
+  }
+}
+
+.status-official {
+  background: #E6F2FF;
+
+  .label {
+    color: $color-info;
+  }
+}
+
+.status-unverified {
+  background: $color-bg-page;
+
+  .label {
+    color: $color-text-tertiary;
+  }
+}
+
+// --- Tooltip ---
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-index-popover;
+  pointer-events: none;
+}
+
+.tooltipArrow {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: $color-bg-card;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.tooltipContent {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-sm $desktop-spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  white-space: nowrap;
+}
+
+.tooltipText {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.tooltipTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.tooltipMeta {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.tooltipDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+}

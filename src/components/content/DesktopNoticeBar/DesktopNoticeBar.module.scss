@@ -1,0 +1,99 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $desktop-spacing-sm $desktop-spacing-lg;
+  border-radius: $radius-md;
+  gap: $desktop-spacing-sm;
+  font-size: $desktop-font-size-body;
+  line-height: $line-height-normal;
+  transition: opacity $transition-normal;
+}
+
+// ─── Variant Styles ──────────────────────────────────────────────────────────
+
+.info {
+  background: #e6f7ff;
+  color: #0050b3;
+  border: 1px solid #91d5ff;
+}
+
+.success {
+  background: #f6ffed;
+  color: #237804;
+  border: 1px solid #b7eb8f;
+}
+
+.warning {
+  background: #fffbe6;
+  color: #ad6800;
+  border: 1px solid #ffe58f;
+}
+
+.error {
+  background: #fff2f0;
+  color: #a8071a;
+  border: 1px solid #ffa39e;
+}
+
+// ─── Icon ─────────────────────────────────────────────────────────────────────
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: inherit;
+}
+
+// ─── Content ──────────────────────────────────────────────────────────────────
+
+.content {
+  flex: 1;
+  min-width: 0;
+  font-weight: $font-weight-medium;
+}
+
+// ─── Dismiss Button ───────────────────────────────────────────────────────────
+
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  border-radius: $radius-sm;
+  opacity: 0.6;
+  transition: opacity $transition-fast, background $transition-fast;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .dismissButton {
+    transition: none;
+  }
+}

@@ -1,0 +1,61 @@
+@use '../../../theme/tokens' as *;
+
+.backToTop {
+  position: fixed;
+  bottom: $spacing-xxl;
+  right: $spacing-xxl;
+  z-index: $z-index-fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: $color-bg-card;
+  box-shadow: $shadow-md;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: opacity $transition-normal, transform $transition-normal, color $transition-fast, box-shadow $transition-fast;
+  box-sizing: border-box;
+
+  &:hover {
+    color: $color-primary;
+    box-shadow: $shadow-lg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translateY(-2px) scale(0.95);
+  }
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backToTop {
+    transition: none;
+  }
+
+  .visible {
+    transform: none;
+  }
+
+  .hidden {
+    transform: none;
+  }
+}

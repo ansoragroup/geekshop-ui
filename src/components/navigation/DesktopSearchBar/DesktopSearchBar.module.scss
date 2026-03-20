@@ -1,0 +1,144 @@
+@use '../../../theme/tokens' as *;
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  border: 2px solid $color-primary;
+  border-radius: $radius-round;
+  background: $color-bg-card;
+  overflow: hidden;
+  transition: box-shadow $transition-fast;
+
+  &:focus-within {
+    box-shadow: 0 0 0 3px color-mix(in srgb, #{$color-primary} 12%, transparent);
+  }
+}
+
+// --- Category selector ---
+.categorySelect {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 $spacing-xs 0 $desktop-spacing-md;
+}
+
+.select {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  padding-right: $spacing-lg;
+  cursor: pointer;
+  outline: none;
+}
+
+.selectArrow {
+  position: absolute;
+  right: $spacing-xs;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: $color-text-tertiary;
+  pointer-events: none;
+}
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background: $color-border;
+  flex-shrink: 0;
+  margin: 0 $spacing-xs;
+}
+
+// --- Search icon ---
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding-left: $desktop-spacing-md;
+  color: $color-text-tertiary;
+}
+
+// --- Input ---
+.input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  padding: 0 $spacing-sm;
+  min-width: 0;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+}
+
+// --- Clear button ---
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-text-secondary;
+    background: $color-bg-page;
+  }
+}
+
+// --- Submit button ---
+.submitBtn {
+  height: 100%;
+  padding: 0 $desktop-spacing-lg;
+  border: none;
+  background: $color-primary;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:active {
+    background: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .searchBar,
+  .clearBtn,
+  .submitBtn {
+    transition: none;
+  }
+}

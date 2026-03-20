@@ -1,0 +1,125 @@
+@use '../../theme/tokens' as *;
+
+// ─── Shell slots ──────────────────────────────────────────────────────────────
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.logoText {
+  font-weight: $font-weight-bold;
+  font-size: $desktop-font-size-h3;
+  color: $color-primary;
+}
+
+.topBarBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: $font-family;
+}
+
+// ─── Page content ─────────────────────────────────────────────────────────────
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.stepsWrapper {
+  margin-bottom: $desktop-spacing-xl;
+  padding: $desktop-spacing-lg $desktop-spacing-xxl;
+  background: var(--gs-bg-white);
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+}
+
+// ─── Form sections ────────────────────────────────────────────────────────────
+
+.formSection {
+  margin-bottom: $desktop-spacing-xl;
+}
+
+.formSectionTitle {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-md;
+}
+
+.addressList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.paymentList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.addButton {
+  margin-top: $desktop-spacing-sm;
+}
+
+// ─── Empty state ─────────────────────────────────────────────────────────────
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $desktop-spacing-xxl * 2 $desktop-spacing-xl;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.emptyTitle {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-sm;
+}
+
+.emptyText {
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-secondary);
+  margin: 0 0 $desktop-spacing-lg;
+}
+
+// ─── Review section ──────────────────────────────────────────────────────────
+
+.reviewSummary {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-lg;
+}
+
+.reviewBlock {
+  padding: $desktop-spacing-lg;
+  background: var(--gs-bg-white);
+  border-radius: $desktop-radius-card;
+  border: 1px solid var(--gs-border-light);
+}
+
+.reviewBlockTitle {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-secondary);
+  margin: 0 0 $desktop-spacing-sm;
+}
+
+.reviewBlockText {
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-primary);
+  margin: 0;
+  line-height: 1.5;
+}

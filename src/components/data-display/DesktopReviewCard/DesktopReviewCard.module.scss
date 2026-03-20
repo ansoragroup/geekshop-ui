@@ -1,0 +1,186 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: $desktop-spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  gap: $desktop-spacing-md;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $desktop-spacing-md;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  min-width: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-round;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.avatarFallback {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-round;
+  background: $color-primary-bg;
+  color: $color-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 0;
+}
+
+.userName {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.stars {
+  font-size: $font-size-md;
+  color: $color-warning;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.separator {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.variant {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-tight;
+}
+
+.date {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+// ─── Content ─────────────────────────────────────────────────────────────────
+
+.content {
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  margin: 0;
+  word-break: break-word;
+}
+
+// ─── Images ──────────────────────────────────────────────────────────────────
+
+.images {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  width: 96px;
+  height: 96px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// ─── Voting Row ──────────────────────────────────────────────────────────────
+
+.votingRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: $desktop-spacing-md;
+}
+
+.voteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $desktop-spacing-sm;
+  border: none;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+  line-height: $line-height-tight;
+  min-height: 36px;
+
+  &:hover {
+    background: $color-bg-page;
+    color: $color-text-primary;
+  }
+}
+
+.voteActive {
+  color: $color-primary;
+
+  &:hover {
+    color: $color-primary;
+    background: $color-primary-bg;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .thumbnail {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  .voteButton {
+    transition: none;
+  }
+}

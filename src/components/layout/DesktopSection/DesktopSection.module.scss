@@ -1,0 +1,85 @@
+@use '../../../theme/tokens' as *;
+
+.section {
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+// --- Backgrounds ---
+.bg-default {
+  background: transparent;
+}
+
+.bg-card {
+  background: $color-bg-card;
+  box-shadow: $shadow-sm;
+}
+
+.bg-primary {
+  background: $color-primary-bg;
+}
+
+// --- Padding ---
+.padding-none {
+  .body {
+    padding: 0;
+  }
+
+  .header {
+    padding: $desktop-spacing-lg $desktop-spacing-lg 0;
+  }
+}
+
+.padding-sm {
+  .body {
+    padding: $desktop-spacing-sm;
+  }
+
+  .header {
+    padding: $desktop-spacing-sm $desktop-spacing-sm 0;
+  }
+}
+
+.padding-md {
+  .body {
+    padding: $desktop-spacing-lg;
+  }
+
+  .header {
+    padding: $desktop-spacing-lg $desktop-spacing-lg 0;
+  }
+}
+
+.padding-lg {
+  .body {
+    padding: $desktop-spacing-xl;
+  }
+
+  .header {
+    padding: $desktop-spacing-xl $desktop-spacing-xl 0;
+  }
+}
+
+// --- Header ---
+.header {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+}
+
+// --- Body ---
+.body {
+  // inherits padding from size
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    transition: none;
+  }
+}

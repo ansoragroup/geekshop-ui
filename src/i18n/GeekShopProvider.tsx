@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
-import type { Locale, CurrencyCode, CurrencyConfig, TranslationDictionary } from './types';
+import type { Locale, CurrencyCode, CurrencyConfig, TranslationDictionary, Platform } from './types';
 import { CURRENCY_CONFIGS } from './currencies';
 import { TRANSLATIONS } from './translations';
 import { formatWithConfig } from '../utils/formatPrice';
@@ -10,6 +10,7 @@ import { setTheme as applyTheme } from '../theme';
 export interface GeekShopContextValue {
   locale: Locale;
   currency: CurrencyCode;
+  platform: Platform;
   t: (key: string, params?: Record<string, string | number>) => string;
   formatPrice: (amount: number, options?: { currency?: CurrencyCode; showCurrency?: boolean }) => string;
 }
@@ -52,6 +53,7 @@ function createPriceFormatter(locale: Locale, currencyCode: CurrencyCode) {
 const DEFAULT_CONTEXT: GeekShopContextValue = {
   locale: 'uz',
   currency: 'UZS',
+  platform: 'mobile',
   t: createTranslator('uz'),
   formatPrice: createPriceFormatter('uz', 'UZS'),
 };
@@ -61,6 +63,7 @@ const GeekShopContext = createContext<GeekShopContextValue>(DEFAULT_CONTEXT);
 export interface GeekShopProviderProps {
   locale?: Locale;
   currency?: CurrencyCode;
+  platform?: Platform;
   theme?: Theme;
   translations?: Partial<Record<Locale, TranslationDictionary>>;
   children: ReactNode;
@@ -69,6 +72,7 @@ export interface GeekShopProviderProps {
 export function GeekShopProvider({
   locale = 'uz',
   currency = 'UZS',
+  platform = 'mobile',
   theme,
   translations,
   children,
@@ -97,10 +101,11 @@ export function GeekShopProvider({
     () => ({
       locale,
       currency,
+      platform,
       t,
       formatPrice: formatPriceFn,
     }),
-    [locale, currency, t, formatPriceFn],
+    [locale, currency, platform, t, formatPriceFn],
   );
 
   return <GeekShopContext value={value}>{children}</GeekShopContext>;

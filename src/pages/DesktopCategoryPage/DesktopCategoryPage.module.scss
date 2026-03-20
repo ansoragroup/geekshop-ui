@@ -1,0 +1,45 @@
+@use '../../theme/tokens' as *;
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.pageTitle {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0;
+}
+
+.productCount {
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: var(--gs-text-secondary);
+}
+
+.viewToggle {
+  flex-shrink: 0;
+}
+
+.productsArea {
+  margin-bottom: $desktop-spacing-xl;
+}
+
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.paginationWrap {
+  display: flex;
+  justify-content: center;
+  padding: $desktop-spacing-lg 0;
+}

@@ -118,3 +118,54 @@ $container-padding: 12px;
 $breakpoint-sm: 375px;
 $breakpoint-md: 414px;
 $breakpoint-lg: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-desktop-lg: 1440px;
+
+// === Desktop Layout ===
+$desktop-content-max-width: 1360px;
+$desktop-content-padding: 24px;
+$desktop-sidebar-width: 240px;
+$desktop-header-height: 64px;
+$desktop-topbar-height: 32px;
+$desktop-footer-min-height: 200px;
+
+// === Desktop Grid ===
+$desktop-grid-columns-sm: 3;   // 1024px
+$desktop-grid-columns-md: 4;   // 1280px
+$desktop-grid-columns-lg: 5;   // 1440px+
+$desktop-card-gap: 16px;
+$desktop-section-gap: 48px;
+
+// === Desktop Spacing ===
+$desktop-spacing-sm: 12px;
+$desktop-spacing-md: 16px;
+$desktop-spacing-lg: 24px;
+$desktop-spacing-xl: 32px;
+$desktop-spacing-xxl: 48px;
+
+// === Desktop Typography ===
+$desktop-font-size-h1: 32px;
+$desktop-font-size-h2: 24px;
+$desktop-font-size-h3: 20px;
+$desktop-font-size-body: 14px;
+
+// === Desktop Header ===
+$desktop-header-bg-transparent: rgba(255, 255, 255, 0.8);
+$desktop-header-backdrop-blur: 12px;
+$desktop-header-shadow-scroll: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+// === Desktop Hover & Interaction ===
+$desktop-hover-lift: translateY(-4px);
+$desktop-hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+$desktop-hover-transition: all 0.2s ease;
+
+// === Desktop Surfaces ===
+$desktop-bg-page: #f0f2f5;
+$desktop-radius-card: 16px;
+$desktop-radius-banner: 20px;
+$desktop-radius-button: 12px;
+$desktop-radius-chip: 20px;
+$desktop-radius-input: 12px;
+$desktop-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+$desktop-shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+$desktop-shadow-dropdown: 0 8px 24px rgba(0, 0, 0, 0.12);

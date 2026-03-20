@@ -1,0 +1,188 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  font-family: $font-family;
+}
+
+// --- Input wrap ---
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 0 $spacing-md;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover:not(:has(input:disabled)) {
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-within {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+}
+
+// --- Sizes ---
+
+.size-sm .inputWrap {
+  height: 32px;
+
+  .input {
+    font-size: $font-size-sm;
+  }
+}
+
+.size-md .inputWrap {
+  height: 40px;
+
+  .input {
+    font-size: $font-size-md;
+  }
+}
+
+.size-lg .inputWrap {
+  height: 48px;
+
+  .input {
+    font-size: $font-size-lg;
+  }
+}
+
+// --- Input element ---
+
+.input {
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:disabled {
+    color: $color-text-tertiary;
+    cursor: not-allowed;
+  }
+}
+
+// --- Prefix / Suffix ---
+
+.prefix,
+.suffix {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+}
+
+// --- Clear button ---
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// --- State icon ---
+
+.stateIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+// --- Error text ---
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  line-height: $line-height-normal;
+}
+
+// --- Helper text ---
+
+.helperText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+// --- Error state ---
+
+.hasError {
+  .inputWrap {
+    border-color: var(--gs-color-error, #{$color-error});
+
+    &:focus-within {
+      border-color: var(--gs-color-error, #{$color-error});
+      box-shadow: 0 0 0 3px rgba($color-error, 0.1);
+    }
+  }
+}
+
+// --- Success state ---
+
+.hasSuccess {
+  .inputWrap {
+    border-color: $color-success;
+
+    &:focus-within {
+      border-color: $color-success;
+      box-shadow: 0 0 0 3px rgba($color-success, 0.1);
+    }
+  }
+}
+
+// --- Disabled state ---
+
+.disabled {
+  .inputWrap {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+  }
+
+  .label {
+    color: $color-text-tertiary;
+  }
+}
+
+// --- Reduced motion ---
+
+@media (prefers-reduced-motion: reduce) {
+  .inputWrap,
+  .clearBtn {
+    transition: none;
+  }
+}

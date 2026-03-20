@@ -1,0 +1,156 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: $color-bg-page;
+}
+
+// ─── Toolbar ─────────────────────────────────────────────────────────────────
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  padding: $desktop-spacing-sm $desktop-spacing-md;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  margin-bottom: $desktop-spacing-md;
+}
+
+// ─── Sort Group ──────────────────────────────────────────────────────────────
+
+.sortGroup {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $desktop-spacing-sm;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-bg-card;
+  color: $color-text-secondary;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: border-color $transition-fast, color $transition-fast, background $transition-fast;
+  white-space: nowrap;
+  line-height: $line-height-tight;
+
+  &:hover {
+    border-color: $color-primary-light;
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.sortButtonActive {
+  border-color: $color-primary;
+  color: $color-primary;
+  background: $color-primary-bg;
+}
+
+// ─── Showing Count ───────────────────────────────────────────────────────────
+
+.showingCount {
+  flex: 1;
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  white-space: nowrap;
+}
+
+// ─── View Controls ───────────────────────────────────────────────────────────
+
+.viewControls {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  flex-shrink: 0;
+}
+
+.viewToggle,
+.columnToggle {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.viewButton,
+.columnButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: $spacing-sm;
+  border: none;
+  background: $color-bg-card;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+
+  &:hover {
+    color: $color-primary;
+    background: $color-primary-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+
+  & + & {
+    border-left: 1px solid $color-border;
+  }
+}
+
+.viewButtonActive,
+.columnButtonActive {
+  color: $color-primary;
+  background: $color-primary-bg;
+}
+
+// ─── Grid Layout ─────────────────────────────────────────────────────────────
+
+.grid {
+  display: grid;
+  gap: $desktop-spacing-md;
+}
+
+// ─── List Layout ─────────────────────────────────────────────────────────────
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .sortButton,
+  .viewButton,
+  .columnButton {
+    transition: none;
+  }
+}

@@ -1,0 +1,281 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Wrapper: container query host ─────────────────────────────────────
+
+.wrapper {
+  container-type: inline-size;
+  width: 100%;
+}
+
+// ─── Root Card ─────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  gap: $spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  transition: box-shadow $transition-fast;
+  outline: none;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Image ─────────────────────────────────────────────────────────────
+
+.imageContainer {
+  width: 120px;
+  height: 120px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// ─── Content ───────────────────────────────────────────────────────────
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+// ─── Title ─────────────────────────────────────────────────────────────
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ─── Rating ────────────────────────────────────────────────────────────
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+  line-height: 0;
+}
+
+.reviewCount {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+// ─── Price ─────────────────────────────────────────────────────────────
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.price {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+  white-space: nowrap;
+}
+
+.originalPrice {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.discount {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-sale;
+  white-space: nowrap;
+}
+
+// ─── Meta (Stock + Shipping) ───────────────────────────────────────────
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-sm;
+}
+
+.inStock {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $color-success;
+}
+
+.outOfStock {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $color-error;
+}
+
+.metaSeparator {
+  color: $color-text-tertiary;
+}
+
+.freeShipping {
+  color: $color-text-secondary;
+}
+
+// ─── Actions ───────────────────────────────────────────────────────────
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  margin-top: auto;
+}
+
+.wishlistButton,
+.addToCartButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  min-height: 36px;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background $transition-fast, border-color $transition-fast;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.wishlistButton {
+  background: transparent;
+  border: 1px solid $color-border;
+  color: $color-text-secondary;
+
+  &:hover {
+    border-color: $color-text-secondary;
+    color: $color-text-primary;
+  }
+}
+
+.addToCartButton {
+  background: $color-primary;
+  border: none;
+  color: $color-text-white;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ─── Container Queries ─────────────────────────────────────────────────
+
+// Narrow (< 400px): stack vertically
+@container (max-width: 399px) {
+  .root {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 180px;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .wishlistButton,
+  .addToCartButton {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+// Wide (600px+): larger image, inline actions
+@container (min-width: 600px) {
+  .root {
+    flex-wrap: wrap;
+  }
+
+  .imageContainer {
+    width: 160px;
+    height: 160px;
+  }
+
+  .content {
+    flex: 1 1 0;
+    min-width: 200px;
+  }
+
+  .title {
+    font-size: $font-size-xl;
+  }
+
+  .price {
+    font-size: $font-size-xxl;
+  }
+
+  .actions {
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 0;
+  }
+}
+
+// ─── Reduced Motion ───────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .wishlistButton,
+  .addToCartButton {
+    transition: none;
+  }
+}

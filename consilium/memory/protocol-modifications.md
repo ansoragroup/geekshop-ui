@@ -29,8 +29,9 @@
 - **Evidence:** Sessions s2 (i18n had 71 missing keys), s3 (theme had incomplete palettes, SCSS vars not migrated)
 - **Status:** ADOPTED
 
-## PROPOSED: Require Phase 6 (cross-review) for sessions with 3+ agents
-- **Observed:** Cross-review phase has never executed across 6 sessions. Quality depends entirely on individual agents + automated gates.
+## TESTING: Require Phase 6 (cross-review) for sessions with 3+ agents
+- **Observed:** Cross-review phase has never executed across 7 sessions. Quality depends entirely on individual agents + automated gates.
 - **Proposal:** Sessions with 3+ active agents MUST run Phase 6 (cross-review). Each agent reviews the next agent's code (circular rotation).
-- **Evidence:** Session s3 — stale test assertion (OTPInput import path) would have been caught by review. Session s2 — 71 missing i18n keys would have been caught.
-- **Status:** PROPOSED
+- **Evidence:** Session s3 — stale test assertion (OTPInput import path) would have been caught by review. Session s2 — 71 missing i18n keys would have been caught. 4 total bugs across sessions that review would have prevented.
+- **Status:** TESTING (promoted from PROPOSED on 2026-03-20 evolution review)
+- **Note:** Testing starts next consilium session with 3+ agents. Need 2 successful sessions to adopt.

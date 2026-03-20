@@ -50,24 +50,47 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    platform: {
+      name: 'Platform',
+      description: 'Switch between mobile and desktop',
+      toolbar: {
+        icon: 'mobile',
+        items: [
+          { value: 'mobile', title: 'Mobile', icon: 'mobile' },
+          { value: 'desktop', title: 'Desktop', icon: 'browser' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   initialGlobals: {
     locale: 'uz',
     currency: 'UZS',
     themePreset: 'default',
+    platform: 'mobile',
   },
   decorators: [
     (Story, context) => {
       const locale = context.globals.locale || 'uz';
       const currency = context.globals.currency || 'UZS';
       const preset = (context.globals.themePreset || 'default') as ThemePreset;
+      const platform = context.globals.platform || 'mobile';
 
       setThemePreset(preset);
 
       return createElement(
         GeekShopProvider,
-        { locale, currency },
-        createElement(Story),
+        { locale, currency, platform },
+        createElement(
+          'div',
+          {
+            'data-platform': platform,
+            style: platform === 'desktop'
+              ? { width: '100%', minWidth: 800 }
+              : undefined,
+          },
+          createElement(Story),
+        ),
       );
     },
   ],

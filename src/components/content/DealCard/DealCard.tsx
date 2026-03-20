@@ -49,57 +49,59 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
       tabIndex={onClick ? 0 : undefined}
       {...rest}
     >
-      <div className={styles.imageArea}>
-        <img className={styles.image} src={image} alt={title} />
-        <span className={styles.discountBadge}>-{discount}%</span>
-      </div>
-
-      <div className={styles.infoArea}>
-        <p className={styles.title}>{title}</p>
-
-        <div className={styles.priceRow}>
-          <span className={styles.currentPrice}>
-            {formatPrice(price)}
-          </span>
+      <div className={styles.inner}>
+        <div className={styles.imageArea}>
+          <img className={styles.image} src={image} alt={title} />
+          <span className={styles.discountBadge}>-{discount}%</span>
         </div>
 
-        <span className={styles.originalPrice}>
-          {formatPrice(originalPrice)}
-        </span>
+        <div className={styles.infoArea}>
+          <p className={styles.title}>{title}</p>
 
-        <div className={styles.savingsRow}>
-          <svg
-            className={styles.savingsIcon}
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 1v12M1 7l6 6 6-6"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className={styles.savingsText}>
-            {t('product.savings', { amount: formatPrice(savings) })}
-          </span>
-        </div>
-
-        {soldPercent > 0 && (
-          <div className={styles.progressArea}>
-            <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{ width: `${Math.min(soldPercent, 100)}%` }}
-              />
-            </div>
-            <span className={styles.progressLabel}>
-              {t('product.soldPercent', { percent: soldPercent })}
+          <div className={styles.priceRow}>
+            <span className={styles.currentPrice}>
+              {formatPrice(price)}
             </span>
           </div>
-        )}
+
+          <span className={styles.originalPrice}>
+            {formatPrice(originalPrice)}
+          </span>
+
+          <div className={styles.savingsRow}>
+            <svg
+              className={styles.savingsIcon}
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 1v12M1 7l6 6 6-6"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className={styles.savingsText}>
+              {t('product.savings', { amount: formatPrice(savings) })}
+            </span>
+          </div>
+
+          {soldPercent > 0 && (
+            <div className={styles.progressArea}>
+              <div className={styles.progressBar}>
+                <div
+                  className={styles.progressFill}
+                  style={{ width: `${Math.min(soldPercent, 100)}%` }}
+                />
+              </div>
+              <span className={styles.progressLabel}>
+                {t('product.soldPercent', { percent: soldPercent })}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

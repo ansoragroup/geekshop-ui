@@ -1,0 +1,123 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+// ─── Trigger ───────────────────────────────────────────────────────────
+
+.trigger {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// ─── Menu ──────────────────────────────────────────────────────────────
+
+.menu {
+  position: absolute;
+  top: calc(100% + #{$spacing-xs});
+  min-width: 180px;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  z-index: $z-index-dropdown;
+  padding: $spacing-xs 0;
+  animation: menuIn 0.15s ease;
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+// ─── Item ──────────────────────────────────────────────────────────────
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  cursor: pointer;
+  transition: background $transition-fast;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  min-height: 36px;
+  outline: none;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+
+  &:focus-visible {
+    background: $color-primary-bg;
+  }
+}
+
+.itemSelected {
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.itemLabel {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+// ─── Animation ─────────────────────────────────────────────────────────
+
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── Reduced Motion ───────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    animation: none;
+  }
+
+  .item {
+    transition: none;
+  }
+}

@@ -259,6 +259,63 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .header {
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $desktop-spacing-md;
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .productRow {
+    flex: 1 1 calc(50% - #{$desktop-spacing-md});
+    min-width: 240px;
+
+    & + & {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+  }
+
+  .productImage {
+    width: 96px;
+    height: 96px;
+  }
+
+  .productTitle {
+    font-size: $font-size-lg;
+  }
+
+  .productPrice {
+    font-size: $font-size-lg;
+  }
+
+  .totalRow {
+    padding: $desktop-spacing-md $desktop-spacing-lg;
+  }
+
+  .totalAmount {
+    font-size: $font-size-xxl;
+  }
+
+  .actions {
+    padding: 0 $desktop-spacing-lg $desktop-spacing-lg;
+  }
+
+  .actionBtn {
+    height: 36px;
+    font-size: $font-size-md;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,94 @@
+@use '../../theme/tokens' as *;
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.topBarBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: $font-family;
+}
+
+.logoText {
+  font-weight: $font-weight-bold;
+  font-size: $desktop-font-size-h3;
+  color: $color-primary;
+}
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageTitle {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0 0 $desktop-spacing-lg;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: $desktop-spacing-lg;
+  align-items: start;
+}
+
+.filterSidebar {
+  position: sticky;
+  top: $desktop-spacing-lg;
+}
+
+.resultsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.sortBar {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-sm $desktop-spacing-md;
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+}
+
+.sortLabel {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  white-space: nowrap;
+}
+
+.sortSelect {
+  padding: $spacing-sm $desktop-spacing-sm;
+  border: 1px solid $color-border;
+  border-radius: $desktop-radius-input;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  background: $color-bg-white;
+  cursor: pointer;
+}
+
+.paginationWrap {
+  display: flex;
+  justify-content: center;
+  padding: $desktop-spacing-lg 0;
+}
+
+@media (max-width: $breakpoint-desktop) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filterSidebar {
+    position: static;
+  }
+}

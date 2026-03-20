@@ -1,0 +1,270 @@
+@use '../../../theme/tokens' as *;
+
+// --- Root ---
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+// --- Label ---
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+// --- Trigger ---
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  height: 40px;
+  padding: 0 $spacing-md;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-md;
+  transition: border-color $transition-fast;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-visible {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -1px;
+  }
+
+  &:disabled {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+  }
+}
+
+.open .trigger {
+  border-color: var(--gs-color-primary, #{$color-primary});
+}
+
+.triggerText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-text-primary;
+}
+
+.triggerPlaceholder {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-text-placeholder;
+}
+
+.triggerIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+}
+
+// --- Error ---
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  line-height: $line-height-normal;
+}
+
+.hasError .trigger {
+  border-color: var(--gs-color-error, #{$color-error});
+}
+
+// --- Disabled ---
+
+.disabled .label {
+  color: $color-text-tertiary;
+}
+
+// --- Dropdown ---
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: $z-index-dropdown;
+  width: 300px;
+  background: $color-bg-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  padding: $desktop-spacing-md;
+  animation: dropdownIn $transition-fast;
+}
+
+// --- Month nav ---
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  color: $color-text-primary;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+  }
+}
+
+.monthLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// --- Day headers ---
+
+.dayHeaders {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: $spacing-xs;
+}
+
+.dayHeader {
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-tertiary;
+  padding: $spacing-xs 0;
+}
+
+// --- Days grid ---
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.dayEmpty {
+  aspect-ratio: 1;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  border-radius: $radius-sm;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+  }
+}
+
+.dayToday {
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-primary, #{$color-primary});
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: $radius-round;
+    background: var(--gs-color-primary, #{$color-primary});
+  }
+}
+
+.daySelected {
+  background: var(--gs-color-primary, #{$color-primary});
+  color: $color-text-white;
+  font-weight: $font-weight-semibold;
+
+  &:hover:not(:disabled) {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+
+  &.dayToday::after {
+    background: $color-text-white;
+  }
+}
+
+.dayDisabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+// --- Animations ---
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Reduced motion ---
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    animation: none;
+  }
+
+  .trigger,
+  .navBtn,
+  .day {
+    transition: none;
+  }
+}

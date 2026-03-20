@@ -1,0 +1,84 @@
+@use '../../theme/tokens' as *;
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-lg;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.couponSection {
+  margin-top: $desktop-spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-sm;
+}
+
+// ─── Order Summary ─────────────────────────────────────────────────────────
+
+.summaryCard {
+  background: var(--gs-bg-white);
+  border-radius: $radius-lg;
+  padding: $desktop-spacing-lg;
+  border: 1px solid var(--gs-border-color);
+}
+
+.summaryTitle {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-md;
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-md;
+  color: var(--gs-text-secondary);
+}
+
+.summaryDivider {
+  height: 1px;
+  background: var(--gs-border-color);
+  margin: $desktop-spacing-sm 0;
+}
+
+.summaryTotal {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+}
+
+.freeLabel {
+  color: $color-success;
+  font-weight: $font-weight-medium;
+}
+
+.shippingNote {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  text-align: center;
+  margin: $desktop-spacing-sm 0 0;
+}

@@ -1,0 +1,351 @@
+@use '../../../theme/tokens' as *;
+
+// === Clean Minimal Header (Uzum-style) ===
+// Thin, airy, lots of whitespace. Transparent→solid on scroll.
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background $transition-normal, box-shadow $transition-normal;
+  font-family: $font-family;
+  box-sizing: border-box;
+}
+
+.scrolled {
+  background: $color-bg-white;
+  box-shadow: $desktop-header-shadow-scroll;
+}
+
+// --- Main row ---
+.mainRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $desktop-header-height;
+}
+
+.content {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-lg;
+  box-sizing: border-box;
+}
+
+// --- Logo ---
+.logo {
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: $radius-xs;
+  }
+}
+
+.logoText {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  white-space: nowrap;
+}
+
+// --- Katalog button ---
+.catalogBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 42px;
+  padding: 0 $desktop-spacing-md;
+  border: none;
+  border-radius: $radius-lg;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// --- Search bar ---
+.searchBar {
+  flex: 1;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  background: $color-bg-page;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba(255, 80, 0, 0.1);
+  }
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: $spacing-lg;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: $color-text-primary;
+  padding: 0 $spacing-md;
+  height: 100%;
+  min-width: 0;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+}
+
+.searchSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 $spacing-lg;
+  border: none;
+  background: $color-primary;
+  color: $color-text-white;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+// --- Actions ---
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xxs;
+  min-width: 48px;
+  min-height: 48px;
+  padding: $spacing-xs;
+  border: none;
+  border-radius: $radius-md;
+  background: none;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+  font-family: $font-family;
+
+  &:hover {
+    color: $color-primary;
+    background: $color-primary-bg;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.actionLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: $color-sale;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  line-height: 16px;
+  text-align: center;
+  border-radius: $radius-round;
+  box-sizing: border-box;
+}
+
+// --- Category bar ---
+.categoryBar {
+  border-top: 1px solid $color-border-light;
+  background: $color-bg-white;
+}
+
+.categoryContent {
+  position: relative;
+  max-width: $desktop-content-max-width;
+  margin: 0 auto;
+  padding: 0 $desktop-content-padding;
+  box-sizing: border-box;
+}
+
+.categoryScroll {
+  display: flex;
+  gap: $spacing-xs;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: $spacing-sm 0;
+
+  // Hide scrollbar
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $radius-md;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background $transition-fast, color $transition-fast;
+  font-family: $font-family;
+  color: $color-text-secondary;
+
+  &:hover {
+    background: $color-primary-bg;
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+.categoryIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}
+
+.categoryLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+}
+
+// --- Category scroll arrows ---
+.catArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-border;
+  border-radius: $radius-round;
+  background: $color-bg-white;
+  color: $color-text-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: $z-index-normal;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    color: $color-text-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.catArrowLeft {
+  left: $spacing-sm;
+}
+
+.catArrowRight {
+  right: $spacing-sm;
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .catalogBtn,
+  .searchBar,
+  .searchSubmit,
+  .actionBtn,
+  .categoryItem,
+  .catArrow {
+    transition: none;
+  }
+
+  .categoryScroll {
+    scroll-behavior: auto;
+  }
+}

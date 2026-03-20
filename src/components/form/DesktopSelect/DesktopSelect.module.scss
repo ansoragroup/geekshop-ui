@@ -1,0 +1,276 @@
+@use '../../../theme/tokens' as *;
+
+// --- Root ---
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  position: relative;
+}
+
+// --- Label ---
+
+.label {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+// --- Trigger ---
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  height: 40px;
+  padding: 0 $desktop-spacing-sm;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-visible {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    box-shadow: 0 0 0 3px $color-primary-bg;
+    outline: none;
+  }
+
+  &:disabled {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+    color: $color-text-tertiary;
+  }
+}
+
+.open .trigger {
+  border-color: var(--gs-color-primary, #{$color-primary});
+  box-shadow: 0 0 0 3px $color-primary-bg;
+}
+
+.triggerText {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-text-primary;
+}
+
+.triggerPlaceholder {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-text-placeholder;
+}
+
+.triggerChevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+  transition: transform $transition-fast;
+}
+
+.triggerChevronOpen {
+  transform: rotate(180deg);
+}
+
+// --- Error ---
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  line-height: $line-height-normal;
+}
+
+.hasError .trigger {
+  border-color: var(--gs-color-error, #{$color-error});
+}
+
+// --- Disabled ---
+
+.disabled .label {
+  color: $color-text-tertiary;
+}
+
+// --- Dropdown ---
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: $spacing-xs;
+  background: $color-bg-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  z-index: $z-index-dropdown;
+  overflow: hidden;
+  animation: dropdownIn $transition-fast;
+}
+
+// --- Search ---
+
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $desktop-spacing-sm;
+  border-bottom: 1px solid $color-border-light;
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: $color-text-tertiary;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  background: transparent;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+}
+
+// --- Options list ---
+
+.optionsList {
+  max-height: 240px;
+  overflow-y: auto;
+  padding: $spacing-xs 0;
+}
+
+.emptyState {
+  padding: $desktop-spacing-md $desktop-spacing-sm;
+  text-align: center;
+  color: $color-text-tertiary;
+  font-size: $desktop-font-size-body;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  width: 100%;
+  min-height: 36px;
+  padding: $spacing-sm $desktop-spacing-sm;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  text-align: left;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: -2px;
+  }
+}
+
+.optionHighlighted {
+  background: $color-bg-page;
+}
+
+.optionSelected {
+  color: var(--gs-color-primary, #{$color-primary});
+  font-weight: $font-weight-medium;
+}
+
+.optionDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.optionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.optionLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optionCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gs-color-primary, #{$color-primary});
+}
+
+// --- Checkbox (multi-select) ---
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+  color: $color-bg-white;
+}
+
+.checkboxChecked {
+  background: var(--gs-color-primary, #{$color-primary});
+  border-color: var(--gs-color-primary, #{$color-primary});
+}
+
+// --- Animations ---
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    animation: none;
+  }
+
+  .triggerChevron,
+  .checkbox {
+    transition: none;
+  }
+}

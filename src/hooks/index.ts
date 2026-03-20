@@ -9,3 +9,5 @@ export type { UseFocusTrapOptions } from './useFocusTrap'
 
 export { useToast } from './useToast'
 export type { ToastItem, ToastType, UseToastOptions, UseToastReturn } from './useToast'
+
+export { useBreakpointReload } from './useBreakpointReload'

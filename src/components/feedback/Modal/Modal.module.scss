@@ -1,0 +1,143 @@
+@use '../../../theme/tokens' as *;
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-bg-overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-index-modal-backdrop;
+  animation: backdropIn 0.2s ease;
+  box-sizing: border-box;
+  padding: $desktop-spacing-lg;
+}
+
+.content {
+  position: relative;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-xl;
+  z-index: $z-index-modal;
+  max-width: calc(100vw - #{$desktop-spacing-xxl} * 2);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  animation: contentIn 0.2s ease;
+  overflow: hidden;
+}
+
+// ─── Header ────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-xl;
+  border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.headerMinimal {
+  display: flex;
+  justify-content: flex-end;
+  padding: $spacing-md $spacing-xl;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: $line-height-tight;
+  flex: 1;
+  min-width: 0;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: $radius-round;
+  background: transparent;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    background: $color-bg-page;
+    color: $color-text-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Body ──────────────────────────────────────────────────────────────
+
+.body {
+  padding: $spacing-xl;
+  overflow-y: auto;
+  max-height: 60vh;
+  flex: 1;
+}
+
+// ─── Footer ────────────────────────────────────────────────────────────
+
+.footer {
+  padding: $spacing-lg $spacing-xl;
+  border-top: 1px solid $color-border;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+// ─── Animations ────────────────────────────────────────────────────────
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ─── Reduced Motion ───────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop {
+    animation: none;
+  }
+
+  .content {
+    animation: none;
+  }
+
+  .closeButton {
+    transition: none;
+  }
+}

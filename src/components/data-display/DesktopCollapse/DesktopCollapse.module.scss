@@ -1,0 +1,126 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  width: 100%;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid var(--gs-color-border, $color-border);
+  background: $color-bg-card;
+}
+
+// === Panel ===
+.panel {
+  border-bottom: 1px solid var(--gs-color-border, $color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// === Header ===
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  cursor: pointer;
+  user-select: none;
+  background: var(--gs-color-bg-card, $color-bg-card);
+  transition: background $transition-fast, box-shadow $transition-fast;
+  min-height: 52px;
+
+  &:hover {
+    background: var(--gs-color-bg-page, $color-bg-page);
+  }
+
+  &:active {
+    background: $color-border-light;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: -2px;
+    border-radius: $radius-xs;
+  }
+}
+
+.title {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  flex: 1;
+  min-width: 0;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+  margin-left: $desktop-spacing-md;
+}
+
+.extra {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-tertiary;
+  transition: transform $transition-normal;
+}
+
+.arrowExpanded {
+  transform: rotate(180deg);
+}
+
+// === Body ===
+.body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height $transition-normal;
+}
+
+.bodyOpen {
+  max-height: 2000px; // generous max for animation
+}
+
+.bodyInner {
+  padding: 0 $desktop-spacing-lg $desktop-spacing-lg;
+  font-size: $desktop-font-size-body;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// === States ===
+.disabled {
+  .header {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background: var(--gs-color-bg-card, $color-bg-card);
+    }
+  }
+}
+
+.active {
+  .header {
+    .title {
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+// === Reduced motion ===
+@media (prefers-reduced-motion: reduce) {
+  .arrow,
+  .body,
+  .header {
+    transition: none;
+  }
+}

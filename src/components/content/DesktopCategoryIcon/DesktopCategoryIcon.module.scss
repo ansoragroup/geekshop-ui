@@ -1,0 +1,99 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+  min-width: 0;
+  padding: $spacing-sm;
+  border-radius: $radius-lg;
+  transition: transform $transition-fast, background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.circleWrapper {
+  position: relative;
+}
+
+.circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background $transition-fast;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 $spacing-xs;
+  background: var(--gs-color-sale);
+  color: $color-text-white;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  text-align: center;
+  line-height: $line-height-tight;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  transition: color $transition-fast;
+
+  .root:hover & {
+    color: $color-text-primary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+}

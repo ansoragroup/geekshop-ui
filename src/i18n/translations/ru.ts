@@ -616,6 +616,18 @@ export const ru: TranslationDictionary = {
   'calendar.prevMonth': 'Предыдущий месяц',
   'calendar.nextMonth': 'Следующий месяц',
 
+  // Desktop
+  'desktop.home': 'Главная',
+  'desktop.categories': 'Категории',
+  'desktop.help': 'Помощь',
+  'desktop.account': 'Аккаунт',
+  'desktop.sellerCenter': 'Центр продавца',
+  'desktop.welcomeGuest': 'Добро пожаловать, гость!',
+  'desktop.allCategories': 'Все категории',
+  'desktop.backToTop': 'Наверх',
+  'desktop.showMore': 'Показать ещё',
+  'desktop.copyright': '© 2026 GeekShop. Все права защищены.',
+
   // Form validation
   'form.required': 'Это поле обязательно',
   'form.minLength': 'Значение слишком короткое',

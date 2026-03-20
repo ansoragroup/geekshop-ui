@@ -1,0 +1,161 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow $transition-normal, transform $transition-normal;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+// ─── Content Area ─────────────────────────────────────────────────────────────
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-xl;
+  min-width: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: $spacing-xxs $spacing-md;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-round;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: $color-text-white;
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin: 0;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: $font-size-lg;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  margin: 0;
+  max-width: 400px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: $spacing-xs;
+  margin-top: $spacing-sm;
+  padding: $spacing-sm $desktop-spacing-md;
+  min-height: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $color-text-white;
+    transform: translateX(2px);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  svg {
+    transition: transform $transition-fast;
+  }
+
+  &:hover svg {
+    transform: translateX(2px);
+  }
+}
+
+// ─── Image Area ───────────────────────────────────────────────────────────────
+
+.imageArea {
+  flex-shrink: 0;
+  width: 280px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-normal;
+
+  .root:hover & {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  .ctaButton {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+
+    svg {
+      transition: none;
+    }
+
+    &:hover svg {
+      transform: none;
+    }
+  }
+
+  .image {
+    transition: none;
+
+    .root:hover & {
+      transform: none;
+    }
+  }
+}

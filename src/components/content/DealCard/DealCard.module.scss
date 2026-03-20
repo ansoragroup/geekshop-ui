@@ -2,20 +2,23 @@
 
 .dealCard {
   container-type: inline-size;
-  display: flex;
-  flex-direction: column;
   width: 140px;
   flex-shrink: 0;
-  background: $color-bg-white;
-  border-radius: $radius-lg;
-  overflow: hidden;
   cursor: pointer;
   transition: transform $transition-fast;
-  box-shadow: $shadow-sm;
 
   &:active {
     transform: scale(0.97);
   }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
 }
 
 .imageArea {
@@ -180,7 +183,7 @@
 // ========================================
 @container (min-width: 200px) and (max-width: 320px) {
   // Default vertical card layout
-  .dealCard {
+  .inner {
     width: auto;
   }
 }
@@ -189,7 +192,7 @@
 // Container Query: Expanded (> 320px)
 // ========================================
 @container (min-width: 321px) {
-  .dealCard {
+  .inner {
     flex-direction: row;
     width: auto;
   }
@@ -234,6 +237,41 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .infoArea {
+    padding: $desktop-spacing-lg;
+    gap: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+  }
+
+  .currentPrice {
+    font-size: $font-size-xl;
+  }
+
+  .originalPrice {
+    font-size: $font-size-md;
+  }
+
+  .savingsText {
+    font-size: $font-size-md;
+  }
+
+  .savingsIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .progressLabel {
+    font-size: $font-size-sm;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {
@@ -243,6 +281,10 @@
     &:active {
       transform: none;
     }
+  }
+
+  .inner {
+    transition: none;
   }
 
   .progressFill {

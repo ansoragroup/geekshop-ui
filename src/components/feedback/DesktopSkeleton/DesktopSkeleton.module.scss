@@ -1,0 +1,86 @@
+@use '../../../theme/tokens' as *;
+@use 'sass:color';
+
+// Shimmer animation
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Base
+.skeleton {
+  display: block;
+  background-color: $color-bg-skeleton;
+  box-sizing: border-box;
+}
+
+// Shimmer effect
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    $color-bg-skeleton 25%,
+    color.adjust($color-bg-skeleton, $lightness: -5%) 37%,
+    $color-bg-skeleton 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+// Variants
+.text {
+  width: 100%;
+  height: 16px;
+  border-radius: $radius-xs;
+}
+
+.textLg {
+  height: 20px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.rect {
+  border-radius: $radius-md;
+}
+
+// Multi-line text group
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+  width: 100%;
+}
+
+// Card skeleton
+.card {
+  width: 100%;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $color-border;
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  border-radius: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+  padding: $desktop-spacing-md;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+  }
+}

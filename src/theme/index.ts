@@ -113,6 +113,29 @@ export const tokens = {
     sm: '375px',
     md: '414px',
     lg: '768px',
+    desktop: '1024px',
+    desktopLg: '1440px',
+  },
+  desktop: {
+    contentMaxWidth: '1200px',
+    contentPadding: '24px',
+    sidebarWidth: '240px',
+    headerHeight: '64px',
+    topbarHeight: '32px',
+    footerMinHeight: '200px',
+    spacing: {
+      sm: '12px',
+      md: '16px',
+      lg: '24px',
+      xl: '32px',
+      xxl: '48px',
+    },
+    fontSize: {
+      h1: '32px',
+      h2: '24px',
+      h3: '20px',
+      body: '14px',
+    },
   },
 } as const;
 

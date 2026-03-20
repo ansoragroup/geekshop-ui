@@ -616,6 +616,18 @@ export const en: TranslationDictionary = {
   'calendar.prevMonth': 'Previous month',
   'calendar.nextMonth': 'Next month',
 
+  // Desktop
+  'desktop.home': 'Home',
+  'desktop.categories': 'Categories',
+  'desktop.help': 'Help',
+  'desktop.account': 'Account',
+  'desktop.sellerCenter': 'Seller Center',
+  'desktop.welcomeGuest': 'Welcome, guest!',
+  'desktop.allCategories': 'All Categories',
+  'desktop.backToTop': 'Back to top',
+  'desktop.showMore': 'Show more',
+  'desktop.copyright': '© 2026 GeekShop. All rights reserved.',
+
   // Form validation
   'form.required': 'This field is required',
   'form.minLength': 'Value is too short',

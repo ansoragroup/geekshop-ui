@@ -147,3 +147,37 @@
     height: 88px;
   }
 }
+
+// ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .header {
+    gap: $desktop-spacing-md;
+  }
+
+  .userName {
+    font-size: $font-size-md;
+  }
+
+  .date {
+    font-size: $font-size-sm;
+  }
+
+  .content {
+    font-size: $font-size-md;
+    line-height: $line-height-relaxed;
+  }
+
+  .images {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    gap: $spacing-md;
+  }
+
+  .thumbnail {
+    width: 104px;
+    height: 104px;
+    border-radius: $radius-lg;
+  }
+}

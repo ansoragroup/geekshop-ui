@@ -1,0 +1,118 @@
+@use '../../../theme/tokens' as *;
+
+.appBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: $desktop-header-height;
+  padding: 0 $desktop-spacing-lg;
+  gap: $desktop-spacing-md;
+}
+
+// --- Solid variant ---
+.solid {
+  background: $color-bg-card;
+  border-bottom: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+}
+
+// --- Transparent variant ---
+.transparent {
+  background: transparent;
+  border-bottom: none;
+}
+
+// --- Left section ---
+.left {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  min-width: 0;
+}
+
+// --- Back button ---
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-md;
+  background: none;
+  color: $color-text-primary;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+    color: $color-primary;
+  }
+
+  &:active {
+    background: $color-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+// --- Title ---
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// --- Actions ---
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-md;
+  background: none;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+    color: $color-primary;
+  }
+
+  &:active {
+    background: $color-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backBtn,
+  .actionBtn {
+    transition: none;
+  }
+}

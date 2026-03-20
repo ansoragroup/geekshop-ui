@@ -1,0 +1,96 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  position: fixed;
+  z-index: $z-index-fixed;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 52px;
+  padding: 0 $spacing-lg;
+  border-radius: $radius-round;
+  background: $color-primary;
+  color: $color-text-white;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: $shadow-lg;
+  transition: box-shadow $transition-normal, padding $transition-normal, gap $transition-normal;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $shadow-xl;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-text-white;
+    outline-offset: 2px;
+  }
+}
+
+.expanded {
+  gap: $spacing-sm;
+  padding: 0 $desktop-spacing-lg;
+}
+
+// ─── Icon ────────────────────────────────────────────────────────────────────
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+// ─── Label ───────────────────────────────────────────────────────────────────
+
+.label {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width $transition-normal, opacity $transition-normal;
+
+  .expanded & {
+    max-width: 160px;
+    opacity: 1;
+  }
+}
+
+// ─── Badge ───────────────────────────────────────────────────────────────────
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 $spacing-xs;
+  border-radius: $radius-round;
+  background: $color-error;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  border: 2px solid $color-bg-white;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .label {
+    transition: none;
+  }
+}

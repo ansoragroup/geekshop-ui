@@ -1,0 +1,165 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+}
+
+// === Each avatar item ===
+.item {
+  position: relative;
+  border-radius: $radius-round;
+  box-shadow: 0 0 0 2px $color-bg-white;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 100 !important;
+  }
+}
+
+// === Negative margin per size ===
+.size-sm {
+  .item + .item,
+  .item + .overflowWrapper {
+    margin-left: -8px;
+  }
+}
+
+.size-md {
+  .item + .item,
+  .item + .overflowWrapper {
+    margin-left: -12px;
+  }
+}
+
+.size-lg {
+  .item + .item,
+  .item + .overflowWrapper {
+    margin-left: -16px;
+  }
+}
+
+// === Avatar images & fallback ===
+.avatarImage {
+  display: block;
+  border-radius: $radius-round;
+  object-fit: cover;
+}
+
+.avatarFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-round;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  user-select: none;
+}
+
+.size-sm .avatarFallback { font-size: $font-size-xs; }
+.size-md .avatarFallback { font-size: $font-size-sm; }
+.size-lg .avatarFallback { font-size: $font-size-md; }
+
+// === Overflow circle (+N) ===
+.overflowWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.overflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary-bg, $color-primary-bg);
+  box-shadow: 0 0 0 2px $color-bg-white;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+}
+
+.overflowText {
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-primary, $color-primary);
+  user-select: none;
+}
+
+.size-sm .overflowText { font-size: $font-size-xs; }
+.size-md .overflowText { font-size: $font-size-sm; }
+.size-lg .overflowText { font-size: $font-size-md; }
+
+// === Dropdown list ===
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-index-dropdown;
+  min-width: 200px;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  border: 1px solid $color-border;
+  padding: $spacing-xs 0;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $desktop-spacing-sm;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+}
+
+.dropdownAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-round;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.dropdownAvatarFallback {
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xs;
+  flex-shrink: 0;
+}
+
+.dropdownName {
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .overflow,
+  .dropdownItem {
+    transition: none;
+  }
+}

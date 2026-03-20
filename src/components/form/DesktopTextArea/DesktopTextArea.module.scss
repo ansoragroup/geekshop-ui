@@ -1,0 +1,130 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.textareaWrap {
+  display: flex;
+  background: $color-bg-white;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-md;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover:not(:has(textarea:disabled)) {
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-within {
+    border-color: var(--gs-color-primary, #{$color-primary});
+    box-shadow: 0 0 0 3px $color-primary-bg;
+  }
+}
+
+.textarea {
+  flex: 1;
+  min-height: 100px;
+  max-height: 400px;
+  padding: $desktop-spacing-sm;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+  line-height: $line-height-relaxed;
+  resize: vertical;
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &:disabled {
+    color: $color-text-tertiary;
+    cursor: not-allowed;
+    resize: none;
+  }
+}
+
+// ---- Footer ----
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-sm;
+}
+
+.footerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  line-height: $line-height-normal;
+}
+
+.helper {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+.count {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  flex-shrink: 0;
+  transition: color $transition-fast;
+}
+
+.countWarning {
+  color: var(--gs-color-warning, #{$color-warning});
+}
+
+// ---- Error state ----
+
+.hasError {
+  .textareaWrap {
+    border-color: var(--gs-color-error, #{$color-error});
+
+    &:focus-within {
+      box-shadow: 0 0 0 3px rgba($color-error, 0.15);
+    }
+  }
+}
+
+// ---- Disabled state ----
+
+.disabled {
+  .textareaWrap {
+    background: $color-bg-page;
+    border-color: $color-border-light;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: $color-border-light;
+    }
+  }
+
+  .label {
+    color: $color-text-tertiary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .textareaWrap,
+  .count {
+    transition: none;
+  }
+}

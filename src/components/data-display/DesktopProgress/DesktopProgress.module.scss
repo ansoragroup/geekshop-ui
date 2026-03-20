@@ -1,0 +1,167 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ───────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $spacing-sm;
+}
+
+// ─── Header (label + percentage) ────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.labelText {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+}
+
+.percentage {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-secondary;
+  line-height: $line-height-tight;
+}
+
+// ─── Track ──────────────────────────────────────────────────────────────────
+
+.track {
+  width: 100%;
+  background: var(--gs-color-border, $color-border);
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+// ─── Bar ────────────────────────────────────────────────────────────────────
+
+.bar {
+  height: 100%;
+  border-radius: $radius-round;
+  transition: width $transition-normal;
+  min-width: 0;
+}
+
+// ─── Striped animation ──────────────────────────────────────────────────────
+
+.striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: stripedMove 1s linear infinite;
+}
+
+@keyframes stripedMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 20px 0;
+  }
+}
+
+// ─── Size variants ──────────────────────────────────────────────────────────
+
+.size_sm {
+  .track {
+    height: 6px;
+  }
+
+  .labelText {
+    font-size: $font-size-sm;
+  }
+
+  .percentage {
+    font-size: $font-size-xs;
+  }
+}
+
+.size_md {
+  .track {
+    height: 10px;
+  }
+}
+
+.size_lg {
+  .track {
+    height: 16px;
+  }
+
+  .labelText {
+    font-size: $desktop-font-size-h3;
+  }
+
+  .percentage {
+    font-size: $font-size-md;
+  }
+}
+
+// ─── Color variants ─────────────────────────────────────────────────────────
+
+.variant_default {
+  .bar {
+    background: var(--gs-color-primary, $color-primary);
+  }
+
+  .percentage {
+    color: $color-text-secondary;
+  }
+}
+
+.variant_success {
+  .bar {
+    background: var(--gs-color-success, $color-success);
+  }
+
+  .percentage {
+    color: $color-success;
+  }
+}
+
+.variant_warning {
+  .bar {
+    background: var(--gs-color-warning, $color-warning);
+  }
+
+  .percentage {
+    color: $color-warning;
+  }
+}
+
+.variant_error {
+  .bar {
+    background: var(--gs-color-error, $color-error);
+  }
+
+  .percentage {
+    color: $color-error;
+  }
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+
+  .striped {
+    animation: none;
+  }
+}

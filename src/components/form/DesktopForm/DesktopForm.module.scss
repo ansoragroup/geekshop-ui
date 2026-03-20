@@ -1,0 +1,112 @@
+@use '../../../theme/tokens' as *;
+
+// --- Form ---
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-lg;
+}
+
+// --- Layout variants ---
+
+.layout-horizontal {
+  .formItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $desktop-spacing-md;
+  }
+
+  .label {
+    flex-shrink: 0;
+    width: var(--label-width, 120px);
+    text-align: right;
+    padding-top: 10px; // align with 40px height inputs
+    line-height: $line-height-normal;
+  }
+
+  .control {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.layout-vertical {
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .label {
+    text-align: left;
+  }
+}
+
+// --- FormItem ---
+
+.formItem {
+  // Base styles applied per layout
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  font-family: $font-family;
+}
+
+.required {
+  color: var(--gs-color-error, #{$color-error});
+  margin-left: $spacing-xxs;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.error {
+  font-size: $font-size-sm;
+  color: var(--gs-color-error, #{$color-error});
+  line-height: $line-height-normal;
+}
+
+.description {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+}
+
+// --- Error state ---
+
+.hasError {
+  .label {
+    color: $color-text-primary; // keep label color
+  }
+}
+
+// --- Divider ---
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  padding: $spacing-sm 0;
+}
+
+.dividerTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  white-space: nowrap;
+  font-family: $font-family;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: $color-border;
+}

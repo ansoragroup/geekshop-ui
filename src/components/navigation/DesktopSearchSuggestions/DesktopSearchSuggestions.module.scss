@@ -1,0 +1,127 @@
+@use '../../../theme/tokens' as *;
+
+.panel {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+  padding: $spacing-sm 0;
+}
+
+// --- Group ---
+.group {
+  & + & {
+    border-top: 1px solid $color-border-light;
+    margin-top: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $desktop-spacing-lg;
+}
+
+.groupLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clearBtn {
+  border: none;
+  background: none;
+  color: $color-primary;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  padding: $spacing-xxs $spacing-xs;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+}
+
+// --- Items ---
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  width: 100%;
+  padding: $spacing-sm $desktop-spacing-lg;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: $font-family;
+  text-align: left;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+
+  &:active {
+    background: $color-border-light;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  color: $color-text-tertiary;
+}
+
+.thumbnail {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-page;
+}
+
+.text {
+  flex: 1;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.highlight {
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .clearBtn {
+    transition: none;
+  }
+}

@@ -1,0 +1,105 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  width: 100%;
+}
+
+// ─── Section Title ───────────────────────────────────────────────────────────
+
+.sectionTitle {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0 0 $desktop-spacing-lg;
+  line-height: $line-height-tight;
+}
+
+// ─── Grid ────────────────────────────────────────────────────────────────────
+
+.grid {
+  display: grid;
+  gap: $desktop-spacing-sm;
+}
+
+// ─── Card ────────────────────────────────────────────────────────────────────
+
+.card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+// ─── Card Image ──────────────────────────────────────────────────────────────
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-normal, filter $transition-normal;
+
+  .card:hover & {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+}
+
+// ─── Gradient Overlay ────────────────────────────────────────────────────────
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+// ─── Card Content (text at bottom) ───────────────────────────────────────────
+
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: $desktop-spacing-sm $desktop-spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.cardLabel {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  line-height: $line-height-tight;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cardCount {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: $line-height-tight;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .cardImage {
+    transition: none;
+  }
+}

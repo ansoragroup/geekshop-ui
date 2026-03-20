@@ -54,6 +54,27 @@
   --gs-tabbar-height: #{$tabbar-height};
   --gs-action-bar-height: #{$action-bar-height};
   --gs-safe-area-bottom: #{$safe-area-bottom};
+
+  // Desktop Layout
+  --gs-desktop-content-max-width: #{$desktop-content-max-width};
+  --gs-desktop-content-padding: #{$desktop-content-padding};
+  --gs-desktop-sidebar-width: #{$desktop-sidebar-width};
+  --gs-desktop-header-height: #{$desktop-header-height};
+  --gs-desktop-topbar-height: #{$desktop-topbar-height};
+  --gs-desktop-footer-min-height: #{$desktop-footer-min-height};
+
+  // Desktop Spacing
+  --gs-desktop-spacing-sm: #{$desktop-spacing-sm};
+  --gs-desktop-spacing-md: #{$desktop-spacing-md};
+  --gs-desktop-spacing-lg: #{$desktop-spacing-lg};
+  --gs-desktop-spacing-xl: #{$desktop-spacing-xl};
+  --gs-desktop-spacing-xxl: #{$desktop-spacing-xxl};
+
+  // Desktop Typography
+  --gs-desktop-font-size-h1: #{$desktop-font-size-h1};
+  --gs-desktop-font-size-h2: #{$desktop-font-size-h2};
+  --gs-desktop-font-size-h3: #{$desktop-font-size-h3};
+  --gs-desktop-font-size-body: #{$desktop-font-size-body};
 }
 
 [data-theme="dark"] {

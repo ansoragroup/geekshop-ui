@@ -1,0 +1,79 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ───────────────────────────────────────────────────────────────────
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+}
+
+// ─── QR Code wrapper ────────────────────────────────────────────────────────
+
+.codeWrapper {
+  display: inline-flex;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  background: $color-bg-card;
+  padding: $spacing-sm;
+
+  svg {
+    display: block;
+  }
+}
+
+.placeholder {
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+}
+
+// ─── Label ──────────────────────────────────────────────────────────────────
+
+.label {
+  font-size: $desktop-font-size-body;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  line-height: $line-height-normal;
+  max-width: 100%;
+  word-break: break-all;
+}
+
+// ─── Download button ────────────────────────────────────────────────────────
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $desktop-spacing-md;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--gs-color-primary, $color-primary);
+  cursor: pointer;
+  transition: background-color $transition-fast, box-shadow $transition-fast;
+  white-space: nowrap;
+  min-height: 36px;
+
+  &:hover {
+    background: var(--gs-color-primary-bg, $color-primary-bg);
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .downloadBtn {
+    transition: none;
+  }
+}

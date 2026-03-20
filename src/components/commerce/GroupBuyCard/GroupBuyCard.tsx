@@ -126,6 +126,8 @@ export const GroupBuyCard = forwardRef<HTMLDivElement, GroupBuyCardProps>(
             src={product.image}
             alt={product.name}
             loading="lazy"
+            width={72}
+            height={72}
           />
           <div className={styles.info}>
             <p className={styles.name}>{product.name}</p>
@@ -165,6 +167,8 @@ export const GroupBuyCard = forwardRef<HTMLDivElement, GroupBuyCardProps>(
                   src={slot.src}
                   alt=""
                   loading="lazy"
+                  width={36}
+                  height={36}
                 />
               ) : slot.type === 'filled' ? (
                 <span className={styles.avatarFilled} aria-hidden="true">

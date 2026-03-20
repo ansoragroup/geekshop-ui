@@ -1,0 +1,1587 @@
+- generic [ref=e3]:
+  - banner "Storybook" [ref=e6]:
+    - heading "Storybook" [level=1] [ref=e7]
+    - img
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e13]:
+          - link "Skip to content" [ref=e14] [cursor=pointer]:
+            - /url: "#storybook-preview-wrapper"
+          - link "Storybook" [ref=e16] [cursor=pointer]:
+            - /url: ./
+            - img "Storybook" [ref=e17]
+          - switch "Settings" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+        - generic [ref=e26]: Search for components
+        - search [ref=e27]:
+          - combobox "Search for components" [ref=e28]:
+            - generic:
+              - img
+            - searchbox "Search for components" [ref=e29]
+            - code:
+              - generic: ⌘
+              - text: K
+            - button "Tag filters" [ref=e31] [cursor=pointer]:
+              - img [ref=e32]
+          - button "Create a new story" [ref=e34] [cursor=pointer]:
+            - img [ref=e35]
+        - navigation "Stories" [ref=e38]:
+          - heading "Stories" [level=2] [ref=e39]
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - button "Collapse" [expanded] [ref=e43] [cursor=pointer]:
+                - img [ref=e45]
+                - text: Guides
+              - button "Expand all" [ref=e47] [cursor=pointer]:
+                - img [ref=e48]
+            - link "Accessibility" [ref=e51] [cursor=pointer]:
+              - /url: /?path=/docs/guides-accessibility--docs
+              - img [ref=e53]
+              - text: Accessibility
+            - link "Form Patterns" [ref=e56] [cursor=pointer]:
+              - /url: /?path=/docs/guides-form-patterns--docs
+              - img [ref=e58]
+              - text: Form Patterns
+            - link "Icons" [ref=e61] [cursor=pointer]:
+              - /url: /?path=/docs/guides-icons--docs
+              - img [ref=e63]
+              - text: Icons
+            - link "Internationalization" [ref=e66] [cursor=pointer]:
+              - /url: /?path=/docs/guides-internationalization--docs
+              - img [ref=e68]
+              - text: Internationalization
+            - link "Responsive Behavior" [ref=e71] [cursor=pointer]:
+              - /url: /?path=/docs/guides-responsive-behavior--docs
+              - img [ref=e73]
+              - text: Responsive Behavior
+            - generic [ref=e75]:
+              - button "Collapse" [expanded] [ref=e76] [cursor=pointer]:
+                - img [ref=e78]
+                - text: Docs
+              - button "Expand all" [ref=e80] [cursor=pointer]:
+                - img [ref=e81]
+            - link "Bundle Size" [ref=e84] [cursor=pointer]:
+              - /url: /?path=/docs/docs-bundle-size--docs
+              - img [ref=e86]
+              - text: Bundle Size
+            - link "Colors" [ref=e89] [cursor=pointer]:
+              - /url: /?path=/docs/docs-colors--docs
+              - img [ref=e91]
+              - text: Colors
+            - link "Component Status" [ref=e94] [cursor=pointer]:
+              - /url: /?path=/docs/docs-component-status--docs
+              - img [ref=e96]
+              - text: Component Status
+            - generic [ref=e98]:
+              - link "Getting Started" [ref=e99] [cursor=pointer]:
+                - /url: /?path=/docs/docs-getting-started--docs
+                - img [ref=e101]
+                - text: Getting Started
+              - button "Open context menu" [ref=e103] [cursor=pointer]:
+                - img [ref=e104]
+            - link "Introduction" [ref=e107] [cursor=pointer]:
+              - /url: /?path=/docs/docs-introduction--docs
+              - img [ref=e109]
+              - text: Introduction
+            - link "Shadows" [ref=e112] [cursor=pointer]:
+              - /url: /?path=/docs/docs-shadows--docs
+              - img [ref=e114]
+              - text: Shadows
+            - link "Spacing" [ref=e117] [cursor=pointer]:
+              - /url: /?path=/docs/docs-spacing--docs
+              - img [ref=e119]
+              - text: Spacing
+            - link "Theme Presets" [ref=e122] [cursor=pointer]:
+              - /url: /?path=/docs/docs-theme-presets--docs
+              - img [ref=e124]
+              - text: Theme Presets
+            - link "Theming" [ref=e127] [cursor=pointer]:
+              - /url: /?path=/docs/docs-theming--docs
+              - img [ref=e129]
+              - text: Theming
+            - link "Typography" [ref=e132] [cursor=pointer]:
+              - /url: /?path=/docs/docs-typography--docs
+              - img [ref=e134]
+              - text: Typography
+            - generic [ref=e136]:
+              - button "Collapse" [expanded] [ref=e137] [cursor=pointer]:
+                - img [ref=e139]
+                - text: Design Tokens
+              - button "Expand all" [ref=e141] [cursor=pointer]:
+                - img [ref=e142]
+            - link "Motion" [ref=e145] [cursor=pointer]:
+              - /url: /?path=/docs/design-tokens-motion--docs
+              - img [ref=e147]
+              - text: Motion
+            - generic [ref=e149]:
+              - button "Collapse" [expanded] [ref=e150] [cursor=pointer]:
+                - img [ref=e152]
+                - text: Commerce
+              - button "Expand all" [ref=e154] [cursor=pointer]:
+                - img [ref=e155]
+            - button "ActionBar" [ref=e158] [cursor=pointer]:
+              - generic [ref=e159]:
+                - img [ref=e161]
+                - img [ref=e163]
+              - text: ActionBar
+            - button "AddressCard" [ref=e166] [cursor=pointer]:
+              - generic [ref=e167]:
+                - img [ref=e169]
+                - img [ref=e171]
+              - text: AddressCard
+            - button "CartItem" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]:
+                - img [ref=e177]
+                - img [ref=e179]
+              - text: CartItem
+            - button "DeliveryCard" [ref=e182] [cursor=pointer]:
+              - generic [ref=e183]:
+                - img [ref=e185]
+                - img [ref=e187]
+              - text: DeliveryCard
+            - button "FlashDealStrip" [ref=e190] [cursor=pointer]:
+              - generic [ref=e191]:
+                - img [ref=e193]
+                - img [ref=e195]
+              - text: FlashDealStrip
+            - button "GroupBuyCard" [ref=e198] [cursor=pointer]:
+              - generic [ref=e199]:
+                - img [ref=e201]
+                - img [ref=e203]
+              - text: GroupBuyCard
+            - button "MiniCart" [ref=e206] [cursor=pointer]:
+              - generic [ref=e207]:
+                - img [ref=e209]
+                - img [ref=e211]
+              - text: MiniCart
+            - button "PaymentMethodCard" [ref=e214] [cursor=pointer]:
+              - generic [ref=e215]:
+                - img [ref=e217]
+                - img [ref=e219]
+              - text: PaymentMethodCard
+            - button "QuantityStepper" [ref=e222] [cursor=pointer]:
+              - generic [ref=e223]:
+                - img [ref=e225]
+                - img [ref=e227]
+              - text: QuantityStepper
+            - button "QuickBuyPopup" [ref=e230] [cursor=pointer]:
+              - generic [ref=e231]:
+                - img [ref=e233]
+                - img [ref=e235]
+              - text: QuickBuyPopup
+            - button "ShopCard" [ref=e238] [cursor=pointer]:
+              - generic [ref=e239]:
+                - img [ref=e241]
+                - img [ref=e243]
+              - text: ShopCard
+            - button "SkuSelector" [ref=e246] [cursor=pointer]:
+              - generic [ref=e247]:
+                - img [ref=e249]
+                - img [ref=e251]
+              - text: SkuSelector
+            - generic [ref=e253]:
+              - button "Collapse" [expanded] [ref=e254] [cursor=pointer]:
+                - img [ref=e256]
+                - text: Commerce (Desktop)
+              - button "Expand all" [ref=e258] [cursor=pointer]:
+                - img [ref=e259]
+            - button "DesktopActionBar" [ref=e262] [cursor=pointer]:
+              - generic [ref=e263]:
+                - img [ref=e265]
+                - img [ref=e267]
+              - text: DesktopActionBar
+            - button "DesktopAddressCard" [ref=e270] [cursor=pointer]:
+              - generic [ref=e271]:
+                - img [ref=e273]
+                - img [ref=e275]
+              - text: DesktopAddressCard
+            - button "DesktopCartItem" [ref=e278] [cursor=pointer]:
+              - generic [ref=e279]:
+                - img [ref=e281]
+                - img [ref=e283]
+              - text: DesktopCartItem
+            - button "DesktopDeliveryCard" [ref=e286] [cursor=pointer]:
+              - generic [ref=e287]:
+                - img [ref=e289]
+                - img [ref=e291]
+              - text: DesktopDeliveryCard
+            - button "DesktopGroupBuyCard" [ref=e294] [cursor=pointer]:
+              - generic [ref=e295]:
+                - img [ref=e297]
+                - img [ref=e299]
+              - text: DesktopGroupBuyCard
+            - button "DesktopMiniCart" [ref=e302] [cursor=pointer]:
+              - generic [ref=e303]:
+                - img [ref=e305]
+                - img [ref=e307]
+              - text: DesktopMiniCart
+            - button "DesktopOrderSummary" [ref=e310] [cursor=pointer]:
+              - generic [ref=e311]:
+                - img [ref=e313]
+                - img [ref=e315]
+              - text: DesktopOrderSummary
+            - button "DesktopPaymentMethodCard" [ref=e318] [cursor=pointer]:
+              - generic [ref=e319]:
+                - img [ref=e321]
+                - img [ref=e323]
+              - text: DesktopPaymentMethodCard
+            - button "DesktopQuantityStepper" [ref=e326] [cursor=pointer]:
+              - generic [ref=e327]:
+                - img [ref=e329]
+                - img [ref=e331]
+              - text: DesktopQuantityStepper
+            - button "DesktopQuickBuyPopup" [ref=e334] [cursor=pointer]:
+              - generic [ref=e335]:
+                - img [ref=e337]
+                - img [ref=e339]
+              - text: DesktopQuickBuyPopup
+            - button "DesktopShopCard" [ref=e342] [cursor=pointer]:
+              - generic [ref=e343]:
+                - img [ref=e345]
+                - img [ref=e347]
+              - text: DesktopShopCard
+            - button "DesktopSkuSelector" [ref=e350] [cursor=pointer]:
+              - generic [ref=e351]:
+                - img [ref=e353]
+                - img [ref=e355]
+              - text: DesktopSkuSelector
+            - generic [ref=e357]:
+              - button "Collapse" [expanded] [ref=e358] [cursor=pointer]:
+                - img [ref=e360]
+                - text: Content
+              - button "Expand all" [ref=e362] [cursor=pointer]:
+                - img [ref=e363]
+            - button "CategoryIcon" [ref=e366] [cursor=pointer]:
+              - generic [ref=e367]:
+                - img [ref=e369]
+                - img [ref=e371]
+              - text: CategoryIcon
+            - button "CategoryShowcase" [ref=e374] [cursor=pointer]:
+              - generic [ref=e375]:
+                - img [ref=e377]
+                - img [ref=e379]
+              - text: CategoryShowcase
+            - button "CountdownTimer" [ref=e382] [cursor=pointer]:
+              - generic [ref=e383]:
+                - img [ref=e385]
+                - img [ref=e387]
+              - text: CountdownTimer
+            - button "CouponCard" [ref=e390] [cursor=pointer]:
+              - generic [ref=e391]:
+                - img [ref=e393]
+                - img [ref=e395]
+              - text: CouponCard
+            - button "DealCard" [ref=e398] [cursor=pointer]:
+              - generic [ref=e399]:
+                - img [ref=e401]
+                - img [ref=e403]
+              - text: DealCard
+            - button "HeroBanner" [ref=e406] [cursor=pointer]:
+              - generic [ref=e407]:
+                - img [ref=e409]
+                - img [ref=e411]
+              - text: HeroBanner
+            - button "NoticeBar" [ref=e414] [cursor=pointer]:
+              - generic [ref=e415]:
+                - img [ref=e417]
+                - img [ref=e419]
+              - text: NoticeBar
+            - button "PromoBanner" [ref=e422] [cursor=pointer]:
+              - generic [ref=e423]:
+                - img [ref=e425]
+                - img [ref=e427]
+              - text: PromoBanner
+            - button "SectionHeader" [ref=e430] [cursor=pointer]:
+              - generic [ref=e431]:
+                - img [ref=e433]
+                - img [ref=e435]
+              - text: SectionHeader
+            - button "SocialProof" [ref=e438] [cursor=pointer]:
+              - generic [ref=e439]:
+                - img [ref=e441]
+                - img [ref=e443]
+              - text: SocialProof
+            - generic [ref=e445]:
+              - button "Collapse" [expanded] [ref=e446] [cursor=pointer]:
+                - img [ref=e448]
+                - text: Content (Desktop)
+              - button "Expand all" [ref=e450] [cursor=pointer]:
+                - img [ref=e451]
+            - button "DesktopBannerCarousel" [ref=e454] [cursor=pointer]:
+              - generic [ref=e455]:
+                - img [ref=e457]
+                - img [ref=e459]
+              - text: DesktopBannerCarousel
+            - button "DesktopCategoryIcon" [ref=e462] [cursor=pointer]:
+              - generic [ref=e463]:
+                - img [ref=e465]
+                - img [ref=e467]
+              - text: DesktopCategoryIcon
+            - button "DesktopCountdownTimer" [ref=e470] [cursor=pointer]:
+              - generic [ref=e471]:
+                - img [ref=e473]
+                - img [ref=e475]
+              - text: DesktopCountdownTimer
+            - button "DesktopCouponCard" [ref=e478] [cursor=pointer]:
+              - generic [ref=e479]:
+                - img [ref=e481]
+                - img [ref=e483]
+              - text: DesktopCouponCard
+            - button "DesktopDealCard" [ref=e486] [cursor=pointer]:
+              - generic [ref=e487]:
+                - img [ref=e489]
+                - img [ref=e491]
+              - text: DesktopDealCard
+            - button "DesktopHeroBanner" [ref=e494] [cursor=pointer]:
+              - generic [ref=e495]:
+                - img [ref=e497]
+                - img [ref=e499]
+              - text: DesktopHeroBanner
+            - button "DesktopNoticeBar" [ref=e502] [cursor=pointer]:
+              - generic [ref=e503]:
+                - img [ref=e505]
+                - img [ref=e507]
+              - text: DesktopNoticeBar
+            - button "DesktopPromoBanner" [ref=e510] [cursor=pointer]:
+              - generic [ref=e511]:
+                - img [ref=e513]
+                - img [ref=e515]
+              - text: DesktopPromoBanner
+            - button "DesktopSectionHeader" [ref=e518] [cursor=pointer]:
+              - generic [ref=e519]:
+                - img [ref=e521]
+                - img [ref=e523]
+              - text: DesktopSectionHeader
+            - button "DesktopSocialProof" [ref=e526] [cursor=pointer]:
+              - generic [ref=e527]:
+                - img [ref=e529]
+                - img [ref=e531]
+              - text: DesktopSocialProof
+            - generic [ref=e533]:
+              - button "Collapse" [expanded] [ref=e534] [cursor=pointer]:
+                - img [ref=e536]
+                - text: Data Display
+              - button "Expand all" [ref=e538] [cursor=pointer]:
+                - img [ref=e539]
+            - button "AuthenticityBadge" [ref=e542] [cursor=pointer]:
+              - generic [ref=e543]:
+                - img [ref=e545]
+                - img [ref=e547]
+              - text: AuthenticityBadge
+            - button "Avatar" [ref=e550] [cursor=pointer]:
+              - generic [ref=e551]:
+                - img [ref=e553]
+                - img [ref=e555]
+              - text: Avatar
+            - button "AvatarGroup" [ref=e558] [cursor=pointer]:
+              - generic [ref=e559]:
+                - img [ref=e561]
+                - img [ref=e563]
+              - text: AvatarGroup
+            - button "Badge" [ref=e566] [cursor=pointer]:
+              - generic [ref=e567]:
+                - img [ref=e569]
+                - img [ref=e571]
+              - text: Badge
+            - button "Calendar" [ref=e574] [cursor=pointer]:
+              - generic [ref=e575]:
+                - img [ref=e577]
+                - img [ref=e579]
+              - text: Calendar
+            - button "Cell" [ref=e582] [cursor=pointer]:
+              - generic [ref=e583]:
+                - img [ref=e585]
+                - img [ref=e587]
+              - text: Cell
+            - button "Collapse" [ref=e590] [cursor=pointer]:
+              - generic [ref=e591]:
+                - img [ref=e593]
+                - img [ref=e595]
+              - text: Collapse
+            - button "ComparisonTable" [ref=e598] [cursor=pointer]:
+              - generic [ref=e599]:
+                - img [ref=e601]
+                - img [ref=e603]
+              - text: ComparisonTable
+            - button "ImageLazy" [ref=e606] [cursor=pointer]:
+              - generic [ref=e607]:
+                - img [ref=e609]
+                - img [ref=e611]
+              - text: ImageLazy
+            - button "InfiniteScroll" [ref=e614] [cursor=pointer]:
+              - generic [ref=e615]:
+                - img [ref=e617]
+                - img [ref=e619]
+              - text: InfiniteScroll
+            - button "OrderCard" [ref=e622] [cursor=pointer]:
+              - generic [ref=e623]:
+                - img [ref=e625]
+                - img [ref=e627]
+              - text: OrderCard
+            - button "OrderStatusBar" [ref=e630] [cursor=pointer]:
+              - generic [ref=e631]:
+                - img [ref=e633]
+                - img [ref=e635]
+              - text: OrderStatusBar
+            - button "Progress" [ref=e638] [cursor=pointer]:
+              - generic [ref=e639]:
+                - img [ref=e641]
+                - img [ref=e643]
+              - text: Progress
+            - button "QRCode" [ref=e646] [cursor=pointer]:
+              - generic [ref=e647]:
+                - img [ref=e649]
+                - img [ref=e651]
+              - text: QRCode
+            - button "Rating" [ref=e654] [cursor=pointer]:
+              - generic [ref=e655]:
+                - img [ref=e657]
+                - img [ref=e659]
+              - text: Rating
+            - button "ReviewCard" [ref=e662] [cursor=pointer]:
+              - generic [ref=e663]:
+                - img [ref=e665]
+                - img [ref=e667]
+              - text: ReviewCard
+            - button "SpecsTable" [ref=e670] [cursor=pointer]:
+              - generic [ref=e671]:
+                - img [ref=e673]
+                - img [ref=e675]
+              - text: SpecsTable
+            - button "Steps" [ref=e678] [cursor=pointer]:
+              - generic [ref=e679]:
+                - img [ref=e681]
+                - img [ref=e683]
+              - text: Steps
+            - button "Tag" [ref=e686] [cursor=pointer]:
+              - generic [ref=e687]:
+                - img [ref=e689]
+                - img [ref=e691]
+              - text: Tag
+            - button "Timeline" [ref=e694] [cursor=pointer]:
+              - generic [ref=e695]:
+                - img [ref=e697]
+                - img [ref=e699]
+              - text: Timeline
+            - generic [ref=e701]:
+              - button "Collapse" [expanded] [ref=e702] [cursor=pointer]:
+                - img [ref=e704]
+                - text: Data Display (Desktop)
+              - button "Expand all" [ref=e706] [cursor=pointer]:
+                - img [ref=e707]
+            - button "DesktopAuthenticityBadge" [ref=e710] [cursor=pointer]:
+              - generic [ref=e711]:
+                - img [ref=e713]
+                - img [ref=e715]
+              - text: DesktopAuthenticityBadge
+            - button "DesktopAvatar" [ref=e718] [cursor=pointer]:
+              - generic [ref=e719]:
+                - img [ref=e721]
+                - img [ref=e723]
+              - text: DesktopAvatar
+            - button "DesktopAvatarGroup" [ref=e726] [cursor=pointer]:
+              - generic [ref=e727]:
+                - img [ref=e729]
+                - img [ref=e731]
+              - text: DesktopAvatarGroup
+            - button "DesktopBadge" [ref=e734] [cursor=pointer]:
+              - generic [ref=e735]:
+                - img [ref=e737]
+                - img [ref=e739]
+              - text: DesktopBadge
+            - button "DesktopCalendar" [ref=e742] [cursor=pointer]:
+              - generic [ref=e743]:
+                - img [ref=e745]
+                - img [ref=e747]
+              - text: DesktopCalendar
+            - button "DesktopCell" [ref=e750] [cursor=pointer]:
+              - generic [ref=e751]:
+                - img [ref=e753]
+                - img [ref=e755]
+              - text: DesktopCell
+            - button "DesktopCollapse" [ref=e758] [cursor=pointer]:
+              - generic [ref=e759]:
+                - img [ref=e761]
+                - img [ref=e763]
+              - text: DesktopCollapse
+            - button "DesktopComparisonTable" [ref=e766] [cursor=pointer]:
+              - generic [ref=e767]:
+                - img [ref=e769]
+                - img [ref=e771]
+              - text: DesktopComparisonTable
+            - button "DesktopImageLazy" [ref=e774] [cursor=pointer]:
+              - generic [ref=e775]:
+                - img [ref=e777]
+                - img [ref=e779]
+              - text: DesktopImageLazy
+            - button "DesktopInfiniteScroll" [ref=e782] [cursor=pointer]:
+              - generic [ref=e783]:
+                - img [ref=e785]
+                - img [ref=e787]
+              - text: DesktopInfiniteScroll
+            - button "DesktopOrderCard" [ref=e790] [cursor=pointer]:
+              - generic [ref=e791]:
+                - img [ref=e793]
+                - img [ref=e795]
+              - text: DesktopOrderCard
+            - button "DesktopOrderStatusBar" [ref=e798] [cursor=pointer]:
+              - generic [ref=e799]:
+                - img [ref=e801]
+                - img [ref=e803]
+              - text: DesktopOrderStatusBar
+            - button "DesktopProgress" [ref=e806] [cursor=pointer]:
+              - generic [ref=e807]:
+                - img [ref=e809]
+                - img [ref=e811]
+              - text: DesktopProgress
+            - button "DesktopQRCode" [ref=e814] [cursor=pointer]:
+              - generic [ref=e815]:
+                - img [ref=e817]
+                - img [ref=e819]
+              - text: DesktopQRCode
+            - button "DesktopRating" [ref=e822] [cursor=pointer]:
+              - generic [ref=e823]:
+                - img [ref=e825]
+                - img [ref=e827]
+              - text: DesktopRating
+            - button "DesktopReviewCard" [ref=e830] [cursor=pointer]:
+              - generic [ref=e831]:
+                - img [ref=e833]
+                - img [ref=e835]
+              - text: DesktopReviewCard
+            - button "DesktopSpecsTable" [ref=e838] [cursor=pointer]:
+              - generic [ref=e839]:
+                - img [ref=e841]
+                - img [ref=e843]
+              - text: DesktopSpecsTable
+            - button "DesktopSteps" [ref=e846] [cursor=pointer]:
+              - generic [ref=e847]:
+                - img [ref=e849]
+                - img [ref=e851]
+              - text: DesktopSteps
+            - button "DesktopTag" [ref=e854] [cursor=pointer]:
+              - generic [ref=e855]:
+                - img [ref=e857]
+                - img [ref=e859]
+              - text: DesktopTag
+            - button "DesktopTimeline" [ref=e862] [cursor=pointer]:
+              - generic [ref=e863]:
+                - img [ref=e865]
+                - img [ref=e867]
+              - text: DesktopTimeline
+            - generic [ref=e869]:
+              - button "Collapse" [expanded] [ref=e870] [cursor=pointer]:
+                - img [ref=e872]
+                - text: Feedback
+              - button "Expand all" [ref=e874] [cursor=pointer]:
+                - img [ref=e875]
+            - button "ActionSheet" [ref=e878] [cursor=pointer]:
+              - generic [ref=e879]:
+                - img [ref=e881]
+                - img [ref=e883]
+              - text: ActionSheet
+            - button "BottomSheet" [ref=e886] [cursor=pointer]:
+              - generic [ref=e887]:
+                - img [ref=e889]
+                - img [ref=e891]
+              - text: BottomSheet
+            - button "Dialog" [ref=e894] [cursor=pointer]:
+              - generic [ref=e895]:
+                - img [ref=e897]
+                - img [ref=e899]
+              - text: Dialog
+            - button "Empty" [ref=e902] [cursor=pointer]:
+              - generic [ref=e903]:
+                - img [ref=e905]
+                - img [ref=e907]
+              - text: Empty
+            - button "FloatingBubble" [ref=e910] [cursor=pointer]:
+              - generic [ref=e911]:
+                - img [ref=e913]
+                - img [ref=e915]
+              - text: FloatingBubble
+            - button "Loading" [ref=e918] [cursor=pointer]:
+              - generic [ref=e919]:
+                - img [ref=e921]
+                - img [ref=e923]
+              - text: Loading
+            - button "Modal" [ref=e926] [cursor=pointer]:
+              - generic [ref=e927]:
+                - img [ref=e929]
+                - img [ref=e931]
+              - text: Modal
+            - button "Popover" [ref=e934] [cursor=pointer]:
+              - generic [ref=e935]:
+                - img [ref=e937]
+                - img [ref=e939]
+              - text: Popover
+            - button "Popup" [ref=e942] [cursor=pointer]:
+              - generic [ref=e943]:
+                - img [ref=e945]
+                - img [ref=e947]
+              - text: Popup
+            - button "PullToRefresh" [ref=e950] [cursor=pointer]:
+              - generic [ref=e951]:
+                - img [ref=e953]
+                - img [ref=e955]
+              - text: PullToRefresh
+            - button "Result" [ref=e958] [cursor=pointer]:
+              - generic [ref=e959]:
+                - img [ref=e961]
+                - img [ref=e963]
+              - text: Result
+            - button "ShareSheet" [ref=e966] [cursor=pointer]:
+              - generic [ref=e967]:
+                - img [ref=e969]
+                - img [ref=e971]
+              - text: ShareSheet
+            - button "Skeleton" [ref=e974] [cursor=pointer]:
+              - generic [ref=e975]:
+                - img [ref=e977]
+                - img [ref=e979]
+              - text: Skeleton
+            - button "Swipe" [ref=e982] [cursor=pointer]:
+              - generic [ref=e983]:
+                - img [ref=e985]
+                - img [ref=e987]
+              - text: Swipe
+            - button "Toast" [ref=e990] [cursor=pointer]:
+              - generic [ref=e991]:
+                - img [ref=e993]
+                - img [ref=e995]
+              - text: Toast
+            - button "Tooltip" [ref=e998] [cursor=pointer]:
+              - generic [ref=e999]:
+                - img [ref=e1001]
+                - img [ref=e1003]
+              - text: Tooltip
+            - generic [ref=e1005]:
+              - button "Collapse" [expanded] [ref=e1006] [cursor=pointer]:
+                - img [ref=e1008]
+                - text: Feedback (Desktop)
+              - button "Expand all" [ref=e1010] [cursor=pointer]:
+                - img [ref=e1011]
+            - button "DesktopActionSheet" [ref=e1014] [cursor=pointer]:
+              - generic [ref=e1015]:
+                - img [ref=e1017]
+                - img [ref=e1019]
+              - text: DesktopActionSheet
+            - button "DesktopBottomSheet" [ref=e1022] [cursor=pointer]:
+              - generic [ref=e1023]:
+                - img [ref=e1025]
+                - img [ref=e1027]
+              - text: DesktopBottomSheet
+            - button "DesktopDialog" [ref=e1030] [cursor=pointer]:
+              - generic [ref=e1031]:
+                - img [ref=e1033]
+                - img [ref=e1035]
+              - text: DesktopDialog
+            - button "DesktopEmpty" [ref=e1038] [cursor=pointer]:
+              - generic [ref=e1039]:
+                - img [ref=e1041]
+                - img [ref=e1043]
+              - text: DesktopEmpty
+            - button "DesktopFloatingBubble" [ref=e1046] [cursor=pointer]:
+              - generic [ref=e1047]:
+                - img [ref=e1049]
+                - img [ref=e1051]
+              - text: DesktopFloatingBubble
+            - button "DesktopLoading" [ref=e1054] [cursor=pointer]:
+              - generic [ref=e1055]:
+                - img [ref=e1057]
+                - img [ref=e1059]
+              - text: DesktopLoading
+            - button "DesktopModal" [ref=e1062] [cursor=pointer]:
+              - generic [ref=e1063]:
+                - img [ref=e1065]
+                - img [ref=e1067]
+              - text: DesktopModal
+            - button "DesktopPopover" [ref=e1070] [cursor=pointer]:
+              - generic [ref=e1071]:
+                - img [ref=e1073]
+                - img [ref=e1075]
+              - text: DesktopPopover
+            - button "DesktopPopup" [ref=e1078] [cursor=pointer]:
+              - generic [ref=e1079]:
+                - img [ref=e1081]
+                - img [ref=e1083]
+              - text: DesktopPopup
+            - button "DesktopPullToRefresh" [ref=e1086] [cursor=pointer]:
+              - generic [ref=e1087]:
+                - img [ref=e1089]
+                - img [ref=e1091]
+              - text: DesktopPullToRefresh
+            - button "DesktopResult" [ref=e1094] [cursor=pointer]:
+              - generic [ref=e1095]:
+                - img [ref=e1097]
+                - img [ref=e1099]
+              - text: DesktopResult
+            - button "DesktopShareSheet" [ref=e1102] [cursor=pointer]:
+              - generic [ref=e1103]:
+                - img [ref=e1105]
+                - img [ref=e1107]
+              - text: DesktopShareSheet
+            - button "DesktopSkeleton" [ref=e1110] [cursor=pointer]:
+              - generic [ref=e1111]:
+                - img [ref=e1113]
+                - img [ref=e1115]
+              - text: DesktopSkeleton
+            - button "DesktopSwipe" [ref=e1118] [cursor=pointer]:
+              - generic [ref=e1119]:
+                - img [ref=e1121]
+                - img [ref=e1123]
+              - text: DesktopSwipe
+            - button "DesktopToast" [ref=e1126] [cursor=pointer]:
+              - generic [ref=e1127]:
+                - img [ref=e1129]
+                - img [ref=e1131]
+              - text: DesktopToast
+            - button "DesktopTooltip" [ref=e1134] [cursor=pointer]:
+              - generic [ref=e1135]:
+                - img [ref=e1137]
+                - img [ref=e1139]
+              - text: DesktopTooltip
+            - generic [ref=e1141]:
+              - button "Collapse" [expanded] [ref=e1142] [cursor=pointer]:
+                - img [ref=e1144]
+                - text: Form
+              - button "Expand all" [ref=e1146] [cursor=pointer]:
+                - img [ref=e1147]
+            - button "Button" [ref=e1150] [cursor=pointer]:
+              - generic [ref=e1151]:
+                - img [ref=e1153]
+                - img [ref=e1155]
+              - text: Button
+            - button "CascadePicker" [ref=e1158] [cursor=pointer]:
+              - generic [ref=e1159]:
+                - img [ref=e1161]
+                - img [ref=e1163]
+              - text: CascadePicker
+            - button "Checkbox" [ref=e1166] [cursor=pointer]:
+              - generic [ref=e1167]:
+                - img [ref=e1169]
+                - img [ref=e1171]
+              - text: Checkbox
+            - button "Chip" [ref=e1174] [cursor=pointer]:
+              - generic [ref=e1175]:
+                - img [ref=e1177]
+                - img [ref=e1179]
+              - text: Chip
+            - button "DatePicker" [ref=e1182] [cursor=pointer]:
+              - generic [ref=e1183]:
+                - img [ref=e1185]
+                - img [ref=e1187]
+              - text: DatePicker
+            - button "Form" [ref=e1190] [cursor=pointer]:
+              - generic [ref=e1191]:
+                - img [ref=e1193]
+                - img [ref=e1195]
+              - text: Form
+            - button "ImageUploader" [ref=e1198] [cursor=pointer]:
+              - generic [ref=e1199]:
+                - img [ref=e1201]
+                - img [ref=e1203]
+              - text: ImageUploader
+            - button "Input" [ref=e1206] [cursor=pointer]:
+              - generic [ref=e1207]:
+                - img [ref=e1209]
+                - img [ref=e1211]
+              - text: Input
+            - button "OTPInput" [ref=e1214] [cursor=pointer]:
+              - generic [ref=e1215]:
+                - img [ref=e1217]
+                - img [ref=e1219]
+              - text: OTPInput
+            - button "Radio" [ref=e1222] [cursor=pointer]:
+              - generic [ref=e1223]:
+                - img [ref=e1225]
+                - img [ref=e1227]
+              - text: Radio
+            - button "Select" [ref=e1230] [cursor=pointer]:
+              - generic [ref=e1231]:
+                - img [ref=e1233]
+                - img [ref=e1235]
+              - text: Select
+            - button "Switch" [ref=e1238] [cursor=pointer]:
+              - generic [ref=e1239]:
+                - img [ref=e1241]
+                - img [ref=e1243]
+              - text: Switch
+            - button "TelegramLoginButton" [ref=e1246] [cursor=pointer]:
+              - generic [ref=e1247]:
+                - img [ref=e1249]
+                - img [ref=e1251]
+              - text: TelegramLoginButton
+            - button "TextArea" [ref=e1254] [cursor=pointer]:
+              - generic [ref=e1255]:
+                - img [ref=e1257]
+                - img [ref=e1259]
+              - text: TextArea
+            - generic [ref=e1261]:
+              - button "Collapse" [expanded] [ref=e1262] [cursor=pointer]:
+                - img [ref=e1264]
+                - text: Forms (Desktop)
+              - button "Expand all" [ref=e1266] [cursor=pointer]:
+                - img [ref=e1267]
+            - button "DesktopButton" [ref=e1270] [cursor=pointer]:
+              - generic [ref=e1271]:
+                - img [ref=e1273]
+                - img [ref=e1275]
+              - text: DesktopButton
+            - button "DesktopCascadePicker" [ref=e1278] [cursor=pointer]:
+              - generic [ref=e1279]:
+                - img [ref=e1281]
+                - img [ref=e1283]
+              - text: DesktopCascadePicker
+            - button "DesktopCheckbox" [ref=e1286] [cursor=pointer]:
+              - generic [ref=e1287]:
+                - img [ref=e1289]
+                - img [ref=e1291]
+              - text: DesktopCheckbox
+            - button "DesktopChip" [ref=e1294] [cursor=pointer]:
+              - generic [ref=e1295]:
+                - img [ref=e1297]
+                - img [ref=e1299]
+              - text: DesktopChip
+            - button "DesktopDatePicker" [ref=e1302] [cursor=pointer]:
+              - generic [ref=e1303]:
+                - img [ref=e1305]
+                - img [ref=e1307]
+              - text: DesktopDatePicker
+            - button "DesktopForm" [ref=e1310] [cursor=pointer]:
+              - generic [ref=e1311]:
+                - img [ref=e1313]
+                - img [ref=e1315]
+              - text: DesktopForm
+            - button "DesktopImageUploader" [ref=e1318] [cursor=pointer]:
+              - generic [ref=e1319]:
+                - img [ref=e1321]
+                - img [ref=e1323]
+              - text: DesktopImageUploader
+            - button "DesktopInput" [ref=e1326] [cursor=pointer]:
+              - generic [ref=e1327]:
+                - img [ref=e1329]
+                - img [ref=e1331]
+              - text: DesktopInput
+            - button "DesktopOTPInput" [ref=e1334] [cursor=pointer]:
+              - generic [ref=e1335]:
+                - img [ref=e1337]
+                - img [ref=e1339]
+              - text: DesktopOTPInput
+            - button "DesktopRadio" [ref=e1342] [cursor=pointer]:
+              - generic [ref=e1343]:
+                - img [ref=e1345]
+                - img [ref=e1347]
+              - text: DesktopRadio
+            - button "DesktopSelect" [ref=e1350] [cursor=pointer]:
+              - generic [ref=e1351]:
+                - img [ref=e1353]
+                - img [ref=e1355]
+              - text: DesktopSelect
+            - button "DesktopSwitch" [ref=e1358] [cursor=pointer]:
+              - generic [ref=e1359]:
+                - img [ref=e1361]
+                - img [ref=e1363]
+              - text: DesktopSwitch
+            - button "DesktopTelegramLoginButton" [ref=e1366] [cursor=pointer]:
+              - generic [ref=e1367]:
+                - img [ref=e1369]
+                - img [ref=e1371]
+              - text: DesktopTelegramLoginButton
+            - button "DesktopTextArea" [ref=e1374] [cursor=pointer]:
+              - generic [ref=e1375]:
+                - img [ref=e1377]
+                - img [ref=e1379]
+              - text: DesktopTextArea
+            - generic [ref=e1381]:
+              - button "Collapse" [expanded] [ref=e1382] [cursor=pointer]:
+                - img [ref=e1384]
+                - text: Layout
+              - button "Expand all" [ref=e1386] [cursor=pointer]:
+                - img [ref=e1387]
+            - button "Container" [ref=e1390] [cursor=pointer]:
+              - generic [ref=e1391]:
+                - img [ref=e1393]
+                - img [ref=e1395]
+              - text: Container
+            - button "Divider" [ref=e1398] [cursor=pointer]:
+              - generic [ref=e1399]:
+                - img [ref=e1401]
+                - img [ref=e1403]
+              - text: Divider
+            - button "Footer" [ref=e1406] [cursor=pointer]:
+              - generic [ref=e1407]:
+                - img [ref=e1409]
+                - img [ref=e1411]
+              - text: Footer
+            - button "Grid" [ref=e1414] [cursor=pointer]:
+              - generic [ref=e1415]:
+                - img [ref=e1417]
+                - img [ref=e1419]
+              - text: Grid
+            - button "Section" [ref=e1422] [cursor=pointer]:
+              - generic [ref=e1423]:
+                - img [ref=e1425]
+                - img [ref=e1427]
+              - text: Section
+            - button "TwoColumnLayout" [ref=e1430] [cursor=pointer]:
+              - generic [ref=e1431]:
+                - img [ref=e1433]
+                - img [ref=e1435]
+              - text: TwoColumnLayout
+            - generic [ref=e1437]:
+              - button "Collapse" [expanded] [ref=e1438] [cursor=pointer]:
+                - img [ref=e1440]
+                - text: Layout (Desktop)
+              - button "Expand all" [ref=e1442] [cursor=pointer]:
+                - img [ref=e1443]
+            - button "DesktopContainer" [ref=e1446] [cursor=pointer]:
+              - generic [ref=e1447]:
+                - img [ref=e1449]
+                - img [ref=e1451]
+              - text: DesktopContainer
+            - button "DesktopDivider" [ref=e1454] [cursor=pointer]:
+              - generic [ref=e1455]:
+                - img [ref=e1457]
+                - img [ref=e1459]
+              - text: DesktopDivider
+            - button "DesktopGrid" [ref=e1462] [cursor=pointer]:
+              - generic [ref=e1463]:
+                - img [ref=e1465]
+                - img [ref=e1467]
+              - text: DesktopGrid
+            - button "DesktopSection" [ref=e1470] [cursor=pointer]:
+              - generic [ref=e1471]:
+                - img [ref=e1473]
+                - img [ref=e1475]
+              - text: DesktopSection
+            - button "DesktopShell" [ref=e1478] [cursor=pointer]:
+              - generic [ref=e1479]:
+                - img [ref=e1481]
+                - img [ref=e1483]
+              - text: DesktopShell
+            - generic [ref=e1485]:
+              - button "Collapse" [expanded] [ref=e1486] [cursor=pointer]:
+                - img [ref=e1488]
+                - text: Navigation
+              - button "Expand all" [ref=e1490] [cursor=pointer]:
+                - img [ref=e1491]
+            - button "AppBar" [ref=e1494] [cursor=pointer]:
+              - generic [ref=e1495]:
+                - img [ref=e1497]
+                - img [ref=e1499]
+              - text: AppBar
+            - button "BackToTop" [ref=e1502] [cursor=pointer]:
+              - generic [ref=e1503]:
+                - img [ref=e1505]
+                - img [ref=e1507]
+              - text: BackToTop
+            - button "Breadcrumbs" [ref=e1510] [cursor=pointer]:
+              - generic [ref=e1511]:
+                - img [ref=e1513]
+                - img [ref=e1515]
+              - text: Breadcrumbs
+            - button "CategorySidebar" [ref=e1518] [cursor=pointer]:
+              - generic [ref=e1519]:
+                - img [ref=e1521]
+                - img [ref=e1523]
+              - text: CategorySidebar
+            - button "CurrencySwitcher" [ref=e1526] [cursor=pointer]:
+              - generic [ref=e1527]:
+                - img [ref=e1529]
+                - img [ref=e1531]
+              - text: CurrencySwitcher
+            - button "Dropdown" [ref=e1534] [cursor=pointer]:
+              - generic [ref=e1535]:
+                - img [ref=e1537]
+                - img [ref=e1539]
+              - text: Dropdown
+            - button "FilterBar" [ref=e1542] [cursor=pointer]:
+              - generic [ref=e1543]:
+                - img [ref=e1545]
+                - img [ref=e1547]
+              - text: FilterBar
+            - button "FilterPanel" [ref=e1550] [cursor=pointer]:
+              - generic [ref=e1551]:
+                - img [ref=e1553]
+                - img [ref=e1555]
+              - text: FilterPanel
+            - button "LanguageSwitcher" [ref=e1558] [cursor=pointer]:
+              - generic [ref=e1559]:
+                - img [ref=e1561]
+                - img [ref=e1563]
+              - text: LanguageSwitcher
+            - button "MegaMenu" [ref=e1566] [cursor=pointer]:
+              - generic [ref=e1567]:
+                - img [ref=e1569]
+                - img [ref=e1571]
+              - text: MegaMenu
+            - button "NavBar" [ref=e1574] [cursor=pointer]:
+              - generic [ref=e1575]:
+                - img [ref=e1577]
+                - img [ref=e1579]
+              - text: NavBar
+            - button "Pagination" [ref=e1582] [cursor=pointer]:
+              - generic [ref=e1583]:
+                - img [ref=e1585]
+                - img [ref=e1587]
+              - text: Pagination
+            - button "PopularSearches" [ref=e1590] [cursor=pointer]:
+              - generic [ref=e1591]:
+                - img [ref=e1593]
+                - img [ref=e1595]
+              - text: PopularSearches
+            - button "SearchAutocomplete" [ref=e1598] [cursor=pointer]:
+              - generic [ref=e1599]:
+                - img [ref=e1601]
+                - img [ref=e1603]
+              - text: SearchAutocomplete
+            - button "SearchBar" [ref=e1606] [cursor=pointer]:
+              - generic [ref=e1607]:
+                - img [ref=e1609]
+                - img [ref=e1611]
+              - text: SearchBar
+            - button "SearchSuggestions" [ref=e1614] [cursor=pointer]:
+              - generic [ref=e1615]:
+                - img [ref=e1617]
+                - img [ref=e1619]
+              - text: SearchSuggestions
+            - button "Segmented" [ref=e1622] [cursor=pointer]:
+              - generic [ref=e1623]:
+                - img [ref=e1625]
+                - img [ref=e1627]
+              - text: Segmented
+            - button "TabBar" [ref=e1630] [cursor=pointer]:
+              - generic [ref=e1631]:
+                - img [ref=e1633]
+                - img [ref=e1635]
+              - text: TabBar
+            - button "TabFilter" [ref=e1638] [cursor=pointer]:
+              - generic [ref=e1639]:
+                - img [ref=e1641]
+                - img [ref=e1643]
+              - text: TabFilter
+            - button "Tabs" [ref=e1646] [cursor=pointer]:
+              - generic [ref=e1647]:
+                - img [ref=e1649]
+                - img [ref=e1651]
+              - text: Tabs
+            - button "ThemeSwitcher" [ref=e1654] [cursor=pointer]:
+              - generic [ref=e1655]:
+                - img [ref=e1657]
+                - img [ref=e1659]
+              - text: ThemeSwitcher
+            - button "TopBar" [ref=e1662] [cursor=pointer]:
+              - generic [ref=e1663]:
+                - img [ref=e1665]
+                - img [ref=e1667]
+              - text: TopBar
+            - button "UserDropdown" [ref=e1670] [cursor=pointer]:
+              - generic [ref=e1671]:
+                - img [ref=e1673]
+                - img [ref=e1675]
+              - text: UserDropdown
+            - generic [ref=e1677]:
+              - button "Collapse" [expanded] [ref=e1678] [cursor=pointer]:
+                - img [ref=e1680]
+                - text: Navigation (Desktop)
+              - button "Expand all" [ref=e1682] [cursor=pointer]:
+                - img [ref=e1683]
+            - button "DesktopAppBar" [ref=e1686] [cursor=pointer]:
+              - generic [ref=e1687]:
+                - img [ref=e1689]
+                - img [ref=e1691]
+              - text: DesktopAppBar
+            - button "DesktopCurrencySwitcher" [ref=e1694] [cursor=pointer]:
+              - generic [ref=e1695]:
+                - img [ref=e1697]
+                - img [ref=e1699]
+              - text: DesktopCurrencySwitcher
+            - button "DesktopFilterBar" [ref=e1702] [cursor=pointer]:
+              - generic [ref=e1703]:
+                - img [ref=e1705]
+                - img [ref=e1707]
+              - text: DesktopFilterBar
+            - button "DesktopFilterPanel" [ref=e1710] [cursor=pointer]:
+              - generic [ref=e1711]:
+                - img [ref=e1713]
+                - img [ref=e1715]
+              - text: DesktopFilterPanel
+            - button "DesktopHeader" [ref=e1718] [cursor=pointer]:
+              - generic [ref=e1719]:
+                - img [ref=e1721]
+                - img [ref=e1723]
+              - text: DesktopHeader
+            - button "DesktopLanguageSwitcher" [ref=e1726] [cursor=pointer]:
+              - generic [ref=e1727]:
+                - img [ref=e1729]
+                - img [ref=e1731]
+              - text: DesktopLanguageSwitcher
+            - button "DesktopPopularSearches" [ref=e1734] [cursor=pointer]:
+              - generic [ref=e1735]:
+                - img [ref=e1737]
+                - img [ref=e1739]
+              - text: DesktopPopularSearches
+            - button "DesktopSearchBar" [ref=e1742] [cursor=pointer]:
+              - generic [ref=e1743]:
+                - img [ref=e1745]
+                - img [ref=e1747]
+              - text: DesktopSearchBar
+            - button "DesktopSearchSuggestions" [ref=e1750] [cursor=pointer]:
+              - generic [ref=e1751]:
+                - img [ref=e1753]
+                - img [ref=e1755]
+              - text: DesktopSearchSuggestions
+            - button "DesktopSegmented" [ref=e1758] [cursor=pointer]:
+              - generic [ref=e1759]:
+                - img [ref=e1761]
+                - img [ref=e1763]
+              - text: DesktopSegmented
+            - button "DesktopSidebar" [ref=e1766] [cursor=pointer]:
+              - generic [ref=e1767]:
+                - img [ref=e1769]
+                - img [ref=e1771]
+              - text: DesktopSidebar
+            - button "DesktopTabBar" [ref=e1774] [cursor=pointer]:
+              - generic [ref=e1775]:
+                - img [ref=e1777]
+                - img [ref=e1779]
+              - text: DesktopTabBar
+            - button "DesktopTabFilter" [ref=e1782] [cursor=pointer]:
+              - generic [ref=e1783]:
+                - img [ref=e1785]
+                - img [ref=e1787]
+              - text: DesktopTabFilter
+            - button "DesktopTabs" [ref=e1790] [cursor=pointer]:
+              - generic [ref=e1791]:
+                - img [ref=e1793]
+                - img [ref=e1795]
+              - text: DesktopTabs
+            - button "DesktopThemeSwitcher" [ref=e1798] [cursor=pointer]:
+              - generic [ref=e1799]:
+                - img [ref=e1801]
+                - img [ref=e1803]
+              - text: DesktopThemeSwitcher
+            - button "FloatingToolbar" [ref=e1806] [cursor=pointer]:
+              - generic [ref=e1807]:
+                - img [ref=e1809]
+                - img [ref=e1811]
+              - text: FloatingToolbar
+            - generic [ref=e1813]:
+              - button "Collapse" [expanded] [ref=e1814] [cursor=pointer]:
+                - img [ref=e1816]
+                - text: Product
+              - button "Expand all" [ref=e1818] [cursor=pointer]:
+                - img [ref=e1819]
+            - button "DesktopProductCard" [ref=e1822] [cursor=pointer]:
+              - generic [ref=e1823]:
+                - img [ref=e1825]
+                - img [ref=e1827]
+              - text: DesktopProductCard
+            - button "DesktopProductGrid" [ref=e1830] [cursor=pointer]:
+              - generic [ref=e1831]:
+                - img [ref=e1833]
+                - img [ref=e1835]
+              - text: DesktopProductGrid
+            - button "DesktopProductImageGallery" [ref=e1838] [cursor=pointer]:
+              - generic [ref=e1839]:
+                - img [ref=e1841]
+                - img [ref=e1843]
+              - text: DesktopProductImageGallery
+            - button "InstallmentDisplay" [ref=e1846] [cursor=pointer]:
+              - generic [ref=e1847]:
+                - img [ref=e1849]
+                - img [ref=e1851]
+              - text: InstallmentDisplay
+            - button "PriceDisplay" [ref=e1854] [cursor=pointer]:
+              - generic [ref=e1855]:
+                - img [ref=e1857]
+                - img [ref=e1859]
+              - text: PriceDisplay
+            - button "ProductCard" [ref=e1862] [cursor=pointer]:
+              - generic [ref=e1863]:
+                - img [ref=e1865]
+                - img [ref=e1867]
+              - text: ProductCard
+            - button "ProductCarousel" [ref=e1870] [cursor=pointer]:
+              - generic [ref=e1871]:
+                - img [ref=e1873]
+                - img [ref=e1875]
+              - text: ProductCarousel
+            - button "ProductGrid" [ref=e1878] [cursor=pointer]:
+              - generic [ref=e1879]:
+                - img [ref=e1881]
+                - img [ref=e1883]
+              - text: ProductGrid
+            - button "ProductImageGallery" [ref=e1886] [cursor=pointer]:
+              - generic [ref=e1887]:
+                - img [ref=e1889]
+                - img [ref=e1891]
+              - text: ProductImageGallery
+            - button "ProductListItem" [ref=e1894] [cursor=pointer]:
+              - generic [ref=e1895]:
+                - img [ref=e1897]
+                - img [ref=e1899]
+              - text: ProductListItem
+            - button "RecommendationFeed" [ref=e1902] [cursor=pointer]:
+              - generic [ref=e1903]:
+                - img [ref=e1905]
+                - img [ref=e1907]
+              - text: RecommendationFeed
+            - button "StockIndicator" [ref=e1910] [cursor=pointer]:
+              - generic [ref=e1911]:
+                - img [ref=e1913]
+                - img [ref=e1915]
+              - text: StockIndicator
+            - generic [ref=e1917]:
+              - button "Collapse" [expanded] [ref=e1918] [cursor=pointer]:
+                - img [ref=e1920]
+                - text: Pages
+              - button "Expand all" [ref=e1922] [cursor=pointer]:
+                - img [ref=e1923]
+            - button "AddressFormPage" [ref=e1926] [cursor=pointer]:
+              - generic [ref=e1927]:
+                - img [ref=e1929]
+                - img [ref=e1931]
+              - text: AddressFormPage
+            - button "AddressListPage" [ref=e1934] [cursor=pointer]:
+              - generic [ref=e1935]:
+                - img [ref=e1937]
+                - img [ref=e1939]
+              - text: AddressListPage
+            - button "BrowsingHistoryPage" [ref=e1942] [cursor=pointer]:
+              - generic [ref=e1943]:
+                - img [ref=e1945]
+                - img [ref=e1947]
+              - text: BrowsingHistoryPage
+            - button "CartPage" [ref=e1950] [cursor=pointer]:
+              - generic [ref=e1951]:
+                - img [ref=e1953]
+                - img [ref=e1955]
+              - text: CartPage
+            - button "CategoriesPage" [ref=e1958] [cursor=pointer]:
+              - generic [ref=e1959]:
+                - img [ref=e1961]
+                - img [ref=e1963]
+              - text: CategoriesPage
+            - button "CategoryProductsPage" [ref=e1966] [cursor=pointer]:
+              - generic [ref=e1967]:
+                - img [ref=e1969]
+                - img [ref=e1971]
+              - text: CategoryProductsPage
+            - button "CheckoutPage" [ref=e1974] [cursor=pointer]:
+              - generic [ref=e1975]:
+                - img [ref=e1977]
+                - img [ref=e1979]
+              - text: CheckoutPage
+            - button "CouponCenterPage" [ref=e1982] [cursor=pointer]:
+              - generic [ref=e1983]:
+                - img [ref=e1985]
+                - img [ref=e1987]
+              - text: CouponCenterPage
+            - button "CustomerServicePage" [ref=e1990] [cursor=pointer]:
+              - generic [ref=e1991]:
+                - img [ref=e1993]
+                - img [ref=e1995]
+              - text: CustomerServicePage
+            - button "DeliveryTrackingPage" [ref=e1998] [cursor=pointer]:
+              - generic [ref=e1999]:
+                - img [ref=e2001]
+                - img [ref=e2003]
+              - text: DeliveryTrackingPage
+            - button "EditProfilePage" [ref=e2006] [cursor=pointer]:
+              - generic [ref=e2007]:
+                - img [ref=e2009]
+                - img [ref=e2011]
+              - text: EditProfilePage
+            - button "FAQPage" [ref=e2014] [cursor=pointer]:
+              - generic [ref=e2015]:
+                - img [ref=e2017]
+                - img [ref=e2019]
+              - text: FAQPage
+            - button "FlashSalePage" [ref=e2022] [cursor=pointer]:
+              - generic [ref=e2023]:
+                - img [ref=e2025]
+                - img [ref=e2027]
+              - text: FlashSalePage
+            - button "GroupBuyPage" [ref=e2030] [cursor=pointer]:
+              - generic [ref=e2031]:
+                - img [ref=e2033]
+                - img [ref=e2035]
+              - text: GroupBuyPage
+            - button "HomePage" [ref=e2038] [cursor=pointer]:
+              - generic [ref=e2039]:
+                - img [ref=e2041]
+                - img [ref=e2043]
+              - text: HomePage
+            - button "LoginPage" [ref=e2046] [cursor=pointer]:
+              - generic [ref=e2047]:
+                - img [ref=e2049]
+                - img [ref=e2051]
+              - text: LoginPage
+            - button "NotificationsPage" [ref=e2054] [cursor=pointer]:
+              - generic [ref=e2055]:
+                - img [ref=e2057]
+                - img [ref=e2059]
+              - text: NotificationsPage
+            - button "OnboardingPage" [ref=e2062] [cursor=pointer]:
+              - generic [ref=e2063]:
+                - img [ref=e2065]
+                - img [ref=e2067]
+              - text: OnboardingPage
+            - button "OrderConfirmationPage" [ref=e2070] [cursor=pointer]:
+              - generic [ref=e2071]:
+                - img [ref=e2073]
+                - img [ref=e2075]
+              - text: OrderConfirmationPage
+            - button "OrderDetailPage" [ref=e2078] [cursor=pointer]:
+              - generic [ref=e2079]:
+                - img [ref=e2081]
+                - img [ref=e2083]
+              - text: OrderDetailPage
+            - button "OrdersPage" [ref=e2086] [cursor=pointer]:
+              - generic [ref=e2087]:
+                - img [ref=e2089]
+                - img [ref=e2091]
+              - text: OrdersPage
+            - button "PaymentMethodsPage" [ref=e2094] [cursor=pointer]:
+              - generic [ref=e2095]:
+                - img [ref=e2097]
+                - img [ref=e2099]
+              - text: PaymentMethodsPage
+            - button "PreOrderPage" [ref=e2102] [cursor=pointer]:
+              - generic [ref=e2103]:
+                - img [ref=e2105]
+                - img [ref=e2107]
+              - text: PreOrderPage
+            - button "ProductDetailPage" [ref=e2110] [cursor=pointer]:
+              - generic [ref=e2111]:
+                - img [ref=e2113]
+                - img [ref=e2115]
+              - text: ProductDetailPage
+            - button "ProfilePage" [ref=e2118] [cursor=pointer]:
+              - generic [ref=e2119]:
+                - img [ref=e2121]
+                - img [ref=e2123]
+              - text: ProfilePage
+            - button "RefundStatusPage" [ref=e2126] [cursor=pointer]:
+              - generic [ref=e2127]:
+                - img [ref=e2129]
+                - img [ref=e2131]
+              - text: RefundStatusPage
+            - button "RegisterPage" [ref=e2134] [cursor=pointer]:
+              - generic [ref=e2135]:
+                - img [ref=e2137]
+                - img [ref=e2139]
+              - text: RegisterPage
+            - button "ReturnRequestPage" [ref=e2142] [cursor=pointer]:
+              - generic [ref=e2143]:
+                - img [ref=e2145]
+                - img [ref=e2147]
+              - text: ReturnRequestPage
+            - button "ReviewsPage" [ref=e2150] [cursor=pointer]:
+              - generic [ref=e2151]:
+                - img [ref=e2153]
+                - img [ref=e2155]
+              - text: ReviewsPage
+            - button "SearchPage" [ref=e2158] [cursor=pointer]:
+              - generic [ref=e2159]:
+                - img [ref=e2161]
+                - img [ref=e2163]
+              - text: SearchPage
+            - button "SettingsPage" [ref=e2166] [cursor=pointer]:
+              - generic [ref=e2167]:
+                - img [ref=e2169]
+                - img [ref=e2171]
+              - text: SettingsPage
+            - button "StoreFrontPage" [ref=e2174] [cursor=pointer]:
+              - generic [ref=e2175]:
+                - img [ref=e2177]
+                - img [ref=e2179]
+              - text: StoreFrontPage
+            - button "WishlistPage" [ref=e2182] [cursor=pointer]:
+              - generic [ref=e2183]:
+                - img [ref=e2185]
+                - img [ref=e2187]
+              - text: WishlistPage
+            - button "WriteReviewPage" [ref=e2190] [cursor=pointer]:
+              - generic [ref=e2191]:
+                - img [ref=e2193]
+                - img [ref=e2195]
+              - text: WriteReviewPage
+            - generic [ref=e2197]:
+              - button "Collapse" [expanded] [ref=e2198] [cursor=pointer]:
+                - img [ref=e2200]
+                - text: Pages (Desktop)
+              - button "Expand all" [ref=e2202] [cursor=pointer]:
+                - img [ref=e2203]
+            - button "DesktopCartPage" [ref=e2206] [cursor=pointer]:
+              - generic [ref=e2207]:
+                - img [ref=e2209]
+                - img [ref=e2211]
+              - text: DesktopCartPage
+            - button "DesktopCategoryPage" [ref=e2214] [cursor=pointer]:
+              - generic [ref=e2215]:
+                - img [ref=e2217]
+                - img [ref=e2219]
+              - text: DesktopCategoryPage
+            - button "DesktopCheckoutPage" [ref=e2222] [cursor=pointer]:
+              - generic [ref=e2223]:
+                - img [ref=e2225]
+                - img [ref=e2227]
+              - text: DesktopCheckoutPage
+            - button "DesktopOrdersPage" [ref=e2230] [cursor=pointer]:
+              - generic [ref=e2231]:
+                - img [ref=e2233]
+                - img [ref=e2235]
+              - text: DesktopOrdersPage
+            - button "DesktopProductDetailPage" [ref=e2238] [cursor=pointer]:
+              - generic [ref=e2239]:
+                - img [ref=e2241]
+                - img [ref=e2243]
+              - text: DesktopProductDetailPage
+            - button "DesktopHomePageB" [ref=e2246] [cursor=pointer]:
+              - generic [ref=e2247]:
+                - img [ref=e2249]
+                - img [ref=e2251]
+              - text: DesktopHomePageB
+            - button "DesktopHomePageA" [ref=e2254] [cursor=pointer]:
+              - generic [ref=e2255]:
+                - img [ref=e2257]
+                - img [ref=e2259]
+              - text: DesktopHomePageA
+            - button "DesktopHomePageC" [ref=e2262] [cursor=pointer]:
+              - generic [ref=e2263]:
+                - img [ref=e2265]
+                - img [ref=e2267]
+              - text: DesktopHomePageC
+      - region "Component tests" [ref=e2270]:
+        - generic [ref=e2271]:
+          - heading "Component tests" [level=2] [ref=e2272]
+          - generic [ref=e2273] [cursor=pointer]:
+            - button "Run tests" [ref=e2277]:
+              - img [ref=e2279]
+              - text: Run tests
+            - button "Expand testing module" [ref=e2283]:
+              - img [ref=e2284]
+          - generic [ref=e2286]:
+            - generic [ref=e2289]:
+              - generic [ref=e2290]: Visual tests
+              - generic [ref=e2292]: Set up visual tests
+            - generic [ref=e2294]:
+              - generic [ref=e2295]:
+                - generic [ref=e2296]:
+                  - generic [ref=e2297]: Run component tests
+                  - generic [ref=e2298]: Not run
+                - generic [ref=e2299]:
+                  - switch "Watch mode" [ref=e2300] [cursor=pointer]:
+                    - img [ref=e2301]
+                  - button "Start test run" [ref=e2304] [cursor=pointer]:
+                    - img [ref=e2305]
+              - list [ref=e2307]:
+                - listitem [ref=e2308]:
+                  - generic [ref=e2309]:
+                    - checkbox "Interactions" [checked] [disabled] [ref=e2311]
+                    - generic [ref=e2312]: Interactions
+                  - button "Run tests to see results" [disabled] [ref=e2313]
+                - listitem [ref=e2315]:
+                  - generic [ref=e2316] [cursor=pointer]:
+                    - checkbox "Coverage" [ref=e2318]
+                    - generic [ref=e2319]: Coverage
+                  - button "Coverage unavailable, run tests first" [disabled] [ref=e2320]
+                - listitem [ref=e2322]:
+                  - generic [ref=e2323] [cursor=pointer]:
+                    - checkbox "Accessibility" [ref=e2325]
+                    - generic [ref=e2326]: Accessibility
+                  - button "Run tests to see accessibility results" [disabled] [ref=e2327]
+  - generic [ref=e2330]:
+    - region "Toolbar" [ref=e2331]:
+      - heading "Toolbar" [level=2] [ref=e2332]
+      - toolbar [ref=e2333]:
+        - generic [ref=e2334]:
+          - button "Reload story" [ref=e2335] [cursor=pointer]:
+            - img [ref=e2336]
+          - switch "Measure tool" [ref=e2338] [cursor=pointer]:
+            - img [ref=e2339]
+          - switch "Outline tool" [ref=e2342] [cursor=pointer]:
+            - img [ref=e2343]
+          - button "Viewport size" [ref=e2345] [cursor=pointer]:
+            - img [ref=e2346]
+          - button "Vision filter" [ref=e2350] [cursor=pointer]:
+            - img [ref=e2351]
+          - button "Internationalization locale O'zbek" [ref=e2419] [cursor=pointer]:
+            - img [ref=e2420]
+            - text: O'zbek
+          - button "Display currency UZS (so'm)" [ref=e2422] [cursor=pointer]:
+            - img [ref=e2423]
+            - text: UZS (so'm)
+          - button "Color theme preset Orange (Default)" [ref=e2426] [cursor=pointer]:
+            - img [ref=e2427]
+            - text: Orange (Default)
+          - button "Switch between mobile and desktop Mobile" [ref=e2429] [cursor=pointer]:
+            - img [ref=e2430]
+            - text: Mobile
+        - generic [ref=e2355]:
+          - switch "Change zoom level" [ref=e2356] [cursor=pointer]: 100%
+          - button "Enter full screen" [ref=e2357] [cursor=pointer]:
+            - img [ref=e2358]
+          - button "Share" [ref=e2360] [cursor=pointer]:
+            - img [ref=e2361]
+    - main "Main preview area" [ref=e2364]:
+      - heading "Main preview area" [level=2] [ref=e2365]
+      - generic [ref=e2369]:
+        - link "Skip to sidebar" [ref=e2370] [cursor=pointer]:
+          - /url: "#pages-desktop--taobao-mega-mall"
+        - iframe [ref=e2374]:
+          - generic [ref=f11e2]:
+            - heading "Couldn't find story matching 'pages-desktop--taobao-mega-mall'." [level=1] [ref=f11e3]
+            - paragraph [ref=f11e4]: "The component failed to render properly, likely due to a configuration issue in Storybook. Here are some common causes and how you can address them:"
+            - list [ref=f11e5]:
+              - listitem [ref=f11e6]:
+                - strong [ref=f11e7]: Missing Context/Providers
+                - text: ": You can use decorators to supply specific contexts or providers, which are sometimes necessary for components to render correctly. For detailed instructions on using decorators, please visit the"
+                - link "Decorators documentation" [ref=f11e8] [cursor=pointer]:
+                  - /url: https://storybook.js.org/docs/writing-stories/decorators
+                - text: .
+              - listitem [ref=f11e9]:
+                - strong [ref=f11e10]: Misconfigured Webpack or Vite
+                - text: ": Verify that Storybook picks up all necessary settings for loaders, plugins, and other relevant parameters. You can find step-by-step guides for configuring"
+                - link "Webpack" [ref=f11e11] [cursor=pointer]:
+                  - /url: https://storybook.js.org/docs/builders/webpack
+                - text: or
+                - link "Vite" [ref=f11e12] [cursor=pointer]:
+                  - /url: https://storybook.js.org/docs/builders/vite
+                - text: with Storybook.
+              - listitem [ref=f11e13]:
+                - strong [ref=f11e14]: Missing Environment Variables
+                - text: ": Your Storybook may require specific environment variables to function as intended. You can set up custom environment variables as outlined in the"
+                - link "Environment Variables documentation" [ref=f11e15] [cursor=pointer]:
+                  - /url: https://storybook.js.org/docs/configure/environment-variables
+                - text: .
+            - code [ref=f11e17]: "- Are you sure a story with that id exists? - Please check your stories field of your main.js config. - Also check the browser console and terminal for error messages."
+  - region "Addon panel" [ref=e2377]:
+    - heading "Addon panel" [level=2] [ref=e2378]
+    - generic [ref=e2379]:
+      - generic [ref=e2380]:
+        - generic [ref=e2381]:
+          - button "Move addon panel to bottom" [ref=e2382] [cursor=pointer]:
+            - img [ref=e2383]
+          - button "Hide addon panel" [ref=e2386] [cursor=pointer]:
+            - img [ref=e2387]
+        - generic [ref=e2390]:
+          - button "Scroll backward" [disabled] [ref=e2392]:
+            - img [ref=e2393]
+          - tablist "Available addons" [ref=e2396]:
+            - tab "Controls" [selected] [ref=e2397] [cursor=pointer]:
+              - generic [ref=e2399]: Controls
+            - tab "Actions" [ref=e2400] [cursor=pointer]:
+              - generic [ref=e2402]: Actions
+            - tab "Interactions" [ref=e2403] [cursor=pointer]:
+              - generic [ref=e2405]: Interactions
+            - tab "Visual tests" [ref=e2406] [cursor=pointer]
+            - tab "Accessibility" [ref=e2407] [cursor=pointer]:
+              - generic [ref=e2409]: Accessibility
+            - tab "Code" [ref=e2410] [cursor=pointer]
+          - button "Scroll forward" [ref=e2412] [cursor=pointer]:
+            - img [ref=e2413]
+      - tabpanel "Controls" [ref=e2415]

@@ -26,7 +26,7 @@ export interface ReviewCardProps extends HTMLAttributes<HTMLDivElement> {
 export const ReviewCard = forwardRef<HTMLDivElement, ReviewCardProps>(
   ({ user, rating, variant, content, images, date, className = '', ...rest }, ref) => {
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <article ref={ref} className={`${styles.root} ${className}`} {...rest}>
         {/* Header: avatar + name + date */}
         <div className={styles.header}>
           <Avatar src={user.avatar} name={user.name} size="sm" />
@@ -61,11 +61,13 @@ export const ReviewCard = forwardRef<HTMLDivElement, ReviewCardProps>(
                 alt={`Rasm ${i + 1}`}
                 className={styles.thumbnail}
                 loading="lazy"
+                width={72}
+                height={72}
               />
             ))}
           </div>
         )}
-      </div>
+      </article>
     );
   }
 );

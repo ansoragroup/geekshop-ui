@@ -1,0 +1,292 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Overlay ─────────────────────────────────────────────────────────────────
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: $color-bg-overlay;
+  z-index: $z-index-modal-backdrop;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ─── Dialog ──────────────────────────────────────────────────────────────────
+
+.dialog {
+  width: 680px;
+  max-width: 90vw;
+  max-height: 85vh;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  position: relative;
+  overflow: hidden;
+  animation: dialogIn 0.2s ease;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ─── Close Button ────────────────────────────────────────────────────────────
+
+.closeBtn {
+  position: absolute;
+  top: $desktop-spacing-md;
+  right: $desktop-spacing-md;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+  color: $color-text-secondary;
+  cursor: pointer;
+  z-index: 2;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Content Layout ──────────────────────────────────────────────────────────
+
+.content {
+  display: flex;
+  padding: $desktop-spacing-xl;
+  gap: $desktop-spacing-xl;
+}
+
+// ─── Image Section (Left) ────────────────────────────────────────────────────
+
+.imageSection {
+  flex-shrink: 0;
+  width: 260px;
+}
+
+.productImage {
+  width: 100%;
+  height: 260px;
+  border-radius: $radius-lg;
+  object-fit: cover;
+  background: $color-bg-page;
+}
+
+// ─── Details Section (Right) ─────────────────────────────────────────────────
+
+.detailsSection {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: var(--gs-color-price);
+  line-height: $line-height-tight;
+}
+
+// ─── Variant Section ─────────────────────────────────────────────────────────
+
+.variantSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.sectionLabel {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.chip {
+  padding: $spacing-sm $desktop-spacing-md;
+  background: $color-bg-page;
+  border: 1.5px solid $color-border;
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.chipActive {
+  border-color: var(--gs-color-primary);
+  color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+  font-weight: $font-weight-medium;
+}
+
+// ─── Quantity Section ────────────────────────────────────────────────────────
+
+.quantitySection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.stepperBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: $color-bg-card;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-page;
+  }
+
+  &:disabled {
+    color: $color-text-placeholder;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.stepperValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 36px;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  border-left: 1px solid $color-border;
+  border-right: 1px solid $color-border;
+  font-variant-numeric: tabular-nums;
+}
+
+.stockText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// ─── Add to Cart Button ─────────────────────────────────────────────────────
+
+.addToCartBtn {
+  width: 100%;
+  min-height: 48px;
+  padding: $spacing-md;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: background $transition-fast, box-shadow $transition-fast;
+  margin-top: auto;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog {
+    animation: none;
+  }
+
+  .closeBtn,
+  .chip,
+  .stepperBtn,
+  .addToCartBtn {
+    transition: none;
+  }
+
+  .addToCartBtn:active {
+    transform: none;
+  }
+}

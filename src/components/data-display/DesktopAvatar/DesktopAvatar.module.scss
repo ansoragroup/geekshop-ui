@@ -1,0 +1,140 @@
+@use '../../../theme/tokens' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: $radius-round;
+  overflow: visible;
+  transition: transform $transition-fast;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius-round;
+}
+
+.fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-white;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  user-select: none;
+}
+
+// --- Sizes ---
+.size-sm {
+  .fallback {
+    font-size: $font-size-xs;
+  }
+}
+
+.size-md {
+  .fallback {
+    font-size: $font-size-md;
+  }
+}
+
+.size-lg {
+  .fallback {
+    font-size: $font-size-xl;
+  }
+}
+
+.size-xl {
+  .fallback {
+    font-size: $font-size-xxl;
+  }
+}
+
+// --- Online indicator ---
+.onlineDot {
+  position: absolute;
+  border-radius: $radius-round;
+  border: 2px solid $color-bg-white;
+  box-sizing: border-box;
+}
+
+.online {
+  background-color: $color-success;
+}
+
+.offline {
+  background-color: $color-text-placeholder;
+}
+
+.size-sm .onlineDot {
+  width: 8px;
+  height: 8px;
+  bottom: 0;
+  right: 0;
+}
+
+.size-md .onlineDot {
+  width: 10px;
+  height: 10px;
+  bottom: 1px;
+  right: 1px;
+}
+
+.size-lg .onlineDot {
+  width: 12px;
+  height: 12px;
+  bottom: 1px;
+  right: 1px;
+}
+
+.size-xl .onlineDot {
+  width: 14px;
+  height: 14px;
+  bottom: 2px;
+  right: 2px;
+}
+
+// --- Tooltip ---
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-index-popover;
+  padding: $spacing-xs $spacing-sm;
+  background: $color-text-primary;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  border-radius: $radius-xs;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: $line-height-normal;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: $color-text-primary transparent transparent transparent;
+  }
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    transition: none;
+  }
+}

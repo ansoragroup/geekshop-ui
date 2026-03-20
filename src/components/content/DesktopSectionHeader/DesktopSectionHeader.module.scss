@@ -1,0 +1,151 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $desktop-spacing-sm;
+  padding: $desktop-spacing-sm 0;
+}
+
+// ─── Top Row ──────────────────────────────────────────────────────────────────
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $desktop-spacing-md;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  min-width: 0;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--gs-color-primary);
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 0;
+}
+
+.title {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-regular;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+  margin: 0;
+}
+
+// ─── View All Link ────────────────────────────────────────────────────────────
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $color-text-tertiary;
+  border-radius: 0;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+  }
+}
+
+.count {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: inherit;
+}
+
+.viewAllText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: inherit;
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+  color: inherit;
+}
+
+// ─── Tabs ─────────────────────────────────────────────────────────────────────
+
+.tabsRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+}
+
+.tab {
+  padding: $spacing-sm $desktop-spacing-md;
+  border: none;
+  background: $color-bg-page;
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  border-radius: $desktop-radius-chip;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+    background: $color-primary-bg;
+  }
+}
+
+.tabActive {
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+
+  &:hover {
+    background: var(--gs-color-primary-dark);
+    color: $color-text-white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewAll {
+    transition: none;
+  }
+
+  .tab {
+    transition: none;
+  }
+}

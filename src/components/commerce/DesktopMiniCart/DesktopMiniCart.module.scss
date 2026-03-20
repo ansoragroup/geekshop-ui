@@ -1,0 +1,351 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Wrapper ─────────────────────────────────────────────────────────────────
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+// ─── Trigger ─────────────────────────────────────────────────────────────────
+
+.trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: background $transition-fast, border-color $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+    border-color: $color-text-tertiary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 $spacing-xs;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  line-height: 18px;
+  text-align: center;
+}
+
+// ─── Dropdown ────────────────────────────────────────────────────────────────
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + $spacing-sm);
+  width: 380px;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  z-index: $z-index-dropdown;
+  overflow: hidden;
+  animation: dropdownIn 0.15s ease;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── Empty State ─────────────────────────────────────────────────────────────
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-xxl $desktop-spacing-lg;
+}
+
+.emptyIcon {
+  display: flex;
+  color: $color-text-placeholder;
+}
+
+.emptyText {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+.emptyHint {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  border-bottom: 1px solid $color-border;
+}
+
+.headerTitle {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Items List ──────────────────────────────────────────────────────────────
+
+.itemsList {
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-border;
+    border-radius: $radius-round;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $spacing-md $desktop-spacing-lg;
+  border-bottom: 1px solid $color-border;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $color-bg-page;
+  }
+}
+
+.itemImage {
+  width: 64px;
+  height: 64px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-page;
+}
+
+.itemInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.itemTitle {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.itemVariant {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.itemBottom {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-xxs;
+}
+
+.itemPrice {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-price);
+}
+
+.itemQuantity {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.removeBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: $color-text-tertiary;
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: $color-error;
+    background: rgba($color-error, 0.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+
+.footer {
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  border-top: 1px solid $color-border;
+}
+
+.subtotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.subtotalLabel {
+  font-size: $desktop-font-size-body;
+  color: $color-text-secondary;
+}
+
+.subtotalValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.viewCartBtn {
+  flex: 1;
+  height: 40px;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: $color-text-primary;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    border-color: $color-text-tertiary;
+    background: $color-bg-page;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.checkoutBtn {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: $radius-md;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    animation: none;
+  }
+
+  .trigger,
+  .closeBtn,
+  .item,
+  .removeBtn,
+  .viewCartBtn,
+  .checkoutBtn {
+    transition: none;
+  }
+}

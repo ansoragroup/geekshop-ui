@@ -226,7 +226,9 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
           tabIndex={0}
           {...compoundRest}
         >
-          {children}
+          <div className={styles.inner}>
+            {children}
+          </div>
         </div>
       );
     }
@@ -260,39 +262,41 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
         tabIndex={0}
         {...flatRest}
       >
-        {/* Image container */}
-        <div className={styles.imageWrapper} style={imageAspectRatio ? { aspectRatio: imageAspectRatio } : undefined}>
-          <img src={image} alt={title} className={styles.image} loading="lazy" />
+        <div className={styles.inner}>
+          {/* Image container */}
+          <div className={styles.imageWrapper} style={imageAspectRatio ? { aspectRatio: imageAspectRatio } : undefined}>
+            <img src={image} alt={title} className={styles.image} loading="lazy" />
 
-          {/* Discount badge */}
-          {discount && (
-            <span className={styles.discountBadge}>{discount}</span>
-          )}
+            {/* Discount badge */}
+            {discount && (
+              <span className={styles.discountBadge}>{discount}</span>
+            )}
 
-          {/* Status badge */}
-          {badge && (
-            <span className={`${styles.badge} ${styles[`badge-${badge}`]}`}>
-              {badgeLabels[badge]}
-            </span>
-          )}
-        </div>
-
-        {/* Content */}
-        <div className={styles.content}>
-          <h3 className={styles.title}>{title}</h3>
-
-          <div className={styles.priceRow}>
-            <PriceDisplay
-              price={price}
-              originalPrice={hasDiscount ? originalPrice : undefined}
-              variant={hasDiscount ? 'sale' : 'default'}
-              size="sm"
-            />
+            {/* Status badge */}
+            {badge && (
+              <span className={`${styles.badge} ${styles[`badge-${badge}`]}`}>
+                {badgeLabels[badge]}
+              </span>
+            )}
           </div>
 
-          {soldCount && (
-            <span className={styles.soldCount}>{soldCount}</span>
-          )}
+          {/* Content */}
+          <div className={styles.content}>
+            <h3 className={styles.title}>{title}</h3>
+
+            <div className={styles.priceRow}>
+              <PriceDisplay
+                price={price}
+                originalPrice={hasDiscount ? originalPrice : undefined}
+                variant={hasDiscount ? 'sale' : 'default'}
+                size="sm"
+              />
+            </div>
+
+            {soldCount && (
+              <span className={styles.soldCount}>{soldCount}</span>
+            )}
+          </div>
         </div>
       </div>
     );

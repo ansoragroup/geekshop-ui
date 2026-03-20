@@ -1,0 +1,112 @@
+@use '../../../theme/tokens' as *;
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $desktop-spacing-sm;
+  padding: $desktop-spacing-md 0;
+}
+
+.chipWrapper {
+  position: relative;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 36px;
+  padding: 0 $desktop-spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-round;
+  background: $color-bg-card;
+  color: $color-text-secondary;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    border-color: $color-text-tertiary;
+    color: $color-text-primary;
+  }
+
+  &.active {
+    border-color: $color-primary;
+    background: $color-primary-bg;
+    color: $color-primary;
+  }
+
+  &.open {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px color-mix(in srgb, #{$color-primary} 12%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.chipLabel {
+  line-height: 1;
+}
+
+.chipArrow {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  transition: transform $transition-fast;
+}
+
+.chipArrowOpen {
+  transform: rotate(180deg);
+}
+
+// --- Dropdown ---
+.dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  z-index: $z-index-dropdown;
+  min-width: 160px;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  padding: $spacing-xs 0;
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $desktop-spacing-md;
+  border: none;
+  background: none;
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  color: $color-text-primary;
+  text-align: left;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $color-bg-page;
+  }
+
+  &:active {
+    background: $color-border;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .chipArrow,
+  .dropdownItem {
+    transition: none;
+  }
+}

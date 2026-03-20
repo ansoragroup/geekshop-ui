@@ -1,0 +1,232 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  width: 100%;
+}
+
+.layout {
+  display: flex;
+  gap: $desktop-spacing-md;
+  height: var(--carousel-height, 400px);
+  max-width: $desktop-content-max-width;
+  margin: 0 auto;
+}
+
+// ─── Main Carousel ────────────────────────────────────────────────
+
+.carousel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border-radius: $desktop-radius-banner;
+  overflow: hidden;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.slidesContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  background: var(--slide-bg);
+  color: var(--slide-text-color, #fff);
+  transition: opacity 0.5s ease;
+}
+
+.slideActive {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slideInactive {
+  opacity: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.slideContent {
+  position: relative;
+  z-index: 1;
+  padding: $desktop-spacing-xl $desktop-spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.slideTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slideSubtitle {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: $spacing-sm $spacing-xl;
+  background: $color-bg-card;
+  color: $color-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-round;
+  text-decoration: none;
+  transition: background $transition-fast, transform $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-primary-bg;
+    transform: translateY(-1px);
+  }
+}
+
+// ─── Arrows ──────────────────────────────────────────────────────
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity $transition-fast, background $transition-fast;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-bg-card;
+    outline-offset: 2px;
+  }
+}
+
+.arrowLeft {
+  left: $desktop-spacing-md;
+}
+
+.arrowRight {
+  right: $desktop-spacing-md;
+}
+
+.arrowVisible {
+  opacity: 1;
+}
+
+// ─── Dots ────────────────────────────────────────────────────────
+
+.dots {
+  position: absolute;
+  bottom: $desktop-spacing-md;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-bg-card;
+    outline-offset: 2px;
+  }
+}
+
+.dotActive {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+// ─── Side Panels ─────────────────────────────────────────────────
+
+.sidePanels {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.sidePanel {
+  flex: 1;
+  min-height: 0;
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  overflow: hidden;
+  box-shadow: $desktop-shadow-card;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
+
+  .arrow {
+    transition: none;
+  }
+
+  .dot {
+    transition: none;
+  }
+
+  .ctaButton {
+    transition: none;
+  }
+
+  .dotActive {
+    transform: none;
+  }
+}

@@ -1,0 +1,184 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-lg;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+}
+
+// ─── Price Section ──────────────────────────────────────────────────────────
+
+.priceSection {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.price {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-color-price);
+  line-height: $line-height-tight;
+  white-space: nowrap;
+}
+
+.originalPrice {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+// ─── Utility Buttons ────────────────────────────────────────────────────────
+
+.utilities {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.utilBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--gs-color-primary);
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.utilBtnActive {
+  color: #ff0000;
+  border-color: #ff0000;
+
+  &:hover {
+    color: #ff0000;
+    border-color: #ff0000;
+    background: rgba(#ff0000, 0.05);
+  }
+}
+
+.utilLabel {
+  font-size: $font-size-sm;
+  white-space: nowrap;
+}
+
+// ─── CTA Buttons ────────────────────────────────────────────────────────────
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 $desktop-spacing-lg;
+  border: 1.5px solid var(--gs-color-primary);
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  color: var(--gs-color-primary);
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-bg);
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 $desktop-spacing-xl;
+  border: none;
+  border-radius: $radius-md;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .utilBtn,
+  .secondaryBtn,
+  .primaryBtn {
+    transition: none;
+  }
+
+  .secondaryBtn:active,
+  .primaryBtn:active {
+    transform: none;
+  }
+}

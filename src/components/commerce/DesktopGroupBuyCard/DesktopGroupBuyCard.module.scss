@@ -1,0 +1,291 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: $desktop-spacing-lg;
+  padding: $desktop-spacing-lg;
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  border: none;
+  box-shadow: $desktop-shadow-card;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $desktop-shadow-card-hover;
+  }
+}
+
+.disabled {
+  opacity: 0.65;
+}
+
+// ─── Product Image (Left) ───────────────────────────────────────────────────
+
+.image {
+  width: 120px;
+  height: 120px;
+  border-radius: $desktop-radius-button;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: $color-bg-skeleton;
+}
+
+// ─── Center Section ─────────────────────────────────────────────────────────
+
+.center {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.name {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  line-height: $line-height-tight;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// ─── Prices ─────────────────────────────────────────────────────────────────
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+}
+
+.priceGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.priceLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.groupPrice {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--gs-color-price);
+  line-height: $line-height-tight;
+}
+
+.soloPrice {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+  text-decoration: line-through;
+  line-height: $line-height-tight;
+}
+
+.priceDivider {
+  width: 1px;
+  height: 32px;
+  background: $color-border;
+  flex-shrink: 0;
+}
+
+// ─── Avatars ────────────────────────────────────────────────────────────────
+
+.avatarRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.avatarSlot {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-round;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius-round;
+}
+
+.avatarFilled {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarEmpty {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-round;
+  border: 2px dashed $color-border;
+  background: $color-bg-page;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-text-tertiary;
+}
+
+.memberCount {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  margin-left: $spacing-xs;
+}
+
+// ─── Timer ──────────────────────────────────────────────────────────────────
+
+.timerRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: var(--gs-color-primary);
+}
+
+.timeText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+// ─── Right Section ──────────────────────────────────────────────────────────
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $spacing-sm;
+  width: 160px;
+  flex-shrink: 0;
+}
+
+// ─── Progress Bar ───────────────────────────────────────────────────────────
+
+.progressWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: $color-border;
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gs-color-primary);
+  border-radius: $radius-round;
+  transition: width $transition-normal;
+}
+
+.progressLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  text-align: center;
+}
+
+// ─── Action Buttons ─────────────────────────────────────────────────────────
+
+.joinBtn {
+  width: 100%;
+  min-height: 40px;
+  border: none;
+  border-radius: $desktop-radius-button;
+  background: var(--gs-color-primary);
+  color: $color-text-white;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.soloBtn {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid $color-border;
+  border-radius: $desktop-radius-button;
+  background: $color-bg-card;
+  color: $color-text-primary;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover {
+    border-color: $color-text-tertiary;
+    background: $color-bg-page;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: none;
+  }
+
+  .progressFill {
+    transition: none;
+  }
+
+  .joinBtn,
+  .soloBtn {
+    transition: none;
+
+    &:active:not(:disabled) {
+      transform: none;
+    }
+  }
+}

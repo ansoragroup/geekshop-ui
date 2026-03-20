@@ -1,0 +1,156 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Tag base ───────────────────────────────────────────────────────────────
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: opacity $transition-fast, box-shadow $transition-fast;
+}
+
+.text {
+  line-height: 1;
+}
+
+// ─── Clickable ──────────────────────────────────────────────────────────────
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    opacity: 0.85;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Close button ───────────────────────────────────────────────────────────
+
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-left: $spacing-xxs;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  color: inherit;
+  line-height: 1;
+  transition: opacity $transition-fast;
+  pointer-events: none;
+}
+
+.closableTag:hover .closeBtn {
+  opacity: 0.7;
+  pointer-events: auto;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// ─── Sizes ──────────────────────────────────────────────────────────────────
+
+.size_sm {
+  height: 24px;
+  padding: 0 $spacing-sm;
+  font-size: $font-size-xs;
+}
+
+.size_md {
+  height: 30px;
+  padding: 0 $desktop-spacing-sm;
+  font-size: $font-size-sm;
+}
+
+.size_lg {
+  height: 36px;
+  padding: 0 $desktop-spacing-md;
+  font-size: $font-size-md;
+}
+
+// ─── Solid variant ──────────────────────────────────────────────────────────
+
+.variant_solid {
+  &.color_primary {
+    background-color: var(--gs-color-primary, $color-primary);
+    color: $color-text-white;
+  }
+
+  &.color_success {
+    background-color: var(--gs-color-success, $color-success);
+    color: $color-text-white;
+  }
+
+  &.color_warning {
+    background-color: var(--gs-color-warning, $color-warning);
+    color: $color-text-white;
+  }
+
+  &.color_error {
+    background-color: var(--gs-color-error, $color-error);
+    color: $color-text-white;
+  }
+
+  &.color_default {
+    background-color: $color-bg-page;
+    color: $color-text-secondary;
+  }
+}
+
+// ─── Outline variant ────────────────────────────────────────────────────────
+
+.variant_outline {
+  background-color: transparent;
+  border: 1px solid;
+
+  &.color_primary {
+    border-color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary, $color-primary);
+  }
+
+  &.color_success {
+    border-color: var(--gs-color-success, $color-success);
+    color: var(--gs-color-success, $color-success);
+  }
+
+  &.color_warning {
+    border-color: var(--gs-color-warning, $color-warning);
+    color: var(--gs-color-warning, $color-warning);
+  }
+
+  &.color_error {
+    border-color: var(--gs-color-error, $color-error);
+    color: var(--gs-color-error, $color-error);
+  }
+
+  &.color_default {
+    border-color: $color-border;
+    color: $color-text-secondary;
+  }
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .tag,
+  .closeBtn {
+    transition: none;
+  }
+}

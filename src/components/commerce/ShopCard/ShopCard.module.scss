@@ -194,6 +194,40 @@
 }
 
 // ========================================
+// Container Query: Desktop (>= 600px)
+// ========================================
+@container (min-width: 600px) {
+  .logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .name {
+    font-size: $font-size-xl;
+  }
+
+  .ratingText {
+    font-size: $font-size-md;
+  }
+
+  .statValue {
+    font-size: $font-size-xl;
+  }
+
+  .statLabel {
+    font-size: $font-size-sm;
+  }
+
+  .header {
+    gap: $desktop-spacing-md;
+  }
+
+  .stats {
+    gap: $desktop-spacing-md;
+  }
+}
+
+// ========================================
 // Reduced motion
 // ========================================
 @media (prefers-reduced-motion: reduce) {
