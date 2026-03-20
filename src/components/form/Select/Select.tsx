@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -20,7 +20,7 @@ export interface SelectOption {
 
 export interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected value (controlled) */
-  value?: string | stringcn(];
+  value?: string | string[];
   /** Default value (uncontrolled) */
   defaultValue?: string | string[];
   /** Change handler */
@@ -183,11 +183,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
       ? (Array.isArray(selectedValue) ? selectedValue : []).length > 0
       : !!selectedValue;
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,);
+      className);
 
     const sheetTitle = title || t('select.title');
     const sheetConfirm = confirmText || t('select.confirm');

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useId } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
@@ -21,7 +21,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   /** Whether input is disabled */
   disabled?: boolean;
   /** Input type */
-  type?: InputHTMLAttributes<HTMLInputElement>cn('type'];
+  type?: InputHTMLAttributes<HTMLInputElement>['type'];
   /** Change handler (receives string value) */
   onChange?: (value: string) => void;
   /** Native change handler (receives event) */
@@ -66,11 +66,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       internalRef.current?.focus();
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <div className={rootClass}>

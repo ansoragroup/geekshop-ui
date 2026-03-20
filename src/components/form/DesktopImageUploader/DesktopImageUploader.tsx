@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useCallback, useState } from 'react';
 import type { HTMLAttributes } from 'react';
 import styles from './DesktopImageUploader.module.scss';
@@ -13,7 +13,7 @@ export interface DesktopImageFile {
 
 export interface DesktopImageUploaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Current images (controlled) */
-  value?: DesktopImageFilecn(];
+  value?: DesktopImageFile[];
   /** Change handler */
   onChange?: (files: DesktopImageFile[]) => void;
   /** Max number of images */
@@ -159,10 +159,10 @@ export const DesktopImageUploader = forwardRef<HTMLDivElement, DesktopImageUploa
       [handleClick],
     );
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

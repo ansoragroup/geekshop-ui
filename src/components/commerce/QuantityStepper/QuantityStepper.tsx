@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -33,7 +33,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
     ref,
   ) => {
   const { t } = useGeekShop();
-  const cn(value, setValue] = useControllableState<number>({
+  const [value, setValue] = useControllableState<number>({
     value: valueProp,
     defaultValue: defaultValue ?? min,
     onChange,
@@ -82,11 +82,11 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
     }
   }, [inputValue, min, max, value, setValue]);
 
-  const rootClass = [
+  const rootClass = cn(
     styles.stepper,
     styles[size],
     disabled && styles.disabled,
-    className,);
+    className);
 
   return (
     <div

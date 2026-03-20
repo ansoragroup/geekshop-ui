@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useId, useCallback, useEffect } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
 import styles from './DesktopTextArea.module.scss';
@@ -20,7 +20,7 @@ export interface DesktopTextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTe
   /** Change handler (receives string value) */
   onChange?: (value: string) => void;
   /** Native change handler (receives event) */
-  onNativeChange?: TextareaHTMLAttributes<HTMLTextAreaElement>cn('onChange'];
+  onNativeChange?: TextareaHTMLAttributes<HTMLTextAreaElement>['onChange'];
 }
 
 export const DesktopTextArea = forwardRef<HTMLTextAreaElement, DesktopTextAreaProps>(
@@ -69,11 +69,11 @@ export const DesktopTextArea = forwardRef<HTMLTextAreaElement, DesktopTextAreaPr
     const currentLength = typeof value === 'string' ? value.length : 0;
     const isNearLimit = maxLength ? currentLength > maxLength * 0.9 : false;
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,);
+      className);
 
     const showFooter = !!(showCount && maxLength) || !!error || !!helperText;
 

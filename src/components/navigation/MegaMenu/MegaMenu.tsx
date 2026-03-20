@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useCallback, useEffect, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './MegaMenu.module.scss';
 
@@ -18,7 +18,7 @@ export interface MegaMenuCategory {
   /** Link URL */
   href?: string;
   /** Subcategories shown in the right panel */
-  subcategories?: MegaMenuSubcategorycn(];
+  subcategories?: MegaMenuSubcategory[];
 }
 
 export interface MegaMenuProps extends HTMLAttributes<HTMLElement> {
@@ -48,7 +48,7 @@ const ChevronRightIcon = () => (
 
 export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
   ({ categories, navItems, onCategoryClick, className, ...rest }, ref) => {
-    const rootClass = [styles.megaMenu, className);
+    const rootClass = cn(styles.megaMenu, className);
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

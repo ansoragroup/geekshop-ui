@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './Toast.module.scss';
 

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeaderMinimal.module.scss';
 
@@ -22,7 +22,7 @@ export interface DesktopHeaderMinimalProps extends HTMLAttributes<HTMLElement> {
   /** Cart badge count */
   cartCount?: number;
   /** Category items for bottom bar */
-  categories?: CategoryItemcn(];
+  categories?: CategoryItem[];
   /** Search submit */
   onSearch?: (query: string) => void;
   /** Search input change */
@@ -165,10 +165,10 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
       }
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.header,
       scrolled ? styles.scrolled : '',
-      className,);
+      className);
 
     const formatBadge = (count: number) => (count > 99 ? '99+' : String(count));
 

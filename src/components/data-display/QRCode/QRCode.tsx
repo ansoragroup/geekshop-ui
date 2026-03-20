@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useMemo, type HTMLAttributes } from 'react';
 import { generateQRMatrix } from './qr-encoder';
 import styles from './QRCode.module.scss';

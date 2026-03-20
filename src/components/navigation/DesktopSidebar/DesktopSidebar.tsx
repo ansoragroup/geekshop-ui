@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopSidebar.module.scss';
 
@@ -19,7 +19,7 @@ export interface SidebarBrand {
 
 export interface DesktopSidebarProps extends HTMLAttributes<HTMLDivElement> {
   /** Category list */
-  categories?: SidebarCategorycn(];
+  categories?: SidebarCategory[];
   /** Brand filter options */
   brands?: SidebarBrand[];
   /** Available price range (min/max) */
@@ -120,7 +120,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
       [onCategorySelect],
     );
 
-    const wrapperClass = [styles.sidebar, className);
+    const wrapperClass = cn(styles.sidebar, className);
 
     const hasSections = categories.length > 0 || brands.length > 0 || priceRange || onRatingChange;
 

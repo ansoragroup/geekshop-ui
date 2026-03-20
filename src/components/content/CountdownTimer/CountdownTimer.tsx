@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useEffect, useRef, type HTMLAttributes } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './CountdownTimer.module.scss';
@@ -36,7 +36,7 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
       endedRef.current = true;
       onEnd?.();
     }
-  }, cn(isExpired, onEnd]);
+  }, [isExpired, onEnd]);
 
   const totalHours = days * 24 + hours;
   const display = {
@@ -45,7 +45,7 @@ export const CountdownTimer = forwardRef<HTMLDivElement, CountdownTimerProps>(
     seconds: String(seconds).padStart(2, '0'),
   };
 
-  const rootClass = [styles.countdownTimer, className);
+  const rootClass = cn(styles.countdownTimer, className);
 
   return (
     <div ref={ref} className={rootClass} {...rest}>

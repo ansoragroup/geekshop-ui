@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopInfiniteScroll.module.scss';
 

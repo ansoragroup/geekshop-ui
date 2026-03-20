@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './DesktopAvatarGroup.module.scss';
 

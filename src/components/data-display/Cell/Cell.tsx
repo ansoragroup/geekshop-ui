@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes, type KeyboardEvent } from 'react';
 import styles from './Cell.module.scss';
 

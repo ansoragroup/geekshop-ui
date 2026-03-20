@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type HTMLAttributes } from 'react';
 import styles from './BackToTop.module.scss';
 
@@ -21,7 +21,7 @@ const ArrowUpIcon = () => (
 
 export const BackToTop = forwardRef<HTMLButtonElement, BackToTopProps>(
   ({ threshold = 300, smooth = true, className, onClick, ...rest }, ref) => {
-    const cn(visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
       const handleScroll = () => {
@@ -46,10 +46,10 @@ export const BackToTop = forwardRef<HTMLButtonElement, BackToTopProps>(
       [smooth, onClick],
     );
 
-    const rootClass = [
+    const rootClass = cn(
       styles.backToTop,
       visible ? styles.visible : styles.hidden,
-      className,);
+      className);
 
     return (
       <button

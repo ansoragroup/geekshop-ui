@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useEffect, type ReactNode, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopTabs.module.scss';

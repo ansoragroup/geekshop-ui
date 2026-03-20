@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopSkuSelector.module.scss';
 
@@ -14,7 +14,7 @@ export interface DesktopSkuOption {
 
 export interface DesktopSkuVariant {
   name: string;
-  options: DesktopSkuOptioncn(];
+  options: DesktopSkuOption[];
 }
 
 export interface DesktopSkuSelectorProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
@@ -118,7 +118,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
                     styles.chip,
                     isSelected && styles.chipSelected,
                     isDisabled && styles.chipDisabled,
-                    option.outOfStock && styles.chipOutOfStock,);
+                    option.outOfStock && styles.chipOutOfStock];
 
                   return (
                     <div

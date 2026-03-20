@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useId } from 'react';
 import type { FormHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import styles from './DesktopForm.module.scss';
@@ -36,7 +36,7 @@ export const DesktopForm = forwardRef<HTMLFormElement, DesktopFormProps>(
 
     const rootClass = cn(styles.root,
       styles[`layout-${layout}`],
-      className,);
+      className);
 
     return (
       <form
@@ -88,7 +88,7 @@ export const DesktopFormItem = forwardRef<HTMLDivElement, DesktopFormItemProps>(
 
     const rootClass = cn(styles.formItem,
       error && styles.hasError,
-      className,);
+      className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

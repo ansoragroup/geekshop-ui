@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './DesktopHeroBanner.module.scss';
 

@@ -30,7 +30,7 @@ export const Container = forwardRef<HTMLElement, ContainerProps>(
     hasTabbar && !hasActionBar && styles.withTabbar,
     hasActionBar && !hasTabbar && styles.withActionBar,
     hasActionBar && hasTabbar && styles.withActionBarAndTabbar,
-    className,);
+    className);
 
   return (
     <main ref={ref} className={classNames} {...rest}>

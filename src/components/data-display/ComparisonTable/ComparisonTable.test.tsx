@@ -124,7 +124,7 @@ describe('ComparisonTable', () => {
     ];
     render(<ComparisonTable products={products} specs={specsWithMissing} />);
     expect(screen.getByText('-')).toBeInTheDocument();
-  });
+  }];
 
   it('renders string spec values', () => {
     render(<ComparisonTable products={products} specs={specs} />);

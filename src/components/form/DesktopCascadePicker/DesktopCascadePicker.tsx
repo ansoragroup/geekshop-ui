@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -11,7 +11,7 @@ export interface DesktopCascadeOption {
   /** Display label */
   label: string;
   /** Child options (next column) */
-  children?: DesktopCascadeOptioncn(];
+  children?: DesktopCascadeOption[];
   /** Whether this option is disabled */
   disabled?: boolean;
 }
@@ -217,12 +217,12 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
 
     const isValueSelected = selectedValue.length > 0;
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className,);
+      className);
 
     return (
       <div ref={internalRef} className={rootClass} onKeyDown={handleKeyDown} {...rest}>
@@ -264,7 +264,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                 <div
                   key={depth}
                   className={styles.column}
-                  ref={(el) => { columnRefs.currentcn(depth] = el; }}
+                  ref={(el) => { columnRefs.current[depth] = el; }}
                   role="listbox"
                   aria-label={`Level ${depth + 1}`}
                 >
@@ -275,7 +275,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                     const optionClass = [
                       styles.option,
                       isSelected && styles.optionSelected,
-                      option.disabled && styles.optionDisabled,);
+                      option.disabled && styles.optionDisabled];
 
                     return (
                       <button

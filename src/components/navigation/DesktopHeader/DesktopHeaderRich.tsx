@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeaderRich.module.scss';
 
@@ -29,7 +29,7 @@ export interface DesktopHeaderRichProps extends HTMLAttributes<HTMLElement> {
   /** Cart badge count */
   cartCount?: number;
   /** Category items for bottom bar */
-  categories?: CategoryItemcn(];
+  categories?: CategoryItem[];
   /** Promo links shown in second row */
   promoLinks?: PromoLink[];
   /** Location label shown in top bar */
@@ -189,10 +189,10 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
       }
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.header,
       scrolled ? styles.scrolled : '',
-      className,);
+      className);
 
     const formatBadge = (count: number) => (count > 99 ? '99+' : String(count));
 

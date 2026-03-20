@@ -66,7 +66,7 @@ export const DesktopButton = forwardRef<HTMLButtonElement, DesktopButtonProps>(
       fullWidth && styles.fullWidth,
       loading && styles.loading,
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <button

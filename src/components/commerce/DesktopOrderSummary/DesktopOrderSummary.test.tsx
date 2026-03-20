@@ -77,7 +77,7 @@ describe('DesktopOrderSummary', () => {
     render(<DesktopOrderSummary {...defaultProps} trustBadges={trustBadges} />);
     expect(screen.getByText('Free shipping on orders over 100k')).toBeInTheDocument();
     expect(screen.getByText('Secure checkout')).toBeInTheDocument();
-  });
+  }];
 
   it('applies custom className', () => {
     const { container } = render(

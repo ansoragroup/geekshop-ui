@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useCallback, useEffect } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -47,7 +47,7 @@ export const DesktopOTPInput = forwardRef<HTMLInputElement, DesktopOTPInputProps
     },
     ref,
   ) => {
-    const inputRefs = useRef<(HTMLInputElement | null)cn(]>([]);
+    const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     const compositeRef = useRef<HTMLInputElement>(null);
     useImperativeHandle(ref, () => compositeRef.current!, []);
 
@@ -134,11 +134,11 @@ export const DesktopOTPInput = forwardRef<HTMLInputElement, DesktopOTPInputProps
       }
     }, [autoFocus, focusInput]);
 
-    const rootClass = [styles.root, className);
+    const rootClass = cn(styles.root, className);
 
     return (
       <div className={rootClass}>
-        <div className={styles.boxes} role="group" aria-label={restcn('aria-label'] ?? 'OTP code input'}>
+        <div className={styles.boxes} role="group" aria-label={restcn('aria-label') ?? 'OTP code input'}>
           {Array.from({ length }, (_, i) => {
             const char = value[i] ?? '';
             const isFilled = char !== '';
@@ -149,7 +149,7 @@ export const DesktopOTPInput = forwardRef<HTMLInputElement, DesktopOTPInputProps
               isFilled && styles.filled,
               isActive && styles.active,
               error && styles.error,
-              disabled && styles.disabled,);
+              disabled && styles.disabled];
 
             return (
               <input

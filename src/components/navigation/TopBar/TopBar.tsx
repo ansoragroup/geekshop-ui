@@ -4,14 +4,14 @@ import styles from './TopBar.module.scss';
 
 export interface TopBarProps extends HTMLAttributes<HTMLElement> {
   /** Items rendered on the left side (e.g. welcome text, links) */
-  leftItems?: ReactNodecn(];
+  leftItems?: ReactNode[];
   /** Items rendered on the right side (e.g. language, currency) */
   rightItems?: ReactNode[];
 }
 
 export const TopBar = forwardRef<HTMLElement, TopBarProps>(
   ({ leftItems, rightItems, className, ...rest }, ref) => {
-    const rootClass = [styles.topBar, className);
+    const rootClass = cn(styles.topBar, className);
 
     return (
       <nav ref={ref} className={rootClass} aria-label="Utility navigation" {...rest}>

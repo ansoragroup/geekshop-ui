@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { useCallback } from 'react';
 import styles from './DesktopPaymentMethodCard.module.scss';
 
@@ -121,7 +121,7 @@ export const DesktopPaymentMethodCard = ({
     if (selectable) {
       onSelect?.();
     }
-  }, cn(selectable, onSelect]);
+  }, [selectable, onSelect]);
 
   const handleSelectKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -145,10 +145,10 @@ export const DesktopPaymentMethodCard = ({
 
   const IconComponent = CARD_ICONS[method.type] ?? CashIcon;
 
-  const rootClass = [
+  const rootClass = cn(
     styles.root,
     selected && styles.selected,
-    className,);
+    className);
 
   return (
     <div className={rootClass}>

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { PriceDisplay } from '../PriceDisplay';

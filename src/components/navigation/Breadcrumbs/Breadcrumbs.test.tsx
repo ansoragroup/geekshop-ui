@@ -98,7 +98,7 @@ describe('Breadcrumbs', () => {
     render(<Breadcrumbs items={items} />);
     fireEvent.click(screen.getByText('Home'));
     expect(onClick).toHaveBeenCalledOnce();
-  });
+  }];
 
   it('applies custom className', () => {
     const { container } = render(<Breadcrumbs items={defaultItems} className="custom" />);

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -13,7 +13,7 @@ export interface CascadeOption {
   /** Display label */
   label: string;
   /** Child options (next column) */
-  children?: CascadeOptioncn(];
+  children?: CascadeOption[];
   /** Whether this option is disabled */
   disabled?: boolean;
 }
@@ -212,11 +212,11 @@ export const CascadePicker = forwardRef<HTMLDivElement, CascadePickerProps>(
 
     const isValueSelected = selectedValue.length > 0;
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,);
+      className);
 
     const sheetTitle = title || t('cascadePicker.title');
     const placeholderText = placeholder || t('cascadePicker.placeholder');
@@ -293,7 +293,7 @@ export const CascadePicker = forwardRef<HTMLDivElement, CascadePickerProps>(
                     key={depth}
                     className={styles.column}
                     style={colStyle}
-                    ref={(el) => { columnRefs.currentcn(depth] = el; }}
+                    ref={(el) => { columnRefs.current[depth] = el; }}
                     role="listbox"
                     aria-label={`${t('cascadePicker.column')} ${depth + 1}`}
                   >
@@ -302,7 +302,7 @@ export const CascadePicker = forwardRef<HTMLDivElement, CascadePickerProps>(
                       const optionClass = [
                         styles.option,
                         isSelected && styles.optionSelected,
-                        option.disabled && styles.optionDisabled,);
+                        option.disabled && styles.optionDisabled];
 
                       return (
                         <button

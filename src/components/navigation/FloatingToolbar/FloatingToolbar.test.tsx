@@ -39,7 +39,7 @@ describe('FloatingToolbar', () => {
     ];
     render(<FloatingToolbar items={itemsHighBadge} />);
     expect(screen.getByText('99+')).toBeInTheDocument();
-  });
+  }];
 
   it('does not render badge when badge is 0', () => {
     const itemsZeroBadge: FloatingToolbarItem[] = [
@@ -47,7 +47,7 @@ describe('FloatingToolbar', () => {
     ];
     render(<FloatingToolbar items={itemsZeroBadge} />);
     expect(screen.queryByLabelText(/items/)).not.toBeInTheDocument();
-  });
+  }];
 
   it('calls onClick when item is clicked', () => {
     const onClick = vi.fn();

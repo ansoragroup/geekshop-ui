@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, createContext, useContext, useCallback, useId } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -53,7 +53,7 @@ export const DesktopRadioGroup = forwardRef<HTMLDivElement, DesktopRadioGroupPro
     const generatedName = useId();
     const name = nameProp ?? generatedName;
 
-    const cn(value, setValue] = useControllableState<string>({
+    const [value, setValue] = useControllableState<string>({
       value: controlledValue,
       defaultValue: defaultValue ?? '',
       onChange,
@@ -66,10 +66,10 @@ export const DesktopRadioGroup = forwardRef<HTMLDivElement, DesktopRadioGroupPro
       [setValue],
     );
 
-    const rootClass = [
+    const rootClass = cn(
       styles.group,
       styles[`direction-${direction}`],
-      className,);
+      className);
 
     return (
       <DesktopRadioGroupContext value={{ name, value, disabled, onChange: handleChange }}>
@@ -123,7 +123,7 @@ export const DesktopRadio = forwardRef<HTMLLabelElement, DesktopRadioProps>(
     const rootClass = cn(styles.radio,
       isChecked && styles.checked,
       isDisabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <label

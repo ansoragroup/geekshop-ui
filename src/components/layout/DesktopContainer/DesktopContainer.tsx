@@ -28,7 +28,7 @@ export const DesktopContainer = forwardRef<HTMLDivElement, DesktopContainerProps
   ) => {
     const rootClass = cn(styles.root,
       fullWidth && styles.fullWidth,
-      className,);
+      className);
 
     return (
       <div

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopOrderStatusBar.module.scss';
 

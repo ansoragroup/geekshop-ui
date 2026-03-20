@@ -34,7 +34,7 @@ export const TwoColumnLayout = forwardRef<HTMLDivElement, TwoColumnLayoutProps>(
   ) => {
     const rootClass = cn(styles.root,
       sidebarPosition === 'right' && styles.reversed,
-      className,);
+      className);
 
     const sidebarWidthValue =
       typeof sidebarWidth === 'number' ? `${sidebarWidth}px` : sidebarWidth;

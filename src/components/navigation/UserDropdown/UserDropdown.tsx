@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './UserDropdown.module.scss';
 
@@ -18,7 +18,7 @@ export interface UserDropdownProps extends HTMLAttributes<HTMLDivElement> {
   /** URL for user avatar image */
   userAvatar?: string;
   /** Menu items to display when logged in */
-  items?: UserDropdownItemcn(];
+  items?: UserDropdownItem[];
   /** Whether the user is logged in */
   isLoggedIn?: boolean;
   /** Callback when sign in is clicked */
@@ -111,7 +111,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
       return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen]);
 
-    const wrapperClass = [styles.wrapper, className);
+    const wrapperClass = cn(styles.wrapper, className);
 
     return (
       <div

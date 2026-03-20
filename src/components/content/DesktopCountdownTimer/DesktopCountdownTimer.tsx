@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useEffect, useRef, type HTMLAttributes } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './DesktopCountdownTimer.module.scss';

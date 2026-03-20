@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type ElementType, type MouseEventHandler } from 'react';
 import styles from './DesktopCategoryIcon.module.scss';
 

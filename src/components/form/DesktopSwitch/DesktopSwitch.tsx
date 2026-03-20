@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useId } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -49,7 +49,7 @@ export const DesktopSwitch = forwardRef<HTMLButtonElement, DesktopSwitchProps>(
     const generatedId = useId();
     const switchId = externalId ?? generatedId;
 
-    const cn(checked, setChecked] = useControllableState<boolean>({
+    const [checked, setChecked] = useControllableState<boolean>({
       value: controlledChecked,
       defaultValue: defaultChecked ?? false,
       onChange,
@@ -67,10 +67,10 @@ export const DesktopSwitch = forwardRef<HTMLButtonElement, DesktopSwitchProps>(
       }
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       disabled && styles.disabled,
-      className,);
+      className);
 
     const trackClass = cn(styles.track,
       styles[`size-${size}`],

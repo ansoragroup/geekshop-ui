@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useId, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './Rating.module.scss';

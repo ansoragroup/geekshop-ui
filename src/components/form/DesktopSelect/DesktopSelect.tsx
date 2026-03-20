@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -18,7 +18,7 @@ export interface DesktopSelectOption {
 
 export interface DesktopSelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected value (controlled) */
-  value?: string | stringcn(];
+  value?: string | string[];
   /** Default value (uncontrolled) */
   defaultValue?: string | string[];
   /** Change handler */
@@ -237,12 +237,12 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
       ? (Array.isArray(selectedValue) ? selectedValue : []).length > 0
       : !!selectedValue;
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className,);
+      className);
 
     return (
       <div ref={internalRef} className={rootClass} onKeyDown={handleKeyDown} {...rest}>
@@ -309,14 +309,14 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
               )}
               {filteredOptions.map((option, index) => {
                 const isSelected = multiple
-                  ? (Array.isArray(selectedValue) ? selectedValue : cn(]).includes(option.value)
+                  ? (Array.isArray(selectedValue) ? selectedValue : []).includes(option.value)
                   : selectedValue === option.value;
 
                 const optionClass = [
                   styles.option,
                   isSelected && styles.optionSelected,
                   option.disabled && styles.optionDisabled,
-                  index === highlightedIndex && styles.optionHighlighted,);
+                  index === highlightedIndex && styles.optionHighlighted];
 
                 return (
                   <button

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopQuantityStepper.module.scss';
@@ -58,7 +58,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
     },
     ref,
   ) => {
-    const cn(value, setValue] = useControllableState<number>({
+    const [value, setValue] = useControllableState<number>({
       value: valueProp,
       defaultValue: defaultValue ?? min,
       onChange,
@@ -117,11 +117,11 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
       [],
     );
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       styles[size],
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <div

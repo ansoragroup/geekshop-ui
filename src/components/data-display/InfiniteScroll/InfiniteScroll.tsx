@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';

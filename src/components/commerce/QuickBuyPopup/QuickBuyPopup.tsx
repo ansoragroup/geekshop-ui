@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
@@ -20,7 +20,7 @@ export interface QuickBuyProduct {
 
 export interface QuickBuyPopupProps extends HTMLAttributes<HTMLDivElement> {
   product: QuickBuyProduct;
-  variants?: QuickBuyVariantcn(];
+  variants?: QuickBuyVariant[];
   onClose?: () => void;
   onAddToCart?: (variantId: string | null, quantity: number) => void;
   open?: boolean;
@@ -56,7 +56,7 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
   if (!open) return null;
 
   return (
-    <div ref={ref} className={[styles.overlay, className)} onClick={onClose} role="presentation" {...rest}>
+    <div ref={ref} className={cn(styles.overlay, className)} onClick={onClose} role="presentation" {...rest}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div
         ref={sheetRef}

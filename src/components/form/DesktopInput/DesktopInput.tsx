@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useId } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import styles from './DesktopInput.module.scss';
@@ -78,7 +78,7 @@ export const DesktopInput = forwardRef<HTMLInputElement, DesktopInputProps>(
     ref,
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => internalRef.current!, cn(]);
+    useImperativeHandle(ref, () => internalRef.current!, []);
 
     const generatedId = useId();
     const inputId = externalId ?? generatedId;
@@ -95,13 +95,13 @@ export const DesktopInput = forwardRef<HTMLInputElement, DesktopInputProps>(
       onChange?.(e.target.value);
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       styles[`size-${size}`],
       hasError && styles.hasError,
       success && styles.hasSuccess,
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <div className={rootClass}>

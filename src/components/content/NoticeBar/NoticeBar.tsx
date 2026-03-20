@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import styles from './NoticeBar.module.scss';
@@ -58,7 +58,7 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
     },
     ref,
   ) => {
-    const cn(visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(true);
     const textRef = useRef<HTMLSpanElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [animationDuration, setAnimationDuration] = useState<number | null>(null);
@@ -101,10 +101,10 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
         : {}),
     } as React.CSSProperties;
 
-    const wrapperClasses = [
+    const wrapperClasses = cn(
       styles.noticeBar,
       isScroll ? styles.scroll : styles.static,
-      className,);
+      className);
 
     return (
       <div

@@ -37,7 +37,7 @@ describe('CategoryShowcase', () => {
     ];
     render(<CategoryShowcase categories={noCounts} />);
     expect(screen.queryByText(/items/)).not.toBeInTheDocument();
-  });
+  }];
 
   it('renders section title when provided', () => {
     render(<CategoryShowcase categories={categories} title="Shop by Category" />);
@@ -114,7 +114,7 @@ describe('CategoryShowcase', () => {
     ];
     render(<CategoryShowcase categories={clickable} />);
     expect(screen.getByLabelText('GPUs, 42 items')).toBeInTheDocument();
-  });
+  }];
 
   it('sets grid columns from columns prop', () => {
     const { container } = render(<CategoryShowcase categories={categories} columns={4} />);

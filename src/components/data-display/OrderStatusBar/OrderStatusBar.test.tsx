@@ -30,7 +30,7 @@ describe('OrderStatusBar', () => {
     ];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.getByText('Custom Status')).toBeInTheDocument();
-  });
+  }];
 
   it('calls onTap with correct index when button is clicked', async () => {
     const user = userEvent.setup();
@@ -56,7 +56,7 @@ describe('OrderStatusBar', () => {
     ];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.getByText('5')).toBeInTheDocument();
-  });
+  }];
 
   it('does not show badge when count is 0', () => {
     const statuses: OrderStatusItem[] = [
@@ -64,7 +64,7 @@ describe('OrderStatusBar', () => {
     ];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.queryByText('0')).toBeNull();
-  });
+  }];
 
   it('shows "99+" for count over 99', () => {
     const statuses: OrderStatusItem[] = [
@@ -72,7 +72,7 @@ describe('OrderStatusBar', () => {
     ];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.getByText('99+')).toBeInTheDocument();
-  });
+  }];
 
   it('does not show badge when count is undefined', () => {
     const statuses: OrderStatusItem[] = [

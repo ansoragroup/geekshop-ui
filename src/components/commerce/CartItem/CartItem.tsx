@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { QuantityStepper } from '../QuantityStepper';
@@ -35,7 +35,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
     ref,
   ) => {
   const { t, formatPrice } = useGeekShop();
-  const cn(translateX, setTranslateX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
   const startXRef = useRef(0);
   const currentXRef = useRef(0);
   const isDraggingRef = useRef(false);
@@ -67,7 +67,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
     onDelete?.();
   }, [onDelete]);
 
-  const wrapperClass = [styles.wrapper, className);
+  const wrapperClass = cn(styles.wrapper, className);
 
   return (
     <div ref={ref} className={wrapperClass} {...rest}>

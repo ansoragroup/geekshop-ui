@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import {
   forwardRef,
   type HTMLAttributes,
@@ -21,7 +21,7 @@ export interface RecommendationFeedProps extends HTMLAttributes<HTMLDivElement> 
   /** Optional icon before the title */
   icon?: ReactNode;
   /** Category tabs */
-  tabs: RecommendationTabcn(];
+  tabs: RecommendationTab[];
   /** Currently active tab key (controlled) */
   activeTab?: string;
   /** Default active tab key (uncontrolled) */
@@ -62,7 +62,7 @@ export const RecommendationFeed = forwardRef<HTMLDivElement, RecommendationFeedP
       onChange: onTabChange,
     });
 
-    const rootClass = [styles.root, className);
+    const rootClass = cn(styles.root, className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

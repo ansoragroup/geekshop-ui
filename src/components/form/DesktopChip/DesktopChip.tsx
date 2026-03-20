@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import styles from './DesktopChip.module.scss';
@@ -80,7 +80,7 @@ export const DesktopChip = forwardRef<HTMLDivElement, DesktopChipProps>(
       selected && styles.selected,
       disabled && styles.disabled,
       closable && styles.closable,
-      className,);
+      className);
 
     return (
       <div

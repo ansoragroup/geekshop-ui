@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import {
   forwardRef,
   useState,
@@ -24,7 +24,7 @@ export interface FloatingToolbarItem {
 
 export interface FloatingToolbarProps extends HTMLAttributes<HTMLDivElement> {
   /** Toolbar items */
-  items: FloatingToolbarItemcn(];
+  items: FloatingToolbarItem[];
   /** Side position (default: 'right') */
   position?: 'right' | 'left';
   /** Scroll threshold in px for showOnScroll items (default: 300) */
@@ -55,10 +55,10 @@ export const FloatingToolbar = forwardRef<HTMLDivElement, FloatingToolbarProps>(
       return () => window.removeEventListener('scroll', handleScroll);
     }, [scrollThreshold]);
 
-    const rootClass = [
+    const rootClass = cn(
       styles.toolbar,
       styles[position],
-      className,);
+      className);
 
     return (
       <div

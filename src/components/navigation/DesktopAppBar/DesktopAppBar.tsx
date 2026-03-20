@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopAppBar.module.scss';
 
@@ -18,7 +18,7 @@ export interface DesktopAppBarProps extends HTMLAttributes<HTMLElement> {
   /** Back button handler — if provided, shows back arrow */
   onBack?: () => void;
   /** Action buttons on the right side */
-  actions?: DesktopAppBarActioncn(];
+  actions?: DesktopAppBarAction[];
   /** Transparent background (no shadow, no bg) */
   transparent?: boolean;
 }
@@ -42,10 +42,10 @@ export const DesktopAppBar = forwardRef<HTMLElement, DesktopAppBarProps>(
     },
     ref,
   ) => {
-    const rootClass = [
+    const rootClass = cn(
       styles.appBar,
       transparent ? styles.transparent : styles.solid,
-      className,);
+      className);
 
     return (
       <header ref={ref} className={rootClass} {...rest}>

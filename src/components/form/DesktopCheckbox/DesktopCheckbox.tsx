@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useEffect, useId, useState } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import styles from './DesktopCheckbox.module.scss';
@@ -59,7 +59,7 @@ export const DesktopCheckbox = forwardRef<HTMLInputElement, DesktopCheckboxProps
     ref,
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => internalRef.current!, cn(]);
+    useImperativeHandle(ref, () => internalRef.current!, []);
 
     const generatedId = useId();
     const inputId = externalId ?? generatedId;
@@ -84,10 +84,10 @@ export const DesktopCheckbox = forwardRef<HTMLInputElement, DesktopCheckboxProps
 
     const isChecked = isControlled ? checked : internalChecked;
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       disabled && styles.disabled,
-      className,);
+      className);
 
     const boxClass = cn(styles.box,
       (isChecked || indeterminate) ? styles.checked : styles.unchecked,);

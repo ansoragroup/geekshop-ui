@@ -59,7 +59,7 @@ export const Button: ButtonComponent = forwardRef(
       block && styles.block,
       loading && styles.loading,
       disabled && styles.disabled,
-      className,);
+      className);
 
     // Only pass button-specific props when rendering as a <button>
     const buttonSpecificProps =

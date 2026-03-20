@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import {
   forwardRef,
   useCallback,
@@ -21,7 +21,7 @@ export interface DropdownItem {
 
 export interface DropdownProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   /** Menu items */
-  items: DropdownItemcn(];
+  items: DropdownItem[];
   /** Currently selected value */
   value?: string;
   /** Trigger element that opens the dropdown */
@@ -193,7 +193,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       [ref],
     );
 
-    const rootClass = [styles.root, className);
+    const rootClass = cn(styles.root, className);
 
     const menuStyle: React.CSSProperties = {};
     if (width) {

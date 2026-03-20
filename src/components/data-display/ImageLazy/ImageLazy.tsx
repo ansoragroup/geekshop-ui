@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useEffect } from 'react';
 import type { ImgHTMLAttributes } from 'react';
 import styles from './ImageLazy.module.scss';

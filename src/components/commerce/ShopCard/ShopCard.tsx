@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './ShopCard.module.scss';

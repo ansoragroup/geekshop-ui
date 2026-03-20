@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type ElementType, type MouseEvent } from 'react';
 import styles from './DesktopProductCard.module.scss';
 

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 import styles from './Checkbox.module.scss';
@@ -34,7 +34,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
 
     const rootClass = cn(styles.root,
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <button

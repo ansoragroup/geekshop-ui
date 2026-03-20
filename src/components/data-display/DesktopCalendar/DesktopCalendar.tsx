@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useMemo, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopCalendar.module.scss';
 
@@ -27,7 +27,7 @@ export interface DesktopCalendarProps extends Omit<HTMLAttributes<HTMLDivElement
   locale?: 'uz' | 'ru' | 'en';
 }
 
-const MONTH_NAMES: Record<string, stringcn(]> = {
+const MONTH_NAMES: Record<string, string[]> = {
   uz: ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'],
   ru: ['\u042F\u043D\u0432\u0430\u0440\u044C', '\u0424\u0435\u0432\u0440\u0430\u043B\u044C', '\u041C\u0430\u0440\u0442', '\u0410\u043F\u0440\u0435\u043B\u044C', '\u041C\u0430\u0439', '\u0418\u044E\u043D\u044C', '\u0418\u044E\u043B\u044C', '\u0410\u0432\u0433\u0443\u0441\u0442', '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C', '\u041E\u043A\u0442\u044F\u0431\u0440\u044C', '\u041D\u043E\u044F\u0431\u0440\u044C', '\u0414\u0435\u043A\u0430\u0431\u0440\u044C'],
   en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -246,7 +246,7 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
                   styles.day,
                   isToday && styles.dayToday,
                   isSelected && styles.daySelected,
-                  isDisabled && styles.dayDisabled,);
+                  isDisabled && styles.dayDisabled];
 
                 return (
                   <button

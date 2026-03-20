@@ -142,10 +142,10 @@ describe('OrderCard', () => {
         totalAmount={1000}
         date="2024-01-01"
       />,
-    );
+    ];
     // Only one product with no variant
     expect(screen.queryByText(/256GB/)).toBeNull();
-  });
+  }];
 
   it('renders product quantities', () => {
     render(
@@ -203,7 +203,7 @@ describe('OrderCard', () => {
         date="2024-01-01"
         actions={actions}
       />,
-    );
+    ];
     expect(screen.getByText("To'lash")).toBeInTheDocument();
     expect(screen.getByText('Bekor qilish')).toBeInTheDocument();
   });
@@ -237,7 +237,7 @@ describe('OrderCard', () => {
         date="2024-01-01"
         actions={actions}
       />,
-    );
+    ];
     await user.click(screen.getByText('Click Me'));
     expect(onClick).toHaveBeenCalledOnce();
   });

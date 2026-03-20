@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, type HTMLAttributes } from 'react';
 import { useGeekShop, CURRENCY_CONFIGS } from '../../../i18n';
 import styles from './FilterPanel.module.scss';

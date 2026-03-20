@@ -28,7 +28,7 @@ export const DesktopSection = forwardRef<HTMLElement, DesktopSectionProps>(
     const rootClass = cn(styles.section,
       styles[`bg-${background}`],
       styles[`padding-${padding}`],
-      className,);
+      className);
 
     return (
       <section ref={ref} className={rootClass} aria-label={title} {...rest}>

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useEffect, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopFilterBar.module.scss';
 

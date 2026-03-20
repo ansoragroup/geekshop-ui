@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './DesktopTag.module.scss';
 

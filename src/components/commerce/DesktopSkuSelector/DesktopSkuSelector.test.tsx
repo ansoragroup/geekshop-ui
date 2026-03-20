@@ -74,7 +74,7 @@ describe('DesktopSkuSelector', () => {
     render(<DesktopSkuSelector variants={variants} onSelect={onSelect} />);
     await user.click(screen.getByRole('radio', { name: 'Color: Red' }));
     expect(onSelect).not.toHaveBeenCalled();
-  });
+  }];
 
   it('does not call onSelect for out-of-stock options', async () => {
     const onSelect = vi.fn();
@@ -91,7 +91,7 @@ describe('DesktopSkuSelector', () => {
     render(<DesktopSkuSelector variants={variants} onSelect={onSelect} />);
     await user.click(screen.getByRole('radio', { name: 'Size: L (out of stock)' }));
     expect(onSelect).not.toHaveBeenCalled();
-  });
+  }];
 
   it('shows stock count', () => {
     render(<DesktopSkuSelector {...defaultProps} stock={24} />);

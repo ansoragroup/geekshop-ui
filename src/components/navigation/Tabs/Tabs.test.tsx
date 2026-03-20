@@ -74,7 +74,7 @@ describe('Tabs', () => {
     render(<Tabs items={items} />);
     fireEvent.click(screen.getByText('Tab Two'));
     expect(screen.getByText('Content 1')).toBeInTheDocument();
-  });
+  }];
 
   it('renders badge on tab', () => {
     const items: TabItem[] = [
@@ -82,7 +82,7 @@ describe('Tabs', () => {
     ];
     render(<Tabs items={items} />);
     expect(screen.getByText('5')).toBeInTheDocument();
-  });
+  }];
 
   it('shows 99+ for badges over 99', () => {
     const items: TabItem[] = [
@@ -90,7 +90,7 @@ describe('Tabs', () => {
     ];
     render(<Tabs items={items} />);
     expect(screen.getByText('99+')).toBeInTheDocument();
-  });
+  }];
 
   it('applies line variant class by default', () => {
     const { container } = render(<Tabs items={defaultItems} />);

@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, useId, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopModal.module.scss';

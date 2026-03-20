@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';

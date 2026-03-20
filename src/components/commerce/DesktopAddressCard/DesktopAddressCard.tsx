@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { useCallback } from 'react';
 import styles from './DesktopAddressCard.module.scss';
 
@@ -75,7 +75,7 @@ export const DesktopAddressCard = ({
     if (selectable) {
       onSelect?.();
     }
-  }, cn(selectable, onSelect]);
+  }, [selectable, onSelect]);
 
   const handleSelectKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -107,10 +107,10 @@ export const DesktopAddressCard = ({
     [onDelete],
   );
 
-  const rootClass = [
+  const rootClass = cn(
     styles.root,
     selected && styles.selected,
-    className,);
+    className);
 
   const fullAddress = [
     address.street,

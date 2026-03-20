@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useCallback, useEffect } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -48,7 +48,7 @@ export const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
     ref,
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => internalRef.current!, cn(]);
+    useImperativeHandle(ref, () => internalRef.current!, []);
 
     const [value, setValue] = useControllableState<string>({
       value: controlledValue,
@@ -125,7 +125,7 @@ export const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
       return (
         <div
           key={i}
-          className={[
+          className={cn(
             styles.box,
             isFilled && styles.filled,
             isActive && styles.active,

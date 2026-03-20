@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useEffect, useState, useCallback } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -24,7 +24,7 @@ export interface SegmentedProps extends Omit<HTMLAttributes<HTMLDivElement>, 'on
   /** Change handler */
   onChange?: (value: string) => void;
   /** Options to display */
-  options: SegmentedOptioncn(];
+  options: SegmentedOption[];
   /** Size variant */
   size?: 'sm' | 'md' | 'lg';
   /** Whether to take full width */
@@ -122,11 +122,11 @@ export const Segmented = forwardRef<HTMLDivElement, SegmentedProps>(
       }
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.segmented,
       styles[`size-${size}`],
       block && styles.block,
-      className,);
+      className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

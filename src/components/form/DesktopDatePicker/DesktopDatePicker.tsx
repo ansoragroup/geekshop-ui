@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useMemo, useEffect } from 'react';
 import type { HTMLAttributes } from 'react';
 import styles from './DesktopDatePicker.module.scss';
@@ -25,7 +25,7 @@ export interface DesktopDatePickerProps extends Omit<HTMLAttributes<HTMLDivEleme
   error?: string;
 }
 
-const MONTH_NAMES = cn('January', 'February', 'March', 'April', 'May', 'June',
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
@@ -221,12 +221,12 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
 
     const displayText = selectedDate ? formatDateDisplay(selectedDate, format) : '';
 
-    const rootClass = [
+    const rootClass = cn(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className,);
+      className);
 
     return (
       <div ref={internalRef} className={rootClass} {...rest}>
@@ -277,7 +277,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
                 <ChevronLeft />
               </button>
               <span className={styles.monthLabel}>
-                {MONTH_NAMEScn(viewMonth]} {viewYear}
+                {MONTH_NAMEScn(viewMonth)} {viewYear}
               </span>
               <button
                 type="button"
@@ -310,7 +310,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
                   styles.day,
                   isToday && styles.dayToday,
                   isSelected && styles.daySelected,
-                  isDayDisabled && styles.dayDisabled,);
+                  isDayDisabled && styles.dayDisabled];
 
                 return (
                   <button

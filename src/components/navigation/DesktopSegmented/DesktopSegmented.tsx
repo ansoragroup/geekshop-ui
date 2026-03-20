@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useEffect, useState, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopSegmented.module.scss';
@@ -15,7 +15,7 @@ export interface DesktopSegmentedOption {
 
 export interface DesktopSegmentedProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Options to display */
-  options: DesktopSegmentedOptioncn(];
+  options: DesktopSegmentedOption[];
   /** Currently selected value (controlled) */
   value?: string;
   /** Default selected value (uncontrolled) */
@@ -110,11 +110,11 @@ export const DesktopSegmented = forwardRef<HTMLDivElement, DesktopSegmentedProps
       }
     };
 
-    const rootClass = [
+    const rootClass = cn(
       styles.segmented,
       styles[`size-${size}`],
       fullWidth && styles.fullWidth,
-      className,);
+      className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

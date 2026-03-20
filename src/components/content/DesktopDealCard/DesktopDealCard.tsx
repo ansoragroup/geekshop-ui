@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ElementType, type MouseEvent } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './DesktopDealCard.module.scss';

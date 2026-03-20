@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useState, useCallback } from 'react';
 import type { ReactNode, TouchEvent } from 'react';
 import styles from './PullToRefresh.module.scss';

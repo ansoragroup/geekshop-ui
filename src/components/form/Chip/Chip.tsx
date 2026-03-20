@@ -1,5 +1,5 @@
-import { cn } from '../../../utils/cn';
 'use client';
+import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
@@ -84,7 +84,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
       styles[`size-${size}`],
       selected && styles.selected,
       disabled && styles.disabled,
-      className,);
+      className);
 
     return (
       <div
