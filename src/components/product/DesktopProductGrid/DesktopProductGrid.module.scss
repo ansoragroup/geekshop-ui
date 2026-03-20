@@ -140,7 +140,17 @@
   padding: 0;
 }
 
-.gridItem,
+.gridItem {
+  list-style: none;
+  display: flex;
+
+  // Force card inside to stretch to full grid row height
+  > * {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .listItem {
   list-style: none;
 }
