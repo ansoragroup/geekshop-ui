@@ -8,13 +8,13 @@
   gap: $desktop-spacing-lg;
   padding: $desktop-spacing-lg;
   background: $color-bg-card;
-  border-radius: $modern-radius-card;
+  border-radius: $desktop-radius-card;
   border: none;
-  box-shadow: $modern-shadow-card;
+  box-shadow: $desktop-shadow-card;
   transition: box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $modern-shadow-card-hover;
+    box-shadow: $desktop-shadow-card-hover;
   }
 }
 
@@ -27,7 +27,7 @@
 .image {
   width: 120px;
   height: 120px;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   object-fit: cover;
   flex-shrink: 0;
   background: $color-bg-skeleton;
@@ -213,7 +213,7 @@
   width: 100%;
   min-height: 40px;
   border: none;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   background: var(--gs-color-primary);
   color: $color-text-white;
   font-size: $desktop-font-size-body;
@@ -245,7 +245,7 @@
   width: 100%;
   min-height: 40px;
   border: 1px solid $color-border;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   background: $color-bg-card;
   color: $color-text-primary;
   font-size: $desktop-font-size-body;

@@ -18,7 +18,7 @@
   position: relative;
   flex: 1;
   min-width: 0;
-  border-radius: $modern-radius-banner;
+  border-radius: $desktop-radius-banner;
   overflow: hidden;
   outline: none;
 
@@ -202,9 +202,9 @@
   flex: 1;
   min-height: 0;
   background: $color-bg-card;
-  border-radius: $modern-radius-card;
+  border-radius: $desktop-radius-card;
   overflow: hidden;
-  box-shadow: $modern-shadow-card;
+  box-shadow: $desktop-shadow-card;
 }
 
 // ─── Reduced Motion ──────────────────────────────────────────────

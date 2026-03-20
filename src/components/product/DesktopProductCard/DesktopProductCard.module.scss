@@ -7,15 +7,15 @@
   flex-direction: column;
   width: 100%;
   background: $color-bg-card;
-  border-radius: $modern-radius-card;
+  border-radius: $desktop-radius-card;
   border: none;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: $modern-shadow-card;
+  box-shadow: $desktop-shadow-card;
   transition: box-shadow $transition-normal, transform $transition-fast;
 
   &:hover {
-    box-shadow: $modern-shadow-card-hover;
+    box-shadow: $desktop-shadow-card-hover;
     transform: translateY(-2px);
   }
 }
@@ -246,7 +246,7 @@
   width: 100%;
   min-height: 36px;
   border: none;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   background: $color-primary;
   color: $color-text-white;
   font-size: $font-size-sm;

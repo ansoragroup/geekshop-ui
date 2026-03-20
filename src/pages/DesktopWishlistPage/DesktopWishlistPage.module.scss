@@ -1,0 +1,30 @@
+@use '../../theme/tokens' as *;
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.topBarBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: $font-family;
+}
+
+.logoText {
+  font-weight: $font-weight-bold;
+  font-size: $desktop-font-size-h3;
+  color: $color-primary;
+}
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.content {
+  margin-top: $desktop-spacing-lg;
+}

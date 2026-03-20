@@ -1,0 +1,198 @@
+import { useState } from 'react';
+import {
+  DesktopShell,
+  TopBar,
+  DesktopHeaderRich,
+  MegaMenu,
+  Footer,
+  Breadcrumbs,
+  DesktopOrderStatusBar,
+  DesktopTimeline,
+  DesktopButton,
+} from '../../components';
+import type {
+  MegaMenuCategory,
+  CategoryItem,
+  PromoLink,
+  DesktopOrderStep,
+  DesktopTimelineItem,
+} from '../../components';
+import styles from './DesktopTrackOrderPage.module.scss';
+
+const footerColumns = [
+  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }] },
+  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }] },
+  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
+];
+
+const megaMenuCategories: MegaMenuCategory[] = [
+  { label: 'Graphics Cards' },
+  { label: 'Processors' },
+  { label: 'Monitors' },
+];
+
+const headerCategories: CategoryItem[] = [
+  { id: '1', label: 'Smartphones', icon: '' },
+  { id: '2', label: 'Laptops', icon: '' },
+];
+
+const promoLinks: PromoLink[] = [
+  { id: '1', label: 'Delivery & Returns' },
+  { id: '2', label: 'Premium', highlight: true },
+];
+
+const orderSteps: DesktopOrderStep[] = [
+  { label: 'Order Placed', description: 'March 15, 2026' },
+  { label: 'Processing', description: 'March 15, 2026' },
+  { label: 'Shipped', description: 'March 16, 2026' },
+  { label: 'Out for Delivery', description: 'March 19, 2026' },
+  { label: 'Delivered', description: 'Expected March 19' },
+];
+
+const trackingEvents: DesktopTimelineItem[] = [
+  { title: 'Package out for delivery', description: 'Your package is on the way to Amir Temur 15, Tashkent', time: 'March 19, 08:45', status: 'active' },
+  { title: 'Arrived at local facility', description: 'Tashkent Distribution Center', time: 'March 18, 22:10', status: 'completed' },
+  { title: 'In transit', description: 'Package departed from Samarkand sorting center', time: 'March 17, 14:30', status: 'completed' },
+  { title: 'Shipped', description: 'Package picked up by courier from warehouse', time: 'March 16, 10:00', status: 'completed' },
+  { title: 'Processing', description: 'Order confirmed and payment verified', time: 'March 15, 16:20', status: 'completed' },
+  { title: 'Order placed', description: 'Order #GS-2026-0315-001 placed successfully', time: 'March 15, 15:45', status: 'completed' },
+];
+
+function formatPrice(value: number): string {
+  return value.toLocaleString('uz-UZ') + ' UZS';
+}
+
+export interface DesktopTrackOrderPageProps {
+  /** Current step (0-indexed) */
+  currentStep?: number;
+  /** Override order steps */
+  steps?: DesktopOrderStep[];
+  /** Override tracking events */
+  events?: DesktopTimelineItem[];
+  /** Tracking number */
+  trackingNumber?: string;
+}
+
+export const DesktopTrackOrderPage: React.FC<DesktopTrackOrderPageProps> = ({
+  currentStep = 3,
+  steps: propSteps,
+  events: propEvents,
+  trackingNumber: propTrackingNumber = 'UZ1234567890',
+}) => {
+  const displaySteps = propSteps ?? orderSteps;
+  const displayEvents = propEvents ?? trackingEvents;
+  const [searchValue, setSearchValue] = useState('');
+
+  const header = (
+    <div className={styles.headerWrapper}>
+      <DesktopHeaderRich
+        logo={<span className={styles.logoText}>GeekShop</span>}
+        searchPlaceholder="Search products..."
+        searchValue={searchValue}
+        onSearchChange={setSearchValue}
+        cartCount={3}
+        wishlistCount={5}
+        categories={headerCategories}
+        promoLinks={promoLinks}
+        location="Tashkent"
+      />
+      <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }]} />
+    </div>
+  );
+
+  return (
+    <DesktopShell
+      topBar={
+        <TopBar
+          leftItems={[<span key="w">Welcome to GeekShop!</span>]}
+          rightItems={[
+            <button key="l" type="button" className={styles.topBarBtn}>EN</button>,
+            <button key="c" type="button" className={styles.topBarBtn}>UZS</button>,
+          ]}
+        />
+      }
+      header={header}
+      footer={<Footer columns={footerColumns} copyrightText="© 2026 GeekShop. All rights reserved." />}
+    >
+      <div className={styles.breadcrumbs}>
+        <Breadcrumbs items={[
+          { label: 'Home', href: '#' },
+          { label: 'My Orders', href: '#' },
+          { label: 'Order #GS-2026-0315-001', href: '#' },
+          { label: 'Track Order' },
+        ]} />
+      </div>
+
+      <h1 className={styles.pageTitle}>Track Order</h1>
+
+      {/* Order Status Bar */}
+      <div className={styles.statusSection}>
+        <DesktopOrderStatusBar steps={displaySteps} currentStep={currentStep} />
+      </div>
+
+      <div className={styles.contentGrid}>
+        {/* Left: Timeline */}
+        <div className={styles.mainColumn}>
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>Tracking Details</h2>
+            <div className={styles.trackingInfo}>
+              <span className={styles.trackingLabel}>Tracking Number:</span>
+              <span className={styles.trackingNumber}>{propTrackingNumber}</span>
+            </div>
+            <DesktopTimeline items={displayEvents} />
+          </div>
+        </div>
+
+        {/* Right: Order Summary */}
+        <div className={styles.sideColumn}>
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>Order Summary</h2>
+            <div className={styles.orderItem}>
+              <img
+                src="https://picsum.photos/seed/track-gpu/80/80"
+                alt="MSI RTX 4060 Ti"
+                className={styles.itemImage}
+              />
+              <div className={styles.itemInfo}>
+                <span className={styles.itemName}>MSI RTX 4060 Ti Ventus 2X 8GB</span>
+                <span className={styles.itemVariant}>8GB / Qora</span>
+                <span className={styles.itemPrice}>{formatPrice(4_800_000)}</span>
+              </div>
+            </div>
+            <div className={styles.orderItem}>
+              <img
+                src="https://picsum.photos/seed/track-mouse/80/80"
+                alt="Logitech MX Master 3S"
+                className={styles.itemImage}
+              />
+              <div className={styles.itemInfo}>
+                <span className={styles.itemName}>Logitech MX Master 3S</span>
+                <span className={styles.itemVariant}>Grafit</span>
+                <span className={styles.itemPrice}>{formatPrice(950_000)} x 2</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.card}>
+            <h2 className={styles.cardTitle}>Delivery Address</h2>
+            <p className={styles.addressText}>
+              Jasur Karimov<br />
+              +998 90 123 45 67<br />
+              Amir Temur ko&apos;chasi, 15-uy, 42-xonadon<br />
+              Toshkent, 100000
+            </p>
+          </div>
+
+          <div className={styles.actions}>
+            <DesktopButton variant="outline" size="lg" fullWidth>
+              Contact Courier
+            </DesktopButton>
+            <DesktopButton variant="ghost" size="lg" fullWidth>
+              Report Issue
+            </DesktopButton>
+          </div>
+        </div>
+      </div>
+    </DesktopShell>
+  );
+};

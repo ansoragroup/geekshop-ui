@@ -1,0 +1,143 @@
+@use '../../theme/tokens' as *;
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.topBarBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: $font-family;
+}
+
+.logoText {
+  font-weight: $font-weight-bold;
+  font-size: $desktop-font-size-h3;
+  color: $color-primary;
+}
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.tabFilterWrap {
+  margin-bottom: $desktop-spacing-lg;
+}
+
+.notificationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+  overflow: hidden;
+}
+
+.notificationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $desktop-spacing-md;
+  padding: $desktop-spacing-lg;
+  border-bottom: 1px solid $color-border;
+  transition: $desktop-hover-transition;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $color-primary-bg;
+  }
+}
+
+.unread {
+  background: rgba($color-primary, 0.02);
+}
+
+.notifAvatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dotBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid $color-bg-card;
+}
+
+.dot_blue {
+  background: $color-info;
+}
+
+.dot_green {
+  background: $color-success;
+}
+
+.dot_red {
+  background: $color-error;
+}
+
+.dot_orange {
+  background: $color-warning;
+}
+
+.notifContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-xs;
+}
+
+.notifMessage {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin: 0 0 $spacing-xs;
+  line-height: $line-height-normal;
+}
+
+.notifTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.unreadDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-primary;
+  margin-top: $spacing-sm;
+}

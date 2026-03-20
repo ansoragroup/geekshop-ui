@@ -119,7 +119,37 @@ const DesktopFooterSection = () => (
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export const DesktopProductDetailPage: React.FC = () => {
+export interface DesktopProductDetailPageProps {
+  /** Product title */
+  productTitle?: string;
+  /** Product price */
+  price?: number;
+  /** Original price (for sale) */
+  originalPrice?: number;
+  /** Whether product is in stock */
+  inStock?: boolean;
+  /** Rating value */
+  ratingValue?: number;
+  /** Number of reviews */
+  reviewCount?: number;
+  /** Stock quantity */
+  stock?: number;
+  /** Reviews to display */
+  productReviews?: typeof reviews;
+}
+
+export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> = ({
+  productTitle = 'MSI GeForce RTX 4070 Super 12GB GDDR6X Gaming X Slim',
+  price = 8900000,
+  originalPrice = 12000000,
+  inStock = true,
+  ratingValue = 4.6,
+  reviewCount: reviewCountProp,
+  stock = 12,
+  productReviews,
+}) => {
+  const displayReviews = productReviews ?? reviews;
+  const displayReviewCount = reviewCountProp ?? displayReviews.length;
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('specs');
   const [selectedColor, setSelectedColor] = useState('Black');
@@ -156,13 +186,13 @@ export const DesktopProductDetailPage: React.FC = () => {
 
         {/* Right: Product Info */}
         <div className={styles.infoSection}>
-          <h1 className={styles.productTitle}>MSI GeForce RTX 4070 Super 12GB GDDR6X Gaming X Slim</h1>
+          <h1 className={styles.productTitle}>{productTitle}</h1>
           <div className={styles.ratingRow}>
-            <Rating value={4.6} count={234} />
-            <span className={styles.stockLabel}>In Stock</span>
+            <Rating value={ratingValue} count={displayReviewCount} />
+            <span className={styles.stockLabel} style={inStock ? {} : { color: '#FF3B30' }}>{inStock ? 'In Stock' : 'Out of Stock'}</span>
           </div>
           <div className={styles.priceRow}>
-            <PriceDisplay price={8900000} originalPrice={12000000} variant="sale" size="lg" />
+            <PriceDisplay price={price} originalPrice={originalPrice} variant={originalPrice ? 'sale' : 'default'} size="lg" />
           </div>
 
           {/* SKU Selection */}
@@ -173,8 +203,8 @@ export const DesktopProductDetailPage: React.FC = () => {
             ]}
             selectedValues={{ Color: selectedColor, Memory: '12GB GDDR6X' }}
             onSelect={(name, value) => { if (name === 'Color') setSelectedColor(value); }}
-            stock={12}
-            price={8900000}
+            stock={stock}
+            price={price}
           />
 
           {/* Quantity */}
@@ -185,8 +215,14 @@ export const DesktopProductDetailPage: React.FC = () => {
 
           {/* Actions */}
           <div className={styles.actionRow}>
-            <Button variant="outline" size="lg" style={{ flex: 1 }}>Add to Cart</Button>
-            <Button variant="primary" size="lg" style={{ flex: 1 }}>Buy Now</Button>
+            {inStock ? (
+              <>
+                <Button variant="outline" size="lg" style={{ flex: 1 }}>Add to Cart</Button>
+                <Button variant="primary" size="lg" style={{ flex: 1 }}>Buy Now</Button>
+              </>
+            ) : (
+              <Button variant="primary" size="lg" style={{ flex: 1 }}>Notify When Available</Button>
+            )}
           </div>
         </div>
       </div>
@@ -204,10 +240,15 @@ export const DesktopProductDetailPage: React.FC = () => {
             },
             {
               key: 'reviews',
-              label: `Reviews (${reviews.length})`,
-              children: (
+              label: `Reviews (${displayReviews.length})`,
+              children: displayReviews.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '40px 0', color: '#999' }}>
+                  <p style={{ fontSize: 16, fontWeight: 600, color: '#333' }}>No reviews yet</p>
+                  <p style={{ fontSize: 14, marginTop: 4 }}>Be the first to review this product!</p>
+                </div>
+              ) : (
                 <div className={styles.reviewsList}>
-                  {reviews.map((review, i) => (
+                  {displayReviews.map((review, i) => (
                     <DesktopReviewCard key={i} {...review} />
                   ))}
                 </div>

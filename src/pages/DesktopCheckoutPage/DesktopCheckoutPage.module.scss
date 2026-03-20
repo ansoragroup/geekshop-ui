@@ -1,5 +1,30 @@
 @use '../../theme/tokens' as *;
 
+// ─── Shell slots ──────────────────────────────────────────────────────────────
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.logoText {
+  font-weight: $font-weight-bold;
+  font-size: $desktop-font-size-h3;
+  color: $color-primary;
+}
+
+.topBarBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: $font-family;
+}
+
+// ─── Page content ─────────────────────────────────────────────────────────────
+
 .breadcrumbs {
   margin-bottom: $desktop-spacing-md;
 }
@@ -8,8 +33,11 @@
   margin-bottom: $desktop-spacing-xl;
   padding: $desktop-spacing-lg $desktop-spacing-xxl;
   background: var(--gs-bg-white);
-  border-radius: $radius-lg;
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
 }
+
+// ─── Form sections ────────────────────────────────────────────────────────────
 
 .formSection {
   margin-bottom: $desktop-spacing-xl;
@@ -34,99 +62,64 @@
   gap: $desktop-spacing-sm;
 }
 
-// ─── Order Summary ─────────────────────────────────────────────────────────
-
-.summaryCard {
-  background: var(--gs-bg-white);
-  border-radius: $radius-lg;
-  padding: $desktop-spacing-lg;
-  border: 1px solid var(--gs-border-color);
+.addButton {
+  margin-top: $desktop-spacing-sm;
 }
 
-.summaryTitle {
-  font-size: $desktop-font-size-h3;
-  font-weight: $font-weight-bold;
-  color: var(--gs-text-primary);
-  margin: 0 0 $desktop-spacing-md;
-}
+// ─── Empty state ─────────────────────────────────────────────────────────────
 
-// ─── Mini cart items ───────────────────────────────────────────────────────
-
-.miniCartList {
+.emptyState {
   display: flex;
   flex-direction: column;
-  gap: $desktop-spacing-sm;
-}
-
-.miniCartItem {
-  display: flex;
-  gap: $desktop-spacing-sm;
-  align-items: flex-start;
-}
-
-.miniCartImage {
-  width: 56px;
-  height: 56px;
-  border-radius: $radius-sm;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.miniCartInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.miniCartName {
-  font-size: $font-size-sm;
-  color: var(--gs-text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.miniCartVariant {
-  font-size: $font-size-xs;
-  color: var(--gs-text-tertiary);
-}
-
-.miniCartPrice {
-  font-size: $font-size-sm;
-  color: var(--gs-text-secondary);
-  font-weight: $font-weight-medium;
-}
-
-// ─── Summary totals ────────────────────────────────────────────────────────
-
-.summaryRows {
-  display: flex;
-  flex-direction: column;
-  gap: $desktop-spacing-sm;
-}
-
-.summaryRow {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: $font-size-md;
-  color: var(--gs-text-secondary);
+  justify-content: center;
+  padding: $desktop-spacing-xxl * 2 $desktop-spacing-xl;
+  text-align: center;
 }
 
-.summaryDivider {
-  height: 1px;
-  background: var(--gs-border-color);
-  margin: $desktop-spacing-sm 0;
+.emptyIcon {
+  font-size: 64px;
+  margin-bottom: $desktop-spacing-lg;
 }
 
-.summaryTotal {
-  font-size: $desktop-font-size-h3;
+.emptyTitle {
+  font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
   color: var(--gs-text-primary);
+  margin: 0 0 $desktop-spacing-sm;
 }
 
-.freeLabel {
-  color: $color-success;
-  font-weight: $font-weight-medium;
+.emptyText {
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-secondary);
+  margin: 0 0 $desktop-spacing-lg;
+}
+
+// ─── Review section ──────────────────────────────────────────────────────────
+
+.reviewSummary {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-lg;
+}
+
+.reviewBlock {
+  padding: $desktop-spacing-lg;
+  background: var(--gs-bg-white);
+  border-radius: $desktop-radius-card;
+  border: 1px solid var(--gs-border-light);
+}
+
+.reviewBlockTitle {
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-secondary);
+  margin: 0 0 $desktop-spacing-sm;
+}
+
+.reviewBlockText {
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-primary);
+  margin: 0;
+  line-height: 1.5;
 }

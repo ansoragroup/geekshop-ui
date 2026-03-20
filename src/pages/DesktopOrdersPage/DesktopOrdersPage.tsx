@@ -97,13 +97,21 @@ function getOrderActions(status: string): DesktopOrderAction[] {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export const DesktopOrdersPage: React.FC = () => {
+export interface DesktopOrdersPageProps {
+  /** Override orders. Defaults to mockOrders. */
+  initialOrders?: typeof mockOrders;
+}
+
+export const DesktopOrdersPage: React.FC<DesktopOrdersPageProps> = ({
+  initialOrders,
+}) => {
   const [activeTab, setActiveTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
+  const orders = initialOrders ?? mockOrders;
 
   const filteredOrders = activeTab === 'all'
-    ? mockOrders
-    : mockOrders.filter((order) => order.status === activeTab);
+    ? orders
+    : orders.filter((order) => order.status === activeTab);
 
   return (
     <DesktopShell

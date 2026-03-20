@@ -1,8 +1,8 @@
 # Owner Preference Model
 <!-- Auto-synthesized from owner-profile.jsonl. -->
-<!-- Sessions 1-3 complete — 20 observations. Next synthesis after session 6. -->
+<!-- Sessions 1-7 complete — 21 observations. Updated 2026-03-20 evolution review. -->
 
-Status: CALIBRATED (3 sessions, 20 observations, strong signal convergence)
+Status: CALIBRATED (7 sessions, 21 observations, strong signal convergence)
 
 ## Decision Style (confidence: 0.90)
 - Terse, delegating task descriptions — trusts the system to self-direct
@@ -45,6 +45,13 @@ Status: CALIBRATED (3 sessions, 20 observations, strong signal convergence)
 - Describes 15+ features in a single task — prefers ambitious scope
 - Expects thoroughness over speed — incomplete is worse than slow
 - Wants agents that operate at the level of real engineering teams
+
+## Design Preferences — Desktop (confidence: 0.95)
+- Desktop components MUST match Uzum.uz / Ozon.ru / Alifshop.uz pixel-level — not "inspired by"
+- Product cards: white bg images, badges at bottom of image, installment pricing in colored pills, full-width CTA, heart wishlist top-right, discount badge top-left
+- Each brand variant has its own color (purple Uzum, orange Alifshop, blue Ozon) — not our orange everywhere
+- Deleted all 3 DesktopHomePage variants (A, B, C) — unsatisfied with quality, needs redesign from scratch
+- See feedback_modern_design_requirements.md for full visual spec
 
 ## Priorities (observed, confidence: 0.85)
 1. Working output on first delivery (no rework)

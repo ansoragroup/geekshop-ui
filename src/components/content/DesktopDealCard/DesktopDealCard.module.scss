@@ -4,16 +4,18 @@
 
 .root {
   display: flex;
+  flex-direction: column;
+  width: 100%;
   background: $color-bg-card;
-  border-radius: $modern-radius-card;
+  border-radius: $desktop-radius-card;
   border: none;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: $modern-shadow-card;
+  box-shadow: $desktop-shadow-card;
   transition: box-shadow $transition-normal, transform $transition-normal;
 
   &:hover {
-    box-shadow: $modern-shadow-card-hover;
+    box-shadow: $desktop-shadow-card-hover;
     transform: translateY(-2px);
   }
 }
@@ -22,9 +24,8 @@
 
 .imageArea {
   position: relative;
-  width: 180px;
-  min-height: 180px;
-  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   background: $color-bg-skeleton;
   overflow: hidden;
 }
@@ -191,7 +192,7 @@
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   border: none;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   cursor: pointer;
   white-space: nowrap;
   transition: background $transition-fast;

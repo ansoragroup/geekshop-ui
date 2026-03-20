@@ -7,7 +7,7 @@
   gap: $spacing-sm;
   cursor: pointer;
   user-select: none;
-  width: 80px;
+  min-width: 0;
   padding: $spacing-sm;
   border-radius: $radius-lg;
   transition: transform $transition-fast, background $transition-fast;
@@ -74,9 +74,8 @@
   color: $color-text-secondary;
   text-align: center;
   line-height: $line-height-tight;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   max-width: 100%;
   transition: color $transition-fast;
 

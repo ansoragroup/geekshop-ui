@@ -7,7 +7,7 @@
   width: 100%;
   min-height: $desktop-header-height;
   background: $color-bg-white;
-  box-shadow: $modern-shadow-card;
+  box-shadow: $desktop-shadow-card;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
 
 .content {
   width: 100%;
-  max-width: $modern-content-width;
+  max-width: $desktop-content-max-width;
   padding: 0 $desktop-content-padding;
   display: flex;
   align-items: center;
@@ -56,7 +56,7 @@
   height: 44px;
   padding: 0 $desktop-spacing-md;
   border: none;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   background: $color-primary;
   color: $color-text-white;
   font-size: $font-size-md;
@@ -86,7 +86,7 @@
   height: 48px;
   background: $color-bg-page;
   border: 1px solid $color-border;
-  border-radius: $modern-radius-input;
+  border-radius: $desktop-radius-input;
   overflow: hidden;
   transition: border-color $transition-fast;
 
@@ -132,7 +132,7 @@
   color: $color-text-white;
   cursor: pointer;
   flex-shrink: 0;
-  border-radius: 0 $modern-radius-input $modern-radius-input 0;
+  border-radius: 0 $desktop-radius-input $desktop-radius-input 0;
   transition: background $transition-fast;
 
   &:hover {
@@ -164,7 +164,7 @@
   min-height: 48px;
   padding: $spacing-xs;
   border: none;
-  border-radius: $modern-radius-button;
+  border-radius: $desktop-radius-button;
   background: none;
   color: $color-text-secondary;
   cursor: pointer;

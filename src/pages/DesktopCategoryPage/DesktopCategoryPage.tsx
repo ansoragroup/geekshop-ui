@@ -99,9 +99,23 @@ const DesktopFooterSection = () => (
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export const DesktopCategoryPage: React.FC = () => {
+export interface DesktopCategoryPageProps {
+  /** Override products. Defaults to hardcoded GPU products. */
+  initialProducts?: DesktopProductGridItem[];
+  /** Category name shown in breadcrumb and title */
+  categoryName?: string;
+  /** Number of grid columns */
+  columns?: number;
+}
+
+export const DesktopCategoryPage: React.FC<DesktopCategoryPageProps> = ({
+  initialProducts,
+  categoryName = 'Graphics Cards',
+  columns = 4,
+}) => {
   const [viewMode, setViewMode] = useState('grid');
   const [currentPage, setCurrentPage] = useState(1);
+  const displayProducts = initialProducts ?? products;
 
   const sidebar = (
     <DesktopSidebar
@@ -132,42 +146,49 @@ export const DesktopCategoryPage: React.FC = () => {
         <Breadcrumbs
           items={[
             { label: 'Home', href: '#' },
-            { label: 'Graphics Cards' },
+            { label: categoryName },
           ]}
         />
       </div>
 
       {/* Page header */}
       <div className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Graphics Cards</h1>
+        <h1 className={styles.pageTitle}>{categoryName}</h1>
       </div>
 
       {/* Product grid with built-in toolbar */}
       <div className={styles.productsArea}>
-        <DesktopProductGrid
-          products={products}
-          totalCount={42}
-          viewMode={viewMode as 'grid' | 'list'}
-          columns={4}
-          onViewModeChange={setViewMode}
-          sortOptions={[
-            { id: 'relevance', label: 'Relevance' },
-            { id: 'price-asc', label: 'Price: Low to High' },
-            { id: 'price-desc', label: 'Price: High to Low' },
-            { id: 'rating', label: 'Rating' },
-          ]}
-          activeSortId="relevance"
-        />
-      </div>
-
-      {/* Pagination */}
-      <div className={styles.paginationWrap}>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={12}
-          onPageChange={setCurrentPage}
-          siblingCount={2}
-        />
+        {displayProducts.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '80px 0', color: '#999' }}>
+            <h2 style={{ fontSize: 20, fontWeight: 600, color: '#333', marginBottom: 8 }}>No products found</h2>
+            <p style={{ fontSize: 14 }}>Try adjusting your filters or search for something else.</p>
+          </div>
+        ) : (
+          <>
+            <DesktopProductGrid
+              products={displayProducts}
+              totalCount={displayProducts.length}
+              viewMode={viewMode as 'grid' | 'list'}
+              columns={columns}
+              onViewModeChange={setViewMode}
+              sortOptions={[
+                { id: 'relevance', label: 'Relevance' },
+                { id: 'price-asc', label: 'Price: Low to High' },
+                { id: 'price-desc', label: 'Price: High to Low' },
+                { id: 'rating', label: 'Rating' },
+              ]}
+              activeSortId="relevance"
+            />
+            <div className={styles.paginationWrap}>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={Math.max(1, Math.ceil(displayProducts.length / 12))}
+                onPageChange={setCurrentPage}
+                siblingCount={2}
+              />
+            </div>
+          </>
+        )}
       </div>
     </DesktopShell>
   );

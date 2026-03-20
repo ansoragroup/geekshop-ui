@@ -3,7 +3,7 @@ import styles from './DesktopPaymentMethodCard.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-export type DesktopPaymentType = 'visa' | 'mastercard' | 'uzcard' | 'humo' | 'cash';
+export type DesktopPaymentType = 'visa' | 'mastercard' | 'uzcard' | 'humo' | 'payme' | 'cash';
 
 export interface DesktopPaymentMethod {
   id: string;
@@ -69,6 +69,15 @@ function HumoIcon() {
   );
 }
 
+function PaymeIcon() {
+  return (
+    <svg width="32" height="20" viewBox="0 0 32 20" aria-hidden="true">
+      <rect width="32" height="20" rx="3" fill="#2EBAC1" />
+      <text x="16" y="13" fill="#FFFFFF" fontSize="6" fontWeight="bold" textAnchor="middle" fontFamily="Arial, sans-serif">PAYME</text>
+    </svg>
+  );
+}
+
 function CashIcon() {
   return (
     <svg width="32" height="20" viewBox="0 0 32 20" aria-hidden="true">
@@ -92,6 +101,7 @@ const CARD_ICONS: Record<DesktopPaymentType, () => JSX.Element> = {
   mastercard: MastercardIcon,
   uzcard: UzcardIcon,
   humo: HumoIcon,
+  payme: PaymeIcon,
   cash: CashIcon,
 };
 
@@ -131,7 +141,7 @@ export const DesktopPaymentMethodCard = ({
     [onDelete],
   );
 
-  const IconComponent = CARD_ICONS[method.type];
+  const IconComponent = CARD_ICONS[method.type] ?? CashIcon;
 
   const rootClass = [
     styles.root,

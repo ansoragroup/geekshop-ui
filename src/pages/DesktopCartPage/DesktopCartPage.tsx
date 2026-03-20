@@ -9,6 +9,7 @@ import {
   DesktopCartItem,
   DesktopCouponCard,
   DesktopOrderSummary,
+  DesktopEmpty,
 } from '../../components';
 import { mockCartItems } from '../_shared/mockData';
 import type { CartItemData } from '../_shared/types';
@@ -49,8 +50,18 @@ const DesktopFooterSection = () => (
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export const DesktopCartPage: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItemData[]>(mockCartItems);
+export interface DesktopCartPageProps {
+  /** Override initial cart items. Defaults to mockCartItems. */
+  initialItems?: CartItemData[];
+  /** Coupon code to show as applied */
+  appliedCoupon?: { code: string; discountPercent: number };
+}
+
+export const DesktopCartPage: React.FC<DesktopCartPageProps> = ({
+  initialItems,
+  appliedCoupon,
+}) => {
+  const [cartItems, setCartItems] = useState<CartItemData[]>(initialItems ?? mockCartItems);
 
   const handleQuantityChange = (id: number, quantity: number) => {
     setCartItems((prev) => prev.map((item) => item.id === id ? { ...item, quantity } : item));
@@ -66,13 +77,16 @@ export const DesktopCartPage: React.FC = () => {
 
   const selectedItems = cartItems.filter((item) => item.selected);
   const subtotal = selectedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const shipping = subtotal > 5000000 ? 0 : 50000;
-  const tax = Math.round(subtotal * 0.12);
-  const total = subtotal + shipping + tax;
+  const discount = appliedCoupon ? Math.round(subtotal * appliedCoupon.discountPercent / 100) : 0;
+  const afterDiscount = subtotal - discount;
+  const shipping = afterDiscount > 5000000 ? 0 : 50000;
+  const tax = Math.round(afterDiscount * 0.12);
+  const total = afterDiscount + shipping + tax;
 
   const orderSummary = (
     <DesktopOrderSummary
       subtotal={subtotal}
+      discount={discount > 0 ? discount : undefined}
       shipping={shipping}
       tax={tax}
       total={total}
@@ -100,6 +114,12 @@ export const DesktopCartPage: React.FC = () => {
 
       <h1 className={styles.pageTitle}>Shopping Cart ({cartItems.length} items)</h1>
 
+      {cartItems.length === 0 ? (
+        <DesktopEmpty
+          title="Your cart is empty"
+          description="Browse our products and add items to your cart."
+        />
+      ) : (
       <TwoColumnLayout
         sidebar={orderSummary}
         sidebarWidth={340}
@@ -137,6 +157,7 @@ export const DesktopCartPage: React.FC = () => {
           />
         </div>
       </TwoColumnLayout>
+      )}
     </DesktopShell>
   );
 };
