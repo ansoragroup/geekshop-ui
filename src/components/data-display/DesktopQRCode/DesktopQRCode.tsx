@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useMemo, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopQRCode.module.scss';
 
@@ -115,7 +117,7 @@ export const DesktopQRCode = forwardRef<HTMLDivElement, DesktopQRCodeProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.root} ${className}`}
+          className={cn(styles.root, className)}
           style={{ width: size }}
           {...rest}
         >
@@ -144,7 +146,7 @@ export const DesktopQRCode = forwardRef<HTMLDivElement, DesktopQRCodeProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         <div

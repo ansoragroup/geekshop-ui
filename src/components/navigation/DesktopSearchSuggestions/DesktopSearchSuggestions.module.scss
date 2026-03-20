@@ -1,10 +1,10 @@
 @use '../../../theme/tokens' as *;
 
 .panel {
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-lg;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   overflow: hidden;
   padding: $spacing-sm 0;
 }
@@ -12,7 +12,7 @@
 // --- Group ---
 .group {
   & + & {
-    border-top: 1px solid $color-border-light;
+    border-top: 1px solid var(--gs-border-color-light);
     margin-top: $spacing-xs;
     padding-top: $spacing-xs;
   }
@@ -28,7 +28,7 @@
 .groupLabel {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -36,7 +36,7 @@
 .clearBtn {
   border: none;
   background: none;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   font-family: $font-family;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
@@ -46,7 +46,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -70,15 +70,15 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:active {
-    background: $color-border-light;
+    background: var(--gs-border-color-light);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -91,8 +91,8 @@
   width: 32px;
   height: 32px;
   border-radius: $radius-md;
-  background: $color-bg-page;
-  color: $color-text-tertiary;
+  background: var(--gs-bg-page);
+  color: var(--gs-text-tertiary);
 }
 
 .thumbnail {
@@ -101,13 +101,13 @@
   border-radius: $radius-sm;
   object-fit: cover;
   flex-shrink: 0;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .text {
   flex: 1;
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -115,7 +115,7 @@
 }
 
 .highlight {
-  color: $color-primary;
+  color: var(--gs-color-primary);
   font-weight: $font-weight-medium;
 }
 

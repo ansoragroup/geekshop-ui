@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './TwoColumnLayout.module.scss';
 
@@ -31,11 +32,9 @@ export const TwoColumnLayout = forwardRef<HTMLDivElement, TwoColumnLayoutProps>(
     },
     ref,
   ) => {
-    const rootClass = [
-      styles.root,
+    const rootClass = cn(styles.root,
       sidebarPosition === 'right' && styles.reversed,
-      className,
-    ].filter(Boolean).join(' ');
+      className,);
 
     const sidebarWidthValue =
       typeof sidebarWidth === 'number' ? `${sidebarWidth}px` : sidebarWidth;

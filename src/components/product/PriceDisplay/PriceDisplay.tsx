@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type CSSProperties, type HTMLAttributes } from 'react';
 import { useGeekShop, CURRENCY_CONFIGS } from '../../../i18n';
 import styles from './PriceDisplay.module.scss';
@@ -69,7 +71,7 @@ export const PriceDisplay = forwardRef<HTMLDivElement, PriceDisplayProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`size-${size}`]} ${styles[`variant-${variant}`]} ${className}`}
+        className={cn(styles.root, styles[`size-${size}`], styles[`variant-${variant}`], className)}
         style={rootStyle}
         {...rest}
       >

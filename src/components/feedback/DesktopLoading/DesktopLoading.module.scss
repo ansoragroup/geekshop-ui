@@ -56,7 +56,7 @@
 // ─── Text ────────────────────────────────────────────────────────────────────
 
 .text {
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 

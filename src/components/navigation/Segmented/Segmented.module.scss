@@ -20,7 +20,7 @@
 .track {
   position: relative;
   display: inline-flex;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   border-radius: $radius-md;
   padding: 2px;
 }
@@ -30,9 +30,9 @@
   top: 2px;
   left: 0;
   height: calc(100% - 4px);
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: calc(#{$radius-md} - 2px);
-  box-shadow: $shadow-sm;
+  box-shadow: var(--gs-shadow-sm);
   transition: transform $transition-normal, width $transition-normal;
   z-index: 0;
 }
@@ -49,20 +49,20 @@
   cursor: pointer;
   font-family: $font-family;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   white-space: nowrap;
   transition: color $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     border-radius: calc(#{$radius-md} - 2px);
   }
 }
 
 .active {
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-weight: $font-weight-semibold;
 }
 

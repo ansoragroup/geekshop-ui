@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './UserDropdown.module.scss';
 
@@ -16,7 +18,7 @@ export interface UserDropdownProps extends HTMLAttributes<HTMLDivElement> {
   /** URL for user avatar image */
   userAvatar?: string;
   /** Menu items to display when logged in */
-  items?: UserDropdownItem[];
+  items?: UserDropdownItemcn(];
   /** Whether the user is logged in */
   isLoggedIn?: boolean;
   /** Callback when sign in is clicked */
@@ -109,7 +111,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
       return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen]);
 
-    const wrapperClass = [styles.wrapper, className].filter(Boolean).join(' ');
+    const wrapperClass = [styles.wrapper, className);
 
     return (
       <div
@@ -168,7 +170,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
                       <button
                         key={index}
                         type="button"
-                        className={`${styles.menuItem} ${item.danger ? styles.menuItemDanger : ''}`}
+                        className={cn(styles.menuItem, item.danger ? styles.menuItemDanger : '')}
                         role="menuitem"
                         onClick={() => handleItemClick(item)}
                       >
@@ -183,7 +185,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
                 <div className={styles.menuGroup}>
                   <button
                     type="button"
-                    className={`${styles.menuItem} ${styles.menuItemDanger}`}
+                    className={cn(styles.menuItem, styles.menuItemDanger)}
                     role="menuitem"
                     onClick={handleSignOut}
                   >

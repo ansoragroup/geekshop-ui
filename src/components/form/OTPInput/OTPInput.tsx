@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useImperativeHandle, useCallback, useEffect } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -46,7 +48,7 @@ export const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
     ref,
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => internalRef.current!, []);
+    useImperativeHandle(ref, () => internalRef.current!, cn(]);
 
     const [value, setValue] = useControllableState<string>({
       value: controlledValue,
@@ -128,10 +130,7 @@ export const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
             isFilled && styles.filled,
             isActive && styles.active,
             error && styles.error,
-            disabled && styles.disabled,
-          ]
-            .filter(Boolean)
-            .join(' ')}
+            disabled && styles.disabled,)}
           aria-hidden="true"
         >
           {isFilled ? (mask ? '\u2022' : char) : ''}
@@ -139,7 +138,7 @@ export const OTPInput = forwardRef<HTMLInputElement, OTPInputProps>(
       );
     });
 
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.root, className);
 
     return (
       <div className={rootClass}>

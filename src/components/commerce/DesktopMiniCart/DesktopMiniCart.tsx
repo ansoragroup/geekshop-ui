@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './DesktopMiniCart.module.scss';
 
@@ -165,7 +167,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.wrapper} ${className}`}
+        className={cn(styles.wrapper, className)}
         {...rest}
       >
         {/* Trigger */}

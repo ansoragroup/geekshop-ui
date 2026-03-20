@@ -25,7 +25,7 @@
 }
 
 .unchecked {
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   background: transparent;
 }
 
@@ -36,7 +36,7 @@
 
 .label {
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
@@ -46,6 +46,6 @@
   opacity: 0.45;
 
   .label {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }

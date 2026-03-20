@@ -49,7 +49,7 @@
 .title {
   font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   margin: 0;
   white-space: nowrap;
@@ -60,7 +60,7 @@
 .subtitle {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-regular;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
   margin: 0;
 }
@@ -76,7 +76,7 @@
   border: none;
   background: none;
   cursor: pointer;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   border-radius: 0;
   transition: color $transition-fast;
 
@@ -115,8 +115,8 @@
 .tab {
   padding: $spacing-sm $desktop-spacing-md;
   border: none;
-  background: $color-bg-page;
-  color: $color-text-secondary;
+  background: var(--gs-bg-page);
+  color: var(--gs-text-secondary);
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
   border-radius: $desktop-radius-chip;
@@ -126,17 +126,17 @@
 
   &:hover {
     color: var(--gs-color-primary);
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
 .tabActive {
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 
   &:hover {
     background: var(--gs-color-primary-dark);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 }
 

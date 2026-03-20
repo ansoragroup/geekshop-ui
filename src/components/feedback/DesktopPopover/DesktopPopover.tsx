@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -138,7 +140,7 @@ export const DesktopPopover = forwardRef<HTMLDivElement, DesktopPopoverProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         <div
@@ -152,7 +154,7 @@ export const DesktopPopover = forwardRef<HTMLDivElement, DesktopPopoverProps>(
         {isOpen && (
           <div
             ref={popoverRef}
-            className={`${styles.popover} ${styles[`placement-${placement}`]}`}
+            className={cn(styles.popover, styles[`placement-${placement}`])}
             style={{ top: position.top, left: position.left }}
             role="tooltip"
             onMouseEnter={trigger === 'hover' ? () => setIsOpen(true) : undefined}

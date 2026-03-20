@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Footer.module.scss';
 
@@ -9,7 +11,7 @@ export interface FooterLink {
 
 export interface FooterColumn {
   title: string;
-  links: FooterLink[];
+  links: FooterLinkcn(];
 }
 
 export interface FooterSocial {
@@ -67,7 +69,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
       [email, onSubscribe],
     );
 
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = [styles.root, className);
 
     const renderLink = (link: FooterLink, index: number) => {
       if (link.href) {

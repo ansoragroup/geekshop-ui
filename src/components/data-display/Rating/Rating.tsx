@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useId, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './Rating.module.scss';
@@ -93,7 +95,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
       return (
         <span
           key={i}
-          className={`${styles.star} ${interactive ? styles.interactive : ''}`}
+          className={cn(styles.star, interactive ? styles.interactive : '')}
           onClick={interactive ? () => setValue(starIndex) : undefined}
           onKeyDown={interactive ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setValue(starIndex); } } : undefined}
           onMouseEnter={interactive ? () => setHoverValue(starIndex) : undefined}
@@ -108,7 +110,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
     });
 
     return (
-      <div ref={ref} className={`${styles.root} ${styles[`size-${size}`]} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, styles[`size-${size}`], className)} {...rest}>
         <div className={styles.stars}>{stars}</div>
         {showCount && (
           <span className={styles.countText}>

@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type CSSProperties, type HTMLAttributes } from 'react';
 import styles from './DesktopSkeleton.module.scss';
 
@@ -42,11 +43,11 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
     // Multi-line text
     if (variant === 'text' && lines > 1) {
       return (
-        <div ref={ref} className={`${styles.textGroup} ${className}`} role="status" aria-label="Loading" {...rest}>
+        <div ref={ref} className={cn(styles.textGroup, className)} role="status" aria-label="Loading" {...rest}>
           {Array.from({ length: lines }, (_, i) => (
             <div
               key={i}
-              className={`${styles.skeleton} ${styles.text} ${animClass}`}
+              className={cn(styles.skeleton, styles.text, animClass)}
               style={i === lines - 1 ? { width: '60%' } : undefined}
             />
           ))}
@@ -59,18 +60,18 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.card} ${className}`}
+          className={cn(styles.card, className)}
           style={getStyle()}
           role="status"
           aria-label="Loading"
           {...rest}
         >
-          <div className={`${styles.skeleton} ${styles.cardImage} ${animClass}`} />
+          <div className={cn(styles.skeleton, styles.cardImage, animClass)} />
           <div className={styles.cardBody}>
-            <div className={`${styles.skeleton} ${styles.text} ${animClass}`} style={{ width: '40%' }} />
-            <div className={`${styles.skeleton} ${styles.text} ${animClass}`} />
-            <div className={`${styles.skeleton} ${styles.text} ${animClass}`} style={{ width: '70%' }} />
-            <div className={`${styles.skeleton} ${styles.text} ${styles.textLg} ${animClass}`} style={{ width: '30%' }} />
+            <div className={cn(styles.skeleton, styles.text, animClass)} style={{ width: '40%' }} />
+            <div className={cn(styles.skeleton, styles.text, animClass)} />
+            <div className={cn(styles.skeleton, styles.text, animClass)} style={{ width: '70%' }} />
+            <div className={cn(styles.skeleton, styles.text, styles.textLg, animClass)} style={{ width: '30%' }} />
           </div>
         </div>
       );
@@ -82,7 +83,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.skeleton} ${styles.circle} ${animClass} ${className}`}
+          className={cn(styles.skeleton, styles.circle, animClass, className)}
           style={{ width: typeof size === 'number' ? `${size}px` : size, height: typeof size === 'number' ? `${size}px` : size, ...style }}
           role="status"
           aria-label="Loading"
@@ -95,7 +96,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.skeleton} ${styles[variant]} ${animClass} ${className}`}
+        className={cn(styles.skeleton, styles[variant], animClass, className)}
         style={getStyle()}
         role="status"
         aria-label="Loading"

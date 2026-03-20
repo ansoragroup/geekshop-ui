@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import type { Locale } from '../../../i18n/types';
@@ -112,7 +114,7 @@ export const LanguageSwitcher = forwardRef<HTMLDivElement, LanguageSwitcherProps
       return (
         <div
           ref={ref}
-          className={`${styles.root} ${styles.inline} ${sizeClass} ${className ?? ''}`}
+          className={cn(styles.root, styles.inline, sizeClass, className ?? '')}
           role="radiogroup"
           aria-label="Language"
           tabIndex={0}
@@ -127,7 +129,7 @@ export const LanguageSwitcher = forwardRef<HTMLDivElement, LanguageSwitcherProps
                 role="radio"
                 aria-checked={isActive}
                 aria-label={LOCALE_LABELS[locale]}
-                className={`${styles.option} ${isActive ? styles.active : ''}`}
+                className={cn(styles.option, isActive ? styles.active : '')}
                 onClick={() => setSelected(locale)}
                 tabIndex={isActive ? 0 : -1}
               >
@@ -147,7 +149,7 @@ export const LanguageSwitcher = forwardRef<HTMLDivElement, LanguageSwitcherProps
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.root} ${styles.dropdown} ${sizeClass} ${className ?? ''}`}
+        className={cn(styles.root, styles.dropdown, sizeClass, className ?? '')}
         role="toolbar"
         tabIndex={0}
         onKeyDown={handleKeyDown}
@@ -162,7 +164,7 @@ export const LanguageSwitcher = forwardRef<HTMLDivElement, LanguageSwitcherProps
         >
           <span className={styles.triggerIcon}>🌐</span>
           <span className={styles.triggerLabel}>{LOCALE_LABELS[selected]}</span>
-          <span className={`${styles.triggerArrow} ${isOpen ? styles.open : ''}`}>▾</span>
+          <span className={cn(styles.triggerArrow, isOpen ? styles.open : '')}>▾</span>
         </button>
         {isOpen && (
           <div className={styles.dropdownList} role="radiogroup" aria-label="Language">
@@ -174,7 +176,7 @@ export const LanguageSwitcher = forwardRef<HTMLDivElement, LanguageSwitcherProps
                   role="radio"
                   aria-checked={isActive}
                   tabIndex={0}
-                  className={`${styles.dropdownOption} ${isActive ? styles.active : ''}`}
+                  className={cn(styles.dropdownOption, isActive ? styles.active : '')}
                   onClick={() => {
                     setSelected(locale);
                     setIsOpen(false);

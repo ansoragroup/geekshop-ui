@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   createContext,
@@ -31,7 +33,7 @@ export interface ValidationRule {
 // ---- Form Context ----
 
 interface FieldRegistration {
-  rules: ValidationRule[];
+  rules: ValidationRulecn(];
 }
 
 export interface FormContextValue {
@@ -267,7 +269,7 @@ export const Form = forwardRef<FormHandle, FormProps>(
       subscribe,
     };
 
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = [styles.root, className);
 
     return (
       <FormContext value={contextValue}>
@@ -300,7 +302,7 @@ export interface FormItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'chi
   /** Whether the field is required (adds asterisk to label) */
   required?: boolean;
   /** Validation rules */
-  rules?: ValidationRule[];
+  rules?: ValidationRulecn(];
   /** Manual error override (takes priority over form validation) */
   error?: string;
   /** Helper text shown below the field */
@@ -364,10 +366,7 @@ export const FormItem = forwardRef<HTMLDivElement, FormItemProps>(
       styles.formItem,
       labelPosition === 'left' && styles.horizontal,
       displayError && styles.hasError,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

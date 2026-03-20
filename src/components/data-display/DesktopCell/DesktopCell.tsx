@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes, type KeyboardEvent } from 'react';
 import styles from './DesktopCell.module.scss';
 
@@ -61,7 +63,7 @@ export const DesktopCell = forwardRef<HTMLDivElement, DesktopCellProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${isInteractive ? styles.interactive : ''} ${border ? styles.border : ''} ${className}`}
+        className={cn(styles.root, isInteractive ? styles.interactive : '', border ? styles.border : '', className)}
         role={isInteractive ? 'button' : undefined}
         tabIndex={isInteractive ? 0 : undefined}
         onClick={onClick}

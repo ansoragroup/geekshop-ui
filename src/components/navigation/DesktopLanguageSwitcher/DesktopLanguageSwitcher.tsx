@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import type { Locale } from '../../../i18n/types';
@@ -141,12 +143,12 @@ export const DesktopLanguageSwitcher = forwardRef<HTMLDivElement, DesktopLanguag
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.root} ${disabled ? styles.disabled : ''} ${className}`}
+        className={cn(styles.root, disabled ? styles.disabled : '', className)}
         {...rest}
       >
         <button
           type="button"
-          className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
+          className={cn(styles.trigger, isOpen ? styles.open : '')}
           onClick={() => {
             if (!disabled) setIsOpen((prev) => !prev);
           }}
@@ -161,7 +163,7 @@ export const DesktopLanguageSwitcher = forwardRef<HTMLDivElement, DesktopLanguag
           </span>
           <span className={styles.triggerLabel}>{currentLang?.name}</span>
           <span className={styles.triggerCode}>{selected.toUpperCase()}</span>
-          <span className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ''}`}>
+          <span className={cn(styles.chevron, isOpen ? styles.chevronOpen : '')}>
             <ChevronIcon />
           </span>
         </button>
@@ -176,7 +178,7 @@ export const DesktopLanguageSwitcher = forwardRef<HTMLDivElement, DesktopLanguag
                   role="option"
                   aria-selected={isActive}
                   tabIndex={0}
-                  className={`${styles.option} ${isActive ? styles.optionActive : ''} ${focusedIndex === index ? styles.optionFocused : ''}`}
+                  className={cn(styles.option, isActive ? styles.optionActive : '', focusedIndex === index ? styles.optionFocused : '')}
                   onClick={() => handleSelect(lang.code)}
                   onKeyDown={(e) => handleOptionKeyDown(e, index)}
                 >

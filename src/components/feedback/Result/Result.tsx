@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Result.module.scss';
 
@@ -76,12 +77,12 @@ export const Result = forwardRef<HTMLDivElement, ResultProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         role="status"
         {...rest}
       >
         <div
-          className={`${styles.iconCircle} ${styles[`status-${status}`]}`}
+          className={cn(styles.iconCircle, styles[`status-${status}`])}
           aria-hidden="true"
         >
           {icon ?? STATUS_ICONS[status]}

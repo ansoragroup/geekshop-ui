@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -16,7 +18,7 @@ export interface DesktopSelectOption {
 
 export interface DesktopSelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected value (controlled) */
-  value?: string | string[];
+  value?: string | stringcn(];
   /** Default value (uncontrolled) */
   defaultValue?: string | string[];
   /** Change handler */
@@ -240,10 +242,7 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div ref={internalRef} className={rootClass} onKeyDown={handleKeyDown} {...rest}>
@@ -267,7 +266,7 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
           <span className={isValueSelected ? styles.triggerText : styles.triggerPlaceholder}>
             {displayText || placeholder}
           </span>
-          <span className={`${styles.triggerChevron} ${isOpen ? styles.triggerChevronOpen : ''}`}>
+          <span className={cn(styles.triggerChevron, isOpen ? styles.triggerChevronOpen : '')}>
             <ChevronIcon />
           </span>
         </button>
@@ -310,17 +309,14 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
               )}
               {filteredOptions.map((option, index) => {
                 const isSelected = multiple
-                  ? (Array.isArray(selectedValue) ? selectedValue : []).includes(option.value)
+                  ? (Array.isArray(selectedValue) ? selectedValue : cn(]).includes(option.value)
                   : selectedValue === option.value;
 
                 const optionClass = [
                   styles.option,
                   isSelected && styles.optionSelected,
                   option.disabled && styles.optionDisabled,
-                  index === highlightedIndex && styles.optionHighlighted,
-                ]
-                  .filter(Boolean)
-                  .join(' ');
+                  index === highlightedIndex && styles.optionHighlighted,);
 
                 return (
                   <button
@@ -335,7 +331,7 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
                     onMouseEnter={() => setHighlightedIndex(index)}
                   >
                     {multiple && (
-                      <span className={`${styles.checkbox} ${isSelected ? styles.checkboxChecked : ''}`}>
+                      <span className={cn(styles.checkbox, isSelected ? styles.checkboxChecked : '')}>
                         {isSelected && <CheckIcon />}
                       </span>
                     )}

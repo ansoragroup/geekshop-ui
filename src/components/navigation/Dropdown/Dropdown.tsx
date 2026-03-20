@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useCallback,
@@ -19,7 +21,7 @@ export interface DropdownItem {
 
 export interface DropdownProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   /** Menu items */
-  items: DropdownItem[];
+  items: DropdownItemcn(];
   /** Currently selected value */
   value?: string;
   /** Trigger element that opens the dropdown */
@@ -191,7 +193,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
       [ref],
     );
 
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = [styles.root, className);
 
     const menuStyle: React.CSSProperties = {};
     if (width) {
@@ -234,11 +236,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
               const isSelected = item.value === value;
               const isDisabled = item.disabled === true;
 
-              const itemClass = [
-                styles.item,
+              const itemClass = cn(styles.item,
                 isSelected && styles.itemSelected,
-                isDisabled && styles.itemDisabled,
-              ].filter(Boolean).join(' ');
+                isDisabled && styles.itemDisabled,);
 
               return (
                 <div

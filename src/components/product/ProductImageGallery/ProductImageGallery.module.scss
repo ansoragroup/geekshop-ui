@@ -3,7 +3,7 @@
 .root {
   position: relative;
   width: 100%;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
@@ -38,7 +38,7 @@
   height: 36px;
   border-radius: $radius-round;
   background: rgba(0, 0, 0, 0.35);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   border: none;
   cursor: pointer;
   transition: background $transition-fast;
@@ -90,7 +90,7 @@
   align-items: center;
   padding: $spacing-xxs $spacing-sm;
   background: rgba(0, 0, 0, 0.5);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   border-radius: $radius-round;
@@ -125,6 +125,6 @@
 
 .dotActive {
   width: 16px;
-  background: $color-text-white;
+  background: var(--gs-text-white);
   border-radius: $radius-round;
 }

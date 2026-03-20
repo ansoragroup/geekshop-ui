@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,9 +18,9 @@
 
 .content {
   position: relative;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  box-shadow: $shadow-xl;
+  box-shadow: var(--gs-shadow-xl);
   z-index: $z-index-modal;
   max-width: calc(100vw - #{$desktop-spacing-xxl} * 2);
   max-height: 85vh;
@@ -37,7 +37,7 @@
   align-items: center;
   justify-content: space-between;
   padding: $spacing-xl;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
   flex-shrink: 0;
 }
 
@@ -51,7 +51,7 @@
 .title {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   margin: 0;
   line-height: $line-height-tight;
   flex: 1;
@@ -67,18 +67,18 @@
   border: none;
   border-radius: $radius-round;
   background: transparent;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
   flex-shrink: 0;
 
   &:hover {
-    background: $color-bg-page;
-    color: $color-text-primary;
+    background: var(--gs-bg-page);
+    color: var(--gs-text-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -96,7 +96,7 @@
 
 .footer {
   padding: $spacing-lg $spacing-xl;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--gs-border-color);
   display: flex;
   justify-content: flex-end;
   align-items: center;

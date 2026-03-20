@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './PromoBanner.module.scss';
 
@@ -14,6 +16,10 @@ export interface PromoBannerItem {
   icon?: React.ReactNode;
   /** Click handler */
   onClick?: MouseEventHandler<HTMLDivElement>;
+  /** Link URL — when provided, renders item as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 export interface PromoBannerProps extends HTMLAttributes<HTMLDivElement> {
@@ -23,34 +29,39 @@ export interface PromoBannerProps extends HTMLAttributes<HTMLDivElement> {
 
 export const PromoBanner = forwardRef<HTMLDivElement, PromoBannerProps>(
   ({ items, className, ...rest }, ref) => {
-  const rootClass = [styles.promoBanner, className].filter(Boolean).join(' ');
 
   return (
-    <div ref={ref} className={rootClass} {...rest}>
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className={styles.card}
-          style={{ '--gs-promo-card-bg': item.gradient } as CSSProperties}
-          onClick={item.onClick}
-          onKeyDown={item.onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.onClick!(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
-          role={item.onClick ? 'button' : undefined}
-          tabIndex={item.onClick ? 0 : undefined}
-        >
-          <div className={styles.cardContent}>
-            <div className={styles.textArea}>
-              <h3 className={styles.title}>{item.title}</h3>
-              {item.subtitle && (
-                <p className={styles.subtitle}>{item.subtitle}</p>
+    <div ref={ref} className={cn(styles.promoBanner, className)} {...rest}>
+      {items.map((item, index) => {
+        const Wrapper = item.href ? 'a' : 'div';
+        const linkProps = item.href ? { href: item.href, target: item.target } : {};
+
+        return (
+          <Wrapper
+            key={index}
+            className={styles.card}
+            style={{ '--gs-promo-card-bg': item.gradient } as CSSProperties}
+            onClick={item.onClick as MouseEventHandler<HTMLElement>}
+            onKeyDown={item.onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.onClick!(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
+            role={item.onClick && !item.href ? 'button' : undefined}
+            tabIndex={item.onClick && !item.href ? 0 : undefined}
+            {...linkProps}
+          >
+            <div className={styles.cardContent}>
+              <div className={styles.textArea}>
+                <h3 className={styles.title}>{item.title}</h3>
+                {item.subtitle && (
+                  <p className={styles.subtitle}>{item.subtitle}</p>
+                )}
+                {item.tag && <span className={styles.tag}>{item.tag}</span>}
+              </div>
+              {item.icon && (
+                <div className={styles.iconArea}>{item.icon}</div>
               )}
-              {item.tag && <span className={styles.tag}>{item.tag}</span>}
             </div>
-            {item.icon && (
-              <div className={styles.iconArea}>{item.icon}</div>
-            )}
-          </div>
-        </div>
-      ))}
+          </Wrapper>
+        );
+      })}
     </div>
   );
   },

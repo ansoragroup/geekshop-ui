@@ -47,7 +47,7 @@
 .title {
   font-size: $font-size-xxl;
   font-weight: $font-weight-semibold;
-  color: var(--gs-color-text-primary, $color-text-primary);
+  color: var(--gs-text-primary);
   margin-bottom: $spacing-sm;
   line-height: $line-height-tight;
 }
@@ -55,7 +55,7 @@
 // === Description ===
 .description {
   font-size: $font-size-md;
-  color: var(--gs-color-text-secondary, $color-text-secondary);
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
   max-width: 280px;
   margin-bottom: $spacing-xxl;

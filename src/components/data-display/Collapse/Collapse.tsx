@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   type ReactNode,
@@ -69,7 +71,7 @@ export const CollapsePanel = forwardRef<HTMLDivElement, CollapsePanelProps & { _
     return (
       <div
         ref={ref}
-        className={`${styles.panel} ${_isActive ? styles.active : ''} ${disabled ? styles.disabled : ''}`}
+        className={cn(styles.panel, _isActive ? styles.active : '', disabled ? styles.disabled : '')}
         {...rest}
       >
         <div
@@ -86,7 +88,7 @@ export const CollapsePanel = forwardRef<HTMLDivElement, CollapsePanelProps & { _
           <span className={styles.title}>{title}</span>
           <div className={styles.headerRight}>
             {extra && <span className={styles.extra}>{extra}</span>}
-            <span className={`${styles.arrow} ${_isActive ? styles.arrowExpanded : ''}`}>
+            <span className={cn(styles.arrow, _isActive ? styles.arrowExpanded : '')}>
               <ChevronIcon />
             </span>
           </div>
@@ -158,7 +160,7 @@ export const Collapse = forwardRef<HTMLDivElement, CollapseProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {enhancedChildren}

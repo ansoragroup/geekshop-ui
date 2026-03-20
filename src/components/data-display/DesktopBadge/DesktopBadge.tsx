@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopBadge.module.scss';
 
@@ -57,7 +58,7 @@ export const DesktopBadge = forwardRef<HTMLSpanElement, DesktopBadgeProps>(
       return (
         <span
           ref={ref}
-          className={`${styles.badge} ${styles[`type-${type}`]} ${styles[`color-${color}`]} ${className}`}
+          className={cn(styles.badge, styles[`type-${type}`], styles[`color-${color}`], className)}
           style={customColor ? { backgroundColor: customColor } : undefined}
           {...rest}
         >
@@ -68,7 +69,7 @@ export const DesktopBadge = forwardRef<HTMLSpanElement, DesktopBadgeProps>(
 
     const badgeElement = !isHidden ? (
       <span
-        className={`${styles.badge} ${styles[`type-${type}`]} ${styles[`color-${color}`]}`}
+        className={cn(styles.badge, styles[`type-${type}`], styles[`color-${color}`])}
         style={customColor ? { backgroundColor: customColor } : undefined}
       >
         {badgeContent}
@@ -78,7 +79,7 @@ export const DesktopBadge = forwardRef<HTMLSpanElement, DesktopBadgeProps>(
     return (
       <span
         ref={ref}
-        className={`${styles.wrapper} ${styles[`position-${position}`]} ${className}`}
+        className={cn(styles.wrapper, styles[`position-${position}`], className)}
         {...rest}
       >
         {children}

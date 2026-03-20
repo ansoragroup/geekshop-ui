@@ -2,8 +2,8 @@
 
 .megaMenu {
   width: 100%;
-  background: $color-bg-card;
-  border-bottom: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border-bottom: 1px solid var(--gs-border-color);
   font-family: $font-family;
   position: relative;
   display: flex;
@@ -37,17 +37,17 @@
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   cursor: pointer;
   white-space: nowrap;
   transition: color $transition-fast;
 
   &:hover {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     border-radius: $radius-xs;
   }
@@ -72,18 +72,18 @@
   background: none;
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
   transition: color $transition-fast;
 
   &:hover {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     border-radius: $radius-xs;
   }
@@ -98,9 +98,9 @@
   z-index: $z-index-dropdown;
   display: flex;
   justify-content: center;
-  background: $color-bg-card;
-  box-shadow: $shadow-lg;
-  border-top: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  box-shadow: var(--gs-shadow-lg);
+  border-top: 1px solid var(--gs-border-color);
 }
 
 .dropdownContent {
@@ -119,7 +119,7 @@
   list-style: none;
   margin: 0;
   padding: $spacing-sm 0;
-  border-right: 1px solid $color-border;
+  border-right: 1px solid var(--gs-border-color);
 }
 
 .categoryItem {
@@ -128,8 +128,8 @@
 
 .categoryItemActive {
   .categoryLink {
-    background: $color-primary-bg;
-    color: $color-primary;
+    background: var(--gs-color-primary-bg);
+    color: var(--gs-color-primary);
   }
 }
 
@@ -140,7 +140,7 @@
   width: 100%;
   padding: $spacing-md $spacing-lg;
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   text-decoration: none;
   transition: background $transition-fast, color $transition-fast;
   cursor: pointer;
@@ -149,8 +149,8 @@
   box-sizing: border-box;
 
   &:hover {
-    background: $color-primary-bg;
-    color: $color-primary;
+    background: var(--gs-color-primary-bg);
+    color: var(--gs-color-primary);
   }
 }
 
@@ -175,7 +175,7 @@
 .chevron {
   display: flex;
   align-items: center;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -188,10 +188,10 @@
 .subcategoryTitle {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   margin: 0 0 $spacing-lg;
   padding-bottom: $spacing-sm;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
 }
 
 .subcategoryGrid {
@@ -206,7 +206,7 @@
 .subcategoryLink {
   display: block;
   font-size: $font-size-md;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   text-decoration: none;
   padding: $spacing-xs 0;
   transition: color $transition-fast;
@@ -215,7 +215,7 @@
   text-overflow: ellipsis;
 
   &:hover {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 }
 

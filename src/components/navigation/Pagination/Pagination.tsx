@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './Pagination.module.scss';
 
@@ -41,7 +43,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     },
     ref,
   ) => {
-    const rootClass = [styles.pagination, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.pagination, className);
     const pages = getPageRange(currentPage, totalPages, siblingCount);
 
     const handlePrev = useCallback(() => {
@@ -60,7 +62,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           {showPrevNext && (
             <li>
               <button
-                className={`${styles.button} ${styles.prevNext} ${currentPage <= 1 ? styles.disabled : ''}`}
+                className={cn(styles.button, styles.prevNext, currentPage <= 1 ? styles.disabled : '')}
                 onClick={handlePrev}
                 disabled={currentPage <= 1}
                 aria-label="Previous page"
@@ -87,7 +89,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             return (
               <li key={page}>
                 <button
-                  className={`${styles.button} ${styles.pageButton} ${isActive ? styles.active : ''}`}
+                  className={cn(styles.button, styles.pageButton, isActive ? styles.active : '')}
                   onClick={() => onPageChange(page)}
                   aria-label={`Page ${page}`}
                   aria-current={isActive ? 'page' : undefined}
@@ -102,7 +104,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           {showPrevNext && (
             <li>
               <button
-                className={`${styles.button} ${styles.prevNext} ${currentPage >= totalPages ? styles.disabled : ''}`}
+                className={cn(styles.button, styles.prevNext, currentPage >= totalPages ? styles.disabled : '')}
                 onClick={handleNext}
                 disabled={currentPage >= totalPages}
                 aria-label="Next page"

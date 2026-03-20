@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './SearchAutocomplete.module.scss';
@@ -17,7 +19,7 @@ export interface SearchAutocompleteProps extends HTMLAttributes<HTMLDivElement> 
   /** Change handler */
   onChange?: (value: string) => void;
   /** Recent search terms */
-  recentSearches?: string[];
+  recentSearches?: stringcn(];
   /** Suggested search terms */
   suggestions?: string[];
   /** Product results */
@@ -165,7 +167,7 @@ export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteP
       };
     }, []);
 
-    const wrapperClass = [styles.wrapper, className].filter(Boolean).join(' ');
+    const wrapperClass = [styles.wrapper, className);
 
     return (
       <div

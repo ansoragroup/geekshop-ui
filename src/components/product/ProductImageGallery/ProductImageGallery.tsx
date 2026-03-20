@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useRef, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './ProductImageGallery.module.scss';
@@ -136,7 +138,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
     };
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Top overlay controls */}
         <div className={styles.topBar}>
           <button className={styles.iconButton} onClick={onBack} type="button" aria-label={t('common.back')}>
@@ -147,7 +149,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
               <ShareIcon />
             </button>
             <button
-              className={`${styles.iconButton} ${isFavorited ? styles.favorited : ''}`}
+              className={cn(styles.iconButton, isFavorited ? styles.favorited : '')}
               onClick={onFavorite}
               type="button"
               aria-label={t('commerce.favorite')}
@@ -180,7 +182,7 @@ export const ProductImageGallery = forwardRef<HTMLDivElement, ProductImageGaller
               <button
                 key={i}
                 type="button"
-                className={`${styles.dot} ${i === currentIndex ? styles.dotActive : ''}`}
+                className={cn(styles.dot, i === currentIndex ? styles.dotActive : '')}
                 onClick={() => goToIndex(i)}
                 aria-label={t('product.image', { index: i + 1 })}
               />

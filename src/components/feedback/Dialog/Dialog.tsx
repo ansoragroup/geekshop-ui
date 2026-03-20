@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
@@ -94,7 +96,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     const resolvedCancelText = cancelText ?? t('common.cancel');
 
     return (
-      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick} role="presentation">
+      <div className={cn(styles.overlay, className)} onClick={handleOverlayClick} role="presentation">
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
@@ -131,7 +133,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
               </button>
             )}
             <button
-              className={`${styles.confirmBtn} ${styles[`confirm-${confirmType}`]}`}
+              className={cn(styles.confirmBtn, styles[`confirm-${confirmType}`])}
               onClick={handleConfirm}
               type="button"
             >

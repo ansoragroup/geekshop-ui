@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes } from 'react';
 import styles from './DesktopQuickBuyPopup.module.scss';
 
@@ -146,7 +148,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
     return (
       <div
         ref={ref}
-        className={`${styles.overlay} ${className}`}
+        className={cn(styles.overlay, className)}
         onClick={onClose}
         role="presentation"
         {...rest}
@@ -198,7 +200,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
                       <button
                         type="button"
                         key={v.id}
-                        className={`${styles.chip} ${selectedVariant === v.id ? styles.chipActive : ''}`}
+                        className={cn(styles.chip, selectedVariant === v.id ? styles.chipActive : '')}
                         onClick={() => setSelectedVariant(v.id)}
                         role="radio"
                         aria-checked={selectedVariant === v.id}

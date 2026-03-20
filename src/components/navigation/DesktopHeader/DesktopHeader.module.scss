@@ -6,8 +6,8 @@
   z-index: $z-index-sticky;
   width: 100%;
   min-height: $desktop-header-height;
-  background: $color-bg-white;
-  box-shadow: $desktop-shadow-card;
+  background: var(--gs-bg-white);
+  box-shadow: var(--gs-desktop-shadow-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,7 @@
   user-select: none;
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
     border-radius: $radius-xs;
   }
@@ -44,7 +44,7 @@
 .logoText {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-bold;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   white-space: nowrap;
 }
 
@@ -57,8 +57,8 @@
   padding: 0 $desktop-spacing-md;
   border: none;
   border-radius: $desktop-radius-button;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -68,11 +68,11 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -84,14 +84,14 @@
   display: flex;
   align-items: center;
   height: 48px;
-  background: $color-bg-page;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-page);
+  border: 1px solid var(--gs-border-color);
   border-radius: $desktop-radius-input;
   overflow: hidden;
   transition: border-color $transition-fast;
 
   &:focus-within {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 }
 
@@ -100,7 +100,7 @@
   align-items: center;
   justify-content: center;
   padding-left: $spacing-lg;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -111,13 +111,13 @@
   background: transparent;
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   padding: 0 $spacing-md;
   height: 100%;
   min-width: 0;
 
   &::placeholder {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
   }
 }
 
@@ -128,19 +128,19 @@
   height: 100%;
   padding: 0 $spacing-xl;
   border: none;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   cursor: pointer;
   flex-shrink: 0;
   border-radius: 0 $desktop-radius-input $desktop-radius-input 0;
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -166,17 +166,17 @@
   border: none;
   border-radius: $desktop-radius-button;
   background: none;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
 
   &:hover {
-    color: $color-primary;
-    background: $color-primary-bg;
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -196,8 +196,8 @@
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
-  background: $color-sale;
-  color: $color-text-white;
+  background: var(--gs-color-sale);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
   line-height: 16px;

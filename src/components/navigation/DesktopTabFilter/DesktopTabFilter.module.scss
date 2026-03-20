@@ -16,31 +16,31 @@
     display: inline-flex;
     align-items: center;
     gap: $spacing-sm;
-    border: 1px solid $color-border;
+    border: 1px solid var(--gs-border-color);
     border-radius: $radius-round;
-    background: $color-bg-white;
+    background: var(--gs-bg-white);
     font-family: $font-family;
     font-weight: $font-weight-medium;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     cursor: pointer;
     white-space: nowrap;
     transition: all $transition-fast;
 
     &:hover {
-      border-color: var(--gs-color-primary, $color-primary);
-      color: var(--gs-color-primary, $color-primary);
-      background: var(--gs-color-primary-bg, $color-primary-bg);
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--gs-color-primary, $color-primary);
+      outline: 2px solid var(--gs-color-primary);
       outline-offset: 2px;
     }
 
     &.active {
-      border-color: var(--gs-color-primary, $color-primary);
-      background: var(--gs-color-primary, $color-primary);
-      color: $color-text-white;
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary);
+      color: var(--gs-text-white);
       font-weight: $font-weight-semibold;
     }
   }
@@ -56,12 +56,12 @@
     background: rgba($color-text-secondary, 0.12);
     font-size: $font-size-xs;
     font-weight: $font-weight-bold;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     line-height: 1;
 
     &.countActive {
       background: rgba($color-text-white, 0.25);
-      color: $color-text-white;
+      color: var(--gs-text-white);
     }
   }
 }
@@ -69,7 +69,7 @@
 // === Underline variant ===
 .underline {
   gap: $desktop-spacing-lg;
-  border-bottom: 1px solid $color-divider;
+  border-bottom: 1px solid var(--gs-divider-color);
 
   .tab {
     position: relative;
@@ -80,23 +80,23 @@
     background: none;
     font-family: $font-family;
     font-weight: $font-weight-medium;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     cursor: pointer;
     white-space: nowrap;
     transition: color $transition-fast;
 
     &:hover {
-      color: $color-text-primary;
+      color: var(--gs-text-primary);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--gs-color-primary, $color-primary);
+      outline: 2px solid var(--gs-color-primary);
       outline-offset: -2px;
       border-radius: $radius-xs;
     }
 
     &.active {
-      color: var(--gs-color-primary, $color-primary);
+      color: var(--gs-color-primary);
       font-weight: $font-weight-semibold;
     }
   }
@@ -107,7 +107,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--gs-color-primary, $color-primary);
+    background: var(--gs-color-primary);
     border-radius: $radius-round $radius-round 0 0;
   }
 
@@ -119,15 +119,15 @@
     height: 20px;
     padding: 0 $spacing-xs;
     border-radius: $radius-round;
-    background: var(--gs-color-primary-bg, $color-primary-bg);
+    background: var(--gs-color-primary-bg);
     font-size: $font-size-xs;
     font-weight: $font-weight-bold;
-    color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary);
     line-height: 1;
 
     &.countActive {
-      background: var(--gs-color-primary, $color-primary);
-      color: $color-text-white;
+      background: var(--gs-color-primary);
+      color: var(--gs-text-white);
     }
   }
 }
@@ -136,7 +136,7 @@
 .card {
   gap: $spacing-sm;
   padding: $spacing-xs;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   border-radius: $radius-md;
 
   .tab {
@@ -148,26 +148,26 @@
     background: none;
     font-family: $font-family;
     font-weight: $font-weight-medium;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     cursor: pointer;
     white-space: nowrap;
     transition: all $transition-fast;
 
     &:hover {
       background: rgba($color-bg-white, 0.7);
-      color: $color-text-primary;
+      color: var(--gs-text-primary);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--gs-color-primary, $color-primary);
+      outline: 2px solid var(--gs-color-primary);
       outline-offset: -2px;
     }
 
     &.active {
-      background: $color-bg-white;
-      color: $color-text-primary;
+      background: var(--gs-bg-white);
+      color: var(--gs-text-primary);
       font-weight: $font-weight-semibold;
-      box-shadow: $shadow-sm;
+      box-shadow: var(--gs-shadow-sm);
     }
   }
 
@@ -182,12 +182,12 @@
     background: rgba($color-text-secondary, 0.12);
     font-size: $font-size-xs;
     font-weight: $font-weight-bold;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     line-height: 1;
 
     &.countActive {
-      background: var(--gs-color-primary, $color-primary);
-      color: $color-text-white;
+      background: var(--gs-color-primary);
+      color: var(--gs-text-white);
     }
   }
 }

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './SocialProof.module.scss';
@@ -75,7 +77,7 @@ export const SocialProof = forwardRef<HTMLDivElement, SocialProofProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.toast} ${className}`}
+          className={cn(styles.toast, className)}
           role="status"
           aria-live="polite"
           {...rest}
@@ -98,7 +100,7 @@ export const SocialProof = forwardRef<HTMLDivElement, SocialProofProps>(
       return (
         <span
           ref={ref as React.Ref<HTMLSpanElement>}
-          className={`${styles.badge} ${className}`}
+          className={cn(styles.badge, className)}
           role="status"
           {...(rest as HTMLAttributes<HTMLSpanElement>)}
         >
@@ -112,7 +114,7 @@ export const SocialProof = forwardRef<HTMLDivElement, SocialProofProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.textRoot} ${className}`}
+        className={cn(styles.textRoot, className)}
         role="status"
         {...rest}
       >

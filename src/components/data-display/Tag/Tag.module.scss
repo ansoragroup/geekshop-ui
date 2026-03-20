@@ -64,27 +64,27 @@
 .variant-filled {
   &.color-primary {
     background-color: var(--gs-color-primary);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 
   &.color-success {
     background-color: var(--gs-color-success);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 
   &.color-warning {
     background-color: var(--gs-color-warning);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 
   &.color-error {
     background-color: var(--gs-color-error);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 
   &.color-default {
     background-color: #EAEAEA;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
   }
 }
 
@@ -114,8 +114,8 @@
   }
 
   &.color-default {
-    border-color: $color-border;
-    color: $color-text-secondary;
+    border-color: var(--gs-border-color);
+    color: var(--gs-text-secondary);
   }
 }
 
@@ -142,7 +142,7 @@
   }
 
   &.color-default {
-    background-color: $color-bg-page;
-    color: $color-text-secondary;
+    background-color: var(--gs-bg-page);
+    color: var(--gs-text-secondary);
   }
 }

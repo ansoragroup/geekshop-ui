@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopSkuSelector.module.scss';
 
@@ -12,7 +14,7 @@ export interface DesktopSkuOption {
 
 export interface DesktopSkuVariant {
   name: string;
-  options: DesktopSkuOption[];
+  options: DesktopSkuOptioncn(];
 }
 
 export interface DesktopSkuSelectorProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onSelect'> {
@@ -82,7 +84,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {/* Preview Image */}
@@ -116,8 +118,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
                     styles.chip,
                     isSelected && styles.chipSelected,
                     isDisabled && styles.chipDisabled,
-                    option.outOfStock && styles.chipOutOfStock,
-                  ].filter(Boolean).join(' ');
+                    option.outOfStock && styles.chipOutOfStock,);
 
                   return (
                     <div
@@ -152,7 +153,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
         {(stock !== undefined || price !== undefined) && (
           <div className={styles.stockLine}>
             {stock !== undefined && (
-              <span className={`${styles.stockText} ${getStockClass()}`}>
+              <span className={cn(styles.stockText, getStockClass())}>
                 {stock === 0 ? 'Out of stock' : `${stock} available`}
               </span>
             )}

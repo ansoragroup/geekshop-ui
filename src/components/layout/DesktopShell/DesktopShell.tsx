@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopShell.module.scss';
 
@@ -30,13 +31,11 @@ export const DesktopShell = forwardRef<HTMLDivElement, DesktopShellProps>(
     },
     ref,
   ) => {
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.root, className);
 
-    const bodyClass = [
-      styles.body,
+    const bodyClass = cn(styles.body,
       sidebar && styles.hasSidebar,
-      sidebar && sidebarPosition === 'right' && styles.sidebarRight,
-    ].filter(Boolean).join(' ');
+      sidebar && sidebarPosition === 'right' && styles.sidebarRight,);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

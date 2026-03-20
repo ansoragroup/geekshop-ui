@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
@@ -77,16 +79,12 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
       }
     };
 
-    const rootClass = [
-      styles.chip,
+    const rootClass = cn(styles.chip,
       styles[`variant-${variant}`],
       styles[`size-${size}`],
       selected && styles.selected,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div

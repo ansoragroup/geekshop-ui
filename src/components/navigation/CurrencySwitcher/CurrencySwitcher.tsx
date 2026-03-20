@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import type { CurrencyCode } from '../../../i18n/types';
@@ -107,7 +109,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
       return (
         <div
           ref={ref}
-          className={`${styles.root} ${styles.inline} ${sizeClass} ${className ?? ''}`}
+          className={cn(styles.root, styles.inline, sizeClass, className ?? '')}
           role="radiogroup"
           aria-label="Currency"
           tabIndex={0}
@@ -122,7 +124,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
                 role="radio"
                 aria-checked={isActive}
                 aria-label={CURRENCY_LABELS[currency]}
-                className={`${styles.option} ${isActive ? styles.active : ''}`}
+                className={cn(styles.option, isActive ? styles.active : '')}
                 onClick={() => setSelected(currency)}
                 tabIndex={isActive ? 0 : -1}
               >
@@ -142,7 +144,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.root} ${styles.dropdown} ${sizeClass} ${className ?? ''}`}
+        className={cn(styles.root, styles.dropdown, sizeClass, className ?? '')}
         role="toolbar"
         tabIndex={0}
         onKeyDown={handleKeyDown}
@@ -157,7 +159,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
         >
           <span className={styles.triggerIcon}>💰</span>
           <span className={styles.triggerLabel}>{CURRENCY_LABELS[selected]}</span>
-          <span className={`${styles.triggerArrow} ${isOpen ? styles.open : ''}`}>▾</span>
+          <span className={cn(styles.triggerArrow, isOpen ? styles.open : '')}>▾</span>
         </button>
         {isOpen && (
           <div className={styles.dropdownList} role="radiogroup" aria-label="Currency">
@@ -169,7 +171,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
                   role="radio"
                   aria-checked={isActive}
                   tabIndex={0}
-                  className={`${styles.dropdownOption} ${isActive ? styles.active : ''}`}
+                  className={cn(styles.dropdownOption, isActive ? styles.active : '')}
                   onClick={() => {
                     setSelected(currency);
                     setIsOpen(false);

@@ -5,7 +5,7 @@
   max-width: $breakpoint-sm;
   min-height: 100vh;
   margin: 0 auto;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   position: relative;
 }
 

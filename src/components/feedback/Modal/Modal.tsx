@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, useId, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './Modal.module.scss';
@@ -58,7 +60,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           ref.current = node;
         }
       },
-      [ref, trapRef],
+      cn(ref, trapRef],
     );
 
     if (!open) return null;
@@ -77,7 +79,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       width: typeof width === 'number' ? `${width}px` : width,
     };
 
-    const rootClass = [styles.backdrop, className].filter(Boolean).join(' ');
+    const rootClass = [styles.backdrop, className);
 
     return (
       <div className={rootClass} onClick={handleBackdropClick} role="presentation">

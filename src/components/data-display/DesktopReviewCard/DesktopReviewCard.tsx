@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopReviewCard.module.scss';
 
@@ -111,7 +113,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
     );
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Header row: avatar + name/stars left, date right */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
@@ -167,7 +169,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
         <div className={styles.votingRow}>
           <button
             type="button"
-            className={`${styles.voteButton} ${isHelpfulActive ? styles.voteActive : ''}`}
+            className={cn(styles.voteButton, isHelpfulActive ? styles.voteActive : '')}
             onClick={handleHelpful}
             aria-label={`Helpful (${helpfulCount})`}
             aria-pressed={isHelpfulActive}
@@ -177,7 +179,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
           </button>
           <button
             type="button"
-            className={`${styles.voteButton} ${isNotHelpfulActive ? styles.voteActive : ''}`}
+            className={cn(styles.voteButton, isNotHelpfulActive ? styles.voteActive : '')}
             onClick={handleNotHelpful}
             aria-label={`Not helpful (${notHelpfulCount})`}
             aria-pressed={isNotHelpfulActive}

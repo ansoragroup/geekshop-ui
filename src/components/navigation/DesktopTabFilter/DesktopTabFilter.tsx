@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopTabFilter.module.scss';
@@ -51,7 +53,7 @@ export const DesktopTabFilter = forwardRef<HTMLDivElement, DesktopTabFilterProps
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[variant]} ${styles[size]} ${className}`}
+        className={cn(styles.root, styles[variant], styles[size], className)}
         role="tablist"
         aria-label="Filter tabs"
         {...rest}
@@ -64,12 +66,12 @@ export const DesktopTabFilter = forwardRef<HTMLDivElement, DesktopTabFilterProps
               type="button"
               role="tab"
               aria-selected={isActive}
-              className={`${styles.tab} ${isActive ? styles.active : ''}`}
+              className={cn(styles.tab, isActive ? styles.active : '')}
               onClick={() => setActiveTab(tab.key)}
             >
               <span className={styles.label}>{tab.label}</span>
               {tab.count != null && (
-                <span className={`${styles.count} ${isActive ? styles.countActive : ''}`}>
+                <span className={cn(styles.count, isActive ? styles.countActive : '')}>
                   {tab.count > 999 ? '999+' : tab.count}
                 </span>
               )}

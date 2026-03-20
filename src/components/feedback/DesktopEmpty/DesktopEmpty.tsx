@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopEmpty.module.scss';
 
@@ -39,7 +41,7 @@ export const DesktopEmpty = forwardRef<HTMLDivElement, DesktopEmptyProps>(
     ref,
   ) => {
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         <div className={styles.icon}>
           {icon ?? <DefaultEmptyIcon />}
         </div>

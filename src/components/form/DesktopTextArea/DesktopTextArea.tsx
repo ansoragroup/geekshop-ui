@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useImperativeHandle, useId, useCallback, useEffect } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
 import styles from './DesktopTextArea.module.scss';
@@ -18,7 +20,7 @@ export interface DesktopTextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTe
   /** Change handler (receives string value) */
   onChange?: (value: string) => void;
   /** Native change handler (receives event) */
-  onNativeChange?: TextareaHTMLAttributes<HTMLTextAreaElement>['onChange'];
+  onNativeChange?: TextareaHTMLAttributes<HTMLTextAreaElement>cn('onChange'];
 }
 
 export const DesktopTextArea = forwardRef<HTMLTextAreaElement, DesktopTextAreaProps>(
@@ -71,10 +73,7 @@ export const DesktopTextArea = forwardRef<HTMLTextAreaElement, DesktopTextAreaPr
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     const showFooter = !!(showCount && maxLength) || !!error || !!helperText;
 
@@ -123,7 +122,7 @@ export const DesktopTextArea = forwardRef<HTMLTextAreaElement, DesktopTextAreaPr
               )}
             </span>
             {showCount && maxLength && (
-              <span className={`${styles.count} ${isNearLimit ? styles.countWarning : ''}`}>
+              <span className={cn(styles.count, isNearLimit ? styles.countWarning : '')}>
                 {currentLength}/{maxLength}
               </span>
             )}

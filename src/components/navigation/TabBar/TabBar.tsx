@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './TabBar.module.scss';
@@ -98,7 +100,7 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>(
     });
 
     return (
-      <div ref={ref} className={`${styles.tabBar} ${className ?? ''}`} role="tablist" {...rest}>
+      <div ref={ref} className={cn(styles.tabBar, className ?? '')} role="tablist" {...rest}>
         {items.map((item) => {
           const isActive = item.key === activeKey;
           return (
@@ -106,7 +108,7 @@ export const TabBar = forwardRef<HTMLDivElement, TabBarProps>(
               key={item.key}
               role="tab"
               aria-selected={isActive}
-              className={`${styles.tabItem} ${isActive ? styles.active : ''}`}
+              className={cn(styles.tabItem, isActive ? styles.active : '')}
               onClick={() => setActiveKey(item.key)}
             >
               <span className={styles.iconWrap}>

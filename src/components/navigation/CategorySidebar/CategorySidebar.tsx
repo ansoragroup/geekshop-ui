@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './CategorySidebar.module.scss';
 
@@ -96,7 +98,7 @@ export const CategorySidebar = forwardRef<HTMLDivElement, CategorySidebarProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.sidebar} ${className ?? ''}`}
+        className={cn(styles.sidebar, className ?? '')}
         role="tablist"
         aria-orientation="vertical"
         {...rest}
@@ -108,7 +110,7 @@ export const CategorySidebar = forwardRef<HTMLDivElement, CategorySidebarProps>(
               key={item.key}
               role="tab"
               aria-selected={isActive}
-              className={`${styles.item} ${isActive ? styles.active : ''}`}
+              className={cn(styles.item, isActive ? styles.active : '')}
               onClick={() => onChange(item.key)}
             >
               <span className={styles.icon}>{item.icon}</span>

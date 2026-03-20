@@ -3,11 +3,11 @@
 .topBar {
   width: 100%;
   min-height: $desktop-topbar-height;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   font-size: $font-size-sm;
   font-family: $font-family;
-  color: $color-text-secondary;
-  border-bottom: 1px solid $color-border;
+  color: var(--gs-text-secondary);
+  border-bottom: 1px solid var(--gs-border-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,19 +39,19 @@
   line-height: $line-height-normal;
 
   a {
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     text-decoration: none;
     transition: color $transition-fast;
 
     &:hover {
-      color: $color-primary;
+      color: var(--gs-color-primary);
     }
   }
 
   button {
     border: none;
     background: none;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     font-size: $font-size-sm;
     font-family: $font-family;
     cursor: pointer;
@@ -60,7 +60,7 @@
     transition: color $transition-fast;
 
     &:hover {
-      color: $color-primary;
+      color: var(--gs-color-primary);
     }
   }
 }

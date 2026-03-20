@@ -20,14 +20,14 @@
 .labelText {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .percentage {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-tight;
 }
 
@@ -35,7 +35,7 @@
 
 .track {
   width: 100%;
-  background: var(--gs-color-border, $color-border);
+  background: var(--gs-border-color);
   border-radius: $radius-round;
   overflow: hidden;
 }
@@ -116,41 +116,41 @@
 
 .variant_default {
   .bar {
-    background: var(--gs-color-primary, $color-primary);
+    background: var(--gs-color-primary);
   }
 
   .percentage {
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
   }
 }
 
 .variant_success {
   .bar {
-    background: var(--gs-color-success, $color-success);
+    background: var(--gs-color-success);
   }
 
   .percentage {
-    color: $color-success;
+    color: var(--gs-color-success);
   }
 }
 
 .variant_warning {
   .bar {
-    background: var(--gs-color-warning, $color-warning);
+    background: var(--gs-color-warning);
   }
 
   .percentage {
-    color: $color-warning;
+    color: var(--gs-color-warning);
   }
 }
 
 .variant_error {
   .bar {
-    background: var(--gs-color-error, $color-error);
+    background: var(--gs-color-error);
   }
 
   .percentage {
-    color: $color-error;
+    color: var(--gs-color-error);
   }
 }
 

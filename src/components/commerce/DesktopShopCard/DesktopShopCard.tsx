@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopShopCard.module.scss';
 
@@ -137,7 +139,7 @@ export const DesktopShopCard = forwardRef<HTMLDivElement, DesktopShopCardProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${onEnter ? styles.clickable : ''} ${className}`}
+        className={cn(styles.root, onEnter ? styles.clickable : '', className)}
         onClick={onEnter ? () => onEnter() : undefined}
         onKeyDown={onEnter ? handleKeyDown : undefined}
         role={onEnter ? 'button' : undefined}
@@ -200,7 +202,7 @@ export const DesktopShopCard = forwardRef<HTMLDivElement, DesktopShopCardProps>(
           {onFollow && (
             <button
               type="button"
-              className={`${styles.followBtn} ${isFollowed ? styles.followBtnActive : ''}`}
+              className={cn(styles.followBtn, isFollowed ? styles.followBtnActive : '')}
               onClick={handleFollow}
               aria-label={isFollowed ? 'Following' : 'Follow'}
               aria-pressed={isFollowed}

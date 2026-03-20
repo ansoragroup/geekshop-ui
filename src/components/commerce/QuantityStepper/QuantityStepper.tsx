@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -31,7 +33,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
     ref,
   ) => {
   const { t } = useGeekShop();
-  const [value, setValue] = useControllableState<number>({
+  const cn(value, setValue] = useControllableState<number>({
     value: valueProp,
     defaultValue: defaultValue ?? min,
     onChange,
@@ -84,8 +86,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
     styles.stepper,
     styles[size],
     disabled && styles.disabled,
-    className,
-  ].filter(Boolean).join(' ');
+    className,);
 
   return (
     <div
@@ -95,7 +96,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
     >
       <button
         type="button"
-        className={`${styles.btn} ${styles.btnMinus} ${isMinDisabled ? styles.btnDisabled : ''}`}
+        className={cn(styles.btn, styles.btnMinus, isMinDisabled ? styles.btnDisabled : '')}
         onClick={handleDecrement}
         disabled={isMinDisabled}
         aria-label={t('commerce.decrease')}
@@ -123,7 +124,7 @@ export const QuantityStepper = forwardRef<HTMLDivElement, QuantityStepperProps>(
 
       <button
         type="button"
-        className={`${styles.btn} ${styles.btnPlus} ${isMaxDisabled ? styles.btnDisabled : ''}`}
+        className={cn(styles.btn, styles.btnPlus, isMaxDisabled ? styles.btnDisabled : '')}
         onClick={handleIncrement}
         disabled={isMaxDisabled}
         aria-label={t('commerce.increase')}

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './HeroBanner.module.scss';
 
@@ -14,6 +16,10 @@ export interface HeroBannerProps extends HTMLAttributes<HTMLDivElement> {
   image?: string;
   /** Click handler for the entire banner */
   onClick?: MouseEventHandler<HTMLDivElement>;
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 export const HeroBanner = forwardRef<HTMLDivElement, HeroBannerProps>(
@@ -25,22 +31,26 @@ export const HeroBanner = forwardRef<HTMLDivElement, HeroBannerProps>(
       bgGradient = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
       image,
       onClick,
+      href,
+      target,
       className,
       ...rest
     },
     ref,
   ) => {
-  const rootClass = [styles.heroBanner, className].filter(Boolean).join(' ');
+  const Wrapper = href ? 'a' : 'div';
+  const linkProps = href ? { href, target } : {};
 
   return (
-    <div
-      ref={ref}
-      className={rootClass}
+    <Wrapper
+      ref={ref as React.Ref<HTMLDivElement & HTMLAnchorElement>}
+      className={cn(styles.heroBanner, className)}
       style={{ '--gs-hero-bg': bgGradient } as CSSProperties}
-      onClick={onClick}
+      onClick={onClick as MouseEventHandler<HTMLElement>}
       onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
-      role={onClick ? 'button' : undefined}
-      tabIndex={onClick ? 0 : undefined}
+      role={onClick && !href ? 'button' : undefined}
+      tabIndex={onClick && !href ? 0 : undefined}
+      {...linkProps}
       {...rest}
     >
       {image && (
@@ -59,7 +69,7 @@ export const HeroBanner = forwardRef<HTMLDivElement, HeroBannerProps>(
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
   },
 );

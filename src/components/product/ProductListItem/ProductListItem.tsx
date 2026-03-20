@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './ProductListItem.module.scss';
 
@@ -95,7 +97,7 @@ export const ProductListItem = forwardRef<HTMLDivElement, ProductListItemProps>(
     },
     ref,
   ) => {
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.root, className);
 
     const handleCardClick = () => {
       onClick?.();

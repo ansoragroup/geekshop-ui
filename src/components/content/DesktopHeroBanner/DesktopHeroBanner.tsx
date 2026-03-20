@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import styles from './DesktopHeroBanner.module.scss';
 
@@ -18,6 +20,10 @@ export interface DesktopHeroBannerProps extends HTMLAttributes<HTMLDivElement> {
   onCtaClick?: MouseEventHandler<HTMLButtonElement>;
   /** Click handler for the entire banner */
   onClick?: MouseEventHandler<HTMLDivElement>;
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 export const DesktopHeroBanner = forwardRef<HTMLDivElement, DesktopHeroBannerProps>(
@@ -31,11 +37,15 @@ export const DesktopHeroBanner = forwardRef<HTMLDivElement, DesktopHeroBannerPro
       image,
       onCtaClick,
       onClick,
+      href,
+      target,
       className = '',
       ...rest
     },
     ref,
   ) => {
+    const Wrapper = href ? 'a' : 'div';
+    const linkProps = href ? { href, target } : {};
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (onClick && (e.key === 'Enter' || e.key === ' ')) {
@@ -55,14 +65,15 @@ export const DesktopHeroBanner = forwardRef<HTMLDivElement, DesktopHeroBannerPro
     );
 
     return (
-      <div
-        ref={ref}
-        className={`${styles.root} ${className}`}
+      <Wrapper
+        ref={ref as React.Ref<HTMLDivElement & HTMLAnchorElement>}
+        className={cn(styles.root, className)}
         style={{ '--gs-hero-bg': bgGradient } as CSSProperties}
-        onClick={onClick}
+        onClick={onClick as MouseEventHandler<HTMLElement>}
         onKeyDown={onClick ? handleKeyDown : undefined}
-        role={onClick ? 'button' : 'banner'}
-        tabIndex={onClick ? 0 : undefined}
+        role={onClick && !href ? 'button' : !href ? 'banner' : undefined}
+        tabIndex={onClick && !href ? 0 : undefined}
+        {...linkProps}
         {...rest}
       >
         {image && (
@@ -107,7 +118,7 @@ export const DesktopHeroBanner = forwardRef<HTMLDivElement, DesktopHeroBannerPro
             )}
           </div>
         </div>
-      </div>
+      </Wrapper>
     );
   },
 );

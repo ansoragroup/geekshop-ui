@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Breadcrumbs.module.scss';
 
@@ -12,7 +14,7 @@ export interface BreadcrumbItem {
 
 export interface BreadcrumbsProps extends HTMLAttributes<HTMLElement> {
   /** Breadcrumb items in order (first = root, last = current page) */
-  items: BreadcrumbItem[];
+  items: BreadcrumbItemcn(];
   /** Separator between items (default: "/") */
   separator?: ReactNode;
   /** Max visible items — if items exceed this, middle items collapse to "..." */
@@ -21,7 +23,7 @@ export interface BreadcrumbsProps extends HTMLAttributes<HTMLElement> {
 
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
   ({ items, separator = '/', maxItems, className, ...rest }, ref) => {
-    const rootClass = [styles.breadcrumbs, className].filter(Boolean).join(' ');
+    const rootClass = [styles.breadcrumbs, className);
 
     const visibleItems = getVisibleItems(items, maxItems);
 

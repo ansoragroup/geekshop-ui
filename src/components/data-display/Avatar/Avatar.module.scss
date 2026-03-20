@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-family: $font-family;
   font-weight: $font-weight-semibold;
   user-select: none;
@@ -60,7 +60,7 @@
   right: 1px;
   border-radius: $radius-round;
   background-color: var(--gs-color-success);
-  border: 2px solid $color-bg-white;
+  border: 2px solid var(--gs-bg-white);
   box-sizing: border-box;
 }
 

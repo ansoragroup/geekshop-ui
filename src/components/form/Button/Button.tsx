@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react';
 import type { ReactNode } from 'react';
 import styles from './Button.module.scss';
@@ -52,17 +53,13 @@ export const Button: ButtonComponent = forwardRef(
   ) => {
     const Component = as || 'button';
 
-    const classNames = [
-      styles.button,
+    const classNames = cn(styles.button,
       styles[`variant-${variant}`],
       styles[`size-${size}`],
       block && styles.block,
       loading && styles.loading,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     // Only pass button-specific props when rendering as a <button>
     const buttonSpecificProps =

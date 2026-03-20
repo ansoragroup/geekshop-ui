@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useId } from 'react';
 import type { FormHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import styles from './DesktopForm.module.scss';
@@ -32,13 +34,9 @@ export const DesktopForm = forwardRef<HTMLFormElement, DesktopFormProps>(
       onSubmit?.(e);
     };
 
-    const rootClass = [
-      styles.root,
+    const rootClass = cn(styles.root,
       styles[`layout-${layout}`],
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <form
@@ -88,13 +86,9 @@ export const DesktopFormItem = forwardRef<HTMLDivElement, DesktopFormItemProps>(
     const generatedId = useId();
     const fieldId = `desktop-form-field-${generatedId}`;
 
-    const rootClass = [
-      styles.formItem,
+    const rootClass = cn(styles.formItem,
       error && styles.hasError,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>
@@ -136,7 +130,7 @@ export interface DesktopFormDividerProps extends HTMLAttributes<HTMLDivElement> 
 
 export const DesktopFormDivider = forwardRef<HTMLDivElement, DesktopFormDividerProps>(
   ({ title, className = '', ...rest }, ref) => {
-    const rootClass = [styles.divider, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.divider, className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>

@@ -48,7 +48,7 @@
   align-self: flex-start;
   padding: $spacing-xxs $spacing-sm;
   background: var(--gs-color-sale);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: $radius-round;
@@ -58,7 +58,7 @@
 }
 
 .title {
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xxxl;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;

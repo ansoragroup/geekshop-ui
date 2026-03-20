@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopResult.module.scss';
 
@@ -72,8 +74,8 @@ const STATUS_ICONS: Record<DesktopResultStatus, ReactNode> = {
 export const DesktopResult = forwardRef<HTMLDivElement, DesktopResultProps>(
   ({ status, title, description, primaryAction, secondaryAction, icon, className = '', ...rest }, ref) => {
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} role="status" {...rest}>
-        <div className={`${styles.iconCircle} ${styles[`status-${status}`]}`} aria-hidden="true">
+      <div ref={ref} className={cn(styles.root, className)} role="status" {...rest}>
+        <div className={cn(styles.iconCircle, styles[`status-${status}`])} aria-hidden="true">
           {icon ?? STATUS_ICONS[status]}
         </div>
 
@@ -85,7 +87,7 @@ export const DesktopResult = forwardRef<HTMLDivElement, DesktopResultProps>(
           <div className={styles.actions}>
             {primaryAction && (
               <button
-                className={`${styles.actionBtn} ${styles.primary}`}
+                className={cn(styles.actionBtn, styles.primary)}
                 onClick={primaryAction.onClick}
                 type="button"
               >
@@ -94,7 +96,7 @@ export const DesktopResult = forwardRef<HTMLDivElement, DesktopResultProps>(
             )}
             {secondaryAction && (
               <button
-                className={`${styles.actionBtn} ${styles.secondary}`}
+                className={cn(styles.actionBtn, styles.secondary)}
                 onClick={secondaryAction.onClick}
                 type="button"
               >

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './DesktopAvatarGroup.module.scss';
 
@@ -76,7 +78,7 @@ export const DesktopAvatarGroup = forwardRef<HTMLDivElement, DesktopAvatarGroupP
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`size-${size}`]} ${className}`}
+        className={cn(styles.root, styles[`size-${size}`], className)}
         role="group"
         aria-label={`${total} users`}
         {...rest}

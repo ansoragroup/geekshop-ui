@@ -1,7 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .root {
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-lg;
   padding: $spacing-md 0;
   overflow: hidden;
@@ -18,7 +18,7 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
@@ -27,7 +27,7 @@
   align-items: center;
   gap: 2px;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   background: none;
   border: none;
   cursor: pointer;
@@ -60,8 +60,8 @@
   padding: $spacing-xs $spacing-md;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
-  background: $color-bg-page;
+  color: var(--gs-text-secondary);
+  background: var(--gs-bg-page);
   border: none;
   border-radius: $radius-round;
   cursor: pointer;
@@ -75,7 +75,7 @@
 
 .tabActive {
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-weight: $font-weight-semibold;
 }
 
@@ -112,7 +112,7 @@
   height: 120px;
   border-radius: $radius-md;
   overflow: hidden;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
   margin-bottom: $spacing-sm;
 }
 
@@ -130,7 +130,7 @@
 
 .cardTitle {
   font-size: $font-size-xs;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;

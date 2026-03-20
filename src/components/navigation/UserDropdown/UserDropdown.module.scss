@@ -15,13 +15,13 @@
   padding: 0;
   border: none;
   border-radius: $radius-round;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   cursor: pointer;
   transition: background $transition-fast, box-shadow $transition-fast;
   overflow: hidden;
 
   &:hover {
-    background: $color-border;
+    background: var(--gs-border-color);
   }
 
   &:focus-visible {
@@ -41,7 +41,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 // Dropdown panel
@@ -50,10 +50,10 @@
   right: 0;
   top: calc(100% + $spacing-sm);
   width: 240px;
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-lg;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   z-index: $z-index-dropdown;
   overflow: hidden;
   animation: dropdownIn 0.15s ease;
@@ -76,7 +76,7 @@
   align-items: center;
   gap: $spacing-md;
   padding: $spacing-lg;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
 }
 
 .headerAvatar {
@@ -85,7 +85,7 @@
   height: 40px;
   border-radius: $radius-round;
   overflow: hidden;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 .headerInfo {
@@ -113,7 +113,7 @@
 .headerName {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   white-space: nowrap;
   overflow: hidden;
@@ -122,7 +122,7 @@
 
 .headerEmail {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
   white-space: nowrap;
   overflow: hidden;
@@ -132,7 +132,7 @@
 // Menu groups
 .menuGroup {
   padding: $spacing-xs 0;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
 
   &:last-child {
     border-bottom: none;
@@ -151,13 +151,13 @@
   cursor: pointer;
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   text-align: left;
   transition: background $transition-fast;
   min-height: 40px;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
@@ -167,7 +167,7 @@
 }
 
 .menuItemDanger {
-  color: $color-error;
+  color: var(--gs-color-error);
 
   &:hover {
     background: rgba($color-error, 0.06);
@@ -205,7 +205,7 @@
   border: none;
   border-radius: $radius-md;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -213,7 +213,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:focus-visible {
@@ -225,10 +225,10 @@
 .registerBtn {
   width: 100%;
   height: 40px;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-card;
-  color: $color-text-primary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-primary);
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
   font-family: $font-family;
@@ -236,8 +236,8 @@
   transition: border-color $transition-fast, background $transition-fast;
 
   &:hover {
-    border-color: $color-text-tertiary;
-    background: $color-bg-page;
+    border-color: var(--gs-text-tertiary);
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {

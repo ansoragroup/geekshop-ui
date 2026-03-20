@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopDialog.module.scss';
@@ -79,7 +81,7 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
 
     return (
       <div
-        className={`${styles.backdrop} ${className}`}
+        className={cn(styles.backdrop, className)}
         onClick={handleBackdropClick}
         role="presentation"
       >
@@ -112,7 +114,7 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
             </button>
             <button
               type="button"
-              className={`${styles.confirmBtn} ${styles[`confirm-${confirmType}`]}`}
+              className={cn(styles.confirmBtn, styles[`confirm-${confirmType}`])}
               onClick={handleConfirm}
             >
               {confirmText}

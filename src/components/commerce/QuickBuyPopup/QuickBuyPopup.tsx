@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
@@ -18,7 +20,7 @@ export interface QuickBuyProduct {
 
 export interface QuickBuyPopupProps extends HTMLAttributes<HTMLDivElement> {
   product: QuickBuyProduct;
-  variants?: QuickBuyVariant[];
+  variants?: QuickBuyVariantcn(];
   onClose?: () => void;
   onAddToCart?: (variantId: string | null, quantity: number) => void;
   open?: boolean;
@@ -54,7 +56,7 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
   if (!open) return null;
 
   return (
-    <div ref={ref} className={[styles.overlay, className].filter(Boolean).join(' ')} onClick={onClose} role="presentation" {...rest}>
+    <div ref={ref} className={[styles.overlay, className)} onClick={onClose} role="presentation" {...rest}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div
         ref={sheetRef}
@@ -90,7 +92,7 @@ export const QuickBuyPopup = forwardRef<HTMLDivElement, QuickBuyPopupProps>(
                 <button
                   type="button"
                   key={v.id}
-                  className={`${styles.chip} ${selectedVariant === v.id ? styles.chipActive : ''}`}
+                  className={cn(styles.chip, selectedVariant === v.id ? styles.chipActive : '')}
                   onClick={() => setSelectedVariant(v.id)}
                   role="radio"
                   aria-checked={selectedVariant === v.id}

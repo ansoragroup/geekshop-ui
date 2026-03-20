@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import type { ImgHTMLAttributes } from 'react';
 import styles from './DesktopImageLazy.module.scss';
@@ -87,18 +89,18 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
     return (
       <div
         ref={containerRef}
-        className={`${styles.container} ${className}`}
+        className={cn(styles.container, className)}
         style={containerStyle}
       >
         {placeholder && (
           isPlaceholderColor ? (
             <div
-              className={`${styles.placeholder} ${loaded ? styles.placeholderHidden : ''}`}
+              className={cn(styles.placeholder, loaded ? styles.placeholderHidden : '')}
               style={{ backgroundColor: placeholder }}
             />
           ) : (
             <img
-              className={`${styles.placeholder} ${loaded ? styles.placeholderHidden : ''}`}
+              className={cn(styles.placeholder, loaded ? styles.placeholderHidden : '')}
               src={placeholder}
               alt=""
               aria-hidden="true"
@@ -126,7 +128,7 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
         {inView && !(error && !fallback) && (
           <img
             ref={ref}
-            className={`${styles.image} ${loaded ? styles.imageLoaded : ''}`}
+            className={cn(styles.image, loaded ? styles.imageLoaded : '')}
             src={activeSrc}
             alt={alt}
             style={{ objectFit }}

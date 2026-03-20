@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopSearchBar.module.scss';
@@ -93,7 +95,7 @@ export const DesktopSearchBar = forwardRef<HTMLDivElement, DesktopSearchBarProps
     };
 
     return (
-      <div ref={ref} className={`${styles.searchBar} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.searchBar, className)} {...rest}>
         {/* Category selector */}
         {categories && categories.length > 0 && (
           <>

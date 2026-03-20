@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './DesktopToast.module.scss';
 
@@ -78,7 +80,7 @@ export const DesktopToast = forwardRef<HTMLDivElement, DesktopToastProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.toast} ${styles[`type-${type}`]} ${className}`}
+        className={cn(styles.toast, styles[`type-${type}`], className)}
         role="alert"
         aria-live="assertive"
         aria-atomic="true"

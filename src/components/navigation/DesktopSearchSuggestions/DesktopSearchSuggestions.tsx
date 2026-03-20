@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopSearchSuggestions.module.scss';
 
@@ -100,7 +102,7 @@ export const DesktopSearchSuggestions = forwardRef<HTMLDivElement, DesktopSearch
     if (!hasContent) return null;
 
     return (
-      <div ref={ref} className={`${styles.panel} ${className}`} role="listbox" {...rest}>
+      <div ref={ref} className={cn(styles.panel, className)} role="listbox" {...rest}>
         {suggestions.map((group) => {
           if (group.items.length === 0) return null;
 

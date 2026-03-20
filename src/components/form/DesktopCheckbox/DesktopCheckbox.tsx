@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useImperativeHandle, useEffect, useId, useState } from 'react';
 import type { InputHTMLAttributes } from 'react';
 import styles from './DesktopCheckbox.module.scss';
@@ -57,7 +59,7 @@ export const DesktopCheckbox = forwardRef<HTMLInputElement, DesktopCheckboxProps
     ref,
   ) => {
     const internalRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => internalRef.current!, []);
+    useImperativeHandle(ref, () => internalRef.current!, cn(]);
 
     const generatedId = useId();
     const inputId = externalId ?? generatedId;
@@ -85,17 +87,10 @@ export const DesktopCheckbox = forwardRef<HTMLInputElement, DesktopCheckboxProps
     const rootClass = [
       styles.root,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
-    const boxClass = [
-      styles.box,
-      (isChecked || indeterminate) ? styles.checked : styles.unchecked,
-    ]
-      .filter(Boolean)
-      .join(' ');
+    const boxClass = cn(styles.box,
+      (isChecked || indeterminate) ? styles.checked : styles.unchecked,);
 
     return (
       <label className={rootClass} htmlFor={inputId}>

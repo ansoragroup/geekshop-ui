@@ -1,16 +1,17 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './TopBar.module.scss';
 
 export interface TopBarProps extends HTMLAttributes<HTMLElement> {
   /** Items rendered on the left side (e.g. welcome text, links) */
-  leftItems?: ReactNode[];
+  leftItems?: ReactNodecn(];
   /** Items rendered on the right side (e.g. language, currency) */
   rightItems?: ReactNode[];
 }
 
 export const TopBar = forwardRef<HTMLElement, TopBarProps>(
   ({ leftItems, rightItems, className, ...rest }, ref) => {
-    const rootClass = [styles.topBar, className].filter(Boolean).join(' ');
+    const rootClass = [styles.topBar, className);
 
     return (
       <nav ref={ref} className={rootClass} aria-label="Utility navigation" {...rest}>

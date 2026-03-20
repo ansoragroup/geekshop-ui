@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './FilterBar.module.scss';
@@ -37,7 +39,7 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
     });
 
     return (
-      <div ref={ref} className={`${styles.filterBar} ${className ?? ''}`} role="tablist" {...rest}>
+      <div ref={ref} className={cn(styles.filterBar, className ?? '')} role="tablist" {...rest}>
         {filters.map((filter) => {
           const isActive = filter.key === activeFilter;
           return (
@@ -45,12 +47,12 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
               key={filter.key}
               role="tab"
               aria-selected={isActive}
-              className={`${styles.tab} ${isActive ? styles.active : ''}`}
+              className={cn(styles.tab, isActive ? styles.active : '')}
               onClick={() => setActiveFilter(filter.key)}
             >
               <span className={styles.label}>{filter.label}</span>
               {filter.hasDropdown && (
-                <span className={`${styles.arrow} ${isActive ? styles.arrowActive : ''}`}>
+                <span className={cn(styles.arrow, isActive ? styles.arrowActive : '')}>
                   <ChevronDownIcon />
                 </span>
               )}

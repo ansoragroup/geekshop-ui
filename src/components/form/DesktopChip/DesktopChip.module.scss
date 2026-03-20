@@ -17,7 +17,7 @@
   white-space: nowrap;
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -25,68 +25,68 @@
 // --- Color variants ---
 
 .color-default {
-  background: $color-bg-page;
-  border: 1px solid $color-border;
-  color: $color-text-primary;
+  background: var(--gs-bg-page);
+  border: 1px solid var(--gs-border-color);
+  color: var(--gs-text-primary);
 
   &:hover:not(.disabled) {
-    border-color: $color-text-tertiary;
-    background: $color-border-light;
+    border-color: var(--gs-text-tertiary);
+    background: var(--gs-border-color-light);
   }
 
   &.selected {
-    border-color: var(--gs-color-primary, #{$color-primary});
-    color: var(--gs-color-primary, #{$color-primary});
-    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+    border-color: var(--gs-color-primary);
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 }
 
 .color-primary {
-  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  background: var(--gs-color-primary-bg);
   border: 1px solid transparent;
-  color: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-color-primary);
 
   &:hover:not(.disabled) {
-    background: var(--gs-color-primary, #{$color-primary});
-    color: $color-text-white;
+    background: var(--gs-color-primary);
+    color: var(--gs-text-white);
   }
 
   &.selected {
-    background: var(--gs-color-primary, #{$color-primary});
-    color: $color-text-white;
+    background: var(--gs-color-primary);
+    color: var(--gs-text-white);
   }
 }
 
 .color-success {
-  background: $color-success-light;
+  background: var(--gs-color-success-light);
   border: 1px solid transparent;
-  color: $color-success;
+  color: var(--gs-color-success);
 
   &.selected {
-    background: $color-success;
-    color: $color-text-white;
+    background: var(--gs-color-success);
+    color: var(--gs-text-white);
   }
 }
 
 .color-warning {
-  background: $color-warning-light;
+  background: var(--gs-color-warning-light);
   border: 1px solid transparent;
-  color: $color-warning;
+  color: var(--gs-color-warning);
 
   &.selected {
-    background: $color-warning;
-    color: $color-text-white;
+    background: var(--gs-color-warning);
+    color: var(--gs-text-white);
   }
 }
 
 .color-error {
   background: rgba($color-error, 0.08);
   border: 1px solid transparent;
-  color: $color-error;
+  color: var(--gs-color-error);
 
   &.selected {
-    background: $color-error;
-    color: $color-text-white;
+    background: var(--gs-color-error);
+    color: var(--gs-text-white);
   }
 }
 
@@ -133,7 +133,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 1px;
   }
 }

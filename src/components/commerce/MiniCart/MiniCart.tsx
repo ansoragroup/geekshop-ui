@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './MiniCart.module.scss';
 
@@ -12,7 +14,7 @@ export interface MiniCartItem {
 
 export interface MiniCartProps extends HTMLAttributes<HTMLDivElement> {
   /** Cart items */
-  items?: MiniCartItem[];
+  items?: MiniCartItemcn(];
   /** Controlled open state */
   open?: boolean;
   /** Close handler */
@@ -141,7 +143,7 @@ export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
     const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
-    const wrapperClass = [styles.wrapper, className].filter(Boolean).join(' ');
+    const wrapperClass = [styles.wrapper, className);
 
     return (
       <div

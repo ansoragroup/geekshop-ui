@@ -3,9 +3,9 @@
 // ─── Root ────────────────────────────────────────────────────────────────────
 
 .root {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   padding: $desktop-spacing-lg;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
 .header {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   margin: 0;
   display: flex;
   align-items: baseline;
@@ -27,14 +27,14 @@
 .itemCount {
   font-size: $font-size-sm;
   font-weight: $font-weight-regular;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 // ─── Divider ─────────────────────────────────────────────────────────────────
 
 .divider {
   height: 1px;
-  background: $color-border;
+  background: var(--gs-border-color);
 }
 
 // ─── Line Items ──────────────────────────────────────────────────────────────
@@ -53,22 +53,22 @@
 
 .lineLabel {
   font-size: $desktop-font-size-body;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 .lineValue {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .freeText {
-  color: $color-success;
+  color: var(--gs-color-success);
   font-weight: $font-weight-semibold;
 }
 
 .discountText {
-  color: $color-sale;
+  color: var(--gs-color-sale);
   font-weight: $font-weight-semibold;
 }
 
@@ -83,13 +83,13 @@
 .totalLabel {
   font-size: $font-size-xl;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .totalValue {
   font-size: $font-size-xl;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 // ─── CTA Button ──────────────────────────────────────────────────────────────
@@ -98,8 +98,8 @@
   width: 100%;
   min-height: 44px;
   padding: $spacing-md $spacing-lg;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   border: none;
   border-radius: $radius-md;
   font-size: $font-size-lg;
@@ -111,12 +111,12 @@
   justify-content: center;
 
   &:hover:not(:disabled) {
-    background: $color-primary-dark;
-    box-shadow: $shadow-md;
+    background: var(--gs-color-primary-dark);
+    box-shadow: var(--gs-shadow-md);
   }
 
   &:active:not(:disabled) {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:disabled {
@@ -125,7 +125,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -159,10 +159,10 @@
   align-items: center;
   gap: $spacing-sm;
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 
   svg {
-    color: $color-success;
+    color: var(--gs-color-success);
     flex-shrink: 0;
   }
 }

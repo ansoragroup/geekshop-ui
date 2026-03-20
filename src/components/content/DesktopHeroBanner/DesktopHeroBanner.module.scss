@@ -12,7 +12,7 @@
   transition: transform $transition-fast, box-shadow $transition-normal;
 
   &:hover {
-    box-shadow: $shadow-lg;
+    box-shadow: var(--gs-shadow-lg);
   }
 }
 
@@ -64,7 +64,7 @@
   align-self: flex-start;
   padding: $spacing-xs $spacing-md;
   background: var(--gs-color-sale);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
   border-radius: $radius-round;
@@ -74,7 +74,7 @@
 }
 
 .title {
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $desktop-font-size-h1;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
@@ -99,8 +99,8 @@
   margin-top: $spacing-sm;
   padding: $spacing-md $desktop-spacing-lg;
   min-height: 44px;
-  background: $color-bg-card;
-  color: $color-text-primary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-primary);
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   border: none;
@@ -110,7 +110,7 @@
   transition: background $transition-fast, transform $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
     transform: translateX(2px);
   }
 

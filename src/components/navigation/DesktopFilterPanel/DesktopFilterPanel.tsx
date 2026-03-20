@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, type HTMLAttributes } from 'react';
 import styles from './DesktopFilterPanel.module.scss';
 
@@ -131,7 +133,7 @@ export const DesktopFilterPanel = forwardRef<HTMLDivElement, DesktopFilterPanelP
     }, 0);
 
     return (
-      <div ref={ref} className={`${styles.panel} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.panel, className)} {...rest}>
         {/* Header */}
         <div className={styles.header}>
           <span className={styles.headerTitle}>
@@ -171,11 +173,11 @@ export const DesktopFilterPanel = forwardRef<HTMLDivElement, DesktopFilterPanelP
                           return (
                             <button
                               key={option.value}
-                              className={`${styles.checkboxItem} ${checked ? styles.checked : ''}`}
+                              className={cn(styles.checkboxItem, checked ? styles.checked : '')}
                               onClick={() => toggleCheckbox(group.key, option.value)}
                               type="button"
                             >
-                              <span className={`${styles.checkbox} ${checked ? styles.checkboxChecked : ''}`}>
+                              <span className={cn(styles.checkbox, checked ? styles.checkboxChecked : '')}>
                                 {checked && <CheckIcon />}
                               </span>
                               <span className={styles.optionLabel}>{option.label}</span>

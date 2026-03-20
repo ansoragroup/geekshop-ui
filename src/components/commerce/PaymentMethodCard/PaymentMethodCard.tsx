@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './PaymentMethodCard.module.scss';
@@ -131,7 +133,7 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${selected ? styles.selected : ''} ${styles[`type-${method.type}`] ?? ''} ${className}`}
+        className={cn(styles.root, selected && styles.selected, styles[`type-${method.type}`] ?? '', className)}
         role={selectable ? 'option' : undefined}
         aria-selected={selectable ? selected : undefined}
         tabIndex={selectable ? 0 : undefined}
@@ -173,7 +175,7 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
           )}
           {selectable && (
             <span
-              className={`${styles.radio} ${selected ? styles.radioSelected : ''}`}
+              className={cn(styles.radio, selected ? styles.radioSelected : '')}
             >
               {selected && <CheckIcon />}
             </span>

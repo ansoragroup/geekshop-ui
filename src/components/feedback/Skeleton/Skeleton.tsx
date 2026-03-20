@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react'
 import type { CSSProperties } from 'react'
 import styles from './Skeleton.module.scss'
@@ -42,11 +43,11 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
 
     if (variant === 'text' && lines > 1) {
       return (
-        <div ref={ref} className={`${styles.textGroup} ${className}`} {...rest}>
+        <div ref={ref} className={cn(styles.textGroup, className)} {...rest}>
           {Array.from({ length: lines }, (_, i) => (
             <div
               key={i}
-              className={`${styles.skeleton} ${styles.text} ${styles[animation]}`}
+              className={cn(styles.skeleton, styles.text, styles[animation])}
               style={i === lines - 1 ? { width: '60%' } : undefined}
             />
           ))}
@@ -57,7 +58,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.skeleton} ${styles[variant]} ${styles[animation]} ${className}`}
+        className={cn(styles.skeleton, styles[variant], styles[animation], className)}
         style={getStyle()}
         {...rest}
       />
@@ -69,7 +70,7 @@ Skeleton.displayName = 'Skeleton'
 
 export const ProductCardSkeleton = forwardRef<HTMLDivElement, { className?: string }>(
   ({ className = '', ...rest }, ref) => (
-    <div ref={ref} className={`${styles.productCard} ${className}`} {...rest}>
+    <div ref={ref} className={cn(styles.productCard, className)} {...rest}>
       <Skeleton variant="rectangular" height={180} animation="wave" />
       <div className={styles.productCardBody}>
         <Skeleton variant="text" width="40%" height={12} />

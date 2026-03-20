@@ -4,12 +4,12 @@
   width: 100%;
   border-radius: $radius-lg;
   overflow: hidden;
-  border: 1px solid var(--gs-color-border, $color-border);
+  border: 1px solid var(--gs-border-color);
 }
 
 // === Panel ===
 .panel {
-  border-bottom: 1px solid var(--gs-color-border, $color-border);
+  border-bottom: 1px solid var(--gs-border-color);
 
   &:last-child {
     border-bottom: none;
@@ -24,21 +24,21 @@
   padding: $spacing-lg;
   cursor: pointer;
   user-select: none;
-  background: var(--gs-color-bg-card, $color-bg-card);
+  background: var(--gs-bg-card);
   transition: background $transition-fast;
   min-height: 44px;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background: var(--gs-color-bg-page, $color-bg-page);
+    background: var(--gs-bg-page);
   }
 
   &:active {
-    background: $color-border-light;
+    background: var(--gs-border-color-light);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     border-radius: $radius-xs;
   }
@@ -47,7 +47,7 @@
 .title {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   flex: 1;
   min-width: 0;
@@ -63,14 +63,14 @@
 
 .extra {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   transition: transform $transition-normal;
 }
 
@@ -87,7 +87,7 @@
 .bodyInner {
   padding: 0 $spacing-lg $spacing-lg;
   font-size: $font-size-md;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -98,7 +98,7 @@
     opacity: 0.5;
 
     &:hover {
-      background: var(--gs-color-bg-card, $color-bg-card);
+      background: var(--gs-bg-card);
     }
   }
 }

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './ShopCard.module.scss';
@@ -85,7 +87,7 @@ export const ShopCard = forwardRef<HTMLDivElement, ShopCardProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${onEnter ? styles.clickable : ''} ${className}`}
+        className={cn(styles.root, onEnter ? styles.clickable : '', className)}
         onClick={onEnter ? handleEnter : undefined}
         onKeyDown={onEnter ? handleKeyDown : undefined}
         role={onEnter ? 'button' : undefined}
@@ -137,7 +139,7 @@ export const ShopCard = forwardRef<HTMLDivElement, ShopCardProps>(
         <div className={styles.actions}>
           <button
             type="button"
-            className={`${styles.followBtn} ${isFollowed ? styles.followBtnActive : ''}`}
+            className={cn(styles.followBtn, isFollowed ? styles.followBtnActive : '')}
             onClick={handleFollow}
             aria-label={isFollowed ? t('shop.following') : t('shop.follow')}
             aria-pressed={isFollowed}

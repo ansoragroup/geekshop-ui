@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type CSSProperties, type HTMLAttributes } from 'react';
 import { ProductCard } from '../ProductCard';
 import type { ProductCardFlatProps } from '../ProductCard';
@@ -42,9 +44,10 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
       });
 
       return (
-        <div
-          ref={ref}
-          className={`${styles.waterfall} ${className}`}
+        <ul
+          ref={ref as React.Ref<HTMLUListElement>}
+          role="list"
+          className={cn(styles.waterfall, className)}
           style={{ ...style, gap: `${gap}px` }}
           {...rest}
         >
@@ -53,20 +56,21 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
               {col.map((product, i) => {
                 const originalIndex = colIndices[colIdx][i];
                 return (
-                  <ProductCard
-                    key={originalIndex}
-                    {...product}
-                    imageAspectRatio="auto"
-                    onClick={() => {
-                      product.onClick?.();
-                      onProductClick?.(originalIndex);
-                    }}
-                  />
+                  <li key={originalIndex} className={styles.gridItem}>
+                    <ProductCard
+                      {...product}
+                      imageAspectRatio="auto"
+                      onClick={() => {
+                        product.onClick?.();
+                        onProductClick?.(originalIndex);
+                      }}
+                    />
+                  </li>
                 );
               })}
             </div>
           ))}
-        </div>
+        </ul>
       );
     }
 
@@ -77,18 +81,19 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
     };
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} style={gridStyle} {...rest}>
+      <ul ref={ref as React.Ref<HTMLUListElement>} role="list" className={cn(styles.root, className)} style={gridStyle} {...rest}>
         {products.map((product, index) => (
-          <ProductCard
-            key={index}
-            {...product}
-            onClick={() => {
-              product.onClick?.();
-              onProductClick?.(index);
-            }}
-          />
+          <li key={index} className={styles.gridItem}>
+            <ProductCard
+              {...product}
+              onClick={() => {
+                product.onClick?.();
+                onProductClick?.(index);
+              }}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     );
   },
 );

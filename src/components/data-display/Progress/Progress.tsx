@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Progress.module.scss';
 
@@ -59,7 +60,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.circularRoot} ${styles[`size-${size}`]} ${className}`}
+          className={cn(styles.circularRoot, styles[`size-${size}`], className)}
           role="progressbar"
           aria-valuenow={clampedValue}
           aria-valuemin={0}
@@ -103,7 +104,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.linearRoot} ${styles[`size-${size}`]} ${className}`}
+        className={cn(styles.linearRoot, styles[`size-${size}`], className)}
         role="progressbar"
         aria-valuenow={clampedValue}
         aria-valuemin={0}

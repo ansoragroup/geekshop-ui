@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './Empty.module.scss';
@@ -58,7 +60,7 @@ export const Empty = forwardRef<HTMLDivElement, EmptyProps>(
     const resolvedTitle = title ?? t('empty.default');
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         <div className={styles.icon}>
           {icon ?? <DefaultEmptyIcon />}
         </div>

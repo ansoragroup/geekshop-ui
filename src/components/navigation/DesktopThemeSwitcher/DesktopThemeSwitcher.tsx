@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopThemeSwitcher.module.scss';
@@ -182,7 +184,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
       return (
         <div
           ref={ref}
-          className={`${styles.root} ${styles.toggleRoot} ${disabled ? styles.disabled : ''} ${className}`}
+          className={cn(styles.root, styles.toggleRoot, disabled ? styles.disabled : '', className)}
           role="radiogroup"
           aria-label="Theme mode"
           tabIndex={disabled ? -1 : 0}
@@ -198,7 +200,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
                 role="radio"
                 aria-checked={isActive}
                 aria-label={option.label}
-                className={`${styles.toggleOption} ${isActive ? styles.toggleActive : ''}`}
+                className={cn(styles.toggleOption, isActive ? styles.toggleActive : '')}
                 onClick={() => {
                   if (!disabled) setSelected(option.mode);
                 }}
@@ -222,12 +224,12 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.root} ${styles.dropdownRoot} ${disabled ? styles.disabled : ''} ${className}`}
+        className={cn(styles.root, styles.dropdownRoot, disabled ? styles.disabled : '', className)}
         {...rest}
       >
         <button
           type="button"
-          className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
+          className={cn(styles.trigger, isOpen ? styles.open : '')}
           onClick={() => {
             if (!disabled) setIsOpen((prev) => !prev);
           }}
@@ -239,7 +241,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
         >
           <span className={styles.triggerIcon}>{getIconForMode(selected)}</span>
           <span className={styles.triggerLabel}>{currentLabel}</span>
-          <span className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ''}`}>
+          <span className={cn(styles.chevron, isOpen ? styles.chevronOpen : '')}>
             <ChevronIcon />
           </span>
         </button>
@@ -254,7 +256,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
                   role="option"
                   aria-selected={isActive}
                   tabIndex={0}
-                  className={`${styles.option} ${isActive ? styles.optionActive : ''} ${focusedIndex === index ? styles.optionFocused : ''}`}
+                  className={cn(styles.option, isActive ? styles.optionActive : '', focusedIndex === index ? styles.optionFocused : '')}
                   onClick={() => handleSelect(option.mode)}
                   onKeyDown={(e) => handleOptionKeyDown(e, index)}
                 >

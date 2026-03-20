@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopBottomSheet.module.scss';
@@ -65,7 +67,7 @@ export const DesktopBottomSheet = forwardRef<HTMLDivElement, DesktopBottomSheetP
 
     return (
       <div
-        className={`${styles.backdrop} ${className}`}
+        className={cn(styles.backdrop, className)}
         onClick={handleBackdropClick}
         role="presentation"
       >

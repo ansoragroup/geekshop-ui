@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import styles from './DesktopChip.module.scss';
@@ -73,16 +75,12 @@ export const DesktopChip = forwardRef<HTMLDivElement, DesktopChipProps>(
       }
     };
 
-    const rootClass = [
-      styles.root,
+    const rootClass = cn(styles.root,
       styles[`color-${color}`],
       selected && styles.selected,
       disabled && styles.disabled,
       closable && styles.closable,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div

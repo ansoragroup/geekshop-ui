@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -142,7 +144,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         <div
@@ -156,7 +158,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         {isVisible && (
           <div
             ref={tooltipRef}
-            className={`${styles.tooltip} ${styles[`placement-${placement}`]}`}
+            className={cn(styles.tooltip, styles[`placement-${placement}`])}
             style={{ top: position.top, left: position.left }}
             role="tooltip"
           >

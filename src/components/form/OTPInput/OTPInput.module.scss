@@ -22,9 +22,9 @@
   font-size: $font-size-xxl;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
-  color: $color-text-primary;
-  background: $color-bg-white;
-  border: 1.5px solid $color-border;
+  color: var(--gs-text-primary);
+  background: var(--gs-bg-white);
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-md;
   transition: border-color $transition-fast;
   user-select: none;
@@ -36,7 +36,7 @@
 
 .box.active {
   border-color: var(--gs-color-primary);
-  box-shadow: 0 0 0 2px $color-primary-bg;
+  box-shadow: 0 0 0 2px var(--gs-color-primary-bg);
 }
 
 .box.error {
@@ -44,9 +44,9 @@
 }
 
 .box.disabled {
-  background: $color-bg-page;
-  border-color: $color-border-light;
-  color: $color-text-tertiary;
+  background: var(--gs-bg-page);
+  border-color: var(--gs-border-color-light);
+  color: var(--gs-text-tertiary);
   cursor: not-allowed;
 }
 

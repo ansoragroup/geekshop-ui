@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type MouseEventHandler, type HTMLAttributes } from 'react';
 import styles from './DesktopPromoBanner.module.scss';
 
@@ -24,6 +26,10 @@ export interface DesktopPromoBannerProps extends HTMLAttributes<HTMLDivElement> 
   onCtaClick?: MouseEventHandler<HTMLButtonElement>;
   /** Click handler for the entire banner */
   onClick?: MouseEventHandler<HTMLDivElement>;
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 export const DesktopPromoBanner = forwardRef<HTMLDivElement, DesktopPromoBannerProps>(
@@ -39,11 +45,15 @@ export const DesktopPromoBanner = forwardRef<HTMLDivElement, DesktopPromoBannerP
       background = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
       onCtaClick,
       onClick,
+      href,
+      target,
       className = '',
       ...rest
     },
     ref,
   ) => {
+    const Wrapper = href ? 'a' : 'div';
+    const linkProps = href ? { href, target } : {};
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (onClick && (e.key === 'Enter' || e.key === ' ')) {
@@ -65,14 +75,15 @@ export const DesktopPromoBanner = forwardRef<HTMLDivElement, DesktopPromoBannerP
     const isReversed = imageAlign === 'left';
 
     return (
-      <div
-        ref={ref}
-        className={`${styles.root} ${isReversed ? styles.reversed : ''} ${className}`}
+      <Wrapper
+        ref={ref as React.Ref<HTMLDivElement & HTMLAnchorElement>}
+        className={cn(styles.root, isReversed ? styles.reversed : '', className)}
         style={{ background }}
-        onClick={onClick}
+        onClick={onClick as MouseEventHandler<HTMLElement>}
         onKeyDown={onClick ? handleKeyDown : undefined}
-        role={onClick ? 'button' : undefined}
-        tabIndex={onClick ? 0 : undefined}
+        role={onClick && !href ? 'button' : undefined}
+        tabIndex={onClick && !href ? 0 : undefined}
+        {...linkProps}
         {...rest}
       >
         <div className={styles.content}>
@@ -113,7 +124,7 @@ export const DesktopPromoBanner = forwardRef<HTMLDivElement, DesktopPromoBannerP
             loading="lazy"
           />
         </div>
-      </div>
+      </Wrapper>
     );
   },
 );

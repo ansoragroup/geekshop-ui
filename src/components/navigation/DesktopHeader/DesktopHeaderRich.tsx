@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeaderRich.module.scss';
 
@@ -27,7 +29,7 @@ export interface DesktopHeaderRichProps extends HTMLAttributes<HTMLElement> {
   /** Cart badge count */
   cartCount?: number;
   /** Category items for bottom bar */
-  categories?: CategoryItem[];
+  categories?: CategoryItemcn(];
   /** Promo links shown in second row */
   promoLinks?: PromoLink[];
   /** Location label shown in top bar */
@@ -190,8 +192,7 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
     const rootClass = [
       styles.header,
       scrolled ? styles.scrolled : '',
-      className,
-    ].filter(Boolean).join(' ');
+      className,);
 
     const formatBadge = (count: number) => (count > 99 ? '99+' : String(count));
 
@@ -215,7 +216,7 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
                   <button
                     key={link.id}
                     type="button"
-                    className={`${styles.promoLink} ${link.highlight ? styles.promoHighlight : ''}`}
+                    className={cn(styles.promoLink, link.highlight ? styles.promoHighlight : '')}
                     onClick={() => onPromoLinkClick?.(link)}
                   >
                     {link.label}
@@ -300,7 +301,7 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
             <div className={styles.categoryContent}>
               {catScrollPos !== 'start' && (
                 <button
-                  className={`${styles.catArrow} ${styles.catArrowLeft}`}
+                  className={cn(styles.catArrow, styles.catArrowLeft)}
                   onClick={() => scrollCategories('left')}
                   aria-label="Scroll categories left"
                   type="button"
@@ -330,7 +331,7 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
               </div>
               {catScrollPos !== 'end' && categories.length > 8 && (
                 <button
-                  className={`${styles.catArrow} ${styles.catArrowRight}`}
+                  className={cn(styles.catArrow, styles.catArrowRight)}
                   onClick={() => scrollCategories('right')}
                   aria-label="Scroll categories right"
                   type="button"

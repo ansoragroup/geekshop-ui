@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopContainer.module.scss';
 
@@ -25,11 +26,9 @@ export const DesktopContainer = forwardRef<HTMLDivElement, DesktopContainerProps
     },
     ref,
   ) => {
-    const rootClass = [
-      styles.root,
+    const rootClass = cn(styles.root,
       fullWidth && styles.fullWidth,
-      className,
-    ].filter(Boolean).join(' ');
+      className,);
 
     return (
       <div

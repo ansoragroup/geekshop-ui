@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -25,30 +25,30 @@
 
 // === Header ===
 .header {
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-xl $radius-xl 0 0;
   padding: $spacing-lg $spacing-lg $spacing-md;
   text-align: center;
-  border-bottom: 1px solid var(--gs-color-border, $color-border);
+  border-bottom: 1px solid var(--gs-border-color);
 }
 
 .title {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
 .description {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   margin-top: $spacing-xs;
   line-height: $line-height-normal;
 }
 
 // === Actions ===
 .actions {
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
@@ -74,22 +74,22 @@
   cursor: pointer;
   font-family: $font-family;
   font-size: $font-size-lg;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   min-height: 52px;
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid var(--gs-border-color-light);
 
   &:last-child {
     border-bottom: none;
   }
 
   &:active {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -101,7 +101,7 @@
 
 .actionDescription {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   margin-top: $spacing-xxs;
   line-height: $line-height-normal;
 }
@@ -127,23 +127,23 @@
   width: 100%;
   padding: $spacing-lg;
   border: none;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   cursor: pointer;
   font-family: $font-family;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   min-height: 52px;
   border-radius: 0 0 $radius-xl $radius-xl;
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
   &:active {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }

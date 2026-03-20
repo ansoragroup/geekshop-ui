@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './Toast.module.scss';
 
@@ -67,8 +69,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
     const Icon = iconMap[type];
 
     return (
-      <div ref={ref} className={`${styles.overlay} ${className}`} role="status" aria-live="assertive" aria-atomic="true" {...rest}>
-        <div className={`${styles.toast} ${styles[`type-${type}`]}`} role="alert">
+      <div ref={ref} className={cn(styles.overlay, className)} role="status" aria-live="assertive" aria-atomic="true" {...rest}>
+        <div className={cn(styles.toast, styles[`type-${type}`])} role="alert">
           <span className={styles.icon}>
             <Icon />
           </span>

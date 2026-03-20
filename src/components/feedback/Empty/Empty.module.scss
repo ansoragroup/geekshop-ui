@@ -16,13 +16,13 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   margin-bottom: $spacing-xs;
 }
 
 .description {
   font-size: $font-size-md;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
   max-width: 260px;
   margin-bottom: $spacing-xl;
@@ -32,7 +32,7 @@
   padding: $spacing-sm $spacing-xxl;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   background: var(--gs-color-primary);
   border: none;
   border-radius: $radius-xxl;

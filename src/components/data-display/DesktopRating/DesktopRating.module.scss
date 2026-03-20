@@ -39,7 +39,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -55,14 +55,14 @@
 .valueText {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .countText {
   font-size: $font-size-sm;
   font-weight: $font-weight-regular;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 
@@ -70,7 +70,7 @@
 
 .hoverPreview {
   font-size: $font-size-sm;
-  color: var(--gs-color-primary, $color-primary);
+  color: var(--gs-color-primary);
   font-weight: $font-weight-medium;
   line-height: $line-height-tight;
 }

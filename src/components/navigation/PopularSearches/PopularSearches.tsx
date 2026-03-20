@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './PopularSearches.module.scss';
 
@@ -35,7 +37,7 @@ export const PopularSearches = forwardRef<HTMLDivElement, PopularSearchesProps>(
     if (searches.length === 0) return null;
 
     return (
-      <div ref={ref} className={`${styles.container} ${className ?? ''}`} {...rest}>
+      <div ref={ref} className={cn(styles.container, className ?? '')} {...rest}>
         <div className={styles.header}>
           <FireIcon />
           <span className={styles.title}>{title}</span>
@@ -47,10 +49,10 @@ export const PopularSearches = forwardRef<HTMLDivElement, PopularSearchesProps>(
             return (
               <button
                 key={search.rank}
-                className={`${styles.tag} ${isTop3 ? styles.top : ''}`}
+                className={cn(styles.tag, isTop3 ? styles.top : '')}
                 onClick={() => onSelect?.(search)}
               >
-                <span className={`${styles.rank} ${isTop3 ? styles.rankTop : ''}`}>
+                <span className={cn(styles.rank, isTop3 ? styles.rankTop : '')}>
                   #{search.rank}
                 </span>
                 <span className={styles.text}>{search.text}</span>

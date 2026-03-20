@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './SearchSuggestions.module.scss';
 
@@ -58,7 +60,7 @@ export const SearchSuggestions = forwardRef<HTMLDivElement, SearchSuggestionsPro
     if (suggestions.length === 0) return null;
 
     return (
-      <div ref={ref} className={`${styles.suggestions} ${className ?? ''}`} role="listbox" {...rest}>
+      <div ref={ref} className={cn(styles.suggestions, className ?? '')} role="listbox" {...rest}>
         {suggestions.map((suggestion, index) => (
           <button
             key={suggestion.id}

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 import styles from './Checkbox.module.scss';
@@ -30,13 +32,9 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
       onChange?.(!checked);
     };
 
-    const rootClass = [
-      styles.root,
+    const rootClass = cn(styles.root,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <button
@@ -49,7 +47,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
         aria-disabled={disabled}
         {...rest}
       >
-        <span className={`${styles.circle} ${checked ? styles.checked : styles.unchecked}`}>
+        <span className={cn(styles.circle, checked ? styles.checked : styles.unchecked)}>
           {checked && (
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path

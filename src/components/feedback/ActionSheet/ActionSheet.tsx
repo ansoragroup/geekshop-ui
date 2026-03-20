@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useGeekShop } from '../../../i18n';
@@ -82,7 +84,7 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
     };
 
     return (
-      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick} role="presentation">
+      <div className={cn(styles.overlay, className)} onClick={handleOverlayClick} role="presentation">
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
@@ -106,7 +108,7 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
             {actions.map((action, index) => (
               <button
                 key={index}
-                className={`${styles.action} ${action.disabled ? styles.disabled : ''}`}
+                className={cn(styles.action, action.disabled ? styles.disabled : '')}
                 style={action.color && !action.disabled ? { color: action.color } : undefined}
                 onClick={() => handleActionClick(action)}
                 disabled={action.disabled}

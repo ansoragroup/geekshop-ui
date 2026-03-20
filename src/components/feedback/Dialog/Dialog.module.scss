@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
 .dialog {
   width: 300px;
   max-width: calc(100vw - 48px);
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-lg;
   overflow: hidden;
   animation: dialogIn $transition-normal;
@@ -27,7 +27,7 @@
   padding: $spacing-xxl $spacing-xxl $spacing-sm;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   text-align: center;
   line-height: $line-height-normal;
 }
@@ -39,7 +39,7 @@
 .message {
   margin: 0;
   font-size: $font-size-md;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   text-align: center;
   line-height: $line-height-normal;
 }
@@ -48,7 +48,7 @@
 
 .actions {
   display: flex;
-  border-top: 1px solid $color-border-light;
+  border-top: 1px solid var(--gs-border-color-light);
 }
 
 .cancelBtn,
@@ -66,17 +66,17 @@
   -webkit-tap-highlight-color: transparent;
 
   &:active {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
 .cancelBtn {
-  color: $color-text-secondary;
-  border-right: 1px solid $color-border-light;
+  color: var(--gs-text-secondary);
+  border-right: 1px solid var(--gs-border-color-light);
 }
 
 .confirm-primary {
-  color: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-color-primary);
   font-weight: $font-weight-semibold;
 }
 

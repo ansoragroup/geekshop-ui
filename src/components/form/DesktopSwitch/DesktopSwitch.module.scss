@@ -24,7 +24,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -46,16 +46,16 @@
 }
 
 .on {
-  background: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary);
 }
 
 // ---- Thumb ----
 
 .thumb {
   display: block;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-round;
-  box-shadow: $shadow-sm;
+  box-shadow: var(--gs-shadow-sm);
   transition: transform $transition-fast;
 }
 
@@ -92,7 +92,7 @@
   position: absolute;
   font-size: 9px;
   font-weight: $font-weight-semibold;
-  color: $color-bg-white;
+  color: var(--gs-bg-white);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   pointer-events: none;
@@ -105,7 +105,7 @@
 
 .off .inlineLabel {
   right: 7px;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // ---- Text wrap ----
@@ -119,7 +119,7 @@
 
 .label {
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   cursor: pointer;
   user-select: none;
@@ -127,7 +127,7 @@
 
 .description {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -143,11 +143,11 @@
 
   .label {
     cursor: not-allowed;
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 
   .description {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 

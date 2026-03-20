@@ -5,14 +5,14 @@
   align-items: center;
   gap: $spacing-md;
   padding: $spacing-md $spacing-lg;
-  background: $color-bg-card;
-  border: 1.5px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-lg;
   cursor: default;
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 }
 
@@ -39,7 +39,7 @@
 .label {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   display: flex;
   align-items: center;
   gap: $spacing-sm;
@@ -48,7 +48,7 @@
 .defaultBadge {
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   background: var(--gs-color-primary);
   padding: 1px $spacing-sm;
   border-radius: $radius-xs;
@@ -59,7 +59,7 @@
   align-items: center;
   gap: $spacing-sm;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .masked {
@@ -90,7 +90,7 @@
   border-radius: $radius-sm;
   background: none;
   border: none;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
 
@@ -106,7 +106,7 @@
   width: 20px;
   height: 20px;
   border-radius: $radius-round;
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   display: flex;
   align-items: center;
   justify-content: center;

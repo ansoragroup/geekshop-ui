@@ -5,16 +5,16 @@
 .root {
   display: flex;
   align-items: stretch;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $desktop-radius-card;
   border: none;
   overflow: hidden;
   min-height: 80px;
-  box-shadow: $desktop-shadow-card;
+  box-shadow: var(--gs-desktop-shadow-card);
   transition: box-shadow $transition-normal;
 
   &:hover {
-    box-shadow: $desktop-shadow-card-hover;
+    box-shadow: var(--gs-desktop-shadow-card-hover);
   }
 }
 
@@ -52,7 +52,7 @@
   background: linear-gradient(135deg, #fff3e0, #ffe0b2);
   .discountValue,
   .discountLabel {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 }
 
@@ -60,7 +60,7 @@
   background: linear-gradient(135deg, #ffebee, #ffcdd2);
   .discountValue,
   .discountLabel {
-    color: $color-sale;
+    color: var(--gs-color-sale);
   }
 }
 
@@ -68,7 +68,7 @@
   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
   .discountValue,
   .discountLabel {
-    color: $color-success;
+    color: var(--gs-color-success);
   }
 }
 
@@ -76,7 +76,7 @@
   background: linear-gradient(135deg, #e3f2fd, #bbdefb);
   .discountValue,
   .discountLabel {
-    color: $color-info;
+    color: var(--gs-color-info);
   }
 }
 
@@ -88,7 +88,7 @@
   right: -8px;
   width: 16px;
   height: 16px;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: 50%;
   z-index: 2;
 }
@@ -113,7 +113,7 @@
 .dashedLine {
   width: 0;
   height: 100%;
-  border-left: 2px dashed $color-border;
+  border-left: 2px dashed var(--gs-border-color);
 }
 
 // ─── Details Block (right section) ────────────────────────────────────────────
@@ -145,13 +145,13 @@
 
 .codeLabel {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .codeValue {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   letter-spacing: 1px;
   font-family: 'SF Mono', 'Fira Code', monospace;
 }
@@ -160,7 +160,7 @@
 
 .minAmount {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -175,18 +175,18 @@
 
 .categories {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 
 .metaSeparator {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .expiry {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 
@@ -213,13 +213,13 @@
 
   &:hover {
     background: var(--gs-color-primary);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 
   &:active {
     background: var(--gs-color-primary-dark);
     border-color: var(--gs-color-primary-dark);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 }
 

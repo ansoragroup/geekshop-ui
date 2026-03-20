@@ -15,6 +15,6 @@
   position: absolute;
   object-fit: contain;
   border-radius: $radius-sm;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   padding: 2px;
 }

@@ -1,8 +1,10 @@
-import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, type ElementType, type MouseEventHandler } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './DealCard.module.scss';
 
-export interface DealCardProps extends HTMLAttributes<HTMLDivElement> {
+export interface DealCardOwnProps {
   /** Product image URL */
   image: string;
   /** Product name */
@@ -19,32 +21,37 @@ export interface DealCardProps extends HTMLAttributes<HTMLDivElement> {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
-  (
-    {
-      image,
-      title,
-      price,
-      originalPrice,
-      discount,
-      soldPercent = 0,
-      onClick,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
+export type DealCardProps<C extends ElementType = 'div'> = DealCardOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof DealCardOwnProps | 'as'>;
+
+function DealCardInner<C extends ElementType = 'div'>(
+  {
+    as,
+    image,
+    title,
+    price,
+    originalPrice,
+    discount,
+    soldPercent = 0,
+    onClick,
+    className,
+    ...rest
+  }: DealCardProps<C>,
+  ref: React.Ref<Element>,
+) {
+  const Component = as || 'div';
   const { t, formatPrice } = useGeekShop();
   const savings = originalPrice - price;
 
-  const rootClass = [styles.dealCard, className].filter(Boolean).join(' ');
+  const rootClass = cn(styles.dealCard, className);
 
   return (
-    <div
+    <Component
       ref={ref}
       className={rootClass}
       onClick={onClick}
-      onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
+      onKeyDown={onClick ? (e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       {...rest}
@@ -103,9 +110,12 @@ export const DealCard = forwardRef<HTMLDivElement, DealCardProps>(
           )}
         </div>
       </div>
-    </div>
+    </Component>
   );
-  },
-);
+}
 
-DealCard.displayName = 'DealCard';
+export const DealCard = forwardRef(DealCardInner) as <C extends ElementType = 'div'>(
+  props: DealCardProps<C> & { ref?: React.Ref<Element> }
+) => JSX.Element;
+
+(DealCard as { displayName?: string }).displayName = 'DealCard';

@@ -1,11 +1,11 @@
 @use '../../../theme/tokens' as *;
 
 .root {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   overflow: hidden;
   font-family: $font-family;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
 }
 
 .scrollContainer {
@@ -22,8 +22,8 @@
 // === Header Row ===
 .headerRow {
   display: flex;
-  border-bottom: 2px solid $color-border;
-  background: $color-bg-white;
+  border-bottom: 2px solid var(--gs-border-color);
+  background: var(--gs-bg-white);
 
   &.sticky {
     position: sticky;
@@ -33,7 +33,7 @@
 }
 
 .headerLabel {
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .productHeader {
@@ -45,7 +45,7 @@
   padding: $spacing-md $spacing-sm;
   gap: $spacing-xs;
   position: relative;
-  border-left: 1px solid $color-border;
+  border-left: 1px solid var(--gs-border-color);
 }
 
 .removeBtn {
@@ -65,11 +65,11 @@
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -79,13 +79,13 @@
   height: 64px;
   object-fit: contain;
   border-radius: $radius-sm;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .productName {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   text-align: center;
   line-height: $line-height-tight;
   display: -webkit-box;
@@ -98,7 +98,7 @@
 .productPrice {
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
   line-height: $line-height-normal;
 }
 
@@ -106,7 +106,7 @@
 .specRow {
   display: flex;
   min-height: 44px;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid var(--gs-border-color-light);
 
   &:last-child {
     border-bottom: none;
@@ -114,11 +114,11 @@
 }
 
 .rowEven {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
 }
 
 .rowOdd {
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 // === Cells ===
@@ -128,10 +128,10 @@
   align-items: center;
   padding: $spacing-sm $spacing-md;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
-  background: $color-bg-page;
-  border-right: 1px solid $color-border;
+  background: var(--gs-bg-page);
+  border-right: 1px solid var(--gs-border-color);
   font-weight: $font-weight-medium;
 }
 
@@ -143,7 +143,7 @@
   align-items: center;
   justify-content: center;
   padding: $spacing-sm $spacing-md;
-  border-left: 1px solid $color-border-light;
+  border-left: 1px solid var(--gs-border-color-light);
   text-align: center;
   gap: $spacing-xxs;
 
@@ -154,7 +154,7 @@
 
 .cellText {
   font-size: $font-size-sm;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-weight: $font-weight-medium;
   line-height: $line-height-normal;
   word-break: break-word;
@@ -162,7 +162,7 @@
 
 .bestValue {
   .cellText {
-    color: $color-success;
+    color: var(--gs-color-success);
     font-weight: $font-weight-bold;
   }
 }
@@ -170,8 +170,8 @@
 .bestBadge {
   display: inline-block;
   font-size: $font-size-xs;
-  color: $color-success;
-  background: $color-success-light;
+  color: var(--gs-color-success);
+  background: var(--gs-color-success-light);
   padding: 1px $spacing-xs;
   border-radius: $radius-xs;
   font-weight: $font-weight-medium;

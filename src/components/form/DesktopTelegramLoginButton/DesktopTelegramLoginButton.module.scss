@@ -12,7 +12,7 @@ $telegram-blue-active: #006699;
   border: none;
   border-radius: $radius-md;
   background: $telegram-blue;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-family: $font-family;
   font-weight: $font-weight-medium;
   cursor: pointer;
@@ -21,7 +21,7 @@ $telegram-blue-active: #006699;
 
   &:hover:not(.disabled) {
     background: $telegram-blue-hover;
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:active:not(.disabled) {

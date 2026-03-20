@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { useCallback } from 'react';
 import styles from './DesktopPaymentMethodCard.module.scss';
 
@@ -119,7 +121,7 @@ export const DesktopPaymentMethodCard = ({
     if (selectable) {
       onSelect?.();
     }
-  }, [selectable, onSelect]);
+  }, cn(selectable, onSelect]);
 
   const handleSelectKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -146,15 +148,14 @@ export const DesktopPaymentMethodCard = ({
   const rootClass = [
     styles.root,
     selected && styles.selected,
-    className,
-  ].filter(Boolean).join(' ');
+    className,);
 
   return (
     <div className={rootClass}>
       {/* Radio Button */}
       {selectable && (
         <div
-          className={`${styles.radio} ${selected ? styles.radioChecked : ''}`}
+          className={cn(styles.radio, selected ? styles.radioChecked : '')}
           role="radio"
           aria-checked={selected}
           aria-label={`Select payment: ${method.label}`}

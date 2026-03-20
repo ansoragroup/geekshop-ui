@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, type HTMLAttributes } from 'react';
 import { useGeekShop, CURRENCY_CONFIGS } from '../../../i18n';
 import styles from './FilterPanel.module.scss';
@@ -118,7 +120,7 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.overlay} ${className ?? ''}`}
+        className={cn(styles.overlay, className ?? '')}
         onClick={(e) => {
           onClose?.();
           onClick?.(e);
@@ -150,10 +152,10 @@ export const FilterPanel = forwardRef<HTMLDivElement, FilterPanelProps>(
                       return (
                         <button
                           key={option.value}
-                          className={`${styles.checkboxItem} ${checked ? styles.checked : ''}`}
+                          className={cn(styles.checkboxItem, checked ? styles.checked : '')}
                           onClick={() => toggleCheckbox(group.key, option.value)}
                         >
-                          <span className={`${styles.checkbox} ${checked ? styles.checkboxChecked : ''}`}>
+                          <span className={cn(styles.checkbox, checked ? styles.checkboxChecked : '')}>
                             {checked && <CheckIcon />}
                           </span>
                           <span className={styles.optionLabel}>{option.label}</span>

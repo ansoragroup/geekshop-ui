@@ -24,7 +24,7 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:active {
@@ -32,7 +32,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -89,28 +89,28 @@
 
 .variant_solid {
   &.color_primary {
-    background-color: var(--gs-color-primary, $color-primary);
-    color: $color-text-white;
+    background-color: var(--gs-color-primary);
+    color: var(--gs-text-white);
   }
 
   &.color_success {
-    background-color: var(--gs-color-success, $color-success);
-    color: $color-text-white;
+    background-color: var(--gs-color-success);
+    color: var(--gs-text-white);
   }
 
   &.color_warning {
-    background-color: var(--gs-color-warning, $color-warning);
-    color: $color-text-white;
+    background-color: var(--gs-color-warning);
+    color: var(--gs-text-white);
   }
 
   &.color_error {
-    background-color: var(--gs-color-error, $color-error);
-    color: $color-text-white;
+    background-color: var(--gs-color-error);
+    color: var(--gs-text-white);
   }
 
   &.color_default {
-    background-color: $color-bg-page;
-    color: $color-text-secondary;
+    background-color: var(--gs-bg-page);
+    color: var(--gs-text-secondary);
   }
 }
 
@@ -121,28 +121,28 @@
   border: 1px solid;
 
   &.color_primary {
-    border-color: var(--gs-color-primary, $color-primary);
-    color: var(--gs-color-primary, $color-primary);
+    border-color: var(--gs-color-primary);
+    color: var(--gs-color-primary);
   }
 
   &.color_success {
-    border-color: var(--gs-color-success, $color-success);
-    color: var(--gs-color-success, $color-success);
+    border-color: var(--gs-color-success);
+    color: var(--gs-color-success);
   }
 
   &.color_warning {
-    border-color: var(--gs-color-warning, $color-warning);
-    color: var(--gs-color-warning, $color-warning);
+    border-color: var(--gs-color-warning);
+    color: var(--gs-color-warning);
   }
 
   &.color_error {
-    border-color: var(--gs-color-error, $color-error);
-    color: var(--gs-color-error, $color-error);
+    border-color: var(--gs-color-error);
+    color: var(--gs-color-error);
   }
 
   &.color_default {
-    border-color: $color-border;
-    color: $color-text-secondary;
+    border-color: var(--gs-border-color);
+    color: var(--gs-text-secondary);
   }
 }
 

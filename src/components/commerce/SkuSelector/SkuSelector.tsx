@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useMemo, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { QuantityStepper } from '../QuantityStepper';
@@ -15,7 +17,7 @@ export interface SkuVariant {
 export interface SkuProduct {
   title: string;
   image: string;
-  priceRange: [number, number];
+  priceRange: cn(number, number];
 }
 
 export interface SkuSelection {
@@ -119,7 +121,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
     : null;
 
   return (
-    <div ref={ref} className={[styles.overlay, className].filter(Boolean).join(' ')} onClick={onClose} role="presentation" {...rest}>
+    <div ref={ref} className={[styles.overlay, className)} onClick={onClose} role="presentation" {...rest}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div className={styles.sheet} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={product.title}>
         {/* Header */}
@@ -147,14 +149,14 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
             <div className={styles.viewToggle}>
               <button
                 type="button"
-                className={`${styles.toggleBtn} ${mode === 'list' ? styles.toggleActive : ''}`}
+                className={cn(styles.toggleBtn, mode === 'list' ? styles.toggleActive : '')}
                 onClick={() => setMode('list')}
               >
                 {t('product.listView')}
               </button>
               <button
                 type="button"
-                className={`${styles.toggleBtn} ${mode === 'imageGrid' ? styles.toggleActive : ''}`}
+                className={cn(styles.toggleBtn, mode === 'imageGrid' ? styles.toggleActive : '')}
                 onClick={() => setMode('imageGrid')}
               >
                 {t('product.gridView')}
@@ -196,7 +198,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
                     <button
                       type="button"
                       key={v.id}
-                      className={`${styles.imageGridCard} ${isSelected ? styles.imageGridCardSelected : ''}`}
+                      className={cn(styles.imageGridCard, isSelected ? styles.imageGridCardSelected : '')}
                       onClick={() => handleGridSelect(v.id)}
                     >
                       {v.hotRank && (
@@ -212,7 +214,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
                           </div>
                         )}
                       </div>
-                      <div className={`${styles.imageGridLabel} ${isSelected ? styles.imageGridLabelSelected : ''}`}>
+                      <div className={cn(styles.imageGridLabel, isSelected ? styles.imageGridLabelSelected : '')}>
                         {v.name}
                       </div>
                     </button>
@@ -253,7 +255,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
           </div>
           <button
             type="button"
-            className={`${styles.addToCartBtn} ${totalCount === 0 ? styles.addToCartDisabled : ''}`}
+            className={cn(styles.addToCartBtn, totalCount === 0 ? styles.addToCartDisabled : '')}
             onClick={handleAddToCart}
             disabled={totalCount === 0}
           >

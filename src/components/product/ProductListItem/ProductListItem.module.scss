@@ -12,20 +12,20 @@
 .root {
   display: flex;
   gap: $spacing-lg;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   padding: $spacing-lg;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   cursor: pointer;
   transition: box-shadow $transition-fast;
   outline: none;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -38,7 +38,7 @@
   border-radius: $radius-md;
   overflow: hidden;
   flex-shrink: 0;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 }
 
 .image {
@@ -62,7 +62,7 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   margin: 0;
   display: -webkit-box;
@@ -88,7 +88,7 @@
 
 .reviewCount {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 // ─── Price ─────────────────────────────────────────────────────────────
@@ -103,13 +103,13 @@
 .price {
   font-size: $font-size-xl;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
   white-space: nowrap;
 }
 
 .originalPrice {
   font-size: $font-size-md;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-decoration: line-through;
   white-space: nowrap;
 }
@@ -117,7 +117,7 @@
 .discount {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-sale;
+  color: var(--gs-color-sale);
   white-space: nowrap;
 }
 
@@ -134,22 +134,22 @@
   display: flex;
   align-items: center;
   gap: $spacing-xs;
-  color: $color-success;
+  color: var(--gs-color-success);
 }
 
 .outOfStock {
   display: flex;
   align-items: center;
   gap: $spacing-xs;
-  color: $color-error;
+  color: var(--gs-color-error);
 }
 
 .metaSeparator {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .freeShipping {
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 // ─── Actions ───────────────────────────────────────────────────────────
@@ -180,29 +180,29 @@
   text-overflow: ellipsis;
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .wishlistButton {
   background: transparent;
-  border: 1px solid $color-border;
-  color: $color-text-secondary;
+  border: 1px solid var(--gs-border-color);
+  color: var(--gs-text-secondary);
 
   &:hover {
-    border-color: $color-text-secondary;
-    color: $color-text-primary;
+    border-color: var(--gs-text-secondary);
+    color: var(--gs-text-primary);
   }
 }
 
 .addToCartButton {
-  background: $color-primary;
+  background: var(--gs-color-primary);
   border: none;
-  color: $color-text-white;
+  color: var(--gs-text-white);
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:disabled {

@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './DesktopButton.module.scss';
@@ -59,17 +60,13 @@ export const DesktopButton = forwardRef<HTMLButtonElement, DesktopButtonProps>(
   ) => {
     const spinnerSize = size === 'sm' ? 14 : size === 'lg' ? 18 : 16;
 
-    const classNames = [
-      styles.root,
+    const classNames = cn(styles.root,
       styles[`variant-${variant}`],
       styles[`size-${size}`],
       fullWidth && styles.fullWidth,
       loading && styles.loading,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <button

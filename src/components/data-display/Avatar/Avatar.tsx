@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Avatar.module.scss';
 
@@ -47,7 +48,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
     return (
       <span
         ref={ref}
-        className={`${styles.wrapper} ${styles[`size-${size}`]} ${className}`}
+        className={cn(styles.wrapper, styles[`size-${size}`], className)}
         style={{ width: px, height: px }}
         {...rest}
       >

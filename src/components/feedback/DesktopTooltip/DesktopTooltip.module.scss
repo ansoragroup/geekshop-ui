@@ -17,8 +17,8 @@
 }
 
 .content {
-  background: $color-text-primary;
-  color: $color-text-white;
+  background: var(--gs-text-primary);
+  color: var(--gs-text-white);
   font-size: $font-size-sm;
   line-height: $line-height-normal;
   padding: $spacing-sm $desktop-spacing-sm;
@@ -33,7 +33,7 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  background: $color-text-primary;
+  background: var(--gs-text-primary);
   transform: rotate(45deg);
 }
 

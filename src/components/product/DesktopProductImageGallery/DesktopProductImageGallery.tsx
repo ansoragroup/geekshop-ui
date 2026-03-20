@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useRef, type HTMLAttributes, type KeyboardEvent, type MouseEvent as ReactMouseEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopProductImageGallery.module.scss';
@@ -90,7 +92,7 @@ export const DesktopProductImageGallery = forwardRef<HTMLDivElement, DesktopProd
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {/* Thumbnail strip */}
@@ -108,7 +110,7 @@ export const DesktopProductImageGallery = forwardRef<HTMLDivElement, DesktopProd
               role="tab"
               aria-selected={index === activeIndex}
               aria-label={`View image ${index + 1} of ${safeImages.length}`}
-              className={`${styles.thumbnail} ${index === activeIndex ? styles.thumbnailActive : ''}`}
+              className={cn(styles.thumbnail, index === activeIndex ? styles.thumbnailActive : '')}
               onClick={() => handleThumbnailClick(index)}
               tabIndex={index === activeIndex ? 0 : -1}
             >

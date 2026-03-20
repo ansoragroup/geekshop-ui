@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './OrderStatusBar.module.scss';
@@ -83,7 +85,7 @@ export const OrderStatusBar = forwardRef<HTMLDivElement, OrderStatusBarProps>(
     const translatedDefaults = useTranslatedDefaults();
     const resolvedStatuses = statuses ?? translatedDefaults;
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {resolvedStatuses.map((item, i) => (
           <button
             key={i}

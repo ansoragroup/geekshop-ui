@@ -13,7 +13,7 @@
   transition: transform $transition-fast, background $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
     transform: scale(1.05);
   }
 
@@ -57,7 +57,7 @@
   height: 18px;
   padding: 0 $spacing-xs;
   background: var(--gs-color-sale);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: 10px;
   font-weight: $font-weight-bold;
   border-radius: $radius-round;
@@ -71,7 +71,7 @@
 .label {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   text-align: center;
   line-height: $line-height-tight;
   word-wrap: break-word;
@@ -80,7 +80,7 @@
   transition: color $transition-fast;
 
   .root:hover & {
-    color: $color-text-primary;
+    color: var(--gs-text-primary);
   }
 }
 

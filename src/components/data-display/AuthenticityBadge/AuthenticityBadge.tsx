@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './AuthenticityBadge.module.scss';
 
@@ -151,7 +152,7 @@ export const AuthenticityBadge = forwardRef<HTMLDivElement, AuthenticityBadgePro
       return (
         <div
           ref={ref}
-          className={`${styles.inline} ${styles[`status-${status}`]} ${className}`}
+          className={cn(styles.inline, styles[`status-${status}`], className)}
           role="status"
           aria-label={`${STATUS_LABELS[status]} ${verifiedBy}`}
           {...rest}
@@ -174,7 +175,7 @@ export const AuthenticityBadge = forwardRef<HTMLDivElement, AuthenticityBadgePro
     return (
       <div
         ref={ref}
-        className={`${styles.card} ${styles[`status-${status}`]} ${className}`}
+        className={cn(styles.card, styles[`status-${status}`], className)}
         role="status"
         aria-label={`${STATUS_LABELS[status]} ${verifiedBy}`}
         {...rest}

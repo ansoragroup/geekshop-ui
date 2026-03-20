@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useRef, type HTMLAttributes, type MouseEvent } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './FlashDealStrip.module.scss';
@@ -134,7 +136,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {/* Header */}
@@ -169,7 +171,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
           {showLeftArrow && (
             <button
               type="button"
-              className={`${styles.scrollArrow} ${styles.scrollArrowLeft}`}
+              className={cn(styles.scrollArrow, styles.scrollArrowLeft)}
               onClick={() => scrollBy('left')}
               aria-label="Scroll left"
             >
@@ -221,7 +223,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
           {showRightArrow && (
             <button
               type="button"
-              className={`${styles.scrollArrow} ${styles.scrollArrowRight}`}
+              className={cn(styles.scrollArrow, styles.scrollArrowRight)}
               onClick={() => scrollBy('right')}
               aria-label="Scroll right"
             >

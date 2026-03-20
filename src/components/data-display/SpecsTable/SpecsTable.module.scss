@@ -1,7 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .root {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   overflow: hidden;
   font-family: $font-family;
@@ -15,24 +15,24 @@
 }
 
 .rowEven {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
 }
 
 .rowOdd {
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .label {
   flex: 0 0 120px;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
 }
 
 .value {
   flex: 1;
   font-size: $font-size-sm;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-weight: $font-weight-medium;
   line-height: $line-height-normal;
   word-break: break-word;

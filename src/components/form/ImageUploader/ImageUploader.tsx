@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useCallback } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -6,7 +8,7 @@ import styles from './ImageUploader.module.scss';
 
 export interface ImageUploaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Uploaded image URLs (controlled) */
-  value?: string[];
+  value?: stringcn(];
   /** Default image URLs (uncontrolled) */
   defaultValue?: string[];
   /** Change handler */
@@ -134,10 +136,7 @@ export const ImageUploader = forwardRef<HTMLDivElement, ImageUploaderProps>(
     const rootClass = [
       styles.root,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div

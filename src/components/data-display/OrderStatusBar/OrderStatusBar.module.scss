@@ -4,7 +4,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   padding: $spacing-lg $spacing-sm;
   font-family: $font-family;
@@ -21,7 +21,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   transition: opacity $transition-fast;
 
   &:active {
@@ -36,7 +36,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .badge {
@@ -48,7 +48,7 @@
   padding: 0 4px;
   border-radius: $radius-round;
   background: var(--gs-color-error);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   line-height: 16px;
@@ -58,7 +58,7 @@
 
 .label {
   font-size: $font-size-xs;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-tight;
   text-align: center;
   white-space: nowrap;

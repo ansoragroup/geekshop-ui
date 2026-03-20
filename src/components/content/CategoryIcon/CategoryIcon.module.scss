@@ -42,7 +42,7 @@
 .label {
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   text-align: center;
   line-height: $line-height-tight;
   white-space: nowrap;

@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Section.module.scss';
 
@@ -22,7 +23,7 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
     ref,
   ) => {
   const bodyStyle = padding ? { padding } : undefined;
-  const rootClass = [styles.section, className].filter(Boolean).join(' ');
+  const rootClass = cn(styles.section, className);
 
   return (
     <section ref={ref} className={rootClass} aria-label={title} {...rest}>

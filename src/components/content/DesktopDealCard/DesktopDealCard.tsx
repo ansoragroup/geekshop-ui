@@ -1,10 +1,12 @@
-import { forwardRef, type HTMLAttributes, type MouseEvent } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, type ElementType, type MouseEvent } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './DesktopDealCard.module.scss';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export interface DesktopDealCardProps extends HTMLAttributes<HTMLDivElement> {
+export interface DesktopDealCardOwnProps {
   /** Product image URL */
   image: string;
   /** Product title */
@@ -28,6 +30,10 @@ export interface DesktopDealCardProps extends HTMLAttributes<HTMLDivElement> {
   /** Callback when card is clicked */
   onClick?: () => void;
 }
+
+export type DesktopDealCardProps<C extends ElementType = 'div'> = DesktopDealCardOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof DesktopDealCardOwnProps | 'as'>;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -105,25 +111,26 @@ function CountdownDisplay({ endTime }: { endTime: Date }) {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export const DesktopDealCard = forwardRef<HTMLDivElement, DesktopDealCardProps>(
-  (
-    {
-      image,
-      title,
-      price,
-      originalPrice,
-      discount,
-      rating,
-      reviewCount,
-      soldPercent,
-      endTime,
-      onBuy,
-      onClick,
-      className = '',
-      ...rest
-    },
-    ref,
-  ) => {
+function DesktopDealCardInner<C extends ElementType = 'div'>(
+  {
+    as,
+    image,
+    title,
+    price,
+    originalPrice,
+    discount,
+    rating,
+    reviewCount,
+    soldPercent,
+    endTime,
+    onBuy,
+    onClick,
+    className = '',
+    ...rest
+  }: DesktopDealCardProps<C>,
+  ref: React.Ref<Element>,
+) {
+    const Component = as || 'div';
     const handleBuyClick = (e: MouseEvent) => {
       e.stopPropagation();
       onBuy?.();
@@ -143,9 +150,9 @@ export const DesktopDealCard = forwardRef<HTMLDivElement, DesktopDealCardProps>(
     const stars = rating !== undefined ? Array.from({ length: 5 }, (_, i) => i < Math.round(rating)) : null;
 
     return (
-      <div
+      <Component
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         onClick={onClick ? handleCardClick : undefined}
         onKeyDown={onClick ? handleKeyDown : undefined}
         role={onClick ? 'button' : undefined}
@@ -211,9 +218,12 @@ export const DesktopDealCard = forwardRef<HTMLDivElement, DesktopDealCardProps>(
             </button>
           </div>
         </div>
-      </div>
+      </Component>
     );
-  },
-);
+}
 
-DesktopDealCard.displayName = 'DesktopDealCard';
+export const DesktopDealCard = forwardRef(DesktopDealCardInner) as <C extends ElementType = 'div'>(
+  props: DesktopDealCardProps<C> & { ref?: React.Ref<Element> }
+) => JSX.Element;
+
+(DesktopDealCard as { displayName?: string }).displayName = 'DesktopDealCard';

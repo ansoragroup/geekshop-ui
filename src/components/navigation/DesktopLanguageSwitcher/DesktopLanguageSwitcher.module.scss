@@ -16,31 +16,31 @@
   align-items: center;
   gap: $spacing-sm;
   padding: $spacing-sm $desktop-spacing-md;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   font-family: $font-family;
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   cursor: pointer;
   white-space: nowrap;
   transition: all $transition-fast;
   min-height: 40px;
 
   &:hover {
-    border-color: var(--gs-color-primary, $color-primary);
-    background: var(--gs-color-primary-bg, $color-primary-bg);
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 
   &.open {
-    border-color: var(--gs-color-primary, $color-primary);
-    box-shadow: 0 0 0 1px var(--gs-color-primary, $color-primary);
+    border-color: var(--gs-color-primary);
+    box-shadow: 0 0 0 1px var(--gs-color-primary);
   }
 
   &:disabled {
@@ -62,8 +62,8 @@
 .triggerCode {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-text-tertiary;
-  background: $color-bg-page;
+  color: var(--gs-text-tertiary);
+  background: var(--gs-bg-page);
   padding: $spacing-xxs $spacing-xs;
   border-radius: $radius-xs;
 }
@@ -71,7 +71,7 @@
 .chevron {
   display: inline-flex;
   align-items: center;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   transition: transform $transition-fast;
   margin-left: $spacing-xxs;
 
@@ -85,10 +85,10 @@
   top: calc(100% + $spacing-xs);
   left: 0;
   min-width: 220px;
-  background: $color-bg-white;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-white);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   z-index: $z-index-dropdown;
   overflow: hidden;
   padding: $spacing-xs 0;
@@ -105,16 +105,16 @@
 
   &:hover,
   &.optionFocused {
-    background: var(--gs-color-primary-bg, $color-primary-bg);
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 
   &.optionActive {
-    color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary);
   }
 }
 
@@ -128,10 +128,10 @@
   flex: 1;
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 
   .optionActive & {
-    color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary);
     font-weight: $font-weight-semibold;
   }
 }
@@ -139,18 +139,18 @@
 .optionCode {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 
   .optionActive & {
-    color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary);
   }
 }
 
 .checkmark {
   display: inline-flex;
   align-items: center;
-  color: var(--gs-color-primary, $color-primary);
+  color: var(--gs-color-primary);
   flex-shrink: 0;
 }
 

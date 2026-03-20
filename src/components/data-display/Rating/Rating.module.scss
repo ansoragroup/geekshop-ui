@@ -33,12 +33,12 @@
 }
 
 .countText {
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   font-weight: $font-weight-medium;
 }
 
 .countNumber {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-weight: $font-weight-regular;
 }
 

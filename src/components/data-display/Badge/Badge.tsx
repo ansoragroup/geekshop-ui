@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Badge.module.scss';
 
@@ -44,7 +45,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       return (
         <span
           ref={ref}
-          className={`${styles.badge} ${styles[`type-${type}`]} ${styles[`color-${color}`]} ${className}`}
+          className={cn(styles.badge, styles[`type-${type}`], styles[`color-${color}`], className)}
           style={customColor ? { backgroundColor: customColor } : undefined}
           {...rest}
         >
@@ -55,7 +56,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 
     const badgeElement = !isHidden ? (
       <span
-        className={`${styles.badge} ${styles[`type-${type}`]} ${styles[`color-${color}`]}`}
+        className={cn(styles.badge, styles[`type-${type}`], styles[`color-${color}`])}
         style={customColor ? { backgroundColor: customColor } : undefined}
       >
         {badgeContent}
@@ -63,7 +64,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     ) : null;
 
     return (
-      <span ref={ref} className={`${styles.wrapper} ${styles[`position-${position}`]} ${className}`} {...rest}>
+      <span ref={ref} className={cn(styles.wrapper, styles[`position-${position}`], className)} {...rest}>
         {children}
         {badgeElement}
       </span>

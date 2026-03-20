@@ -1,7 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .section {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   margin-bottom: $spacing-sm;
   overflow: hidden;
@@ -14,7 +14,7 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 

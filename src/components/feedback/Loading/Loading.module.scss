@@ -16,7 +16,7 @@
 
 .text {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   margin-top: $spacing-sm;
 }
 
@@ -72,7 +72,7 @@
 
 .skeletonCard {
   flex: 1;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-md;
   overflow: hidden;
 }
@@ -80,7 +80,7 @@
 .skeletonImage {
   width: 100%;
   aspect-ratio: 1;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
@@ -93,7 +93,7 @@
 
 .skeletonLine {
   height: 12px;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
   border-radius: $radius-xs;
   animation: shimmer 1.5s ease-in-out infinite;
 }

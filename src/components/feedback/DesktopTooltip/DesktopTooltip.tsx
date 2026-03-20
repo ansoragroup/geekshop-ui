@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -88,7 +90,7 @@ export const DesktopTooltip = forwardRef<HTMLDivElement, DesktopTooltipProps>(
     };
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         <div
           ref={triggerRef}
           className={styles.trigger}
@@ -103,7 +105,7 @@ export const DesktopTooltip = forwardRef<HTMLDivElement, DesktopTooltipProps>(
         {visible && (
           <div
             ref={tooltipRef}
-            className={`${styles.tooltip} ${styles[`placement-${placement}`]}`}
+            className={cn(styles.tooltip, styles[`placement-${placement}`])}
             style={{ top: position.top, left: position.left }}
             role="tooltip"
           >

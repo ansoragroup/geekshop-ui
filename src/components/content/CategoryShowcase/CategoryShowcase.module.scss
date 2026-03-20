@@ -11,7 +11,7 @@
 .sectionTitle {
   font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   margin: 0 0 $desktop-spacing-lg;
   line-height: $line-height-tight;
 }
@@ -35,7 +35,7 @@
   display: block;
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -84,7 +84,7 @@
 .cardLabel {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   line-height: $line-height-tight;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }

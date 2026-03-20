@@ -53,12 +53,12 @@
 .label {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-family: $font-family;
 }
 
 .required {
-  color: var(--gs-color-error, #{$color-error});
+  color: var(--gs-color-error);
   margin-left: $spacing-xxs;
 }
 
@@ -70,13 +70,13 @@
 
 .error {
   font-size: $font-size-sm;
-  color: var(--gs-color-error, #{$color-error});
+  color: var(--gs-color-error);
   line-height: $line-height-normal;
 }
 
 .description {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
 }
 
@@ -84,7 +84,7 @@
 
 .hasError {
   .label {
-    color: $color-text-primary; // keep label color
+    color: var(--gs-text-primary); // keep label color
   }
 }
 
@@ -100,7 +100,7 @@
 .dividerTitle {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   white-space: nowrap;
   font-family: $font-family;
 }
@@ -108,5 +108,5 @@
 .dividerLine {
   flex: 1;
   height: 1px;
-  background: $color-border;
+  background: var(--gs-border-color);
 }

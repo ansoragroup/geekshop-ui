@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopAuthenticityBadge.module.scss';
 
@@ -115,7 +117,7 @@ export const DesktopAuthenticityBadge = forwardRef<HTMLDivElement, DesktopAuthen
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`status-${status}`]} ${className}`}
+        className={cn(styles.root, styles[`status-${status}`], className)}
         role="status"
         aria-label={tooltipText}
         onMouseEnter={handleMouseEnter}

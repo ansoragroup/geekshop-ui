@@ -1,4 +1,6 @@
-import { forwardRef, useCallback, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, useCallback, type ElementType, type MouseEventHandler } from 'react';
 import styles from './DesktopSectionHeader.module.scss';
 
 export interface DesktopSectionHeaderTab {
@@ -8,7 +10,7 @@ export interface DesktopSectionHeaderTab {
   value: string;
 }
 
-export interface DesktopSectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
+export interface DesktopSectionHeaderOwnProps {
   /** Section title */
   title: string;
   /** Optional subtitle text */
@@ -27,22 +29,28 @@ export interface DesktopSectionHeaderProps extends HTMLAttributes<HTMLDivElement
   count?: number;
 }
 
-export const DesktopSectionHeader = forwardRef<HTMLDivElement, DesktopSectionHeaderProps>(
-  (
-    {
-      title,
-      subtitle,
-      icon,
-      tabs,
-      activeTab,
-      onTabChange,
-      onViewAll,
-      count,
-      className = '',
-      ...rest
-    },
-    ref,
-  ) => {
+export type DesktopSectionHeaderProps<C extends ElementType = 'div'> = DesktopSectionHeaderOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof DesktopSectionHeaderOwnProps | 'as'>;
+
+function DesktopSectionHeaderInner<C extends ElementType = 'div'>(
+  {
+    as,
+    title,
+    subtitle,
+    icon,
+    tabs,
+    activeTab,
+    onTabChange,
+    onViewAll,
+    count,
+    className = '',
+    ...rest
+  }: DesktopSectionHeaderProps<C>,
+  ref: React.Ref<Element>,
+) {
+  const Component = as || 'div';
+
     const handleTabClick = useCallback(
       (value: string) => {
         onTabChange?.(value);
@@ -61,7 +69,7 @@ export const DesktopSectionHeader = forwardRef<HTMLDivElement, DesktopSectionHea
     );
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <Component ref={ref} className={cn(styles.root, className)} {...rest}>
         <div className={styles.topRow}>
           <div className={styles.titleArea}>
             {icon && <span className={styles.icon}>{icon}</span>}
@@ -109,7 +117,7 @@ export const DesktopSectionHeader = forwardRef<HTMLDivElement, DesktopSectionHea
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
+                  className={cn(styles.tab, isActive ? styles.tabActive : '')}
                   onClick={() => handleTabClick(tab.value)}
                   onKeyDown={(e) => handleTabKeyDown(e, tab.value)}
                 >
@@ -119,9 +127,12 @@ export const DesktopSectionHeader = forwardRef<HTMLDivElement, DesktopSectionHea
             })}
           </div>
         )}
-      </div>
+      </Component>
     );
-  },
-);
+}
 
-DesktopSectionHeader.displayName = 'DesktopSectionHeader';
+export const DesktopSectionHeader = forwardRef(DesktopSectionHeaderInner) as <C extends ElementType = 'div'>(
+  props: DesktopSectionHeaderProps<C> & { ref?: React.Ref<Element> }
+) => JSX.Element;
+
+(DesktopSectionHeader as { displayName?: string }).displayName = 'DesktopSectionHeader';

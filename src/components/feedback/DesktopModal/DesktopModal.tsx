@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, useId, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopModal.module.scss';
@@ -72,7 +74,7 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
 
     return (
       <div
-        className={`${styles.backdrop} ${className}`}
+        className={cn(styles.backdrop, className)}
         onClick={handleBackdropClick}
         role="presentation"
       >

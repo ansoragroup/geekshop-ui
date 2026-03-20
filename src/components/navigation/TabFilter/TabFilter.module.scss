@@ -26,13 +26,13 @@
     align-items: center;
     gap: $spacing-xs;
     padding: $spacing-sm $spacing-lg;
-    border: 1px solid $color-border;
+    border: 1px solid var(--gs-border-color);
     border-radius: $radius-round;
-    background: $color-bg-white;
+    background: var(--gs-bg-white);
     font-family: $font-family;
     font-size: $font-size-sm;
     font-weight: $font-weight-regular;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     cursor: pointer;
     flex-shrink: 0;
     transition: all $transition-fast;
@@ -50,7 +50,7 @@
     &.active {
       border-color: var(--gs-color-primary);
       background: var(--gs-color-primary);
-      color: $color-text-white;
+      color: var(--gs-text-white);
       font-weight: $font-weight-medium;
     }
   }
@@ -66,12 +66,12 @@
     background: rgba($color-text-secondary, 0.15);
     font-size: $font-size-xs;
     font-weight: $font-weight-bold;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     line-height: 1;
 
     &.badgeActive {
       background: rgba($color-text-white, 0.25);
-      color: $color-text-white;
+      color: var(--gs-text-white);
     }
   }
 }
@@ -81,7 +81,7 @@
   .track {
     gap: $spacing-xl;
     padding-bottom: 0;
-    border-bottom: 1px solid $color-divider;
+    border-bottom: 1px solid var(--gs-divider-color);
   }
 
   .tab {
@@ -95,14 +95,14 @@
     font-family: $font-family;
     font-size: $font-size-md;
     font-weight: $font-weight-regular;
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
     cursor: pointer;
     flex-shrink: 0;
     transition: color $transition-fast;
     white-space: nowrap;
 
     &:hover {
-      color: $color-text-primary;
+      color: var(--gs-text-primary);
     }
 
     &:active {
@@ -148,7 +148,7 @@
 
     &.badgeActive {
       background: var(--gs-color-primary);
-      color: $color-text-white;
+      color: var(--gs-text-white);
     }
   }
 }

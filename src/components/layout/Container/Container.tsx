@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Container.module.scss';
 
@@ -24,14 +25,12 @@ export const Container = forwardRef<HTMLElement, ContainerProps>(
     },
     ref,
   ) => {
-  const classNames = [
-    styles.container,
+  const classNames = cn(styles.container,
     hasNavbar && styles.withNavbar,
     hasTabbar && !hasActionBar && styles.withTabbar,
     hasActionBar && !hasTabbar && styles.withActionBar,
     hasActionBar && hasTabbar && styles.withActionBarAndTabbar,
-    className,
-  ].filter(Boolean).join(' ');
+    className,);
 
   return (
     <main ref={ref} className={classNames} {...rest}>

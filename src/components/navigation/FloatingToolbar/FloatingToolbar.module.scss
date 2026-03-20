@@ -7,8 +7,8 @@
   z-index: $z-index-fixed;
   display: flex;
   flex-direction: column;
-  background: $color-bg-card;
-  box-shadow: $shadow-md;
+  background: var(--gs-bg-card);
+  box-shadow: var(--gs-shadow-md);
   overflow: visible;
   box-sizing: border-box;
 }
@@ -36,30 +36,30 @@
   background: transparent;
   cursor: pointer;
   padding: 0;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   overflow: hidden;
   transition: width $transition-normal, color $transition-fast, background $transition-fast;
   white-space: nowrap;
   box-sizing: border-box;
 
   &:not(:last-child) {
-    border-bottom: 1px solid $color-border-light;
+    border-bottom: 1px solid var(--gs-border-color-light);
   }
 
   &:hover {
     width: 160px;
-    color: $color-primary;
-    background: $color-primary-bg;
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     z-index: 1;
   }
 
   &:active {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -94,8 +94,8 @@
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
-  background: $color-sale;
-  color: $color-text-white;
+  background: var(--gs-color-sale);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   line-height: 16px;

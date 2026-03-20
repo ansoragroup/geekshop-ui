@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopOrderStatusBar.module.scss';
 
@@ -55,7 +57,7 @@ export const DesktopOrderStatusBar = forwardRef<HTMLDivElement, DesktopOrderStat
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         role="navigation"
         aria-label="Order progress"
         {...rest}
@@ -67,7 +69,7 @@ export const DesktopOrderStatusBar = forwardRef<HTMLDivElement, DesktopOrderStat
           return (
             <div
               key={index}
-              className={`${styles.step} ${styles[`status_${status}`]}`}
+              className={cn(styles.step, styles[`status_${status}`])}
               aria-current={status === 'active' ? 'step' : undefined}
             >
               {/* Step indicator */}
@@ -86,9 +88,7 @@ export const DesktopOrderStatusBar = forwardRef<HTMLDivElement, DesktopOrderStat
               {/* Connector line */}
               {!isLast && (
                 <div
-                  className={`${styles.connector} ${
-                    index < currentStep ? styles.connectorCompleted : ''
-                  }`}
+                  className={cn(styles.connector, index < currentStep ? styles.connectorCompleted : '')}
                   aria-hidden="true"
                 />
               )}

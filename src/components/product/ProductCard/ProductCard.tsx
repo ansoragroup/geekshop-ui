@@ -1,4 +1,6 @@
-import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, type ElementType, type HTMLAttributes, type ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { PriceDisplay } from '../PriceDisplay';
 import { Rating } from '../../data-display/Rating';
@@ -10,6 +12,8 @@ export type ProductBadge = 'new' | 'top' | 'hot';
 
 /** Props for the flat API (backward-compatible) */
 export interface ProductCardFlatProps extends HTMLAttributes<HTMLDivElement> {
+  /** Render root element as a different component (e.g. 'a' or Link) */
+  as?: ElementType;
   /** Product image URL */
   image: string;
   /** Product title */
@@ -27,15 +31,25 @@ export interface ProductCardFlatProps extends HTMLAttributes<HTMLDivElement> {
   /** Image aspect ratio override, e.g. "auto" for natural height (waterfall), "1/1" for square (default) */
   imageAspectRatio?: string;
   children?: never;
+  /** Allow href when as='a' */
+  href?: string;
+  /** Allow target when as='a' */
+  target?: string;
 }
 
 /** Props for the compound API */
 export interface ProductCardCompoundProps extends HTMLAttributes<HTMLDivElement> {
+  /** Render root element as a different component (e.g. 'a' or Link) */
+  as?: ElementType;
   /** Compound sub-components */
   children: ReactNode;
   image?: never;
   title?: never;
   price?: never;
+  /** Allow href when as='a' */
+  href?: string;
+  /** Allow target when as='a' */
+  target?: string;
 }
 
 export type ProductCardProps = ProductCardFlatProps | ProductCardCompoundProps;
@@ -109,7 +123,7 @@ function ProductCardImage({
   className = '',
 }: ProductCardImageProps) {
   return (
-    <div className={`${styles.imageWrapper} ${className}`}>
+    <div className={cn(styles.imageWrapper, className)}>
       <img src={src} alt={alt} className={styles.image} loading="lazy" />
 
       {discount && (
@@ -119,7 +133,7 @@ function ProductCardImage({
       {badges?.map((badge) => (
         <span
           key={badge}
-          className={`${styles.badge} ${styles[`badge-${badge}`]}`}
+          className={cn(styles.badge, styles[`badge-${badge}`])}
         >
           {badgeLabels[badge]}
         </span>
@@ -131,7 +145,7 @@ ProductCardImage.displayName = 'ProductCard.Image';
 
 function ProductCardBody({ children, className = '' }: ProductCardBodyProps) {
   return (
-    <div className={`${styles.content} ${className}`}>
+    <div className={cn(styles.content, className)}>
       {children}
     </div>
   );
@@ -146,7 +160,7 @@ function ProductCardTitle({
   const style = lineClamp ? { WebkitLineClamp: lineClamp } as React.CSSProperties : undefined;
 
   return (
-    <h3 className={`${styles.title} ${className}`} style={style}>
+    <h3 className={cn(styles.title, className)} style={style}>
       {children}
     </h3>
   );
@@ -163,7 +177,7 @@ function ProductCardPrice({
   const hasDiscount = original !== undefined && original > current;
 
   return (
-    <div className={`${styles.priceRow} ${className}`}>
+    <div className={cn(styles.priceRow, className)}>
       <PriceDisplay
         price={current}
         originalPrice={hasDiscount ? original : undefined}
@@ -204,19 +218,20 @@ function isCompoundMode(props: ProductCardProps): props is ProductCardCompoundPr
 
 // ─── Main component ─────────────────────────────────────────────────────────
 
-const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
+const ProductCardBase = forwardRef<Element, ProductCardProps>(
   (props, ref) => {
-    const { onClick, className = '', ...rest } = props;
+    const { as, onClick, className = '', href, target, ...rest } = props;
+    const Component = as || 'div';
 
     if (isCompoundMode(props)) {
       // Compound API: render children directly
-      const { children, ...compoundRest } = rest as Omit<ProductCardCompoundProps, 'onClick' | 'className'>;
+      const { children, ...compoundRest } = rest as Omit<ProductCardCompoundProps, 'as' | 'onClick' | 'className' | 'href' | 'target'>;
       return (
-        <div
+        <Component
           ref={ref}
-          className={`${styles.root} ${className}`}
+          className={cn(styles.root, className)}
           onClick={onClick}
-          onKeyDown={(e) => {
+          onKeyDown={(e: React.KeyboardEvent) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
               onClick?.();
@@ -224,12 +239,14 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
           }}
           role="button"
           tabIndex={0}
+          href={href}
+          target={target}
           {...compoundRest}
         >
           <div className={styles.inner}>
             {children}
           </div>
-        </div>
+        </Component>
       );
     }
 
@@ -244,15 +261,15 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
       soldCount,
       imageAspectRatio,
       ...flatRest
-    } = rest as Omit<ProductCardFlatProps, 'onClick' | 'className'>;
+    } = rest as Omit<ProductCardFlatProps, 'as' | 'onClick' | 'className' | 'href' | 'target'>;
     const hasDiscount = originalPrice !== undefined && originalPrice > price;
 
     return (
-      <div
+      <Component
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         onClick={onClick}
-        onKeyDown={(e) => {
+        onKeyDown={(e: React.KeyboardEvent) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             onClick?.();
@@ -260,6 +277,8 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
         }}
         role="button"
         tabIndex={0}
+        href={href}
+        target={target}
         {...flatRest}
       >
         <div className={styles.inner}>
@@ -274,7 +293,7 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
 
             {/* Status badge */}
             {badge && (
-              <span className={`${styles.badge} ${styles[`badge-${badge}`]}`}>
+              <span className={cn(styles.badge, styles[`badge-${badge}`])}>
                 {badgeLabels[badge]}
               </span>
             )}
@@ -298,7 +317,7 @@ const ProductCardBase = forwardRef<HTMLDivElement, ProductCardProps>(
             )}
           </div>
         </div>
-      </div>
+      </Component>
     );
   },
 );

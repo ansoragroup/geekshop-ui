@@ -1,12 +1,12 @@
 @use '../../../theme/tokens' as *;
 
 .root {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   padding: $desktop-spacing-lg;
   width: 100%;
   max-width: 420px;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   font-family: $font-family;
 }
 
@@ -28,16 +28,16 @@
   background: none;
   cursor: pointer;
   border-radius: $radius-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   transition: background $transition-fast, color $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
-    color: var(--gs-color-primary, $color-primary);
+    background: var(--gs-bg-page);
+    color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -45,7 +45,7 @@
 .monthLabel {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   user-select: none;
 }
 
@@ -60,7 +60,7 @@
   text-align: center;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   padding: $spacing-sm 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -69,7 +69,7 @@
 // --- Grid ---
 .grid {
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
     border-radius: $radius-sm;
   }
@@ -103,45 +103,45 @@
   gap: $spacing-xxs;
 
   &:hover:not(:disabled) {
-    background: $color-bg-page;
-    box-shadow: $shadow-sm;
+    background: var(--gs-bg-page);
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
 
 .dayNumber {
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: 1;
   font-weight: $font-weight-medium;
 }
 
 .dayToday {
   .dayNumber {
-    color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary);
     font-weight: $font-weight-bold;
   }
 
   &:not(.daySelected) {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
 .daySelected {
-  background: var(--gs-color-primary, $color-primary);
-  box-shadow: $shadow-sm;
+  background: var(--gs-color-primary);
+  box-shadow: var(--gs-shadow-sm);
 
   .dayNumber {
-    color: $color-text-white;
+    color: var(--gs-text-white);
     font-weight: $font-weight-bold;
   }
 
   &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark, $color-primary-dark);
+    background: var(--gs-color-primary-dark);
   }
 }
 
@@ -154,13 +154,13 @@
   width: 5px;
   height: 5px;
   border-radius: $radius-round;
-  background: var(--gs-color-primary, $color-primary);
+  background: var(--gs-color-primary);
 }
 
 .dayLabel {
   font-size: $font-size-xs;
   line-height: 1;
-  color: var(--gs-color-primary, $color-primary);
+  color: var(--gs-color-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -169,7 +169,7 @@
 
 // Selected overrides for dot/label colors
 .daySelected .dayDot {
-  background: $color-text-white;
+  background: var(--gs-text-white);
 }
 
 .daySelected .dayLabel {

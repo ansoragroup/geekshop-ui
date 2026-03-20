@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './ActionBar.module.scss';
@@ -28,7 +30,7 @@ export const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
     ref,
   ) => {
   const { t } = useGeekShop();
-  const classNames = [styles.bar, className].filter(Boolean).join(' ');
+  const classNames = cn(styles.bar, className);
 
   return (
     <div ref={ref} className={classNames} {...rest}>

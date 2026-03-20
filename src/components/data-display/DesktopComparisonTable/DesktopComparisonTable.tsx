@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopComparisonTable.module.scss';
 
@@ -103,7 +105,7 @@ export const DesktopComparisonTable = forwardRef<HTMLDivElement, DesktopComparis
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         role="table"
         aria-label="Product comparison table"
         {...rest}
@@ -146,7 +148,7 @@ export const DesktopComparisonTable = forwardRef<HTMLDivElement, DesktopComparis
                 return (
                   <tr
                     key={spec.key}
-                    className={`${styles.specRow} ${rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd}`}
+                    className={cn(styles.specRow, rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd)}
                   >
                     <td className={styles.labelCell}>
                       <span className={styles.specLabel}>{spec.label}</span>
@@ -157,7 +159,7 @@ export const DesktopComparisonTable = forwardRef<HTMLDivElement, DesktopComparis
                       return (
                         <td
                           key={product.id}
-                          className={`${styles.valueCell} ${isBest ? styles.bestValue : ''}`}
+                          className={cn(styles.valueCell, isBest ? styles.bestValue : '')}
                         >
                           <span className={styles.cellText}>
                             {formatCellValue(value, spec.unit)}

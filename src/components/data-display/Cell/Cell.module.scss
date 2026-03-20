@@ -5,7 +5,7 @@
   align-items: center;
   min-height: 44px;
   padding: $spacing-md $spacing-lg;
-  background: var(--gs-color-bg-card, $color-bg-card);
+  background: var(--gs-bg-card);
   gap: $spacing-md;
   position: relative;
   font-family: $font-family;
@@ -18,15 +18,15 @@
   transition: background-color $transition-fast;
 
   &:hover {
-    background: var(--gs-color-bg-page, $color-bg-page);
+    background: var(--gs-bg-page);
   }
 
   &:active {
-    background: var(--gs-color-border, $color-border);
+    background: var(--gs-border-color);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     border-radius: $radius-xs;
   }
@@ -41,7 +41,7 @@
     left: $spacing-lg;
     right: $spacing-lg;
     height: 1px;
-    background: var(--gs-color-border, $color-border);
+    background: var(--gs-border-color);
   }
 }
 
@@ -53,7 +53,7 @@
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: var(--gs-color-text-secondary, $color-text-secondary);
+  color: var(--gs-text-secondary);
 }
 
 // --- Content ---
@@ -68,7 +68,7 @@
 .title {
   font-size: $font-size-md;
   font-weight: $font-weight-regular;
-  color: var(--gs-color-text-primary, $color-text-primary);
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -77,7 +77,7 @@
 
 .description {
   font-size: $font-size-sm;
-  color: var(--gs-color-text-tertiary, $color-text-tertiary);
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -88,7 +88,7 @@
 .value {
   flex-shrink: 0;
   font-size: $font-size-md;
-  color: var(--gs-color-text-secondary, $color-text-secondary);
+  color: var(--gs-text-secondary);
   line-height: $line-height-tight;
 }
 
@@ -98,7 +98,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--gs-color-text-placeholder, $color-text-placeholder);
+  color: var(--gs-text-placeholder);
 }
 
 // --- Reduced motion ---

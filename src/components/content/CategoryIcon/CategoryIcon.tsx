@@ -1,7 +1,9 @@
-import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, type ElementType, type MouseEventHandler } from 'react';
 import styles from './CategoryIcon.module.scss';
 
-export interface CategoryIconProps extends HTMLAttributes<HTMLDivElement> {
+export interface CategoryIconOwnProps {
   /** SVG icon element */
   icon: React.ReactNode;
   /** Label text below the icon */
@@ -12,26 +14,31 @@ export interface CategoryIconProps extends HTMLAttributes<HTMLDivElement> {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-export const CategoryIcon = forwardRef<HTMLDivElement, CategoryIconProps>(
-  (
-    {
-      icon,
-      label,
-      color = '#FF5000',
-      onClick,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
-  const rootClass = [styles.categoryIcon, className].filter(Boolean).join(' ');
+export type CategoryIconProps<C extends ElementType = 'div'> = CategoryIconOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof CategoryIconOwnProps | 'as'>;
+
+function CategoryIconInner<C extends ElementType = 'div'>(
+  {
+    as,
+    icon,
+    label,
+    color = '#FF5000',
+    onClick,
+    className,
+    ...rest
+  }: CategoryIconProps<C>,
+  ref: React.Ref<Element>,
+) {
+  const Component = as || 'div';
+  const rootClass = cn(styles.categoryIcon, className);
 
   return (
-    <div
+    <Component
       ref={ref}
       className={rootClass}
       onClick={onClick}
-      onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
+      onKeyDown={onClick ? (e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       {...rest}
@@ -45,9 +52,12 @@ export const CategoryIcon = forwardRef<HTMLDivElement, CategoryIconProps>(
         </div>
       </div>
       <span className={styles.label}>{label}</span>
-    </div>
+    </Component>
   );
-  },
-);
+}
 
-CategoryIcon.displayName = 'CategoryIcon';
+export const CategoryIcon = forwardRef(CategoryIconInner) as <C extends ElementType = 'div'>(
+  props: CategoryIconProps<C> & { ref?: React.Ref<Element> }
+) => JSX.Element;
+
+(CategoryIcon as { displayName?: string }).displayName = 'CategoryIcon';

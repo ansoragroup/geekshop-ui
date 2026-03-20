@@ -1,8 +1,8 @@
 @use '../../../theme/tokens' as *;
 
 .root {
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-lg;
   padding: $spacing-lg;
   display: flex;
@@ -18,7 +18,7 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:active {
@@ -39,7 +39,7 @@
   border-radius: $radius-md;
   object-fit: cover;
   flex-shrink: 0;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 }
 
 .nameArea {
@@ -53,7 +53,7 @@
 .name {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -69,7 +69,7 @@
 .ratingText {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -92,13 +92,13 @@
 .statValue {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .statLabel {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
   text-transform: capitalize;
 }
@@ -106,7 +106,7 @@
 .statDivider {
   width: 1px;
   height: 28px;
-  background: $color-border;
+  background: var(--gs-border-color);
   flex-shrink: 0;
 }
 
@@ -140,11 +140,11 @@
 }
 
 .followBtnActive {
-  border-color: $color-border;
-  color: $color-text-secondary;
+  border-color: var(--gs-border-color);
+  color: var(--gs-text-secondary);
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
@@ -158,7 +158,7 @@
   border: none;
   border-radius: $radius-md;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -166,7 +166,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    background: var(--gs-color-primary-dark);
   }
 }
 

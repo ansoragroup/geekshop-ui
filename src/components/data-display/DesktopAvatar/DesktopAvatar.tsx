@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopAvatar.module.scss';
 
@@ -80,7 +82,7 @@ export const DesktopAvatar = forwardRef<HTMLSpanElement, DesktopAvatarProps>(
     return (
       <span
         ref={ref}
-        className={`${styles.wrapper} ${styles[`size-${size}`]} ${className}`}
+        className={cn(styles.wrapper, styles[`size-${size}`], className)}
         style={{ width: px, height: px }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -106,7 +108,7 @@ export const DesktopAvatar = forwardRef<HTMLSpanElement, DesktopAvatarProps>(
 
         {showOnline && (
           <span
-            className={`${styles.onlineDot} ${online ? styles.online : styles.offline}`}
+            className={cn(styles.onlineDot, online ? styles.online : styles.offline)}
             aria-label={online ? 'Online' : 'Offline'}
           />
         )}

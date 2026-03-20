@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -16,7 +16,7 @@
 
 .sheet {
   width: 100%;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-xl $radius-xl 0 0;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@
 .dragBar {
   width: 36px;
   height: 4px;
-  background: $color-border;
+  background: var(--gs-border-color);
   border-radius: $radius-round;
 }
 
@@ -49,7 +49,7 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   flex: 1;
   text-align: center;
 }
@@ -63,12 +63,12 @@
   width: 28px;
   height: 28px;
   border-radius: $radius-round;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   cursor: pointer;
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-border;
+    background: var(--gs-border-color);
   }
 }
 

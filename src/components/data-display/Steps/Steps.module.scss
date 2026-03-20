@@ -25,7 +25,7 @@
     right: 50%;
     width: 100%;
     height: 2px;
-    background: var(--gs-color-border, $color-border);
+    background: var(--gs-border-color);
     z-index: 0;
     transform: translateX(-50%);
   }
@@ -68,7 +68,7 @@
     top: 28px;
     width: 2px;
     height: calc(100% - 28px);
-    background: var(--gs-color-border, $color-border);
+    background: var(--gs-border-color);
   }
 
   .connectorCompleted {
@@ -110,26 +110,26 @@
 .status-completed {
   .indicator {
     background: var(--gs-color-success);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 
   .title {
-    color: $color-text-primary;
+    color: var(--gs-text-primary);
   }
 }
 
 .status-active {
   .indicator {
-    background: var(--gs-color-primary, $color-primary);
-    color: $color-text-white;
+    background: var(--gs-color-primary);
+    color: var(--gs-text-white);
   }
 
   .dot {
-    background: $color-text-white;
+    background: var(--gs-text-white);
   }
 
   .title {
-    color: var(--gs-color-primary, $color-primary);
+    color: var(--gs-color-primary);
     font-weight: $font-weight-semibold;
   }
 }
@@ -137,15 +137,15 @@
 .status-pending {
   .indicator {
     background: transparent;
-    border: 2px solid var(--gs-color-border, $color-border);
+    border: 2px solid var(--gs-border-color);
   }
 
   .dot {
-    background: $color-text-placeholder;
+    background: var(--gs-text-placeholder);
   }
 
   .title {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 
@@ -164,7 +164,7 @@
 
 .description {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
   margin-top: $spacing-xxs;
 }

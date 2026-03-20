@@ -17,12 +17,12 @@
   border: none;
   border-radius: $radius-md;
   background: none;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   cursor: pointer;
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
@@ -40,7 +40,7 @@
   padding: 0 $spacing-xs;
   border-radius: $radius-round;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   line-height: 16px;
@@ -53,10 +53,10 @@
   right: 0;
   top: calc(100% + $spacing-sm);
   width: 320px;
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-lg;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   z-index: $z-index-dropdown;
   overflow: hidden;
   animation: dropdownIn 0.15s ease;
@@ -85,12 +85,12 @@
 
 .emptyIcon {
   display: flex;
-  color: $color-text-placeholder;
+  color: var(--gs-text-placeholder);
 }
 
 .emptyText {
   font-size: $font-size-md;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // Header
@@ -99,13 +99,13 @@
   align-items: center;
   justify-content: space-between;
   padding: $spacing-lg;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
 }
 
 .headerTitle {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 // Items list
@@ -119,7 +119,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $color-border;
+    background: var(--gs-border-color);
     border-radius: $radius-round;
   }
 }
@@ -129,7 +129,7 @@
   align-items: flex-start;
   gap: $spacing-md;
   padding: $spacing-md $spacing-lg;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
   transition: background $transition-fast;
 
   &:last-child {
@@ -137,7 +137,7 @@
   }
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
@@ -147,7 +147,7 @@
   border-radius: $radius-sm;
   object-fit: cover;
   flex-shrink: 0;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .itemInfo {
@@ -160,7 +160,7 @@
 
 .itemTitle {
   font-size: $font-size-sm;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   white-space: nowrap;
   overflow: hidden;
@@ -169,7 +169,7 @@
 
 .itemVariant {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .itemBottom {
@@ -187,7 +187,7 @@
 
 .itemQuantity {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .removeBtn {
@@ -201,13 +201,13 @@
   border: none;
   border-radius: $radius-round;
   background: none;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
   margin-top: $spacing-xxs;
 
   &:hover {
-    color: $color-error;
+    color: var(--gs-color-error);
     background: rgba($color-error, 0.06);
   }
 
@@ -220,7 +220,7 @@
 // Footer
 .footer {
   padding: $spacing-lg;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--gs-border-color);
 }
 
 .subtotal {
@@ -232,13 +232,13 @@
 
 .subtotalLabel {
   font-size: $font-size-md;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 .subtotalValue {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .actions {
@@ -249,10 +249,10 @@
 .viewCartBtn {
   flex: 1;
   height: 40px;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-card;
-  color: $color-text-primary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-primary);
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
   font-family: $font-family;
@@ -260,8 +260,8 @@
   transition: border-color $transition-fast, background $transition-fast;
 
   &:hover {
-    border-color: $color-text-tertiary;
-    background: $color-bg-page;
+    border-color: var(--gs-text-tertiary);
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
@@ -276,7 +276,7 @@
   border: none;
   border-radius: $radius-md;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -284,7 +284,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:focus-visible {

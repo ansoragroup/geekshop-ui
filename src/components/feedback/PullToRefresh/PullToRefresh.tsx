@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useState, useCallback } from 'react';
 import type { ReactNode, TouchEvent } from 'react';
 import styles from './PullToRefresh.module.scss';
@@ -132,7 +134,7 @@ export const PullToRefresh = forwardRef<HTMLDivElement, PullToRefreshProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
       >
         <div
           ref={containerRef}
@@ -143,7 +145,7 @@ export const PullToRefresh = forwardRef<HTMLDivElement, PullToRefreshProps>(
         >
           {/* Pull indicator */}
           <div
-            className={`${styles.indicator} ${isTransitioning ? styles.transitioning : ''}`}
+            className={cn(styles.indicator, isTransitioning ? styles.transitioning : '')}
             style={{
               transform: `translateY(${pullDistance - indicatorHeight}px)`,
               opacity: progress,
@@ -156,7 +158,7 @@ export const PullToRefresh = forwardRef<HTMLDivElement, PullToRefreshProps>(
 
           {/* Content */}
           <div
-            className={`${styles.content} ${isTransitioning ? styles.transitioning : ''}`}
+            className={cn(styles.content, isTransitioning ? styles.transitioning : '')}
             style={{ transform: `translateY(${pullDistance}px)` }}
           >
             {children}

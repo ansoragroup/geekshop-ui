@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './DesktopTag.module.scss';
 
@@ -71,7 +73,7 @@ export const DesktopTag = forwardRef<HTMLSpanElement, DesktopTagProps>(
     return (
       <span
         ref={ref}
-        className={`${styles.tag} ${styles[`color_${color}`]} ${styles[`variant_${variant}`]} ${styles[`size_${size}`]} ${isClickable ? styles.clickable : ''} ${closable ? styles.closableTag : ''} ${className}`}
+        className={cn(styles.tag, styles[`color_${color}`], styles[`variant_${variant}`], styles[`size_${size}`], isClickable ? styles.clickable : '', closable ? styles.closableTag : '', className)}
         onClick={handleClick}
         onKeyDown={isClickable ? handleKeyDown : undefined}
         role={isClickable ? 'button' : undefined}

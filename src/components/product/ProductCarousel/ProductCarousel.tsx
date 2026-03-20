@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import { PriceDisplay } from '../PriceDisplay';
@@ -76,7 +78,7 @@ export const ProductCarousel = forwardRef<HTMLDivElement, ProductCarouselProps>(
     };
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Section header */}
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
@@ -93,7 +95,7 @@ export const ProductCarousel = forwardRef<HTMLDivElement, ProductCarouselProps>(
               <button
                 key={tab.key}
                 type="button"
-                className={`${styles.tab} ${activeTab === tab.key ? styles.tabActive : ''}`}
+                className={cn(styles.tab, activeTab === tab.key ? styles.tabActive : '')}
                 onClick={() => handleTabClick(tab.key)}
               >
                 {tab.label}

@@ -5,7 +5,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   z-index: $z-index-modal-backdrop;
   display: flex;
   align-items: center;
@@ -18,9 +18,9 @@
   width: 680px;
   max-width: 90vw;
   max-height: 85vh;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   position: relative;
   overflow: hidden;
   animation: dialogIn 0.2s ease;
@@ -54,15 +54,15 @@
   justify-content: center;
   border: none;
   border-radius: $radius-round;
-  background: $color-bg-page;
-  color: $color-text-secondary;
+  background: var(--gs-bg-page);
+  color: var(--gs-text-secondary);
   cursor: pointer;
   z-index: 2;
   transition: color $transition-fast, background $transition-fast;
 
   &:hover {
-    color: $color-text-primary;
-    background: $color-border;
+    color: var(--gs-text-primary);
+    background: var(--gs-border-color);
   }
 
   &:focus-visible {
@@ -91,7 +91,7 @@
   height: 260px;
   border-radius: $radius-lg;
   object-fit: cover;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 // ─── Details Section (Right) ─────────────────────────────────────────────────
@@ -107,7 +107,7 @@
 .title {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   margin: 0;
   display: -webkit-box;
@@ -134,7 +134,7 @@
 .sectionLabel {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .chips {
@@ -145,17 +145,17 @@
 
 .chip {
   padding: $spacing-sm $desktop-spacing-md;
-  background: $color-bg-page;
-  border: 1.5px solid $color-border;
+  background: var(--gs-bg-page);
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-round;
   font-size: $font-size-sm;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-family: $font-family;
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
 
   &:hover {
-    border-color: $color-text-tertiary;
+    border-color: var(--gs-text-tertiary);
   }
 
   &:focus-visible {
@@ -188,7 +188,7 @@
 .stepper {
   display: flex;
   align-items: center;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
   overflow: hidden;
 }
@@ -201,17 +201,17 @@
   height: 36px;
   padding: 0;
   border: none;
-  background: $color-bg-card;
-  color: $color-text-primary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-primary);
   cursor: pointer;
   transition: background $transition-fast;
 
   &:hover:not(:disabled) {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:disabled {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
     cursor: not-allowed;
   }
 
@@ -229,15 +229,15 @@
   height: 36px;
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
-  border-left: 1px solid $color-border;
-  border-right: 1px solid $color-border;
+  color: var(--gs-text-primary);
+  border-left: 1px solid var(--gs-border-color);
+  border-right: 1px solid var(--gs-border-color);
   font-variant-numeric: tabular-nums;
 }
 
 .stockText {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // ─── Add to Cart Button ─────────────────────────────────────────────────────
@@ -247,7 +247,7 @@
   min-height: 48px;
   padding: $spacing-md;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -258,8 +258,8 @@
   margin-top: auto;
 
   &:hover {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
-    box-shadow: $shadow-sm;
+    background: var(--gs-color-primary-dark);
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:active {

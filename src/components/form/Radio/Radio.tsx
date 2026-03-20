@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, createContext, useContext, useCallback, useId } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -51,7 +53,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     const generatedName = useId();
     const name = nameProp ?? generatedName;
 
-    const [value, setValue] = useControllableState<string>({
+    const cn(value, setValue] = useControllableState<string>({
       value: controlledValue,
       defaultValue: defaultValue ?? '',
       onChange,
@@ -67,10 +69,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     const rootClass = [
       styles.group,
       styles[`direction-${direction}`],
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <RadioGroupContext value={{ name, value, disabled, onChange: handleChange }}>
@@ -119,13 +118,9 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
       }
     };
 
-    const rootClass = [
-      styles.radio,
+    const rootClass = cn(styles.radio,
       isDisabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <label
@@ -144,7 +139,7 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(
           onKeyDown={handleKeyDown}
           aria-checked={isChecked}
         />
-        <span className={`${styles.circle} ${isChecked ? styles.checked : styles.unchecked}`}>
+        <span className={cn(styles.circle, isChecked ? styles.checked : styles.unchecked)}>
           {isChecked && <span className={styles.dot} />}
         </span>
         {children && <span className={styles.label}>{children}</span>}

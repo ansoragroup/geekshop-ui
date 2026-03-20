@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { Avatar } from '../Avatar';
 import { Rating } from '../Rating';
@@ -26,7 +27,7 @@ export interface ReviewCardProps extends HTMLAttributes<HTMLDivElement> {
 export const ReviewCard = forwardRef<HTMLDivElement, ReviewCardProps>(
   ({ user, rating, variant, content, images, date, className = '', ...rest }, ref) => {
     return (
-      <article ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <article ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Header: avatar + name + date */}
         <div className={styles.header}>
           <Avatar src={user.avatar} name={user.name} size="sm" />

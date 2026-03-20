@@ -13,13 +13,13 @@
 .textIcon {
   display: flex;
   align-items: center;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 }
 
 .textMessage {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -33,7 +33,7 @@
   width: 24px;
   height: 24px;
   border-radius: $radius-round;
-  border: 2px solid $color-bg-card;
+  border: 2px solid var(--gs-bg-card);
   object-fit: cover;
   margin-left: -8px;
 
@@ -46,9 +46,9 @@
   width: 24px;
   height: 24px;
   border-radius: $radius-round;
-  border: 2px solid $color-bg-card;
-  background: $color-bg-page;
-  color: $color-text-tertiary;
+  border: 2px solid var(--gs-bg-card);
+  background: var(--gs-bg-page);
+  color: var(--gs-text-tertiary);
   font-size: 9px;
   font-weight: $font-weight-bold;
   display: flex;
@@ -65,9 +65,9 @@
   align-items: center;
   gap: $spacing-sm;
   padding: $spacing-sm $spacing-md;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-round;
-  box-shadow: $shadow-md;
+  box-shadow: var(--gs-shadow-md);
   font-family: $font-family;
   animation: toastSlideIn $transition-normal ease-out;
 }
@@ -82,7 +82,7 @@
 
 .toastText {
   font-size: $font-size-sm;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   white-space: nowrap;
 }

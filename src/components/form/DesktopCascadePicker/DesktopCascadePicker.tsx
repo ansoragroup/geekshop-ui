@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -9,7 +11,7 @@ export interface DesktopCascadeOption {
   /** Display label */
   label: string;
   /** Child options (next column) */
-  children?: DesktopCascadeOption[];
+  children?: DesktopCascadeOptioncn(];
   /** Whether this option is disabled */
   disabled?: boolean;
 }
@@ -220,10 +222,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div ref={internalRef} className={rootClass} onKeyDown={handleKeyDown} {...rest}>
@@ -247,7 +246,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
           <span className={isValueSelected ? styles.triggerText : styles.triggerPlaceholder}>
             {displayText || placeholder}
           </span>
-          <span className={`${styles.triggerChevron} ${isOpen ? styles.triggerChevronOpen : ''}`}>
+          <span className={cn(styles.triggerChevron, isOpen ? styles.triggerChevronOpen : '')}>
             <ChevronDownIcon />
           </span>
         </button>
@@ -265,7 +264,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                 <div
                   key={depth}
                   className={styles.column}
-                  ref={(el) => { columnRefs.current[depth] = el; }}
+                  ref={(el) => { columnRefs.currentcn(depth] = el; }}
                   role="listbox"
                   aria-label={`Level ${depth + 1}`}
                 >
@@ -276,10 +275,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                     const optionClass = [
                       styles.option,
                       isSelected && styles.optionSelected,
-                      option.disabled && styles.optionDisabled,
-                    ]
-                      .filter(Boolean)
-                      .join(' ');
+                      option.disabled && styles.optionDisabled,);
 
                     return (
                       <button

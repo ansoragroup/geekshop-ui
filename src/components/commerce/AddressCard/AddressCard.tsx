@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './AddressCard.module.scss';
@@ -111,7 +113,7 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${selected ? styles.selected : ''} ${selectable ? styles.selectable : ''} ${className}`}
+        className={cn(styles.root, selected ? styles.selected : '', selectable ? styles.selectable : '', className)}
         role={selectable ? 'option' : undefined}
         aria-selected={selectable ? selected : undefined}
         tabIndex={selectable ? 0 : undefined}
@@ -123,7 +125,7 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
           <div className={styles.headerLeft}>
             {selectable && (
               <span
-                className={`${styles.radio} ${selected ? styles.radioSelected : ''}`}
+                className={cn(styles.radio, selected ? styles.radioSelected : '')}
                 aria-hidden="true"
               >
                 {selected && <span className={styles.radioDot} />}
@@ -166,7 +168,7 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
             {deletable && (
               <button
                 type="button"
-                className={`${styles.actionBtn} ${styles.actionDelete}`}
+                className={cn(styles.actionBtn, styles.actionDelete)}
                 onClick={(e) => {
                   e.stopPropagation();
                   handleDelete();

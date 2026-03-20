@@ -37,7 +37,7 @@
 }
 
 .title {
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
@@ -57,7 +57,7 @@
   padding: $spacing-xxs $spacing-sm;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: $radius-round;
@@ -78,6 +78,6 @@
   svg {
     width: 32px;
     height: 32px;
-    fill: $color-text-white;
+    fill: var(--gs-text-white);
   }
 }

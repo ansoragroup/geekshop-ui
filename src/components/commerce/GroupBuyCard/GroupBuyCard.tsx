@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './GroupBuyCard.module.scss';
@@ -66,7 +68,7 @@ function formatTimeLeft(hours: number, minutes: number, seconds: number): string
 function MemberDot({ filled }: { filled: boolean }) {
   return (
     <span
-      className={`${styles.dot} ${filled ? styles.dotFilled : styles.dotEmpty}`}
+      className={cn(styles.dot, filled ? styles.dotFilled : styles.dotEmpty)}
       aria-hidden="true"
     />
   );
@@ -116,7 +118,7 @@ export const GroupBuyCard = forwardRef<HTMLDivElement, GroupBuyCardProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${isDisabled ? styles.disabled : ''} ${className}`}
+        className={cn(styles.root, isDisabled ? styles.disabled : '', className)}
         {...rest}
       >
         {/* Top section: image + product info */}

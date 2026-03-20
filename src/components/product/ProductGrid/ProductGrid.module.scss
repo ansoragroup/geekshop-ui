@@ -4,6 +4,12 @@
   display: grid;
   padding: $spacing-sm;
   width: 100%;
+  list-style: none;
+  margin: 0;
+}
+
+.gridItem {
+  list-style: none;
 }
 
 // --- Waterfall / Masonry layout ---
@@ -12,6 +18,8 @@
   padding: $spacing-sm;
   width: 100%;
   box-sizing: border-box;
+  list-style: none;
+  margin: 0;
 }
 
 .waterfallColumn {

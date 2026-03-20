@@ -7,13 +7,13 @@
   align-items: center;
   gap: $desktop-spacing-lg;
   padding: $desktop-spacing-md $desktop-spacing-lg;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 }
 
@@ -36,7 +36,7 @@
 
 .originalPrice {
   font-size: $font-size-md;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-decoration: line-through;
   white-space: nowrap;
 }
@@ -59,10 +59,10 @@
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-card;
-  color: $color-text-secondary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
 
@@ -111,7 +111,7 @@
   padding: 0 $desktop-spacing-lg;
   border: 1.5px solid var(--gs-color-primary);
   border-radius: $radius-md;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   color: var(--gs-color-primary);
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
@@ -122,7 +122,7 @@
 
   &:hover {
     background: var(--gs-color-primary-bg);
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:active {
@@ -144,7 +144,7 @@
   border: none;
   border-radius: $radius-md;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -153,8 +153,8 @@
   transition: background $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
-    box-shadow: $shadow-sm;
+    background: var(--gs-color-primary-dark);
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:active {

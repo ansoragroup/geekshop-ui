@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopGroupBuyCard.module.scss';
 
@@ -149,7 +151,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${isDisabled ? styles.disabled : ''} ${className}`}
+        className={cn(styles.root, isDisabled ? styles.disabled : '', className)}
         {...rest}
       >
         {/* Left: Product image */}

@@ -4,10 +4,10 @@
 
 .root {
   width: 100%;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   overflow: hidden;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
 }
 
 // ─── Header ──────────────────────────────────────────────────────────────────
@@ -18,7 +18,7 @@
   gap: $desktop-spacing-md;
   padding: $desktop-spacing-sm $desktop-spacing-lg;
   background: linear-gradient(135deg, #FF5000 0%, #FF3B30 100%);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 }
 
 .headerLeft {
@@ -74,7 +74,7 @@
   gap: $spacing-xs;
   background: none;
   border: none;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   cursor: pointer;
@@ -107,19 +107,19 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: $color-bg-white;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-white);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-round;
   cursor: pointer;
   z-index: $z-index-normal;
-  color: $color-text-primary;
-  box-shadow: $shadow-md;
+  color: var(--gs-text-primary);
+  box-shadow: var(--gs-shadow-md);
   transition: box-shadow $transition-fast, border-color $transition-fast;
   padding: 0;
 
   &:hover {
-    box-shadow: $shadow-lg;
-    border-color: $color-primary-light;
+    box-shadow: var(--gs-shadow-lg);
+    border-color: var(--gs-color-primary-light);
   }
 }
 
@@ -161,7 +161,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
@@ -173,7 +173,7 @@
   aspect-ratio: 1 / 1;
   border-radius: $radius-md;
   overflow: hidden;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 
   img {
     width: 100%;
@@ -187,8 +187,8 @@
   top: $spacing-xs;
   left: $spacing-xs;
   padding: 1px $spacing-xs;
-  background: $color-sale;
-  color: $color-text-white;
+  background: var(--gs-color-sale);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: $radius-xs;
@@ -208,13 +208,13 @@
 .cardSalePrice {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
   line-height: $line-height-tight;
 }
 
 .cardOriginalPrice {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-decoration: line-through;
   line-height: $line-height-tight;
 }
@@ -238,7 +238,7 @@
 
 .soldLabel {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 
@@ -247,8 +247,8 @@
 .buyBtn {
   width: 100%;
   min-height: 32px;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   border: none;
   border-radius: $radius-sm;
   font-size: $font-size-sm;
@@ -259,7 +259,7 @@
   padding: $spacing-xs $spacing-sm;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }
 

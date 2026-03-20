@@ -22,7 +22,7 @@
 
   &:hover {
     transform: scale(1.15);
-    box-shadow: 0 0 0 2px $color-bg-white, 0 0 0 4px var(--swatch-color);
+    box-shadow: 0 0 0 2px var(--gs-bg-white), 0 0 0 4px var(--swatch-color);
   }
 
   &:active {
@@ -35,18 +35,18 @@
   }
 
   &.active {
-    border-color: $color-bg-white;
+    border-color: var(--gs-bg-white);
     box-shadow: 0 0 0 2px var(--swatch-color);
   }
 }
 
 .check {
-  color: $color-text-white;
+  color: var(--gs-text-white);
 
   // For dark swatches that are close to white text, this is fine.
   // For the yellow preset, we need darker check mark.
   .swatch[aria-label="Warm Gold"] & {
-    color: $color-text-primary;
+    color: var(--gs-text-primary);
   }
 }
 

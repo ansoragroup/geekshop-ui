@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useImperativeHandle, useId, useCallback, useEffect } from 'react';
 import type { TextareaHTMLAttributes } from 'react';
 import styles from './TextArea.module.scss';
@@ -18,7 +20,7 @@ export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaE
   /** Change handler (receives string value) */
   onChange?: (value: string) => void;
   /** Native change handler (receives event) */
-  onNativeChange?: TextareaHTMLAttributes<HTMLTextAreaElement>['onChange'];
+  onNativeChange?: TextareaHTMLAttributes<HTMLTextAreaElement>cn('onChange'];
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -70,10 +72,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     const showFooter = !!(showCount && maxLength) || !!error || !!helperText;
 

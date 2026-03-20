@@ -4,13 +4,13 @@
   position: relative;
   overflow: hidden;
   border-radius: $radius-md;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
 }
 
 .content {
   position: relative;
   z-index: $z-index-normal;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   touch-action: pan-y;
   user-select: none;
 

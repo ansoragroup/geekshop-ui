@@ -35,7 +35,7 @@
 .originalPrice {
   display: inline-flex;
   align-items: baseline;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-decoration: line-through;
   font-weight: $font-weight-regular;
 }

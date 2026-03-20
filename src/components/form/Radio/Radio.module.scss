@@ -42,7 +42,7 @@
   white-space: nowrap;
 
   &:focus-visible + .circle {
-    box-shadow: 0 0 0 2px var(--gs-color-primary, #{$color-primary});
+    box-shadow: 0 0 0 2px var(--gs-color-primary);
   }
 }
 
@@ -59,12 +59,12 @@
 }
 
 .unchecked {
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   background: transparent;
 }
 
 .checked {
-  border: 2px solid var(--gs-color-primary, #{$color-primary});
+  border: 2px solid var(--gs-color-primary);
   background: transparent;
 }
 
@@ -72,12 +72,12 @@
   width: 12px;
   height: 12px;
   border-radius: $radius-round;
-  background: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary);
 }
 
 .label {
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
@@ -88,6 +88,6 @@
   opacity: 0.45;
 
   .label {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeaderMinimal.module.scss';
 
@@ -20,7 +22,7 @@ export interface DesktopHeaderMinimalProps extends HTMLAttributes<HTMLElement> {
   /** Cart badge count */
   cartCount?: number;
   /** Category items for bottom bar */
-  categories?: CategoryItem[];
+  categories?: CategoryItemcn(];
   /** Search submit */
   onSearch?: (query: string) => void;
   /** Search input change */
@@ -166,8 +168,7 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
     const rootClass = [
       styles.header,
       scrolled ? styles.scrolled : '',
-      className,
-    ].filter(Boolean).join(' ');
+      className,);
 
     const formatBadge = (count: number) => (count > 99 ? '99+' : String(count));
 
@@ -251,7 +252,7 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
             <div className={styles.categoryContent}>
               {catScrollPos !== 'start' && (
                 <button
-                  className={`${styles.catArrow} ${styles.catArrowLeft}`}
+                  className={cn(styles.catArrow, styles.catArrowLeft)}
                   onClick={() => scrollCategories('left')}
                   aria-label="Scroll categories left"
                   type="button"
@@ -286,7 +287,7 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
               </div>
               {catScrollPos !== 'end' && categories.length > 8 && (
                 <button
-                  className={`${styles.catArrow} ${styles.catArrowRight}`}
+                  className={cn(styles.catArrow, styles.catArrowRight)}
                   onClick={() => scrollCategories('right')}
                   aria-label="Scroll categories right"
                   type="button"

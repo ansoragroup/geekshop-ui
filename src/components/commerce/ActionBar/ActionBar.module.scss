@@ -7,8 +7,8 @@
   min-height: $action-bar-height;
   padding: $spacing-sm $spacing-md;
   padding-bottom: calc(#{$spacing-sm} + #{$safe-area-bottom});
-  background: $color-bg-white;
-  box-shadow: $shadow-bottom-bar;
+  background: var(--gs-bg-white);
+  box-shadow: var(--gs-shadow-bottom-bar);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -59,7 +59,7 @@
   height: 16px;
   padding: 0 4px;
   background: var(--gs-color-price);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: $radius-round;
@@ -71,7 +71,7 @@
 
 .iconLabel {
   font-size: 9px;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: 1;
   white-space: nowrap;
 }
@@ -95,7 +95,7 @@
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   color: var(--gs-color-primary);
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border: 1.5px solid var(--gs-color-primary);
   border-radius: $radius-xxl;
   cursor: pointer;
@@ -120,7 +120,7 @@
   padding: $spacing-sm $spacing-md;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   background: var(--gs-color-primary);
   border: none;
   border-radius: $radius-xxl;

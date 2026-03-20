@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './DeliveryCard.module.scss';
@@ -116,7 +118,7 @@ export const DeliveryCard = forwardRef<HTMLDivElement, DeliveryCardProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {/* Header: icon + carrier + status */}
@@ -139,12 +141,12 @@ export const DeliveryCard = forwardRef<HTMLDivElement, DeliveryCardProps>(
           {[0, 1, 2, 3].map((s) => (
             <div key={s} className={styles.stepGroup}>
               <span
-                className={`${styles.stepDot} ${s <= step ? styles.stepDotActive : ''}`}
+                className={cn(styles.stepDot, s <= step ? styles.stepDotActive : '')}
                 style={s <= step ? { background: statusColor } : undefined}
               />
               {s < 3 && (
                 <span
-                  className={`${styles.stepLine} ${s < step ? styles.stepLineActive : ''}`}
+                  className={cn(styles.stepLine, s < step ? styles.stepLineActive : '')}
                   style={s < step ? { background: statusColor } : undefined}
                 />
               )}

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -184,7 +186,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         <div
@@ -198,7 +200,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         {isVisible && (
           <div
             ref={popoverRef}
-            className={`${styles.popover} ${styles[`placement-${basePlacement}`]}`}
+            className={cn(styles.popover, styles[`placement-${basePlacement}`])}
             style={{ top: position.top, left: position.left }}
             role="dialog"
             aria-modal="false"

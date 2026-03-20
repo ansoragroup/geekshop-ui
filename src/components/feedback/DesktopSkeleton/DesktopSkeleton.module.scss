@@ -14,7 +14,7 @@
 // Base
 .skeleton {
   display: block;
-  background-color: $color-bg-skeleton;
+  background-color: var(--gs-bg-skeleton);
   box-sizing: border-box;
 }
 
@@ -22,9 +22,9 @@
 .shimmer {
   background: linear-gradient(
     90deg,
-    $color-bg-skeleton 25%,
+    var(--gs-bg-skeleton) 25%,
     color.adjust($color-bg-skeleton, $lightness: -5%) 37%,
-    $color-bg-skeleton 63%
+    var(--gs-bg-skeleton) 63%
   );
   background-size: 200% 100%;
   animation: shimmer 1.6s ease-in-out infinite;
@@ -60,10 +60,10 @@
 // Card skeleton
 .card {
   width: 100%;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   overflow: hidden;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
 }
 
 .cardImage {

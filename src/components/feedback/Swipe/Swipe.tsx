@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useState, useCallback } from 'react';
 import type { ReactNode, TouchEvent } from 'react';
 import styles from './Swipe.module.scss';
@@ -14,7 +16,7 @@ export interface SwipeProps {
   /** Content to display inside the swipe container */
   children: ReactNode;
   /** Actions revealed when swiping right (content moves right) */
-  leftActions?: SwipeAction[];
+  leftActions?: SwipeActioncn(];
   /** Actions revealed when swiping left (content moves left) */
   rightActions?: SwipeAction[];
   /** Distance in px to trigger snap-open (default 80) */
@@ -121,7 +123,7 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
       [],
     );
 
-    const wrapperClasses = [styles.wrapper, className].filter(Boolean).join(' ');
+    const wrapperClasses = [styles.wrapper, className);
 
     return (
       <div
@@ -182,7 +184,7 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
 
         {/* Main content */}
         <div
-          className={`${styles.content} ${isTransitioning ? styles.transitioning : ''}`}
+          className={cn(styles.content, isTransitioning ? styles.transitioning : '')}
           style={{ transform: `translateX(${translateX}px)` }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}

@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopTimeline.module.scss';
 
@@ -26,7 +27,7 @@ export const DesktopTimeline = forwardRef<HTMLDivElement, DesktopTimelineProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`mode_${mode}`]} ${className}`}
+        className={cn(styles.root, styles[`mode_${mode}`], className)}
         role="list"
         aria-label="Timeline"
         {...rest}
@@ -39,7 +40,7 @@ export const DesktopTimeline = forwardRef<HTMLDivElement, DesktopTimelineProps>(
           return (
             <div
               key={index}
-              className={`${styles.item} ${colorClass} ${isRight ? styles.itemRight : styles.itemLeft}`}
+              className={cn(styles.item, colorClass, isRight ? styles.itemRight : styles.itemLeft)}
               role="listitem"
             >
               {/* Rail (dot + line) */}

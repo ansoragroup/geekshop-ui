@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Steps.module.scss';
 
@@ -41,7 +42,7 @@ export const Steps = forwardRef<HTMLDivElement, StepsProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`direction-${direction}`]} ${styles[`size-${size}`]} ${className}`}
+        className={cn(styles.root, styles[`direction-${direction}`], styles[`size-${size}`], className)}
         role="list"
         aria-label="Progress steps"
         {...rest}
@@ -52,14 +53,14 @@ export const Steps = forwardRef<HTMLDivElement, StepsProps>(
           return (
             <div
               key={index}
-              className={`${styles.step} ${styles[`status-${status}`]}`}
+              className={cn(styles.step, styles[`status-${status}`])}
               role="listitem"
               aria-current={status === 'active' ? 'step' : undefined}
             >
               {/* Connector line before (not for first item) */}
               {index > 0 && (
                 <div
-                  className={`${styles.connector} ${index <= current ? styles.connectorCompleted : ''}`}
+                  className={cn(styles.connector, index <= current ? styles.connectorCompleted : '')}
                   aria-hidden="true"
                 />
               )}

@@ -9,7 +9,7 @@
 .label {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-family: $font-family;
 }
 
@@ -20,17 +20,17 @@
   align-items: center;
   gap: $spacing-sm;
   padding: 0 $spacing-md;
-  background: $color-bg-white;
-  border: 1.5px solid $color-border;
+  background: var(--gs-bg-white);
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-md;
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
   &:hover:not(:has(input:disabled)) {
-    border-color: $color-text-tertiary;
+    border-color: var(--gs-text-tertiary);
   }
 
   &:focus-within {
-    border-color: var(--gs-color-primary, #{$color-primary});
+    border-color: var(--gs-color-primary);
     box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
   }
 }
@@ -67,18 +67,18 @@
   flex: 1;
   height: 100%;
   min-width: 0;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   background: transparent;
   border: none;
   outline: none;
   font-family: $font-family;
 
   &::placeholder {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
   }
 
   &:disabled {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
     cursor: not-allowed;
   }
 }
@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // --- Clear button ---
@@ -126,7 +126,7 @@
 
 .error {
   font-size: $font-size-sm;
-  color: var(--gs-color-error, #{$color-error});
+  color: var(--gs-color-error);
   line-height: $line-height-normal;
 }
 
@@ -134,7 +134,7 @@
 
 .helperText {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
 }
 
@@ -142,10 +142,10 @@
 
 .hasError {
   .inputWrap {
-    border-color: var(--gs-color-error, #{$color-error});
+    border-color: var(--gs-color-error);
 
     &:focus-within {
-      border-color: var(--gs-color-error, #{$color-error});
+      border-color: var(--gs-color-error);
       box-shadow: 0 0 0 3px rgba($color-error, 0.1);
     }
   }
@@ -155,10 +155,10 @@
 
 .hasSuccess {
   .inputWrap {
-    border-color: $color-success;
+    border-color: var(--gs-color-success);
 
     &:focus-within {
-      border-color: $color-success;
+      border-color: var(--gs-color-success);
       box-shadow: 0 0 0 3px rgba($color-success, 0.1);
     }
   }
@@ -168,13 +168,13 @@
 
 .disabled {
   .inputWrap {
-    background: $color-bg-page;
-    border-color: $color-border-light;
+    background: var(--gs-bg-page);
+    border-color: var(--gs-border-color-light);
     cursor: not-allowed;
   }
 
   .label {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 

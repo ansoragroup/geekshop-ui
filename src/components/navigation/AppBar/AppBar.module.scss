@@ -17,11 +17,11 @@
 // --- Colored variant ---
 .colored {
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 
   .searchInput {
     background: rgba(255, 255, 255, 0.2);
-    color: $color-text-white;
+    color: var(--gs-text-white);
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.7);
@@ -37,7 +37,7 @@
   }
 
   .iconBtn {
-    color: $color-text-white;
+    color: var(--gs-text-white);
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
@@ -45,7 +45,7 @@
   }
 
   .locationBtn {
-    color: $color-text-white;
+    color: var(--gs-text-white);
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
@@ -55,28 +55,28 @@
 
 // --- Transparent variant ---
 .transparent {
-  background: $color-bg-white;
-  color: $color-text-primary;
+  background: var(--gs-bg-white);
+  color: var(--gs-text-primary);
 
   .searchInput {
-    background: $color-bg-page;
-    color: $color-text-primary;
+    background: var(--gs-bg-page);
+    color: var(--gs-text-primary);
 
     &::placeholder {
-      color: $color-text-placeholder;
+      color: var(--gs-text-placeholder);
     }
   }
 
   .placeholderText {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
   }
 
   .searchIcon {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 
   .iconBtn {
-    color: $color-text-secondary;
+    color: var(--gs-text-secondary);
 
     &:hover {
       background: rgba(0, 0, 0, 0.05);
@@ -84,7 +84,7 @@
   }
 
   .locationBtn {
-    color: $color-text-primary;
+    color: var(--gs-text-primary);
 
     &:hover {
       background: rgba(0, 0, 0, 0.05);

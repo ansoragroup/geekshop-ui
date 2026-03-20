@@ -15,7 +15,7 @@
   aspect-ratio: 1;
   border-radius: $radius-md;
   overflow: hidden;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .image {
@@ -47,7 +47,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $color-bg-white;
+    outline: 2px solid var(--gs-bg-white);
     outline-offset: 1px;
   }
 }
@@ -59,28 +59,28 @@
   justify-content: center;
   gap: $spacing-xs;
   aspect-ratio: 1;
-  border: 1.5px dashed $color-border;
+  border: 1.5px dashed var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast;
   -webkit-tap-highlight-color: transparent;
   min-height: 44px;
 
   &:hover {
-    border-color: var(--gs-color-primary, #{$color-primary});
-    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .addText {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-family: $font-family;
 }
 

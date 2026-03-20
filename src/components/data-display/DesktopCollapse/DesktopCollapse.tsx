@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -88,7 +90,7 @@ export const DesktopCollapsePanel = forwardRef<
     return (
       <div
         ref={ref}
-        className={`${styles.panel} ${_isActive ? styles.active : ''} ${disabled ? styles.disabled : ''}`}
+        className={cn(styles.panel, _isActive ? styles.active : '', disabled ? styles.disabled : '')}
         {...rest}
       >
         <div
@@ -105,7 +107,7 @@ export const DesktopCollapsePanel = forwardRef<
           <span className={styles.title}>{title}</span>
           <div className={styles.headerRight}>
             {extra && <span className={styles.extra}>{extra}</span>}
-            <span className={`${styles.arrow} ${_isActive ? styles.arrowExpanded : ''}`}>
+            <span className={cn(styles.arrow, _isActive ? styles.arrowExpanded : '')}>
               <ChevronIcon />
             </span>
           </div>
@@ -113,7 +115,7 @@ export const DesktopCollapsePanel = forwardRef<
 
         <div
           id={panelId}
-          className={`${styles.body} ${_isActive ? styles.bodyOpen : ''}`}
+          className={cn(styles.body, _isActive ? styles.bodyOpen : '')}
           role="region"
           aria-labelledby={headerId}
           hidden={!_isActive}
@@ -196,7 +198,7 @@ export const DesktopCollapse = forwardRef<HTMLDivElement, DesktopCollapseProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {enhancedChildren}

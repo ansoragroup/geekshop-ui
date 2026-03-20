@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './NavBar.module.scss';
@@ -74,7 +76,7 @@ export const NavBar = forwardRef<HTMLElement, NavBarProps>(
     return (
       <header
         ref={ref}
-        className={`${styles.navBar} ${isGradient ? styles.gradient : styles.default} ${className ?? ''}`}
+        className={cn(styles.navBar, isGradient ? styles.gradient : styles.default, className ?? '')}
         {...rest}
       >
         {/* Left zone */}

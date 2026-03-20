@@ -13,7 +13,7 @@
 .label {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 // --- Trigger ---
@@ -25,8 +25,8 @@
   width: 100%;
   height: 44px;
   padding: 0 $spacing-md;
-  background: $color-bg-white;
-  border: 1.5px solid $color-border;
+  background: var(--gs-bg-white);
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-md;
   cursor: pointer;
   font-family: $font-family;
@@ -36,13 +36,13 @@
   text-align: left;
 
   &:focus-visible {
-    border-color: var(--gs-color-primary, #{$color-primary});
+    border-color: var(--gs-color-primary);
     outline: none;
   }
 
   &:disabled {
-    background: $color-bg-page;
-    border-color: $color-border-light;
+    background: var(--gs-bg-page);
+    border-color: var(--gs-border-color-light);
     cursor: not-allowed;
   }
 }
@@ -52,7 +52,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .triggerPlaceholder {
@@ -60,7 +60,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color-text-placeholder;
+  color: var(--gs-text-placeholder);
 }
 
 .triggerIcon {
@@ -73,18 +73,18 @@
 
 .error {
   font-size: $font-size-sm;
-  color: var(--gs-color-error, #{$color-error});
+  color: var(--gs-color-error);
   line-height: $line-height-normal;
 }
 
 .hasError .trigger {
-  border-color: var(--gs-color-error, #{$color-error});
+  border-color: var(--gs-color-error);
 }
 
 // --- Disabled ---
 
 .disabled .label {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // --- Overlay + Sheet ---
@@ -95,7 +95,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -105,7 +105,7 @@
 
 .sheet {
   width: 100%;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-xl $radius-xl 0 0;
   display: flex;
   flex-direction: column;
@@ -123,7 +123,7 @@
 .dragBar {
   width: 36px;
   height: 4px;
-  background: $color-border;
+  background: var(--gs-border-color);
   border-radius: $radius-round;
 }
 
@@ -138,7 +138,7 @@
 .headerTitle {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   flex: 1;
   text-align: center;
 }
@@ -150,17 +150,17 @@
   width: 28px;
   height: 28px;
   border-radius: $radius-round;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   cursor: pointer;
   transition: background $transition-fast;
   border: none;
 
   &:hover {
-    background: $color-border;
+    background: var(--gs-border-color);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -188,16 +188,16 @@
   background: none;
   cursor: pointer;
   border-radius: $radius-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -205,7 +205,7 @@
 .monthLabel {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .dayHeaders {
@@ -219,7 +219,7 @@
   text-align: center;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   padding: $spacing-xs 0;
 }
 
@@ -230,7 +230,7 @@
   padding-bottom: $spacing-md;
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
     border-radius: $radius-sm;
   }
@@ -252,24 +252,24 @@
   cursor: pointer;
   font-family: $font-family;
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   border-radius: $radius-md;
   transition: background $transition-fast, color $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
   &:hover:not(:disabled) {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
 
 .dayToday {
   font-weight: $font-weight-semibold;
-  color: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-color-primary);
   position: relative;
 
   &::after {
@@ -281,21 +281,21 @@
     width: 4px;
     height: 4px;
     border-radius: $radius-round;
-    background: var(--gs-color-primary, #{$color-primary});
+    background: var(--gs-color-primary);
   }
 }
 
 .daySelected {
-  background: var(--gs-color-primary, #{$color-primary});
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   font-weight: $font-weight-semibold;
 
   &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    background: var(--gs-color-primary-dark);
   }
 
   &.dayToday::after {
-    background: $color-text-white;
+    background: var(--gs-text-white);
   }
 }
 
@@ -314,8 +314,8 @@
 .confirmBtn {
   width: 100%;
   min-height: 44px;
-  background: var(--gs-color-primary, #{$color-primary});
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   border: none;
   border-radius: $radius-md;
   font-family: $font-family;
@@ -326,7 +326,7 @@
   -webkit-tap-highlight-color: transparent;
 
   &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    background: var(--gs-color-primary-dark);
   }
 
   &:disabled {
@@ -335,7 +335,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 

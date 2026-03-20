@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopProgress.module.scss';
 
@@ -39,7 +40,7 @@ export const DesktopProgress = forwardRef<HTMLDivElement, DesktopProgressProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`size_${size}`]} ${styles[`variant_${variant}`]} ${className}`}
+        className={cn(styles.root, styles[`size_${size}`], styles[`variant_${variant}`], className)}
         role="progressbar"
         aria-valuenow={clampedValue}
         aria-valuemin={0}
@@ -56,7 +57,7 @@ export const DesktopProgress = forwardRef<HTMLDivElement, DesktopProgressProps>(
 
         <div className={styles.track}>
           <div
-            className={`${styles.bar} ${striped ? styles.striped : ''}`}
+            className={cn(styles.bar, striped ? styles.striped : '')}
             style={{ width: `${clampedValue}%` }}
           />
         </div>

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -164,7 +166,7 @@ export const FloatingBubble = forwardRef<HTMLDivElement, FloatingBubbleProps>(
     return (
       <div
         ref={mergedRef}
-        className={`${styles.root} ${isDragging ? styles.dragging : ''} ${className}`}
+        className={cn(styles.root, isDragging ? styles.dragging : '', className)}
         style={{
           right: pos.right,
           bottom: pos.bottom,

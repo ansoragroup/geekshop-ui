@@ -6,16 +6,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $desktop-radius-card;
   border: none;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: $desktop-shadow-card;
+  box-shadow: var(--gs-desktop-shadow-card);
   transition: box-shadow $transition-normal, transform $transition-normal;
 
   &:hover {
-    box-shadow: $desktop-shadow-card-hover;
+    box-shadow: var(--gs-desktop-shadow-card-hover);
     transform: translateY(-2px);
   }
 }
@@ -26,7 +26,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
   overflow: hidden;
 }
 
@@ -42,7 +42,7 @@
   left: 0;
   padding: $spacing-xxs $spacing-sm;
   background: var(--gs-color-sale);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: 0 $radius-round $radius-round 0;
@@ -63,7 +63,7 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   margin: 0;
   display: -webkit-box;
@@ -84,12 +84,12 @@
   display: flex;
   align-items: center;
   gap: 1px;
-  color: $color-warning;
+  color: var(--gs-color-warning);
 }
 
 .reviewCount {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 
@@ -111,7 +111,7 @@
 
 .originalPrice {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-decoration: line-through;
   line-height: $line-height-tight;
 }
@@ -137,14 +137,14 @@
 
 .progressLabel {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-tight;
 }
 
 .progressBar {
   width: 100%;
   height: 8px;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
   border-radius: $radius-round;
   overflow: hidden;
 }
@@ -162,18 +162,18 @@
   display: flex;
   align-items: center;
   gap: $spacing-xs;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   font-size: $font-size-sm;
 }
 
 .countdownTime {
   font-weight: $font-weight-bold;
   font-variant-numeric: tabular-nums;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .countdownText {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // ─── Buy Button ───────────────────────────────────────────────────────────────
@@ -188,7 +188,7 @@
   padding: $spacing-sm $desktop-spacing-lg;
   min-height: 36px;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   border: none;

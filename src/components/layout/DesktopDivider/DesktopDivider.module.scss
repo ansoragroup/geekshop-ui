@@ -4,7 +4,7 @@
 .horizontal {
   width: 100%;
   height: 1px;
-  background: var(--divider-color, #{$color-divider});
+  background: var(--divider-color, #{var(--gs-divider-color)});
 }
 
 .solid.horizontal {
@@ -13,7 +13,7 @@
 
 .dashed.horizontal {
   background: none;
-  border-top: 1px dashed var(--divider-color, #{$color-divider});
+  border-top: 1px dashed var(--divider-color, #{var(--gs-divider-color)});
   height: 0;
 }
 
@@ -28,18 +28,18 @@
 .line {
   flex: 1;
   height: 1px;
-  background: var(--divider-color, #{$color-divider});
+  background: var(--divider-color, #{var(--gs-divider-color)});
 
   .dashed & {
     background: none;
-    border-top: 1px dashed var(--divider-color, #{$color-divider});
+    border-top: 1px dashed var(--divider-color, #{var(--gs-divider-color)});
     height: 0;
   }
 }
 
 .label {
   font-size: $desktop-font-size-body;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   white-space: nowrap;
   font-weight: $font-weight-medium;
   padding: 0 $spacing-xs;
@@ -50,7 +50,7 @@
   display: inline-block;
   width: 1px;
   height: 24px;
-  background: var(--divider-color, #{$color-divider});
+  background: var(--divider-color, #{var(--gs-divider-color)});
   vertical-align: middle;
   margin: 0 $desktop-spacing-sm;
   flex-shrink: 0;
@@ -58,7 +58,7 @@
 
 .dashed.vertical {
   background: none;
-  border-left: 1px dashed var(--divider-color, #{$color-divider});
+  border-left: 1px dashed var(--divider-color, #{var(--gs-divider-color)});
   width: 0;
 }
 

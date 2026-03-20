@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import { DesktopProductCard } from '../DesktopProductCard';
 import { ProductListItem } from '../ProductListItem';
@@ -136,7 +138,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {/* Toolbar */}
@@ -147,7 +149,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
               <button
                 key={option.id}
                 type="button"
-                className={`${styles.sortButton} ${option.id === activeSortId ? styles.sortButtonActive : ''}`}
+                className={cn(styles.sortButton, option.id === activeSortId ? styles.sortButtonActive : '')}
                 data-sort-id={option.id}
                 onClick={handleSortClick}
                 aria-pressed={option.id === activeSortId}
@@ -169,7 +171,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
             <div className={styles.viewToggle} role="group" aria-label="View mode">
               <button
                 type="button"
-                className={`${styles.viewButton} ${viewMode === 'grid' ? styles.viewButtonActive : ''}`}
+                className={cn(styles.viewButton, viewMode === 'grid' ? styles.viewButtonActive : '')}
                 onClick={() => handleViewMode('grid')}
                 aria-label="Grid view"
                 aria-pressed={viewMode === 'grid'}
@@ -178,7 +180,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
               </button>
               <button
                 type="button"
-                className={`${styles.viewButton} ${viewMode === 'list' ? styles.viewButtonActive : ''}`}
+                className={cn(styles.viewButton, viewMode === 'list' ? styles.viewButtonActive : '')}
                 onClick={() => handleViewMode('list')}
                 aria-label="List view"
                 aria-pressed={viewMode === 'list'}
@@ -192,7 +194,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
               <div className={styles.columnToggle} role="group" aria-label="Grid columns">
                 <button
                   type="button"
-                  className={`${styles.columnButton} ${columns === 4 ? styles.columnButtonActive : ''}`}
+                  className={cn(styles.columnButton, columns === 4 ? styles.columnButtonActive : '')}
                   onClick={() => handleColumns(4)}
                   aria-label="4 columns"
                   aria-pressed={columns === 4}
@@ -201,7 +203,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
                 </button>
                 <button
                   type="button"
-                  className={`${styles.columnButton} ${columns === 5 ? styles.columnButtonActive : ''}`}
+                  className={cn(styles.columnButton, columns === 5 ? styles.columnButtonActive : '')}
                   onClick={() => handleColumns(5)}
                   aria-label="5 columns"
                   aria-pressed={columns === 5}
@@ -215,46 +217,49 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
 
         {/* Product grid / list */}
         {viewMode === 'grid' ? (
-          <div
+          <ul
+            role="list"
             className={styles.grid}
             style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
           >
             {products.map((product) => (
-              <DesktopProductCard
-                key={product.id}
-                image={product.image}
-                title={product.title}
-                price={product.price}
-                originalPrice={product.originalPrice}
-                discount={product.discount}
-                rating={product.rating}
-                reviewCount={product.reviewCount}
-                installmentPrice={product.installmentPrice}
-                installmentLabel={product.installmentLabel}
-                freeShipping={product.freeShipping}
-                ctaText={product.ctaText}
-                ctaColor={product.ctaColor}
-                onClick={() => onProductClick?.(product)}
-                onAddToCart={() => onAddToCart?.(product)}
-              />
+              <li key={product.id} className={styles.gridItem}>
+                <DesktopProductCard
+                  image={product.image}
+                  title={product.title}
+                  price={product.price}
+                  originalPrice={product.originalPrice}
+                  discount={product.discount}
+                  rating={product.rating}
+                  reviewCount={product.reviewCount}
+                  installmentPrice={product.installmentPrice}
+                  installmentLabel={product.installmentLabel}
+                  freeShipping={product.freeShipping}
+                  ctaText={product.ctaText}
+                  ctaColor={product.ctaColor}
+                  onClick={() => onProductClick?.(product)}
+                  onAddToCart={() => onAddToCart?.(product)}
+                />
+              </li>
             ))}
-          </div>
+          </ul>
         ) : (
-          <div className={styles.list}>
+          <ul role="list" className={styles.list}>
             {products.map((product) => (
-              <ProductListItem
-                key={product.id}
-                image={product.image}
-                title={product.title}
-                price={product.price}
-                originalPrice={product.originalPrice}
-                rating={product.rating}
-                freeShipping={product.freeShipping}
-                onClick={() => onProductClick?.(product)}
-                onAddToCart={() => onAddToCart?.(product)}
-              />
+              <li key={product.id} className={styles.listItem}>
+                <ProductListItem
+                  image={product.image}
+                  title={product.title}
+                  price={product.price}
+                  originalPrice={product.originalPrice}
+                  rating={product.rating}
+                  freeShipping={product.freeShipping}
+                  onClick={() => onProductClick?.(product)}
+                  onAddToCart={() => onAddToCart?.(product)}
+                />
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     );

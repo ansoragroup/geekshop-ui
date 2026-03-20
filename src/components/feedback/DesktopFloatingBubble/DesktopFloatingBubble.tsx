@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopFloatingBubble.module.scss';
 
@@ -56,7 +58,7 @@ export const DesktopFloatingBubble = forwardRef<HTMLDivElement, DesktopFloatingB
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${isHovered ? styles.expanded : ''} ${className}`}
+        className={cn(styles.root, isHovered ? styles.expanded : '', className)}
         style={{ right, bottom }}
         role="button"
         tabIndex={0}

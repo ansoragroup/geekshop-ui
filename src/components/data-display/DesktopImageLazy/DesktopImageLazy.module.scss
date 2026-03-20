@@ -3,13 +3,13 @@
 .container {
   position: relative;
   overflow: hidden;
-  background-color: $color-bg-skeleton;
+  background-color: var(--gs-bg-skeleton);
   display: block;
   width: 100%;
   transition: box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-md;
+    box-shadow: var(--gs-shadow-md);
   }
 }
 
@@ -38,7 +38,7 @@
   inset: 0;
   z-index: 1;
   overflow: hidden;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 }
 
 .shimmerWave {
@@ -83,14 +83,14 @@
   align-items: center;
   justify-content: center;
   gap: $spacing-sm;
-  background-color: $color-bg-skeleton;
-  color: $color-text-placeholder;
+  background-color: var(--gs-bg-skeleton);
+  color: var(--gs-text-placeholder);
   z-index: 2;
 }
 
 .errorText {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-family: $font-family;
 }
 

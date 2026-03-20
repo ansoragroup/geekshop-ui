@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   font-size: $font-size-sm;
   line-height: $line-height-normal;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .price {
@@ -33,12 +33,12 @@
 }
 
 .sep {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-size: $font-size-xs;
 }
 
 .months {
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   font-weight: $font-weight-medium;
 }
 
@@ -47,6 +47,6 @@
   font-weight: $font-weight-semibold;
   font-size: $font-size-xs;
   padding: 1px $spacing-xs;
-  background: $color-success-light;
+  background: var(--gs-color-success-light);
   border-radius: $radius-xs;
 }

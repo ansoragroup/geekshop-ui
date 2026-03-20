@@ -1,8 +1,10 @@
-import { forwardRef, type MouseEventHandler, type HTMLAttributes } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, type ElementType, type MouseEventHandler } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './SectionHeader.module.scss';
 
-export interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
+export interface SectionHeaderOwnProps {
   /** Section title */
   title: string;
   /** Item count shown next to "see all" (e.g. "20 ta") */
@@ -13,23 +15,27 @@ export interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
   onViewAll?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
-  (
-    {
-      title,
-      count,
-      icon,
-      onViewAll,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
+export type SectionHeaderProps<C extends ElementType = 'div'> = SectionHeaderOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof SectionHeaderOwnProps | 'as'>;
+
+function SectionHeaderInner<C extends ElementType = 'div'>(
+  {
+    as,
+    title,
+    count,
+    icon,
+    onViewAll,
+    className,
+    ...rest
+  }: SectionHeaderProps<C>,
+  ref: React.Ref<Element>,
+) {
+  const Component = as || 'div';
   const { t } = useGeekShop();
-  const rootClass = [styles.sectionHeader, className].filter(Boolean).join(' ');
 
   return (
-    <div ref={ref} className={rootClass} {...rest}>
+    <Component ref={ref} className={cn(styles.sectionHeader, className)} {...rest}>
       <div className={styles.left}>
         {icon && <span className={styles.icon}>{icon}</span>}
         <h3 className={styles.title}>{title}</h3>
@@ -56,9 +62,12 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
           </svg>
         </button>
       )}
-    </div>
+    </Component>
   );
-  },
-);
+}
 
-SectionHeader.displayName = 'SectionHeader';
+export const SectionHeader = forwardRef(SectionHeaderInner) as <C extends ElementType = 'div'>(
+  props: SectionHeaderProps<C> & { ref?: React.Ref<Element> }
+) => JSX.Element;
+
+(SectionHeader as { displayName?: string }).displayName = 'SectionHeader';

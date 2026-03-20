@@ -23,7 +23,7 @@
   position: sticky;
   top: 0;
   z-index: $z-index-sticky;
-  background: var(--gs-color-bg-card, $color-bg-card);
+  background: var(--gs-bg-card);
 }
 
 // === Tab ===
@@ -40,7 +40,7 @@
   font-size: $font-size-md;
   font-weight: $font-weight-regular;
   font-family: $font-family;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   transition: color $transition-fast, font-weight $transition-fast;
   min-height: 44px;
   position: relative;
@@ -48,14 +48,14 @@
   -webkit-tap-highlight-color: transparent;
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, $color-primary);
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
     border-radius: $radius-xs;
   }
 }
 
 .active {
-  color: var(--gs-color-primary, $color-primary);
+  color: var(--gs-color-primary);
   font-weight: $font-weight-semibold;
 }
 
@@ -76,8 +76,8 @@
   height: 16px;
   padding: 0 $spacing-xs;
   border-radius: $radius-round;
-  background: var(--gs-color-primary, $color-primary);
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   line-height: 1;
@@ -86,7 +86,7 @@
 // === Line variant ===
 .variant-line {
   .tabBar {
-    border-bottom: 1px solid var(--gs-color-border, $color-border);
+    border-bottom: 1px solid var(--gs-border-color);
   }
 
   .ink {
@@ -94,7 +94,7 @@
     bottom: 0;
     left: 0;
     height: 2px;
-    background: var(--gs-color-primary, $color-primary);
+    background: var(--gs-color-primary);
     border-radius: $radius-round;
     transition: transform $transition-normal, width $transition-normal;
   }
@@ -105,7 +105,7 @@
   .tabBar {
     gap: $spacing-sm;
     padding: $spacing-xs;
-    background: var(--gs-color-bg-page, $color-bg-page);
+    background: var(--gs-bg-page);
     border-radius: $radius-md;
   }
 
@@ -117,9 +117,9 @@
   }
 
   .active {
-    background: var(--gs-color-bg-card, $color-bg-card);
-    box-shadow: $shadow-sm;
-    color: $color-text-primary;
+    background: var(--gs-bg-card);
+    box-shadow: var(--gs-shadow-sm);
+    color: var(--gs-text-primary);
     font-weight: $font-weight-semibold;
   }
 }

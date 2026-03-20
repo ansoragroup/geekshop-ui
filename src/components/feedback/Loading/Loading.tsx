@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Loading.module.scss';
 
@@ -44,17 +45,17 @@ function Skeleton() {
       <div className={styles.skeletonCard}>
         <div className={styles.skeletonImage} />
         <div className={styles.skeletonBody}>
-          <div className={`${styles.skeletonLine} ${styles.skeletonLineW80}`} />
-          <div className={`${styles.skeletonLine} ${styles.skeletonLineW60}`} />
-          <div className={`${styles.skeletonLine} ${styles.skeletonLineW40} ${styles.skeletonLinePrice}`} />
+          <div className={cn(styles.skeletonLine, styles.skeletonLineW80)} />
+          <div className={cn(styles.skeletonLine, styles.skeletonLineW60)} />
+          <div className={cn(styles.skeletonLine, styles.skeletonLineW40, styles.skeletonLinePrice)} />
         </div>
       </div>
       <div className={styles.skeletonCard}>
         <div className={styles.skeletonImage} />
         <div className={styles.skeletonBody}>
-          <div className={`${styles.skeletonLine} ${styles.skeletonLineW70}`} />
-          <div className={`${styles.skeletonLine} ${styles.skeletonLineW90}`} />
-          <div className={`${styles.skeletonLine} ${styles.skeletonLineW35} ${styles.skeletonLinePrice}`} />
+          <div className={cn(styles.skeletonLine, styles.skeletonLineW70)} />
+          <div className={cn(styles.skeletonLine, styles.skeletonLineW90)} />
+          <div className={cn(styles.skeletonLine, styles.skeletonLineW35, styles.skeletonLinePrice)} />
         </div>
       </div>
     </div>
@@ -76,7 +77,7 @@ export const Loading = forwardRef<HTMLDivElement, LoadingProps>(
 
     if (fullscreen && type !== 'skeleton') {
       return (
-        <div ref={ref} className={`${styles.fullscreen} ${className}`} {...rest}>
+        <div ref={ref} className={cn(styles.fullscreen, className)} {...rest}>
           {content}
         </div>
       );

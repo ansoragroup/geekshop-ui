@@ -1,9 +1,9 @@
 @use '../../../theme/tokens' as *;
 
 .panel {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -15,13 +15,13 @@
   align-items: center;
   justify-content: space-between;
   padding: $desktop-spacing-md $desktop-spacing-lg;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
 }
 
 .headerTitle {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   display: flex;
   align-items: center;
   gap: $spacing-sm;
@@ -35,8 +35,8 @@
   height: 20px;
   padding: 0 $spacing-xs;
   border-radius: $radius-round;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
 }
@@ -44,7 +44,7 @@
 .clearAllBtn {
   border: none;
   background: none;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   font-family: $font-family;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
@@ -54,7 +54,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -67,7 +67,7 @@
 
 // --- Group ---
 .group {
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid var(--gs-border-color-light);
 
   &:last-child {
     border-bottom: none;
@@ -84,18 +84,18 @@
   background: none;
   cursor: pointer;
   font-family: $font-family;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
 .groupTitle {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .groupContent {
@@ -124,7 +124,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
@@ -134,28 +134,28 @@
   justify-content: center;
   width: 18px;
   height: 18px;
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   border-radius: $radius-xs;
   flex-shrink: 0;
   transition: border-color $transition-fast, background $transition-fast;
 }
 
 .checkboxChecked {
-  border-color: $color-primary;
-  background: $color-primary;
-  color: $color-text-white;
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
 }
 
 .optionLabel {
   flex: 1;
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
 .optionCount {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -170,26 +170,26 @@
   flex: 1;
   height: 36px;
   padding: 0 $spacing-md;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-sm;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   font-family: $font-family;
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   outline: none;
   transition: border-color $transition-fast;
 
   &::placeholder {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
   }
 
   &:focus {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 }
 
 .rangeSeparator {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -198,16 +198,16 @@
   display: flex;
   gap: $spacing-sm;
   padding: $desktop-spacing-sm $desktop-spacing-lg;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--gs-border-color);
 }
 
 .clearBtn {
   flex: 1;
   height: 36px;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-card;
-  color: $color-text-secondary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-secondary);
   font-family: $font-family;
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
@@ -215,8 +215,8 @@
   transition: border-color $transition-fast, background $transition-fast;
 
   &:hover {
-    border-color: $color-text-tertiary;
-    background: $color-bg-page;
+    border-color: var(--gs-text-tertiary);
+    background: var(--gs-bg-page);
   }
 }
 
@@ -225,8 +225,8 @@
   height: 36px;
   border: none;
   border-radius: $radius-md;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   font-family: $font-family;
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
@@ -234,7 +234,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }
 

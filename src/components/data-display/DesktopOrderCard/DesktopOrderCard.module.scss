@@ -7,14 +7,14 @@
   flex-direction: column;
   width: 100%;
   padding: $desktop-spacing-lg;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   gap: $desktop-spacing-md;
   transition: box-shadow $transition-normal;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 }
 
@@ -37,18 +37,18 @@
 .orderId {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .dotSeparator {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .date {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-tight;
   white-space: nowrap;
 }
@@ -69,33 +69,33 @@
 }
 
 .status_pending {
-  background: $color-warning-light;
-  color: $color-warning;
+  background: var(--gs-color-warning-light);
+  color: var(--gs-color-warning);
 }
 
 .status_processing {
   background: rgba($color-info, 0.1);
-  color: $color-info;
+  color: var(--gs-color-info);
 }
 
 .status_shipping {
   background: rgba($color-info, 0.1);
-  color: $color-info;
+  color: var(--gs-color-info);
 }
 
 .status_delivered {
-  background: $color-success-light;
-  color: $color-success;
+  background: var(--gs-color-success-light);
+  color: var(--gs-color-success);
 }
 
 .status_cancelled {
-  background: $color-bg-page;
-  color: $color-text-tertiary;
+  background: var(--gs-bg-page);
+  color: var(--gs-text-tertiary);
 }
 
 .status_returned {
   background: rgba($color-error, 0.1);
-  color: $color-error;
+  color: var(--gs-color-error);
 }
 
 // ─── Middle Row ──────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@
   height: 64px;
   border-radius: $radius-md;
   object-fit: cover;
-  border: 1px solid $color-border-light;
+  border: 1px solid var(--gs-border-color-light);
   flex-shrink: 0;
 }
 
@@ -126,14 +126,14 @@
   width: 64px;
   height: 64px;
   border-radius: $radius-md;
-  background: $color-bg-page;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-page);
+  border: 1px solid var(--gs-border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   flex-shrink: 0;
 }
 
@@ -146,14 +146,14 @@
 
 .itemCount {
   font-size: $font-size-md;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-tight;
 }
 
 .totalAmount {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
@@ -180,34 +180,34 @@
   min-height: 40px;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 }
 
 .actionPrimary {
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   border: none;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }
 
 .actionSecondary {
-  background: $color-bg-card;
-  color: $color-text-primary;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-primary);
+  border: 1px solid var(--gs-border-color);
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
 .actionDanger {
   background: transparent;
-  color: $color-error;
-  border: 1px solid $color-error;
+  color: var(--gs-color-error);
+  border: 1px solid var(--gs-color-error);
 
   &:hover {
     background: rgba($color-error, 0.05);

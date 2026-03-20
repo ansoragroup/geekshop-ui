@@ -5,13 +5,13 @@
   align-items: center;
   gap: $desktop-spacing-md;
   padding: $desktop-spacing-md $desktop-spacing-lg;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 }
 
@@ -27,7 +27,7 @@
   width: 36px;
   height: 36px;
   border-radius: $radius-round;
-  border: 2px solid $color-bg-card;
+  border: 2px solid var(--gs-bg-card);
   object-fit: cover;
   margin-left: -10px;
 
@@ -40,9 +40,9 @@
   width: 36px;
   height: 36px;
   border-radius: $radius-round;
-  border: 2px solid $color-bg-card;
-  background: $color-bg-page;
-  color: $color-text-tertiary;
+  border: 2px solid var(--gs-bg-card);
+  background: var(--gs-bg-page);
+  color: var(--gs-text-tertiary);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   display: flex;
@@ -76,7 +76,7 @@
 .countText {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
@@ -91,7 +91,7 @@
 
 .recentLabel {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-weight: $font-weight-medium;
 }
 
@@ -100,7 +100,7 @@
   align-items: center;
   gap: $spacing-xs;
   padding: $spacing-xxs $spacing-sm;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   border-radius: $radius-round;
 }
 
@@ -114,7 +114,7 @@
 .buyerName {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   white-space: nowrap;
 }
 

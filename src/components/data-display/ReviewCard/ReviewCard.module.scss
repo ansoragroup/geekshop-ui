@@ -3,7 +3,7 @@
 .root {
   container-type: inline-size;
   width: 100%;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   padding: $spacing-lg;
   font-family: $font-family;
@@ -29,13 +29,13 @@
 .userName {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .date {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   margin-top: 1px;
 }
 
@@ -46,8 +46,8 @@
 .variant {
   margin-top: $spacing-sm;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
-  background: $color-bg-page;
+  color: var(--gs-text-tertiary);
+  background: var(--gs-bg-page);
   display: inline-block;
   padding: $spacing-xxs $spacing-sm;
   border-radius: $radius-xs;
@@ -56,7 +56,7 @@
 .content {
   margin: $spacing-sm 0 0;
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   word-break: break-word;
 }
@@ -79,7 +79,7 @@
   border-radius: $radius-md;
   object-fit: cover;
   flex-shrink: 0;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 }
 
 // ========================================

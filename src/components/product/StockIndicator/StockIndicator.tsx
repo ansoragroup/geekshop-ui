@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './StockIndicator.module.scss';
@@ -49,7 +51,7 @@ export const StockIndicator = forwardRef<HTMLDivElement, StockIndicatorProps>(
       return (
         <span
           ref={ref as React.Ref<HTMLSpanElement>}
-          className={`${styles.badge} ${isUrgent ? styles.badgeUrgent : ''} ${isSoldOut ? styles.badgeSoldOut : ''} ${className}`}
+          className={cn(styles.badge, isUrgent ? styles.badgeUrgent : '', isSoldOut ? styles.badgeSoldOut : '', className)}
           role="status"
           aria-label={urgencyLabel}
           {...(rest as HTMLAttributes<HTMLSpanElement>)}
@@ -63,7 +65,7 @@ export const StockIndicator = forwardRef<HTMLDivElement, StockIndicatorProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.textRoot} ${isUrgent ? styles.textUrgent : ''} ${className}`}
+          className={cn(styles.textRoot, isUrgent ? styles.textUrgent : '', className)}
           role="status"
           aria-label={urgencyLabel}
           {...rest}
@@ -77,19 +79,19 @@ export const StockIndicator = forwardRef<HTMLDivElement, StockIndicatorProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.barRoot} ${isUrgent ? styles.barUrgent : ''} ${className}`}
+        className={cn(styles.barRoot, isUrgent ? styles.barUrgent : '', className)}
         role="status"
         aria-label={urgencyLabel}
         {...rest}
       >
         <div className={styles.barTrack}>
           <div
-            className={`${styles.barFill} ${isUrgent ? styles.barFillUrgent : ''}`}
+            className={cn(styles.barFill, isUrgent ? styles.barFillUrgent : '')}
             style={{ width: `${soldPercent}%` }}
           />
         </div>
         {showCount && (
-          <span className={`${styles.barText} ${isUrgent ? styles.barTextUrgent : ''}`}>
+          <span className={cn(styles.barText, isUrgent ? styles.barTextUrgent : '')}>
             {urgencyLabel}
           </span>
         )}

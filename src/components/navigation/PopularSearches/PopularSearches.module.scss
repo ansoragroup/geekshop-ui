@@ -1,7 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .container {
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-lg;
   padding: $spacing-lg;
 }
@@ -16,7 +16,7 @@
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
@@ -31,9 +31,9 @@
   align-items: center;
   gap: $spacing-xs;
   padding: $spacing-sm $spacing-md;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-round;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   cursor: pointer;
   font-family: $font-family;
   transition: all $transition-fast;
@@ -60,7 +60,7 @@
 .rank {
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   min-width: 18px;
   height: 18px;
   display: inline-flex;
@@ -71,14 +71,14 @@
 
   &.rankTop {
     background: var(--gs-color-primary);
-    color: $color-text-white;
+    color: var(--gs-text-white);
     border-radius: $radius-xs;
   }
 }
 
 .text {
   font-size: $font-size-sm;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   white-space: nowrap;
   line-height: $line-height-normal;
 }

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './CategoryShowcase.module.scss';
 
@@ -41,7 +43,7 @@ export const CategoryShowcase = forwardRef<HTMLDivElement, CategoryShowcaseProps
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {title && (

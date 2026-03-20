@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopOrderSummary.module.scss';
 
@@ -114,7 +116,7 @@ export const DesktopOrderSummary = forwardRef<HTMLDivElement, DesktopOrderSummar
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         {/* Header */}
@@ -136,7 +138,7 @@ export const DesktopOrderSummary = forwardRef<HTMLDivElement, DesktopOrderSummar
 
           <div className={styles.lineItem}>
             <span className={styles.lineLabel}>Shipping</span>
-            <span className={`${styles.lineValue} ${shipping === 0 ? styles.freeText : ''}`}>
+            <span className={cn(styles.lineValue, shipping === 0 ? styles.freeText : '')}>
               {shipping === 0 ? 'Free' : `${formatPrice(shipping)} so'm`}
             </span>
           </div>
@@ -151,7 +153,7 @@ export const DesktopOrderSummary = forwardRef<HTMLDivElement, DesktopOrderSummar
           {discount !== undefined && discount > 0 && (
             <div className={styles.lineItem}>
               <span className={styles.lineLabel}>Discount</span>
-              <span className={`${styles.lineValue} ${styles.discountText}`}>
+              <span className={cn(styles.lineValue, styles.discountText)}>
                 -{formatPrice(discount)} so'm
               </span>
             </div>

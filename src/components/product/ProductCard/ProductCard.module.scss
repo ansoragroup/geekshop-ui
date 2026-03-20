@@ -14,9 +14,9 @@
 .inner {
   display: flex;
   flex-direction: column;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  box-shadow: $shadow-md;
+  box-shadow: var(--gs-shadow-md);
   overflow: hidden;
 }
 
@@ -26,7 +26,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 }
 
 .image {
@@ -46,7 +46,7 @@
   align-items: center;
   padding: 2px $spacing-sm;
   background: var(--gs-color-sale);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: $radius-xs;
@@ -69,17 +69,17 @@
 
 .badge-new {
   background: var(--gs-color-success);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 }
 
 .badge-top {
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 }
 
 .badge-hot {
   background: linear-gradient(135deg, #FF5000 0%, #FF3B30 100%);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 }
 
 // --- Content ---
@@ -93,7 +93,7 @@
 .title {
   font-size: $font-size-sm;
   font-weight: $font-weight-regular;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -112,7 +112,7 @@
 
 .soldCount {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 

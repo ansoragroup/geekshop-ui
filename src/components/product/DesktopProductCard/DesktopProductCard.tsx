@@ -1,4 +1,6 @@
-import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
+import { cn } from '../../../utils/cn';
+'use client';
+import { forwardRef, useCallback, type ElementType, type MouseEvent } from 'react';
 import styles from './DesktopProductCard.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -8,7 +10,7 @@ export interface DesktopProductCardBadge {
   color?: 'green' | 'blue' | 'orange' | 'red' | 'purple';
 }
 
-export interface DesktopProductCardProps extends HTMLAttributes<HTMLDivElement> {
+export interface DesktopProductCardOwnProps {
   /** Product image URL */
   image: string;
   /** Product title */
@@ -44,6 +46,10 @@ export interface DesktopProductCardProps extends HTMLAttributes<HTMLDivElement> 
   onWishlist?: () => void;
   onClick?: () => void;
 }
+
+export type DesktopProductCardProps<C extends ElementType = 'div'> = DesktopProductCardOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof DesktopProductCardOwnProps | 'as'>;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -99,32 +105,33 @@ const BADGE_COLORS: Record<string, { bg: string; color: string }> = {
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardProps>(
-  (
-    {
-      image,
-      title,
-      price,
-      originalPrice,
-      discount,
-      installmentPrice,
-      installmentLabel = "so'm/oyiga",
-      rating,
-      reviewCount,
-      badges,
-      ctaText = 'Savatga',
-      ctaColor,
-      freeShipping,
-      deliveryText,
-      isWishlisted = false,
-      onAddToCart,
-      onWishlist,
-      onClick,
-      className = '',
-      ...rest
-    },
-    ref,
-  ) => {
+function DesktopProductCardInner<C extends ElementType = 'div'>(
+  {
+    as,
+    image,
+    title,
+    price,
+    originalPrice,
+    discount,
+    installmentPrice,
+    installmentLabel = "so'm/oyiga",
+    rating,
+    reviewCount,
+    badges,
+    ctaText = 'Savatga',
+    ctaColor,
+    freeShipping,
+    deliveryText,
+    isWishlisted = false,
+    onAddToCart,
+    onWishlist,
+    onClick,
+    className = '',
+    ...rest
+  }: DesktopProductCardProps<C>,
+  ref: React.Ref<Element>,
+) {
+    const Component = as || 'div';
     const hasDiscount = originalPrice !== undefined && originalPrice > price;
 
     const handleAction = useCallback(
@@ -136,7 +143,7 @@ export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardP
     );
 
     const handleKeyDown = useCallback(
-      (e: React.KeyboardEvent<HTMLDivElement>) => {
+      (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           onClick?.();
@@ -146,9 +153,9 @@ export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardP
     );
 
     return (
-      <div
+      <Component
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         onClick={onClick}
         onKeyDown={handleKeyDown}
         role="button"
@@ -172,7 +179,7 @@ export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardP
           {/* Wishlist heart — top right */}
           <button
             type="button"
-            className={`${styles.wishlistBtn} ${isWishlisted ? styles.wishlisted : ''}`}
+            className={cn(styles.wishlistBtn, isWishlisted ? styles.wishlisted : '')}
             onClick={(e) => handleAction(e, onWishlist)}
             aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
           >
@@ -271,9 +278,12 @@ export const DesktopProductCard = forwardRef<HTMLDivElement, DesktopProductCardP
             <span>{ctaText}</span>
           </button>
         </div>
-      </div>
+      </Component>
     );
-  },
-);
+}
 
-DesktopProductCard.displayName = 'DesktopProductCard';
+export const DesktopProductCard = forwardRef(DesktopProductCardInner) as <C extends ElementType = 'div'>(
+  props: DesktopProductCardProps<C> & { ref?: React.Ref<Element> }
+) => JSX.Element;
+
+(DesktopProductCard as { displayName?: string }).displayName = 'DesktopProductCard';

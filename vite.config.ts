@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import preserveDirectives from 'rollup-preserve-directives';
 import dts from 'vite-plugin-dts';
 
 // https://vite.dev/config/
@@ -14,6 +15,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [
     react(),
+    preserveDirectives(),
     dts({
       tsconfigPath: './tsconfig.app.json',
       outDir: 'dist',

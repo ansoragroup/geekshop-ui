@@ -33,7 +33,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   border-top-color: var(--gs-color-primary);
   border-radius: $radius-round;
   animation: spin 0.7s linear infinite;
@@ -48,14 +48,14 @@
 .loadingText {
   font-family: $font-family;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // --- End ---
 .endText {
   font-family: $font-family;
   font-size: $font-size-sm;
-  color: $color-text-placeholder;
+  color: var(--gs-text-placeholder);
 }
 
 // --- Error ---

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopInfiniteScroll.module.scss';
 
@@ -70,7 +72,7 @@ export const DesktopInfiniteScroll = forwardRef<HTMLDivElement, DesktopInfiniteS
     }, [handleLoadMore, threshold]);
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {children}
 
         {/* Invisible sentinel for IntersectionObserver */}

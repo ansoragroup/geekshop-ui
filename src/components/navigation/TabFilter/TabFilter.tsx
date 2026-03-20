@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './TabFilter.module.scss';
@@ -33,7 +35,7 @@ export const TabFilter = forwardRef<HTMLDivElement, TabFilterProps>(
     });
 
     return (
-      <div ref={ref} className={`${styles.tabFilter} ${styles[variant]} ${className ?? ''}`} role="tablist" {...rest}>
+      <div ref={ref} className={cn(styles.tabFilter, styles[variant], className ?? '')} role="tablist" {...rest}>
         <div className={styles.track}>
           {tabs.map((tab) => {
             const isActive = tab.key === activeTab;
@@ -42,12 +44,12 @@ export const TabFilter = forwardRef<HTMLDivElement, TabFilterProps>(
                 key={tab.key}
                 role="tab"
                 aria-selected={isActive}
-                className={`${styles.tab} ${isActive ? styles.active : ''}`}
+                className={cn(styles.tab, isActive ? styles.active : '')}
                 onClick={() => setActiveTab(tab.key)}
               >
                 <span className={styles.label}>{tab.label}</span>
                 {tab.badge != null && tab.badge > 0 && (
-                  <span className={`${styles.badge} ${isActive ? styles.badgeActive : ''}`}>
+                  <span className={cn(styles.badge, isActive ? styles.badgeActive : '')}>
                     {tab.badge > 99 ? '99+' : tab.badge}
                   </span>
                 )}

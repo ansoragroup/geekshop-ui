@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useMemo, type HTMLAttributes } from 'react';
 import { generateQRMatrix } from './qr-encoder';
 import styles from './QRCode.module.scss';
@@ -51,7 +53,7 @@ export const QRCode = forwardRef<HTMLDivElement, QRCodeProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.root} ${className}`}
+          className={cn(styles.root, className)}
           style={{ width: size, height: size, background: bgColor }}
           {...rest}
         />
@@ -99,7 +101,7 @@ export const QRCode = forwardRef<HTMLDivElement, QRCodeProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         style={{ width: size, height: size }}
         role="img"
         aria-label={`QR code: ${value}`}

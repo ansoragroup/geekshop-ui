@@ -7,7 +7,7 @@
   align-items: center;
   gap: $desktop-spacing-md;
   padding: $desktop-spacing-md 0;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
   transition: background $transition-fast;
 
   &:hover {
@@ -25,7 +25,7 @@
   width: 20px;
   height: 20px;
   min-width: 20px;
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   border-radius: $radius-xs;
   display: flex;
   align-items: center;
@@ -35,19 +35,19 @@
   flex-shrink: 0;
 
   &:hover {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .checkboxChecked {
-  background: $color-primary;
-  border-color: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  border-color: var(--gs-color-primary);
+  color: var(--gs-text-white);
 }
 
 // ─── Image ───────────────────────────────────────────────────────────────────
@@ -80,7 +80,7 @@
 .title {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -89,11 +89,11 @@
   cursor: pointer;
 
   &:hover {
-    color: $color-primary;
+    color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
     border-radius: $radius-xs;
   }
@@ -101,7 +101,7 @@
 
 .variant {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 .badges {
@@ -116,11 +116,11 @@
 }
 
 .inStock {
-  color: $color-success;
+  color: var(--gs-color-success);
 }
 
 .noStock {
-  color: $color-error;
+  color: var(--gs-color-error);
 }
 
 .shippingBadge {
@@ -128,7 +128,7 @@
   align-items: center;
   gap: $spacing-xxs;
   font-size: $font-size-xs;
-  color: $color-info;
+  color: var(--gs-color-info);
 }
 
 // ─── Quantity ────────────────────────────────────────────────────────────────
@@ -142,7 +142,7 @@
 .price {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
   white-space: nowrap;
   min-width: 120px;
   text-align: right;
@@ -158,18 +158,18 @@
   align-items: center;
   justify-content: center;
   border-radius: $radius-md;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   cursor: pointer;
   transition: all $transition-fast;
   flex-shrink: 0;
 
   &:hover {
-    color: $color-error;
+    color: var(--gs-color-error);
     background: rgba($color-error, 0.08);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }

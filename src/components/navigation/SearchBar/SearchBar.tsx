@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import { useGeekShop } from '../../../i18n';
@@ -59,7 +61,7 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
     const { t } = useGeekShop();
     const resolvedPlaceholder = placeholder ?? t('search.placeholder');
 
-    const [value, setValue] = useControllableState({
+    const cn(value, setValue] = useControllableState({
       value: valueProp,
       defaultValue: defaultValueProp,
       onChange,
@@ -75,8 +77,7 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
       styles.searchBar,
       styles[variant],
       compact ? styles.compact : '',
-      className ?? '',
-    ].filter(Boolean).join(' ');
+      className ?? '',);
 
     return (
       <div

@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 .popup {
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   overflow: hidden;
 }
 
@@ -45,14 +45,14 @@
   align-items: center;
   justify-content: space-between;
   padding: $spacing-lg;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid var(--gs-border-color-light);
   min-height: 48px;
 }
 
 .title {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   flex: 1;
   text-align: center;
 }
@@ -66,12 +66,12 @@
   width: 28px;
   height: 28px;
   border-radius: $radius-round;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   cursor: pointer;
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-border;
+    background: var(--gs-border-color);
   }
 }
 

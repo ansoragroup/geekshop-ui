@@ -12,7 +12,7 @@
   transition: background $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 }
 
@@ -31,22 +31,22 @@
 }
 
 .dot {
-  color: $color-text-placeholder;
+  color: var(--gs-text-placeholder);
   font-size: $desktop-font-size-body;
 }
 
 .verifier {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   white-space: nowrap;
 }
 
 // --- Status variants ---
 .status-verified {
-  background: $color-success-light;
+  background: var(--gs-color-success-light);
 
   .label {
-    color: $color-success;
+    color: var(--gs-color-success);
   }
 }
 
@@ -54,15 +54,15 @@
   background: #E6F2FF;
 
   .label {
-    color: $color-info;
+    color: var(--gs-color-info);
   }
 }
 
 .status-unverified {
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 
   .label {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 
@@ -83,7 +83,7 @@
   transform: translateX(-50%) rotate(45deg);
   width: 8px;
   height: 8px;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.06);
 }
 
@@ -92,9 +92,9 @@
   align-items: flex-start;
   gap: $spacing-sm;
   padding: $desktop-spacing-sm $desktop-spacing-md;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-md;
-  box-shadow: $shadow-md;
+  box-shadow: var(--gs-shadow-md);
   white-space: nowrap;
 }
 
@@ -107,19 +107,19 @@
 .tooltipTitle {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .tooltipMeta {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
 .tooltipDate {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
 }
 

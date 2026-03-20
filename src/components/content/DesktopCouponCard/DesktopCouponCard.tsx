@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopCouponCard.module.scss';
 
@@ -22,6 +24,10 @@ export interface DesktopCouponCardProps extends HTMLAttributes<HTMLDivElement> {
   applied?: boolean;
   /** Color variant for the discount block */
   color?: DesktopCouponCardColor;
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 // ─── Inline SVG Icons ─────────────────────────────────────────────────────────
@@ -57,11 +63,15 @@ export const DesktopCouponCard = forwardRef<HTMLDivElement, DesktopCouponCardPro
       onApply,
       applied = false,
       color = 'orange',
+      href,
+      target,
       className = '',
       ...rest
     },
     ref,
   ) => {
+    const Wrapper = href ? 'a' : 'div';
+    const linkProps = href ? { href, target } : {};
     const handleApplyClick = (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       onApply?.();
@@ -70,13 +80,14 @@ export const DesktopCouponCard = forwardRef<HTMLDivElement, DesktopCouponCardPro
     const colorClass = styles[`color-${color}`] || styles['color-orange'];
 
     return (
-      <div
-        ref={ref}
-        className={`${styles.root} ${className}`}
+      <Wrapper
+        ref={ref as React.Ref<HTMLDivElement & HTMLAnchorElement>}
+        className={cn(styles.root, className)}
+        {...linkProps}
         {...rest}
       >
         {/* Discount block (left ticket section) */}
-        <div className={`${styles.discountBlock} ${colorClass}`}>
+        <div className={cn(styles.discountBlock, colorClass)}>
           <div className={styles.cutoutTop} />
           <div className={styles.cutoutBottom} />
           <span className={styles.discountValue}>{discount}</span>
@@ -134,7 +145,7 @@ export const DesktopCouponCard = forwardRef<HTMLDivElement, DesktopCouponCardPro
             )}
           </div>
         </div>
-      </div>
+      </Wrapper>
     );
   },
 );

@@ -36,7 +36,7 @@
 .label {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
@@ -58,7 +58,7 @@
 
 .helpText {
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
 }
 
@@ -66,6 +66,6 @@
 
 .hasError {
   .label {
-    color: $color-text-primary; // keep label color even in error state
+    color: var(--gs-text-primary); // keep label color even in error state
   }
 }

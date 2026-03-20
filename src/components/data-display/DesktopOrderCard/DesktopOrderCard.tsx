@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopOrderCard.module.scss';
 
@@ -38,6 +40,10 @@ export interface DesktopOrderCardProps extends HTMLAttributes<HTMLDivElement> {
   actions?: DesktopOrderAction[];
   /** Callback when an action button is clicked */
   onAction?: (actionId: string) => void;
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -78,11 +84,15 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
       date,
       actions,
       onAction,
+      href,
+      target,
       className = '',
       ...rest
     },
     ref,
   ) => {
+    const Wrapper = href ? 'a' : 'div';
+    const linkProps = href ? { href, target } : {};
     const handleAction = useCallback(
       (e: MouseEvent, actionId: string) => {
         e.stopPropagation();
@@ -96,7 +106,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
     const statusClass = styles[`status_${status}`] || '';
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <Wrapper ref={ref as React.Ref<HTMLDivElement & HTMLAnchorElement>} className={cn(styles.root, className)} {...linkProps} {...rest}>
         {/* Top row: order ID + date left, status badge right */}
         <div className={styles.topRow}>
           <div className={styles.orderInfo}>
@@ -104,7 +114,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
             <span className={styles.dotSeparator} aria-hidden="true">&bull;</span>
             <span className={styles.date}>{date}</span>
           </div>
-          <span className={`${styles.statusBadge} ${statusClass}`} data-testid="status-badge">
+          <span className={cn(styles.statusBadge, statusClass)} data-testid="status-badge">
             {STATUS_LABELS[status]} {STATUS_ICONS[status]}
           </span>
         </div>
@@ -150,7 +160,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
                 <button
                   key={action.id}
                   type="button"
-                  className={`${styles.actionButton} ${variantClass}`}
+                  className={cn(styles.actionButton, variantClass)}
                   onClick={(e) => handleAction(e, action.id)}
                 >
                   {action.label}
@@ -159,7 +169,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
             })}
           </div>
         )}
-      </div>
+      </Wrapper>
     );
   },
 );

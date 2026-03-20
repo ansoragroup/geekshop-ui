@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, useEffect, useRef } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
@@ -82,7 +84,7 @@ export const TelegramLoginButton = forwardRef<HTMLButtonElement, TelegramLoginBu
           'noopener,noreferrer',
         );
       }
-    }, [botUsername, callbackUrl, disabled]);
+    }, cn(botUsername, callbackUrl, disabled]);
 
     // Widget variant: load Telegram's official widget script
     useEffect(() => {
@@ -107,7 +109,7 @@ export const TelegramLoginButton = forwardRef<HTMLButtonElement, TelegramLoginBu
       return (
         <div
           ref={widgetContainerRef}
-          className={[styles.widgetContainer, className].filter(Boolean).join(' ')}
+          className={[styles.widgetContainer, className)}
           data-testid="telegram-widget"
         />
       );
@@ -115,14 +117,10 @@ export const TelegramLoginButton = forwardRef<HTMLButtonElement, TelegramLoginBu
 
     const buttonLabel = label ?? t('auth.loginViaTelegram');
 
-    const buttonClass = [
-      styles.button,
+    const buttonClass = cn(styles.button,
       styles[`size-${size}`],
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <button

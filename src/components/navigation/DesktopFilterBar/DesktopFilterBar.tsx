@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useRef, useEffect, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopFilterBar.module.scss';
 
@@ -66,7 +68,7 @@ export const DesktopFilterBar = forwardRef<HTMLDivElement, DesktopFilterBarProps
     };
 
     return (
-      <div ref={ref} className={`${styles.filterBar} ${className}`} role="toolbar" aria-label="Filters" {...rest}>
+      <div ref={ref} className={cn(styles.filterBar, className)} role="toolbar" aria-label="Filters" {...rest}>
         {items.map((item) => {
           const hasDropdown = item.options && item.options.length > 0;
           const isOpen = openDropdown === item.value;
@@ -74,7 +76,7 @@ export const DesktopFilterBar = forwardRef<HTMLDivElement, DesktopFilterBarProps
           return (
             <div key={item.value} className={styles.chipWrapper} ref={isOpen ? dropdownRef : undefined}>
               <button
-                className={`${styles.chip} ${item.active ? styles.active : ''} ${isOpen ? styles.open : ''}`}
+                className={cn(styles.chip, item.active ? styles.active : '', isOpen ? styles.open : '')}
                 onClick={() => handleChipClick(item)}
                 aria-expanded={hasDropdown ? isOpen : undefined}
                 aria-haspopup={hasDropdown ? 'listbox' : undefined}
@@ -82,7 +84,7 @@ export const DesktopFilterBar = forwardRef<HTMLDivElement, DesktopFilterBarProps
               >
                 <span className={styles.chipLabel}>{item.label}</span>
                 {hasDropdown && (
-                  <span className={`${styles.chipArrow} ${isOpen ? styles.chipArrowOpen : ''}`}>
+                  <span className={cn(styles.chipArrow, isOpen ? styles.chipArrowOpen : '')}>
                     <ChevronDownIcon />
                   </span>
                 )}

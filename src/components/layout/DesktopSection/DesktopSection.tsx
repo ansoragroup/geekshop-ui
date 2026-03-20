@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopSection.module.scss';
 
@@ -24,14 +25,10 @@ export const DesktopSection = forwardRef<HTMLElement, DesktopSectionProps>(
     },
     ref,
   ) => {
-    const rootClass = [
-      styles.section,
+    const rootClass = cn(styles.section,
       styles[`bg-${background}`],
       styles[`padding-${padding}`],
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <section ref={ref} className={rootClass} aria-label={title} {...rest}>

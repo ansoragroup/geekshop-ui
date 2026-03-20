@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeader.module.scss';
 
@@ -95,7 +97,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
     },
     ref,
   ) => {
-    const rootClass = [styles.header, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.header, className);
 
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();

@@ -11,9 +11,9 @@
 
 // --- Solid variant ---
 .solid {
-  background: $color-bg-card;
-  border-bottom: 1px solid $color-border;
-  box-shadow: $shadow-sm;
+  background: var(--gs-bg-card);
+  border-bottom: 1px solid var(--gs-border-color);
+  box-shadow: var(--gs-shadow-sm);
 }
 
 // --- Transparent variant ---
@@ -41,22 +41,22 @@
   border: none;
   border-radius: $radius-md;
   background: none;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   cursor: pointer;
   flex-shrink: 0;
   transition: background $transition-fast, color $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
-    color: $color-primary;
+    background: var(--gs-bg-page);
+    color: var(--gs-color-primary);
   }
 
   &:active {
-    background: $color-border;
+    background: var(--gs-border-color);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -65,7 +65,7 @@
 .title {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   margin: 0;
   overflow: hidden;
@@ -91,21 +91,21 @@
   border: none;
   border-radius: $radius-md;
   background: none;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
-    color: $color-primary;
+    background: var(--gs-bg-page);
+    color: var(--gs-color-primary);
   }
 
   &:active {
-    background: $color-border;
+    background: var(--gs-border-color);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }

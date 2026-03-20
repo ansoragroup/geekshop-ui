@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useEffect, useState, useCallback } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -22,7 +24,7 @@ export interface SegmentedProps extends Omit<HTMLAttributes<HTMLDivElement>, 'on
   /** Change handler */
   onChange?: (value: string) => void;
   /** Options to display */
-  options: SegmentedOption[];
+  options: SegmentedOptioncn(];
   /** Size variant */
   size?: 'sm' | 'md' | 'lg';
   /** Whether to take full width */
@@ -124,10 +126,7 @@ export const Segmented = forwardRef<HTMLDivElement, SegmentedProps>(
       styles.segmented,
       styles[`size-${size}`],
       block && styles.block,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>
@@ -135,13 +134,9 @@ export const Segmented = forwardRef<HTMLDivElement, SegmentedProps>(
           <div className={styles.indicator} style={indicatorStyle} />
           {options.map((option, index) => {
             const isSelected = option.value === selectedValue;
-            const buttonClass = [
-              styles.option,
+            const buttonClass = cn(styles.option,
               isSelected && styles.active,
-              option.disabled && styles.optionDisabled,
-            ]
-              .filter(Boolean)
-              .join(' ');
+              option.disabled && styles.optionDisabled,);
 
             return (
               <button

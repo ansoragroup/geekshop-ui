@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useEffect, useRef, type HTMLAttributes } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './DesktopCountdownTimer.module.scss';
@@ -45,7 +47,7 @@ export const DesktopCountdownTimer = forwardRef<HTMLDivElement, DesktopCountdown
     const displaySeconds = String(seconds).padStart(2, '0');
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         <div className={styles.labelArea}>
           <svg
             className={styles.icon}
@@ -64,7 +66,7 @@ export const DesktopCountdownTimer = forwardRef<HTMLDivElement, DesktopCountdown
           {showDays && (
             <>
               <div className={styles.segment}>
-                <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
+                <span className={cn(styles.digit, tick ? styles.tick : '')}>
                   {displayDays}
                 </span>
                 <span className={styles.segmentLabel}>Days</span>
@@ -74,7 +76,7 @@ export const DesktopCountdownTimer = forwardRef<HTMLDivElement, DesktopCountdown
           )}
 
           <div className={styles.segment}>
-            <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
+            <span className={cn(styles.digit, tick ? styles.tick : '')}>
               {displayHours}
             </span>
             <span className={styles.segmentLabel}>Hours</span>
@@ -82,7 +84,7 @@ export const DesktopCountdownTimer = forwardRef<HTMLDivElement, DesktopCountdown
           <span className={styles.colon}>:</span>
 
           <div className={styles.segment}>
-            <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
+            <span className={cn(styles.digit, tick ? styles.tick : '')}>
               {displayMinutes}
             </span>
             <span className={styles.segmentLabel}>Min</span>
@@ -90,7 +92,7 @@ export const DesktopCountdownTimer = forwardRef<HTMLDivElement, DesktopCountdown
           <span className={styles.colon}>:</span>
 
           <div className={styles.segment}>
-            <span className={`${styles.digit} ${tick ? styles.tick : ''}`}>
+            <span className={cn(styles.digit, tick ? styles.tick : '')}>
               {displaySeconds}
             </span>
             <span className={styles.segmentLabel}>Sec</span>

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopPopularSearches.module.scss';
 
@@ -45,7 +47,7 @@ export const DesktopPopularSearches = forwardRef<HTMLDivElement, DesktopPopularS
     if (items.length === 0) return null;
 
     return (
-      <div ref={ref} className={`${styles.container} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.container, className)} {...rest}>
         <div className={styles.header}>
           <FireIcon />
           <span className={styles.title}>{title}</span>

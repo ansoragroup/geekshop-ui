@@ -12,14 +12,14 @@
   height: 40px;
   padding: 0 $spacing-lg;
   border-radius: $radius-round;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
   border: 1px solid transparent;
   gap: $spacing-sm;
   transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
 
   &:focus-within {
     border-color: var(--gs-color-primary);
-    background: $color-bg-white;
+    background: var(--gs-bg-white);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--gs-color-primary) 12%, transparent);
   }
 }
@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .input {
@@ -39,12 +39,12 @@
   background: transparent;
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: 1;
   min-width: 0;
 
   &::placeholder {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
   }
 }
 
@@ -59,13 +59,13 @@
   border: none;
   border-radius: $radius-round;
   background: none;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
 
   &:hover {
-    color: $color-text-secondary;
-    background: $color-border;
+    color: var(--gs-text-secondary);
+    background: var(--gs-border-color);
   }
 }
 
@@ -75,10 +75,10 @@
   top: calc(100% + $spacing-xs);
   left: 0;
   width: 100%;
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   z-index: $z-index-dropdown;
   overflow: hidden;
   animation: dropdownIn 0.15s ease;
@@ -100,7 +100,7 @@
 // Sections
 .section {
   padding: $spacing-md $spacing-lg;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--gs-border-color);
 
   &:last-child {
     border-bottom: none;
@@ -117,7 +117,7 @@
 .sectionTitle {
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -134,7 +134,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -149,18 +149,18 @@
   display: inline-flex;
   align-items: center;
   padding: $spacing-xs $spacing-md;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-round;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   font-size: $font-size-sm;
   font-family: $font-family;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: background $transition-fast, border-color $transition-fast;
   white-space: nowrap;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
     border-color: var(--gs-color-primary);
     color: var(--gs-color-primary);
   }
@@ -182,14 +182,14 @@
   background: none;
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   cursor: pointer;
   text-align: left;
   border-radius: $radius-xs;
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -205,7 +205,7 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   margin-left: $spacing-sm;
 }
 
@@ -229,7 +229,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
@@ -239,7 +239,7 @@
   border-radius: $radius-sm;
   object-fit: cover;
   flex-shrink: 0;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .productInfo {
@@ -253,7 +253,7 @@
 .productTitle {
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   white-space: nowrap;
   overflow: hidden;

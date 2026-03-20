@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type MouseEventHandler, type HTMLAttributes, type CSSProperties } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './CouponCard.module.scss';
@@ -15,6 +17,10 @@ export interface CouponCardProps extends HTMLAttributes<HTMLDivElement> {
   color?: string;
   /** Click handler for the "Foydalanish" button */
   onUse?: MouseEventHandler<HTMLButtonElement>;
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
@@ -26,16 +32,19 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
       minAmount,
       color = '#FF5000',
       onUse,
+      href,
+      target,
       className,
       ...rest
     },
     ref,
   ) => {
   const { t, formatPrice } = useGeekShop();
-  const rootClass = [styles.couponCard, className].filter(Boolean).join(' ');
+  const Wrapper = href ? 'a' : 'div';
+  const linkProps = href ? { href, target } : {};
 
   return (
-    <div ref={ref} className={rootClass} {...rest}>
+    <Wrapper ref={ref as React.Ref<HTMLDivElement & HTMLAnchorElement>} className={cn(styles.couponCard, className)} {...linkProps} {...rest}>
       <div className={styles.leftPart} style={{ '--gs-coupon-bg': color } as CSSProperties}>
         <div className={styles.discountCircleTop} />
         <div className={styles.discountCircleBottom} />
@@ -63,7 +72,7 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
           {t('coupon.use')}
         </button>
       </div>
-    </div>
+    </Wrapper>
   );
   },
 );

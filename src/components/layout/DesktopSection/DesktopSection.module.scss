@@ -11,12 +11,12 @@
 }
 
 .bg-card {
-  background: $color-bg-card;
-  box-shadow: $shadow-sm;
+  background: var(--gs-bg-card);
+  box-shadow: var(--gs-shadow-sm);
 }
 
 .bg-primary {
-  background: $color-primary-bg;
+  background: var(--gs-color-primary-bg);
 }
 
 // --- Padding ---
@@ -68,7 +68,7 @@
 .title {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   margin: 0;
 }

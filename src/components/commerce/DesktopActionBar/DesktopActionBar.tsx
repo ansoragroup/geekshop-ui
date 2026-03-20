@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopActionBar.module.scss';
 
@@ -114,7 +116,7 @@ export const DesktopActionBar = forwardRef<HTMLDivElement, DesktopActionBarProps
     );
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Price section */}
         {price !== undefined && (
           <div className={styles.priceSection}>
@@ -130,7 +132,7 @@ export const DesktopActionBar = forwardRef<HTMLDivElement, DesktopActionBarProps
           {onFavorite && (
             <button
               type="button"
-              className={`${styles.utilBtn} ${isFavorite ? styles.utilBtnActive : ''}`}
+              className={cn(styles.utilBtn, isFavorite ? styles.utilBtnActive : '')}
               onClick={handleFavorite}
               aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
               aria-pressed={isFavorite}

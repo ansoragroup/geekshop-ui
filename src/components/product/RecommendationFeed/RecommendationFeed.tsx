@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   type HTMLAttributes,
@@ -19,7 +21,7 @@ export interface RecommendationFeedProps extends HTMLAttributes<HTMLDivElement> 
   /** Optional icon before the title */
   icon?: ReactNode;
   /** Category tabs */
-  tabs: RecommendationTab[];
+  tabs: RecommendationTabcn(];
   /** Currently active tab key (controlled) */
   activeTab?: string;
   /** Default active tab key (uncontrolled) */
@@ -60,7 +62,7 @@ export const RecommendationFeed = forwardRef<HTMLDivElement, RecommendationFeedP
       onChange: onTabChange,
     });
 
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = [styles.root, className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>
@@ -80,7 +82,7 @@ export const RecommendationFeed = forwardRef<HTMLDivElement, RecommendationFeedP
                   key={tab.key}
                   role="tab"
                   aria-selected={isActive}
-                  className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
+                  className={cn(styles.tab, isActive ? styles.tabActive : '')}
                   onClick={() => setActiveTab(tab.key)}
                   type="button"
                 >

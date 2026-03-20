@@ -16,7 +16,7 @@
   min-width: 80px;
   border-radius: $radius-md;
   overflow: hidden;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   flex-shrink: 0;
 }
 
@@ -44,12 +44,12 @@
 .variantLabel {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .selectedValue {
   font-weight: $font-weight-semibold;
-  color: $color-primary;
+  color: var(--gs-color-primary);
 }
 
 // ─── Options (Chip Group) ────────────────────────────────────────────────────
@@ -66,27 +66,27 @@
   gap: $spacing-xs;
   height: 36px;
   padding: 0 $desktop-spacing-md;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
   user-select: none;
 
   &:hover:not(.chipDisabled) {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .chipSelected {
-  border-color: $color-primary;
-  background: $color-primary-bg;
-  color: $color-primary;
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
   font-weight: $font-weight-medium;
 }
 
@@ -125,28 +125,28 @@
 
 .stockText {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 }
 
 .stockLow {
-  color: $color-warning;
+  color: var(--gs-color-warning);
   font-weight: $font-weight-medium;
 }
 
 .stockEmpty {
-  color: $color-error;
+  color: var(--gs-color-error);
   font-weight: $font-weight-medium;
 }
 
 .stockSeparator {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-size: $font-size-sm;
 }
 
 .priceText {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-price;
+  color: var(--gs-color-price);
 }
 
 // ─── Reduced Motion ──────────────────────────────────────────────────────────

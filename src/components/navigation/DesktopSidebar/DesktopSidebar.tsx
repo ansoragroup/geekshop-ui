@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopSidebar.module.scss';
 
@@ -17,7 +19,7 @@ export interface SidebarBrand {
 
 export interface DesktopSidebarProps extends HTMLAttributes<HTMLDivElement> {
   /** Category list */
-  categories?: SidebarCategory[];
+  categories?: SidebarCategorycn(];
   /** Brand filter options */
   brands?: SidebarBrand[];
   /** Available price range (min/max) */
@@ -118,7 +120,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
       [onCategorySelect],
     );
 
-    const wrapperClass = [styles.sidebar, className].filter(Boolean).join(' ');
+    const wrapperClass = [styles.sidebar, className);
 
     const hasSections = categories.length > 0 || brands.length > 0 || priceRange || onRatingChange;
 
@@ -133,7 +135,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
                 <li key={index}>
                   <button
                     type="button"
-                    className={`${styles.categoryItem} ${category.active ? styles.categoryActive : ''}`}
+                    className={cn(styles.categoryItem, category.active ? styles.categoryActive : '')}
                     onClick={() => handleCategorySelect(category)}
                     aria-current={category.active ? 'page' : undefined}
                   >
@@ -207,7 +209,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
                 <button
                   key={rating}
                   type="button"
-                  className={`${styles.ratingItem} ${ratingFilter === rating ? styles.ratingActive : ''}`}
+                  className={cn(styles.ratingItem, ratingFilter === rating ? styles.ratingActive : '')}
                   onClick={() => handleRatingSelect(rating)}
                   role="radio"
                   aria-checked={ratingFilter === rating}

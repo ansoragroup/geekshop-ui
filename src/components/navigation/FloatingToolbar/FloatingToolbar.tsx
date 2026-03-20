@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -22,7 +24,7 @@ export interface FloatingToolbarItem {
 
 export interface FloatingToolbarProps extends HTMLAttributes<HTMLDivElement> {
   /** Toolbar items */
-  items: FloatingToolbarItem[];
+  items: FloatingToolbarItemcn(];
   /** Side position (default: 'right') */
   position?: 'right' | 'left';
   /** Scroll threshold in px for showOnScroll items (default: 300) */
@@ -56,8 +58,7 @@ export const FloatingToolbar = forwardRef<HTMLDivElement, FloatingToolbarProps>(
     const rootClass = [
       styles.toolbar,
       styles[position],
-      className,
-    ].filter(Boolean).join(' ');
+      className,);
 
     return (
       <div
@@ -73,7 +74,7 @@ export const FloatingToolbar = forwardRef<HTMLDivElement, FloatingToolbarProps>(
           return (
             <button
               key={index}
-              className={`${styles.item} ${isHidden ? styles.itemHidden : ''}`}
+              className={cn(styles.item, isHidden ? styles.itemHidden : '')}
               onClick={item.onClick}
               aria-label={item.label}
               type="button"

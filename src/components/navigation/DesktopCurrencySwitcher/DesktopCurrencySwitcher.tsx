@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import type { CurrencyCode } from '../../../i18n/types';
@@ -142,12 +144,12 @@ export const DesktopCurrencySwitcher = forwardRef<HTMLDivElement, DesktopCurrenc
           if (typeof ref === 'function') ref(node);
           else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }}
-        className={`${styles.root} ${disabled ? styles.disabled : ''} ${className}`}
+        className={cn(styles.root, disabled ? styles.disabled : '', className)}
         {...rest}
       >
         <button
           type="button"
-          className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
+          className={cn(styles.trigger, isOpen ? styles.open : '')}
           onClick={() => {
             if (!disabled) setIsOpen((prev) => !prev);
           }}
@@ -162,7 +164,7 @@ export const DesktopCurrencySwitcher = forwardRef<HTMLDivElement, DesktopCurrenc
           </span>
           <span className={styles.triggerLabel}>{selected}</span>
           <span className={styles.triggerSymbol}>({currentCurrency?.symbol})</span>
-          <span className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ''}`}>
+          <span className={cn(styles.chevron, isOpen ? styles.chevronOpen : '')}>
             <ChevronIcon />
           </span>
         </button>
@@ -177,7 +179,7 @@ export const DesktopCurrencySwitcher = forwardRef<HTMLDivElement, DesktopCurrenc
                   role="option"
                   aria-selected={isActive}
                   tabIndex={0}
-                  className={`${styles.option} ${isActive ? styles.optionActive : ''} ${focusedIndex === index ? styles.optionFocused : ''}`}
+                  className={cn(styles.option, isActive ? styles.optionActive : '', focusedIndex === index ? styles.optionFocused : '')}
                   onClick={() => handleSelect(currency.code)}
                   onKeyDown={(e) => handleOptionKeyDown(e, index)}
                 >

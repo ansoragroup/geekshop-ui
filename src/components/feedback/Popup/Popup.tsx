@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useGeekShop } from '../../../i18n';
@@ -56,11 +58,11 @@ export const Popup = forwardRef<HTMLDivElement, PopupProps>(
     };
 
     return (
-      <div className={`${styles.overlay} ${className}`} onClick={handleOverlayClick} role="presentation">
+      <div className={cn(styles.overlay, className)} onClick={handleOverlayClick} role="presentation">
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
-          className={`${styles.popup} ${styles[`position-${position}`]}`}
+          className={cn(styles.popup, styles[`position-${position}`])}
           onClick={handleContentClick}
           onKeyDown={(e) => e.stopPropagation()}
           role="dialog"

@@ -9,7 +9,7 @@
 .item {
   position: relative;
   border-radius: $radius-round;
-  box-shadow: 0 0 0 2px $color-bg-white;
+  box-shadow: 0 0 0 2px var(--gs-bg-white);
 }
 
 // === Negative margin per size ===
@@ -41,15 +41,15 @@
   align-items: center;
   justify-content: center;
   border-radius: $radius-round;
-  background: var(--gs-color-primary-bg, $color-primary-bg);
-  box-shadow: 0 0 0 2px $color-bg-white;
+  background: var(--gs-color-primary-bg);
+  box-shadow: 0 0 0 2px var(--gs-bg-white);
   flex-shrink: 0;
 }
 
 .overflowText {
   font-family: $font-family;
   font-weight: $font-weight-semibold;
-  color: var(--gs-color-primary, $color-primary);
+  color: var(--gs-color-primary);
   user-select: none;
 }
 

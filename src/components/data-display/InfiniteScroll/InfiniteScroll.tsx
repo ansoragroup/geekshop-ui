@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
@@ -137,7 +139,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
     };
 
     return (
-      <div ref={ref} className={`${styles.container} ${className}`}>
+      <div ref={ref} className={cn(styles.container, className)}>
         {children}
 
         {/* Invisible sentinel for IntersectionObserver */}

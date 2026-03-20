@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-family: $font-family;
   font-weight: $font-weight-semibold;
   user-select: none;
@@ -62,16 +62,16 @@
 .onlineDot {
   position: absolute;
   border-radius: $radius-round;
-  border: 2px solid $color-bg-white;
+  border: 2px solid var(--gs-bg-white);
   box-sizing: border-box;
 }
 
 .online {
-  background-color: $color-success;
+  background-color: var(--gs-color-success);
 }
 
 .offline {
-  background-color: $color-text-placeholder;
+  background-color: var(--gs-text-placeholder);
 }
 
 .size-sm .onlineDot {
@@ -110,8 +110,8 @@
   transform: translateX(-50%);
   z-index: $z-index-popover;
   padding: $spacing-xs $spacing-sm;
-  background: $color-text-primary;
-  color: $color-text-white;
+  background: var(--gs-text-primary);
+  color: var(--gs-text-white);
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   font-family: $font-family;
@@ -128,7 +128,7 @@
     transform: translateX(-50%);
     border-width: 4px;
     border-style: solid;
-    border-color: $color-text-primary transparent transparent transparent;
+    border-color: var(--gs-text-primary) transparent transparent transparent;
   }
 }
 

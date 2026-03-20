@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 // ─── Toolbar ─────────────────────────────────────────────────────────────────
@@ -16,8 +16,8 @@
   align-items: center;
   gap: $desktop-spacing-md;
   padding: $desktop-spacing-sm $desktop-spacing-md;
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-lg;
   margin-bottom: $desktop-spacing-md;
 }
@@ -36,10 +36,10 @@
   align-items: center;
   gap: $spacing-xs;
   padding: $spacing-sm $desktop-spacing-sm;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-sm;
-  background: $color-bg-card;
-  color: $color-text-secondary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-secondary);
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
   cursor: pointer;
@@ -48,20 +48,20 @@
   line-height: $line-height-tight;
 
   &:hover {
-    border-color: $color-primary-light;
-    color: $color-primary;
+    border-color: var(--gs-color-primary-light);
+    color: var(--gs-color-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .sortButtonActive {
-  border-color: $color-primary;
-  color: $color-primary;
-  background: $color-primary-bg;
+  border-color: var(--gs-color-primary);
+  color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
 }
 
 // ─── Showing Count ───────────────────────────────────────────────────────────
@@ -70,7 +70,7 @@
   flex: 1;
   text-align: center;
   font-size: $font-size-sm;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   white-space: nowrap;
 }
 
@@ -87,7 +87,7 @@
 .columnToggle {
   display: flex;
   align-items: center;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-sm;
   overflow: hidden;
 }
@@ -101,8 +101,8 @@
   min-height: 36px;
   padding: $spacing-sm;
   border: none;
-  background: $color-bg-card;
-  color: $color-text-tertiary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-tertiary);
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
   font-size: $desktop-font-size-body;
@@ -110,24 +110,24 @@
   line-height: 1;
 
   &:hover {
-    color: $color-primary;
-    background: $color-primary-bg;
+    color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 
   & + & {
-    border-left: 1px solid $color-border;
+    border-left: 1px solid var(--gs-border-color);
   }
 }
 
 .viewButtonActive,
 .columnButtonActive {
-  color: $color-primary;
-  background: $color-primary-bg;
+  color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
 }
 
 // ─── Grid Layout ─────────────────────────────────────────────────────────────
@@ -135,6 +135,14 @@
 .grid {
   display: grid;
   gap: $desktop-spacing-md;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gridItem,
+.listItem {
+  list-style: none;
 }
 
 // ─── List Layout ─────────────────────────────────────────────────────────────
@@ -143,6 +151,9 @@
   display: flex;
   flex-direction: column;
   gap: $desktop-spacing-sm;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 // ─── Reduced Motion ──────────────────────────────────────────────────────────

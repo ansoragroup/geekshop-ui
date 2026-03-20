@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './InstallmentDisplay.module.scss';
@@ -40,7 +42,7 @@ export const InstallmentDisplay = forwardRef<HTMLDivElement, InstallmentDisplayP
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         {...rest}
       >
         <span className={styles.icon} aria-hidden="true">

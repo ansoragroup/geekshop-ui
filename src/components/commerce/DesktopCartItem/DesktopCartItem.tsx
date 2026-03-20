@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { DesktopQuantityStepper } from '../DesktopQuantityStepper';
 import styles from './DesktopCartItem.module.scss';
@@ -138,12 +140,12 @@ export const DesktopCartItem = forwardRef<HTMLDivElement, DesktopCartItemProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${!inStock ? styles.outOfStock : ''} ${className}`}
+        className={cn(styles.root, !inStock ? styles.outOfStock : '', className)}
         {...rest}
       >
         {/* Checkbox */}
         <div
-          className={`${styles.checkbox} ${selected ? styles.checkboxChecked : ''}`}
+          className={cn(styles.checkbox, selected ? styles.checkboxChecked : '')}
           role="checkbox"
           aria-checked={selected}
           aria-label={`Select ${title}`}
@@ -179,7 +181,7 @@ export const DesktopCartItem = forwardRef<HTMLDivElement, DesktopCartItemProps>(
             <span className={styles.variant}>{variant}</span>
           )}
           <div className={styles.badges}>
-            <span className={`${styles.stockBadge} ${inStock ? styles.inStock : styles.noStock}`}>
+            <span className={cn(styles.stockBadge, inStock ? styles.inStock : styles.noStock)}>
               {inStock ? 'In Stock' : 'Out of Stock'}
             </span>
             {freeShipping && (

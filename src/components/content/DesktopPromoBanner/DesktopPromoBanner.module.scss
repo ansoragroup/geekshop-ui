@@ -11,7 +11,7 @@
   transition: box-shadow $transition-normal, transform $transition-normal;
 
   &:hover {
-    box-shadow: $shadow-lg;
+    box-shadow: var(--gs-shadow-lg);
     transform: translateY(-2px);
   }
 }
@@ -38,7 +38,7 @@
   padding: $spacing-xxs $spacing-md;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
   border-radius: $radius-round;
@@ -47,7 +47,7 @@
 }
 
 .title {
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
   line-height: $line-height-tight;
@@ -72,7 +72,7 @@
   padding: $spacing-sm $desktop-spacing-md;
   min-height: 40px;
   background: rgba(255, 255, 255, 0.95);
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   border: none;
@@ -82,7 +82,7 @@
   transition: background $transition-fast, transform $transition-fast;
 
   &:hover {
-    background: $color-text-white;
+    background: var(--gs-text-white);
     transform: translateX(2px);
   }
 

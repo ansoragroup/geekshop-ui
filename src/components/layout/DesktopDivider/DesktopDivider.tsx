@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopDivider.module.scss';
 
@@ -31,7 +32,7 @@ export const DesktopDivider = forwardRef<HTMLDivElement, DesktopDividerProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.vertical} ${styles[variant]} ${className}`}
+          className={cn(styles.vertical, styles[variant], className)}
           style={colorStyle}
           role="separator"
           aria-orientation="vertical"
@@ -44,7 +45,7 @@ export const DesktopDivider = forwardRef<HTMLDivElement, DesktopDividerProps>(
       return (
         <div
           ref={ref}
-          className={`${styles.withLabel} ${styles[variant]} ${className}`}
+          className={cn(styles.withLabel, styles[variant], className)}
           style={colorStyle}
           role="separator"
           {...rest}
@@ -59,7 +60,7 @@ export const DesktopDivider = forwardRef<HTMLDivElement, DesktopDividerProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.horizontal} ${styles[variant]} ${className}`}
+        className={cn(styles.horizontal, styles[variant], className)}
         style={colorStyle}
         role="separator"
         {...rest}

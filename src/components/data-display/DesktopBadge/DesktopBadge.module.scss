@@ -12,7 +12,7 @@
   justify-content: center;
   font-family: $font-family;
   font-weight: $font-weight-semibold;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   white-space: nowrap;
   box-sizing: border-box;
   transition: transform $transition-fast;
@@ -46,23 +46,23 @@
 
 // --- Colors ---
 .color-primary {
-  background-color: var(--gs-color-primary, $color-primary);
+  background-color: var(--gs-color-primary);
 }
 
 .color-success {
-  background-color: $color-success;
+  background-color: var(--gs-color-success);
 }
 
 .color-error {
-  background-color: $color-error;
+  background-color: var(--gs-color-error);
 }
 
 .color-warning {
-  background-color: $color-warning;
+  background-color: var(--gs-color-warning);
 }
 
 .color-info {
-  background-color: $color-info;
+  background-color: var(--gs-color-info);
 }
 
 // --- Positions ---

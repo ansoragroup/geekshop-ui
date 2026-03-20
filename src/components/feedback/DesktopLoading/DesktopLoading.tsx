@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopLoading.module.scss';
 
@@ -54,13 +55,13 @@ export const DesktopLoading = forwardRef<HTMLDivElement, DesktopLoadingProps>(
             strokeLinecap="round"
           />
         </svg>
-        {text && <span className={`${styles.text} ${styles[`text-${size}`]}`}>{text}</span>}
+        {text && <span className={cn(styles.text, styles[`text-${size}`])}>{text}</span>}
       </div>
     );
 
     if (fullscreen) {
       return (
-        <div ref={ref} className={`${styles.fullscreen} ${className}`} {...rest}>
+        <div ref={ref} className={cn(styles.fullscreen, className)} {...rest}>
           {spinner}
         </div>
       );
@@ -68,14 +69,14 @@ export const DesktopLoading = forwardRef<HTMLDivElement, DesktopLoadingProps>(
 
     if (overlay) {
       return (
-        <div ref={ref} className={`${styles.overlay} ${className}`} {...rest}>
+        <div ref={ref} className={cn(styles.overlay, className)} {...rest}>
           {spinner}
         </div>
       );
     }
 
     return (
-      <div ref={ref} className={`${styles.inline} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.inline, className)} {...rest}>
         {spinner}
       </div>
     );

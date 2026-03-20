@@ -24,7 +24,7 @@
   min-height: $desktop-header-height;
   background: var(--gs-bg-white);
   border-bottom: 1px solid var(--gs-border-color);
-  box-shadow: $shadow-sm;
+  box-shadow: var(--gs-shadow-sm);
   display: flex;
   align-items: center;
   justify-content: center;

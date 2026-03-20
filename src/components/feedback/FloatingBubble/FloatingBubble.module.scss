@@ -9,18 +9,18 @@
   width: 52px;
   height: 52px;
   border-radius: $radius-round;
-  background: var(--gs-color-primary, $color-primary);
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   cursor: pointer;
   user-select: none;
   touch-action: none;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   transition: transform $transition-fast, box-shadow $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: $shadow-xl;
+    box-shadow: var(--gs-shadow-xl);
   }
 
   &:active {
@@ -28,7 +28,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $color-text-white;
+    outline: 2px solid var(--gs-text-white);
     outline-offset: 2px;
   }
 }
@@ -36,7 +36,7 @@
 .dragging {
   cursor: grabbing;
   transform: scale(1.1);
-  box-shadow: $shadow-xl;
+  box-shadow: var(--gs-shadow-xl);
   transition: box-shadow $transition-fast;
 
   &:hover {
@@ -63,12 +63,12 @@
   height: 18px;
   padding: 0 $spacing-xs;
   border-radius: $radius-round;
-  background: $color-error;
-  color: $color-text-white;
+  background: var(--gs-color-error);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
   line-height: 1;
-  border: 2px solid $color-bg-white;
+  border: 2px solid var(--gs-bg-white);
 }
 
 // === Reduced motion ===

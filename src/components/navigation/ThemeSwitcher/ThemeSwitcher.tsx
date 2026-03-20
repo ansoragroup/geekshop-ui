@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import { THEME_PRESETS, THEME_PRESET_NAMES, type ThemePreset } from '../../../theme/presets';
@@ -71,7 +73,7 @@ export const ThemeSwitcher = forwardRef<HTMLDivElement, ThemeSwitcherProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${sizeClass} ${className ?? ''}`}
+        className={cn(styles.root, sizeClass, className ?? '')}
         role="radiogroup"
         aria-label="Theme preset"
         tabIndex={0}
@@ -88,7 +90,7 @@ export const ThemeSwitcher = forwardRef<HTMLDivElement, ThemeSwitcherProps>(
               role="radio"
               aria-checked={isActive}
               aria-label={config.label}
-              className={`${styles.swatch} ${isActive ? styles.active : ''}`}
+              className={cn(styles.swatch, isActive ? styles.active : '')}
               style={{ '--swatch-color': config.colors.primary } as React.CSSProperties}
               onClick={() => handleSelect(presetName)}
               tabIndex={isActive ? 0 : -1}

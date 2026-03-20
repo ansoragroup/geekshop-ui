@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Timeline.module.scss';
 
@@ -28,7 +29,7 @@ export const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         role="list"
         aria-label="Timeline"
         {...rest}
@@ -40,7 +41,7 @@ export const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
           return (
             <div
               key={index}
-              className={`${styles.item} ${styles[`status-${status}`]}`}
+              className={cn(styles.item, styles[`status-${status}`])}
               role="listitem"
             >
               <div className={styles.rail} aria-hidden="true">

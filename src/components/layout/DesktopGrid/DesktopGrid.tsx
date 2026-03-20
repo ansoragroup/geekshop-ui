@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopGrid.module.scss';
 
@@ -25,7 +26,7 @@ export const DesktopGrid = forwardRef<HTMLDivElement, DesktopGridProps>(
     },
     ref,
   ) => {
-    const rootClass = [styles.grid, className].filter(Boolean).join(' ');
+    const rootClass = cn(styles.grid, className);
 
     const gridTemplateColumns =
       columns === 'auto'

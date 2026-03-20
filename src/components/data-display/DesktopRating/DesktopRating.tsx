@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useId, type HTMLAttributes } from 'react';
 import styles from './DesktopRating.module.scss';
 
@@ -132,7 +134,7 @@ export const DesktopRating = forwardRef<HTMLDivElement, DesktopRatingProps>(
       return (
         <span
           key={i}
-          className={`${styles.star} ${!readonly ? styles.interactive : ''}`}
+          className={cn(styles.star, !readonly ? styles.interactive : '')}
           onClick={() => handleClick(starIndex)}
           onKeyDown={(e) => handleKeyDown(e, starIndex)}
           onMouseEnter={() => handleMouseEnter(starIndex)}
@@ -147,7 +149,7 @@ export const DesktopRating = forwardRef<HTMLDivElement, DesktopRatingProps>(
     });
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         <div className={styles.stars} role={readonly ? 'img' : undefined} aria-label={readonly ? `Rating: ${value} out of ${max}` : undefined}>
           {stars}
         </div>

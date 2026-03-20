@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useMemo, useCallback } from 'react';
 import type { HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -15,7 +17,7 @@ export interface CalendarMarkedDate {
 
 export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected date(s) (controlled) */
-  value?: Date | Date[];
+  value?: Date | Datecn(];
   /** Default selected date(s) (uncontrolled) */
   defaultValue?: Date | Date[];
   /** Change handler */
@@ -283,7 +285,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
 
     const gridColumns = showWeekNumber ? 8 : 7;
 
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = [styles.root, className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>
@@ -297,7 +299,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             <ChevronLeft />
           </button>
           <span className={styles.monthLabel}>
-            {monthNames[viewMonth]} {viewYear}
+            {monthNamescn(viewMonth]} {viewYear}
           </span>
           <button
             type="button"
@@ -369,10 +371,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     isDisabled && styles.dayDisabled,
                     inRange && !isSelected && styles.dayInRange,
                     rangeStart && styles.dayRangeStart,
-                    rangeEnd && styles.dayRangeEnd,
-                  ]
-                    .filter(Boolean)
-                    .join(' ');
+                    rangeEnd && styles.dayRangeEnd,);
 
                   return (
                     <button

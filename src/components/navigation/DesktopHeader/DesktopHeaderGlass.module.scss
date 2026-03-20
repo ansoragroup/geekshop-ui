@@ -48,7 +48,7 @@
   user-select: none;
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
     border-radius: $radius-xs;
   }
@@ -57,7 +57,7 @@
 .logoText {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-bold;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   white-space: nowrap;
 }
 
@@ -70,8 +70,8 @@
   padding: 0 $desktop-spacing-md;
   border: none;
   border-radius: $radius-round;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -82,7 +82,7 @@
   box-shadow: 0 2px 8px rgba(255, 80, 0, 0.3);
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
     box-shadow: 0 4px 16px rgba(255, 80, 0, 0.4);
     transform: translateY(-1px);
   }
@@ -92,7 +92,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -113,7 +113,7 @@
   transition: border-color $transition-fast, box-shadow $transition-fast, background $transition-fast;
 
   &:focus-within {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
     box-shadow: 0 0 0 3px rgba(255, 80, 0, 0.1);
     background: rgba(255, 255, 255, 0.9);
   }
@@ -124,7 +124,7 @@
   align-items: center;
   justify-content: center;
   padding-left: $spacing-lg;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -135,13 +135,13 @@
   background: transparent;
   font-size: $font-size-md;
   font-family: $font-family;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   padding: 0 $spacing-md;
   height: 100%;
   min-width: 0;
 
   &::placeholder {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 
@@ -154,18 +154,18 @@
   margin-right: 4px;
   border: none;
   border-radius: $radius-round;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   cursor: pointer;
   flex-shrink: 0;
   transition: background $transition-fast;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -191,18 +191,18 @@
   border: none;
   border-radius: $radius-lg;
   background: none;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
   font-family: $font-family;
 
   &:hover {
-    color: $color-primary;
+    color: var(--gs-color-primary);
     background: rgba(255, 80, 0, 0.08);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -222,8 +222,8 @@
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
-  background: $color-sale;
-  color: $color-text-white;
+  background: var(--gs-color-sale);
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
   line-height: 16px;
@@ -274,16 +274,16 @@
   flex-shrink: 0;
   transition: background $transition-fast, color $transition-fast, transform $transition-fast;
   font-family: $font-family;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
 
   &:hover {
     background: rgba(255, 80, 0, 0.08);
-    color: $color-primary;
+    color: var(--gs-color-primary);
     transform: translateY(-1px);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
@@ -313,7 +313,7 @@
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -325,11 +325,11 @@
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.95);
-    color: $color-text-primary;
+    color: var(--gs-text-primary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }

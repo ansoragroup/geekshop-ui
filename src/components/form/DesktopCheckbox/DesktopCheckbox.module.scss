@@ -10,11 +10,11 @@
   padding: $spacing-xs 0;
 
   &:hover:not(.disabled) .unchecked {
-    border-color: var(--gs-color-primary, #{$color-primary});
+    border-color: var(--gs-color-primary);
   }
 
   &:hover:not(.disabled) .checked {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    background: var(--gs-color-primary-dark);
   }
 }
 
@@ -29,7 +29,7 @@
   border: 0;
 
   &:focus-visible + .box {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -46,18 +46,18 @@
 }
 
 .unchecked {
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   background: transparent;
 }
 
 .checked {
   border: none;
-  background: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary);
 }
 
 .label {
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
@@ -68,7 +68,7 @@
   opacity: 0.45;
 
   .label {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 

@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Divider.module.scss';
 
@@ -24,12 +25,12 @@ export const Divider = forwardRef<HTMLElement, DividerProps>(
     ref,
   ) => {
   if (vertical) {
-    const verticalClass = [styles.vertical, className].filter(Boolean).join(' ');
+    const verticalClass = cn(styles.vertical, className);
     return <span ref={ref as React.Ref<HTMLSpanElement>} className={verticalClass} {...rest} />;
   }
 
   if (variant === 'withText' && text) {
-    const withTextClass = [styles.withText, className].filter(Boolean).join(' ');
+    const withTextClass = cn(styles.withText, className);
     return (
       <div ref={ref as React.Ref<HTMLDivElement>} className={withTextClass} {...rest}>
         <span className={styles.line} />
@@ -39,7 +40,7 @@ export const Divider = forwardRef<HTMLElement, DividerProps>(
     );
   }
 
-  const horizontalClass = [styles.horizontal, styles[`variant-${variant}`], className].filter(Boolean).join(' ');
+  const horizontalClass = cn(styles.horizontal, styles[`variant-${variant}`], className);
   return (
     <div ref={ref as React.Ref<HTMLDivElement>} className={horizontalClass} {...rest} />
   );

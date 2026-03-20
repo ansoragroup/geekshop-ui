@@ -3,7 +3,7 @@
 .container {
   position: relative;
   overflow: hidden;
-  background-color: $color-bg-skeleton;
+  background-color: var(--gs-bg-skeleton);
   display: block;
   width: 100%;
 }
@@ -50,8 +50,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-bg-skeleton;
-  color: $color-text-placeholder;
+  background-color: var(--gs-bg-skeleton);
+  color: var(--gs-text-placeholder);
   z-index: 2;
 }
 

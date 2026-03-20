@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './AppBar.module.scss';
@@ -91,7 +93,7 @@ export const AppBar = forwardRef<HTMLElement, AppBarProps>(
     return (
       <header
         ref={ref}
-        className={`${styles.appBar} ${styles[variant]} ${className}`}
+        className={cn(styles.appBar, styles[variant], className)}
         style={backgroundStyle}
         {...rest}
       >

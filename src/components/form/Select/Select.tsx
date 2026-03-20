@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -18,7 +20,7 @@ export interface SelectOption {
 
 export interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected value (controlled) */
-  value?: string | string[];
+  value?: string | stringcn(];
   /** Default value (uncontrolled) */
   defaultValue?: string | string[];
   /** Change handler */
@@ -185,10 +187,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     const sheetTitle = title || t('select.title');
     const sheetConfirm = confirmText || t('select.confirm');
@@ -259,7 +258,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                 {multiple ? (
                   <button
                     type="button"
-                    className={`${styles.headerBtn} ${styles.headerConfirm}`}
+                    className={cn(styles.headerBtn, styles.headerConfirm)}
                     onClick={handleConfirm}
                   >
                     {sheetConfirm}
@@ -282,13 +281,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                     ? tempSelection.includes(option.value)
                     : selectedValue === option.value;
 
-                  const optionClass = [
-                    styles.option,
+                  const optionClass = cn(styles.option,
                     isSelected && styles.optionSelected,
-                    option.disabled && styles.optionDisabled,
-                  ]
-                    .filter(Boolean)
-                    .join(' ');
+                    option.disabled && styles.optionDisabled,);
 
                   return (
                     <button

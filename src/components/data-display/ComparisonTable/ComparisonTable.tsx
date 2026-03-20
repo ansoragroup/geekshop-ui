@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './ComparisonTable.module.scss';
@@ -87,7 +89,7 @@ export const ComparisonTable = forwardRef<HTMLDivElement, ComparisonTableProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${className}`}
+        className={cn(styles.root, className)}
         role="table"
         aria-label="Comparison table"
         {...rest}
@@ -95,8 +97,8 @@ export const ComparisonTable = forwardRef<HTMLDivElement, ComparisonTableProps>(
         <div className={styles.scrollContainer}>
           <div className={styles.table}>
             {/* Header row with product images/names */}
-            <div className={`${styles.headerRow} ${stickyHeader ? styles.sticky : ''}`} role="row">
-              <div className={`${styles.labelCell} ${styles.headerLabel}`} role="columnheader">
+            <div className={cn(styles.headerRow, stickyHeader ? styles.sticky : '')} role="row">
+              <div className={cn(styles.labelCell, styles.headerLabel)} role="columnheader">
                 {/* empty label column */}
               </div>
               {products.map((product) => (
@@ -130,7 +132,7 @@ export const ComparisonTable = forwardRef<HTMLDivElement, ComparisonTableProps>(
               return (
                 <div
                   key={spec.key}
-                  className={`${styles.specRow} ${rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd}`}
+                  className={cn(styles.specRow, rowIndex % 2 === 0 ? styles.rowEven : styles.rowOdd)}
                   role="row"
                 >
                   <div className={styles.labelCell} role="rowheader">
@@ -142,7 +144,7 @@ export const ComparisonTable = forwardRef<HTMLDivElement, ComparisonTableProps>(
                     return (
                       <div
                         key={product.id}
-                        className={`${styles.valueCell} ${isBest ? styles.bestValue : ''}`}
+                        className={cn(styles.valueCell, isBest ? styles.bestValue : '')}
                         role="cell"
                       >
                         <span className={styles.cellText}>

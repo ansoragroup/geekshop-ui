@@ -12,20 +12,20 @@
   height: 44px;
   border: none;
   border-radius: 50%;
-  background: $color-bg-card;
-  box-shadow: $shadow-md;
-  color: $color-text-secondary;
+  background: var(--gs-bg-card);
+  box-shadow: var(--gs-shadow-md);
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: opacity $transition-normal, transform $transition-normal, color $transition-fast, box-shadow $transition-fast;
   box-sizing: border-box;
 
   &:hover {
-    color: $color-primary;
-    box-shadow: $shadow-lg;
+    color: var(--gs-color-primary);
+    box-shadow: var(--gs-shadow-lg);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 

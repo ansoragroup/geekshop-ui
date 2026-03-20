@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopDeliveryCard.module.scss';
 
@@ -122,7 +124,7 @@ export const DesktopDeliveryCard = forwardRef<HTMLDivElement, DesktopDeliveryCar
     );
 
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Left: Icon + carrier info */}
         <div className={styles.headerSection}>
           <span className={styles.packageIcon} style={{ color: statusColor }}>
@@ -151,14 +153,14 @@ export const DesktopDeliveryCard = forwardRef<HTMLDivElement, DesktopDeliveryCar
               <div key={s} className={styles.stepGroup}>
                 <div className={styles.stepDotWrapper}>
                   <span
-                    className={`${styles.stepDot} ${s <= step ? styles.stepDotActive : ''}`}
+                    className={cn(styles.stepDot, s <= step ? styles.stepDotActive : '')}
                     style={s <= step ? { background: statusColor } : undefined}
                   />
                   <span className={styles.stepLabel}>{STEP_LABELS[s]}</span>
                 </div>
                 {s < 3 && (
                   <span
-                    className={`${styles.stepLine} ${s < step ? styles.stepLineActive : ''}`}
+                    className={cn(styles.stepLine, s < step ? styles.stepLineActive : '')}
                     style={s < step ? { background: statusColor } : undefined}
                   />
                 )}

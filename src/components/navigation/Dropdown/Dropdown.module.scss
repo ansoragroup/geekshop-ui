@@ -13,7 +13,7 @@
   align-items: center;
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
     border-radius: $radius-sm;
   }
@@ -25,10 +25,10 @@
   position: absolute;
   top: calc(100% + #{$spacing-xs});
   min-width: 180px;
-  background: $color-bg-card;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  box-shadow: $shadow-md;
+  box-shadow: var(--gs-shadow-md);
   z-index: $z-index-dropdown;
   padding: $spacing-xs 0;
   animation: menuIn 0.15s ease;
@@ -46,22 +46,22 @@
   cursor: pointer;
   transition: background $transition-fast;
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   min-height: 36px;
   outline: none;
 
   &:hover {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 
   &:focus-visible {
-    background: $color-primary-bg;
+    background: var(--gs-color-primary-bg);
   }
 }
 
 .itemSelected {
-  color: $color-primary;
+  color: var(--gs-color-primary);
   font-weight: $font-weight-medium;
 }
 
@@ -92,7 +92,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-primary;
+  color: var(--gs-color-primary);
   flex-shrink: 0;
   margin-left: auto;
 }

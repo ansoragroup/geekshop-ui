@@ -7,14 +7,14 @@
   align-items: center;
   gap: $desktop-spacing-md;
   padding: $desktop-spacing-md $desktop-spacing-lg;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $desktop-radius-card;
   border: none;
-  box-shadow: $desktop-shadow-card;
+  box-shadow: var(--gs-desktop-shadow-card);
   transition: box-shadow $transition-fast;
 
   &:hover {
-    box-shadow: $desktop-shadow-card-hover;
+    box-shadow: var(--gs-desktop-shadow-card-hover);
   }
 }
 
@@ -30,7 +30,7 @@
   border-radius: $desktop-radius-button;
   object-fit: cover;
   flex-shrink: 0;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
 }
 
 // ─── Info (Name + Rating) ───────────────────────────────────────────────────
@@ -46,7 +46,7 @@
 .name {
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -63,7 +63,7 @@
 .ratingText {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -87,20 +87,20 @@
 .statValue {
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
 .statLabel {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-normal;
 }
 
 .statDivider {
   width: 1px;
   height: 28px;
-  background: $color-border;
+  background: var(--gs-border-color);
   flex-shrink: 0;
 }
 
@@ -121,10 +121,10 @@
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $desktop-radius-button;
-  background: $color-bg-card;
-  color: $color-text-secondary;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-secondary);
   cursor: pointer;
   transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
 
@@ -169,11 +169,11 @@
 }
 
 .followBtnActive {
-  border-color: $color-border;
-  color: $color-text-secondary;
+  border-color: var(--gs-border-color);
+  color: var(--gs-text-secondary);
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
@@ -187,7 +187,7 @@
   border: none;
   border-radius: $desktop-radius-button;
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
@@ -196,7 +196,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    background: var(--gs-color-primary-dark);
   }
 
   &:focus-visible {

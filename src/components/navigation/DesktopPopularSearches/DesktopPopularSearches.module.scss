@@ -1,7 +1,7 @@
 @use '../../../theme/tokens' as *;
 
 .container {
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
   padding: $desktop-spacing-lg;
 }
@@ -16,7 +16,7 @@
 .title {
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
 }
 
@@ -31,32 +31,32 @@
   align-items: center;
   gap: $spacing-sm;
   padding: $spacing-sm $desktop-spacing-md;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-round;
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   cursor: pointer;
   font-family: $font-family;
   transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    border-color: $color-primary;
-    background: $color-primary-bg;
+    border-color: var(--gs-color-primary);
+    background: var(--gs-color-primary-bg);
     box-shadow: 0 2px 4px rgba(255, 80, 0, 0.08);
   }
 
   &:active {
-    background: color-mix(in srgb, #{$color-primary} 15%, transparent);
+    background: color-mix(in srgb, #{var(--gs-color-primary)} 15%, transparent);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .text {
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   white-space: nowrap;
   line-height: $line-height-normal;
 }
@@ -66,7 +66,7 @@
   align-items: center;
   gap: 2px;
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   white-space: nowrap;
 }
 

@@ -8,12 +8,12 @@
   align-items: center;
   gap: 0;
   user-select: none;
-  border: 1px solid $color-border;
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
   overflow: hidden;
 
   &:focus-within {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
     box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
   }
 }
@@ -63,14 +63,14 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background: $color-bg-white;
-  color: $color-text-primary;
+  background: var(--gs-bg-white);
+  color: var(--gs-text-primary);
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
   flex-shrink: 0;
 
   &:hover:not(:disabled) {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:active:not(:disabled) {
@@ -79,8 +79,8 @@
 }
 
 .btnDisabled {
-  color: $color-text-placeholder;
-  background: $color-bg-page;
+  color: var(--gs-text-placeholder);
+  background: var(--gs-bg-page);
   cursor: not-allowed;
 }
 
@@ -89,10 +89,10 @@
 .input {
   text-align: center;
   border: none;
-  border-left: 1px solid $color-border;
-  border-right: 1px solid $color-border;
-  background: $color-bg-white;
-  color: $color-text-primary;
+  border-left: 1px solid var(--gs-border-color);
+  border-right: 1px solid var(--gs-border-color);
+  background: var(--gs-bg-white);
+  color: var(--gs-text-primary);
   font-weight: $font-weight-medium;
   outline: none;
   -moz-appearance: textfield;
@@ -104,8 +104,8 @@
   }
 
   &:disabled {
-    color: $color-text-placeholder;
-    background: $color-bg-page;
+    color: var(--gs-text-placeholder);
+    background: var(--gs-bg-page);
   }
 }
 

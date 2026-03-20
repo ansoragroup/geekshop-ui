@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './SpecsTable.module.scss';
 
@@ -14,11 +15,11 @@ export interface SpecsTableProps extends HTMLAttributes<HTMLDivElement> {
 export const SpecsTable = forwardRef<HTMLDivElement, SpecsTableProps>(
   ({ specs, className = '', ...rest }, ref) => {
     return (
-      <div ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {specs.map((spec, i) => (
           <div
             key={i}
-            className={`${styles.row} ${i % 2 === 0 ? styles.rowEven : styles.rowOdd}`}
+            className={cn(styles.row, i % 2 === 0 ? styles.rowEven : styles.rowOdd)}
           >
             <span className={styles.label}>{spec.label}</span>
             <span className={styles.value}>{spec.value}</span>

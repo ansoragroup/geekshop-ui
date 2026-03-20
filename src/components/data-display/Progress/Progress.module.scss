@@ -13,14 +13,14 @@
 
 .linearTrack {
   flex: 1;
-  background: var(--gs-color-border, $color-border);
+  background: var(--gs-border-color);
   border-radius: $radius-round;
   overflow: hidden;
 }
 
 .linearBar {
   height: 100%;
-  background: var(--gs-color-primary, $color-primary);
+  background: var(--gs-color-primary);
   border-radius: $radius-round;
   transition: width $transition-normal;
   min-width: 0;
@@ -28,7 +28,7 @@
 
 .linearLabel {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   font-weight: $font-weight-medium;
   white-space: nowrap;
   min-width: 36px;
@@ -76,12 +76,12 @@
 
 .circularTrack {
   fill: none;
-  stroke: var(--gs-color-border, $color-border);
+  stroke: var(--gs-border-color);
 }
 
 .circularBar {
   fill: none;
-  stroke: var(--gs-color-primary, $color-primary);
+  stroke: var(--gs-color-primary);
   stroke-linecap: round;
   transition: stroke-dashoffset $transition-normal;
 }
@@ -92,7 +92,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 // Circular size-specific label sizes

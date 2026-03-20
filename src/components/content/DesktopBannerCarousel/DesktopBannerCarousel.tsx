@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import {
   forwardRef,
   useState,
@@ -29,7 +31,7 @@ export interface BannerSlide {
 
 export interface DesktopBannerCarouselProps extends HTMLAttributes<HTMLDivElement> {
   /** Array of banner slides */
-  slides: BannerSlide[];
+  slides: BannerSlidecn(];
   /** Auto-rotation interval in ms (default: 5000) */
   interval?: number;
   /** First side panel slot (e.g. login card) */
@@ -123,7 +125,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
     if (!currentSlide) return null;
 
     const hasSidePanels = sidePanel || sidePanel2;
-    const rootClass = [styles.root, className].filter(Boolean).join(' ');
+    const rootClass = [styles.root, className);
 
     return (
       <div ref={ref} className={rootClass} {...rest}>
@@ -146,7 +148,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                 return (
                   <div
                     key={index}
-                    className={`${styles.slide} ${isActive ? styles.slideActive : styles.slideInactive}`}
+                    className={cn(styles.slide, isActive ? styles.slideActive : styles.slideInactive)}
                     role="group"
                     aria-roledescription="slide"
                     aria-label={`Slide ${index + 1} of ${slideCount}`}
@@ -188,7 +190,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
             {slideCount > 1 && (
               <>
                 <button
-                  className={`${styles.arrow} ${styles.arrowLeft} ${isHovered ? styles.arrowVisible : ''}`}
+                  className={cn(styles.arrow, styles.arrowLeft, isHovered ? styles.arrowVisible : '')}
                   onClick={goPrev}
                   aria-label="Previous slide"
                   type="button"
@@ -197,7 +199,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                   <ChevronLeft />
                 </button>
                 <button
-                  className={`${styles.arrow} ${styles.arrowRight} ${isHovered ? styles.arrowVisible : ''}`}
+                  className={cn(styles.arrow, styles.arrowRight, isHovered ? styles.arrowVisible : '')}
                   onClick={goNext}
                   aria-label="Next slide"
                   type="button"
@@ -214,7 +216,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                 {slides.map((_, index) => (
                   <button
                     key={index}
-                    className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ''}`}
+                    className={cn(styles.dot, index === activeIndex ? styles.dotActive : '')}
                     onClick={() => goTo(index)}
                     role="tab"
                     aria-selected={index === activeIndex}

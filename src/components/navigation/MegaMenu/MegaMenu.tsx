@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useRef, useCallback, useEffect, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './MegaMenu.module.scss';
 
@@ -16,7 +18,7 @@ export interface MegaMenuCategory {
   /** Link URL */
   href?: string;
   /** Subcategories shown in the right panel */
-  subcategories?: MegaMenuSubcategory[];
+  subcategories?: MegaMenuSubcategorycn(];
 }
 
 export interface MegaMenuProps extends HTMLAttributes<HTMLElement> {
@@ -46,7 +48,7 @@ const ChevronRightIcon = () => (
 
 export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
   ({ categories, navItems, onCategoryClick, className, ...rest }, ref) => {
-    const rootClass = [styles.megaMenu, className].filter(Boolean).join(' ');
+    const rootClass = [styles.megaMenu, className);
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -181,7 +183,7 @@ export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
                 {categories.map((cat, i) => (
                   <li
                     key={i}
-                    className={`${styles.categoryItem} ${i === activeIndex ? styles.categoryItemActive : ''}`}
+                    className={cn(styles.categoryItem, i === activeIndex ? styles.categoryItemActive : '')}
                     onMouseEnter={() => setActiveIndex(i)}
                     role="menuitem"
                   >

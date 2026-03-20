@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopQuantityStepper.module.scss';
@@ -56,7 +58,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
     },
     ref,
   ) => {
-    const [value, setValue] = useControllableState<number>({
+    const cn(value, setValue] = useControllableState<number>({
       value: valueProp,
       defaultValue: defaultValue ?? min,
       onChange,
@@ -119,8 +121,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
       styles.root,
       styles[size],
       disabled && styles.disabled,
-      className,
-    ].filter(Boolean).join(' ');
+      className,);
 
     return (
       <div
@@ -130,7 +131,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
       >
         <button
           type="button"
-          className={`${styles.btn} ${isMinDisabled ? styles.btnDisabled : ''}`}
+          className={cn(styles.btn, isMinDisabled ? styles.btnDisabled : '')}
           onClick={handleDecrement}
           disabled={isMinDisabled}
           aria-label="Decrease quantity"
@@ -152,7 +153,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
 
         <button
           type="button"
-          className={`${styles.btn} ${isMaxDisabled ? styles.btnDisabled : ''}`}
+          className={cn(styles.btn, isMaxDisabled ? styles.btnDisabled : '')}
           onClick={handleIncrement}
           disabled={isMaxDisabled}
           aria-label="Increase quantity"

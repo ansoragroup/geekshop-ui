@@ -20,7 +20,7 @@
   flex-shrink: 0;
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
@@ -42,16 +42,16 @@
 }
 
 .on {
-  background: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary);
 }
 
 // ---- Thumb ----
 
 .thumb {
   display: block;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-round;
-  box-shadow: $shadow-sm;
+  box-shadow: var(--gs-shadow-sm);
   transition: transform $transition-fast;
 }
 
@@ -80,7 +80,7 @@
 
 .label {
   font-size: $font-size-md;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   cursor: pointer;
   user-select: none;
@@ -98,7 +98,7 @@
 
   .label {
     cursor: not-allowed;
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 

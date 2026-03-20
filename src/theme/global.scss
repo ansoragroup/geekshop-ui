@@ -75,6 +75,12 @@
   --gs-desktop-font-size-h2: #{$desktop-font-size-h2};
   --gs-desktop-font-size-h3: #{$desktop-font-size-h3};
   --gs-desktop-font-size-body: #{$desktop-font-size-body};
+
+  // Desktop Shadows & Background
+  --gs-desktop-shadow-card: #{$desktop-shadow-card};
+  --gs-desktop-shadow-card-hover: #{$desktop-shadow-card-hover};
+  --gs-desktop-shadow-dropdown: #{$desktop-shadow-dropdown};
+  --gs-desktop-bg-page: #{$desktop-bg-page};
 }
 
 [data-theme="dark"] {

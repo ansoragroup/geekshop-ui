@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useRef, useEffect, type ReactNode, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopTabs.module.scss';
@@ -77,7 +79,7 @@ export const DesktopTabs = forwardRef<HTMLDivElement, DesktopTabsProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${styles[`variant-${variant}`]} ${styles[size]} ${className}`}
+        className={cn(styles.root, styles[`variant-${variant}`], styles[size], className)}
         {...rest}
       >
         <div className={styles.tabBar} role="tablist" ref={tabListRef}>
@@ -92,7 +94,7 @@ export const DesktopTabs = forwardRef<HTMLDivElement, DesktopTabsProps>(
                 aria-selected={isActive}
                 aria-disabled={item.disabled}
                 tabIndex={item.disabled ? -1 : 0}
-                className={`${styles.tab} ${isActive ? styles.active : ''} ${item.disabled ? styles.disabled : ''}`}
+                className={cn(styles.tab, isActive ? styles.active : '', item.disabled ? styles.disabled : '')}
                 onClick={() => {
                   if (!item.disabled) {
                     setActiveKey(item.key);

@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useCallback } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 import styles from './DesktopTelegramLoginButton.module.scss';
@@ -79,7 +81,7 @@ export const DesktopTelegramLoginButton = forwardRef<HTMLButtonElement, DesktopT
           'noopener,noreferrer',
         );
       }
-    }, [botName, callbackUrl, disabled]);
+    }, cn(botName, callbackUrl, disabled]);
 
     const buttonLabel = label ?? 'Log in with Telegram';
 
@@ -87,10 +89,7 @@ export const DesktopTelegramLoginButton = forwardRef<HTMLButtonElement, DesktopT
       styles.button,
       styles[`size-${size}`],
       disabled && styles.disabled,
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+      className,);
 
     const mergedStyle = cornerRadius !== undefined
       ? { ...style, borderRadius: cornerRadius }

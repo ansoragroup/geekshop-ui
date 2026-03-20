@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopNoticeBar.module.scss';
 
@@ -98,7 +100,7 @@ export const DesktopNoticeBar = forwardRef<HTMLDivElement, DesktopNoticeBarProps
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${variantClass} ${className}`}
+        className={cn(styles.root, variantClass, className)}
         role="alert"
         aria-live="polite"
         {...rest}

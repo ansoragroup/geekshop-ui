@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Tag.module.scss';
 
@@ -31,7 +33,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     return (
       <span
         ref={ref}
-        className={`${styles.tag} ${styles[`variant-${variant}`]} ${styles[`color-${color}`]} ${styles[`size-${size}`]} ${className}`}
+        className={cn(styles.tag, styles[`variant-${variant}`], styles[`color-${color}`], styles[`size-${size}`], className)}
         {...rest}
       >
         <span className={styles.text}>{text}</span>

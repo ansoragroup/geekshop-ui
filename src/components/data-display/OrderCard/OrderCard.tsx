@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './OrderCard.module.scss';
@@ -35,6 +37,10 @@ export interface OrderCardProps extends HTMLAttributes<HTMLDivElement> {
   date: string;
   /** Action buttons */
   actions?: OrderAction[];
+  /** Link URL — when provided, renders as <a> */
+  href?: string;
+  /** Link target */
+  target?: string;
 }
 
 const STATUS_COLORS: Record<OrderStatus, string> = {
@@ -52,13 +58,15 @@ const STATUS_KEYS: Record<OrderStatus, string> = {
 };
 
 export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
-  ({ orderId, status, products, totalAmount, date, actions, className = '', ...rest }, ref) => {
+  ({ orderId, status, products, totalAmount, date, actions, href, target, className = '', ...rest }, ref) => {
+    const Wrapper = href ? 'a' : 'article';
+    const linkProps = href ? { href, target } : {};
     const { t, formatPrice } = useGeekShop();
     const statusColor = STATUS_COLORS[status];
     const statusLabel = t(STATUS_KEYS[status]);
 
     return (
-      <article ref={ref} className={`${styles.root} ${className}`} {...rest}>
+      <Wrapper ref={ref as React.Ref<HTMLElement>} className={cn(styles.root, className)} {...linkProps} {...rest}>
         {/* Status header */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>
@@ -117,7 +125,7 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
             {actions.map((action, i) => (
               <button
                 key={i}
-                className={`${styles.actionBtn} ${action.type === 'primary' ? styles.actionPrimary : styles.actionDefault}`}
+                className={cn(styles.actionBtn, action.type === 'primary' ? styles.actionPrimary : styles.actionDefault)}
                 onClick={action.onClick}
               >
                 {action.label}
@@ -125,7 +133,7 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
             ))}
           </div>
         )}
-      </article>
+      </Wrapper>
     );
   }
 );

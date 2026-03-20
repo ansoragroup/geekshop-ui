@@ -15,17 +15,17 @@
 .inner {
   display: flex;
   flex-direction: column;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-lg;
   overflow: hidden;
-  box-shadow: $shadow-sm;
+  box-shadow: var(--gs-shadow-sm);
 }
 
 .imageArea {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  background: $color-bg-skeleton;
+  background: var(--gs-bg-skeleton);
   overflow: hidden;
 }
 
@@ -41,7 +41,7 @@
   left: 0;
   padding: $spacing-xxs $spacing-sm;
   background: var(--gs-color-sale);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   border-radius: 0 $radius-round $radius-round 0;
@@ -58,7 +58,7 @@
 .title {
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-tight;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -84,7 +84,7 @@
 
 .originalPrice {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   text-decoration: line-through;
   line-height: $line-height-tight;
 }
@@ -134,7 +134,7 @@
 
 .progressLabel {
   font-size: $font-size-xs;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   line-height: $line-height-tight;
 }
 

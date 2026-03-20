@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-bg-overlay;
+  background: var(--gs-bg-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,9 +24,9 @@
 .dialog {
   width: 440px;
   max-width: calc(100vw - #{$desktop-spacing-xxl} * 2);
-  background: $color-bg-card;
+  background: var(--gs-bg-card);
   border-radius: $radius-lg;
-  box-shadow: $shadow-xl;
+  box-shadow: var(--gs-shadow-xl);
   z-index: $z-index-modal;
   animation: dialogIn $transition-normal;
   overflow: hidden;
@@ -38,7 +38,7 @@
   padding: $desktop-spacing-lg $desktop-spacing-lg $spacing-sm;
   font-size: $desktop-font-size-h3;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   margin: 0;
   line-height: $line-height-normal;
 }
@@ -48,7 +48,7 @@
 .body {
   padding: $spacing-sm $desktop-spacing-lg $desktop-spacing-lg;
   font-size: $desktop-font-size-body;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-relaxed;
 }
 
@@ -59,7 +59,7 @@
   justify-content: flex-end;
   gap: $spacing-sm;
   padding: $desktop-spacing-md $desktop-spacing-lg;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--gs-border-color);
 }
 
 .cancelBtn,
@@ -79,48 +79,48 @@
 }
 
 .cancelBtn {
-  background: $color-bg-card;
-  color: $color-text-secondary;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-secondary);
+  border: 1px solid var(--gs-border-color);
 
   &:hover {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .confirm-primary {
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   border: none;
 
   &:hover {
-    background: $color-primary-dark;
-    box-shadow: $shadow-sm;
+    background: var(--gs-color-primary-dark);
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }
 
 .confirm-danger {
-  background: $color-error;
-  color: $color-text-white;
+  background: var(--gs-color-error);
+  color: var(--gs-text-white);
   border: none;
 
   &:hover {
     background: color.adjust($color-error, $lightness: -8%);
-    box-shadow: $shadow-sm;
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-error;
+    outline: 2px solid var(--gs-color-error);
     outline-offset: 2px;
   }
 }

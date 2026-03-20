@@ -10,8 +10,8 @@
   justify-content: space-around;
   height: $tabbar-height;
   padding-bottom: $safe-area-bottom;
-  background: $color-bg-white;
-  box-shadow: $shadow-bottom-bar;
+  background: var(--gs-bg-white);
+  box-shadow: var(--gs-shadow-bottom-bar);
   z-index: $z-index-fixed;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -29,7 +29,7 @@
   background: none;
   cursor: pointer;
   outline: none;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   transition: color $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
@@ -60,7 +60,7 @@
   padding: 0 4px;
   border-radius: $radius-round;
   background: var(--gs-color-price);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
   line-height: 16px;

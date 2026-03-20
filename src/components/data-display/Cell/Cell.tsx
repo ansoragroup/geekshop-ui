@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { forwardRef, type ReactNode, type HTMLAttributes, type KeyboardEvent } from 'react';
 import styles from './Cell.module.scss';
 
@@ -65,7 +67,7 @@ export const Cell = forwardRef<HTMLDivElement, CellProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.root} ${isInteractive ? styles.interactive : ''} ${divider ? styles.divider : ''} ${className}`}
+        className={cn(styles.root, isInteractive ? styles.interactive : '', divider ? styles.divider : '', className)}
         role={isInteractive ? 'button' : undefined}
         tabIndex={isInteractive ? 0 : undefined}
         onClick={onClick}

@@ -1,3 +1,4 @@
+import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Grid.module.scss';
 
@@ -22,7 +23,7 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
     },
     ref,
   ) => {
-  const rootClass = [styles.grid, className].filter(Boolean).join(' ');
+  const rootClass = cn(styles.grid, className);
 
   return (
     <div

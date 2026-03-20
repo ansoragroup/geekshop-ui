@@ -25,7 +25,7 @@
 // --- Variants ---
 .variant-primary {
   background: var(--gs-color-primary);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 
   &:hover:not(.disabled):not(.loading) {
     background: var(--gs-color-primary-dark);
@@ -33,7 +33,7 @@
 }
 
 .variant-secondary {
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   color: var(--gs-color-primary);
   border: 1.5px solid var(--gs-color-primary);
 
@@ -44,7 +44,7 @@
 
 .variant-danger {
   background: var(--gs-color-error);
-  color: $color-text-white;
+  color: var(--gs-text-white);
 
   &:hover:not(.disabled):not(.loading) {
     background: color.adjust(#FF3B30, $lightness: -8%);

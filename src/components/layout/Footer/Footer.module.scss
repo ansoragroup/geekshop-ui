@@ -3,8 +3,8 @@
 .root {
   width: 100%;
   min-height: $desktop-footer-min-height;
-  background: $color-text-primary;
-  color: $color-text-white;
+  background: var(--gs-text-primary);
+  color: var(--gs-text-white);
   font-family: $font-family;
 }
 
@@ -31,7 +31,7 @@
 .defaultLogo {
   font-size: $desktop-font-size-h2;
   font-weight: $font-weight-bold;
-  color: $color-text-white;
+  color: var(--gs-text-white);
 }
 
 .columnsGrid {
@@ -49,7 +49,7 @@
 .columnTitle {
   font-size: $font-size-md;
   font-weight: $font-weight-semibold;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   margin: 0;
   line-height: $line-height-normal;
 }
@@ -77,7 +77,7 @@
   cursor: pointer;
 
   &:hover {
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 }
 
@@ -100,7 +100,7 @@
   transition: color $transition-fast;
 
   &:hover {
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 }
 
@@ -130,7 +130,7 @@
 .newsletterLabel {
   font-size: $font-size-md;
   font-weight: $font-weight-medium;
-  color: $color-text-white;
+  color: var(--gs-text-white);
   white-space: nowrap;
 }
 
@@ -148,7 +148,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: $radius-md;
   background: rgba(255, 255, 255, 0.1);
-  color: $color-text-white;
+  color: var(--gs-text-white);
   font-size: $font-size-md;
   font-family: inherit;
   outline: none;
@@ -160,7 +160,7 @@
   }
 
   &:focus {
-    border-color: $color-primary;
+    border-color: var(--gs-color-primary);
   }
 }
 
@@ -168,8 +168,8 @@
   min-height: 44px;
   min-width: 120px;
   padding: $spacing-sm $spacing-xl;
-  background: $color-primary;
-  color: $color-text-white;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
   border: none;
   border-radius: $radius-md;
   font-size: $font-size-md;
@@ -180,7 +180,7 @@
   white-space: nowrap;
 
   &:hover {
-    background: $color-primary-dark;
+    background: var(--gs-color-primary-dark);
   }
 }
 

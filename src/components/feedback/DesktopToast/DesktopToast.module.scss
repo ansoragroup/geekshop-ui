@@ -5,9 +5,9 @@
   align-items: center;
   gap: $desktop-spacing-sm;
   padding: $desktop-spacing-sm $desktop-spacing-md;
-  background: $color-bg-white;
+  background: var(--gs-bg-white);
   border-radius: $radius-md;
-  box-shadow: $shadow-lg;
+  box-shadow: var(--gs-shadow-lg);
   min-width: 320px;
   max-width: 480px;
   border-left: 3px solid transparent;
@@ -15,19 +15,19 @@
 }
 
 .type-success {
-  border-left-color: $color-success;
+  border-left-color: var(--gs-color-success);
 }
 
 .type-error {
-  border-left-color: $color-error;
+  border-left-color: var(--gs-color-error);
 }
 
 .type-warning {
-  border-left-color: $color-warning;
+  border-left-color: var(--gs-color-warning);
 }
 
 .type-info {
-  border-left-color: $color-info;
+  border-left-color: var(--gs-color-info);
 }
 
 .icon {
@@ -42,7 +42,7 @@
 .message {
   flex: 1;
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
   min-width: 0;
 }
@@ -56,18 +56,18 @@
   height: 28px;
   border: none;
   background: none;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   cursor: pointer;
   border-radius: $radius-sm;
   transition: background $transition-fast, color $transition-fast;
 
   &:hover {
-    background: $color-bg-page;
-    color: $color-text-secondary;
+    background: var(--gs-bg-page);
+    color: var(--gs-text-secondary);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: 2px;
   }
 }

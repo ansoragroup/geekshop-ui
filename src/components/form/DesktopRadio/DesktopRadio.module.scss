@@ -31,13 +31,13 @@
   transition: background $transition-fast, border-color $transition-fast;
 
   &:hover:not(.disabled) {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 }
 
 .radio.checked {
-  background: $color-primary-bg;
-  border-color: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary-bg);
+  border-color: var(--gs-color-primary);
 }
 
 .input {
@@ -52,7 +52,7 @@
   white-space: nowrap;
 
   &:focus-visible + .circle {
-    box-shadow: 0 0 0 3px $color-primary-bg;
+    box-shadow: 0 0 0 3px var(--gs-color-primary-bg);
   }
 }
 
@@ -70,12 +70,12 @@
 }
 
 .circleUnchecked {
-  border: 2px solid $color-border;
+  border: 2px solid var(--gs-border-color);
   background: transparent;
 }
 
 .circleChecked {
-  border: 2px solid var(--gs-color-primary, #{$color-primary});
+  border: 2px solid var(--gs-color-primary);
   background: transparent;
 }
 
@@ -83,7 +83,7 @@
   width: 10px;
   height: 10px;
   border-radius: $radius-round;
-  background: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary);
 }
 
 .content {
@@ -95,13 +95,13 @@
 
 .label {
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   line-height: $line-height-normal;
 }
 
 .description {
   font-size: $font-size-sm;
-  color: $color-text-secondary;
+  color: var(--gs-text-secondary);
   line-height: $line-height-normal;
 }
 
@@ -112,11 +112,11 @@
   opacity: 0.45;
 
   .label {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 
   .description {
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 

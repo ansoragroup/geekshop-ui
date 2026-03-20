@@ -14,7 +14,7 @@
 .label {
   font-size: $desktop-font-size-body;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 // --- Trigger ---
@@ -26,8 +26,8 @@
   width: 100%;
   height: 40px;
   padding: 0 $desktop-spacing-sm;
-  background: $color-bg-white;
-  border: 1.5px solid $color-border;
+  background: var(--gs-bg-white);
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-md;
   cursor: pointer;
   font-family: $font-family;
@@ -36,26 +36,26 @@
   text-align: left;
 
   &:hover:not(:disabled) {
-    border-color: $color-text-tertiary;
+    border-color: var(--gs-text-tertiary);
   }
 
   &:focus-visible {
-    border-color: var(--gs-color-primary, #{$color-primary});
-    box-shadow: 0 0 0 3px $color-primary-bg;
+    border-color: var(--gs-color-primary);
+    box-shadow: 0 0 0 3px var(--gs-color-primary-bg);
     outline: none;
   }
 
   &:disabled {
-    background: $color-bg-page;
-    border-color: $color-border-light;
+    background: var(--gs-bg-page);
+    border-color: var(--gs-border-color-light);
     cursor: not-allowed;
-    color: $color-text-tertiary;
+    color: var(--gs-text-tertiary);
   }
 }
 
 .open .trigger {
-  border-color: var(--gs-color-primary, #{$color-primary});
-  box-shadow: 0 0 0 3px $color-primary-bg;
+  border-color: var(--gs-color-primary);
+  box-shadow: 0 0 0 3px var(--gs-color-primary-bg);
 }
 
 .triggerText {
@@ -63,7 +63,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
 }
 
 .triggerPlaceholder {
@@ -71,14 +71,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: $color-text-placeholder;
+  color: var(--gs-text-placeholder);
 }
 
 .triggerChevron {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   transition: transform $transition-fast;
 }
 
@@ -90,18 +90,18 @@
 
 .error {
   font-size: $font-size-sm;
-  color: var(--gs-color-error, #{$color-error});
+  color: var(--gs-color-error);
   line-height: $line-height-normal;
 }
 
 .hasError .trigger {
-  border-color: var(--gs-color-error, #{$color-error});
+  border-color: var(--gs-color-error);
 }
 
 // --- Disabled ---
 
 .disabled .label {
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 // --- Dropdown ---
@@ -112,10 +112,10 @@
   left: 0;
   right: 0;
   margin-top: $spacing-xs;
-  background: $color-bg-white;
-  border: 1px solid $color-border;
+  background: var(--gs-bg-white);
+  border: 1px solid var(--gs-border-color);
   border-radius: $radius-md;
-  box-shadow: $shadow-md;
+  box-shadow: var(--gs-shadow-md);
   z-index: $z-index-dropdown;
   overflow: hidden;
   animation: dropdownIn $transition-fast;
@@ -128,14 +128,14 @@
   align-items: center;
   gap: $spacing-sm;
   padding: $spacing-sm $desktop-spacing-sm;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid var(--gs-border-color-light);
 }
 
 .searchIcon {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
 }
 
 .searchInput {
@@ -144,11 +144,11 @@
   outline: none;
   font-family: $font-family;
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   background: transparent;
 
   &::placeholder {
-    color: $color-text-placeholder;
+    color: var(--gs-text-placeholder);
   }
 }
 
@@ -163,7 +163,7 @@
 .emptyState {
   padding: $desktop-spacing-md $desktop-spacing-sm;
   text-align: center;
-  color: $color-text-tertiary;
+  color: var(--gs-text-tertiary);
   font-size: $desktop-font-size-body;
 }
 
@@ -179,26 +179,26 @@
   cursor: pointer;
   font-family: $font-family;
   font-size: $desktop-font-size-body;
-  color: $color-text-primary;
+  color: var(--gs-text-primary);
   text-align: left;
   transition: background $transition-fast;
 
   &:hover:not(:disabled) {
-    background: $color-bg-page;
+    background: var(--gs-bg-page);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline: 2px solid var(--gs-color-primary);
     outline-offset: -2px;
   }
 }
 
 .optionHighlighted {
-  background: $color-bg-page;
+  background: var(--gs-bg-page);
 }
 
 .optionSelected {
-  color: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-color-primary);
   font-weight: $font-weight-medium;
 }
 
@@ -228,7 +228,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-color-primary);
 }
 
 // --- Checkbox (multi-select) ---
@@ -236,19 +236,19 @@
 .checkbox {
   width: 18px;
   height: 18px;
-  border: 1.5px solid $color-border;
+  border: 1.5px solid var(--gs-border-color);
   border-radius: $radius-xs;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all $transition-fast;
-  color: $color-bg-white;
+  color: var(--gs-bg-white);
 }
 
 .checkboxChecked {
-  background: var(--gs-color-primary, #{$color-primary});
-  border-color: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary);
+  border-color: var(--gs-color-primary);
 }
 
 // --- Animations ---

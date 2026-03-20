@@ -10,14 +10,14 @@
   -webkit-tap-highlight-color: transparent;
 
   &.default {
-    background: $color-bg-white;
-    color: $color-text-primary;
-    box-shadow: $shadow-sm;
+    background: var(--gs-bg-white);
+    color: var(--gs-text-primary);
+    box-shadow: var(--gs-shadow-sm);
   }
 
   &.gradient {
     background: var(--gs-color-primary-gradient);
-    color: $color-text-white;
+    color: var(--gs-text-white);
   }
 }
 

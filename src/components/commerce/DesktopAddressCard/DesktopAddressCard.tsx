@@ -1,3 +1,5 @@
+import { cn } from '../../../utils/cn';
+'use client';
 import { useCallback } from 'react';
 import styles from './DesktopAddressCard.module.scss';
 
@@ -73,7 +75,7 @@ export const DesktopAddressCard = ({
     if (selectable) {
       onSelect?.();
     }
-  }, [selectable, onSelect]);
+  }, cn(selectable, onSelect]);
 
   const handleSelectKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -108,8 +110,7 @@ export const DesktopAddressCard = ({
   const rootClass = [
     styles.root,
     selected && styles.selected,
-    className,
-  ].filter(Boolean).join(' ');
+    className,);
 
   const fullAddress = [
     address.street,
@@ -122,7 +123,7 @@ export const DesktopAddressCard = ({
       {/* Radio Button */}
       {selectable && (
         <div
-          className={`${styles.radio} ${selected ? styles.radioChecked : ''}`}
+          className={cn(styles.radio, selected ? styles.radioChecked : '')}
           role="radio"
           aria-checked={selected}
           aria-label={`Select address: ${address.name}`}
@@ -178,7 +179,7 @@ export const DesktopAddressCard = ({
         {deletable && (
           <button
             type="button"
-            className={`${styles.actionBtn} ${styles.deleteAction}`}
+            className={cn(styles.actionBtn, styles.deleteAction)}
             onClick={onDelete}
             onKeyDown={handleDeleteKeyDown}
             aria-label={`Delete address: ${address.name}`}
