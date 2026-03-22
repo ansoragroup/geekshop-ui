@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopGroupBuyCard.module.scss';
@@ -112,6 +113,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const countdown = useSecondsCountdown(timeLeft);
     const timeDisplay = countdown.isExpired
       ? 'Expired'
@@ -241,7 +243,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
             type="button"
             className={styles.soloBtn}
             onClick={handleBuyAlone}
-            aria-label="Buy alone"
+            aria-label={t('aria.buyAlone')}
           >
             Buy Alone
           </button>

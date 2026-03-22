@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useImperativeHandle, useId } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
@@ -77,6 +78,7 @@ export const DesktopInput = forwardRef<HTMLInputElement, DesktopInputProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const internalRef = useRef<HTMLInputElement>(null);
     useImperativeHandle(ref, () => internalRef.current!, []);
 
@@ -139,7 +141,7 @@ export const DesktopInput = forwardRef<HTMLInputElement, DesktopInputProps>(
               className={styles.clearBtn}
               onClick={handleClear}
               type="button"
-              aria-label="Clear input"
+              aria-label={t('aria.clearInput')}
               tabIndex={-1}
             >
               <ClearIcon />

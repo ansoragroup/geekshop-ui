@@ -44,9 +44,11 @@
   z-index: 1;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-border-color);
-    color: var(--gs-text-secondary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+      color: var(--gs-text-secondary);
+    }
   }
 
   &:focus-visible {

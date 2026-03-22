@@ -28,9 +28,11 @@
   transition: all $transition-fast;
   min-height: 40px;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -103,7 +105,12 @@
   transition: background $transition-fast;
   outline: none;
 
-  &:hover,
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+
   &.optionFocused {
     background: var(--gs-color-primary-bg);
   }

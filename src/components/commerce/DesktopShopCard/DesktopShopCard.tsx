@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopShopCard.module.scss';
@@ -102,6 +103,7 @@ export const DesktopShopCard = forwardRef<HTMLDivElement, DesktopShopCardProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const handleFollow = useCallback(
       (e: MouseEvent) => {
         e.stopPropagation();
@@ -194,7 +196,7 @@ export const DesktopShopCard = forwardRef<HTMLDivElement, DesktopShopCardProps>(
               type="button"
               className={styles.chatBtn}
               onClick={handleChat}
-              aria-label="Chat with shop"
+              aria-label={t('aria.chatWithShop')}
             >
               <ChatIcon />
             </button>
@@ -225,7 +227,7 @@ export const DesktopShopCard = forwardRef<HTMLDivElement, DesktopShopCardProps>(
               type="button"
               className={styles.enterBtn}
               onClick={handleEnter}
-              aria-label="Enter shop"
+              aria-label={t('aria.enterShop')}
             >
               <span>Visit</span>
               <ChevronRightIcon />

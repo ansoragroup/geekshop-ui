@@ -64,8 +64,10 @@
   border-radius: $radius-round;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {

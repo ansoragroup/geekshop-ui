@@ -151,4 +151,64 @@ describe('ImageLazy', () => {
     const wrapper = container.firstElementChild as HTMLElement;
     expect(wrapper.style.margin).toBe('10px');
   });
+
+  it('sets width and height on img element', () => {
+    const { container } = render(
+      <ImageLazy src="img.jpg" alt="test" width={400} height={300} />,
+    );
+    simulateInView();
+    const img = container.querySelector('img') as HTMLImageElement;
+    expect(img.getAttribute('width')).toBe('400');
+    expect(img.getAttribute('height')).toBe('300');
+  });
+
+  it('sets sizes attribute on img element', () => {
+    const { container } = render(
+      <ImageLazy src="img.jpg" alt="test" sizes="(max-width: 768px) 100vw, 50vw" />,
+    );
+    simulateInView();
+    const img = container.querySelector('img') as HTMLImageElement;
+    expect(img.getAttribute('sizes')).toBe('(max-width: 768px) 100vw, 50vw');
+  });
+
+  it('adds decoding="async" by default', () => {
+    const { container } = render(
+      <ImageLazy src="img.jpg" alt="test" />,
+    );
+    simulateInView();
+    const img = container.querySelector('img') as HTMLImageElement;
+    expect(img.getAttribute('decoding')).toBe('async');
+  });
+
+  it('renders immediately when priority is true', () => {
+    const { container } = render(
+      <ImageLazy src="img.jpg" alt="priority test" priority />,
+    );
+    // Should render img without needing simulateInView
+    const img = container.querySelector('img');
+    expect(img).toBeInTheDocument();
+    expect(img?.getAttribute('alt')).toBe('priority test');
+  });
+
+  it('does not set loading="lazy" when priority is true', () => {
+    const { container } = render(
+      <ImageLazy src="img.jpg" alt="test" priority />,
+    );
+    const img = container.querySelector('img') as HTMLImageElement;
+    expect(img.getAttribute('loading')).toBeNull();
+  });
+
+  it('sets fetchpriority="high" when priority is true', () => {
+    const { container } = render(
+      <ImageLazy src="img.jpg" alt="test" priority />,
+    );
+    const img = container.querySelector('img') as HTMLImageElement;
+    expect(img.getAttribute('fetchpriority')).toBe('high');
+  });
+
+  it('does not set up IntersectionObserver when priority is true', () => {
+    mockObserve.mockClear();
+    render(<ImageLazy src="img.jpg" alt="test" priority />);
+    expect(mockObserve).not.toHaveBeenCalled();
+  });
 });

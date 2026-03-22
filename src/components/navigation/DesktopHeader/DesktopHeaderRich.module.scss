@@ -52,9 +52,11 @@
   border-radius: $radius-sm;
   transition: color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -81,8 +83,10 @@
   transition: color $transition-fast;
   white-space: nowrap;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -95,8 +99,10 @@
   color: var(--gs-color-sale);
   font-weight: $font-weight-semibold;
 
-  &:hover {
-    color: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary-dark);
+    }
   }
 }
 
@@ -160,8 +166,10 @@
   flex-shrink: 0;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:focus-visible {
@@ -231,8 +239,10 @@
   font-family: $font-family;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:focus-visible {
@@ -267,9 +277,11 @@
   transition: color $transition-fast, background $transition-fast;
   font-family: $font-family;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -348,9 +360,11 @@
   font-family: $font-family;
   color: var(--gs-text-secondary);
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -391,9 +405,11 @@
   box-shadow: var(--gs-shadow-sm);
   transition: box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-md);
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-md);
+      color: var(--gs-text-primary);
+    }
   }
 
   &:focus-visible {

@@ -61,8 +61,10 @@
   min-width: 0;
   transition: box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 

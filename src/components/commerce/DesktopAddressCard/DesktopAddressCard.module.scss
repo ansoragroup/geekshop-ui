@@ -12,8 +12,10 @@
   border: 1px solid var(--gs-border-color);
   transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -38,8 +40,10 @@
   margin-top: 2px;
   flex-shrink: 0;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -149,9 +153,11 @@
   transition: color $transition-fast, background $transition-fast;
   white-space: nowrap;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    background: rgba($color-primary, 0.06);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: rgba($color-primary, 0.06);
+    }
   }
 
   &:focus-visible {
@@ -161,9 +167,11 @@
 }
 
 .deleteAction {
-  &:hover {
-    color: var(--gs-color-error);
-    background: rgba($color-error, 0.06);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-error);
+      background: rgba($color-error, 0.06);
+    }
   }
 }
 

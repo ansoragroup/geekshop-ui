@@ -155,8 +155,10 @@
   transition: background $transition-fast;
   border: none;
 
-  &:hover {
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+    }
   }
 
   &:focus-visible {
@@ -192,8 +194,10 @@
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {
@@ -257,8 +261,10 @@
   transition: background $transition-fast, color $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {
@@ -290,8 +296,10 @@
   color: var(--gs-text-white);
   font-weight: $font-weight-semibold;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &.dayToday::after {
@@ -325,8 +333,10 @@
   transition: background $transition-fast, opacity $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:disabled {

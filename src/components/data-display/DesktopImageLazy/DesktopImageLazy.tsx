@@ -4,7 +4,7 @@ import { forwardRef, useState, useRef, useEffect, useCallback } from 'react';
 import type { ImgHTMLAttributes } from 'react';
 import styles from './DesktopImageLazy.module.scss';
 
-export interface DesktopImageLazyProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'placeholder'> {
+export interface DesktopImageLazyProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'placeholder' | 'width' | 'height'> {
   /** Image source URL */
   src: string;
   /** Alt text for the image */
@@ -19,6 +19,14 @@ export interface DesktopImageLazyProps extends Omit<ImgHTMLAttributes<HTMLImageE
   fallback?: string;
   /** Border radius in px */
   radius?: number;
+  /** Intrinsic image width — prevents CLS when set with height */
+  width?: number;
+  /** Intrinsic image height — prevents CLS when set with width */
+  height?: number;
+  /** Responsive sizing hints for the browser, e.g. "(max-width: 768px) 100vw, 50vw" */
+  sizes?: string;
+  /** Skip lazy loading for above-fold images — adds fetchpriority="high" */
+  priority?: boolean;
   /** Additional CSS class */
   className?: string;
 }
@@ -33,6 +41,10 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
       objectFit = 'cover',
       fallback,
       radius,
+      width,
+      height,
+      sizes,
+      priority = false,
       className = '',
       style,
       ...rest
@@ -41,7 +53,7 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
   ) => {
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState(false);
-    const [inView, setInView] = useState(false);
+    const [inView, setInView] = useState(priority);
     const containerRef = useRef<HTMLDivElement>(null);
     const [trackedSrc, setTrackedSrc] = useState(src);
 
@@ -52,6 +64,7 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
     }
 
     useEffect(() => {
+      if (priority) return;
       const node = containerRef.current;
       if (!node) return;
 
@@ -67,7 +80,7 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
 
       observer.observe(node);
       return () => observer.disconnect();
-    }, []);
+    }, [priority]);
 
     const handleLoad = useCallback(() => setLoaded(true), []);
 
@@ -131,6 +144,12 @@ export const DesktopImageLazy = forwardRef<HTMLImageElement, DesktopImageLazyPro
             className={cn(styles.image, loaded ? styles.imageLoaded : '')}
             src={activeSrc}
             alt={alt}
+            width={width}
+            height={height}
+            sizes={sizes}
+            decoding="async"
+            loading={priority ? undefined : 'lazy'}
+            fetchPriority={priority ? 'high' : undefined}
             style={{ objectFit }}
             onLoad={handleLoad}
             onError={handleError}

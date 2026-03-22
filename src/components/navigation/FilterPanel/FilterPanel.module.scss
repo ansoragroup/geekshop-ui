@@ -51,9 +51,11 @@
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-border-color);
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+      color: var(--gs-text-primary);
+    }
   }
 
   &:active {
@@ -105,8 +107,10 @@
   transition: background $transition-fast;
   text-align: left;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active {
@@ -221,9 +225,11 @@
   cursor: pointer;
   transition: all $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-text-secondary);
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-secondary);
+      color: var(--gs-text-primary);
+    }
   }
 
   &:active {
@@ -245,8 +251,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:active {

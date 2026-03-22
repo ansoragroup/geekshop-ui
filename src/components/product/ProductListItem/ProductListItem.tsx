@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './ProductListItem.module.scss';
@@ -97,6 +98,7 @@ export const ProductListItem = forwardRef<HTMLDivElement, ProductListItemProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const rootClass = cn(styles.root, className);
 
     const handleCardClick = () => {
@@ -196,7 +198,7 @@ export const ProductListItem = forwardRef<HTMLDivElement, ProductListItemProps>(
                   className={styles.wishlistButton}
                   onClick={(e) => handleButtonClick(e, onWishlist)}
                   onKeyDown={(e) => handleButtonKeyDown(e, onWishlist)}
-                  aria-label="Add to wishlist"
+                  aria-label={t('aria.addToWishlist')}
                 >
                   <HeartIcon />
                   <span>Wishlist</span>
@@ -208,7 +210,7 @@ export const ProductListItem = forwardRef<HTMLDivElement, ProductListItemProps>(
                   className={styles.addToCartButton}
                   onClick={(e) => handleButtonClick(e, onAddToCart)}
                   onKeyDown={(e) => handleButtonKeyDown(e, onAddToCart)}
-                  aria-label="Add to cart"
+                  aria-label={t('aria.addToCart')}
                   disabled={!inStock}
                 >
                   <CartIcon />

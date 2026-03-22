@@ -117,6 +117,58 @@ export const ErrorFallback: Story = {
   ),
 };
 
+// --- Priority (above-fold) ---
+export const Priority: Story = {
+  render: () => (
+    <div style={{ width: 280 }}>
+      <ImageLazy
+        src="https://picsum.photos/seed/priority/600/400"
+        alt="Above-fold hero image"
+        width={600}
+        height={400}
+        aspectRatio="3/2"
+        radius={12}
+        priority
+      />
+      <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>
+        priority=true — no lazy loading, fetchpriority=high
+      </p>
+    </div>
+  ),
+};
+
+// --- With width/height for CLS prevention ---
+export const WithDimensions: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <div style={{ width: 200 }}>
+        <ImageLazy
+          src="https://picsum.photos/seed/dim1/400/400"
+          alt="With dimensions"
+          width={400}
+          height={400}
+          aspectRatio="1/1"
+          radius={8}
+        />
+        <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>
+          width=400 height=400
+        </p>
+      </div>
+      <div style={{ width: 200 }}>
+        <ImageLazy
+          src="https://picsum.photos/seed/dim2/400/300"
+          alt="Without dimensions"
+          aspectRatio="4/3"
+          radius={8}
+        />
+        <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>
+          No width/height
+        </p>
+      </div>
+    </div>
+  ),
+};
+
 // --- Product Grid ---
 export const Grid: Story = {
   name: 'Product Grid',

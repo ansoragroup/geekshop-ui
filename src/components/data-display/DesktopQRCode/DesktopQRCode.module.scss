@@ -60,9 +60,11 @@
   white-space: nowrap;
   min-height: 36px;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {

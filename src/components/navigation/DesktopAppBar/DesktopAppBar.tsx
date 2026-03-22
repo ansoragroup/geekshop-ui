@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopAppBar.module.scss';
@@ -42,6 +43,7 @@ export const DesktopAppBar = forwardRef<HTMLElement, DesktopAppBarProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const rootClass = cn(
       styles.appBar,
       transparent ? styles.transparent : styles.solid,
@@ -54,7 +56,7 @@ export const DesktopAppBar = forwardRef<HTMLElement, DesktopAppBarProps>(
             <button
               className={styles.backBtn}
               onClick={onBack}
-              aria-label="Go back"
+              aria-label={t('aria.goBack')}
               type="button"
             >
               <BackArrowIcon />

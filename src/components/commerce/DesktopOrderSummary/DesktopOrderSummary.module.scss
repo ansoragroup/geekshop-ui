@@ -110,9 +110,11 @@
   align-items: center;
   justify-content: center;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark);
-    box-shadow: var(--gs-shadow-md);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-color-primary-dark);
+      box-shadow: var(--gs-shadow-md);
+    }
   }
 
   &:active:not(:disabled) {

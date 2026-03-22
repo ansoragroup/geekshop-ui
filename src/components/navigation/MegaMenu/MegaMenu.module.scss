@@ -42,8 +42,10 @@
   white-space: nowrap;
   transition: color $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -78,8 +80,10 @@
   white-space: nowrap;
   transition: color $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -148,9 +152,11 @@
   background: none;
   box-sizing: border-box;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      color: var(--gs-color-primary);
+    }
   }
 }
 
@@ -214,8 +220,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 }
 

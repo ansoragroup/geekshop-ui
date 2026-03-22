@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
@@ -39,6 +40,7 @@ export const DesktopBottomSheet = forwardRef<HTMLDivElement, DesktopBottomSheetP
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const trapRef = useFocusTrap<HTMLDivElement>(open, {
       onEscape: onClose,
     });
@@ -91,7 +93,7 @@ export const DesktopBottomSheet = forwardRef<HTMLDivElement, DesktopBottomSheetP
               type="button"
               className={styles.closeBtn}
               onClick={onClose}
-              aria-label="Close"
+              aria-label={t('aria.close')}
             >
               <CloseIcon />
             </button>

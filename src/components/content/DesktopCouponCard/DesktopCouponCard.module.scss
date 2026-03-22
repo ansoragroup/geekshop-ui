@@ -13,8 +13,10 @@
   box-shadow: var(--gs-desktop-shadow-card);
   transition: box-shadow $transition-normal;
 
-  &:hover {
-    box-shadow: var(--gs-desktop-shadow-card-hover);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-desktop-shadow-card-hover);
+    }
   }
 }
 
@@ -211,9 +213,11 @@
   white-space: nowrap;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary);
-    color: var(--gs-text-white);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary);
+      color: var(--gs-text-white);
+    }
   }
 
   &:active {

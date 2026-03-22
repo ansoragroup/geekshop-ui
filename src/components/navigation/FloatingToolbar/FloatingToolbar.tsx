@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import {
   forwardRef,
@@ -42,6 +43,7 @@ export const FloatingToolbar = forwardRef<HTMLDivElement, FloatingToolbarProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [scrolledPast, setScrolledPast] = useState(false);
 
     // SSR-safe scroll detection
@@ -65,7 +67,7 @@ export const FloatingToolbar = forwardRef<HTMLDivElement, FloatingToolbarProps>(
         ref={ref}
         className={rootClass}
         role="toolbar"
-        aria-label="Quick actions"
+        aria-label={t('aria.quickActions')}
         {...rest}
       >
         {items.map((item, index) => {

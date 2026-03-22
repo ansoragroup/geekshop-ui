@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
@@ -58,6 +59,7 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [visible, setVisible] = useState(true);
     const textRef = useRef<HTMLSpanElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -135,7 +137,7 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
             type="button"
             className={styles.closeBtn}
             onClick={handleClose}
-            aria-label="Yopish"
+            aria-label={t('aria.close')}
           >
             <CloseIcon />
           </button>

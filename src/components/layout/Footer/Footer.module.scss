@@ -76,8 +76,10 @@
   transition: color $transition-fast;
   cursor: pointer;
 
-  &:hover {
-    color: var(--gs-text-white);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-white);
+    }
   }
 }
 
@@ -99,8 +101,10 @@
   font-size: $font-size-sm;
   transition: color $transition-fast;
 
-  &:hover {
-    color: var(--gs-text-white);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-white);
+    }
   }
 }
 
@@ -179,8 +183,10 @@
   transition: background $transition-fast;
   white-space: nowrap;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './UserDropdown.module.scss';
@@ -57,6 +58,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -130,7 +132,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
           onClick={handleToggle}
           aria-haspopup="true"
           aria-expanded={isOpen}
-          aria-label="User menu"
+          aria-label={t('aria.userMenu')}
         >
           {userAvatar ? (
             <img src={userAvatar} alt={userName ?? 'User avatar'} className={styles.avatar} />
@@ -143,7 +145,7 @@ export const UserDropdown = forwardRef<HTMLDivElement, UserDropdownProps>(
 
         {/* Dropdown */}
         {isOpen && (
-          <div className={styles.dropdown} role="menu" aria-label="User menu">
+          <div className={styles.dropdown} role="menu" aria-label={t('aria.userMenu')}>
             {isLoggedIn ? (
               <>
                 {/* User info header */}

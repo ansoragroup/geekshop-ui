@@ -91,7 +91,7 @@ export const ComparisonTable = forwardRef<HTMLDivElement, ComparisonTableProps>(
         ref={ref}
         className={cn(styles.root, className)}
         role="table"
-        aria-label="Comparison table"
+        aria-label={t('aria.comparisonTable')}
         {...rest}
       >
         <div className={styles.scrollContainer}>

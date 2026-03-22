@@ -103,9 +103,11 @@
   transition: background $transition-fast, transform $transition-fast;
   cursor: pointer;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
-    transform: translateY(-1px);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      transform: translateY(-1px);
+    }
   }
 }
 
@@ -129,8 +131,10 @@
   opacity: 0;
   transition: opacity $transition-fast, background $transition-fast;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.5);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
   }
 
   &:focus-visible {
@@ -173,8 +177,10 @@
   padding: 0;
   transition: background $transition-fast, transform $transition-fast;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.8);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
   }
 
   &:focus-visible {

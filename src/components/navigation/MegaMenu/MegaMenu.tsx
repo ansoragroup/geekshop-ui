@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useCallback, useEffect, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './MegaMenu.module.scss';
@@ -48,6 +49,7 @@ const ChevronRightIcon = () => (
 
 export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
   ({ categories, navItems, onCategoryClick, className, ...rest }, ref) => {
+  const { t } = useGeekShop();
     const rootClass = cn(styles.megaMenu, className);
     const [isOpen, setIsOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -127,7 +129,7 @@ export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
     const activeCategory = categories[activeIndex];
 
     return (
-      <nav ref={ref} className={rootClass} aria-label="Category navigation" {...rest}>
+      <nav ref={ref} className={rootClass} aria-label={t('aria.categoryNavigation')} {...rest}>
         <div className={styles.content}>
           {/* All Categories trigger */}
           <div
@@ -174,7 +176,7 @@ export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
             onMouseEnter={handleDropdownEnter}
             onMouseLeave={handleDropdownLeave}
             role="menu"
-            aria-label="Categories"
+            aria-label={t('aria.categories')}
             tabIndex={-1}
           >
             <div className={styles.dropdownContent}>

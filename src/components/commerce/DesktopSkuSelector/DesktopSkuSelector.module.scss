@@ -73,8 +73,10 @@
   transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
   user-select: none;
 
-  &:hover:not(.chipDisabled) {
-    border-color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover:not(.chipDisabled) {
+      border-color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {

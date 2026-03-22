@@ -10,8 +10,10 @@
   border-bottom: 1px solid var(--gs-border-color);
   transition: background $transition-fast;
 
-  &:hover {
-    background: rgba($color-bg-page, 0.5);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba($color-bg-page, 0.5);
+    }
   }
 }
 
@@ -34,8 +36,10 @@
   transition: all $transition-fast;
   flex-shrink: 0;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -88,8 +92,10 @@
   overflow: hidden;
   cursor: pointer;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -163,9 +169,11 @@
   transition: all $transition-fast;
   flex-shrink: 0;
 
-  &:hover {
-    color: var(--gs-color-error);
-    background: rgba($color-error, 0.08);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-error);
+      background: rgba($color-error, 0.08);
+    }
   }
 
   &:focus-visible {

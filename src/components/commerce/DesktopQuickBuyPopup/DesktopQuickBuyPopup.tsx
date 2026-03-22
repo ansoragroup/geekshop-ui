@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes } from 'react';
 import styles from './DesktopQuickBuyPopup.module.scss';
@@ -83,6 +84,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [quantity, setQuantity] = useState(1);
     const [selectedVariant, setSelectedVariant] = useState<string | null>(
       variants.length > 0 ? variants[0].id : null,
@@ -168,7 +170,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
             type="button"
             className={styles.closeBtn}
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t('aria.close')}
           >
             <CloseIcon />
           </button>
@@ -195,7 +197,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
               {variants.length > 0 && (
                 <div className={styles.variantSection}>
                   <span className={styles.sectionLabel}>Variant</span>
-                  <div className={styles.chips} role="radiogroup" aria-label="Select variant">
+                  <div className={styles.chips} role="radiogroup" aria-label={t('aria.selectVariant')}>
                     {variants.map((v) => (
                       <button
                         type="button"
@@ -222,7 +224,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
                       className={styles.stepperBtn}
                       onClick={handleDecrement}
                       disabled={quantity <= 1}
-                      aria-label="Decrease quantity"
+                      aria-label={t('aria.decreaseQuantity')}
                     >
                       <MinusIcon />
                     </button>
@@ -234,7 +236,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
                       className={styles.stepperBtn}
                       onClick={handleIncrement}
                       disabled={quantity >= product.stock}
-                      aria-label="Increase quantity"
+                      aria-label={t('aria.increaseQuantity')}
                     >
                       <PlusIcon />
                     </button>

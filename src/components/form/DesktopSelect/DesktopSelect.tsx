@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -80,6 +81,7 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const generatedId = useId();
     const selectId = externalId ?? generatedId;
 
@@ -292,7 +294,7 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
                     setHighlightedIndex(-1);
                   }}
                   placeholder={searchPlaceholder}
-                  aria-label="Search options"
+                  aria-label={t('aria.searchOptions')}
                 />
               </div>
             )}

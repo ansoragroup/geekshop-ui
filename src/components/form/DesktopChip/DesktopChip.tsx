@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -47,6 +48,7 @@ export const DesktopChip = forwardRef<HTMLDivElement, DesktopChipProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const handleClick = () => {
       if (disabled) return;
       onSelect?.();
@@ -102,7 +104,7 @@ export const DesktopChip = forwardRef<HTMLDivElement, DesktopChipProps>(
             className={styles.closeBtn}
             onClick={handleClose}
             onKeyDown={handleCloseKeyDown}
-            aria-label="Remove"
+            aria-label={t('aria.remove')}
             tabIndex={disabled ? -1 : 0}
             disabled={disabled}
           >

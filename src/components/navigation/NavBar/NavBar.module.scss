@@ -71,8 +71,10 @@
   transition: background $transition-fast, opacity $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.05);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
   }
 
   &:active {
@@ -82,8 +84,10 @@
 
 // On gradient variant, hover should use white overlay
 .gradient {
-  .backBtn:hover,
-  .actionBtn:hover {
-    background: rgba(255, 255, 255, 0.15);
+  @media (hover: hover) {
+    .backBtn:hover,
+    .actionBtn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
   }
 }

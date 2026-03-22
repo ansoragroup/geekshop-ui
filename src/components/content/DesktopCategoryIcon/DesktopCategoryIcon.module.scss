@@ -12,9 +12,11 @@
   border-radius: $radius-lg;
   transition: transform $transition-fast, background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
-    transform: scale(1.05);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+      transform: scale(1.05);
+    }
   }
 
   &:active {
@@ -79,8 +81,10 @@
   max-width: 100%;
   transition: color $transition-fast;
 
-  .root:hover & {
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    .root:hover & {
+      color: var(--gs-text-primary);
+    }
   }
 }
 
@@ -88,8 +92,10 @@
   .root {
     transition: none;
 
-    &:hover {
-      transform: none;
+    @media (hover: hover) {
+      &:hover {
+        transform: none;
+      }
     }
 
     &:active {

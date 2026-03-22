@@ -63,9 +63,11 @@
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-text-secondary);
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-secondary);
+      background: var(--gs-border-color);
+    }
   }
 }
 
@@ -133,8 +135,10 @@
   border-radius: $radius-xs;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -159,10 +163,12 @@
   transition: background $transition-fast, border-color $transition-fast;
   white-space: nowrap;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
-    border-color: var(--gs-color-primary);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+    }
   }
 }
 
@@ -188,8 +194,10 @@
   border-radius: $radius-xs;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -228,8 +236,10 @@
   border-radius: $radius-xs;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -284,8 +294,10 @@
   cursor: pointer;
   transition: opacity $transition-fast;
 
-  &:hover {
-    opacity: 0.8;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 

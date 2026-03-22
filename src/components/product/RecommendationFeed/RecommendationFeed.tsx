@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import {
   forwardRef,
@@ -56,6 +57,7 @@ export const RecommendationFeed = forwardRef<HTMLDivElement, RecommendationFeedP
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [activeTab, setActiveTab] = useControllableState({
       value: activeTabProp,
       defaultValue: defaultActiveTab ?? tabs[0]?.key ?? '',
@@ -74,7 +76,7 @@ export const RecommendationFeed = forwardRef<HTMLDivElement, RecommendationFeedP
           </div>
 
           {/* Tabs */}
-          <div className={styles.tabs} role="tablist" aria-label="Category filter">
+          <div className={styles.tabs} role="tablist" aria-label={t('aria.categoryFilter')}>
             {tabs.map((tab) => {
               const isActive = tab.key === activeTab;
               return (

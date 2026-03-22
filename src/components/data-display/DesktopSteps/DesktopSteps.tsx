@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopSteps.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export type DesktopStepStatus = 'completed' | 'active' | 'error' | 'pending';
 
@@ -52,12 +53,13 @@ const ErrorIcon = () => (
 
 export const DesktopSteps = forwardRef<HTMLDivElement, DesktopStepsProps>(
   ({ items, current, direction = 'horizontal', className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     return (
       <div
         ref={ref}
         className={cn(styles.root, styles[`direction_${direction}`], className)}
         role="list"
-        aria-label="Progress steps"
+        aria-label={t('aria.progressSteps')}
         {...rest}
       >
         {items.map((item, index) => {

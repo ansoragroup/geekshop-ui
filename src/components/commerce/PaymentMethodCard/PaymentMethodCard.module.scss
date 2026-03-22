@@ -11,8 +11,10 @@
   cursor: default;
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -94,9 +96,11 @@
   cursor: pointer;
   transition: color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-error);
-    background: color-mix(in srgb, var(--gs-color-error) 6%, transparent);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-error);
+      background: color-mix(in srgb, var(--gs-color-error) 6%, transparent);
+    }
   }
 }
 

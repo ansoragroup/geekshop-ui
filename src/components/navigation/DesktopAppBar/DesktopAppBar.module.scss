@@ -46,9 +46,11 @@
   flex-shrink: 0;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+      color: var(--gs-color-primary);
+    }
   }
 
   &:active {
@@ -95,9 +97,11 @@
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+      color: var(--gs-color-primary);
+    }
   }
 
   &:active {

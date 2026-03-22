@@ -11,8 +11,10 @@
   position: relative;
   transition: background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 

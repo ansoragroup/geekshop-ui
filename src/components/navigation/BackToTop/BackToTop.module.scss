@@ -19,9 +19,11 @@
   transition: opacity $transition-normal, transform $transition-normal, color $transition-fast, box-shadow $transition-fast;
   box-sizing: border-box;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    box-shadow: var(--gs-shadow-lg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      box-shadow: var(--gs-shadow-lg);
+    }
   }
 
   &:focus-visible {

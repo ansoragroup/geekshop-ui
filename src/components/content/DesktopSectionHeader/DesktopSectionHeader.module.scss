@@ -80,8 +80,10 @@
   border-radius: 0;
   transition: color $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 }
 
@@ -124,9 +126,11 @@
   white-space: nowrap;
   transition: color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -134,9 +138,11 @@
   background: var(--gs-color-primary);
   color: var(--gs-text-white);
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
-    color: var(--gs-text-white);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+      color: var(--gs-text-white);
+    }
   }
 }
 

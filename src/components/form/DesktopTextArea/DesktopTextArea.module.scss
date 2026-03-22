@@ -19,8 +19,10 @@
   border-radius: $radius-md;
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
-  &:hover:not(:has(textarea:disabled)) {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover:not(:has(textarea:disabled)) {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &:focus-within {
@@ -112,8 +114,10 @@
     border-color: var(--gs-border-color-light);
     cursor: not-allowed;
 
-    &:hover {
-      border-color: var(--gs-border-color-light);
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--gs-border-color-light);
+      }
     }
   }
 

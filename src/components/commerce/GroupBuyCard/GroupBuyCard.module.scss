@@ -13,8 +13,10 @@
   container-type: inline-size;
   width: 100%;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -214,8 +216,10 @@
   cursor: pointer;
   transition: background $transition-fast, opacity $transition-fast;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:active:not(:disabled) {
@@ -242,9 +246,11 @@
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-text-tertiary);
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active {

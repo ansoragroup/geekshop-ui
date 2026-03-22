@@ -20,8 +20,10 @@ $telegram-blue-active: #006699;
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover:not(.disabled) {
-    background: $telegram-blue-hover;
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      background: $telegram-blue-hover;
+    }
   }
 
   &:active:not(.disabled) {

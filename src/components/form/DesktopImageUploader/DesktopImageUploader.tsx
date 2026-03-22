@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useCallback, useState } from 'react';
 import type { HTMLAttributes } from 'react';
@@ -65,6 +66,7 @@ export const DesktopImageUploader = forwardRef<HTMLDivElement, DesktopImageUploa
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isDragging, setIsDragging] = useState(false);
 
@@ -178,7 +180,7 @@ export const DesktopImageUploader = forwardRef<HTMLDivElement, DesktopImageUploa
             onDrop={handleDrop}
             role="button"
             tabIndex={0}
-            aria-label="Upload images"
+            aria-label={t('aria.uploadImages')}
           >
             <UploadIcon />
             <span className={styles.dropzoneText}>
@@ -223,7 +225,7 @@ export const DesktopImageUploader = forwardRef<HTMLDivElement, DesktopImageUploa
                 tabIndex={0}
                 onClick={handleClick}
                 onKeyDown={handleKeyDown}
-                aria-label="Add more images"
+                aria-label={t('aria.addMoreImages')}
               >
                 <PlusIcon />
               </div>

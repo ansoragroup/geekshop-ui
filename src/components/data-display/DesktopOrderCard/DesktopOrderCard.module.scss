@@ -13,8 +13,10 @@
   gap: $desktop-spacing-md;
   transition: box-shadow $transition-normal;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -179,8 +181,10 @@
   white-space: nowrap;
   min-height: 40px;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -189,8 +193,10 @@
   color: var(--gs-text-white);
   border: none;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 
@@ -199,8 +205,10 @@
   color: var(--gs-text-primary);
   border: 1px solid var(--gs-border-color);
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -209,8 +217,10 @@
   color: var(--gs-color-error);
   border: 1px solid var(--gs-color-error);
 
-  &:hover {
-    background: rgba($color-error, 0.05);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba($color-error, 0.05);
+    }
   }
 }
 

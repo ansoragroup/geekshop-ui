@@ -21,8 +21,10 @@
   font-family: $font-family;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active {

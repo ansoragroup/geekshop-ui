@@ -20,9 +20,11 @@
   position: relative;
   flex-shrink: 0;
 
-  &:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 2px var(--gs-bg-white), 0 0 0 4px var(--swatch-color);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 2px var(--gs-bg-white), 0 0 0 4px var(--swatch-color);
+    }
   }
 
   &:active {
@@ -86,8 +88,10 @@
   .swatch {
     transition: none;
 
-    &:hover {
-      transform: none;
+    @media (hover: hover) {
+      &:hover {
+        transform: none;
+      }
     }
 
     &:active {

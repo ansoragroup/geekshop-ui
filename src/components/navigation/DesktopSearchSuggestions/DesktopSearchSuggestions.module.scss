@@ -45,8 +45,10 @@
   border-radius: $radius-sm;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -69,8 +71,10 @@
   text-align: left;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active {

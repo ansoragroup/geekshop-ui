@@ -78,9 +78,11 @@
   opacity: 0.6;
   transition: opacity $transition-fast, background $transition-fast;
 
-  &:hover {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.06);
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.06);
+    }
   }
 
   &:active {

@@ -25,8 +25,10 @@
   border-radius: $radius-md;
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
-  &:hover:not(:has(input:disabled)) {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover:not(:has(input:disabled)) {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &:focus-within {
@@ -109,8 +111,10 @@
   opacity: 0.5;
   transition: opacity $transition-fast;
 
-  &:hover {
-    opacity: 1;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

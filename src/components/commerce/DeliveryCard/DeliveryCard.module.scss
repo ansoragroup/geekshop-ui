@@ -133,9 +133,11 @@
   flex-shrink: 0;
   transition: color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -162,9 +164,11 @@
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:active {

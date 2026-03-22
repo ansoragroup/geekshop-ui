@@ -17,8 +17,10 @@
 .clickable {
   cursor: pointer;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {
@@ -134,8 +136,10 @@
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -143,8 +147,10 @@
   border-color: var(--gs-border-color);
   color: var(--gs-text-secondary);
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -165,8 +171,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 

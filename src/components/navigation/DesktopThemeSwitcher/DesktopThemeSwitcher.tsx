@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -86,6 +87,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [selected, setSelected] = useControllableState<ThemeMode>({
       value: valueProp,
       defaultValue,
@@ -186,7 +188,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
           ref={ref}
           className={cn(styles.root, styles.toggleRoot, disabled ? styles.disabled : '', className)}
           role="radiogroup"
-          aria-label="Theme mode"
+          aria-label={t('aria.themeMode')}
           tabIndex={disabled ? -1 : 0}
           onKeyDown={disabled ? undefined : handleToggleKeyDown}
           {...rest}
@@ -247,7 +249,7 @@ export const DesktopThemeSwitcher = forwardRef<HTMLDivElement, DesktopThemeSwitc
         </button>
 
         {isOpen && (
-          <div className={styles.dropdown} role="listbox" aria-label="Select theme">
+          <div className={styles.dropdown} role="listbox" aria-label={t('aria.selectTheme')}>
             {THEME_OPTIONS.map((option, index) => {
               const isActive = option.mode === selected;
               return (

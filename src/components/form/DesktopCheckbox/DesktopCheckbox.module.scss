@@ -9,12 +9,16 @@
   font-family: $font-family;
   padding: $spacing-xs 0;
 
-  &:hover:not(.disabled) .unchecked {
-    border-color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover:not(.disabled) .unchecked {
+      border-color: var(--gs-color-primary);
+    }
   }
 
-  &:hover:not(.disabled) .checked {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover:not(.disabled) .checked {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 

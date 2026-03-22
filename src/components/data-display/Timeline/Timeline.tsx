@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Timeline.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export interface TimelineItem {
   /** Timestamp or date label */
@@ -24,6 +25,7 @@ export interface TimelineProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
   ({ items, reverse = false, className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     const displayItems = reverse ? [...items].reverse() : items;
 
     return (
@@ -31,7 +33,7 @@ export const Timeline = forwardRef<HTMLDivElement, TimelineProps>(
         ref={ref}
         className={cn(styles.root, className)}
         role="list"
-        aria-label="Timeline"
+        aria-label={t('aria.timeline')}
         {...rest}
       >
         {displayItems.map((item, index) => {

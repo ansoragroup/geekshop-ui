@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type HTMLAttributes } from 'react';
 import styles from './BackToTop.module.scss';
@@ -21,6 +22,7 @@ const ArrowUpIcon = () => (
 
 export const BackToTop = forwardRef<HTMLButtonElement, BackToTopProps>(
   ({ threshold = 300, smooth = true, className, onClick, ...rest }, ref) => {
+  const { t } = useGeekShop();
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -56,7 +58,7 @@ export const BackToTop = forwardRef<HTMLButtonElement, BackToTopProps>(
         ref={ref}
         className={rootClass}
         onClick={handleClick}
-        aria-label="Back to top"
+        aria-label={t('aria.backToTop')}
         type="button"
         {...rest}
       >

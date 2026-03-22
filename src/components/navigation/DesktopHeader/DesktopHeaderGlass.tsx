@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeaderGlass.module.scss';
@@ -125,6 +126,7 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [scrolled, setScrolled] = useState(false);
     const [catScrollPos, setCatScrollPos] = useState<'start' | 'middle' | 'end'>('start');
 
@@ -188,7 +190,7 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
               type="button"
               className={styles.catalogBtn}
               onClick={onCatalogClick}
-              aria-label="Open catalog"
+              aria-label={t('aria.openCatalog')}
             >
               <GridIcon />
               <span>Katalog</span>
@@ -202,14 +204,14 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
                 placeholder={searchPlaceholder}
                 value={searchValue ?? ''}
                 onChange={(e) => onSearchChange?.(e.target.value)}
-                aria-label="Search products"
+                aria-label={t('aria.searchProducts')}
               />
-              <button type="submit" className={styles.searchSubmit} aria-label="Submit search">
+              <button type="submit" className={styles.searchSubmit} aria-label={t('aria.submitSearch')}>
                 <SearchIcon />
               </button>
             </form>
 
-            <nav className={styles.actions} aria-label="User actions">
+            <nav className={styles.actions} aria-label={t('aria.userActions')}>
               <button className={styles.actionBtn} onClick={onWishlistClick} aria-label={wishlistCount ? `Wishlist (${wishlistCount} items)` : 'Wishlist'}>
                 <HeartIcon />
                 <span className={styles.actionLabel}>Wishlist</span>
@@ -218,7 +220,7 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
                 )}
               </button>
 
-              <button className={styles.actionBtn} onClick={onOrdersClick} aria-label="Orders">
+              <button className={styles.actionBtn} onClick={onOrdersClick} aria-label={t('aria.orders')}>
                 <PackageIcon />
                 <span className={styles.actionLabel}>Orders</span>
               </button>
@@ -231,7 +233,7 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
                 )}
               </button>
 
-              <button className={styles.actionBtn} onClick={onUserClick} aria-label="User account">
+              <button className={styles.actionBtn} onClick={onUserClick} aria-label={t('aria.userAccount')}>
                 <UserIcon />
                 <span className={styles.actionLabel}>Sign in</span>
               </button>
@@ -247,7 +249,7 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
                 <button
                   className={cn(styles.catArrow, styles.catArrowLeft)}
                   onClick={() => scrollCategories('left')}
-                  aria-label="Scroll categories left"
+                  aria-label={t('aria.scrollCategoriesLeft')}
                   type="button"
                 >
                   <ChevronLeftIcon />
@@ -277,7 +279,7 @@ export const DesktopHeaderGlass = forwardRef<HTMLElement, DesktopHeaderGlassProp
                 <button
                   className={cn(styles.catArrow, styles.catArrowRight)}
                   onClick={() => scrollCategories('right')}
-                  aria-label="Scroll categories right"
+                  aria-label={t('aria.scrollCategoriesRight')}
                   type="button"
                 >
                   <ChevronRightIcon />

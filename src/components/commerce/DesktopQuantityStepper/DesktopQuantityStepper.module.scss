@@ -69,8 +69,10 @@
   transition: background $transition-fast, color $transition-fast;
   flex-shrink: 0;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active:not(:disabled) {

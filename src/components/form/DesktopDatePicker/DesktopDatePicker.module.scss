@@ -35,8 +35,10 @@
   transition: border-color $transition-fast;
   text-align: left;
 
-  &:hover:not(:disabled) {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &:focus-visible {
@@ -135,8 +137,10 @@
   color: var(--gs-text-primary);
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {
@@ -195,8 +199,10 @@
   border-radius: $radius-sm;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {
@@ -228,8 +234,10 @@
   color: var(--gs-text-white);
   font-weight: $font-weight-semibold;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &.dayToday::after {

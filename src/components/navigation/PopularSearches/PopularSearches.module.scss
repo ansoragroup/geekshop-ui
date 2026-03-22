@@ -38,9 +38,11 @@
   font-family: $font-family;
   transition: all $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:active {
@@ -51,8 +53,10 @@
     border-color: color-mix(in srgb, var(--gs-color-primary) 30%, transparent);
     background: var(--gs-color-primary-bg);
 
-    &:hover {
-      border-color: var(--gs-color-primary);
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--gs-color-primary);
+      }
     }
   }
 }

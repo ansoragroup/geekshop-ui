@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopReviewCard.module.scss';
@@ -96,6 +97,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const handleHelpful = useCallback(
       (e: MouseEvent) => {
         e.stopPropagation();
@@ -152,7 +154,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
 
         {/* Review images */}
         {images && images.length > 0 && (
-          <div className={styles.images} role="group" aria-label="Review images">
+          <div className={styles.images} role="group" aria-label={t('aria.reviewImages')}>
             {images.map((src, idx) => (
               <img
                 key={idx}

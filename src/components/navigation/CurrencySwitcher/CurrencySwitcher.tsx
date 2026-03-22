@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -29,6 +30,7 @@ export interface CurrencySwitcherProps extends Omit<HTMLAttributes<HTMLDivElemen
 
 export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps>(
   ({ value: valueProp, defaultValue = 'UZS', onChange, variant = 'inline', size = 'md', className, ...rest }, ref) => {
+  const { t } = useGeekShop();
     const [selected, setSelected] = useControllableState<CurrencyCode>({
       value: valueProp,
       defaultValue,
@@ -111,7 +113,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
           ref={ref}
           className={cn(styles.root, styles.inline, sizeClass, className ?? '')}
           role="radiogroup"
-          aria-label="Currency"
+          aria-label={t('aria.currency')}
           tabIndex={0}
           onKeyDown={handleInlineKeyDown}
           {...rest}
@@ -162,7 +164,7 @@ export const CurrencySwitcher = forwardRef<HTMLDivElement, CurrencySwitcherProps
           <span className={cn(styles.triggerArrow, isOpen ? styles.open : '')}>▾</span>
         </button>
         {isOpen && (
-          <div className={styles.dropdownList} role="radiogroup" aria-label="Currency">
+          <div className={styles.dropdownList} role="radiogroup" aria-label={t('aria.currency')}>
             {CURRENCIES.map((currency) => {
               const isActive = currency === selected;
               return (

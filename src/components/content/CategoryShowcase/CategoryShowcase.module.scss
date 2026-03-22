@@ -48,9 +48,11 @@
   object-fit: cover;
   transition: transform $transition-normal, filter $transition-normal;
 
-  .card:hover & {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+  @media (hover: hover) {
+    .card:hover & {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
   }
 }
 

@@ -10,9 +10,11 @@
   cursor: pointer;
   transition: box-shadow $transition-normal, transform $transition-normal;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-lg);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-lg);
+      transform: translateY(-2px);
+    }
   }
 }
 
@@ -81,9 +83,11 @@
   white-space: nowrap;
   transition: background $transition-fast, transform $transition-fast;
 
-  &:hover {
-    background: var(--gs-text-white);
-    transform: translateX(2px);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-text-white);
+      transform: translateX(2px);
+    }
   }
 
   &:active {
@@ -94,8 +98,10 @@
     transition: transform $transition-fast;
   }
 
-  &:hover svg {
-    transform: translateX(2px);
+  @media (hover: hover) {
+    &:hover svg {
+      transform: translateX(2px);
+    }
   }
 }
 
@@ -117,8 +123,10 @@
   object-fit: cover;
   transition: transform $transition-normal;
 
-  .root:hover & {
-    transform: scale(1.05);
+  @media (hover: hover) {
+    .root:hover & {
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -126,16 +134,20 @@
   .root {
     transition: none;
 
-    &:hover {
-      transform: none;
+    @media (hover: hover) {
+      &:hover {
+        transform: none;
+      }
     }
   }
 
   .ctaButton {
     transition: none;
 
-    &:hover {
-      transform: none;
+    @media (hover: hover) {
+      &:hover {
+        transform: none;
+      }
     }
 
     &:active {
@@ -146,16 +158,20 @@
       transition: none;
     }
 
-    &:hover svg {
-      transform: none;
+    @media (hover: hover) {
+      &:hover svg {
+        transform: none;
+      }
     }
   }
 
   .image {
     transition: none;
 
-    .root:hover & {
-      transform: none;
+    @media (hover: hover) {
+      .root:hover & {
+        transform: none;
+      }
     }
   }
 }

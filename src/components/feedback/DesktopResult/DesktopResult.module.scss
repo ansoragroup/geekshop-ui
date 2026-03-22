@@ -85,8 +85,10 @@
   color: var(--gs-text-white);
   border: none;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 
@@ -95,9 +97,11 @@
   color: var(--gs-text-primary);
   border: 1px solid var(--gs-border-color);
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+    }
   }
 }
 

@@ -37,8 +37,10 @@
   transition: color $transition-fast;
   white-space: nowrap;
 
-  &:hover {
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-primary);
+    }
   }
 
   &:active {

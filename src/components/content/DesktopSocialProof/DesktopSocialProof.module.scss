@@ -10,8 +10,10 @@
   border: 1px solid var(--gs-border-color);
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 

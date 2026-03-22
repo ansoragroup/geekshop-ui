@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -32,6 +33,7 @@ export const ThemeSwitcher = forwardRef<HTMLDivElement, ThemeSwitcherProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [selected, setSelected] = useControllableState<ThemePreset>({
       value: valueProp,
       defaultValue,
@@ -75,7 +77,7 @@ export const ThemeSwitcher = forwardRef<HTMLDivElement, ThemeSwitcherProps>(
         ref={ref}
         className={cn(styles.root, sizeClass, className ?? '')}
         role="radiogroup"
-        aria-label="Theme preset"
+        aria-label={t('aria.themePreset')}
         tabIndex={0}
         onKeyDown={handleKeyDown}
         {...rest}

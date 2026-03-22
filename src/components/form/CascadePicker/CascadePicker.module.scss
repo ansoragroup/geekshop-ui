@@ -156,8 +156,10 @@
   transition: background $transition-fast;
   border: none;
 
-  &:hover {
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+    }
   }
 
   &:focus-visible {
@@ -206,8 +208,10 @@
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {
@@ -255,8 +259,10 @@
   transition: background $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:focus-visible {

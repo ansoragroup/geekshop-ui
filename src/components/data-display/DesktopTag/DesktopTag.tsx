@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './DesktopTag.module.scss';
@@ -43,6 +44,7 @@ export const DesktopTag = forwardRef<HTMLSpanElement, DesktopTagProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const handleClose = useCallback(
       (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -86,7 +88,7 @@ export const DesktopTag = forwardRef<HTMLSpanElement, DesktopTagProps>(
             type="button"
             className={styles.closeBtn}
             onClick={handleClose}
-            aria-label="Remove tag"
+            aria-label={t('aria.removeTag')}
             tabIndex={-1}
           >
             <CloseIcon />

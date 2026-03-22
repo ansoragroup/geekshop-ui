@@ -30,8 +30,10 @@
   border: 1.5px solid transparent;
   transition: background $transition-fast, border-color $transition-fast;
 
-  &:hover:not(.disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 }
 

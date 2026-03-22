@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Footer.module.scss';
@@ -56,6 +57,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [email, setEmail] = useState('');
 
     const handleSubmit = useCallback(
@@ -152,7 +154,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                     placeholder="Your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    aria-label="Email address for newsletter"
+                    aria-label={t('aria.emailNewsletter')}
                   />
                   <button type="submit" className={styles.newsletterButton}>
                     Subscribe

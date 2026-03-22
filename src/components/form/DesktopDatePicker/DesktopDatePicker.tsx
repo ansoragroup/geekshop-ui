@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useMemo, useEffect } from 'react';
 import type { HTMLAttributes } from 'react';
@@ -108,6 +109,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const internalRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => internalRef.current!, []);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -265,14 +267,14 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
             className={styles.dropdown}
             role="dialog"
             aria-modal="false"
-            aria-label="Calendar"
+            aria-label={t('aria.calendar')}
           >
             <div className={styles.monthNav}>
               <button
                 type="button"
                 className={styles.navBtn}
                 onClick={handlePrevMonth}
-                aria-label="Previous month"
+                aria-label={t('aria.previousMonth')}
               >
                 <ChevronLeft />
               </button>
@@ -283,7 +285,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
                 type="button"
                 className={styles.navBtn}
                 onClick={handleNextMonth}
-                aria-label="Next month"
+                aria-label={t('aria.nextMonth')}
               >
                 <ChevronRight />
               </button>

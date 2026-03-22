@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './MiniCart.module.scss';
@@ -71,6 +72,7 @@ export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const isControlled = openProp !== undefined;
     const [internalOpen, setInternalOpen] = useState(false);
     const isOpen = isControlled ? openProp : internalOpen;
@@ -167,7 +169,7 @@ export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
             onClick={handleToggle}
             aria-haspopup="true"
             aria-expanded={isOpen}
-            aria-label="Shopping cart"
+            aria-label={t('aria.shoppingCart')}
           >
             <CartIcon />
             {totalItems > 0 && (
@@ -178,7 +180,7 @@ export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
 
         {/* Dropdown */}
         {isOpen && (
-          <div className={styles.dropdown} role="dialog" aria-label="Shopping cart">
+          <div className={styles.dropdown} role="dialog" aria-label={t('aria.shoppingCart')}>
             {items.length === 0 ? (
               /* Empty state */
               <div className={styles.emptyState}>

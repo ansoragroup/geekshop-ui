@@ -38,10 +38,12 @@
   font-family: $font-family;
   transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
-    box-shadow: 0 2px 4px rgba(255, 80, 0, 0.08);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+      box-shadow: 0 2px 4px rgba(255, 80, 0, 0.08);
+    }
   }
 
   &:active {

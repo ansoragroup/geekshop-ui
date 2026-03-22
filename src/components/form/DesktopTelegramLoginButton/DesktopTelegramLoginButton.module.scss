@@ -19,9 +19,11 @@ $telegram-blue-active: #006699;
   transition: background $transition-fast, box-shadow $transition-fast;
   white-space: nowrap;
 
-  &:hover:not(.disabled) {
-    background: $telegram-blue-hover;
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      background: $telegram-blue-hover;
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active:not(.disabled) {

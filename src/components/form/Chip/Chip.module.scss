@@ -41,8 +41,10 @@
   border: 1px solid var(--gs-border-color);
   color: var(--gs-text-primary);
 
-  &:hover:not(.disabled) {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &.selected {
@@ -57,8 +59,10 @@
   border: 1px solid transparent;
   color: var(--gs-text-primary);
 
-  &:hover:not(.disabled) {
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      background: var(--gs-border-color);
+    }
   }
 
   &.selected {
@@ -104,9 +108,11 @@
   transition: opacity $transition-fast, background $transition-fast;
   flex-shrink: 0;
 
-  &:hover {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.08);
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.08);
+    }
   }
 
   &:focus-visible {
@@ -115,8 +121,10 @@
   }
 }
 
-.variant-filled.selected .deleteBtn:hover {
-  background: rgba(255, 255, 255, 0.2);
+@media (hover: hover) {
+  .variant-filled.selected .deleteBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
 }
 
 // --- Disabled ---

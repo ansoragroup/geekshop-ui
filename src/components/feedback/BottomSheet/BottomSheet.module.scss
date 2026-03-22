@@ -67,8 +67,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+    }
   }
 }
 

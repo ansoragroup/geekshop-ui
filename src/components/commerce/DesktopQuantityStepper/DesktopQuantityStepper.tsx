@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -58,6 +59,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [value, setValue] = useControllableState<number>({
       value: valueProp,
       defaultValue: defaultValue ?? min,
@@ -134,7 +136,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
           className={cn(styles.btn, isMinDisabled ? styles.btnDisabled : '')}
           onClick={handleDecrement}
           disabled={isMinDisabled}
-          aria-label="Decrease quantity"
+          aria-label={t('aria.decreaseQuantity')}
         >
           <MinusIcon />
         </button>
@@ -148,7 +150,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
           onBlur={handleInputBlur}
           onKeyDown={handleKeyDown}
           disabled={disabled}
-          aria-label="Quantity"
+          aria-label={t('aria.quantity')}
         />
 
         <button
@@ -156,7 +158,7 @@ export const DesktopQuantityStepper = forwardRef<HTMLDivElement, DesktopQuantity
           className={cn(styles.btn, isMaxDisabled ? styles.btnDisabled : '')}
           onClick={handleIncrement}
           disabled={isMaxDisabled}
-          aria-label="Increase quantity"
+          aria-label={t('aria.increaseQuantity')}
         >
           <PlusIcon />
         </button>

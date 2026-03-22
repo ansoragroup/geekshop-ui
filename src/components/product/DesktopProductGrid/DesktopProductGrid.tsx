@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import { DesktopProductCard } from '../DesktopProductCard';
@@ -108,6 +109,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const displayCount = products.length;
     const total = totalCount ?? displayCount;
 
@@ -168,12 +170,12 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
           {/* View controls */}
           <div className={styles.viewControls}>
             {/* View mode toggle */}
-            <div className={styles.viewToggle} role="group" aria-label="View mode">
+            <div className={styles.viewToggle} role="group" aria-label={t('aria.viewMode')}>
               <button
                 type="button"
                 className={cn(styles.viewButton, viewMode === 'grid' ? styles.viewButtonActive : '')}
                 onClick={() => handleViewMode('grid')}
-                aria-label="Grid view"
+                aria-label={t('aria.gridView')}
                 aria-pressed={viewMode === 'grid'}
               >
                 <GridIcon />
@@ -182,7 +184,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
                 type="button"
                 className={cn(styles.viewButton, viewMode === 'list' ? styles.viewButtonActive : '')}
                 onClick={() => handleViewMode('list')}
-                aria-label="List view"
+                aria-label={t('aria.listView')}
                 aria-pressed={viewMode === 'list'}
               >
                 <ListIcon />
@@ -191,12 +193,12 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
 
             {/* Column toggle (grid mode only) */}
             {viewMode === 'grid' && (
-              <div className={styles.columnToggle} role="group" aria-label="Grid columns">
+              <div className={styles.columnToggle} role="group" aria-label={t('aria.gridColumns')}>
                 <button
                   type="button"
                   className={cn(styles.columnButton, columns === 4 ? styles.columnButtonActive : '')}
                   onClick={() => handleColumns(4)}
-                  aria-label="4 columns"
+                  aria-label={t('aria.fourColumns')}
                   aria-pressed={columns === 4}
                 >
                   4
@@ -205,7 +207,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
                   type="button"
                   className={cn(styles.columnButton, columns === 5 ? styles.columnButtonActive : '')}
                   onClick={() => handleColumns(5)}
-                  aria-label="5 columns"
+                  aria-label={t('aria.fiveColumns')}
                   aria-pressed={columns === 5}
                 >
                   5

@@ -13,8 +13,10 @@
   box-shadow: var(--gs-desktop-shadow-card);
   transition: box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-desktop-shadow-card-hover);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-desktop-shadow-card-hover);
+    }
   }
 }
 
@@ -128,10 +130,12 @@
   cursor: pointer;
   transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -158,8 +162,10 @@
   white-space: nowrap;
   transition: background $transition-fast, color $transition-fast, border-color $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -172,8 +178,10 @@
   border-color: var(--gs-border-color);
   color: var(--gs-text-secondary);
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -195,8 +203,10 @@
   white-space: nowrap;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:focus-visible {

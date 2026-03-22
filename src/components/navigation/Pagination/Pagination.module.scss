@@ -40,10 +40,12 @@
   padding: 0 $spacing-sm;
   border-radius: $radius-sm;
 
-  &:hover:not(.active) {
-    background: var(--gs-color-primary-bg);
-    border-color: var(--gs-color-primary);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover:not(.active) {
+      background: var(--gs-color-primary-bg);
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+    }
   }
 }
 
@@ -54,10 +56,12 @@
   font-weight: $font-weight-semibold;
   cursor: default;
 
-  &:hover {
-    background: var(--gs-color-primary);
-    border-color: var(--gs-color-primary);
-    color: var(--gs-text-white);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary);
+      border-color: var(--gs-color-primary);
+      color: var(--gs-text-white);
+    }
   }
 }
 
@@ -70,10 +74,12 @@
   border-radius: $radius-sm;
   font-weight: $font-weight-medium;
 
-  &:hover:not(.disabled) {
-    background: var(--gs-color-primary-bg);
-    border-color: var(--gs-color-primary);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      background: var(--gs-color-primary-bg);
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+    }
   }
 }
 

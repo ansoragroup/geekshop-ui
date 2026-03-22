@@ -20,8 +20,10 @@
   transition: box-shadow $transition-fast;
   outline: none;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:focus-visible {
@@ -190,9 +192,11 @@
   border: 1px solid var(--gs-border-color);
   color: var(--gs-text-secondary);
 
-  &:hover {
-    border-color: var(--gs-text-secondary);
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-secondary);
+      color: var(--gs-text-primary);
+    }
   }
 }
 
@@ -201,8 +205,10 @@
   border: none;
   color: var(--gs-text-white);
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:disabled {

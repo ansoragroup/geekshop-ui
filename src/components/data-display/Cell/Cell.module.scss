@@ -17,8 +17,10 @@
   user-select: none;
   transition: background-color $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active {

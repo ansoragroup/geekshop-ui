@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopComparisonTable.module.scss';
@@ -95,6 +96,7 @@ export const DesktopComparisonTable = forwardRef<HTMLDivElement, DesktopComparis
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const handleRemove = useCallback(
       (productId: string) => {
         onRemoveProduct?.(productId);
@@ -107,7 +109,7 @@ export const DesktopComparisonTable = forwardRef<HTMLDivElement, DesktopComparis
         ref={ref}
         className={cn(styles.root, className)}
         role="table"
-        aria-label="Product comparison table"
+        aria-label={t('aria.productComparisonTable')}
         {...rest}
       >
         <div className={styles.scrollContainer}>

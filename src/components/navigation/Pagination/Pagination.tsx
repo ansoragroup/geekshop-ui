@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './Pagination.module.scss';
@@ -43,6 +44,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const rootClass = cn(styles.pagination, className);
     const pages = getPageRange(currentPage, totalPages, siblingCount);
 
@@ -57,7 +59,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     if (totalPages <= 0) return null;
 
     return (
-      <nav ref={ref} className={rootClass} aria-label="Pagination" {...rest}>
+      <nav ref={ref} className={rootClass} aria-label={t('aria.pagination')} {...rest}>
         <ul className={styles.list}>
           {showPrevNext && (
             <li>
@@ -65,7 +67,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 className={cn(styles.button, styles.prevNext, currentPage <= 1 ? styles.disabled : '')}
                 onClick={handlePrev}
                 disabled={currentPage <= 1}
-                aria-label="Previous page"
+                aria-label={t('aria.previousPage')}
                 type="button"
               >
                 <ChevronLeftIcon />
@@ -107,7 +109,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                 className={cn(styles.button, styles.prevNext, currentPage >= totalPages ? styles.disabled : '')}
                 onClick={handleNext}
                 disabled={currentPage >= totalPages}
-                aria-label="Next page"
+                aria-label={t('aria.nextPage')}
                 type="button"
               >
                 <span className={styles.prevNextLabel}>Next</span>

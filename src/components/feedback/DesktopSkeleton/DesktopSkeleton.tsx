@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type CSSProperties, type HTMLAttributes } from 'react';
 import styles from './DesktopSkeleton.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export type DesktopSkeletonVariant = 'text' | 'circle' | 'rect' | 'card';
 
@@ -31,6 +32,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const getStyle = (): CSSProperties => {
       const s: CSSProperties = { ...style };
       if (width) s.width = typeof width === 'number' ? `${width}px` : width;
@@ -43,7 +45,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
     // Multi-line text
     if (variant === 'text' && lines > 1) {
       return (
-        <div ref={ref} className={cn(styles.textGroup, className)} role="status" aria-label="Loading" {...rest}>
+        <div ref={ref} className={cn(styles.textGroup, className)} role="status" aria-label={t('aria.loading')} {...rest}>
           {Array.from({ length: lines }, (_, i) => (
             <div
               key={i}
@@ -63,7 +65,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
           className={cn(styles.card, className)}
           style={getStyle()}
           role="status"
-          aria-label="Loading"
+          aria-label={t('aria.loading')}
           {...rest}
         >
           <div className={cn(styles.skeleton, styles.cardImage, animClass)} />
@@ -86,7 +88,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
           className={cn(styles.skeleton, styles.circle, animClass, className)}
           style={{ width: typeof size === 'number' ? `${size}px` : size, height: typeof size === 'number' ? `${size}px` : size, ...style }}
           role="status"
-          aria-label="Loading"
+          aria-label={t('aria.loading')}
           {...rest}
         />
       );
@@ -99,7 +101,7 @@ export const DesktopSkeleton = forwardRef<HTMLDivElement, DesktopSkeletonProps>(
         className={cn(styles.skeleton, styles[variant], animClass, className)}
         style={getStyle()}
         role="status"
-        aria-label="Loading"
+        aria-label={t('aria.loading')}
         {...rest}
       />
     );

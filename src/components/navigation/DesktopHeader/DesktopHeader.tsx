@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeader.module.scss';
@@ -97,6 +98,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const rootClass = cn(styles.header, className);
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -132,7 +134,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
             type="button"
             className={styles.catalogBtn}
             onClick={onCatalogClick}
-            aria-label="Open catalog"
+            aria-label={t('aria.openCatalog')}
           >
             <GridIcon />
             Katalog
@@ -149,9 +151,9 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
               placeholder={searchPlaceholder}
               value={searchValue ?? ''}
               onChange={(e) => onSearchChange?.(e.target.value)}
-              aria-label="Search products"
+              aria-label={t('aria.searchProducts')}
             />
-            <button type="submit" className={styles.searchButton} aria-label="Submit search">
+            <button type="submit" className={styles.searchButton} aria-label={t('aria.submitSearch')}>
               <SearchIcon />
             </button>
           </form>
@@ -173,7 +175,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
             <button
               className={styles.actionBtn}
               onClick={() => {}}
-              aria-label="Orders"
+              aria-label={t('aria.orders')}
             >
               <PackageIcon />
               <span className={styles.actionLabel}>Orders</span>
@@ -194,7 +196,7 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
             <button
               className={styles.actionBtn}
               onClick={onUserClick}
-              aria-label="User account"
+              aria-label={t('aria.userAccount')}
             >
               <UserIcon />
               <span className={styles.actionLabel}>Sign in</span>

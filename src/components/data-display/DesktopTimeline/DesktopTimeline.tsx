@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopTimeline.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export interface DesktopTimelineItem {
   /** Event title */
@@ -24,12 +25,13 @@ export interface DesktopTimelineProps extends HTMLAttributes<HTMLDivElement> {
 
 export const DesktopTimeline = forwardRef<HTMLDivElement, DesktopTimelineProps>(
   ({ items, mode = 'left', className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     return (
       <div
         ref={ref}
         className={cn(styles.root, styles[`mode_${mode}`], className)}
         role="list"
-        aria-label="Timeline"
+        aria-label={t('aria.timeline')}
         {...rest}
       >
         {items.map((item, index) => {

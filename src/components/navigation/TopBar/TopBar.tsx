@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './TopBar.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export interface TopBarProps extends HTMLAttributes<HTMLElement> {
   /** Items rendered on the left side (e.g. welcome text, links) */
@@ -11,10 +12,11 @@ export interface TopBarProps extends HTMLAttributes<HTMLElement> {
 
 export const TopBar = forwardRef<HTMLElement, TopBarProps>(
   ({ leftItems, rightItems, className, ...rest }, ref) => {
+  const { t } = useGeekShop();
     const rootClass = cn(styles.topBar, className);
 
     return (
-      <nav ref={ref} className={rootClass} aria-label="Utility navigation" {...rest}>
+      <nav ref={ref} className={rootClass} aria-label={t('aria.utilityNavigation')} {...rest}>
         <div className={styles.content}>
           {leftItems && leftItems.length > 0 && (
             <div className={styles.left}>

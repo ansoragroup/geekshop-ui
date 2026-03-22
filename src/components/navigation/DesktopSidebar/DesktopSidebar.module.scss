@@ -55,8 +55,10 @@
   transition: background $transition-fast, color $transition-fast;
   position: relative;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -158,8 +160,10 @@
   border-radius: $radius-xs;
   transition: color $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
   }
 }
 
@@ -199,8 +203,10 @@
   text-align: left;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {

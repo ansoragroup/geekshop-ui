@@ -110,8 +110,10 @@
 }
 
 // --- Hover animation on wrapper ---
-.wrapper:hover .badge {
-  transform: scale(1.1);
+@media (hover: hover) {
+  .wrapper:hover .badge {
+    transform: scale(1.1);
+  }
 }
 
 // --- Reduced motion ---

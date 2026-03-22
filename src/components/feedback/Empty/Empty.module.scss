@@ -39,8 +39,10 @@
   cursor: pointer;
   transition: opacity $transition-fast;
 
-  &:hover {
-    opacity: 0.9;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   &:active {

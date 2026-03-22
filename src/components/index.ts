@@ -468,3 +468,13 @@ export type { ThemePreset, ThemePresetConfig } from '../theme/presets';
 
 // Utils
 export { formatPrice } from '../utils';
+
+// SEO — JSON-LD structured data utilities
+export {
+  buildProductSchema,
+  buildBreadcrumbSchema,
+  buildRatingSchema,
+  buildReviewSchema,
+  buildOrganizationSchema,
+} from '../seo';
+export type { ProductSchemaInput, BreadcrumbItem as SchemaBreadcrumbItem, ReviewInput } from '../seo';

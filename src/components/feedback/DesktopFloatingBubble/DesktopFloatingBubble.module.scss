@@ -19,8 +19,10 @@
   transition: box-shadow $transition-normal, padding $transition-normal, gap $transition-normal;
   overflow: hidden;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-xl);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-xl);
+    }
   }
 
   &:focus-visible {

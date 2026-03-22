@@ -14,9 +14,11 @@
   box-shadow: var(--gs-desktop-shadow-card);
   transition: box-shadow $transition-normal, transform $transition-normal;
 
-  &:hover {
-    box-shadow: var(--gs-desktop-shadow-card-hover);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-desktop-shadow-card-hover);
+      transform: translateY(-2px);
+    }
   }
 }
 
@@ -197,8 +199,10 @@
   white-space: nowrap;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:active {
@@ -213,8 +217,10 @@
   .root {
     transition: none;
 
-    &:hover {
-      transform: none;
+    @media (hover: hover) {
+      &:hover {
+        transform: none;
+      }
     }
   }
 

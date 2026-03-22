@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import {
   forwardRef,
@@ -67,6 +68,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -137,7 +139,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
             onMouseLeave={handleMouseLeave}
             onKeyDown={handleKeyDown}
             role="region"
-            aria-label="Banner carousel"
+            aria-label={t('aria.bannerCarousel')}
             aria-roledescription="carousel"
             tabIndex={0}
           >
@@ -192,7 +194,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                 <button
                   className={cn(styles.arrow, styles.arrowLeft, isHovered ? styles.arrowVisible : '')}
                   onClick={goPrev}
-                  aria-label="Previous slide"
+                  aria-label={t('aria.previousSlide')}
                   type="button"
                   tabIndex={-1}
                 >
@@ -201,7 +203,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                 <button
                   className={cn(styles.arrow, styles.arrowRight, isHovered ? styles.arrowVisible : '')}
                   onClick={goNext}
-                  aria-label="Next slide"
+                  aria-label={t('aria.nextSlide')}
                   type="button"
                   tabIndex={-1}
                 >
@@ -212,7 +214,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
 
             {/* Dot Indicators */}
             {slideCount > 1 && (
-              <div className={styles.dots} role="tablist" aria-label="Slide navigation">
+              <div className={styles.dots} role="tablist" aria-label={t('aria.slideNavigation')}>
                 {slides.map((_, index) => (
                   <button
                     key={index}

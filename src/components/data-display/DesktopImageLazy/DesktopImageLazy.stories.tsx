@@ -89,6 +89,30 @@ export const ContainFit: Story = {
   },
 };
 
+export const Priority: Story = {
+  args: {
+    src: 'https://picsum.photos/seed/priority-desktop/800/600',
+    alt: 'Above-fold hero image',
+    width: 800,
+    height: 600,
+    aspectRatio: '4/3',
+    radius: 12,
+    priority: true,
+  },
+};
+
+export const WithDimensions: Story = {
+  args: {
+    src: 'https://picsum.photos/seed/dims/600/600',
+    alt: 'Product with explicit dimensions',
+    width: 600,
+    height: 600,
+    aspectRatio: '1/1',
+    radius: 8,
+    style: { maxWidth: 400 },
+  },
+};
+
 export const Gallery: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>

@@ -31,8 +31,10 @@
   position: relative;
   flex-shrink: 0;
 
-  &:hover:not(.disabled) {
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover:not(.disabled) {
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {

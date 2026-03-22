@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
@@ -27,6 +28,7 @@ const CloseIcon = () => (
 
 export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
   ({ open, onClose, children, closable = true, width = 480, title, className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     const popupRef = useFocusTrap<HTMLDivElement>(open, {
       onEscape: closable ? onClose : undefined,
     });
@@ -74,7 +76,7 @@ export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
             <button
               className={styles.closeBtn}
               onClick={onClose}
-              aria-label="Close"
+              aria-label={t('aria.close')}
               type="button"
             >
               <CloseIcon />

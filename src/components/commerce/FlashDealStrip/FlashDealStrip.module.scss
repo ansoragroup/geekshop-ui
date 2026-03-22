@@ -84,8 +84,10 @@
   transition: background $transition-fast;
   flex-shrink: 0;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.15);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
   }
 }
 
@@ -117,9 +119,11 @@
   transition: box-shadow $transition-fast, border-color $transition-fast;
   padding: 0;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-lg);
-    border-color: var(--gs-color-primary-light);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-lg);
+      border-color: var(--gs-color-primary-light);
+    }
   }
 }
 
@@ -160,8 +164,10 @@
   border-radius: $radius-md;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -258,8 +264,10 @@
   letter-spacing: 0.5px;
   padding: $spacing-xs $spacing-sm;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 

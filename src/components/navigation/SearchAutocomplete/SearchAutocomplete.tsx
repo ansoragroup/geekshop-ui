@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -82,6 +83,7 @@ export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteP
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [value, setValue] = useControllableState({
       value: valueProp,
       defaultValue,
@@ -195,7 +197,7 @@ export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteP
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             role="combobox"
-            aria-label="Search"
+            aria-label={t('aria.search')}
             aria-expanded={isOpen}
             aria-controls={isOpen ? 'search-listbox' : undefined}
             aria-haspopup="listbox"
@@ -206,7 +208,7 @@ export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteP
               type="button"
               className={styles.clearBtn}
               onClick={handleClearInput}
-              aria-label="Clear search"
+              aria-label={t('aria.clearSearch')}
               tabIndex={-1}
             >
               <CloseIcon />
@@ -216,7 +218,7 @@ export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteP
 
         {/* Dropdown */}
         {isOpen && hasContent && (
-          <div className={styles.dropdown} role="listbox" id="search-listbox" aria-label="Search suggestions">
+          <div className={styles.dropdown} role="listbox" id="search-listbox" aria-label={t('aria.searchSuggestions')}>
             {/* Recent searches */}
             {recentSearches.length > 0 && (
               <div className={styles.section}>

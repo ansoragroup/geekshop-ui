@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopOrderStatusBar.module.scss';
@@ -45,6 +46,7 @@ const PendingIcon = () => (
 
 export const DesktopOrderStatusBar = forwardRef<HTMLDivElement, DesktopOrderStatusBarProps>(
   ({ steps, currentStep, className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     const getStatus = useCallback(
       (index: number): DesktopOrderStepStatus => {
         if (index < currentStep) return 'completed';
@@ -59,7 +61,7 @@ export const DesktopOrderStatusBar = forwardRef<HTMLDivElement, DesktopOrderStat
         ref={ref}
         className={cn(styles.root, className)}
         role="navigation"
-        aria-label="Order progress"
+        aria-label={t('aria.orderProgress')}
         {...rest}
       >
         {steps.map((step, index) => {

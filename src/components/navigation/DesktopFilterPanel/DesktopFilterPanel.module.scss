@@ -53,8 +53,10 @@
   border-radius: $radius-sm;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -87,8 +89,10 @@
   color: var(--gs-text-secondary);
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -123,8 +127,10 @@
   text-align: left;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -214,9 +220,11 @@
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-text-tertiary);
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -233,8 +241,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 

@@ -53,8 +53,10 @@
   line-height: 1;
   transition: opacity $transition-fast;
 
-  &:hover {
-    opacity: 1;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

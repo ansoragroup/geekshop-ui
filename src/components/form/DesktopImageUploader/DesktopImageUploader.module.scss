@@ -22,9 +22,11 @@
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -67,12 +69,16 @@
   background: var(--gs-bg-page);
   border: 1px solid var(--gs-border-color);
 
-  &:hover .deleteBtn {
-    opacity: 1;
+  @media (hover: hover) {
+    &:hover .deleteBtn {
+      opacity: 1;
+    }
   }
 
-  &:hover .imageName {
-    opacity: 1;
+  @media (hover: hover) {
+    &:hover .imageName {
+      opacity: 1;
+    }
   }
 }
 
@@ -101,8 +107,10 @@
   transition: opacity $transition-fast, transform $transition-fast;
   z-index: 2;
 
-  &:hover {
-    transform: scale(1.15);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.15);
+    }
   }
 
   &:focus-visible {
@@ -143,10 +151,12 @@
   color: var(--gs-text-tertiary);
   transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
-    color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+      color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {

@@ -60,9 +60,11 @@
   z-index: 2;
   transition: color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-text-primary);
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-primary);
+      background: var(--gs-border-color);
+    }
   }
 
   &:focus-visible {
@@ -154,8 +156,10 @@
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &:focus-visible {
@@ -206,8 +210,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:disabled {
@@ -257,9 +263,11 @@
   transition: background $transition-fast, box-shadow $transition-fast;
   margin-top: auto;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {

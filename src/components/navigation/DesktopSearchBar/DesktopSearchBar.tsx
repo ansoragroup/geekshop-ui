@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -70,6 +71,7 @@ export const DesktopSearchBar = forwardRef<HTMLDivElement, DesktopSearchBarProps
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const inputRef = useRef<HTMLInputElement>(null);
 
     const [value, setValue] = useControllableState({
@@ -104,7 +106,7 @@ export const DesktopSearchBar = forwardRef<HTMLDivElement, DesktopSearchBarProps
                 className={styles.select}
                 value={selectedCategory}
                 onChange={(e) => onCategoryChange?.(e.target.value)}
-                aria-label="Search category"
+                aria-label={t('aria.searchCategory')}
               >
                 {categories.map((cat) => (
                   <option key={cat.value} value={cat.value}>
@@ -134,7 +136,7 @@ export const DesktopSearchBar = forwardRef<HTMLDivElement, DesktopSearchBarProps
           placeholder={placeholder}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          aria-label="Search"
+          aria-label={t('aria.search')}
         />
 
         {/* Clear button */}
@@ -142,7 +144,7 @@ export const DesktopSearchBar = forwardRef<HTMLDivElement, DesktopSearchBarProps
           <button
             className={styles.clearBtn}
             onClick={handleClear}
-            aria-label="Clear search"
+            aria-label={t('aria.clearSearch')}
             type="button"
           >
             <ClearIcon />
@@ -153,7 +155,7 @@ export const DesktopSearchBar = forwardRef<HTMLDivElement, DesktopSearchBarProps
         <button
           className={styles.submitBtn}
           onClick={handleSubmit}
-          aria-label="Search"
+          aria-label={t('aria.search')}
           type="button"
         >
           Search

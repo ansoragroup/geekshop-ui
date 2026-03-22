@@ -345,6 +345,15 @@ Without a visual reference, the agent is guessing what the component should look
 - Version branches (`v0.1.*`): keep only the last 5 — delete older ones when creating new versions
 - Release flow: merge feat/bugfix to main via PR → tag `v0.1.x` → triggers GitHub Release
 
+## Multi-Agent Work Rules (MANDATORY)
+- **ALWAYS use TeamCreate** for any task requiring 2+ agents. NEVER spawn standalone Agent calls for parallel work.
+- Every agent MUST be spawned with `team_name` parameter pointing to the active team.
+- After agents complete work: ALWAYS restart Storybook and verify visually via Playwright before committing.
+- After ANY SCSS/CSS change: take Playwright screenshots of affected components at 1280px viewport.
+- `'use client'` directive MUST be the FIRST line of a file, BEFORE any import statements.
+- `cn()` utility is ONLY for className merging: `className={cn(styles.root, className)}`. NEVER use cn() to replace array brackets `[]`.
+- Story variants MUST have genuinely different data (different products, prices, states). Identical data with different names = rejected.
+
 ## DO NOT
 - Add `default export` — library uses named exports only
 - Use `any` type — use `unknown` or proper generic
@@ -356,6 +365,9 @@ Without a visual reference, the agent is guessing what the component should look
 - Forget to export new components from src/components/index.ts
 - Use `maxWidth` without `width` in story decorators — causes container query elements to collapse
 - Style the container element itself from within @container queries — only descendants are affected
+- Spawn standalone Agent calls for parallel work — use TeamCreate + team_name
+- Use picsum.photos or placehold.co for product images — use Unsplash verified URLs
+- Place `'use client'` after import statements — must be FIRST line
 
 # ===== CONSILIUM v2: SELF-EVOLVING AUTONOMOUS AGENT TEAM =====
 

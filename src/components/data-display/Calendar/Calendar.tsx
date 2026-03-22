@@ -144,7 +144,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     },
     ref,
   ) => {
-    const { locale: ctxLocale } = useGeekShop();
+    const { t, locale: ctxLocale } = useGeekShop();
     const locale = localeProp ?? ctxLocale;
 
     const today = useMemo(() => new Date(), []);
@@ -294,7 +294,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             type="button"
             className={styles.navBtn}
             onClick={handlePrevMonth}
-            aria-label="Previous month"
+            aria-label={t('aria.previousMonth')}
           >
             <ChevronLeft />
           </button>
@@ -305,7 +305,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             type="button"
             className={styles.navBtn}
             onClick={handleNextMonth}
-            aria-label="Next month"
+            aria-label={t('aria.nextMonth')}
           >
             <ChevronRight />
           </button>

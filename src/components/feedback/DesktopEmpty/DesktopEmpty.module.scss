@@ -55,9 +55,11 @@
   cursor: pointer;
   transition: background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {

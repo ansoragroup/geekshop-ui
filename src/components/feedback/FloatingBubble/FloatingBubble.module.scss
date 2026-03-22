@@ -18,9 +18,11 @@
   transition: transform $transition-fast, box-shadow $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: var(--gs-shadow-xl);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: var(--gs-shadow-xl);
+    }
   }
 
   &:active {
@@ -39,8 +41,10 @@
   box-shadow: var(--gs-shadow-xl);
   transition: box-shadow $transition-fast;
 
-  &:hover {
-    transform: scale(1.1);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -76,8 +80,10 @@
   .root {
     transition: none;
 
-    &:hover {
-      transform: none;
+    @media (hover: hover) {
+      &:hover {
+        transform: none;
+      }
     }
 
     &:active {

@@ -25,9 +25,11 @@
     white-space: nowrap;
     line-height: 1;
 
-    &:hover {
-      border-color: var(--gs-color-primary);
-      color: var(--gs-color-primary);
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--gs-color-primary);
+        color: var(--gs-color-primary);
+      }
     }
 
     &:active {
@@ -67,8 +69,10 @@
   transition: all $transition-fast;
   white-space: nowrap;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -118,8 +122,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {

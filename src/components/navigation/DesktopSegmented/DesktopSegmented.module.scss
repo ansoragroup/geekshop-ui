@@ -54,8 +54,10 @@
   transition: color $transition-fast;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover:not(.active) {
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover:not(.active) {
+      color: var(--gs-text-primary);
+    }
   }
 
   &:focus-visible {

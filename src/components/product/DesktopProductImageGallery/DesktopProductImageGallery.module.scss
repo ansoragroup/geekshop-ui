@@ -47,8 +47,10 @@
   background: var(--gs-bg-card);
   transition: border-color $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-color-primary-light);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary-light);
+    }
   }
 
   &:focus-visible {

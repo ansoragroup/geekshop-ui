@@ -18,9 +18,11 @@
   transition: background-color $transition-fast, box-shadow $transition-fast;
   border-radius: $radius-md;
 
-  &:hover {
-    background: var(--gs-bg-page);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {
@@ -105,9 +107,11 @@
   transition: transform $transition-fast;
 }
 
-.interactive:hover .arrow {
-  transform: translateX(2px);
-  color: var(--gs-text-tertiary);
+@media (hover: hover) {
+  .interactive:hover .arrow {
+    transform: translateX(2px);
+    color: var(--gs-text-tertiary);
+  }
 }
 
 // --- Reduced motion ---

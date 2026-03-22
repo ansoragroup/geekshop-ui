@@ -35,8 +35,10 @@
   transition: border-color $transition-fast, box-shadow $transition-fast;
   text-align: left;
 
-  &:hover:not(:disabled) {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &:focus-visible {
@@ -156,8 +158,10 @@
   text-align: left;
   transition: background $transition-fast;
 
-  &:hover:not(:disabled) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {

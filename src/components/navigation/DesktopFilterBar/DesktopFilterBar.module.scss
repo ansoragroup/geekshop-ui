@@ -29,9 +29,11 @@
   white-space: nowrap;
   transition: border-color $transition-fast, background $transition-fast, color $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-text-tertiary);
-    color: var(--gs-text-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+      color: var(--gs-text-primary);
+    }
   }
 
   &.active {
@@ -94,8 +96,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:active {

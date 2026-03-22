@@ -169,6 +169,7 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
             alt={title}
             className={styles.image}
             loading="lazy"
+            decoding="async"
           />
 
           {/* Discount badge — top left */}

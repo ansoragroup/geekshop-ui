@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useMemo, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopCalendar.module.scss';
@@ -87,6 +88,7 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const today = useMemo(() => new Date(), []);
 
     const [viewYear, setViewYear] = useState(() =>
@@ -198,7 +200,7 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
             type="button"
             className={styles.navBtn}
             onClick={handlePrevMonth}
-            aria-label="Previous month"
+            aria-label={t('aria.previousMonth')}
           >
             <ChevronLeft />
           </button>
@@ -209,7 +211,7 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
             type="button"
             className={styles.navBtn}
             onClick={handleNextMonth}
-            aria-label="Next month"
+            aria-label={t('aria.nextMonth')}
           >
             <ChevronRight />
           </button>

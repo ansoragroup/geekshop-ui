@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -42,6 +43,7 @@ export const DesktopTabFilter = forwardRef<HTMLDivElement, DesktopTabFilterProps
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const firstKey = tabs[0]?.key ?? '';
 
     const [activeTab, setActiveTab] = useControllableState({
@@ -55,7 +57,7 @@ export const DesktopTabFilter = forwardRef<HTMLDivElement, DesktopTabFilterProps
         ref={ref}
         className={cn(styles.root, styles[variant], styles[size], className)}
         role="tablist"
-        aria-label="Filter tabs"
+        aria-label={t('aria.filterTabs')}
         {...rest}
       >
         {tabs.map((tab) => {

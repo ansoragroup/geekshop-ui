@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, useId, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
@@ -42,6 +43,7 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const titleId = useId();
 
     const trapRef = useFocusTrap<HTMLDivElement>(open, {
@@ -102,7 +104,7 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
                 type="button"
                 className={styles.closeBtn}
                 onClick={onClose}
-                aria-label="Close"
+                aria-label={t('aria.close')}
               >
                 <CloseIcon />
               </button>

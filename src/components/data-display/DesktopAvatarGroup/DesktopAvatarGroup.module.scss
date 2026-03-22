@@ -12,9 +12,11 @@
   box-shadow: 0 0 0 2px var(--gs-bg-white);
   transition: transform $transition-fast;
 
-  &:hover {
-    transform: scale(1.1);
-    z-index: 100 !important;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      z-index: 100 !important;
+    }
   }
 }
 
@@ -78,8 +80,10 @@
   flex-shrink: 0;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -118,8 +122,10 @@
   padding: $spacing-sm $desktop-spacing-sm;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 

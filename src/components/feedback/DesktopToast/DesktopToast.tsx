@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useEffect, type HTMLAttributes } from 'react';
 import styles from './DesktopToast.module.scss';
@@ -65,6 +66,7 @@ const iconMap: Record<DesktopToastType, () => JSX.Element> = {
 
 export const DesktopToast = forwardRef<HTMLDivElement, DesktopToastProps>(
   ({ type = 'info', message, duration = 3000, closable = true, onClose, visible, className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     useEffect(() => {
       if (!visible || duration === 0) return;
       const timer = setTimeout(() => {
@@ -95,7 +97,7 @@ export const DesktopToast = forwardRef<HTMLDivElement, DesktopToastProps>(
             className={styles.closeBtn}
             onClick={onClose}
             type="button"
-            aria-label="Close notification"
+            aria-label={t('aria.closeNotification')}
           >
             <CloseIcon />
           </button>

@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopLoading.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export type DesktopLoadingSize = 'sm' | 'md' | 'lg';
 
@@ -33,6 +34,7 @@ export const DesktopLoading = forwardRef<HTMLDivElement, DesktopLoadingProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const spinnerSize = SPINNER_SIZES[size];
     const strokeWidth = size === 'sm' ? 2.5 : 3;
 
@@ -45,7 +47,7 @@ export const DesktopLoading = forwardRef<HTMLDivElement, DesktopLoadingProps>(
           viewBox="0 0 32 32"
           fill="none"
           role="img"
-          aria-label="Loading"
+          aria-label={t('aria.loading')}
         >
           <circle cx="16" cy="16" r="13" stroke="#F0F0F0" strokeWidth={strokeWidth} />
           <path

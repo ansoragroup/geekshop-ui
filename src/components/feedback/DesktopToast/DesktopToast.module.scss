@@ -61,9 +61,11 @@
   border-radius: $radius-sm;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
-    color: var(--gs-text-secondary);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+      color: var(--gs-text-secondary);
+    }
   }
 
   &:focus-visible {

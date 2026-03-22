@@ -31,8 +31,10 @@
   caret-color: var(--gs-color-primary);
   outline: none;
 
-  &:hover:not(.disabled):not(.error) {
-    border-color: var(--gs-text-tertiary);
+  @media (hover: hover) {
+    &:hover:not(.disabled):not(.error) {
+      border-color: var(--gs-text-tertiary);
+    }
   }
 
   &:focus-visible {

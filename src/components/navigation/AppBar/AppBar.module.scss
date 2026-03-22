@@ -39,16 +39,20 @@
   .iconBtn {
     color: var(--gs-text-white);
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.15);
+    @media (hover: hover) {
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
     }
   }
 
   .locationBtn {
     color: var(--gs-text-white);
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.15);
+    @media (hover: hover) {
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
     }
   }
 }
@@ -78,16 +82,20 @@
   .iconBtn {
     color: var(--gs-text-secondary);
 
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
+    @media (hover: hover) {
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
     }
   }
 
   .locationBtn {
     color: var(--gs-text-primary);
 
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
+    @media (hover: hover) {
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
     }
   }
 }

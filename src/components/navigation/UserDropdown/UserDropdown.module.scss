@@ -20,8 +20,10 @@
   transition: background $transition-fast, box-shadow $transition-fast;
   overflow: hidden;
 
-  &:hover {
-    background: var(--gs-border-color);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+    }
   }
 
   &:focus-visible {
@@ -156,8 +158,10 @@
   transition: background $transition-fast;
   min-height: 40px;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -169,8 +173,10 @@
 .menuItemDanger {
   color: var(--gs-color-error);
 
-  &:hover {
-    background: rgba($color-error, 0.06);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba($color-error, 0.06);
+    }
   }
 }
 
@@ -212,8 +218,10 @@
   cursor: pointer;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
   }
 
   &:focus-visible {
@@ -235,9 +243,11 @@
   cursor: pointer;
   transition: border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    border-color: var(--gs-text-tertiary);
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {

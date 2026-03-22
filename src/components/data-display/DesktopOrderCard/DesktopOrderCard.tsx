@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopOrderCard.module.scss';
@@ -91,6 +92,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const Wrapper = href ? 'a' : 'div';
     const linkProps = href ? { href, target } : {};
     const handleAction = useCallback(
@@ -121,7 +123,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
 
         {/* Middle row: product thumbnails + summary */}
         <div className={styles.middleRow}>
-          <div className={styles.thumbnails} role="group" aria-label="Order products">
+          <div className={styles.thumbnails} role="group" aria-label={t('aria.orderProducts')}>
             {visibleProducts.map((product) => (
               <img
                 key={product.id}

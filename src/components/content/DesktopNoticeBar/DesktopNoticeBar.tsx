@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopNoticeBar.module.scss';
@@ -86,6 +87,7 @@ export const DesktopNoticeBar = forwardRef<HTMLDivElement, DesktopNoticeBarProps
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [visible, setVisible] = useState(true);
 
     const handleDismiss = useCallback(() => {
@@ -116,7 +118,7 @@ export const DesktopNoticeBar = forwardRef<HTMLDivElement, DesktopNoticeBarProps
             type="button"
             className={styles.dismissButton}
             onClick={handleDismiss}
-            aria-label="Dismiss notice"
+            aria-label={t('aria.dismissNotice')}
           >
             <CloseIcon />
           </button>

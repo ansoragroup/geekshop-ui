@@ -12,8 +12,10 @@
   border: 1px solid var(--gs-border-color);
   transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -37,8 +39,10 @@
   transition: border-color $transition-fast;
   flex-shrink: 0;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+    }
   }
 
   &:focus-visible {
@@ -127,9 +131,11 @@
   transition: color $transition-fast, background $transition-fast;
   flex-shrink: 0;
 
-  &:hover {
-    color: var(--gs-color-error);
-    background: rgba($color-error, 0.08);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-error);
+      background: rgba($color-error, 0.08);
+    }
   }
 
   &:focus-visible {

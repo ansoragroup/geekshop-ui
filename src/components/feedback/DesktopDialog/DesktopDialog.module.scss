@@ -83,8 +83,10 @@
   color: var(--gs-text-secondary);
   border: 1px solid var(--gs-border-color);
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 
   &:focus-visible {
@@ -98,9 +100,11 @@
   color: var(--gs-text-white);
   border: none;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:focus-visible {
@@ -114,9 +118,11 @@
   color: var(--gs-text-white);
   border: none;
 
-  &:hover {
-    background: color.adjust($color-error, $lightness: -8%);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: color.adjust($color-error, $lightness: -8%);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:focus-visible {

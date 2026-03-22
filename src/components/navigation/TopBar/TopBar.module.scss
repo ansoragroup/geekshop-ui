@@ -43,8 +43,10 @@
     text-decoration: none;
     transition: color $transition-fast;
 
-    &:hover {
-      color: var(--gs-color-primary);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--gs-color-primary);
+      }
     }
   }
 
@@ -59,8 +61,10 @@
     border-radius: $radius-xs;
     transition: color $transition-fast;
 
-    &:hover {
-      color: var(--gs-color-primary);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--gs-color-primary);
+      }
     }
   }
 }

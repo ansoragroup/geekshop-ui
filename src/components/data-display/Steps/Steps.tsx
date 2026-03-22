@@ -1,6 +1,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Steps.module.scss';
+import { useGeekShop } from '../../../i18n';
 
 export interface StepItem {
   /** Step title */
@@ -39,12 +40,13 @@ const CheckIcon = () => (
 
 export const Steps = forwardRef<HTMLDivElement, StepsProps>(
   ({ current, items, direction = 'horizontal', size = 'md', className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     return (
       <div
         ref={ref}
         className={cn(styles.root, styles[`direction-${direction}`], styles[`size-${size}`], className)}
         role="list"
-        aria-label="Progress steps"
+        aria-label={t('aria.progressSteps')}
         {...rest}
       >
         {items.map((item, index) => {

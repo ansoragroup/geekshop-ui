@@ -35,8 +35,10 @@
   font-weight: $font-weight-regular;
   transition: background $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -57,9 +59,11 @@
   color: var(--gs-text-tertiary);
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover {
-    background: var(--gs-bg-page);
-    color: var(--gs-color-error);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+      color: var(--gs-color-error);
+    }
   }
 
   &:focus-visible {
@@ -137,9 +141,11 @@
     border-bottom: none;
   }
 
-  &:hover {
-    .valueCell {
-      background: rgba(0, 0, 0, 0.01);
+  @media (hover: hover) {
+    &:hover {
+      .valueCell {
+        background: rgba(0, 0, 0, 0.01);
+      }
     }
   }
 }

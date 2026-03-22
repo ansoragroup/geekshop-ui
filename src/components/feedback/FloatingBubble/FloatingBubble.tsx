@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import {
   forwardRef,
@@ -52,6 +53,7 @@ export const FloatingBubble = forwardRef<HTMLDivElement, FloatingBubbleProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [pos, setPos] = useState(position);
     const [isDragging, setIsDragging] = useState(false);
     const dragRef = useRef<{
@@ -173,7 +175,7 @@ export const FloatingBubble = forwardRef<HTMLDivElement, FloatingBubbleProps>(
         }}
         role="button"
         tabIndex={0}
-        aria-label="Customer support"
+        aria-label={t('aria.customerSupport')}
         onMouseDown={(e) => handleStart(e.clientX, e.clientY)}
         onTouchStart={(e) => handleStart(e.touches[0].clientX, e.touches[0].clientY)}
         onKeyDown={handleKeyDown}

@@ -87,10 +87,12 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   transition: color $transition-fast, background $transition-fast, transform $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-sale);
-    background: var(--gs-bg-white);
-    transform: scale(1.1);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-sale);
+      background: var(--gs-bg-white);
+      transform: scale(1.1);
+    }
   }
 
   &.wishlisted {

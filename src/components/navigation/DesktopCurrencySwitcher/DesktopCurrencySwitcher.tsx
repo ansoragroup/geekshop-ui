@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -64,6 +65,7 @@ export const DesktopCurrencySwitcher = forwardRef<HTMLDivElement, DesktopCurrenc
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [selected, setSelected] = useControllableState<CurrencyCode>({
       value: valueProp,
       defaultValue,
@@ -170,7 +172,7 @@ export const DesktopCurrencySwitcher = forwardRef<HTMLDivElement, DesktopCurrenc
         </button>
 
         {isOpen && (
-          <div className={styles.dropdown} role="listbox" aria-label="Select currency">
+          <div className={styles.dropdown} role="listbox" aria-label={t('aria.selectCurrency')}>
             {currencies.map((currency, index) => {
               const isActive = currency.code === selected;
               return (

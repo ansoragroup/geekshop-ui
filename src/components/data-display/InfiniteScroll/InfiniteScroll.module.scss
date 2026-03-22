@@ -84,8 +84,10 @@
   cursor: pointer;
   transition: background-color $transition-fast;
 
-  &:hover {
-    background-color: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--gs-color-primary-bg);
+    }
   }
 
   &:active {

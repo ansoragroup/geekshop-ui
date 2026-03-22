@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopSidebar.module.scss';
@@ -61,6 +62,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [localMinPrice, setLocalMinPrice] = useState<string>(
       selectedPriceRange?.min?.toString() ?? '',
     );
@@ -125,7 +127,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
     const hasSections = categories.length > 0 || brands.length > 0 || priceRange || onRatingChange;
 
     return (
-      <div ref={ref} className={wrapperClass} role="navigation" aria-label="Filters" {...rest}>
+      <div ref={ref} className={wrapperClass} role="navigation" aria-label={t('aria.filters')} {...rest}>
         {/* Categories */}
         {categories.length > 0 && (
           <div className={styles.section}>
@@ -163,7 +165,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
                 onChange={handlePriceMinChange}
                 min={priceRange.min}
                 max={priceRange.max}
-                aria-label="Minimum price"
+                aria-label={t('aria.minimumPrice')}
               />
               <span className={styles.priceSeparator}>&mdash;</span>
               <input
@@ -174,7 +176,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
                 onChange={handlePriceMaxChange}
                 min={priceRange.min}
                 max={priceRange.max}
-                aria-label="Maximum price"
+                aria-label={t('aria.maximumPrice')}
               />
             </div>
           </div>
@@ -204,7 +206,7 @@ export const DesktopSidebar = forwardRef<HTMLDivElement, DesktopSidebarProps>(
         {onRatingChange && (
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Rating</h3>
-            <div className={styles.ratingList} role="radiogroup" aria-label="Filter by rating">
+            <div className={styles.ratingList} role="radiogroup" aria-label={t('aria.filterByRating')}>
               {[5, 4, 3, 2, 1].map((rating) => (
                 <button
                   key={rating}

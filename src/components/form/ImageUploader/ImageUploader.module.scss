@@ -42,8 +42,10 @@
   transition: transform $transition-fast;
   z-index: 1;
 
-  &:hover {
-    transform: scale(1.15);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.15);
+    }
   }
 
   &:focus-visible {
@@ -67,9 +69,11 @@
   -webkit-tap-highlight-color: transparent;
   min-height: 44px;
 
-  &:hover {
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {

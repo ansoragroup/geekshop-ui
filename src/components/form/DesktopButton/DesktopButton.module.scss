@@ -33,8 +33,10 @@
   background: var(--gs-color-primary);
   color: var(--gs-text-white);
 
-  &:hover:not(.disabled):not(.loading) {
-    background: var(--gs-color-primary-dark);
+  @media (hover: hover) {
+    &:hover:not(.disabled):not(.loading) {
+      background: var(--gs-color-primary-dark);
+    }
   }
 }
 
@@ -42,8 +44,10 @@
   background: var(--gs-color-primary-bg);
   color: var(--gs-color-primary);
 
-  &:hover:not(.disabled):not(.loading) {
-    background: color.adjust($color-primary-bg, $lightness: -3%);
+  @media (hover: hover) {
+    &:hover:not(.disabled):not(.loading) {
+      background: color.adjust($color-primary-bg, $lightness: -3%);
+    }
   }
 }
 
@@ -52,8 +56,10 @@
   color: var(--gs-color-primary);
   border: 1.5px solid var(--gs-color-primary);
 
-  &:hover:not(.disabled):not(.loading) {
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover:not(.disabled):not(.loading) {
+      background: var(--gs-color-primary-bg);
+    }
   }
 }
 
@@ -61,8 +67,10 @@
   background: transparent;
   color: var(--gs-text-primary);
 
-  &:hover:not(.disabled):not(.loading) {
-    background: var(--gs-bg-page);
+  @media (hover: hover) {
+    &:hover:not(.disabled):not(.loading) {
+      background: var(--gs-bg-page);
+    }
   }
 }
 
@@ -70,8 +78,10 @@
   background: var(--gs-color-error);
   color: var(--gs-text-white);
 
-  &:hover:not(.disabled):not(.loading) {
-    background: color.adjust($color-error, $lightness: -8%);
+  @media (hover: hover) {
+    &:hover:not(.disabled):not(.loading) {
+      background: color.adjust($color-error, $lightness: -8%);
+    }
   }
 }
 

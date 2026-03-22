@@ -12,8 +12,10 @@
   border: 1px solid var(--gs-border-color);
   transition: border-color $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 }
 
@@ -66,10 +68,12 @@
   cursor: pointer;
   transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
 
-  &:hover {
-    color: var(--gs-color-primary);
-    border-color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -82,10 +86,12 @@
   color: #ff0000;
   border-color: #ff0000;
 
-  &:hover {
-    color: #ff0000;
-    border-color: #ff0000;
-    background: rgba(#ff0000, 0.05);
+  @media (hover: hover) {
+    &:hover {
+      color: #ff0000;
+      border-color: #ff0000;
+      background: rgba(#ff0000, 0.05);
+    }
   }
 }
 
@@ -120,9 +126,11 @@
   white-space: nowrap;
   transition: background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-bg);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {
@@ -152,9 +160,11 @@
   white-space: nowrap;
   transition: background $transition-fast, box-shadow $transition-fast;
 
-  &:hover {
-    background: var(--gs-color-primary-dark);
-    box-shadow: var(--gs-shadow-sm);
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+      box-shadow: var(--gs-shadow-sm);
+    }
   }
 
   &:active {

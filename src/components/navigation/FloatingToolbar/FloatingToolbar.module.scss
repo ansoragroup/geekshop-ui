@@ -46,10 +46,12 @@
     border-bottom: 1px solid var(--gs-border-color-light);
   }
 
-  &:hover {
-    width: 160px;
-    color: var(--gs-color-primary);
-    background: var(--gs-color-primary-bg);
+  @media (hover: hover) {
+    &:hover {
+      width: 160px;
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
   }
 
   &:focus-visible {
@@ -113,8 +115,10 @@
   transition: opacity $transition-fast;
   padding-right: $desktop-spacing-md;
 
-  .item:hover & {
-    opacity: 1;
+  @media (hover: hover) {
+    .item:hover & {
+      opacity: 1;
+    }
   }
 }
 
@@ -124,8 +128,10 @@
   .item {
     transition: none;
 
-    &:hover {
-      width: 160px;
+    @media (hover: hover) {
+      &:hover {
+        width: 160px;
+      }
     }
   }
 

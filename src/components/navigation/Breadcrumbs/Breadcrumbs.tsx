@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './Breadcrumbs.module.scss';
@@ -23,12 +24,13 @@ export interface BreadcrumbsProps extends HTMLAttributes<HTMLElement> {
 
 export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
   ({ items, separator = '/', maxItems, className, ...rest }, ref) => {
+  const { t } = useGeekShop();
     const rootClass = cn(styles.breadcrumbs, className);
 
     const visibleItems = getVisibleItems(items, maxItems);
 
     return (
-      <nav ref={ref} className={rootClass} aria-label="Breadcrumb" {...rest}>
+      <nav ref={ref} className={rootClass} aria-label={t('aria.breadcrumb')} {...rest}>
         <ol className={styles.list}>
           {visibleItems.map((item, index) => {
             const isLast = index === visibleItems.length - 1;

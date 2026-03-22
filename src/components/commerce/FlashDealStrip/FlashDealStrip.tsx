@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useRef, type HTMLAttributes, type MouseEvent } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
@@ -106,6 +107,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const countdown = useCountdown(endTime);
     const scrollRef = useRef<HTMLDivElement>(null);
     const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -146,7 +148,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
             <span className={styles.title}>{title}</span>
           </div>
 
-          <div className={styles.countdown} role="timer" aria-label="Flash deal countdown">
+          <div className={styles.countdown} role="timer" aria-label={t('aria.flashDealCountdown')}>
             <span className={styles.countdownLabel}>Ends in:</span>
             <span className={styles.countdownDigit}>{pad(countdown.hours)}</span>
             <span className={styles.countdownSep}>:</span>
@@ -173,7 +175,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
               type="button"
               className={cn(styles.scrollArrow, styles.scrollArrowLeft)}
               onClick={() => scrollBy('left')}
-              aria-label="Scroll left"
+              aria-label={t('aria.scrollLeft')}
             >
               <ChevronLeftIcon />
             </button>
@@ -225,7 +227,7 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
               type="button"
               className={cn(styles.scrollArrow, styles.scrollArrowRight)}
               onClick={() => scrollBy('right')}
-              aria-label="Scroll right"
+              aria-label={t('aria.scrollRight')}
             >
               <ChevronRightIcon />
             </button>

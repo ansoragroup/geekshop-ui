@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes, type KeyboardEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -63,6 +64,7 @@ export const DesktopLanguageSwitcher = forwardRef<HTMLDivElement, DesktopLanguag
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [selected, setSelected] = useControllableState<Locale>({
       value: valueProp,
       defaultValue,
@@ -169,7 +171,7 @@ export const DesktopLanguageSwitcher = forwardRef<HTMLDivElement, DesktopLanguag
         </button>
 
         {isOpen && (
-          <div className={styles.dropdown} role="listbox" aria-label="Select language">
+          <div className={styles.dropdown} role="listbox" aria-label={t('aria.selectLanguage')}>
             {languages.map((lang, index) => {
               const isActive = lang.code === selected;
               return (

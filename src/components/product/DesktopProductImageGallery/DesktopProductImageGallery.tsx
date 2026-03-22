@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useCallback, useRef, type HTMLAttributes, type KeyboardEvent, type MouseEvent as ReactMouseEvent } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
@@ -31,6 +32,7 @@ export const DesktopProductImageGallery = forwardRef<HTMLDivElement, DesktopProd
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const [activeIndex, setActiveIndex] = useControllableState({
       value: currentIndex,
       defaultValue: 0,
@@ -100,7 +102,7 @@ export const DesktopProductImageGallery = forwardRef<HTMLDivElement, DesktopProd
           className={styles.thumbnails}
           ref={thumbnailsRef}
           role="tablist"
-          aria-label="Product image thumbnails"
+          aria-label={t('aria.productThumbnails')}
           onKeyDown={handleThumbnailKeyDown}
         >
           {safeImages.map((src, index) => (

@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopDeliveryCard.module.scss';
@@ -103,6 +104,7 @@ export const DesktopDeliveryCard = forwardRef<HTMLDivElement, DesktopDeliveryCar
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const step = STATUS_STEP[status];
     const statusLabel = STATUS_LABEL[status];
     const statusColor = STATUS_COLOR[status];
@@ -179,7 +181,7 @@ export const DesktopDeliveryCard = forwardRef<HTMLDivElement, DesktopDeliveryCar
                   type="button"
                   className={styles.copyBtn}
                   onClick={handleCopy}
-                  aria-label="Copy tracking number"
+                  aria-label={t('aria.copyTrackingNumber')}
                 >
                   <CopyIcon />
                 </button>
@@ -203,7 +205,7 @@ export const DesktopDeliveryCard = forwardRef<HTMLDivElement, DesktopDeliveryCar
             type="button"
             className={styles.trackBtn}
             onClick={handleTrack}
-            aria-label="Track delivery"
+            aria-label={t('aria.trackDelivery')}
           >
             <span>Track</span>
             <ChevronRightIcon />

@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useEffect, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopFilterBar.module.scss';
@@ -38,6 +39,7 @@ const ChevronDownIcon = () => (
 
 export const DesktopFilterBar = forwardRef<HTMLDivElement, DesktopFilterBarProps>(
   ({ items, onItemClick, onOptionSelect, className = '', ...rest }, ref) => {
+  const { t } = useGeekShop();
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -68,7 +70,7 @@ export const DesktopFilterBar = forwardRef<HTMLDivElement, DesktopFilterBarProps
     };
 
     return (
-      <div ref={ref} className={cn(styles.filterBar, className)} role="toolbar" aria-label="Filters" {...rest}>
+      <div ref={ref} className={cn(styles.filterBar, className)} role="toolbar" aria-label={t('aria.filters')} {...rest}>
         {items.map((item) => {
           const hasDropdown = item.options && item.options.length > 0;
           const isOpen = openDropdown === item.value;

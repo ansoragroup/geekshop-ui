@@ -1,4 +1,5 @@
 'use client';
+import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './DesktopMiniCart.module.scss';
@@ -91,6 +92,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
     },
     ref,
   ) => {
+  const { t } = useGeekShop();
     const isControlled = openProp !== undefined;
     const [internalOpen, setInternalOpen] = useState(false);
     const isOpen = isControlled ? openProp : internalOpen;
@@ -192,7 +194,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
             onClick={handleToggle}
             aria-haspopup="true"
             aria-expanded={isOpen}
-            aria-label="Shopping cart"
+            aria-label={t('aria.shoppingCart')}
           >
             <CartIcon />
             {totalItems > 0 && (
@@ -203,7 +205,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
 
         {/* Dropdown panel */}
         {isOpen && (
-          <div className={styles.dropdown} role="dialog" aria-label="Shopping cart">
+          <div className={styles.dropdown} role="dialog" aria-label={t('aria.shoppingCart')}>
             {items.length === 0 ? (
               <div className={styles.emptyState}>
                 <span className={styles.emptyIcon}>
@@ -223,7 +225,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
                     type="button"
                     className={styles.closeBtn}
                     onClick={handleClose}
-                    aria-label="Close cart"
+                    aria-label={t('aria.closeCart')}
                   >
                     <RemoveIcon />
                   </button>
