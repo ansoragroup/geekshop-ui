@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopSkuSelector.module.scss';
 
@@ -30,12 +31,6 @@ export interface DesktopSkuSelectorProps extends Omit<HTMLAttributes<HTMLDivElem
   price?: number;
   /** Preview image URL that changes with selection */
   image?: string;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -162,7 +157,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
             )}
             {price !== undefined && (
               <span className={styles.priceText}>
-                {formatPrice(price)} so'm
+                {formatNumber(price)} so'm
               </span>
             )}
           </div>

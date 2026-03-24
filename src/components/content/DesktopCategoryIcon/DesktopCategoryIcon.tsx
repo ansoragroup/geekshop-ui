@@ -25,7 +25,7 @@ function DesktopCategoryIconInner<C extends ElementType = 'div'>(
     as,
     icon,
     label,
-    color = '#FF5000',
+    color = 'var(--gs-color-primary, #FF5000)',
     badgeCount,
     onClick,
     className = '',

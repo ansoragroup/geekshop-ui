@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, type ElementType, type MouseEvent } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './DesktopDealCard.module.scss';
@@ -36,10 +37,6 @@ export type DesktopDealCardProps<C extends ElementType = 'div'> = DesktopDealCar
 } & Omit<React.ComponentPropsWithoutRef<C>, keyof DesktopDealCardOwnProps | 'as'>;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
-}
 
 function pad(n: number): string {
   return String(n).padStart(2, '0');
@@ -185,8 +182,8 @@ function DesktopDealCardInner<C extends ElementType = 'div'>(
 
           {/* Price row */}
           <div className={styles.priceRow}>
-            <span className={styles.currentPrice}>{formatPrice(price)} so'm</span>
-            <span className={styles.originalPrice}>{formatPrice(originalPrice)} so'm</span>
+            <span className={styles.currentPrice}>{formatNumber(price)} so'm</span>
+            <span className={styles.originalPrice}>{formatNumber(originalPrice)} so'm</span>
             <span className={styles.discountTag}>-{discount}%</span>
           </div>
 

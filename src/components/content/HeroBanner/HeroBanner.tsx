@@ -28,7 +28,7 @@ export const HeroBanner = forwardRef<HTMLDivElement, HeroBannerProps>(
       title,
       subtitle,
       badge,
-      bgGradient = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
+      bgGradient = 'linear-gradient(135deg, var(--gs-color-primary, #FF5000) 0%, var(--gs-color-primary-light, #FF7A33) 100%)',
       image,
       onClick,
       href,

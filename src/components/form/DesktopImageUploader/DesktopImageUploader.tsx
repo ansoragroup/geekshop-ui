@@ -36,7 +36,7 @@ const PlusIcon = () => (
 );
 
 const UploadIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 21l-5-5-5 5" />
     <path d="M16 16v10" />
     <path d="M27.4 23.4A5 5 0 0024 14h-1.3A8 8 0 104 18.3" />
@@ -47,7 +47,7 @@ const UploadIcon = () => (
 const DeleteIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
     <circle cx="7" cy="7" r="7" fill="rgba(0,0,0,0.55)" />
-    <path d="M4.5 4.5l5 5M9.5 4.5l-5 5" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" />
+    <path d="M4.5 4.5l5 5M9.5 4.5l-5 5" stroke="var(--gs-bg-card, #fff)" strokeWidth="1.3" strokeLinecap="round" />
   </svg>
 );
 

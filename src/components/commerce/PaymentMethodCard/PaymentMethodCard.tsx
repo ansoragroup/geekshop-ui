@@ -15,7 +15,7 @@ export interface PaymentMethod {
   isDefault?: boolean;
 }
 
-export interface PaymentMethodCardProps {
+export interface PaymentMethodCardProps extends React.HTMLAttributes<HTMLDivElement> {
   method: PaymentMethod;
   /** Whether this card is currently selected */
   selected?: boolean;
@@ -23,8 +23,6 @@ export interface PaymentMethodCardProps {
   selectable?: boolean;
   onSelect?: (method: PaymentMethod) => void;
   onDelete?: (method: PaymentMethod) => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 const PAYMENT_ICONS: Record<PaymentType, { bg: string; text: string; label: string }> = {
@@ -34,7 +32,7 @@ const PAYMENT_ICONS: Record<PaymentType, { bg: string; text: string; label: stri
   humo: { bg: '#5B2D8E', text: '#FFFFFF', label: 'Humo' },
   click: { bg: '#00AEEF', text: '#FFFFFF', label: 'Click' },
   payme: { bg: '#33CCCC', text: '#FFFFFF', label: 'Payme' },
-  cash: { bg: '#F5F5F5', text: '#1A1A1A', label: '' },
+  cash: { bg: 'var(--gs-bg-page, #F5F5F5)', text: 'var(--gs-text-primary, #1A1A1A)', label: '' },
 };
 
 function PaymentIcon({ type, cashLabel }: { type: PaymentType; cashLabel?: string }) {
@@ -67,10 +65,10 @@ function PaymentIcon({ type, cashLabel }: { type: PaymentType; cashLabel?: strin
 
 function CheckIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <path
         d="M3 7L6 10L11 4"
-        stroke="#FFF"
+        stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -107,6 +105,7 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
       onSelect,
       onDelete,
       className = '',
+      ...rest
     },
     ref,
   ) {
@@ -139,6 +138,7 @@ export const PaymentMethodCard = forwardRef<HTMLDivElement, PaymentMethodCardPro
         tabIndex={selectable ? 0 : undefined}
         onClick={selectable ? handleSelect : undefined}
         onKeyDown={selectable ? handleKeyDown : undefined}
+        {...rest}
       >
         <PaymentIcon type={method.type} cashLabel={t('commerce.cash')} />
 

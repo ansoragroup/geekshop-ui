@@ -40,10 +40,10 @@ const STATUS_KEY: Record<DeliveryStatus, string> = {
 };
 
 const STATUS_COLOR: Record<DeliveryStatus, string> = {
-  pending: '#FFA726',
-  shipped: '#1890FF',
-  inTransit: '#1890FF',
-  delivered: '#07C160',
+  pending: 'var(--gs-color-warning, #FFA726)',
+  shipped: 'var(--gs-color-info, #1890FF)',
+  inTransit: 'var(--gs-color-info, #1890FF)',
+  delivered: 'var(--gs-color-success, #07C160)',
 };
 
 function PackageIcon() {

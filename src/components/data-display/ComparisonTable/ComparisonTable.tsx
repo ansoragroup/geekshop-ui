@@ -68,7 +68,7 @@ function formatCellValue(value: string | number | boolean | undefined, unit?: st
 
 const CloseIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M4 4l8 8M12 4l-8 8" stroke="#999" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M4 4l8 8M12 4l-8 8" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 

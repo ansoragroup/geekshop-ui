@@ -45,15 +45,15 @@ const DAY_NAMES: Record<string, string[]> = {
 
 const CalendarIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="2" y="3" width="12" height="11" rx="2" stroke="#999" strokeWidth="1.3" />
-    <path d="M2 6.5h12" stroke="#999" strokeWidth="1.3" />
-    <path d="M5 1.5v3M11 1.5v3" stroke="#999" strokeWidth="1.3" strokeLinecap="round" />
+    <rect x="2" y="3" width="12" height="11" rx="2" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.3" />
+    <path d="M2 6.5h12" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.3" />
+    <path d="M5 1.5v3M11 1.5v3" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.3" strokeLinecap="round" />
   </svg>
 );
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M5 5l10 10M15 5l-10 10" stroke="#999" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M5 5l10 10M15 5l-10 10" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.8" strokeLinecap="round" />
   </svg>
 );
 

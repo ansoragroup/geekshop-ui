@@ -98,7 +98,7 @@ function DesktopColorSwatchInner(
                 ) : (
                   <span
                     className={styles.swatchColor}
-                    style={{ backgroundColor: option.color ?? '#ccc' }}
+                    style={{ backgroundColor: option.color ?? 'var(--gs-text-placeholder, #ccc)' }}
                   />
                 )}
                 {isSelected && (

@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './DesktopMiniCart.module.scss';
 
@@ -36,12 +37,6 @@ export interface DesktopMiniCartProps extends HTMLAttributes<HTMLDivElement> {
   onRemoveItem?: (id: string | number) => void;
   /** Custom trigger element */
   trigger?: ReactNode;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('en-US').replace(/,/g, ' ');
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
@@ -247,7 +242,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
                           <span className={styles.itemVariant}>{item.variant}</span>
                         )}
                         <div className={styles.itemBottom}>
-                          <span className={styles.itemPrice}>{formatPrice(item.price)} sum</span>
+                          <span className={styles.itemPrice}>{formatNumber(item.price)} sum</span>
                           <span className={styles.itemQuantity}>x{item.quantity}</span>
                         </div>
                       </div>
@@ -269,7 +264,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
                 <div className={styles.footer}>
                   <div className={styles.subtotal}>
                     <span className={styles.subtotalLabel}>Subtotal</span>
-                    <span className={styles.subtotalValue}>{formatPrice(subtotal)} sum</span>
+                    <span className={styles.subtotalValue}>{formatNumber(subtotal)} sum</span>
                   </div>
                   <div className={styles.actions}>
                     <button

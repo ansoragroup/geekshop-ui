@@ -35,8 +35,8 @@ const PLATFORM_COLORS: Record<SharePlatform, string> = {
   whatsapp: '#25D366',
   twitter: '#1DA1F2',
   facebook: '#1877F2',
-  email: '#666666',
-  sms: '#FF5000',
+  email: 'var(--gs-text-secondary, #666666)',
+  sms: 'var(--gs-color-primary, #FF5000)',
 };
 
 function getPlatformIcon(platform: SharePlatform): JSX.Element {

@@ -23,6 +23,12 @@ Instructions:
 - [ ] container-type: inline-size (if should be responsive)
 - [ ] prefers-reduced-motion respected
 - [ ] CSS custom properties for themeable values
+- [ ] border-radius uses $radius-* or $desktop-radius-* tokens
+- [ ] spacing uses $spacing-* or $desktop-spacing-* tokens
+- [ ] shadows use $shadow-* or $desktop-shadow-* tokens
+- [ ] font-size uses $font-size-* or $desktop-font-size-* tokens
+- [ ] z-index uses $z-index-* scale
+- [ ] No hardcoded hex colors in SCSS or TSX (use var(--gs-*) or currentColor)
 
 **Accessibility:**
 - [ ] Proper semantic HTML (button for buttons, not div)

@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './SearchAutocomplete.module.scss';
@@ -58,10 +59,6 @@ const CloseIcon = () => (
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 );
-
-function formatPrice(price: number): string {
-  return price.toLocaleString('en-US').replace(/,/g, ' ');
-}
 
 export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteProps>(
   (
@@ -304,7 +301,7 @@ export const SearchAutocomplete = forwardRef<HTMLDivElement, SearchAutocompleteP
                       />
                       <div className={styles.productInfo}>
                         <span className={styles.productTitle}>{product.title}</span>
-                        <span className={styles.productPrice}>{formatPrice(product.price)} sum</span>
+                        <span className={styles.productPrice}>{formatNumber(product.price)} sum</span>
                       </div>
                     </button>
                   ))}

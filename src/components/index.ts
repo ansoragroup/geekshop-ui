@@ -487,7 +487,7 @@ export { THEME_PRESETS, THEME_PRESET_NAMES } from '../theme/presets';
 export type { ThemePreset, ThemePresetConfig } from '../theme/presets';
 
 // Utils
-export { formatPrice } from '../utils';
+export { formatPrice, formatNumber, formatCount, formatCompactPrice } from '../utils';
 
 // SEO — JSON-LD structured data utilities
 export {

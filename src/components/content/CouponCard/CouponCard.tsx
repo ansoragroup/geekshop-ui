@@ -30,7 +30,7 @@ export const CouponCard = forwardRef<HTMLDivElement, CouponCardProps>(
       code,
       expiryDate,
       minAmount,
-      color = '#FF5000',
+      color = 'var(--gs-color-primary, #FF5000)',
       onUse,
       href,
       target,

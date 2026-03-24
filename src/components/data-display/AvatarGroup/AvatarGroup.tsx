@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '../../../utils/cn';
 import { forwardRef, Children, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './AvatarGroup.module.scss';

@@ -45,13 +45,13 @@ export interface CascadePickerProps extends Omit<HTMLAttributes<HTMLDivElement>,
 
 const ChevronIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M4 6l4 4 4-4" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 6l4 4 4-4" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M5 5l10 10M15 5l-10 10" stroke="#999" strokeWidth="1.8" strokeLinecap="round" />
+    <path d="M5 5l10 10M15 5l-10 10" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.8" strokeLinecap="round" />
   </svg>
 );
 

@@ -5,7 +5,7 @@ import { forwardRef, useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import styles from './NoticeBar.module.scss';
 
-export interface NoticeBarProps {
+export interface NoticeBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Notice text content */
   content: string;
   /** Display mode */
@@ -22,8 +22,6 @@ export interface NoticeBarProps {
   backgroundColor?: string;
   /** Called when close button is clicked (closeable mode) */
   onClose?: () => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 const DefaultIcon = () => (
@@ -56,6 +54,7 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
       backgroundColor,
       onClose,
       className,
+      ...rest
     },
     ref,
   ) => {
@@ -115,6 +114,7 @@ export const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>(
         style={customStyle}
         role={isScroll ? 'marquee' : 'alert'}
         aria-live={isScroll ? undefined : 'polite'}
+        {...rest}
       >
         <span className={styles.icon}>{icon || <DefaultIcon />}</span>
 

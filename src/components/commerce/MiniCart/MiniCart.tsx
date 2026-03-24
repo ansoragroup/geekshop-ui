@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
 import styles from './MiniCart.module.scss';
 
@@ -52,10 +53,6 @@ const EmptyBagIcon = () => (
     <path d="M16 10a4 4 0 01-8 0" />
   </svg>
 );
-
-function formatPrice(price: number): string {
-  return price.toLocaleString('en-US').replace(/,/g, ' ');
-}
 
 export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
   (
@@ -209,7 +206,7 @@ export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
                           <span className={styles.itemVariant}>{item.variant}</span>
                         )}
                         <div className={styles.itemBottom}>
-                          <span className={styles.itemPrice}>{formatPrice(item.price)} sum</span>
+                          <span className={styles.itemPrice}>{formatNumber(item.price)} sum</span>
                           <span className={styles.itemQuantity}>x{item.quantity}</span>
                         </div>
                       </div>
@@ -231,7 +228,7 @@ export const MiniCart = forwardRef<HTMLDivElement, MiniCartProps>(
                 <div className={styles.footer}>
                   <div className={styles.subtotal}>
                     <span className={styles.subtotalLabel}>Subtotal:</span>
-                    <span className={styles.subtotalValue}>{formatPrice(subtotal)} sum</span>
+                    <span className={styles.subtotalValue}>{formatNumber(subtotal)} sum</span>
                   </div>
                   <div className={styles.actions}>
                     <button

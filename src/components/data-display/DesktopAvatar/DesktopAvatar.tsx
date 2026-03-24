@@ -36,7 +36,7 @@ function getInitials(name: string): string {
 }
 
 function getColorFromName(name: string): string {
-  const colors = ['#FF5000', '#07C160', '#1890FF', '#FFA726', '#9C27B0', '#00BCD4'];
+  const colors = ['var(--gs-color-primary, #FF5000)', 'var(--gs-color-success, #07C160)', 'var(--gs-color-info, #1890FF)', 'var(--gs-color-warning, #FFA726)', 'var(--gs-color-avatar-purple, #9C27B0)', 'var(--gs-color-avatar-cyan, #00BCD4)'];
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
@@ -62,7 +62,7 @@ export const DesktopAvatar = forwardRef<HTMLSpanElement, DesktopAvatarProps>(
     const [imgError, setImgError] = useState(false);
     const px = SIZES[size];
     const initials = name ? getInitials(name) : '?';
-    const bgColor = name ? getColorFromName(name) : '#CCCCCC';
+    const bgColor = name ? getColorFromName(name) : 'var(--gs-text-placeholder, #CCCCCC)';
     const altText = alt ?? name ?? 'Avatar';
 
     const handleMouseEnter = useCallback(() => {

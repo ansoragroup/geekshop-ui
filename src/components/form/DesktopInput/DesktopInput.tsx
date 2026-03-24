@@ -36,23 +36,23 @@ export interface DesktopInputProps extends Omit<InputHTMLAttributes<HTMLInputEle
 
 const ClearIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="7" fill="#CCCCCC" />
-    <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="8" cy="8" r="7" fill="var(--gs-text-placeholder, #CCCCCC)" />
+    <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="var(--gs-bg-card, #fff)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 
 const SuccessIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="7" fill="#07C160" />
-    <path d="M5 8l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="8" cy="8" r="7" fill="var(--gs-color-success, #07C160)" />
+    <path d="M5 8l2 2 4-4" stroke="var(--gs-bg-card, #fff)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const ErrorIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="7" fill="#FF3B30" />
-    <path d="M8 5v3.5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
-    <circle cx="8" cy="11" r="0.75" fill="#fff" />
+    <circle cx="8" cy="8" r="7" fill="var(--gs-color-error, #FF3B30)" />
+    <path d="M8 5v3.5" stroke="var(--gs-bg-card, #fff)" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="8" cy="11" r="0.75" fill="var(--gs-bg-card, #fff)" />
   </svg>
 );
 

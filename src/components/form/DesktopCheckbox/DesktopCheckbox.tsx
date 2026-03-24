@@ -24,7 +24,7 @@ const CheckIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
     <path
       d="M2.5 6l2.5 2.5 4.5-4.5"
-      stroke="#fff"
+      stroke="var(--gs-bg-card, #fff)"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -36,7 +36,7 @@ const IndeterminateIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
     <path
       d="M3 6h6"
-      stroke="#fff"
+      stroke="var(--gs-bg-card, #fff)"
       strokeWidth="2"
       strokeLinecap="round"
     />

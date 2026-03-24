@@ -24,14 +24,14 @@ const ShieldIcon = ({ status }: { status: DesktopAuthenticityStatus }) => {
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path
           d="M10 1.5L3.5 4.5V9.5C3.5 13.8 6.5 17 10 19C13.5 17 16.5 13.8 16.5 9.5V4.5L10 1.5Z"
-          fill="#07C160"
-          stroke="#07C160"
+          fill="var(--gs-color-success, #07C160)"
+          stroke="var(--gs-color-success, #07C160)"
           strokeWidth="1.2"
           strokeLinejoin="round"
         />
         <path
           d="M7 10L9 12L13.5 7.5"
-          stroke="white"
+          stroke="var(--gs-bg-card, white)"
           strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -45,20 +45,20 @@ const ShieldIcon = ({ status }: { status: DesktopAuthenticityStatus }) => {
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path
           d="M10 1.5L3.5 4.5V9.5C3.5 13.8 6.5 17 10 19C13.5 17 16.5 13.8 16.5 9.5V4.5L10 1.5Z"
-          fill="#1890FF"
-          stroke="#1890FF"
+          fill="var(--gs-color-info, #1890FF)"
+          stroke="var(--gs-color-info, #1890FF)"
           strokeWidth="1.2"
           strokeLinejoin="round"
         />
         <path
           d="M7.5 10L9.5 12L13 7.5"
-          stroke="white"
+          stroke="var(--gs-bg-card, white)"
           strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <circle cx="14.5" cy="5.5" r="3.5" fill="#FFD700" stroke="white" strokeWidth="1" />
-        <text x="14.5" y="7" textAnchor="middle" fill="white" fontSize="5" fontWeight="bold">&#9733;</text>
+        <circle cx="14.5" cy="5.5" r="3.5" fill="var(--gs-color-star-filled, #FFD700)" stroke="var(--gs-bg-card, white)" strokeWidth="1" />
+        <text x="14.5" y="7" textAnchor="middle" fill="var(--gs-bg-card, white)" fontSize="5" fontWeight="bold">&#9733;</text>
       </svg>
     );
   }
@@ -68,13 +68,13 @@ const ShieldIcon = ({ status }: { status: DesktopAuthenticityStatus }) => {
       <path
         d="M10 1.5L3.5 4.5V9.5C3.5 13.8 6.5 17 10 19C13.5 17 16.5 13.8 16.5 9.5V4.5L10 1.5Z"
         fill="none"
-        stroke="#CCCCCC"
+        stroke="var(--gs-text-placeholder, #CCCCCC)"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
       <path
         d="M7.5 7.5L12.5 12.5M12.5 7.5L7.5 12.5"
-        stroke="#CCCCCC"
+        stroke="var(--gs-text-placeholder, #CCCCCC)"
         strokeWidth="1.5"
         strokeLinecap="round"
       />

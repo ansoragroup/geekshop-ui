@@ -53,7 +53,7 @@ function HeartIcon({ filled }: { filled: boolean }) {
       />
       <path
         d="M11 19S3 14.5 3 8.5C3 5.46243 5.46243 3 8.5 3C10.0321 3 11.4136 3.63214 12.4142 4.63604L11 6.05025L9.58579 4.63604C8.58189 3.63214 7.19643 3 5.66421 3"
-        fill={filled ? '#FF3B30' : 'none'}
+        fill={filled ? 'var(--gs-color-error, #FF3B30)' : 'none'}
       />
       <path
         d="M11 19C11 19 3 14 3 8.5C3 5.46 5.46 3 8.5 3C9.96 3 11.29 3.59 12.29 4.54L11 6L9.71 4.54C10.7 3.59 12.03 3 13.5 3C16.54 3 19 5.46 19 8.5C19 14 11 19 11 19Z"
@@ -61,7 +61,7 @@ function HeartIcon({ filled }: { filled: boolean }) {
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
-        fill={filled ? '#FF3B30' : 'none'}
+        fill={filled ? 'var(--gs-color-error, #FF3B30)' : 'none'}
       />
     </svg>
   );

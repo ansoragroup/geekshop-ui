@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
-import { useCallback } from 'react';
+import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopPaymentMethodCard.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -16,7 +16,7 @@ export interface DesktopPaymentMethod {
   isDefault?: boolean;
 }
 
-export interface DesktopPaymentMethodCardProps {
+export interface DesktopPaymentMethodCardProps extends HTMLAttributes<HTMLDivElement> {
   /** Payment method data */
   method: DesktopPaymentMethod;
   /** Whether this method is selected */
@@ -27,8 +27,6 @@ export interface DesktopPaymentMethodCardProps {
   onSelect?: () => void;
   /** Called when delete is clicked */
   onDelete?: () => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
@@ -83,8 +81,8 @@ function PaymeIcon() {
 function CashIcon() {
   return (
     <svg width="32" height="20" viewBox="0 0 32 20" aria-hidden="true">
-      <rect width="32" height="20" rx="3" fill="#4CAF50" />
-      <text x="16" y="13" fill="#FFFFFF" fontSize="6" fontWeight="bold" textAnchor="middle" fontFamily="Arial, sans-serif">CASH</text>
+      <rect width="32" height="20" rx="3" fill="var(--gs-color-success, #4CAF50)" />
+      <text x="16" y="13" fill="var(--gs-bg-card, #FFFFFF)" fontSize="6" fontWeight="bold" textAnchor="middle" fontFamily="Arial, sans-serif">CASH</text>
     </svg>
   );
 }
@@ -109,14 +107,15 @@ const CARD_ICONS: Record<DesktopPaymentType, () => JSX.Element> = {
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export const DesktopPaymentMethodCard = ({
+export const DesktopPaymentMethodCard = forwardRef<HTMLDivElement, DesktopPaymentMethodCardProps>(({
   method,
   selected = false,
   selectable = true,
   onSelect,
   onDelete,
   className = '',
-}: DesktopPaymentMethodCardProps) => {
+  ...rest
+}, ref) => {
   const handleSelect = useCallback(() => {
     if (selectable) {
       onSelect?.();
@@ -151,7 +150,7 @@ export const DesktopPaymentMethodCard = ({
     className);
 
   return (
-    <div className={rootClass}>
+    <div ref={ref} className={rootClass} {...rest}>
       {/* Radio Button */}
       {selectable && (
         <div
@@ -210,6 +209,6 @@ export const DesktopPaymentMethodCard = ({
       )}
     </div>
   );
-};
+});
 
 DesktopPaymentMethodCard.displayName = 'DesktopPaymentMethodCard';

@@ -1,2 +1,2 @@
-export { formatPrice, formatWithConfig, formatNumber } from './formatPrice';
+export { formatPrice, formatWithConfig, formatNumber, formatCount, formatCompactPrice } from './formatPrice';
 export { cn } from './cn';

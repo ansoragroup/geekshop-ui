@@ -4,7 +4,7 @@ import { forwardRef, useRef, useState, useCallback } from 'react';
 import type { ReactNode, TouchEvent } from 'react';
 import styles from './PullToRefresh.module.scss';
 
-export interface PullToRefreshProps {
+export interface PullToRefreshProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   onRefresh: () => Promise<void>;
   /** Pull distance to trigger refresh, default 80 */
@@ -17,15 +17,13 @@ export interface PullToRefreshProps {
   pullingContent?: ReactNode;
   /** Disable pull-to-refresh */
   disabled?: boolean;
-  /** Additional CSS class */
-  className?: string;
 }
 
 function DefaultSpinner() {
   return (
     <svg className={styles.spinner} width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" stroke="#F0F0F0" strokeWidth="2.5" />
-      <path d="M12 2a10 10 0 0 1 10 10" stroke="#FF5000" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="12" cy="12" r="10" stroke="var(--gs-color-border, #F0F0F0)" strokeWidth="2.5" />
+      <path d="M12 2a10 10 0 0 1 10 10" stroke="var(--gs-color-primary, #FF5000)" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -43,7 +41,7 @@ function DefaultArrow({ progress }: { progress: number }) {
     >
       <path
         d="M10 4V14M10 14L6 10M10 14L14 10"
-        stroke="#999"
+        stroke="var(--gs-color-text-tertiary, #999)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -63,6 +61,7 @@ export const PullToRefresh = forwardRef<HTMLDivElement, PullToRefreshProps>(
       pullingContent,
       disabled = false,
       className = '',
+      ...rest
     },
     ref,
   ) {
@@ -135,6 +134,7 @@ export const PullToRefresh = forwardRef<HTMLDivElement, PullToRefreshProps>(
       <div
         ref={ref}
         className={cn(styles.root, className)}
+        {...rest}
       >
         <div
           ref={containerRef}

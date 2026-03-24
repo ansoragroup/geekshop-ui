@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './InfiniteScroll.module.scss';
 
-export interface InfiniteScrollProps {
+export interface InfiniteScrollProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Content / list items to render */
   children: ReactNode;
   /** Callback fired when more items should be loaded */
@@ -26,8 +26,6 @@ export interface InfiniteScrollProps {
   error?: boolean;
   /** Retry callback on error */
   onRetry?: () => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
@@ -44,6 +42,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
       error = false,
       onRetry,
       className = '',
+      ...rest
     },
     ref,
   ) => {
@@ -139,7 +138,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(
     };
 
     return (
-      <div ref={ref} className={cn(styles.container, className)}>
+      <div ref={ref} className={cn(styles.container, className)} {...rest}>
         {children}
 
         {/* Invisible sentinel for IntersectionObserver */}

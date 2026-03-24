@@ -156,8 +156,8 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                     aria-label={`Slide ${index + 1} of ${slideCount}`}
                     aria-hidden={!isActive}
                     style={{
-                      '--slide-bg': slide.bgGradient || 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
-                      '--slide-text-color': slide.textColor || '#FFFFFF',
+                      '--slide-bg': slide.bgGradient || 'linear-gradient(135deg, var(--gs-color-primary, #FF5000) 0%, var(--gs-color-primary-light, #FF7A33) 100%)',
+                      '--slide-text-color': slide.textColor || 'var(--gs-bg-card, #FFFFFF)',
                     } as CSSProperties}
                   >
                     {slide.bgImage && (

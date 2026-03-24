@@ -12,7 +12,7 @@ export interface SwipeAction {
   onClick: () => void;
 }
 
-export interface SwipeProps {
+export interface SwipeProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Content to display inside the swipe container */
   children: ReactNode;
   /** Actions revealed when swiping right (content moves right) */
@@ -23,8 +23,6 @@ export interface SwipeProps {
   threshold?: number;
   /** Disable swipe interaction */
   disabled?: boolean;
-  /** Additional CSS class */
-  className?: string;
 }
 
 export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
@@ -36,6 +34,7 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
       threshold = 80,
       disabled = false,
       className,
+      ...rest
     },
     ref,
   ) => {
@@ -131,6 +130,7 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
         className={wrapperClasses}
         role="group"
         aria-roledescription="swipeable"
+        {...rest}
       >
         {/* Left actions (revealed when swiping right) */}
         {leftActions.length > 0 && (
@@ -145,8 +145,8 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
                 type="button"
                 className={styles.actionBtn}
                 style={{
-                  color: action.color || '#fff',
-                  backgroundColor: action.backgroundColor || '#1890FF',
+                  color: action.color || 'var(--gs-color-bg-card, #fff)',
+                  backgroundColor: action.backgroundColor || 'var(--gs-color-info, #1890FF)',
                 }}
                 onClick={() => handleActionClick(action)}
                 tabIndex={translateX > 0 ? 0 : -1}
@@ -170,8 +170,8 @@ export const Swipe = forwardRef<HTMLDivElement, SwipeProps>(
                 type="button"
                 className={styles.actionBtn}
                 style={{
-                  color: action.color || '#fff',
-                  backgroundColor: action.backgroundColor || '#FF3B30',
+                  color: action.color || 'var(--gs-color-bg-card, #fff)',
+                  backgroundColor: action.backgroundColor || 'var(--gs-color-error, #FF3B30)',
                 }}
                 onClick={() => handleActionClick(action)}
                 tabIndex={translateX < 0 ? 0 : -1}

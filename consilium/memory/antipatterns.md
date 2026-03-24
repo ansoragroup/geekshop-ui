@@ -62,3 +62,9 @@
 19. **Don't skip the component reuse check in Phase 1 (investigate).** Every investigation phase MUST include: `grep -i "{component concept}" src/components/index.ts` to find existing components. If DesktopRating exists and you need rating distribution, check if DesktopRating can be extended rather than creating DesktopRatingDistribution from scratch.
 
 20. **Don't adopt protocol modifications without actual enforcement.** "Enforce debate for features" was ADOPTED after session s3 but was only enforced in 1 of 5 subsequent feature sessions (20%). Adopting a rule and not enforcing it is worse than not having the rule — it creates false confidence.
+
+## Session 20260324c — Brand-Neutral Overhaul
+
+21. **Don't interpret "audit all" as "audit what I changed".** When the owner says "все компоненты" or "абсолютно все" or "audit all 150+ components", that means EVERY SINGLE component directory. Not just the 4 components the agent touched in the current session. Create a checklist of every component directory and track progress through the full list. Incomplete audits waste the owner's time and erode trust.
+
+22. **Don't use competitor brand names in open-source component naming.** `DesktopHeaderAliExpress` is unacceptable for a library published on npm/GitHub. Component names must be brand-neutral: `DesktopHeaderMarketplace`, `DesktopHeaderModern`, etc. Competitor brand names (AliExpress, Ozon, Uzum, Taobao) are acceptable as design REFERENCES in comments/docs but never in exported component names, CSS classes, or file paths.

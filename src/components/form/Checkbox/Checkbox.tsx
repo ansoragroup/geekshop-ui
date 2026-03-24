@@ -52,7 +52,7 @@ export const Checkbox = forwardRef<HTMLButtonElement, CheckboxProps>(
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path
                 d="M3.5 7l2.5 2.5 4.5-4.5"
-                stroke="#fff"
+                stroke="var(--gs-bg-card, #fff)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

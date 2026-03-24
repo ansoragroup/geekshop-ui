@@ -137,7 +137,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
           </div>
           <button type="button" className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M5 5L15 15M15 5L5 15" stroke="#999" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M5 5L15 15M15 5L5 15" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
         </div>
@@ -209,7 +209,7 @@ export const SkuSelector = forwardRef<HTMLDivElement, SkuSelectorProps>(
                         {isSelected && (
                           <div className={styles.imageGridCheck}>
                             <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                              <path d="M5 10l3.5 3.5L15 7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d="M5 10l3.5 3.5L15 7" stroke="var(--gs-bg-card, #fff)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </div>
                         )}

@@ -32,7 +32,7 @@ export interface ImageUploaderProps extends Omit<HTMLAttributes<HTMLDivElement>,
 }
 
 const PlusIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gs-text-tertiary, #999)" strokeWidth="2" strokeLinecap="round">
     <path d="M12 5v14M5 12h14" />
   </svg>
 );
@@ -40,7 +40,7 @@ const PlusIcon = () => (
 const DeleteIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
     <circle cx="6" cy="6" r="6" fill="rgba(0,0,0,0.5)" />
-    <path d="M4 4l4 4M8 4l-4 4" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M4 4l4 4M8 4l-4 4" stroke="var(--gs-bg-card, #fff)" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 );
 

@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatCount } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './ShopCard.module.scss';
@@ -27,20 +28,10 @@ export interface ShopCardProps extends HTMLAttributes<HTMLDivElement> {
 
 function StarIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFC107" stroke="none">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--gs-color-star-filled, #FFC107)" stroke="none">
       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
     </svg>
   );
-}
-
-function formatCount(n: number): string {
-  if (n >= 10000) {
-    return `${(n / 1000).toFixed(0)}K`;
-  }
-  if (n >= 1000) {
-    return `${(n / 1000).toFixed(1)}K`;
-  }
-  return String(n);
 }
 
 export const ShopCard = forwardRef<HTMLDivElement, ShopCardProps>(

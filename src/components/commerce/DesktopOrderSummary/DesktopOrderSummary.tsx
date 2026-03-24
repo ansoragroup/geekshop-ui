@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopOrderSummary.module.scss';
 
@@ -31,12 +32,6 @@ export interface DesktopOrderSummaryProps extends HTMLAttributes<HTMLDivElement>
   loading?: boolean;
   /** Trust badges displayed below CTA */
   trustBadges?: TrustBadge[];
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
@@ -133,20 +128,20 @@ export const DesktopOrderSummary = forwardRef<HTMLDivElement, DesktopOrderSummar
         <div className={styles.lineItems}>
           <div className={styles.lineItem}>
             <span className={styles.lineLabel}>Subtotal</span>
-            <span className={styles.lineValue}>{formatPrice(subtotal)} so'm</span>
+            <span className={styles.lineValue}>{formatNumber(subtotal)} so'm</span>
           </div>
 
           <div className={styles.lineItem}>
             <span className={styles.lineLabel}>Shipping</span>
             <span className={cn(styles.lineValue, shipping === 0 ? styles.freeText : '')}>
-              {shipping === 0 ? 'Free' : `${formatPrice(shipping)} so'm`}
+              {shipping === 0 ? 'Free' : `${formatNumber(shipping)} so'm`}
             </span>
           </div>
 
           {tax !== undefined && tax > 0 && (
             <div className={styles.lineItem}>
               <span className={styles.lineLabel}>Tax</span>
-              <span className={styles.lineValue}>{formatPrice(tax)} so'm</span>
+              <span className={styles.lineValue}>{formatNumber(tax)} so'm</span>
             </div>
           )}
 
@@ -154,7 +149,7 @@ export const DesktopOrderSummary = forwardRef<HTMLDivElement, DesktopOrderSummar
             <div className={styles.lineItem}>
               <span className={styles.lineLabel}>Discount</span>
               <span className={cn(styles.lineValue, styles.discountText)}>
-                -{formatPrice(discount)} so'm
+                -{formatNumber(discount)} so'm
               </span>
             </div>
           )}
@@ -165,7 +160,7 @@ export const DesktopOrderSummary = forwardRef<HTMLDivElement, DesktopOrderSummar
         {/* Total */}
         <div className={styles.totalRow}>
           <span className={styles.totalLabel}>Total</span>
-          <span className={styles.totalValue}>{formatPrice(total)} so'm</span>
+          <span className={styles.totalValue}>{formatNumber(total)} so'm</span>
         </div>
 
         {/* CTA */}

@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatCount } from '../../../utils/formatPrice';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useGeekShop } from '../../../i18n';
 import styles from './SocialProof.module.scss';
@@ -32,16 +33,6 @@ function PeopleIcon() {
       <path d="M10 7.5c1.66 0 3 1.34 3 3" stroke="currentColor" strokeWidth="1.2" />
     </svg>
   );
-}
-
-function formatCount(n: number): string {
-  if (n >= 10000) {
-    return `${(n / 1000).toFixed(0)}K`;
-  }
-  if (n >= 1000) {
-    return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
-  }
-  return String(n);
 }
 
 export const SocialProof = forwardRef<HTMLDivElement, SocialProofProps>(

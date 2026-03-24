@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import { DesktopQuantityStepper } from '../DesktopQuantityStepper';
 import styles from './DesktopCartItem.module.scss';
@@ -31,12 +32,6 @@ export interface DesktopCartItemProps extends Omit<HTMLAttributes<HTMLDivElement
   onDelete?: () => void;
   /** Called when item row is clicked (navigate to product) */
   onClick?: () => void;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
@@ -207,7 +202,7 @@ export const DesktopCartItem = forwardRef<HTMLDivElement, DesktopCartItemProps>(
 
         {/* Price */}
         <div className={styles.price}>
-          {formatPrice(price)} so'm
+          {formatNumber(price)} so'm
         </div>
 
         {/* Delete */}

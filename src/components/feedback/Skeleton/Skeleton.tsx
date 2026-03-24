@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '../../../utils/cn';
 import { forwardRef } from 'react'
 import type { CSSProperties } from 'react'

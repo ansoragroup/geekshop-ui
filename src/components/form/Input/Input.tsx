@@ -30,8 +30,8 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 
 const ClearIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="7" fill="#CCCCCC" />
-    <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="8" cy="8" r="7" fill="var(--gs-text-placeholder, #CCCCCC)" />
+    <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="var(--gs-bg-card, #fff)" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
 

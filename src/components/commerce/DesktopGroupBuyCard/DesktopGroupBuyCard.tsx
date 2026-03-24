@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useState, useEffect, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopGroupBuyCard.module.scss';
 
@@ -32,12 +33,6 @@ export interface DesktopGroupBuyCardProps extends HTMLAttributes<HTMLDivElement>
   onJoinGroup?: () => void;
   /** Handler when user clicks "Buy Alone" */
   onBuyAlone?: () => void;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('en-US').replace(/,/g, ' ') + ' sum';
 }
 
 function useSecondsCountdown(initialSeconds: number) {
@@ -173,12 +168,12 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
           <div className={styles.priceRow}>
             <div className={styles.priceGroup}>
               <span className={styles.priceLabel}>Group price</span>
-              <span className={styles.groupPrice}>{formatPrice(product.price)}</span>
+              <span className={styles.groupPrice}>{formatNumber(product.price)} sum</span>
             </div>
             <span className={styles.priceDivider} />
             <div className={styles.priceGroup}>
               <span className={styles.priceLabel}>Solo price</span>
-              <span className={styles.soloPrice}>{formatPrice(product.originalPrice)}</span>
+              <span className={styles.soloPrice}>{formatNumber(product.originalPrice)} sum</span>
             </div>
           </div>
 

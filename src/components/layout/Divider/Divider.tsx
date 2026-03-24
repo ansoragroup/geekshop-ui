@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './Divider.module.scss';

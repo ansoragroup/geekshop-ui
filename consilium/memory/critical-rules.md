@@ -28,6 +28,8 @@ that agents most commonly violate. ~30 lines, survives any context window.
 16. NEVER delete files/containers without explicit permission
 17. After creating/modifying ANY component: verify via Playwright screenshot
 18. Read existing similar components BEFORE implementing new ones
+19. When owner says "all components" or "every component" or "все" or "абсолютно все" = audit/fix EVERY SINGLE ONE. Do not scope-reduce to "components I touched". Create a checklist, track progress, report remaining count.
+20. Component names on npm/GitHub must be brand-neutral — NO competitor names (AliExpress, Ozon, Uzum, Taobao) in exported identifiers, file paths, or CSS classes
 
 ## Component Reuse Map
 - Search functionality → `DesktopSearchAutocomplete` (autocomplete, photo search, keyboard nav)

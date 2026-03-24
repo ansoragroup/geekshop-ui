@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
-import { useCallback } from 'react';
+import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopAddressCard.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ export interface DesktopAddress {
   label?: string;
 }
 
-export interface DesktopAddressCardProps {
+export interface DesktopAddressCardProps extends HTMLAttributes<HTMLDivElement> {
   /** Address data */
   address: DesktopAddress;
   /** Whether this address is selected */
@@ -34,8 +34,6 @@ export interface DesktopAddressCardProps {
   onEdit?: () => void;
   /** Called when delete is clicked */
   onDelete?: () => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
@@ -60,7 +58,7 @@ function DeleteIcon() {
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export const DesktopAddressCard = ({
+export const DesktopAddressCard = forwardRef<HTMLDivElement, DesktopAddressCardProps>(({
   address,
   selected = false,
   selectable = true,
@@ -70,7 +68,8 @@ export const DesktopAddressCard = ({
   onEdit,
   onDelete,
   className = '',
-}: DesktopAddressCardProps) => {
+  ...rest
+}, ref) => {
   const handleSelect = useCallback(() => {
     if (selectable) {
       onSelect?.();
@@ -112,14 +111,8 @@ export const DesktopAddressCard = ({
     selected && styles.selected,
     className);
 
-  const fullAddress = [
-    address.street,
-    [address.city, address.region].filter(Boolean).join(', '),
-    address.postalCode,
-  ].filter(Boolean).join('\n');
-
   return (
-    <div className={rootClass}>
+    <div ref={ref} className={rootClass} {...rest}>
       {/* Radio Button */}
       {selectable && (
         <div
@@ -191,6 +184,6 @@ export const DesktopAddressCard = ({
       </div>
     </div>
   );
-};
+});
 
 DesktopAddressCard.displayName = 'DesktopAddressCard';

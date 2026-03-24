@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useState, useCallback, useEffect, useRef, type HTMLAttributes } from 'react';
 import styles from './DesktopQuickBuyPopup.module.scss';
 
@@ -35,12 +36,6 @@ export interface DesktopQuickBuyPopupProps extends HTMLAttributes<HTMLDivElement
   onAddToCart?: (variantId: string | null, quantity: number) => void;
   /** Whether the popup is open */
   open?: boolean;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('en-US').replace(/,/g, ' ') + ' sum';
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
@@ -191,7 +186,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
             <div className={styles.detailsSection}>
               <h2 className={styles.title}>{product.title}</h2>
 
-              <span className={styles.price}>{formatPrice(product.price)}</span>
+              <span className={styles.price}>{formatNumber(product.price)} sum</span>
 
               {/* Variants */}
               {variants.length > 0 && (

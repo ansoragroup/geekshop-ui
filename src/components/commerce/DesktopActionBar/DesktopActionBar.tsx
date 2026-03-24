@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopActionBar.module.scss';
 
@@ -28,12 +29,6 @@ export interface DesktopActionBarProps extends HTMLAttributes<HTMLDivElement> {
   onShare?: () => void;
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('en-US').replace(/,/g, ' ') + ' sum';
-}
-
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
 
 function HeartIcon({ filled }: { filled: boolean }) {
@@ -41,11 +36,11 @@ function HeartIcon({ filled }: { filled: boolean }) {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M20.84 4.61C20.3292 4.09924 19.7228 3.69397 19.0554 3.41708C18.3879 3.14019 17.6725 2.99734 16.95 2.99734C16.2275 2.99734 15.5121 3.14019 14.8446 3.41708C14.1772 3.69397 13.5708 4.09924 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.57831 8.50903 2.99789 7.05 2.99789C5.59096 2.99789 4.1917 3.57831 3.16 4.61C2.1283 5.64169 1.54789 7.04097 1.54789 8.5C1.54789 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.3508 11.8792 21.756 11.2728 22.0329 10.6053C22.3098 9.93789 22.4527 9.22249 22.4527 8.5C22.4527 7.77751 22.3098 7.0621 22.0329 6.39464C21.756 5.72718 21.3508 5.12075 20.84 4.61Z"
-        stroke={filled ? '#FF0000' : 'currentColor'}
+        stroke={filled ? 'var(--gs-color-price, #FF0000)' : 'currentColor'}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        fill={filled ? '#FF0000' : 'none'}
+        fill={filled ? 'var(--gs-color-price, #FF0000)' : 'none'}
       />
     </svg>
   );
@@ -120,9 +115,9 @@ export const DesktopActionBar = forwardRef<HTMLDivElement, DesktopActionBarProps
         {/* Price section */}
         {price !== undefined && (
           <div className={styles.priceSection}>
-            <span className={styles.price}>{formatPrice(price)}</span>
+            <span className={styles.price}>{formatNumber(price)} sum</span>
             {originalPrice !== undefined && originalPrice > price && (
-              <span className={styles.originalPrice}>{formatPrice(originalPrice)}</span>
+              <span className={styles.originalPrice}>{formatNumber(originalPrice)} sum</span>
             )}
           </div>
         )}

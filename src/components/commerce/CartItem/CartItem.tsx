@@ -77,7 +77,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
               d="M5 6H15M8 6V4.5C8 4.22386 8.22386 4 8.5 4H11.5C11.7761 4 12 4.22386 12 4.5V6M6 6V15C6 15.5523 6.44772 16 7 16H13C13.5523 16 14 15.5523 14 15V6"
-              stroke="#FFF"
+              stroke="var(--gs-bg-card, #fff)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -106,7 +106,7 @@ export const CartItem = forwardRef<HTMLDivElement, CartItemProps>(
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path
                 d="M3 7L6 10L11 4"
-                stroke="#FFF"
+                stroke="var(--gs-bg-card, #fff)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

@@ -20,9 +20,9 @@ export interface DesktopPopularSearchesProps extends HTMLAttributes<HTMLDivEleme
 }
 
 const FireIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path d="M12 2C8.5 7 4 9 4 14a8 8 0 0016 0c0-5-4.5-7-8-12z" fill="#FF5000" />
-    <path d="M12 9c-1.5 2.5-3 3.5-3 6a3 3 0 006 0c0-2.5-1.5-3.5-3-6z" fill="#FFB088" />
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 2C8.5 7 4 9 4 14a8 8 0 0016 0c0-5-4.5-7-8-12z" fill="var(--gs-color-primary, #FF5000)" />
+    <path d="M12 9c-1.5 2.5-3 3.5-3 6a3 3 0 006 0c0-2.5-1.5-3.5-3-6z" fill="var(--gs-color-primary-light, #FFB088)" />
   </svg>
 );
 

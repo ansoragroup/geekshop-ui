@@ -56,6 +56,13 @@
 - **Evidence:** Session 20260324 — DesktopSaleHits and DesktopHeaderAliExpress stories both wrong. Now enforced via Storybook Title Convention table in CLAUDE.md + critical-rules.md.
 - **Status:** ADOPTED (2026-03-24, fast-tracked — convention now documented in CLAUDE.md)
 
+## PROPOSED: Full component checklist for "audit all" requests
+- **Observed:** Owner asked to audit all 150+ components. Agent only audited 4 (the ones it had just changed). Owner frustrated.
+- **Proposal:** When owner requests audit/fix of "all" components, the agent MUST: (1) run `ls -d src/components/*/Desktop*/` to enumerate every component directory, (2) create a markdown checklist with every component, (3) process each one sequentially, marking as done, (4) report remaining count if context window exhausted, (5) NEVER mark the task complete until every component is checked.
+- **Evidence:** Session 20260324c — agent did 4/150, owner said "абсолютно все" and was frustrated. Agent admitted honestly but the work was incomplete.
+- **Status:** PROPOSED
+- **Note:** Needs validation in next audit-type session. The checklist approach prevents scope drift.
+
 ## ADOPTED: Critical Rules Injection for all agent spawns
 - **Observed:** Agents don't read CLAUDE.md. After context compaction, rules are lost. Subagents receive custom prompts without project rules.
 - **Proposal:** Create `consilium/memory/critical-rules.md` (~30 lines) containing the most-violated rules. This file MUST be included in every agent spawn prompt. It survives compaction because it's a separate file that gets re-read.

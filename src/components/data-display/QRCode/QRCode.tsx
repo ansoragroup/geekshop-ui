@@ -28,8 +28,8 @@ export const QRCode = forwardRef<HTMLDivElement, QRCodeProps>(
     {
       value,
       size = 200,
-      color = '#1A1A1A',
-      bgColor = '#FFFFFF',
+      color = 'var(--gs-text-primary, #1A1A1A)',
+      bgColor = 'var(--gs-bg-card, #FFFFFF)',
       logo,
       logoSize,
       errorLevel = 'M',

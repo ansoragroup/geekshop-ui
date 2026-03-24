@@ -33,7 +33,7 @@ export const DesktopHeroBanner = forwardRef<HTMLDivElement, DesktopHeroBannerPro
       subtitle,
       badge,
       ctaText,
-      bgGradient = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
+      bgGradient = 'linear-gradient(135deg, var(--gs-color-primary, #FF5000) 0%, var(--gs-color-primary-light, #FF7A33) 100%)',
       image,
       onCtaClick,
       onClick,

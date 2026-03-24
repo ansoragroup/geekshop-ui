@@ -1,4 +1,6 @@
+'use client';
 import { cn } from '../../../utils/cn';
+import { formatCount } from '../../../utils/formatPrice';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopSocialProof.module.scss';
 
@@ -33,16 +35,6 @@ function PeopleIcon() {
       <path d="M16 3.13a4 4 0 010 7.75" />
     </svg>
   );
-}
-
-function formatCount(n: number): string {
-  if (n >= 10000) {
-    return `${(n / 1000).toFixed(0)}K`;
-  }
-  if (n >= 1000) {
-    return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
-  }
-  return String(n);
 }
 
 export const DesktopSocialProof = forwardRef<HTMLDivElement, DesktopSocialProofProps>(

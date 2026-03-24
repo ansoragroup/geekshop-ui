@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatCompactPrice } from '../../../utils/formatPrice';
 import { forwardRef, useState, useCallback, useRef, type HTMLAttributes, type MouseEvent } from 'react';
 import { useCountdown } from '../../../hooks/useCountdown';
 import styles from './FlashDealStrip.module.scss';
@@ -38,20 +39,6 @@ export interface FlashDealStripProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  if (value >= 1_000_000) {
-    const millions = value / 1_000_000;
-    const formatted = millions % 1 === 0 ? millions.toFixed(0) : millions.toFixed(1);
-    return `${formatted}M`;
-  }
-  if (value >= 1_000) {
-    const thousands = value / 1_000;
-    const formatted = thousands % 1 === 0 ? thousands.toFixed(0) : thousands.toFixed(0);
-    return `${formatted}K`;
-  }
-  return value.toString();
-}
 
 function pad(n: number): string {
   return n.toString().padStart(2, '0');
@@ -196,8 +183,8 @@ export const FlashDealStrip = forwardRef<HTMLDivElement, FlashDealStripProps>(
 
                 {/* Price */}
                 <div className={styles.cardPrices}>
-                  <span className={styles.cardSalePrice}>{formatPrice(item.price)}</span>
-                  <span className={styles.cardOriginalPrice}>{formatPrice(item.originalPrice)}</span>
+                  <span className={styles.cardSalePrice}>{formatCompactPrice(item.price)}</span>
+                  <span className={styles.cardOriginalPrice}>{formatCompactPrice(item.originalPrice)}</span>
                 </div>
 
                 {/* Progress bar */}

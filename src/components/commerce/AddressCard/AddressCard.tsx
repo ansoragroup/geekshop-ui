@@ -17,7 +17,7 @@ export interface Address {
   label?: string;
 }
 
-export interface AddressCardProps {
+export interface AddressCardProps extends React.HTMLAttributes<HTMLDivElement> {
   address: Address;
   /** Whether this card is currently selected */
   selected?: boolean;
@@ -30,8 +30,6 @@ export interface AddressCardProps {
   onSelect?: (address: Address) => void;
   onEdit?: (address: Address) => void;
   onDelete?: (address: Address) => void;
-  /** Additional CSS class */
-  className?: string;
 }
 
 function EditIcon() {
@@ -74,6 +72,7 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
       onEdit,
       onDelete,
       className = '',
+      ...rest
     },
     ref,
   ) {
@@ -119,6 +118,7 @@ export const AddressCard = forwardRef<HTMLDivElement, AddressCardProps>(
         tabIndex={selectable ? 0 : undefined}
         onClick={selectable ? handleSelect : undefined}
         onKeyDown={selectable ? handleKeyDown : undefined}
+        {...rest}
       >
         {/* Top row: radio + tag + default badge */}
         <div className={styles.header}>

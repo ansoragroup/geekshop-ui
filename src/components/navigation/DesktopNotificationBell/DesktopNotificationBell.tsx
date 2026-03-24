@@ -14,6 +14,37 @@ export interface DesktopNotification {
   read: boolean;
 }
 
+export interface DesktopNotificationBellLabels {
+  /** Bell button label (default: "Notifications") */
+  notifications?: string;
+  /** Bell button label with count (default: "Notifications ({count} new)") */
+  notificationsWithCount?: string;
+  /** Mark all read button (default: "Mark all as read") */
+  markAllRead?: string;
+  /** Empty state text (default: "No notifications") */
+  empty?: string;
+  /** View all button (default: "View all notifications") */
+  viewAll?: string;
+  /** Unread dot label (default: "Unread") */
+  unread?: string;
+  /** Section labels by type */
+  sectionOrders?: string;
+  sectionPromotions?: string;
+  sectionSystem?: string;
+}
+
+const DEFAULT_LABELS: Required<DesktopNotificationBellLabels> = {
+  notifications: 'Notifications',
+  notificationsWithCount: 'Notifications ({count} new)',
+  markAllRead: 'Mark all as read',
+  empty: 'No notifications',
+  viewAll: 'View all notifications',
+  unread: 'Unread',
+  sectionOrders: 'Orders',
+  sectionPromotions: 'Promotions',
+  sectionSystem: 'System',
+};
+
 export interface DesktopNotificationBellProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** List of notifications */
   notifications?: DesktopNotification[];
@@ -25,6 +56,8 @@ export interface DesktopNotificationBellProps extends Omit<React.HTMLAttributes<
   onMarkAllRead?: () => void;
   /** Callback when "View all" is clicked */
   onViewAll?: () => void;
+  /** i18n labels override */
+  labels?: DesktopNotificationBellLabels;
 }
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -59,11 +92,13 @@ const InfoIcon = () => (
   </svg>
 );
 
-const SECTION_LABELS: Record<DesktopNotificationType, string> = {
-  order: 'Buyurtmalar',
-  promotion: 'Aksiyalar',
-  system: 'Tizim',
-};
+function getSectionLabels(l: Required<DesktopNotificationBellLabels>): Record<DesktopNotificationType, string> {
+  return {
+    order: l.sectionOrders,
+    promotion: l.sectionPromotions,
+    system: l.sectionSystem,
+  };
+}
 
 const SECTION_ICONS: Record<DesktopNotificationType, React.FC> = {
   order: PackageIcon,
@@ -78,6 +113,7 @@ function DesktopNotificationBellInner(
     onRead,
     onMarkAllRead,
     onViewAll,
+    labels: labelsProp,
     className,
     ...rest
   }: DesktopNotificationBellProps,
@@ -85,6 +121,8 @@ function DesktopNotificationBellInner(
 ) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const l = { ...DEFAULT_LABELS, ...labelsProp };
+  const SECTION_LABELS = getSectionLabels(l);
 
   const displayCount = count ?? notifications.filter((n) => !n.read).length;
   const formatBadge = (c: number) => (c > 99 ? '99+' : String(c));
@@ -134,7 +172,7 @@ function DesktopNotificationBellInner(
         type="button"
         className={styles.bellBtn}
         onClick={toggleOpen}
-        aria-label={displayCount > 0 ? `Bildirishnomalar (${displayCount} yangi)` : 'Bildirishnomalar'}
+        aria-label={displayCount > 0 ? l.notificationsWithCount.replace('{count}', String(displayCount)) : l.notifications}
         aria-expanded={open}
         aria-haspopup="true"
       >
@@ -148,18 +186,18 @@ function DesktopNotificationBellInner(
         <div
           className={styles.dropdown}
           role="dialog"
-          aria-label="Bildirishnomalar"
+          aria-label={l.notifications}
         >
           {/* Header */}
           <div className={styles.dropdownHeader}>
-            <span className={styles.dropdownTitle}>Bildirishnomalar</span>
+            <span className={styles.dropdownTitle}>{l.notifications}</span>
             {displayCount > 0 && (
               <button
                 type="button"
                 className={styles.markAllBtn}
                 onClick={() => { onMarkAllRead?.(); }}
               >
-                Hammasini o'qilgan deb belgilash
+                {l.markAllRead}
               </button>
             )}
           </div>
@@ -169,7 +207,7 @@ function DesktopNotificationBellInner(
             {notifications.length === 0 ? (
               <div className={styles.empty}>
                 <BellIcon />
-                <span>Bildirishnomalar yo'q</span>
+                <span>{l.empty}</span>
               </div>
             ) : (
               sections.map((type) => {
@@ -192,7 +230,7 @@ function DesktopNotificationBellInner(
                           <span className={styles.notifBody}>{notif.body}</span>
                           <span className={styles.notifTime}>{notif.time}</span>
                         </div>
-                        {!notif.read && <span className={styles.unreadDot} aria-label="O'qilmagan" />}
+                        {!notif.read && <span className={styles.unreadDot} aria-label={l.unread} />}
                       </button>
                     ))}
                   </div>
@@ -209,7 +247,7 @@ function DesktopNotificationBellInner(
                 className={styles.viewAllBtn}
                 onClick={() => { onViewAll?.(); setOpen(false); }}
               >
-                Barcha bildirishnomalarni ko'rish
+                {l.viewAll}
               </button>
             </div>
           )}

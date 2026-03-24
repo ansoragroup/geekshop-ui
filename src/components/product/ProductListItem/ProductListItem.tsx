@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './ProductListItem.module.scss';
 
@@ -35,8 +36,8 @@ const StarIcon = ({ filled }: { filled: boolean }) => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
     <path
       d="M7 1.5l1.545 3.13 3.455.503-2.5 2.437.59 3.44L7 9.268 3.91 11.01l.59-3.44-2.5-2.437 3.455-.503L7 1.5z"
-      fill={filled ? '#FFA726' : 'none'}
-      stroke={filled ? '#FFA726' : '#EEEEEE'}
+      fill={filled ? 'var(--gs-color-star-filled, #FFA726)' : 'none'}
+      stroke={filled ? 'var(--gs-color-star-filled, #FFA726)' : 'var(--gs-color-border, #EEEEEE)'}
       strokeWidth="1"
     />
   </svg>
@@ -73,10 +74,6 @@ const CheckIcon = () => (
     <path d="M3 7l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
-function formatPrice(price: number): string {
-  return price.toLocaleString('uz-UZ').replace(/,/g, ' ');
-}
 
 export const ProductListItem = forwardRef<HTMLDivElement, ProductListItemProps>(
   (
@@ -167,9 +164,9 @@ export const ProductListItem = forwardRef<HTMLDivElement, ProductListItemProps>(
 
             {/* Price Row */}
             <div className={styles.priceRow}>
-              <span className={styles.price}>{formatPrice(price)} sum</span>
+              <span className={styles.price}>{formatNumber(price)} sum</span>
               {originalPrice && (
-                <span className={styles.originalPrice}>{formatPrice(originalPrice)} sum</span>
+                <span className={styles.originalPrice}>{formatNumber(originalPrice)} sum</span>
               )}
               {discount && (
                 <span className={styles.discount}>-{discount}%</span>

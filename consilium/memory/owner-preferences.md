@@ -1,87 +1,88 @@
 # Owner Preference Model
-<!-- Auto-synthesized from owner-profile.jsonl. -->
-<!-- Sessions 1-11 complete + current WIP — 32 observations. Updated 2026-03-24 evolution report. -->
+<!-- Auto-synthesized from 35 observations across 12 sessions + 21 decisions. -->
+<!-- Last synthesis: 2026-03-24 (forced re-synthesis) -->
 
-Status: CALIBRATED (11 sessions, 32 observations, strong signal convergence)
+Status: CALIBRATED (12 sessions, 35 observations, 21 decisions, strong signal convergence)
 
 ## Decision Style (confidence: 0.90)
-- Terse, delegating task descriptions — trusts the system to self-direct
-- Says "давай все" / "do all recommended steps" — prefers comprehensive execution over incremental
-- Trusts agent to merge PRs autonomously ("можешь сам замержить")
-- Makes decisions quickly when presented with options ("го пока что GitHub Packages")
+- Terse, delegating — "давай все", trusts system to self-direct
+- Comprehensive execution over incremental — wants the full vision in one shot
+- Trusts autonomous merges/commits — no need to ask on routine operations
+- Quick decisions when presented with options ("го пока что GitHub Packages")
 - Proactively checks CI status and reports failures
-- Wants things committed and pushed immediately — no need to ask permission on routine commits
 
 ## Quality Bar (confidence: 0.95)
-- Visual correctness is CRITICAL — "it compiles" is not sufficient. Components must look and work correctly on first delivery
-- Gets frustrated when output is broken (ThemeSwitcher not working, MDX tables broken) — rework is unacceptable
-- Tests valued (772+ tests across 75+ components)
-- Wants local verification before final approval ("локально как посмотреть")
-- Expects 0 lint errors in CI (reported lint failure proactively)
-- Expects agents to think like real IT giant teams, not checkbox-checkers ("такое ощущение что хуево консиллум не парился")
-- **Equal-height cards are non-negotiable** — got very frustrated about product card height inconsistency. Visual alignment of CTA buttons across grid rows is critical.
-- **Each story variant must have genuinely different data** — very angry when agents produced identical stories with different names but same content.
-- **Rules MUST be followed** — frustrated when agents ignore established CLAUDE.md rules. Non-compliance wastes time and erodes trust. Rules exist for a reason.
-- **Storybook organization matters** — Desktop components must be in correct Storybook sidebar sections. Disorganized library = unprofessional.
-- **Reuse existing components** — agents must check what exists before creating new components. Duplication is unacceptable.
+- **Visual correctness is CRITICAL** — "it compiles" ≠ "it works". Must look right on first delivery
+- **Zero rework tolerance** — broken output = frustration. Fix it right the first time
+- **Rules MUST be followed** — CLAUDE.md rules exist for a reason. Non-compliance wastes time
+- **Storybook organization** — Desktop components in correct sidebar sections. Disorganized = unprofessional
+- **Reuse existing components** — always check barrel exports before creating new. Duplication = unacceptable
+- **Open-source reputation** — no competitor brand names (AliExpress, Ozon, Uzum) in exported identifiers. Brand-neutral naming only
+- **"All" means literally ALL** — "все компоненты" = every single one, not just recent changes. Never scope-reduce
+- **Equal-height cards** — CTA alignment across grid rows is non-negotiable
+- **Genuinely different story variants** — unique data per story, not copy-paste with name changes
+- **Values honesty** — prefers honest "I only did 4/150" over silent omission. Transparency > excuses
+- Tests valued (772+ tests). 0 lint errors expected. Local verification before deploy
 
-## Hard Rules (non-negotiable, confidence: 1.0)
+## Hard Rules (confidence: 1.0 — non-negotiable)
 - NEVER delete anything without explicit permission
-- NEVER touch .env.production
-- NEVER commit/push to main unless explicitly asked
-- Work only on branches: feat/*, bugfix/*, v0.1.*
+- NEVER touch `.env.production`
+- NEVER commit/push to `main` unless explicitly asked
+- Work only on branches: `feat/*`, `bugfix/*`, `v0.1.*`
 
 ## Communication Style (confidence: 0.95)
-- Bilingual: Russian for casual conversation, English for technical terms
+- Bilingual: Russian casual + English technical
 - Terse — minimal words, maximum action
-- Doesn't need explanations of what was done — can read diffs
-- Responds well to status tables and compliance scorecards
-- Uses direct criticism with profanity when frustrated — not hostile, expressing urgency
-- Respond with immediate action, not apologies
-- Gets frustrated by lazy agent output — identical stories, placeholder images, surface-level work
+- Doesn't need explanations — can read diffs
+- Status tables and compliance scorecards work well
+- Profanity = urgency signal, not hostility. Respond with action, not apologies
+- Gets frustrated by lazy/surface-level work — identical stories, placeholders, scope reduction
 
 ## Architecture Direction (confidence: 0.90)
-- Version branches (v0.1.*) with tag-based releases, keep last 5
-- GitHub Packages for package distribution (@ansoragroup/ui)
-- GitHub Actions for CI/CD with quality gates
-- Prefers comprehensive single-session execution over multi-session incremental
-- **Next.js/SSR readiness is now a priority** — approved 'use client' directives, CSS vars for server rendering, as/href polymorphic props, className merging via cn(). Moving toward Next.js deployment.
+- Version branches `v0.1.*` with tag-based releases, keep last 5
+- GitHub Packages (`@ansoragroup/ui`), GitHub Actions CI/CD
+- Comprehensive single-session execution over multi-session incremental
+- **SSR/Next.js readiness** — `'use client'`, CSS vars, `as`/`href` polymorphic props, `cn()` utility
+- **i18n pattern**: `labels` prop with typed interface + English defaults (not provider-dependent)
 
 ## Agent Workflow (confidence: 0.95)
-- **ALWAYS use team agents, never standalone** — explicitly told to always use team agents, not standalone Agent spawns. Frustrated when agents were launched outside team structure.
-- Prefers parallel execution with exclusive file boundaries per agent
-- Expects agents that operate at the level of real engineering teams
-- Comprehensive, not minimal — wants the full vision executed, not a subset
-- Describes 15+ features in a single task — prefers ambitious scope
-- **Agents must check existing components before creating new ones** — search barrel exports and component directories first. Reuse > recreation.
-- **Storybook sidebar organization is non-negotiable** — Desktop/{Category}/{ComponentName} for desktop, {Category}/{ComponentName} for mobile. Never mix them.
+- **ALWAYS team agents** — never standalone Agent spawns. Frustrated when agents launched outside team
+- Parallel execution with exclusive file boundaries per agent
+- Real engineering team level — not checkbox-checkers
+- **Check existing components before creating** — search barrel exports first. Reuse > recreation
+- **Storybook organization non-negotiable** — `{Category} (Desktop)/{Name}` for Desktop, `{Category}/{Name}` for mobile
 
 ## Scope Preferences (confidence: 0.90)
-- Comprehensive, not minimal — wants the full vision executed, not a subset
-- Describes 15+ features in a single task — prefers ambitious scope
-- Expects thoroughness over speed — incomplete is worse than slow
-- Wants agents that operate at the level of real engineering teams
-- **Expansion + polish simultaneously** — current workflow adds new components while refining existing ones in the same session. Not sequential phases.
+- Comprehensive, not minimal — 15+ features per task, full vision executed
+- Thoroughness over speed — incomplete is worse than slow
+- Expansion + polish simultaneously — new components + refining existing in same session
+- **Full library audits when requested** — "audit all" = checklist every directory, track progress, flag remaining count. Auditing 4/150 when asked for all = unacceptable
 
 ## Design Preferences — Desktop (confidence: 0.95)
-- Desktop components MUST match Uzum.uz / Ozon.ru / Alifshop.uz pixel-level — not "inspired by"
-- Product cards: white bg images, badges at bottom of image, installment pricing in colored pills, full-width CTA, heart wishlist top-right, discount badge top-left
-- Each brand variant has its own color (purple Uzum, orange Alifshop, blue Ozon) — not our orange everywhere
-- Deleted all 3 DesktopHomePage variants (A, B, C) — unsatisfied with quality, needs redesign from scratch
-- See feedback_modern_design_requirements.md for full visual spec
+- Must match Uzum.uz / Ozon.ru / Alifshop.uz pixel-level
+- Product cards: white bg images, badges, installment pills, full-width CTA, wishlist heart
+- Brand variants: purple Uzum, orange Alifshop, blue Ozon — not our orange everywhere
+- Deleted all 3 DesktopHomePage variants — redesign from scratch required
+- Real product images (Unsplash for demos, no picsum/placehold.co)
 
-## Visual Standards (confidence: 0.95)
-- **Equal-height product cards** — CTA buttons must align across grid rows. Use margin-top: auto on CTA container + flex column layout on cards.
-- **Real product images required** — explicitly demanded real brand images from Newegg/ASUS. Rejected picsum.photos and placehold.co placeholders. Wants Storybook to look like real e-commerce.
-- **Genuinely different story variants** — each story must have different product names, prices, images, and descriptions. No copy-paste with name changes.
-- **Unsplash for fallback demo images** — CDN images from brand sites get hotlink blocked. Use Unsplash as verified source for demo product images.
+## Key Decisions (from 21 logged)
+| # | Decision | Outcome |
+|---|---|---|
+| 1 | Desktop as separate `Desktop*` components (not CQ extensions) | 90 components |
+| 2 | GeekShopProvider context pattern for i18n | 23 components migrated, 0 breaks |
+| 3 | 6-agent parallel expansion by domain | 160 files, 0 conflicts |
+| 4 | SCSS → CSS vars migration for runtime theming | 38 files, all themes work |
+| 5 | Rich header (Ozon-style) as primary variant | All 3 variants available |
+| 6 | Rename AliExpress → Marketplace | Brand-neutral, deprecated alias kept |
+| 7 | `labels` prop pattern for i18n-neutral components | Adopted for new components |
+| 8 | `formatNumber` shared utility | Replaced 4 duplicates |
 
-## Priorities (observed, confidence: 0.85)
+## Priorities (ranked by observed behavior)
 1. Working output on first delivery (no rework)
-2. Complete execution (do everything, not just part)
-3. Visual correctness (Storybook must look right, not just compile)
+2. Complete execution (everything, not a subset)
+3. Visual correctness (Storybook must look right)
 4. Working CI pipeline (0 errors, all gates pass)
-5. SSR/Next.js readiness (production deployment path)
-6. Convention compliance (lint enforcement > documentation)
+5. SSR/Next.js readiness
+6. Convention compliance (lint enforcement > docs)
 7. Proper release workflow (tags, packages, branches)
 8. Local verification before deploy

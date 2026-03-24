@@ -104,11 +104,11 @@ const BADGE_VARIANTS: Record<string, { bg: string; color: string }> = {
 };
 
 const LEGACY_COLORS: Record<string, { bg: string; color: string }> = {
-  green: { bg: 'var(--gs-color-success)', color: '#FFFFFF' },
-  blue: { bg: 'var(--gs-color-info)', color: '#FFFFFF' },
-  orange: { bg: 'var(--gs-color-primary)', color: '#FFFFFF' },
-  red: { bg: 'var(--gs-color-price)', color: '#FFFFFF' },
-  purple: { bg: '#7B2BFC', color: '#FFFFFF' },
+  green: { bg: 'var(--gs-color-success)', color: 'var(--gs-color-bg-card, #FFFFFF)' },
+  blue: { bg: 'var(--gs-color-info)', color: 'var(--gs-color-bg-card, #FFFFFF)' },
+  orange: { bg: 'var(--gs-color-primary)', color: 'var(--gs-color-bg-card, #FFFFFF)' },
+  red: { bg: 'var(--gs-color-price)', color: 'var(--gs-color-bg-card, #FFFFFF)' },
+  purple: { bg: 'var(--gs-badge-purple-bg, #7B2BFC)', color: 'var(--gs-color-bg-card, #FFFFFF)' },
 };
 
 function getBadgeColors(badge: DesktopProductCardBadge): { bg: string; color: string } {

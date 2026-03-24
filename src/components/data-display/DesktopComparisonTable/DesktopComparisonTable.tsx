@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopComparisonTable.module.scss';
 
@@ -74,10 +75,6 @@ function formatCellValue(value: string | number | boolean | undefined, unit?: st
   return String(value);
 }
 
-function formatPrice(price: number): string {
-  return price.toLocaleString('uz-UZ') + ' UZS';
-}
-
 const CloseIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -138,7 +135,7 @@ export const DesktopComparisonTable = forwardRef<HTMLDivElement, DesktopComparis
                       loading="lazy"
                     />
                     <span className={styles.productName}>{product.name}</span>
-                    <span className={styles.productPrice}>{formatPrice(product.price)}</span>
+                    <span className={styles.productPrice}>{formatNumber(product.price)} UZS</span>
                   </th>
                 ))}
               </tr>

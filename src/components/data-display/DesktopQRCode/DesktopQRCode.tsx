@@ -95,8 +95,8 @@ export const DesktopQRCode = forwardRef<HTMLDivElement, DesktopQRCodeProps>(
       label,
       downloadable = false,
       onDownload,
-      color = '#1A1A1A',
-      bgColor = '#FFFFFF',
+      color = 'var(--gs-text-primary, #1A1A1A)',
+      bgColor = 'var(--gs-bg-card, #FFFFFF)',
       className = '',
       ...rest
     },

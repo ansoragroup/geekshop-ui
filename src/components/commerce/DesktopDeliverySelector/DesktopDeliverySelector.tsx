@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback } from 'react';
 import styles from './DesktopDeliverySelector.module.scss';
 
@@ -23,10 +24,6 @@ export interface DesktopDeliverySelectorProps extends Omit<React.HTMLAttributes<
   onChange?: (id: string) => void;
   /** Label text */
   label?: string;
-}
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -121,7 +118,7 @@ function DesktopDeliverySelectorInner(
                 <span className={styles.cardEstimate}>{option.estimatedDays}</span>
               </div>
               <span className={cn(styles.cardPrice, isFree ? styles.cardPriceFree : '')}>
-                {isFree ? 'Bepul' : `${formatPrice(option.price)} so'm`}
+                {isFree ? 'Bepul' : `${formatNumber(option.price)} so'm`}
               </span>
               <span className={cn(styles.radio, isSelected ? styles.radioChecked : '')} aria-hidden="true">
                 {isSelected && <span className={styles.radioDot} />}

@@ -44,10 +44,10 @@ export interface OrderCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const STATUS_COLORS: Record<OrderStatus, string> = {
-  pending: '#FFA726',
-  shipping: '#1890FF',
-  review: '#07C160',
-  return: '#FF3B30',
+  pending: 'var(--gs-color-warning, #FFA726)',
+  shipping: 'var(--gs-color-info, #1890FF)',
+  review: 'var(--gs-color-success, #07C160)',
+  return: 'var(--gs-color-error, #FF3B30)',
 };
 
 const STATUS_KEYS: Record<OrderStatus, string> = {

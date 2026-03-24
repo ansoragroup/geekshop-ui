@@ -82,3 +82,9 @@
 33. **Expansion + polish in parallel.** Current sessions show new component creation (DesktopDeliverySelector, DesktopImageZoom, etc.) alongside refinement of existing components (DesktopDialog SCSS, DesktopHeader). Agent teams should allocate roles for both: creation agents + polish agents working in parallel on non-overlapping files.
 
 34. **Search autocomplete with deduplication.** Latest commit (c8348a0) adds DesktopSearchAutocomplete with photo search and deduplicates 19 pages. When adding new page-level compositions, always check for duplicates across the pages/ directory first.
+
+## Session 20260324c — Brand-Neutral Overhaul
+
+35. **labels prop pattern for i18n-neutral components.** Instead of hardcoding Russian/English text, expose a `labels` prop with typed interface: `labels?: { searchPlaceholder?: string; submitLabel?: string; ... }`. Component provides sensible defaults but allows consumers to override every visible string. This makes components truly reusable across brands and locales without forking. Example: `DesktopHeaderMarketplace` accepts `labels={{ searchPlaceholder: "Поиск товаров", cartLabel: "Корзина" }}`.
+
+36. **CSS custom property theming with convenience prop shortcut.** For components that need brand-level color customization, expose both: (a) CSS custom properties like `--gs-header-bg`, `--gs-search-btn-color` for full CSS control, and (b) a convenience prop like `searchButtonColor="#FF5000"` that sets the CSS var via inline style. This gives advanced users CSS-level control while letting simple consumers pass a prop. Pattern: `style={{ '--gs-search-btn-color': searchButtonColor } as React.CSSProperties}`.

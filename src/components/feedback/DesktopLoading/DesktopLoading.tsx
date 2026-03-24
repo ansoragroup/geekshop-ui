@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './DesktopLoading.module.scss';
@@ -49,10 +50,10 @@ export const DesktopLoading = forwardRef<HTMLDivElement, DesktopLoadingProps>(
           role="img"
           aria-label={t('aria.loading')}
         >
-          <circle cx="16" cy="16" r="13" stroke="#F0F0F0" strokeWidth={strokeWidth} />
+          <circle cx="16" cy="16" r="13" stroke="var(--gs-color-border, #F0F0F0)" strokeWidth={strokeWidth} />
           <path
             d="M16 3a13 13 0 0 1 13 13"
-            stroke="#FF5000"
+            stroke="var(--gs-color-primary, #FF5000)"
             strokeWidth={strokeWidth}
             strokeLinecap="round"
           />

@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import styles from './AuthenticityBadge.module.scss';
@@ -19,11 +20,11 @@ export interface AuthenticityBadgeProps extends HTMLAttributes<HTMLDivElement> {
 const ShieldIcon = ({ status }: { status: AuthenticityStatus }) => {
   if (status === 'verified') {
     return (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path
           d="M8 1L2.5 3.5V7.5C2.5 11 5 13.5 8 15C11 13.5 13.5 11 13.5 7.5V3.5L8 1Z"
-          fill="#07C160"
-          stroke="#07C160"
+          fill="var(--gs-color-success, #07C160)"
+          stroke="var(--gs-color-success, #07C160)"
           strokeWidth="1"
           strokeLinejoin="round"
         />
@@ -40,11 +41,11 @@ const ShieldIcon = ({ status }: { status: AuthenticityStatus }) => {
 
   if (status === 'pending') {
     return (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path
           d="M8 1L2.5 3.5V7.5C2.5 11 5 13.5 8 15C11 13.5 13.5 11 13.5 7.5V3.5L8 1Z"
-          fill="#FFA726"
-          stroke="#FFA726"
+          fill="var(--gs-color-warning, #FFA726)"
+          stroke="var(--gs-color-warning, #FFA726)"
           strokeWidth="1"
           strokeLinejoin="round"
         />
@@ -55,17 +56,17 @@ const ShieldIcon = ({ status }: { status: AuthenticityStatus }) => {
   }
 
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path
         d="M8 1L2.5 3.5V7.5C2.5 11 5 13.5 8 15C11 13.5 13.5 11 13.5 7.5V3.5L8 1Z"
         fill="none"
-        stroke="#CCCCCC"
+        stroke="var(--gs-color-text-placeholder, #CCCCCC)"
         strokeWidth="1.2"
         strokeLinejoin="round"
       />
       <path
         d="M6 6L10 10M10 6L6 10"
-        stroke="#CCCCCC"
+        stroke="var(--gs-color-text-placeholder, #CCCCCC)"
         strokeWidth="1.2"
         strokeLinecap="round"
       />
@@ -76,11 +77,11 @@ const ShieldIcon = ({ status }: { status: AuthenticityStatus }) => {
 const ShieldIconLarge = ({ status }: { status: AuthenticityStatus }) => {
   if (status === 'verified') {
     return (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path
           d="M16 2L5 7V15C5 22 10 27 16 30C22 27 27 22 27 15V7L16 2Z"
-          fill="#07C160"
-          stroke="#07C160"
+          fill="var(--gs-color-success, #07C160)"
+          stroke="var(--gs-color-success, #07C160)"
           strokeWidth="1.5"
           strokeLinejoin="round"
         />
@@ -97,11 +98,11 @@ const ShieldIconLarge = ({ status }: { status: AuthenticityStatus }) => {
 
   if (status === 'pending') {
     return (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path
           d="M16 2L5 7V15C5 22 10 27 16 30C22 27 27 22 27 15V7L16 2Z"
-          fill="#FFA726"
-          stroke="#FFA726"
+          fill="var(--gs-color-warning, #FFA726)"
+          stroke="var(--gs-color-warning, #FFA726)"
           strokeWidth="1.5"
           strokeLinejoin="round"
         />
@@ -112,17 +113,17 @@ const ShieldIconLarge = ({ status }: { status: AuthenticityStatus }) => {
   }
 
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <path
         d="M16 2L5 7V15C5 22 10 27 16 30C22 27 27 22 27 15V7L16 2Z"
         fill="none"
-        stroke="#CCCCCC"
+        stroke="var(--gs-color-text-placeholder, #CCCCCC)"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
       <path
         d="M12 12L20 20M20 12L12 20"
-        stroke="#CCCCCC"
+        stroke="var(--gs-color-text-placeholder, #CCCCCC)"
         strokeWidth="2"
         strokeLinecap="round"
       />

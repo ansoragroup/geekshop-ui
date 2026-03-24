@@ -3,6 +3,24 @@ import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useRef, useCallback, useEffect } from 'react';
 import styles from './DesktopImageZoom.module.scss';
 
+export interface DesktopImageZoomLabels {
+  /** Main image aria-label pattern (default: "{alt} {index} of {total}. Click to open fullscreen.") */
+  mainImage?: string;
+  /** Thumbnail strip label (default: "Product image thumbnails") */
+  thumbnails?: string;
+  /** Lightbox dialog label (default: "Fullscreen product image") */
+  lightbox?: string;
+  /** Close fullscreen button (default: "Close fullscreen") */
+  closeFullscreen?: string;
+}
+
+const DEFAULT_ZOOM_LABELS: Required<DesktopImageZoomLabels> = {
+  mainImage: '{alt} {index} of {total}. Click to open fullscreen.',
+  thumbnails: 'Product image thumbnails',
+  lightbox: 'Fullscreen product image',
+  closeFullscreen: 'Close fullscreen',
+};
+
 export interface DesktopImageZoomProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Array of image URLs */
   images: string[];
@@ -14,6 +32,8 @@ export interface DesktopImageZoomProps extends React.HTMLAttributes<HTMLDivEleme
   zoomLevel?: number;
   /** Alt text prefix for images */
   altPrefix?: string;
+  /** i18n labels override */
+  labels?: DesktopImageZoomLabels;
 }
 
 function DesktopImageZoomInner(
@@ -23,11 +43,13 @@ function DesktopImageZoomInner(
     onSelect,
     zoomLevel = 2.5,
     altPrefix = 'Product image',
+    labels: labelsProp,
     className,
     ...rest
   }: DesktopImageZoomProps,
   ref: React.Ref<HTMLDivElement>,
 ) {
+  const l = { ...DEFAULT_ZOOM_LABELS, ...labelsProp };
   const [internalIndex, setInternalIndex] = useState(0);
   const selectedIndex = controlledIndex ?? internalIndex;
 
@@ -115,7 +137,7 @@ function DesktopImageZoomInner(
           onKeyDown={handleKeyDown}
           role="button"
           tabIndex={0}
-          aria-label={`${altPrefix} ${selectedIndex + 1} of ${images.length}. Click to open fullscreen.`}
+          aria-label={l.mainImage.replace('{alt}', altPrefix).replace('{index}', String(selectedIndex + 1)).replace('{total}', String(images.length))}
         >
           <img
             src={currentImage}
@@ -141,7 +163,7 @@ function DesktopImageZoomInner(
 
         {/* Thumbnail strip */}
         {images.length > 1 && (
-          <div className={styles.thumbnails} role="listbox" aria-label="Product image thumbnails">
+          <div className={styles.thumbnails} role="listbox" aria-label={l.thumbnails}>
             {images.map((img, i) => (
               <button
                 key={i}
@@ -169,13 +191,13 @@ function DesktopImageZoomInner(
           onClick={handleCloseLightbox}
           role="dialog"
           aria-modal="true"
-          aria-label="Fullscreen product image"
+          aria-label={l.lightbox}
         >
           <button
             type="button"
             className={styles.lightboxClose}
             onClick={handleCloseLightbox}
-            aria-label="Close fullscreen"
+            aria-label={l.closeFullscreen}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />

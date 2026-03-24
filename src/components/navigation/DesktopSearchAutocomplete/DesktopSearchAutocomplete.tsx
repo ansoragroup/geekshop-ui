@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopSearchAutocomplete.module.scss';
@@ -28,6 +29,78 @@ export interface DesktopPhotoSearchSource {
   url?: string;
   file?: File;
 }
+
+export interface DesktopSearchAutocompleteLabels {
+  /** Aria-label for search input (default: "Search products") */
+  searchInput?: string;
+  /** Clear search button (default: "Clear search") */
+  clearSearch?: string;
+  /** Photo search button (default: "Search by photo") */
+  searchByPhoto?: string;
+  /** Submit search button (default: "Submit search") */
+  submitSearch?: string;
+  /** Search suggestions listbox (default: "Search suggestions") */
+  searchSuggestions?: string;
+  /** Recent searches section title (default: "Recent Searches") */
+  recentSearches?: string;
+  /** Clear recent button (default: "Clear") */
+  clearRecent?: string;
+  /** Trending section title (default: "Trending") */
+  trending?: string;
+  /** Products section title (default: "Products") */
+  products?: string;
+  /** Categories section title (default: "Categories") */
+  categories?: string;
+  /** Category prefix (default: "in") */
+  categoryPrefix?: string;
+  /** Category count suffix (default: "items") */
+  categoryItemsSuffix?: string;
+  /** Photo search panel title (default: "Search by Image") */
+  searchByImage?: string;
+  /** Close photo search (default: "Close photo search") */
+  closePhotoSearch?: string;
+  /** Paste image URL placeholder (default: "Paste image URL") */
+  pasteImageUrl?: string;
+  /** Photo URL search button (default: "Search") */
+  photoSearchBtn?: string;
+  /** Or divider (default: "or") */
+  orDivider?: string;
+  /** Drop zone label (default: "Drop image here or click to browse") */
+  dropZone?: string;
+  /** Drop zone hint (default: "JPG, PNG, WebP up to 10MB") */
+  dropZoneHint?: string;
+  /** Remove image button (default: "Remove image") */
+  removeImage?: string;
+  /** Search by image CTA (default: "Search by this image") */
+  searchByThisImage?: string;
+  /** Default submit label (default: "Search") */
+  defaultSubmitLabel?: string;
+}
+
+const DEFAULT_SEARCH_LABELS: Required<DesktopSearchAutocompleteLabels> = {
+  searchInput: 'Search products',
+  clearSearch: 'Clear search',
+  searchByPhoto: 'Search by photo',
+  submitSearch: 'Submit search',
+  searchSuggestions: 'Search suggestions',
+  recentSearches: 'Recent Searches',
+  clearRecent: 'Clear',
+  trending: 'Trending',
+  products: 'Products',
+  categories: 'Categories',
+  categoryPrefix: 'in',
+  categoryItemsSuffix: 'items',
+  searchByImage: 'Search by Image',
+  closePhotoSearch: 'Close photo search',
+  pasteImageUrl: 'Paste image URL',
+  photoSearchBtn: 'Search',
+  orDivider: 'or',
+  dropZone: 'Drop image here or click to browse',
+  dropZoneHint: 'JPG, PNG, WebP up to 10MB',
+  removeImage: 'Remove image',
+  searchByThisImage: 'Search by this image',
+  defaultSubmitLabel: 'Search',
+};
 
 export interface DesktopSearchAutocompleteProps extends HTMLAttributes<HTMLDivElement> {
   /** Current input value (controlled) */
@@ -60,6 +133,8 @@ export interface DesktopSearchAutocompleteProps extends HTMLAttributes<HTMLDivEl
   placeholder?: string;
   /** Custom submit button label (default: "Search") */
   submitLabel?: string;
+  /** i18n labels override */
+  labels?: DesktopSearchAutocompleteLabels;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -125,10 +200,6 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-function formatPrice(price: number): string {
-  return price.toLocaleString('en-US').replace(/,/g, ' ');
-}
-
 export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearchAutocompleteProps>(
   (
     {
@@ -147,11 +218,13 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
       onCategoryClick,
       placeholder = 'Search products...',
       submitLabel,
+      labels: labelsProp,
       className,
       ...rest
     },
     ref,
   ) => {
+    const l = { ...DEFAULT_SEARCH_LABELS, ...labelsProp };
     const [value, setValue] = useControllableState({
       value: valueProp,
       defaultValue,
@@ -423,7 +496,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             role="combobox"
-            aria-label="Search products"
+            aria-label={l.searchInput}
             aria-expanded={isOpen}
             aria-controls={isOpen ? 'desktop-search-listbox' : undefined}
             aria-haspopup="listbox"
@@ -435,7 +508,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
               type="button"
               className={styles.clearBtn}
               onClick={handleClearInput}
-              aria-label="Clear search"
+              aria-label={l.clearSearch}
               tabIndex={-1}
             >
               <CloseIcon />
@@ -447,7 +520,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                 type="button"
                 className={cn(styles.cameraBtn, showPhotoSearch ? styles.cameraBtnActive : '')}
                 onClick={handleCameraClick}
-                aria-label="Search by photo"
+                aria-label={l.searchByPhoto}
                 tabIndex={-1}
               >
                 <CameraIcon />
@@ -463,8 +536,8 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
               />
             </>
           )}
-          <button type="submit" className={styles.searchSubmit} aria-label="Submit search">
-            {submitLabel ?? 'Search'}
+          <button type="submit" className={styles.searchSubmit} aria-label={l.submitSearch}>
+            {submitLabel ?? l.defaultSubmitLabel}
           </button>
         </form>
 
@@ -474,14 +547,14 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             className={styles.dropdown}
             role="listbox"
             id="desktop-search-listbox"
-            aria-label="Search suggestions"
+            aria-label={l.searchSuggestions}
           >
             {/* Recent searches */}
             {recentSearches.length > 0 && (
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
                   <span className={styles.sectionIcon}><ClockIcon /></span>
-                  <span className={styles.sectionTitle}>Recent Searches</span>
+                  <span className={styles.sectionTitle}>{l.recentSearches}</span>
                   {onClearRecent && (
                     <button
                       type="button"
@@ -489,7 +562,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       onClick={onClearRecent}
                       tabIndex={-1}
                     >
-                      Clear
+                      {l.clearRecent}
                     </button>
                   )}
                 </div>
@@ -517,7 +590,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
                   <span className={styles.sectionIcon}><FireIcon /></span>
-                  <span className={styles.sectionTitle}>Trending</span>
+                  <span className={styles.sectionTitle}>{l.trending}</span>
                 </div>
                 <div className={styles.trendingList}>
                   {trendingSearches.map((item, index) => (
@@ -546,7 +619,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             {suggestedProducts.length > 0 && (
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTitle}>Products</span>
+                  <span className={styles.sectionTitle}>{l.products}</span>
                 </div>
                 <div className={styles.productList}>
                   {suggestedProducts.map((product, index) => (
@@ -569,7 +642,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       <div className={styles.productInfo}>
                         <span className={styles.productTitle}>{product.title}</span>
                         <div className={styles.productMeta}>
-                          <span className={styles.productPrice}>{formatPrice(product.price)} sum</span>
+                          <span className={styles.productPrice}>{formatNumber(product.price)} sum</span>
                           {product.rating != null && (
                             <span className={styles.productRating}>
                               <StarIcon />
@@ -590,7 +663,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
                   <span className={styles.sectionIcon}><FolderIcon /></span>
-                  <span className={styles.sectionTitle}>Categories</span>
+                  <span className={styles.sectionTitle}>{l.categories}</span>
                 </div>
                 <div className={styles.categoryList}>
                   {categorySuggestions.map((cat, index) => (
@@ -604,9 +677,9 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       aria-selected={activeIndex === categoryOffset + index}
                       tabIndex={-1}
                     >
-                      <span className={styles.categoryText}>in {cat.name}</span>
+                      <span className={styles.categoryText}>{l.categoryPrefix} {cat.name}</span>
                       {cat.count != null && (
-                        <span className={styles.categoryCount}>{cat.count.toLocaleString()} items</span>
+                        <span className={styles.categoryCount}>{cat.count.toLocaleString()} {l.categoryItemsSuffix}</span>
                       )}
                     </button>
                   ))}
@@ -620,12 +693,12 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
         {showPhotoSearch && (
           <div className={styles.photoPanel}>
             <div className={styles.photoPanelHeader}>
-              <span className={styles.photoPanelTitle}>Search by Image</span>
+              <span className={styles.photoPanelTitle}>{l.searchByImage}</span>
               <button
                 type="button"
                 className={styles.photoPanelClose}
                 onClick={() => setShowPhotoSearch(false)}
-                aria-label="Close photo search"
+                aria-label={l.closePhotoSearch}
                 tabIndex={-1}
               >
                 <CloseIcon />
@@ -639,7 +712,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                   <input
                     className={styles.photoUrlInput}
                     type="url"
-                    placeholder="Paste image URL"
+                    placeholder={l.pasteImageUrl}
                     value={photoUrl}
                     onChange={(e) => setPhotoUrl(e.target.value)}
                     onKeyDown={(e) => {
@@ -655,12 +728,12 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                     onClick={handlePhotoUrlSearch}
                     disabled={!photoUrl.trim()}
                   >
-                    Search
+                    {l.photoSearchBtn}
                   </button>
                 </div>
 
                 <div className={styles.photoDivider}>
-                  <span>or</span>
+                  <span>{l.orDivider}</span>
                 </div>
 
                 {/* Drop zone */}
@@ -678,13 +751,13 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       fileInputRef.current?.click();
                     }
                   }}
-                  aria-label="Drop image here or click to browse"
+                  aria-label={l.dropZone}
                 >
                   <UploadIcon />
                   <span className={styles.dropZoneText}>
-                    Drop image here or click to browse
+                    {l.dropZone}
                   </span>
-                  <span className={styles.dropZoneHint}>JPG, PNG, WebP up to 10MB</span>
+                  <span className={styles.dropZoneHint}>{l.dropZoneHint}</span>
                 </div>
               </>
             ) : (
@@ -700,7 +773,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                     type="button"
                     className={styles.photoPreviewRemove}
                     onClick={handleRemovePhoto}
-                    aria-label="Remove image"
+                    aria-label={l.removeImage}
                   >
                     <CloseIcon />
                   </button>
@@ -711,7 +784,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                   className={styles.photoPreviewCta}
                   onClick={handlePhotoSearchSubmit}
                 >
-                  Search by this image
+                  {l.searchByThisImage}
                 </button>
               </div>
             )}

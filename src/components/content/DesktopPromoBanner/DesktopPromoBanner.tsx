@@ -42,7 +42,7 @@ export const DesktopPromoBanner = forwardRef<HTMLDivElement, DesktopPromoBannerP
       imageAlign = 'right',
       ctaText,
       tag,
-      background = 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
+      background = 'linear-gradient(135deg, var(--gs-color-primary, #FF5000) 0%, var(--gs-color-primary-light, #FF7A33) 100%)',
       onCtaClick,
       onClick,
       href,

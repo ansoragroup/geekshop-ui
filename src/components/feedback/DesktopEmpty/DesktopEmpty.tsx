@@ -18,12 +18,12 @@ export interface DesktopEmptyProps extends HTMLAttributes<HTMLDivElement> {
 
 const DefaultEmptyIcon = () => (
   <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
-    <circle cx="80" cy="80" r="70" fill="#F5F5F5" />
-    <rect x="45" y="50" width="70" height="55" rx="6" fill="#E8E8E8" />
-    <rect x="55" y="62" width="50" height="4" rx="2" fill="#D4D4D4" />
-    <rect x="55" y="72" width="38" height="4" rx="2" fill="#D4D4D4" />
-    <rect x="55" y="82" width="26" height="4" rx="2" fill="#D4D4D4" />
-    <circle cx="80" cy="72" r="24" fill="none" stroke="#CCCCCC" strokeWidth="2.5" strokeDasharray="5 4" />
+    <circle cx="80" cy="80" r="70" fill="var(--gs-bg-page, #F5F5F5)" />
+    <rect x="45" y="50" width="70" height="55" rx="6" fill="var(--gs-color-border, #E8E8E8)" />
+    <rect x="55" y="62" width="50" height="4" rx="2" fill="var(--gs-text-placeholder, #D4D4D4)" />
+    <rect x="55" y="72" width="38" height="4" rx="2" fill="var(--gs-text-placeholder, #D4D4D4)" />
+    <rect x="55" y="82" width="26" height="4" rx="2" fill="var(--gs-text-placeholder, #D4D4D4)" />
+    <circle cx="80" cy="72" r="24" fill="none" stroke="var(--gs-text-placeholder, #CCCCCC)" strokeWidth="2.5" strokeDasharray="5 4" />
   </svg>
 );
 

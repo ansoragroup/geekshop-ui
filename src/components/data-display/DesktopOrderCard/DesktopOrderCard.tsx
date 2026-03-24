@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
 import styles from './DesktopOrderCard.module.scss';
 
@@ -45,12 +46,6 @@ export interface DesktopOrderCardProps extends HTMLAttributes<HTMLDivElement> {
   href?: string;
   /** Link target */
   target?: string;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ').replace(/,/g, ' ');
 }
 
 const STATUS_LABELS: Record<DesktopOrderStatus, string> = {
@@ -144,7 +139,7 @@ export const DesktopOrderCard = forwardRef<HTMLDivElement, DesktopOrderCardProps
               {products.length} {products.length === 1 ? 'item' : 'items'}
             </span>
             <span className={styles.dotSeparator} aria-hidden="true">&bull;</span>
-            <span className={styles.totalAmount}>{formatPrice(totalAmount)} so'm</span>
+            <span className={styles.totalAmount}>{formatNumber(totalAmount)} so'm</span>
           </div>
         </div>
 
