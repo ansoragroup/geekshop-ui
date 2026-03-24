@@ -14,17 +14,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Full checkout page with items, on the Shipping step. */
+/** Full checkout page — authenticated user, shipping step. */
 export const Default: Story = {};
 
-/** Checkout with an empty cart — shows empty state prompt. */
+/** Empty cart — shows empty state prompt. */
 export const EmptyCart: Story = {
   args: {
     emptyCart: true,
   },
 };
 
-/** Shipping step — address selection (same as default, step 0). */
+/** Shipping step — address selection. */
 export const ShippingStep: Story = {
   args: {
     initialStep: 0,
@@ -38,9 +38,39 @@ export const PaymentStep: Story = {
   },
 };
 
-/** Review step — final order review before placing. */
+/** Review step — final order review. */
 export const ReviewStep: Story = {
   args: {
     initialStep: 2,
+  },
+};
+
+/** Guest checkout — initial prompt: "Sign in or continue as guest". */
+export const GuestCheckout: Story = {
+  name: 'Guest — Sign In Prompt',
+  args: {
+    isAuthenticated: false,
+    initialGuestStep: 'prompt',
+  },
+};
+
+/** Guest checkout — phone number input step. */
+export const GuestPhoneStep: Story = {
+  name: 'Guest — Phone Input',
+  args: {
+    isAuthenticated: false,
+    initialGuestStep: 'phone',
+    initialGuestPhone: '97 321 65 40',
+  },
+};
+
+/** Guest checkout — OTP verification step. */
+export const GuestOTPStep: Story = {
+  name: 'Guest — OTP Verification',
+  args: {
+    isAuthenticated: false,
+    initialGuestStep: 'otp',
+    initialGuestPhone: '93 876 12 34',
+    initialGuestCountdown: 45,
   },
 };

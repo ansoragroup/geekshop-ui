@@ -11,6 +11,8 @@ import {
   DesktopSpecsTable,
   DesktopReviewCard,
   DesktopSkuSelector,
+  DesktopInstallmentCalculator,
+  DesktopRatingDistribution,
 } from '../../components';
 import type { ReviewUser } from '../../components';
 import { DefaultTopBar, DefaultHeader, DefaultMegaMenu, DefaultFooter } from '../_shared';
@@ -144,6 +146,18 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
             <PriceDisplay price={price} originalPrice={originalPrice} variant={originalPrice ? 'sale' : 'default'} size="lg" />
           </div>
 
+          {/* Installment Calculator */}
+          <div className={styles.installmentSection}>
+            <DesktopInstallmentCalculator
+              price={price}
+              options={[
+                { months: 3, rate: 0 },
+                { months: 6, rate: 0 },
+                { months: 12, rate: 5 },
+              ]}
+            />
+          </div>
+
           {/* SKU Selection */}
           <DesktopSkuSelector
             variants={[
@@ -196,10 +210,23 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
                   <p style={{ fontSize: 14, marginTop: 4 }}>Be the first to review this product!</p>
                 </div>
               ) : (
-                <div className={styles.reviewsList}>
-                  {displayReviews.map((review, i) => (
-                    <DesktopReviewCard key={i} {...review} />
-                  ))}
+                <div className={styles.reviewsSection}>
+                  <DesktopRatingDistribution
+                    distribution={{
+                      5: Math.round(displayReviews.filter((r) => r.rating === 5).length * 420),
+                      4: Math.round(displayReviews.filter((r) => r.rating === 4).length * 210),
+                      3: Math.round(displayReviews.filter((r) => r.rating === 3).length * 65),
+                      2: Math.round(displayReviews.filter((r) => r.rating === 2).length * 19),
+                      1: Math.round(displayReviews.filter((r) => r.rating === 1).length * 8),
+                    }}
+                    average={ratingValue}
+                    total={displayReviewCount}
+                  />
+                  <div className={styles.reviewsList}>
+                    {displayReviews.map((review, i) => (
+                      <DesktopReviewCard key={i} {...review} />
+                    ))}
+                  </div>
                 </div>
               ),
             },

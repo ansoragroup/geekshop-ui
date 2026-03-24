@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   DesktopShell,
   Breadcrumbs,
@@ -66,6 +67,7 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
   cancellationReason,
   returnStatus,
 }) => {
+  const [searchValue, setSearchValue] = useState('');
   const displayItems = propItems ?? orderItems;
   const displaySteps = propSteps ?? orderSteps;
   const addr = shippingAddress ?? { name: 'Islom Karimov', phone: '+998 90 123 45 67', street: '123 Amir Temur Street, Apt 42', city: 'Tashkent, Uzbekistan', postal: '100000' };

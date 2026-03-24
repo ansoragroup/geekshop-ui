@@ -1,0 +1,282 @@
+@use '../../theme/tokens' as *;
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+// ─── Success Banner ─────────────────────────────────────────────────────────
+
+.successBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $desktop-spacing-xxl $desktop-spacing-lg;
+  margin-bottom: $desktop-spacing-xl;
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+}
+
+.checkmarkCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-round;
+  background: $color-success;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $desktop-spacing-lg;
+  animation: checkmarkPop 0.4s ease;
+}
+
+.checkmarkIcon {
+  width: 40px;
+  height: 40px;
+  color: $color-text-white;
+}
+
+.successTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-sm;
+}
+
+.successSubtitle {
+  font-size: $desktop-font-size-body;
+  color: $color-text-secondary;
+  margin: 0;
+
+  strong {
+    color: $color-text-primary;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.expressBadge {
+  display: inline-block;
+  margin-top: $spacing-sm;
+  padding: $spacing-xxs $spacing-md;
+  background: $color-warning;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-round;
+}
+
+// ─── Content Grid ───────────────────────────────────────────────────────────
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: $desktop-spacing-lg;
+  align-items: start;
+}
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+  position: sticky;
+  top: $desktop-spacing-lg;
+}
+
+// ─── Cards ──────────────────────────────────────────────────────────────────
+
+.card,
+.actionsCard,
+.noticeCard {
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+  padding: $desktop-spacing-lg;
+}
+
+.actionsCard {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.noticeCard {
+  text-align: center;
+}
+
+.noticeText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  margin: 0;
+
+  strong {
+    color: $color-text-primary;
+  }
+}
+
+.cardTitle {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $desktop-spacing-md;
+}
+
+// ─── Items List ─────────────────────────────────────────────────────────────
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  padding: $desktop-spacing-sm 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  flex-shrink: 0;
+}
+
+.itemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+  min-width: 0;
+}
+
+.itemName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.itemQty {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.itemPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  flex-shrink: 0;
+}
+
+// ─── Price Summary ──────────────────────────────────────────────────────────
+
+.priceSummary {
+  margin-top: $desktop-spacing-md;
+  padding-top: $desktop-spacing-md;
+  border-top: 1px solid $color-border;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  padding: $spacing-xs 0;
+}
+
+.priceDivider {
+  height: 1px;
+  background: $color-border;
+  margin: $spacing-sm 0;
+}
+
+.priceTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  padding-top: $spacing-sm;
+}
+
+.installmentRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-sm;
+  color: $color-primary;
+  font-weight: $font-weight-medium;
+  padding-top: $spacing-sm;
+}
+
+// ─── Address & Payment ──────────────────────────────────────────────────────
+
+.addressText {
+  font-size: $font-size-md;
+  line-height: $line-height-relaxed;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.paymentText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.installmentNote {
+  font-size: $font-size-sm;
+  color: $color-primary;
+  margin: $spacing-sm 0 0;
+}
+
+// ─── Animation ──────────────────────────────────────────────────────────────
+
+@keyframes checkmarkPop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkmarkCircle {
+    animation: none;
+  }
+}
+
+// ─── Responsive ─────────────────────────────────────────────────────────────
+
+@media (max-width: $breakpoint-desktop) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sideColumn {
+    position: static;
+  }
+}

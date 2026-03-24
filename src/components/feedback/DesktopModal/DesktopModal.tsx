@@ -1,7 +1,8 @@
 'use client';
+import { createPortal } from 'react-dom';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useCallback, useId, type ReactNode, type HTMLAttributes } from 'react';
+import { forwardRef, useCallback, useEffect, useId, useState, type ReactNode, type HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopModal.module.scss';
 
@@ -45,9 +46,11 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
   ) => {
   const { t } = useGeekShop();
     const titleId = useId();
+    const [visible, setVisible] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
 
     const trapRef = useFocusTrap<HTMLDivElement>(open, {
-      onEscape: closable ? onClose : undefined,
+      onEscape: closable ? handleClose : undefined,
     });
 
     const mergedRef = useCallback(
@@ -62,28 +65,63 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
       [ref, trapRef],
     );
 
-    if (!open) return null;
+    // Track open/close state for exit animation
+    useEffect(() => {
+      if (open) {
+        setVisible(true);
+        setIsClosing(false);
+      } else if (visible) {
+        setIsClosing(true);
+        const timer = setTimeout(() => {
+          setVisible(false);
+          setIsClosing(false);
+        }, 200);
+        return () => clearTimeout(timer);
+      }
+    }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // Body scroll lock
+    useEffect(() => {
+      if (visible) {
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+          document.body.style.overflow = prev;
+        };
+      }
+    }, [visible]);
+
+    function handleClose() {
+      if (closable) {
+        setIsClosing(true);
+        setTimeout(() => {
+          setIsClosing(false);
+          setVisible(false);
+          onClose();
+        }, 200);
+      }
+    }
 
     const handleBackdropClick = () => {
-      if (closable) {
-        onClose();
-      }
+      handleClose();
     };
 
     const handleContentClick = (e: React.MouseEvent) => {
       e.stopPropagation();
     };
 
-    return (
+    if (!visible) return null;
+
+    const modal = (
       <div
-        className={cn(styles.backdrop, className)}
+        className={cn(styles.backdrop, isClosing && styles.closing, className)}
         onClick={handleBackdropClick}
         role="presentation"
       >
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
-          className={styles.modal}
+          className={cn(styles.modal, isClosing && styles.closing)}
           style={{ width }}
           onClick={handleContentClick}
           onKeyDown={(e) => e.stopPropagation()}
@@ -103,7 +141,7 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
               <button
                 type="button"
                 className={styles.closeBtn}
-                onClick={onClose}
+                onClick={handleClose}
                 aria-label={t('aria.close')}
               >
                 <CloseIcon />
@@ -119,6 +157,9 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
         </div>
       </div>
     );
+
+    if (typeof document === 'undefined') return modal;
+    return createPortal(modal, document.body);
   },
 );
 

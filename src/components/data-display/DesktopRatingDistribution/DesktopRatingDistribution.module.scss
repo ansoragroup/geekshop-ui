@@ -1,0 +1,114 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  gap: $desktop-spacing-xl;
+  padding: $desktop-spacing-md;
+  background: var(--gs-bg-white);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $desktop-radius-card;
+}
+
+// ─── Summary (left) ──────────────────────────────────────────────────────────
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  min-width: 100px;
+}
+
+.averageValue {
+  font-size: 40px;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  line-height: 1;
+}
+
+.averageStars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  display: flex;
+  align-items: center;
+}
+
+.starFilled {
+  color: var(--gs-color-warning);
+}
+
+.starEmpty {
+  color: var(--gs-border-color);
+}
+
+.totalCount {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  white-space: nowrap;
+}
+
+// ─── Bars (right) ────────────────────────────────────────────────────────────
+
+.bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  justify-content: center;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.barLabel {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 32px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-secondary);
+  white-space: nowrap;
+  justify-content: flex-end;
+
+  svg {
+    color: var(--gs-color-warning);
+  }
+}
+
+.barTrack {
+  flex: 1;
+  height: 8px;
+  background: var(--gs-bg-page);
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: $radius-round;
+  transition: width 0.4s ease;
+  min-width: 0;
+}
+
+.barCount {
+  min-width: 36px;
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  text-align: right;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .barFill {
+    transition: none;
+  }
+}

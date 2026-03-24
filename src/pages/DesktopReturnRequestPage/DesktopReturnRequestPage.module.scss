@@ -1,0 +1,215 @@
+@use '../../theme/tokens' as *;
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.breadcrumbs {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.pageTitle {
+  font-size: $desktop-font-size-h1;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0 0 $desktop-spacing-lg;
+}
+
+// ─── Content Grid ───────────────────────────────────────────────────────────
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: $desktop-spacing-lg;
+  align-items: start;
+}
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-md;
+  position: sticky;
+  top: $desktop-spacing-lg;
+}
+
+// ─── Cards ──────────────────────────────────────────────────────────────────
+
+.card,
+.summaryCard {
+  background: $color-bg-card;
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+  padding: $desktop-spacing-lg;
+}
+
+.cardTitle {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0 0 $desktop-spacing-md;
+}
+
+// ─── Return Item ────────────────────────────────────────────────────────────
+
+.returnItem {
+  display: flex;
+  gap: $desktop-spacing-md;
+  align-items: flex-start;
+}
+
+.itemImage {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  flex-shrink: 0;
+}
+
+.itemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.itemName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.itemPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-price;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-top: $spacing-xs;
+}
+
+.quantityLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+// ─── Form fields ────────────────────────────────────────────────────────────
+
+.fieldGap {
+  height: $desktop-spacing-md;
+}
+
+.uploadHint {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin: 0 0 $desktop-spacing-sm;
+}
+
+// ─── Refund Options ─────────────────────────────────────────────────────────
+
+.refundOptions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.refundOption {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $desktop-spacing-md;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:has(.radioInput:checked) {
+    border-color: $color-primary;
+    background: $color-primary-bg;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: $color-primary-light;
+    }
+  }
+}
+
+.radioInput {
+  margin-top: 2px;
+  accent-color: $color-primary;
+  flex-shrink: 0;
+}
+
+.refundContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.refundLabel {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.refundDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+// ─── Summary ────────────────────────────────────────────────────────────────
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  padding: $spacing-sm 0;
+}
+
+.summaryDivider {
+  height: 1px;
+  background: $color-border;
+  margin: $spacing-sm 0;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-price;
+  padding-top: $spacing-sm;
+}
+
+.refundNote {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin: $desktop-spacing-sm 0 0;
+}
+
+// ─── Responsive ─────────────────────────────────────────────────────────────
+
+@media (max-width: $breakpoint-desktop) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sideColumn {
+    position: static;
+  }
+}

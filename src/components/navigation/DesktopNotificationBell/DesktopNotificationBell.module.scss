@@ -1,0 +1,279 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+// ─── Bell Button ─────────────────────────────────────────────────────────────
+
+.bellBtn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xxs;
+  min-width: 48px;
+  min-height: 48px;
+  padding: $spacing-xs;
+  border: none;
+  border-radius: $radius-md;
+  background: none;
+  color: var(--gs-text-secondary);
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+  font-family: $font-family;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--gs-color-sale);
+  color: var(--gs-text-white);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  line-height: 16px;
+  text-align: center;
+  border-radius: $radius-round;
+  box-sizing: border-box;
+}
+
+// ─── Dropdown Panel ──────────────────────────────────────────────────────────
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-sm);
+  right: 0;
+  width: 380px;
+  max-height: 500px;
+  background: var(--gs-bg-white);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-dropdown;
+  z-index: $z-index-dropdown;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $desktop-spacing-md $desktop-spacing-md $spacing-sm;
+  border-bottom: 1px solid var(--gs-border-color);
+}
+
+.dropdownTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+}
+
+.markAllBtn {
+  border: none;
+  background: none;
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  color: var(--gs-color-primary);
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Body ────────────────────────────────────────────────────────────────────
+
+.dropdownBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-sm 0;
+
+  scrollbar-width: thin;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-xxl $desktop-spacing-md;
+  color: var(--gs-text-tertiary);
+  font-size: $font-size-md;
+}
+
+// ─── Sections ────────────────────────────────────────────────────────────────
+
+.section {
+  & + & {
+    border-top: 1px solid var(--gs-border-color-light);
+    margin-top: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $desktop-spacing-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// ─── Notification Item ───────────────────────────────────────────────────────
+
+.notifItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: $spacing-sm $desktop-spacing-md;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: $font-family;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-bg-page);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.unread {
+  background: var(--gs-color-primary-bg);
+
+  @media (hover: hover) {
+    &:hover {
+      background: #ffece0;
+    }
+  }
+}
+
+.notifContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notifTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-primary);
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notifBody {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  line-height: $line-height-normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notifTime {
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+  line-height: $line-height-tight;
+  margin-top: 2px;
+}
+
+.unreadDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary);
+  margin-top: 6px;
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+
+.dropdownFooter {
+  border-top: 1px solid var(--gs-border-color);
+  padding: $spacing-sm $desktop-spacing-md;
+}
+
+.viewAllBtn {
+  width: 100%;
+  border: none;
+  background: none;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  color: var(--gs-color-primary);
+  cursor: pointer;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  text-align: center;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .bellBtn,
+  .markAllBtn,
+  .notifItem,
+  .viewAllBtn {
+    transition: none;
+  }
+}

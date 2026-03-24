@@ -105,6 +105,16 @@
   padding: $desktop-spacing-lg;
 }
 
+.installmentSection {
+  margin-bottom: $desktop-spacing-md;
+}
+
+.reviewsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-lg;
+}
+
 .reviewsList {
   display: flex;
   flex-direction: column;

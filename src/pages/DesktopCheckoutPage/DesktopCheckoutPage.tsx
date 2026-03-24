@@ -1,4 +1,5 @@
-import { useState } from 'react';
+'use client';
+import { useState, useEffect, useCallback } from 'react';
 import {
   DesktopShell,
   DesktopHeaderRich,
@@ -8,6 +9,9 @@ import {
   DesktopAddressCard,
   DesktopPaymentMethodCard,
   DesktopOrderSummary,
+  DesktopButton,
+  DesktopInput,
+  DesktopOTPInput,
   Button,
 } from '../../components';
 import type {
@@ -69,6 +73,10 @@ const checkoutSteps = [
   { title: 'Review' },
 ];
 
+// ─── Guest OTP State Type ────────────────────────────────────────────────────
+
+type GuestStep = 'prompt' | 'phone' | 'otp' | 'done';
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export interface DesktopCheckoutPageProps {
@@ -76,16 +84,85 @@ export interface DesktopCheckoutPageProps {
   initialStep?: number;
   /** Render with empty cart */
   emptyCart?: boolean;
+  /** Whether user is authenticated */
+  isAuthenticated?: boolean;
+  /** Force guest flow step (for stories) */
+  initialGuestStep?: GuestStep;
+  /** Pre-fill guest phone */
+  initialGuestPhone?: string;
+  /** Pre-fill guest OTP */
+  initialGuestOtp?: string;
+  /** Guest OTP countdown */
+  initialGuestCountdown?: number;
 }
 
 export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
   initialStep = 0,
   emptyCart = false,
+  isAuthenticated = true,
+  initialGuestStep = 'prompt',
+  initialGuestPhone = '',
+  initialGuestOtp = '',
+  initialGuestCountdown,
 }) => {
   const [currentStep] = useState(initialStep);
   const [searchValue, setSearchValue] = useState('');
   const [selectedAddress, setSelectedAddress] = useState<string>(addresses[0].id);
   const [selectedPayment, setSelectedPayment] = useState<string>(paymentMethods[0].id);
+
+  // Guest OTP state
+  const [guestStep, setGuestStep] = useState<GuestStep>(isAuthenticated ? 'done' : initialGuestStep);
+  const [guestPhone, setGuestPhone] = useState(initialGuestPhone);
+  const [guestOtp, setGuestOtp] = useState(initialGuestOtp);
+  const [guestCountdown, setGuestCountdown] = useState(initialGuestCountdown ?? 0);
+  const [guestOtpError, setGuestOtpError] = useState('');
+
+  // Guest countdown timer
+  useEffect(() => {
+    if (guestCountdown <= 0) return;
+    const timer = setInterval(() => {
+      setGuestCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [guestCountdown]);
+
+  const formatPhone = (val: string) => {
+    const digits = val.replace(/\D/g, '').slice(0, 9);
+    if (digits.length <= 2) return digits;
+    if (digits.length <= 4) return `${digits.slice(0, 2)} ${digits.slice(2)}`;
+    if (digits.length <= 7) return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`;
+    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(7, 9)}`;
+  };
+
+  const handleGuestPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, '').slice(0, 9);
+    setGuestPhone(formatPhone(raw));
+  };
+
+  const handleGuestSendCode = useCallback(() => {
+    if (guestPhone.replace(/\D/g, '').length < 9) return;
+    setGuestStep('otp');
+    setGuestCountdown(59);
+    setGuestOtp('');
+    setGuestOtpError('');
+  }, [guestPhone]);
+
+  const handleGuestResend = useCallback(() => {
+    setGuestCountdown(59);
+    setGuestOtp('');
+    setGuestOtpError('');
+  }, []);
+
+  const handleGuestOtpComplete = useCallback((_code: string) => {
+    // In real app: verify OTP, create guest session, continue checkout
+    setGuestStep('done');
+  }, []);
 
   const selectedCartItems = emptyCart ? [] : mockCartItems.filter((item) => item.selected);
   const subtotal = selectedCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -135,6 +212,90 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
       <div className={styles.breadcrumbs}>
         <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Cart', href: '#' }, { label: 'Checkout' }]} />
       </div>
+
+      {/* Guest auth banner */}
+      {guestStep !== 'done' && !emptyCart && (
+        <div className={styles.guestBanner}>
+          {guestStep === 'prompt' && (
+            <div className={styles.guestPrompt}>
+              <div className={styles.guestPromptLeft}>
+                <p className={styles.guestPromptTitle}>Already have an account?</p>
+                <p className={styles.guestPromptSubtitle}>Sign in for faster checkout and order tracking</p>
+              </div>
+              <div className={styles.guestPromptActions}>
+                <DesktopButton variant="primary" size="md" onClick={() => setGuestStep('phone')}>
+                  Sign In
+                </DesktopButton>
+                <DesktopButton variant="secondary" size="md" onClick={() => setGuestStep('phone')}>
+                  Continue as Guest
+                </DesktopButton>
+              </div>
+            </div>
+          )}
+
+          {guestStep === 'phone' && (
+            <div className={styles.guestPhoneForm}>
+              <p className={styles.guestFormTitle}>Enter your phone number</p>
+              <div className={styles.guestPhoneRow}>
+                <span className={styles.guestPhonePrefix}>+998</span>
+                <DesktopInput
+                  type="tel"
+                  placeholder="90 123 45 67"
+                  value={guestPhone}
+                  onChange={handleGuestPhoneChange}
+                />
+                <DesktopButton
+                  variant="primary"
+                  size="md"
+                  disabled={guestPhone.replace(/\D/g, '').length < 9}
+                  onClick={handleGuestSendCode}
+                >
+                  Send Code
+                </DesktopButton>
+              </div>
+            </div>
+          )}
+
+          {guestStep === 'otp' && (
+            <div className={styles.guestOtpForm}>
+              <div className={styles.guestOtpHeader}>
+                <p className={styles.guestFormTitle}>
+                  Verification code sent to <strong>+998 {guestPhone}</strong>
+                </p>
+                <button
+                  type="button"
+                  className={styles.guestChangeLink}
+                  onClick={() => setGuestStep('phone')}
+                >
+                  Change
+                </button>
+              </div>
+              <DesktopOTPInput
+                length={6}
+                value={guestOtp}
+                onChange={setGuestOtp}
+                onComplete={handleGuestOtpComplete}
+                error={!!guestOtpError}
+                errorMessage={guestOtpError}
+                autoFocus
+              />
+              <div className={styles.guestResendRow}>
+                {guestCountdown > 0 ? (
+                  <span className={styles.guestResendTimer}>Resend in {guestCountdown}s</span>
+                ) : (
+                  <button
+                    type="button"
+                    className={styles.guestResendLink}
+                    onClick={handleGuestResend}
+                  >
+                    Resend code
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Checkout steps */}
       <div className={styles.stepsWrapper}>

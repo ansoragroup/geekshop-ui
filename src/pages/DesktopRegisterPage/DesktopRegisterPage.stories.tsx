@@ -14,11 +14,48 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Default view: phone tab registration form. */
 export const Default: Story = {};
 
+/** Email tab with full registration form. */
+export const EmailTab: Story = {
+  name: 'Email Tab',
+  args: {
+    defaultTab: 'email',
+  },
+};
+
+/** Phone registration — user fills name + phone. */
+export const PhoneRegister: Story = {
+  name: 'Phone — Fill Form',
+  args: {
+    defaultTab: 'phone',
+    initialValues: {
+      name: 'Dilshod Rahimov',
+      phone: '94 567 89 01',
+    },
+  },
+};
+
+/** Phone registration — OTP verification step. */
+export const PhoneOTPStep: Story = {
+  name: 'Phone — OTP Verification',
+  args: {
+    defaultTab: 'phone',
+    initialValues: {
+      name: 'Malika Abdullayeva',
+      phone: '91 876 54 32',
+    },
+    initialPhoneStep: 'otp',
+    initialCountdown: 37,
+  },
+};
+
+/** Email tab with validation errors. */
 export const WithValidationErrors: Story = {
   name: 'With Validation Errors',
   args: {
+    defaultTab: 'email',
     initialValues: {
       name: 'Bekzod',
       email: 'alisher@mail.uz',
@@ -32,9 +69,11 @@ export const WithValidationErrors: Story = {
   },
 };
 
+/** Loading state during account creation. */
 export const Loading: Story = {
   name: 'Loading State',
   args: {
+    defaultTab: 'email',
     loading: true,
     initialValues: {
       name: 'Nodira Karimova',

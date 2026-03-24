@@ -42,6 +42,8 @@ export { DesktopProductCard } from './product/DesktopProductCard';
 export { RecommendationFeed } from './product/RecommendationFeed';
 export { DesktopProductImageGallery } from './product/DesktopProductImageGallery';
 export { DesktopProductGrid } from './product/DesktopProductGrid';
+export { DesktopImageZoom } from './product/DesktopImageZoom';
+export { DesktopColorSwatch } from './product/DesktopColorSwatch';
 
 // Commerce
 export { QuantityStepper } from './commerce/QuantityStepper';
@@ -68,6 +70,8 @@ export { DesktopGroupBuyCard } from './commerce/DesktopGroupBuyCard';
 export { DesktopMiniCart } from './commerce/DesktopMiniCart';
 export { DesktopQuickBuyPopup } from './commerce/DesktopQuickBuyPopup';
 export { DesktopShopCard } from './commerce/DesktopShopCard';
+export { DesktopInstallmentCalculator } from './commerce/DesktopInstallmentCalculator';
+export { DesktopDeliverySelector } from './commerce/DesktopDeliverySelector';
 
 // Content
 export { HeroBanner } from './content/HeroBanner';
@@ -132,6 +136,7 @@ export { DesktopRating } from './data-display/DesktopRating';
 export { DesktopSteps } from './data-display/DesktopSteps';
 export { DesktopTag } from './data-display/DesktopTag';
 export { DesktopTimeline } from './data-display/DesktopTimeline';
+export { DesktopRatingDistribution } from './data-display/DesktopRatingDistribution';
 
 // Feedback
 export { Toast } from './feedback/Toast';
@@ -220,6 +225,7 @@ export { DesktopCurrencySwitcher } from './navigation/DesktopCurrencySwitcher';
 export { DesktopLanguageSwitcher } from './navigation/DesktopLanguageSwitcher';
 export { DesktopThemeSwitcher } from './navigation/DesktopThemeSwitcher';
 export { DesktopSearchAutocomplete } from './navigation/DesktopSearchAutocomplete';
+export { DesktopNotificationBell } from './navigation/DesktopNotificationBell';
 
 // Hooks
 export { useControllableState } from '../hooks/useControllableState';
@@ -272,6 +278,8 @@ export type { DesktopProductCardProps } from './product/DesktopProductCard';
 export type { RecommendationFeedProps, RecommendationTab } from './product/RecommendationFeed';
 export type { DesktopProductImageGalleryProps } from './product/DesktopProductImageGallery';
 export type { DesktopProductGridProps, DesktopProductGridItem, SortOption } from './product/DesktopProductGrid';
+export type { DesktopImageZoomProps } from './product/DesktopImageZoom';
+export type { DesktopColorSwatchProps, DesktopColorSwatchOption } from './product/DesktopColorSwatch';
 
 // Types — Commerce
 export type { QuantityStepperProps } from './commerce/QuantityStepper';
@@ -298,6 +306,8 @@ export type { DesktopGroupBuyCardProps, DesktopGroupBuyProduct } from './commerc
 export type { DesktopMiniCartProps, DesktopMiniCartItem } from './commerce/DesktopMiniCart';
 export type { DesktopQuickBuyPopupProps, DesktopQuickBuyProduct, DesktopQuickBuyVariant } from './commerce/DesktopQuickBuyPopup';
 export type { DesktopShopCardProps } from './commerce/DesktopShopCard';
+export type { DesktopInstallmentCalculatorProps, DesktopInstallmentOption } from './commerce/DesktopInstallmentCalculator';
+export type { DesktopDeliverySelectorProps, DesktopDeliveryOption } from './commerce/DesktopDeliverySelector';
 
 // Types — Content
 export type { HeroBannerProps } from './content/HeroBanner';
@@ -362,6 +372,7 @@ export type { DesktopRatingProps } from './data-display/DesktopRating';
 export type { DesktopStepsProps, DesktopStepItem, DesktopStepStatus } from './data-display/DesktopSteps';
 export type { DesktopTagProps, DesktopTagColor, DesktopTagVariant, DesktopTagSize } from './data-display/DesktopTag';
 export type { DesktopTimelineProps, DesktopTimelineItem } from './data-display/DesktopTimeline';
+export type { DesktopRatingDistributionProps, DesktopRatingDistributionData } from './data-display/DesktopRatingDistribution';
 
 // Types — Feedback
 export type { ToastProps, ToastType } from './feedback/Toast';
@@ -450,6 +461,7 @@ export type { DesktopCurrencySwitcherProps, CurrencyOption } from './navigation/
 export type { DesktopLanguageSwitcherProps, LanguageOption } from './navigation/DesktopLanguageSwitcher';
 export type { DesktopThemeSwitcherProps, ThemeMode } from './navigation/DesktopThemeSwitcher';
 export type { DesktopSearchAutocompleteProps, DesktopSearchSuggestedProduct, DesktopSearchTrendingItem, DesktopSearchCategoryItem, DesktopPhotoSearchSource } from './navigation/DesktopSearchAutocomplete';
+export type { DesktopNotificationBellProps, DesktopNotification, DesktopNotificationType } from './navigation/DesktopNotificationBell';
 
 // Types — Hooks
 export type { UseControllableStateProps } from '../hooks/useControllableState';

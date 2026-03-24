@@ -4,6 +4,8 @@ import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import { DesktopSearchAutocomplete } from '../DesktopSearchAutocomplete';
 import type { DesktopSearchSuggestedProduct, DesktopSearchTrendingItem, DesktopSearchCategoryItem, DesktopPhotoSearchSource } from '../DesktopSearchAutocomplete';
+import { DesktopNotificationBell } from '../DesktopNotificationBell';
+import type { DesktopNotification } from '../DesktopNotificationBell';
 import styles from './DesktopHeaderRich.module.scss';
 
 export interface CategoryItem {
@@ -79,6 +81,16 @@ export interface DesktopHeaderRichProps extends HTMLAttributes<HTMLElement> {
   onSearchProductClick?: (product: { id: string }) => void;
   /** Callback when a category is clicked in search */
   onSearchCategoryClick?: (category: { id: string; name: string }) => void;
+  /** Notifications list for the bell dropdown */
+  notifications?: DesktopNotification[];
+  /** Unread notification count badge */
+  notificationCount?: number;
+  /** Callback when a notification is marked as read */
+  onNotificationRead?: (id: string) => void;
+  /** Callback when "Mark all as read" is clicked */
+  onNotificationMarkAllRead?: () => void;
+  /** Callback when "View all notifications" is clicked */
+  onNotificationViewAll?: () => void;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -172,6 +184,11 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
       onSearchSuggestionClick,
       onSearchProductClick,
       onSearchCategoryClick,
+      notifications,
+      notificationCount,
+      onNotificationRead,
+      onNotificationMarkAllRead,
+      onNotificationViewAll,
       className,
       ...rest
     },
@@ -306,6 +323,14 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
                 <PackageIcon />
                 <span className={styles.actionLabel}>Orders</span>
               </button>
+
+              <DesktopNotificationBell
+                notifications={notifications}
+                count={notificationCount}
+                onRead={onNotificationRead}
+                onMarkAllRead={onNotificationMarkAllRead}
+                onViewAll={onNotificationViewAll}
+              />
 
               <button className={styles.actionBtn} onClick={onCartClick} aria-label={cartCount ? `Cart (${cartCount} items)` : 'Cart'}>
                 <CartIcon />

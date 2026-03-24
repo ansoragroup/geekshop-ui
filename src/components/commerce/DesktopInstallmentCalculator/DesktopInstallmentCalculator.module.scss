@@ -1,0 +1,157 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+  padding: $desktop-spacing-md;
+  background: var(--gs-bg-white);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $desktop-radius-card;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+}
+
+.zeroBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $spacing-sm;
+  background: var(--gs-color-success-light);
+  color: var(--gs-color-success);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-sm;
+  line-height: $line-height-tight;
+}
+
+// ─── Month Selector ──────────────────────────────────────────────────────────
+
+.monthSelector {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.monthBtn {
+  flex: 1;
+  min-height: 40px;
+  padding: $spacing-sm $spacing-md;
+  border: 1.5px solid var(--gs-border-color);
+  border-radius: $radius-md;
+  background: var(--gs-bg-white);
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  color: var(--gs-text-secondary);
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast, color $transition-fast;
+  white-space: nowrap;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.monthBtnActive {
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
+  font-weight: $font-weight-semibold;
+}
+
+// ─── Payment Info ────────────────────────────────────────────────────────────
+
+.paymentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-md 0;
+  border-top: 1px solid var(--gs-border-color-light);
+  border-bottom: 1px solid var(--gs-border-color-light);
+}
+
+.paymentRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.paymentLabel {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+}
+
+.paymentValue {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--gs-color-primary);
+}
+
+.paymentTotal {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-primary);
+}
+
+.paymentExtra {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+}
+
+// ─── Banks ───────────────────────────────────────────────────────────────────
+
+.banks {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.banksLabel {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  white-space: nowrap;
+}
+
+.bankLogos {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.bankLogo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-xs;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .monthBtn {
+    transition: none;
+  }
+}

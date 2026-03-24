@@ -1,9 +1,11 @@
-import { useState } from 'react';
+'use client';
+import { useState, useEffect, useCallback } from 'react';
 import {
   DesktopShell,
   DesktopButton,
   DesktopInput,
   DesktopCheckbox,
+  DesktopOTPInput,
 } from '../../components';
 import { DefaultTopBar, DefaultHeader, DefaultFooter } from '../_shared';
 import styles from './DesktopLoginPage.module.scss';
@@ -25,7 +27,23 @@ const GoogleIcon = () => (
   </svg>
 );
 
+const PhoneIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.92z" />
+  </svg>
+);
+
+const MailIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+);
+
 // ─── Component ────────────────────────────────────────────────────────────────
+
+export type LoginTab = 'phone' | 'email';
+export type PhoneStep = 'input' | 'otp';
 
 export interface DesktopLoginPageProps {
   /** Error message to display */
@@ -34,16 +52,94 @@ export interface DesktopLoginPageProps {
   loading?: boolean;
   /** Pre-fill email */
   initialEmail?: string;
+  /** Default active tab */
+  defaultTab?: LoginTab;
+  /** Force phone step (for stories) */
+  initialPhoneStep?: PhoneStep;
+  /** Pre-fill phone number */
+  initialPhone?: string;
+  /** Pre-fill OTP value */
+  initialOtp?: string;
+  /** Countdown seconds remaining (for OTP resend timer) */
+  initialCountdown?: number;
 }
 
 export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
   error,
   loading = false,
   initialEmail = '',
+  defaultTab = 'phone',
+  initialPhoneStep = 'input',
+  initialPhone = '',
+  initialOtp = '',
+  initialCountdown,
 }) => {
+  const [activeTab, setActiveTab] = useState<LoginTab>(defaultTab);
+  // Email tab state
   const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  // Phone tab state
+  const [phone, setPhone] = useState(initialPhone);
+  const [phoneStep, setPhoneStep] = useState<PhoneStep>(initialPhoneStep);
+  const [otpValue, setOtpValue] = useState(initialOtp);
+  const [countdown, setCountdown] = useState(initialCountdown ?? 0);
+  const [otpError, setOtpError] = useState('');
+
+  // Countdown timer
+  useEffect(() => {
+    if (countdown <= 0) return;
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [countdown]);
+
+  const handleSendCode = useCallback(() => {
+    if (phone.replace(/\D/g, '').length < 9) return;
+    setPhoneStep('otp');
+    setCountdown(59);
+    setOtpValue('');
+    setOtpError('');
+  }, [phone]);
+
+  const handleResendCode = useCallback(() => {
+    setCountdown(59);
+    setOtpValue('');
+    setOtpError('');
+  }, []);
+
+  const handleChangeNumber = useCallback(() => {
+    setPhoneStep('input');
+    setOtpValue('');
+    setOtpError('');
+    setCountdown(0);
+  }, []);
+
+  const handleOtpComplete = useCallback((_code: string) => {
+    // In a real app, this would verify the OTP via API
+    // For demo, we just show the loading state concept
+  }, []);
+
+  const formatPhone = (val: string) => {
+    // Only keep digits after +998
+    const digits = val.replace(/\D/g, '');
+    if (digits.length <= 2) return digits;
+    if (digits.length <= 4) return `${digits.slice(0, 2)} ${digits.slice(2)}`;
+    if (digits.length <= 7) return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`;
+    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(7, 9)}`;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, '').slice(0, 9);
+    setPhone(formatPhone(raw));
+  };
 
   return (
     <DesktopShell
@@ -58,42 +154,143 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
             <p className={styles.subtitle}>Sign in to your account</p>
           </div>
 
-          <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-            {error && (
-              <div style={{ padding: '12px 16px', background: '#FFF1F0', border: '1px solid #FFA39E', borderRadius: 8, color: '#CF1322', fontSize: 14, marginBottom: 4 }}>
-                {error}
-              </div>
-            )}
-            <DesktopInput
-              label="Email address"
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={loading}
-            />
-            <DesktopInput
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={loading}
-            />
+          {/* Tab switcher */}
+          <div className={styles.tabBar} role="tablist">
+            <button
+              role="tab"
+              aria-selected={activeTab === 'phone'}
+              className={`${styles.tab} ${activeTab === 'phone' ? styles.tabActive : ''}`}
+              onClick={() => setActiveTab('phone')}
+              type="button"
+            >
+              <PhoneIcon />
+              Phone
+            </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === 'email'}
+              className={`${styles.tab} ${activeTab === 'email' ? styles.tabActive : ''}`}
+              onClick={() => setActiveTab('email')}
+              type="button"
+            >
+              <MailIcon />
+              Email
+            </button>
+          </div>
 
-            <div className={styles.options}>
-              <DesktopCheckbox
-                label="Remember me"
-                checked={rememberMe}
-                onChange={setRememberMe}
-              />
-              <a href="#" className={styles.forgotLink}>Forgot password?</a>
+          {/* ── Phone Tab ── */}
+          {activeTab === 'phone' && (
+            <div className={styles.form} role="tabpanel" aria-label="Phone login">
+              {error && (
+                <div className={styles.errorBanner} role="alert">{error}</div>
+              )}
+
+              {phoneStep === 'input' && (
+                <>
+                  <div className={styles.phoneInputWrapper}>
+                    <span className={styles.phonePrefix}>+998</span>
+                    <DesktopInput
+                      label="Phone number"
+                      type="tel"
+                      placeholder="90 123 45 67"
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      disabled={loading}
+                    />
+                  </div>
+                  <DesktopButton
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    disabled={loading || phone.replace(/\D/g, '').length < 9}
+                    onClick={handleSendCode}
+                  >
+                    {loading ? 'Sending...' : 'Send Code'}
+                  </DesktopButton>
+                </>
+              )}
+
+              {phoneStep === 'otp' && (
+                <>
+                  <div className={styles.otpInfo}>
+                    <p className={styles.otpSentText}>
+                      Code sent to <strong>+998 {phone}</strong>
+                    </p>
+                    <button
+                      type="button"
+                      className={styles.changeNumberLink}
+                      onClick={handleChangeNumber}
+                    >
+                      Change number
+                    </button>
+                  </div>
+
+                  <DesktopOTPInput
+                    length={6}
+                    value={otpValue}
+                    onChange={setOtpValue}
+                    onComplete={handleOtpComplete}
+                    error={!!otpError}
+                    errorMessage={otpError}
+                    autoFocus
+                    disabled={loading}
+                  />
+
+                  <div className={styles.resendRow}>
+                    {countdown > 0 ? (
+                      <span className={styles.resendTimer}>Resend in {countdown}s</span>
+                    ) : (
+                      <button
+                        type="button"
+                        className={styles.resendLink}
+                        onClick={handleResendCode}
+                      >
+                        Resend code
+                      </button>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
+          )}
 
-            <DesktopButton variant="primary" size="lg" fullWidth type="submit" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign In'}
-            </DesktopButton>
-          </form>
+          {/* ── Email Tab ── */}
+          {activeTab === 'email' && (
+            <form className={styles.form} onSubmit={(e) => e.preventDefault()} role="tabpanel" aria-label="Email login">
+              {error && (
+                <div className={styles.errorBanner} role="alert">{error}</div>
+              )}
+              <DesktopInput
+                label="Email address"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={loading}
+              />
+              <DesktopInput
+                label="Password"
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={loading}
+              />
+
+              <div className={styles.options}>
+                <DesktopCheckbox
+                  label="Remember me"
+                  checked={rememberMe}
+                  onChange={setRememberMe}
+                />
+                <a href="#" className={styles.forgotLink}>Forgot password?</a>
+              </div>
+
+              <DesktopButton variant="primary" size="lg" fullWidth type="submit" disabled={loading}>
+                {loading ? 'Signing in...' : 'Sign In'}
+              </DesktopButton>
+            </form>
+          )}
 
           <div className={styles.divider}>
             <span className={styles.dividerText}>or continue with</span>

@@ -37,6 +37,145 @@
   box-shadow: $desktop-shadow-card;
 }
 
+// ─── Guest auth banner ───────────────────────────────────────────────────────
+
+.guestBanner {
+  margin-bottom: $desktop-spacing-lg;
+  padding: $desktop-spacing-lg $desktop-spacing-xxl;
+  background: var(--gs-bg-white);
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-card;
+  border-left: 4px solid $color-primary;
+}
+
+.guestPrompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $desktop-spacing-lg;
+  flex-wrap: wrap;
+}
+
+.guestPromptLeft {
+  flex: 1;
+  min-width: 200px;
+}
+
+.guestPromptTitle {
+  margin: 0;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+}
+
+.guestPromptSubtitle {
+  margin: $spacing-xs 0 0;
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+}
+
+.guestPromptActions {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  flex-shrink: 0;
+}
+
+.guestPhoneForm {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.guestFormTitle {
+  margin: 0;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-primary);
+
+  strong {
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.guestPhoneRow {
+  display: flex;
+  align-items: flex-end;
+  gap: $spacing-sm;
+}
+
+.guestPhonePrefix {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 $spacing-md;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+  background: var(--gs-bg-page, $color-bg-page);
+  border: 1.5px solid var(--gs-border-color, $color-border);
+  border-radius: $radius-md;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.guestOtpForm {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+}
+
+.guestOtpHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.guestChangeLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  color: $color-primary;
+  cursor: pointer;
+  text-decoration: none;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.guestResendRow {
+  display: flex;
+  justify-content: center;
+}
+
+.guestResendTimer {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+}
+
+.guestResendLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 // ─── Form sections ────────────────────────────────────────────────────────────
 
 .formSection {

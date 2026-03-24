@@ -1,0 +1,137 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.label {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+// ─── Card ────────────────────────────────────────────────────────────────────
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-sm;
+  padding: $desktop-spacing-md;
+  border: 1.5px solid var(--gs-border-color);
+  border-radius: $desktop-radius-card;
+  background: var(--gs-bg-white);
+  cursor: pointer;
+  text-align: left;
+  font-family: $font-family;
+  transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary-light);
+      box-shadow: 0 2px 8px rgba(255, 80, 0, 0.06);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.cardSelected {
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+  box-shadow: 0 2px 8px rgba(255, 80, 0, 0.08);
+}
+
+.cardIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-lg;
+  background: var(--gs-bg-page);
+  color: var(--gs-text-secondary);
+
+  .cardSelected & {
+    background: var(--gs-color-primary);
+    color: var(--gs-text-white);
+  }
+}
+
+.cardContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-primary);
+  line-height: $line-height-tight;
+}
+
+.cardEstimate {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  line-height: $line-height-tight;
+}
+
+.cardPrice {
+  flex-shrink: 0;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+  white-space: nowrap;
+}
+
+.cardPriceFree {
+  color: var(--gs-color-success);
+}
+
+// ─── Radio ───────────────────────────────────────────────────────────────────
+
+.radio {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gs-border-color);
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $transition-fast;
+}
+
+.radioChecked {
+  border-color: var(--gs-color-primary);
+}
+
+.radioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary);
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .radio {
+    transition: none;
+  }
+}

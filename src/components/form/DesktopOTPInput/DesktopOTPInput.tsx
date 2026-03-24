@@ -138,18 +138,19 @@ export const DesktopOTPInput = forwardRef<HTMLInputElement, DesktopOTPInputProps
 
     return (
       <div className={rootClass}>
-        <div className={styles.boxes} role="group" aria-label={restcn('aria-label') ?? 'OTP code input'}>
+        <div className={styles.boxes} role="group" aria-label={rest['aria-label'] ?? 'OTP code input'}>
           {Array.from({ length }, (_, i) => {
             const char = value[i] ?? '';
             const isFilled = char !== '';
             const isActive = i === value.length && !disabled;
 
-            const boxClass = [
+            const boxClass = cn(
               styles.box,
               isFilled && styles.filled,
               isActive && styles.active,
               error && styles.error,
-              disabled && styles.disabled];
+              disabled && styles.disabled,
+            );
 
             return (
               <input

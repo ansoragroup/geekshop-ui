@@ -1,0 +1,126 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.label {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-secondary);
+  line-height: $line-height-tight;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.swatchItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.swatch {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: $radius-round;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $transition-fast, transform $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.selected {
+  border-color: var(--gs-color-primary);
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+    }
+  }
+}
+
+.swatchColor {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-round;
+  display: block;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.imageSwatch {
+  border-radius: $radius-md;
+
+  .swatchColor {
+    border-radius: $radius-sm;
+  }
+}
+
+.swatchImage {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: $radius-round;
+  background: var(--gs-color-primary);
+  color: #fff;
+}
+
+.swatchLabel {
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  max-width: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.swatchLabelActive {
+  color: var(--gs-text-primary);
+  font-weight: $font-weight-medium;
+}
+
+// ─── Reduced Motion ──────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .swatch {
+    transition: none;
+  }
+}
