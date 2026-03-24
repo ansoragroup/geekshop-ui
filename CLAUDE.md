@@ -157,6 +157,30 @@ npm run test:coverage  # Tests with coverage report
 8. Verify: `npm run lint && npm test && npm run build:lib`
 9. Visual QA: Start Storybook (`npm run storybook`), navigate to the new component's story via Playwright MCP, take screenshots at iPhone 13 (390px) viewport, verify the component looks correct visually — no broken layout, no clipped text, proper spacing
 
+## Storybook Title Convention (MANDATORY)
+Desktop components MUST use the `(Desktop)` suffix in their Storybook title:
+| Category | Mobile title | Desktop title |
+|---|---|---|
+| content | `'Content/ComponentName'` | `'Content (Desktop)/DesktopComponentName'` |
+| navigation | `'Navigation/ComponentName'` | `'Navigation (Desktop)/DesktopComponentName'` |
+| product | `'Product/ComponentName'` | `'Product/DesktopComponentName'` |
+| data-display | `'Data Display/ComponentName'` | `'Data Display (Desktop)/DesktopComponentName'` |
+| feedback | `'Feedback/ComponentName'` | `'Feedback (Desktop)/DesktopComponentName'` |
+| commerce | `'Commerce/ComponentName'` | `'Commerce (Desktop)/DesktopComponentName'` |
+| form | `'Form/ComponentName'` | `'Form (Desktop)/DesktopComponentName'` |
+| layout | `'Layout/ComponentName'` | `'Layout (Desktop)/DesktopComponentName'` |
+
+## Component Reuse Map (CHECK BEFORE CREATING)
+Before creating ANY new component, check if an existing one can be reused:
+| Need | Reuse this component |
+|---|---|
+| Search with autocomplete | `DesktopSearchAutocomplete` — has suggestions, photo search, keyboard nav |
+| Category menu / catalog dropdown | `MegaMenu` — has hover dropdown, subcategories, keyboard nav. Use `triggerLabel`/`triggerIcon` props |
+| Price display | `PriceDisplay` or inline `formatPrice()` |
+| Section header with title/tabs/view-all | `DesktopSectionHeader` |
+| Badges (count, dot, text) | `DesktopBadge` |
+| Notification bell | `DesktopNotificationBell` |
+
 ## Common Patterns
 
 ### useControllableState (controlled + uncontrolled)
