@@ -1,6 +1,21 @@
 import type { CurrencyCode, CurrencyConfig, Locale } from '../i18n/types';
 import { CURRENCY_CONFIGS } from '../i18n/currencies';
 
+/**
+ * Format a number with space-separated thousands and optional decimals.
+ * No currency symbol — use `formatPrice` for that.
+ *
+ * @example formatNumber(9149.85) → "9 149.85"
+ * @example formatNumber(8900000) → "8 900 000"
+ */
+export function formatNumber(value: number): string {
+  const isDecimal = value % 1 !== 0;
+  const str = isDecimal ? value.toFixed(2) : Math.floor(value).toString();
+  const [intPart, decPart] = str.split('.');
+  const formatted = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return decPart ? `${formatted}.${decPart}` : formatted;
+}
+
 export function formatWithConfig(
   amount: number,
   config: CurrencyConfig,

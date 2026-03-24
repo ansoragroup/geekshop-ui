@@ -1,7 +1,5 @@
 @use '../../../theme/tokens' as *;
 
-// ─── Header Root ─────────────────────────────────────────────────────────────
-
 .header {
   position: sticky;
   top: 0;
@@ -9,8 +7,6 @@
   width: 100%;
   font-family: $font-family;
 }
-
-// ─── Main Row (Primary Color Background) ─────────────────────────────────────
 
 .mainRow {
   background: var(--gs-color-primary);
@@ -29,8 +25,6 @@
   box-sizing: border-box;
 }
 
-// ─── Logo ───────────────────────────────────────────────────────────────────
-
 .logo {
   flex-shrink: 0;
   cursor: pointer;
@@ -45,31 +39,14 @@
   }
 }
 
-.logoText {
-  font-size: $desktop-font-size-h2;
-  font-weight: $font-weight-bold;
-  color: var(--gs-text-white);
-  white-space: nowrap;
-}
-
-// ─── MegaMenu Catalog Override ──────────────────────────────────────────────
-// MegaMenu renders <nav> with internal trigger button. We override its
-// appearance to match the AliExpress red header style.
-
 .catalogMenu {
   flex-shrink: 0;
   width: auto !important;
   background: transparent !important;
   border-bottom: none !important;
 
-  // Override MegaMenu's .content wrapper — remove full-width padding
-  > div {
-    width: auto;
-    max-width: none;
-    padding: 0;
-  }
+  > div { width: auto; max-width: none; padding: 0; }
 
-  // Override MegaMenu trigger button via aria attribute selector
   [aria-haspopup='true'] {
     background: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -79,22 +56,12 @@
     padding: 0 $desktop-spacing-md;
     font-size: $font-size-md;
     font-weight: $font-weight-semibold;
-    transition: background $transition-fast;
 
     @media (hover: hover) {
-      &:hover {
-        background: rgba(255, 255, 255, 0.25) !important;
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--gs-text-white);
-      outline-offset: 2px;
+      &:hover { background: rgba(255, 255, 255, 0.25) !important; }
     }
   }
 }
-
-// ─── Catalog Button Fallback (no categories) ────────────────────────────────
 
 .catalogBtnFallback {
   display: inline-flex;
@@ -115,25 +82,13 @@
   transition: background $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-text-white);
-    outline-offset: 2px;
+    &:hover { background: rgba(255, 255, 255, 0.25); }
   }
 }
-
-// ─── Search Autocomplete Override ───────────────────────────────────────────
-// DesktopSearchAutocomplete renders a form with input + submit button.
-// We override the visual style to match the AliExpress green-button search.
 
 .searchArea {
   flex: 1;
 
-  // Override the form wrapper — remove default orange border, use white bg
   form {
     background: var(--gs-bg-white);
     border: none !important;
@@ -141,23 +96,18 @@
     height: 44px;
   }
 
-  // Override submit button — green "Найти" style
   button[type='submit'] {
-    background: #B8E639 !important;
-    color: #1A1A1A !important;
+    background: var(--gs-header-marketplace-search-btn-bg, var(--gs-color-primary)) !important;
+    color: var(--gs-header-marketplace-search-btn-color, var(--gs-text-white)) !important;
     font-weight: $font-weight-bold;
     font-size: $font-size-md;
     padding: 0 $spacing-xl;
 
     @media (hover: hover) {
-      &:hover {
-        background: #A6CE30 !important;
-      }
+      &:hover { filter: brightness(0.9); }
     }
   }
 }
-
-// ─── Action Icons ───────────────────────────────────────────────────────────
 
 .actions {
   display: flex;
@@ -184,14 +134,7 @@
   transition: background $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-text-white);
-    outline-offset: 2px;
+    &:hover { background: rgba(255, 255, 255, 0.15); }
   }
 }
 
@@ -209,8 +152,8 @@
   min-width: 16px;
   height: 16px;
   padding: 0 4px;
-  background: #FFE500;
-  color: #FF0000;
+  background: var(--gs-header-marketplace-badge-bg, var(--gs-color-warning));
+  color: var(--gs-header-marketplace-badge-color, var(--gs-text-white));
   font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   line-height: 16px;
@@ -218,8 +161,6 @@
   border-radius: $radius-round;
   box-sizing: border-box;
 }
-
-// ─── Promo Row (White Background) ───────────────────────────────────────────
 
 .promoRow {
   background: var(--gs-bg-white);
@@ -263,14 +204,7 @@
   transition: opacity $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      opacity: 0.85;
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-color-primary);
-    outline-offset: 2px;
+    &:hover { opacity: 0.85; }
   }
 }
 
@@ -282,14 +216,7 @@
   transition: color $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      color: var(--gs-color-primary);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-color-primary);
-    outline-offset: 2px;
+    &:hover { color: var(--gs-color-primary); }
   }
 }
 
@@ -316,14 +243,7 @@
   transition: color $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      color: var(--gs-color-primary);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-color-primary);
-    outline-offset: 2px;
+    &:hover { color: var(--gs-color-primary); }
   }
 }
 
@@ -337,14 +257,8 @@
   cursor: default;
 }
 
-// ─── Reduced Motion ─────────────────────────────────────────────────────────
-
 @media (prefers-reduced-motion: reduce) {
-  .catalogBtnFallback,
-  .actionBtn,
-  .promoTag,
-  .quickLink,
-  .locationBtn {
+  .catalogBtnFallback, .actionBtn, .promoTag, .quickLink, .locationBtn {
     transition: none;
   }
 }

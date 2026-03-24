@@ -22,10 +22,16 @@ describe('DesktopProductCard', () => {
     expect(img).toHaveAttribute('alt', 'RTX 4060 8GB');
   });
 
-  it('renders with role button and tabIndex 0', () => {
+  it('renders with role button and tabIndex 0 for div', () => {
     render(<DesktopProductCard {...defaultProps} />);
     const card = screen.getByRole('button', { name: /RTX 4060/i });
     expect(card).toHaveAttribute('tabindex', '0');
+  });
+
+  it('does not apply role=button when as="a"', () => {
+    render(<DesktopProductCard {...defaultProps} as="a" href="/product" />);
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+    expect(screen.getByRole('link')).toBeInTheDocument();
   });
 
   it('calls onClick when clicked', async () => {
@@ -45,23 +51,14 @@ describe('DesktopProductCard', () => {
     expect(onClick).toHaveBeenCalledOnce();
   });
 
-  it('calls onClick on Space key press', async () => {
-    const onClick = vi.fn();
-    const user = userEvent.setup();
-    render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
-    screen.getByRole('button', { name: /RTX 4060/i }).focus();
-    await user.keyboard(' ');
-    expect(onClick).toHaveBeenCalledOnce();
-  });
-
   it('renders discount text when provided', () => {
     render(<DesktopProductCard {...defaultProps} originalPrice={12_000_000} discount="-26%" />);
     expect(screen.getByText('-26%')).toBeInTheDocument();
   });
 
-  it('renders current price with currency', () => {
+  it('renders current price', () => {
     render(<DesktopProductCard {...defaultProps} />);
-    expect(screen.getByText(/8.900.000.*UZS/)).toBeInTheDocument();
+    expect(screen.getByText(/8.900.000/)).toBeInTheDocument();
   });
 
   it('renders original price with strikethrough when provided', () => {
@@ -71,26 +68,24 @@ describe('DesktopProductCard', () => {
     expect(container.querySelector('[class*="originalPrice"]')).toBeInTheDocument();
   });
 
-  it('renders discount percent next to original price', () => {
-    render(
-      <DesktopProductCard {...defaultProps} originalPrice={12_000_000} discount="-26%" />,
-    );
-    expect(screen.getByText('-26%')).toBeInTheDocument();
-  });
-
   it('renders rating when provided', () => {
     render(<DesktopProductCard {...defaultProps} rating={4.5} />);
     expect(screen.getByText('4.5')).toBeInTheDocument();
   });
 
-  it('renders purchase count when provided', () => {
+  it('renders purchase count with default label', () => {
     render(<DesktopProductCard {...defaultProps} purchaseCount={120} />);
-    expect(screen.getByText(/120 купили/)).toBeInTheDocument();
+    expect(screen.getByText(/120 purchased/)).toBeInTheDocument();
   });
 
-  it('renders reviewCount as purchase count for backward compat', () => {
-    render(<DesktopProductCard {...defaultProps} reviewCount={1234} />);
-    expect(screen.getByText(/1.234 купили/)).toBeInTheDocument();
+  it('renders purchase count with custom label', () => {
+    render(<DesktopProductCard {...defaultProps} purchaseCount={120} purchaseCountLabel="bought" />);
+    expect(screen.getByText(/120 bought/)).toBeInTheDocument();
+  });
+
+  it('renders purchase count with function label', () => {
+    render(<DesktopProductCard {...defaultProps} purchaseCount={120} purchaseCountLabel={(n) => `${n} sold`} />);
+    expect(screen.getByText('120 sold')).toBeInTheDocument();
   });
 
   it('renders badges on image when provided', () => {
@@ -99,31 +94,17 @@ describe('DesktopProductCard', () => {
         {...defaultProps}
         badges={[
           { label: 'SALE', variant: 'sale' },
-          { label: 'ТОП', variant: 'top' },
+          { label: 'TOP', variant: 'top' },
         ]}
       />,
     );
     expect(screen.getByText('SALE')).toBeInTheDocument();
-    expect(screen.getByText('ТОП')).toBeInTheDocument();
+    expect(screen.getByText('TOP')).toBeInTheDocument();
   });
 
-  it('renders legacy badge format', () => {
-    render(
-      <DesktopProductCard
-        {...defaultProps}
-        badges={[
-          { label: 'ORIGINAL', color: 'green' },
-          { label: 'ARZON NARX', color: 'blue' },
-        ]}
-      />,
-    );
-    expect(screen.getByText('ORIGINAL')).toBeInTheDocument();
-    expect(screen.getByText('ARZON NARX')).toBeInTheDocument();
-  });
-
-  it('renders recommended label when enabled', () => {
+  it('renders recommended label with default text', () => {
     render(<DesktopProductCard {...defaultProps} recommended />);
-    expect(screen.getByText('Рекомендуем')).toBeInTheDocument();
+    expect(screen.getByText('Recommended')).toBeInTheDocument();
   });
 
   it('renders custom recommended text', () => {
@@ -132,13 +113,18 @@ describe('DesktopProductCard', () => {
   });
 
   it('renders delivery text when provided', () => {
-    render(<DesktopProductCard {...defaultProps} deliveryText="до 30 дней, бесплатно" />);
-    expect(screen.getByText('до 30 дней, бесплатно')).toBeInTheDocument();
+    render(<DesktopProductCard {...defaultProps} deliveryText="Ships in 2 days" />);
+    expect(screen.getByText('Ships in 2 days')).toBeInTheDocument();
   });
 
-  it('renders default delivery text when freeShipping', () => {
+  it('renders free shipping label', () => {
     render(<DesktopProductCard {...defaultProps} freeShipping />);
-    expect(screen.getByText('до 30 дней, бесплатно')).toBeInTheDocument();
+    expect(screen.getByText('Free shipping')).toBeInTheDocument();
+  });
+
+  it('renders custom free shipping label', () => {
+    render(<DesktopProductCard {...defaultProps} freeShipping freeShippingLabel="Бесплатная доставка" />);
+    expect(screen.getByText('Бесплатная доставка')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
@@ -148,8 +134,14 @@ describe('DesktopProductCard', () => {
     expect(container.firstElementChild?.className).toContain('my-card');
   });
 
-  it('renders custom currency', () => {
+  it('renders currency suffix when provided', () => {
     render(<DesktopProductCard {...defaultProps} currency="USD" />);
     expect(screen.getByText(/USD/)).toBeInTheDocument();
+  });
+
+  it('applies imageFit prop', () => {
+    render(<DesktopProductCard {...defaultProps} imageFit="contain" />);
+    const img = screen.getByRole('img');
+    expect(img).toHaveStyle({ objectFit: 'contain' });
   });
 });

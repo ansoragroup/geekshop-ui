@@ -1,15 +1,11 @@
 @use '../../../theme/tokens' as *;
 
-// ─── Root ────────────────────────────────────────────────────────────────────
-
 .root {
-  background: linear-gradient(135deg, #FFF0F3 0%, #F5F0FF 100%);
+  background: var(--gs-sale-hits-bg, linear-gradient(135deg, #FFF0F3 0%, #F5F0FF 100%));
   border-radius: $radius-lg;
   padding: $desktop-spacing-lg;
   overflow: hidden;
 }
-
-// ─── Header ─────────────────────────────────────────────────────────────────
 
 .header {
   display: flex;
@@ -78,18 +74,9 @@
   transition: background $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      background: var(--gs-color-error);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-color-sale);
-    outline-offset: 2px;
+    &:hover { background: var(--gs-color-error); }
   }
 }
-
-// ─── Scroll Area ─────────────────────────────────────────────────────────────
 
 .scrollWrapper {
   position: relative;
@@ -104,14 +91,11 @@
   scrollbar-width: none;
   padding-bottom: $spacing-xs;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  &::-webkit-scrollbar { display: none; }
 }
 
 .scrollArrow {
   position: absolute;
-  right: -$spacing-sm;
   top: 40%;
   transform: translateY(-50%);
   width: 40px;
@@ -130,44 +114,25 @@
   transition: box-shadow $transition-fast;
 
   @media (hover: hover) {
-    &:hover {
-      box-shadow: $shadow-lg;
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-color-primary);
-    outline-offset: 2px;
+    &:hover { box-shadow: $shadow-lg; }
   }
 }
 
-// ─── Card ───────────────────────────────────────────────────────────────────
+.scrollArrowLeft { left: -$spacing-sm; }
+.scrollArrowRight { right: -$spacing-sm; }
 
 .card {
   flex-shrink: 0;
-  width: 150px;
+  width: var(--card-width, 150px);
   display: flex;
   flex-direction: column;
   cursor: pointer;
   scroll-snap-align: start;
-  transition: transform $transition-fast;
-
-  @media (hover: hover) {
-    &:hover {
-      transform: translateY(-2px);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--gs-color-primary);
-    outline-offset: 2px;
-    border-radius: $radius-md;
-  }
 }
 
 .cardImageWrap {
-  width: 150px;
-  height: 150px;
+  width: var(--card-width, 150px);
+  height: var(--card-width, 150px);
   border-radius: $radius-lg;
   overflow: hidden;
   background: var(--gs-bg-white);
@@ -224,18 +189,8 @@
   text-overflow: ellipsis;
 }
 
-// ─── Reduced Motion ─────────────────────────────────────────────────────────
-
 @media (prefers-reduced-motion: reduce) {
-  .card,
-  .viewAllBtn,
-  .scrollArrow {
+  .card, .viewAllBtn, .scrollArrow {
     transition: none !important;
-  }
-
-  .card {
-    &:hover {
-      transform: none;
-    }
   }
 }

@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useCallback, useState, useRef, type ElementType } from 'react';
 import styles from './DesktopProductCard.module.scss';
 
@@ -27,55 +28,51 @@ export interface DesktopProductCardOwnProps {
   originalPrice?: number;
   /** Discount percentage e.g. "-35%" */
   discount?: string;
-  /** Currency label e.g. "UZS" */
+  /** Currency label (default: empty — consumer provides) */
   currency?: string;
   /** Rating value 1-5 */
   rating?: number;
-  /** Number of purchases shown as "X купили" */
+  /** Number of purchases */
   purchaseCount?: number;
-  /** @deprecated Use purchaseCount — shown as "X купили" for backward compat */
+  /** Label for purchase count (default: "purchased"). Use a function for full control. */
+  purchaseCountLabel?: string | ((count: number) => string);
+  /** @deprecated Use purchaseCount */
   reviewCount?: number;
   /** Badge labels shown at top-right of image */
   badges?: DesktopProductCardBadge[];
-  /** Show "Рекомендуем" label */
+  /** Show recommended label */
   recommended?: boolean;
-  /** Custom recommended label text */
+  /** Custom recommended label text (default: "Recommended") */
   recommendedText?: string;
   /** Whether item has free shipping */
   freeShipping?: boolean;
-  /** Delivery text e.g. "до 30 дней, бесплатно" */
+  /** Delivery text */
   deliveryText?: string;
+  /** Default delivery text when freeShipping=true (default: "Free shipping") */
+  freeShippingLabel?: string;
+  /** How the product image fits (default: 'cover') */
+  imageFit?: 'cover' | 'contain' | 'fill';
   /** Callback when card is clicked */
   onClick?: () => void;
-  /** @deprecated CTA button removed in AliExpress design */
+  /** @deprecated CTA button removed */
   ctaText?: string;
-  /** @deprecated CTA button removed in AliExpress design */
+  /** @deprecated CTA button removed */
   ctaColor?: string;
-  /** @deprecated CTA button removed in AliExpress design */
+  /** @deprecated CTA button removed */
   onAddToCart?: () => void;
-  /** @deprecated Wishlist button removed in AliExpress design */
+  /** @deprecated Wishlist removed from card */
   isWishlisted?: boolean;
-  /** @deprecated Wishlist button removed in AliExpress design */
+  /** @deprecated Wishlist removed from card */
   onWishlist?: () => void;
-  /** @deprecated Installment display removed in AliExpress design */
+  /** @deprecated Installment display removed */
   installmentPrice?: number;
-  /** @deprecated Installment display removed in AliExpress design */
+  /** @deprecated Installment display removed */
   installmentLabel?: string;
 }
 
 export type DesktopProductCardProps<C extends ElementType = 'div'> = DesktopProductCardOwnProps & {
   as?: C;
 } & Omit<React.ComponentPropsWithoutRef<C>, keyof DesktopProductCardOwnProps | 'as'>;
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  const isDecimal = value % 1 !== 0;
-  const str = isDecimal ? value.toFixed(2) : Math.floor(value).toString();
-  const [intPart, decPart] = str.split('.');
-  const formatted = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  return decPart ? `${formatted}.${decPart}` : formatted;
-}
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
 
@@ -98,19 +95,19 @@ function TruckIcon() {
   );
 }
 
-// ─── Badge Color Map ─────────────────────────────────────────────────────────
+// ─── Badge Color Map (uses CSS custom properties for theming) ────────────────
 
 const BADGE_VARIANTS: Record<string, { bg: string; color: string }> = {
-  sale: { bg: '#FFE500', color: '#FF0000' },
-  top: { bg: '#FF0000', color: '#FFFFFF' },
-  hot: { bg: '#FF5000', color: '#FFFFFF' },
+  sale: { bg: 'var(--gs-badge-sale-bg, #FFE500)', color: 'var(--gs-badge-sale-color, #FF0000)' },
+  top: { bg: 'var(--gs-badge-top-bg, #FF0000)', color: 'var(--gs-badge-top-color, #FFFFFF)' },
+  hot: { bg: 'var(--gs-badge-hot-bg, #FF5000)', color: 'var(--gs-badge-hot-color, #FFFFFF)' },
 };
 
 const LEGACY_COLORS: Record<string, { bg: string; color: string }> = {
-  green: { bg: '#07C160', color: '#FFFFFF' },
-  blue: { bg: '#1890FF', color: '#FFFFFF' },
-  orange: { bg: '#FF5000', color: '#FFFFFF' },
-  red: { bg: '#FF0000', color: '#FFFFFF' },
+  green: { bg: 'var(--gs-color-success)', color: '#FFFFFF' },
+  blue: { bg: 'var(--gs-color-info)', color: '#FFFFFF' },
+  orange: { bg: 'var(--gs-color-primary)', color: '#FFFFFF' },
+  red: { bg: 'var(--gs-color-price)', color: '#FFFFFF' },
   purple: { bg: '#7B2BFC', color: '#FFFFFF' },
 };
 
@@ -132,18 +129,20 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
     price,
     originalPrice,
     discount,
-    currency = 'UZS',
+    currency,
     rating,
     purchaseCount,
+    purchaseCountLabel = 'purchased',
     reviewCount,
     badges,
     recommended,
-    recommendedText = 'Рекомендуем',
+    recommendedText = 'Recommended',
     freeShipping,
     deliveryText,
+    freeShippingLabel = 'Free shipping',
+    imageFit = 'cover',
     onClick,
     className = '',
-    // Deprecated — accepted but not rendered
     ctaText: _ctaText,
     ctaColor: _ctaColor,
     onAddToCart: _onAddToCart,
@@ -156,11 +155,11 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
   ref: React.Ref<Element>,
 ) {
   const Component = as || 'div';
+  const isNativeInteractive = Component === 'a' || Component === 'button';
   const hasDiscount = originalPrice !== undefined && originalPrice > price;
   const displayCount = purchaseCount ?? reviewCount;
 
   // ─── Image swipe preview ───
-  // Combine primary image with additional images
   const allImages = images && images.length > 0 ? [image, ...images] : [image];
   const hasMultipleImages = allImages.length > 1;
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -192,17 +191,28 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
     [onClick],
   );
 
+  const priceStr = formatNumber(price);
+  const priceSuffix = currency ? ` ${currency}` : '';
+
+  const renderPurchaseCount = () => {
+    if (displayCount === undefined) return null;
+    const text = typeof purchaseCountLabel === 'function'
+      ? purchaseCountLabel(displayCount)
+      : `${formatNumber(displayCount)} ${purchaseCountLabel}`;
+    return <span className={styles.purchaseCount}>{text}</span>;
+  };
+
   return (
     <Component
       ref={ref}
       className={cn(styles.root, className)}
       onClick={onClick}
-      onKeyDown={handleKeyDown}
-      role="button"
-      tabIndex={0}
+      onKeyDown={isNativeInteractive ? undefined : handleKeyDown}
+      role={isNativeInteractive ? undefined : 'button'}
+      tabIndex={isNativeInteractive ? undefined : 0}
       {...rest}
     >
-      {/* ─── Image Area with mouse-swipe preview ─── */}
+      {/* ─── Image Area ─── */}
       <div
         ref={imageContainerRef}
         className={styles.imageContainer}
@@ -213,11 +223,11 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
           src={allImages[activeImageIndex]}
           alt={title}
           className={styles.image}
+          style={imageFit !== 'cover' ? { objectFit: imageFit } : undefined}
           loading="lazy"
           decoding="async"
         />
 
-        {/* Dot indicators for multiple images */}
         {hasMultipleImages && (
           <div className={styles.imageDots}>
             {allImages.map((_, idx) => (
@@ -229,7 +239,6 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
           </div>
         )}
 
-        {/* Badges — top right, stacked vertically */}
         {badges && badges.length > 0 && (
           <div className={styles.badgeColumn}>
             {badges.map((badge, idx) => {
@@ -250,11 +259,10 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
 
       {/* ─── Content Area ─── */}
       <div className={styles.content}>
-        {/* Old price + discount (above current price) */}
         {hasDiscount && (
           <div className={styles.oldPriceRow}>
             <span className={styles.originalPrice}>
-              {formatPrice(originalPrice)} {currency}
+              {formatNumber(originalPrice)}{priceSuffix}
             </span>
             {discount && (
               <span className={styles.discountPercent}>{discount}</span>
@@ -262,14 +270,10 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
           </div>
         )}
 
-        {/* Current price */}
         <div className={styles.priceBlock}>
-          <span className={styles.price}>
-            {formatPrice(price)} {currency}
-          </span>
+          <span className={styles.price}>{priceStr}{priceSuffix}</span>
         </div>
 
-        {/* Rating + purchase count */}
         {(rating !== undefined || displayCount !== undefined) && (
           <div className={styles.ratingRow}>
             {rating !== undefined && (
@@ -278,28 +282,21 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
                 <span className={styles.ratingValue}>{rating.toFixed(1)}</span>
               </span>
             )}
-            {displayCount !== undefined && (
-              <span className={styles.purchaseCount}>
-                {formatPrice(displayCount)} купили
-              </span>
-            )}
+            {renderPurchaseCount()}
           </div>
         )}
 
-        {/* Title — 2 line clamp */}
         <h3 className={styles.title}>{title}</h3>
 
-        {/* Recommended label */}
         {recommended && (
           <span className={styles.recommended}>{recommendedText}</span>
         )}
 
-        {/* Delivery info */}
         {(freeShipping || deliveryText) && (
           <div className={styles.deliveryRow}>
             <span className={styles.truckIcon}><TruckIcon /></span>
             <span className={styles.deliveryText}>
-              {deliveryText || 'до 30 дней, бесплатно'}
+              {deliveryText || freeShippingLabel}
             </span>
           </div>
         )}

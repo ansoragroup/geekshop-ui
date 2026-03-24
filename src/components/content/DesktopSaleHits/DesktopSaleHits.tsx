@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '../../../utils/cn';
+import { formatNumber } from '../../../utils/formatPrice';
 import { forwardRef, useRef, useState, useCallback } from 'react';
 import styles from './DesktopSaleHits.module.scss';
 
@@ -17,7 +18,7 @@ export interface SaleHitItem {
 }
 
 export interface DesktopSaleHitsProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Section title */
+  /** Section title (default: "Sale Hits") */
   title?: string;
   /** Section subtitle */
   subtitle?: string;
@@ -25,20 +26,22 @@ export interface DesktopSaleHitsProps extends React.HTMLAttributes<HTMLDivElemen
   items: SaleHitItem[];
   /** Callback when "More" button is clicked */
   onViewAll?: () => void;
-  /** Text for "More" button */
+  /** Text for "More" button (default: "More") */
   viewAllText?: string;
-  /** Custom icon element — defaults to red ХИТ badge */
+  /** Custom icon element — defaults to red "HOT" badge */
   icon?: React.ReactNode;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  const isDecimal = value % 1 !== 0;
-  const str = isDecimal ? value.toFixed(2) : Math.floor(value).toString();
-  const [intPart, decPart] = str.split('.');
-  const formatted = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  return decPart ? `${formatted}.${decPart}` : formatted;
+  /** Card width in pixels (default: 150) */
+  cardWidth?: number;
+  /** Image object-fit (default: 'cover') */
+  imageFit?: 'cover' | 'contain' | 'fill';
+  /** Background gradient or color (CSS value) */
+  background?: string;
+  /** Custom card renderer — replaces default card layout */
+  renderCard?: (item: SaleHitItem, index: number) => React.ReactNode;
+  /** Scroll left aria-label (default: "Scroll left") */
+  scrollLeftAriaLabel?: string;
+  /** Scroll right aria-label (default: "Scroll right") */
+  scrollRightAriaLabel?: string;
 }
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -51,10 +54,14 @@ function ChevronRightIcon() {
   );
 }
 
-function ArrowRightIcon() {
+function ArrowIcon({ direction }: { direction: 'left' | 'right' }) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12h14M12 5l7 7-7 7" />
+      {direction === 'right' ? (
+        <><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></>
+      ) : (
+        <><path d="M19 12H5" /><path d="M12 19l-7-7 7-7" /></>
+      )}
     </svg>
   );
 }
@@ -64,38 +71,60 @@ function ArrowRightIcon() {
 export const DesktopSaleHits = forwardRef<HTMLDivElement, DesktopSaleHitsProps>(
   (
     {
-      title = 'Хиты распродаж',
-      subtitle = 'Покупайте самое классное выгодно',
+      title = 'Sale Hits',
+      subtitle,
       items,
       onViewAll,
-      viewAllText = 'Ещё',
+      viewAllText = 'More',
       icon,
+      cardWidth = 150,
+      imageFit = 'cover',
+      background,
+      renderCard,
+      scrollLeftAriaLabel = 'Scroll left',
+      scrollRightAriaLabel = 'Scroll right',
       className,
+      style,
       ...rest
     },
     ref,
   ) => {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
 
-    const handleScroll = useCallback(() => {
+    const updateScrollState = useCallback(() => {
       const el = scrollRef.current;
       if (!el) return;
+      setCanScrollLeft(el.scrollLeft > 4);
       setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
     }, []);
 
-    const scrollRight = useCallback(() => {
+    const scroll = useCallback((direction: 'left' | 'right') => {
       const el = scrollRef.current;
       if (!el) return;
-      el.scrollBy({ left: 320, behavior: 'smooth' });
-    }, []);
+      const amount = cardWidth * 2 + 12;
+      el.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+    }, [cardWidth]);
+
+    const rootStyle = {
+      ...style,
+      ...(background ? { background } : {}),
+      '--card-width': `${cardWidth}px`,
+    } as React.CSSProperties;
 
     return (
-      <section ref={ref} className={cn(styles.root, className)} aria-label={title} {...rest}>
+      <section
+        ref={ref}
+        className={cn(styles.root, className)}
+        style={rootStyle}
+        aria-label={title}
+        {...rest}
+      >
         {/* ─── Header ─── */}
         <div className={styles.header}>
           <div className={styles.titleArea}>
-            {icon ?? <div className={styles.hitIcon}>ХИТ</div>}
+            {icon ?? <div className={styles.hitIcon}>HOT</div>}
             <div className={styles.titleText}>
               <h2 className={styles.title}>{title}</h2>
               {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
@@ -111,63 +140,78 @@ export const DesktopSaleHits = forwardRef<HTMLDivElement, DesktopSaleHitsProps>(
 
         {/* ─── Scrollable Cards ─── */}
         <div className={styles.scrollWrapper}>
+          {canScrollLeft && (
+            <button
+              type="button"
+              className={cn(styles.scrollArrow, styles.scrollArrowLeft)}
+              onClick={() => scroll('left')}
+              aria-label={scrollLeftAriaLabel}
+            >
+              <ArrowIcon direction="left" />
+            </button>
+          )}
+
           <div
             ref={scrollRef}
             className={styles.scrollRow}
-            onScroll={handleScroll}
+            onScroll={updateScrollState}
           >
-            {items.map((item) => (
-              <div
-                key={item.id}
-                className={styles.card}
-                onClick={item.onClick}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    item.onClick?.();
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
-                <div className={styles.cardImageWrap}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className={styles.cardImage}
-                    loading="lazy"
-                    decoding="async"
-                  />
+            {items.map((item, index) =>
+              renderCard ? (
+                <div key={item.id} className={styles.card}>{renderCard(item, index)}</div>
+              ) : (
+                <div
+                  key={item.id}
+                  className={styles.card}
+                  onClick={item.onClick}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      item.onClick?.();
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <div className={styles.cardImageWrap}>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className={styles.cardImage}
+                      style={imageFit !== 'cover' ? { objectFit: imageFit } : undefined}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className={styles.cardContent}>
+                    <span className={styles.cardPrice}>
+                      {formatNumber(item.price)}{item.currency ? ` ${item.currency}` : ''}
+                    </span>
+                    {item.originalPrice && (
+                      <div className={styles.cardOldPriceRow}>
+                        <span className={styles.cardOldPrice}>
+                          {formatNumber(item.originalPrice)}
+                        </span>
+                        {item.discount && (
+                          <span className={styles.cardDiscount}>{item.discount}</span>
+                        )}
+                      </div>
+                    )}
+                    <span className={styles.cardTitle}>{item.title}</span>
+                  </div>
                 </div>
-                <div className={styles.cardContent}>
-                  <span className={styles.cardPrice}>
-                    {formatPrice(item.price)} {item.currency || 'UZS'}
-                  </span>
-                  {item.originalPrice && (
-                    <div className={styles.cardOldPriceRow}>
-                      <span className={styles.cardOldPrice}>
-                        {formatPrice(item.originalPrice)}
-                      </span>
-                      {item.discount && (
-                        <span className={styles.cardDiscount}>{item.discount}</span>
-                      )}
-                    </div>
-                  )}
-                  <span className={styles.cardTitle}>{item.title}</span>
-                </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
 
-          {/* Scroll arrow */}
           {canScrollRight && (
             <button
               type="button"
-              className={styles.scrollArrow}
-              onClick={scrollRight}
-              aria-label="Scroll right"
+              className={cn(styles.scrollArrow, styles.scrollArrowRight)}
+              onClick={() => scroll('right')}
+              aria-label={scrollRightAriaLabel}
             >
-              <ArrowRightIcon />
+              <ArrowIcon direction="right" />
             </button>
           )}
         </div>
