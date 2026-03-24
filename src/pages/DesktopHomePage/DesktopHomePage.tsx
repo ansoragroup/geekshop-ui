@@ -2,6 +2,8 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { DesktopShell } from '../../components/layout/DesktopShell';
 import { DesktopHeaderMarketplace } from '../../components/navigation/DesktopHeader';
+import { DesktopBannerCarousel } from '../../components/content/DesktopBannerCarousel';
+import type { BannerSlide } from '../../components/content/DesktopBannerCarousel';
 import { DesktopSaleHits } from '../../components/content/DesktopSaleHits';
 import type { SaleHitItem } from '../../components/content/DesktopSaleHits';
 import { DesktopSectionHeader } from '../../components/content/DesktopSectionHeader';
@@ -40,11 +42,13 @@ export interface DesktopHomePageProps {
   headerLabels?: DesktopHeaderMarketplaceLabels;
   /** MegaMenu categories */
   categories?: MegaMenuCategory[];
+  /** Hero banner slides */
+  bannerSlides?: BannerSlide[];
   /** Sale hits section items */
   saleHits?: SaleHitItem[];
   /** Product items for the grid */
   products?: ProductItem[];
-  /** Product filter tabs (default: Sales, Recommended, Recently Added) */
+  /** Product filter tabs */
   filterTabs?: DesktopTabFilterItem[];
   /** Footer columns */
   footerColumns?: DesktopFooterColumn[];
@@ -64,6 +68,18 @@ export interface DesktopHomePageProps {
   onFilterChange?: (key: string) => void;
   /** Search placeholder */
   searchPlaceholder?: string;
+  /** Header promo tags */
+  promoTags?: { label: string; bgColor?: string; textColor?: string }[];
+  /** Header quick links */
+  quickLinks?: { label: string; href?: string }[];
+  /** Search button color override */
+  searchButtonColor?: string;
+  /** Recent search terms for autocomplete */
+  recentSearches?: string[];
+  /** Trending search terms */
+  trendingSearches?: { text: string; count?: number }[];
+  /** Photo search callback */
+  onPhotoSearch?: (source: { type: 'url' | 'file'; url?: string; file?: File }) => void;
 }
 
 // ─── Defaults ────────────────────────────────────────────────────────────────
@@ -95,6 +111,7 @@ export function DesktopHomePage({
   logo,
   headerLabels,
   categories = defaultCategories,
+  bannerSlides = [],
   saleHits = [],
   products = [],
   filterTabs = defaultFilterTabs,
@@ -107,17 +124,21 @@ export function DesktopHomePage({
   onProductClick,
   onFilterChange,
   searchPlaceholder = 'Search products...',
+  promoTags,
+  quickLinks,
+  searchButtonColor,
+  recentSearches,
+  trendingSearches,
+  onPhotoSearch,
 }: DesktopHomePageProps) {
   const [searchValue, setSearchValue] = useState('');
   const [activeTab, setActiveTab] = useState(filterTabs[0]?.key ?? 'sales');
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
-  // Infinite scroll
   useEffect(() => {
     if (!onLoadMore || !hasMore || isLoading) return;
     const el = loadMoreRef.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       (entries) => { if (entries[0].isIntersecting) onLoadMore(); },
       { rootMargin: '200px' },
@@ -140,6 +161,12 @@ export function DesktopHomePage({
       onSearch={onSearch}
       categories={categories}
       searchPlaceholder={searchPlaceholder}
+      promoTags={promoTags}
+      quickLinks={quickLinks}
+      searchButtonColor={searchButtonColor}
+      recentSearches={recentSearches}
+      trendingSearches={trendingSearches}
+      onPhotoSearch={onPhotoSearch}
     />
   );
 
@@ -156,6 +183,13 @@ export function DesktopHomePage({
 
   return (
     <DesktopShell header={header} footer={footer}>
+      {/* ─── Banner (full-width, inside content flow) ─── */}
+      {bannerSlides.length > 0 && (
+        <div className={styles.bannerSection}>
+          <DesktopBannerCarousel slides={bannerSlides} autoPlay={5000} />
+        </div>
+      )}
+
       <div className={styles.content}>
         {/* ─── Sale Hits ─── */}
         {saleHits.length > 0 && (

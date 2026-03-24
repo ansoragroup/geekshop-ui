@@ -1,5 +1,11 @@
 @use '../../theme/tokens' as *;
 
+.bannerSection {
+  max-width: $desktop-content-max-width;
+  margin: 0 auto;
+  padding: $desktop-spacing-lg $desktop-content-padding 0;
+}
+
 .content {
   max-width: $desktop-content-max-width;
   margin: 0 auto;

@@ -47,6 +47,12 @@
 
   > div { width: auto; max-width: none; padding: 0; }
 
+  // Ensure MegaMenu dropdown has opaque background (not transparent from parent override)
+  [role='navigation'],
+  [aria-label] > div:last-child {
+    background: var(--gs-bg-card) !important;
+  }
+
   [aria-haspopup='true'] {
     background: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
