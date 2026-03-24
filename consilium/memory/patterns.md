@@ -70,3 +70,15 @@
 28. **CSS vars for colors/shadows, SCSS vars for spacing/breakpoints.** Colors and shadows use `var(--gs-*)` CSS custom properties (runtime-changeable for themes). Spacing and breakpoints use `$spacing-*` SCSS variables (compile-time, no runtime cost). This split ensures theming works while keeping layout performance optimal.
 
 29. **Unsplash for verified demo images.** Newegg/ASUS CDN images get hotlink blocked in Storybook. Use Unsplash URLs (e.g., `https://images.unsplash.com/photo-...?w=400&h=400&fit=crop`) as they allow hotlinking and provide high-quality product-style images.
+
+## Session 20260324 — Evolution Analysis Patterns
+
+30. **Storybook sidebar organization: Desktop/{Category}/{ComponentName}.** Desktop components use `title: 'Desktop/{Category}/{ComponentName}'` in story meta. Mobile components use `title: '{Category}/{ComponentName}'`. Pages use `title: 'Pages/Desktop/{PageName}'` or `title: 'Pages/Mobile/{PageName}'`. This prevents cross-contamination of mobile and desktop sections.
+
+31. **Component reuse verification before creation.** Before creating any new component, run: `grep -i "{concept}" src/components/index.ts` to check existing exports. If a related component exists (e.g., DesktopRating for a rating distribution feature), evaluate extending it vs creating new. Document the decision in the investigation artifacts.
+
+32. **Iterative design polish workflow.** Owner's pattern: create initial components -> visually verify -> refine SCSS -> re-verify. The v5.1.0 branch shows this pattern: DesktopDialog, DesktopModal, DesktopPopup all had SCSS modifications alongside page refinements (checkout, login, register). Support this by keeping component SCSS modular and avoiding tightly coupled styles.
+
+33. **Expansion + polish in parallel.** Current sessions show new component creation (DesktopDeliverySelector, DesktopImageZoom, etc.) alongside refinement of existing components (DesktopDialog SCSS, DesktopHeader). Agent teams should allocate roles for both: creation agents + polish agents working in parallel on non-overlapping files.
+
+34. **Search autocomplete with deduplication.** Latest commit (c8348a0) adds DesktopSearchAutocomplete with photo search and deduplicates 19 pages. When adding new page-level compositions, always check for duplicates across the pages/ directory first.

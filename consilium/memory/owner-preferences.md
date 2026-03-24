@@ -1,8 +1,8 @@
 # Owner Preference Model
 <!-- Auto-synthesized from owner-profile.jsonl. -->
-<!-- Sessions 1-11 complete — 27 observations. Updated 2026-03-21 evolution fixes. -->
+<!-- Sessions 1-11 complete + current WIP — 32 observations. Updated 2026-03-24 evolution report. -->
 
-Status: CALIBRATED (11 sessions, 27 observations, strong signal convergence)
+Status: CALIBRATED (11 sessions, 32 observations, strong signal convergence)
 
 ## Decision Style (confidence: 0.90)
 - Terse, delegating task descriptions — trusts the system to self-direct
@@ -21,6 +21,9 @@ Status: CALIBRATED (11 sessions, 27 observations, strong signal convergence)
 - Expects agents to think like real IT giant teams, not checkbox-checkers ("такое ощущение что хуево консиллум не парился")
 - **Equal-height cards are non-negotiable** — got very frustrated about product card height inconsistency. Visual alignment of CTA buttons across grid rows is critical.
 - **Each story variant must have genuinely different data** — very angry when agents produced identical stories with different names but same content.
+- **Rules MUST be followed** — frustrated when agents ignore established CLAUDE.md rules. Non-compliance wastes time and erodes trust. Rules exist for a reason.
+- **Storybook organization matters** — Desktop components must be in correct Storybook sidebar sections. Disorganized library = unprofessional.
+- **Reuse existing components** — agents must check what exists before creating new components. Duplication is unacceptable.
 
 ## Hard Rules (non-negotiable, confidence: 1.0)
 - NEVER delete anything without explicit permission
@@ -50,12 +53,15 @@ Status: CALIBRATED (11 sessions, 27 observations, strong signal convergence)
 - Expects agents that operate at the level of real engineering teams
 - Comprehensive, not minimal — wants the full vision executed, not a subset
 - Describes 15+ features in a single task — prefers ambitious scope
+- **Agents must check existing components before creating new ones** — search barrel exports and component directories first. Reuse > recreation.
+- **Storybook sidebar organization is non-negotiable** — Desktop/{Category}/{ComponentName} for desktop, {Category}/{ComponentName} for mobile. Never mix them.
 
 ## Scope Preferences (confidence: 0.90)
 - Comprehensive, not minimal — wants the full vision executed, not a subset
 - Describes 15+ features in a single task — prefers ambitious scope
 - Expects thoroughness over speed — incomplete is worse than slow
 - Wants agents that operate at the level of real engineering teams
+- **Expansion + polish simultaneously** — current workflow adds new components while refining existing ones in the same session. Not sequential phases.
 
 ## Design Preferences — Desktop (confidence: 0.95)
 - Desktop components MUST match Uzum.uz / Ozon.ru / Alifshop.uz pixel-level — not "inspired by"

@@ -52,3 +52,13 @@
 15. **Don't create identical story data with different names.** Each story variant MUST have genuinely different data — different product names, prices, images, descriptions, and state. Copy-pasting a Default story and renaming it "WithDiscount" while keeping the same data is unacceptable. Owner got very angry about this.
 
 16. **Don't place 'use client' after import statements.** The `'use client'` directive MUST be the very first line of the file, before any imports. Placing it after imports causes silent SSR failures in Next.js. This was a bug fixed in commit c13379f.
+
+## Session 20260324 — Evolution Analysis
+
+17. **Don't place Desktop components in mobile Storybook sections.** Desktop components MUST be in "Desktop / {Category} / {ComponentName}" in the Storybook sidebar. Never place them alongside mobile components in "{Category} / {ComponentName}". Owner explicitly frustrated by disorganized sidebar. Set the story title correctly: `title: 'Desktop/{Category}/{ComponentName}'`.
+
+18. **Don't create new components without checking existing barrel exports.** Before creating ANY new component, search `src/components/index.ts` for related components. If a similar one exists, compose or extend it rather than creating from scratch. Owner frustrated by duplication when agents ignore existing library components.
+
+19. **Don't skip the component reuse check in Phase 1 (investigate).** Every investigation phase MUST include: `grep -i "{component concept}" src/components/index.ts` to find existing components. If DesktopRating exists and you need rating distribution, check if DesktopRating can be extended rather than creating DesktopRatingDistribution from scratch.
+
+20. **Don't adopt protocol modifications without actual enforcement.** "Enforce debate for features" was ADOPTED after session s3 but was only enforced in 1 of 5 subsequent feature sessions (20%). Adopting a rule and not enforcing it is worse than not having the rule — it creates false confidence.
