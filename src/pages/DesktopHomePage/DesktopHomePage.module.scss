@@ -1,93 +1,36 @@
 @use '../../theme/tokens' as *;
 
-// ─── DesktopHomePage ─────────────────────────────────────────────────────────
-
-.headerWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.logoText {
-  font-weight: $font-weight-bold;
-  font-size: $desktop-font-size-h3;
-  color: $color-primary;
-}
-
-.topBarBtn {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font-size: inherit;
-  font-family: $font-family;
-}
-
-.categoryEmoji {
-  font-size: $desktop-font-size-h2;
-  line-height: 1;
+.content {
+  max-width: $desktop-content-max-width;
+  margin: 0 auto;
+  padding: $desktop-spacing-lg $desktop-content-padding;
 }
 
 .section {
   margin-bottom: $desktop-spacing-xxl;
 }
 
-// Category grid — 5 items per row, 2 rows for full labels
-.categoryGrid {
+.productsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $desktop-spacing-sm;
+  margin-bottom: $desktop-spacing-md;
+}
+
+.productGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: $desktop-spacing-md;
-  margin-top: $desktop-spacing-md;
+  gap: $desktop-card-gap;
 }
 
-// Flash deals header — title + timer on same line
-.flashHeader {
+.loadMore {
   display: flex;
-  align-items: center;
-  gap: $desktop-spacing-lg;
-  margin-bottom: $desktop-spacing-md;
-
-  // Let section header take its natural width
-  > *:first-child {
-    flex: 1;
-  }
+  justify-content: center;
+  padding: $desktop-spacing-xl 0;
+  min-height: 60px;
 }
 
-.flashTimer {
-  display: flex;
-  align-items: center;
-  gap: $spacing-sm;
-  flex-shrink: 0;
-}
-
-.flashTimerLabel {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $color-text-secondary;
-  white-space: nowrap;
-}
-
-// Promo banners — 2 side by side
-.promoBanners {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $desktop-spacing-md;
-}
-
-// Responsive adjustments
-@media (max-width: $breakpoint-desktop-lg) {
-  .categoryGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-
-}
-
-@media (max-width: $breakpoint-desktop) {
-  .categoryGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-
-  .promoBanners {
-    grid-template-columns: 1fr;
-  }
+.loadingText {
+  font-size: $font-size-md;
+  color: var(--gs-text-tertiary);
 }

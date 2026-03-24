@@ -213,6 +213,7 @@ export { TwoColumnLayout } from './layout/TwoColumnLayout';
 export { Footer } from './layout/Footer';
 export { DesktopDivider } from './layout/DesktopDivider';
 export { DesktopSection } from './layout/DesktopSection';
+export { DesktopFooter } from './layout/DesktopFooter';
 
 // Navigation (Desktop)
 export { DesktopAppBar } from './navigation/DesktopAppBar';
@@ -452,6 +453,7 @@ export type { TwoColumnLayoutProps } from './layout/TwoColumnLayout';
 export type { FooterProps, FooterColumn, FooterLink, FooterSocial } from './layout/Footer';
 export type { DesktopDividerProps } from './layout/DesktopDivider';
 export type { DesktopSectionProps } from './layout/DesktopSection';
+export type { DesktopFooterProps, DesktopFooterColumn, DesktopFooterLink, DesktopFooterAppBadge } from './layout/DesktopFooter';
 
 // Types — Navigation (Desktop)
 export type { DesktopAppBarProps, DesktopAppBarAction } from './navigation/DesktopAppBar';

@@ -1,0 +1,170 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  width: 100%;
+  background: var(--gs-bg-page);
+  font-family: $font-family;
+}
+
+// ─── Columns Section ─────────────────────────────────────────────────────────
+
+.columnsWrapper {
+  display: flex;
+  justify-content: center;
+  padding: $desktop-spacing-xl 0;
+  border-bottom: 1px solid var(--gs-border-color);
+}
+
+.columns {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $desktop-spacing-xl;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.columnTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.linkList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.linkPill {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-md;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  color: var(--gs-text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color $transition-fast, border-color $transition-fast;
+  white-space: nowrap;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      border-color: var(--gs-color-primary);
+    }
+  }
+}
+
+// ─── Bottom Bar ─────────────────────────────────────────────────────────────
+
+.bottomBar {
+  display: flex;
+  justify-content: center;
+  padding: $desktop-spacing-md 0;
+}
+
+.bottomContent {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $desktop-spacing-md;
+}
+
+.copyright {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  white-space: nowrap;
+}
+
+.legalText {
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+  max-width: 300px;
+
+  a {
+    color: var(--gs-color-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.policyLinks {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.policyLink {
+  font-size: $font-size-sm;
+  color: var(--gs-color-primary);
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.appBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.appBadge {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gs-border-color);
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: border-color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-text-tertiary);
+    }
+  }
+}
+
+.appBadgeImg {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .linkPill,
+  .policyLink,
+  .appBadge {
+    transition: none;
+  }
+}
