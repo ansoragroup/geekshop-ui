@@ -40,3 +40,15 @@
 10. **Don't assume markdown tables work in MDX.** MDX v3 breaks markdown tables near JSX. Always use `<table>` JSX elements in MDX files.
 
 11. **Don't ship theme presets with only primary colors.** Users see "theme broken" when price/success/warning colors don't match. Each preset needs ALL 16 semantic colors.
+
+## Session 20260321 — Desktop Design System Overhaul + SSR Readiness
+
+12. **Don't use standalone Agent spawns instead of team agents.** Owner explicitly requires TeamCreate for all multi-agent work. Standalone Agent spawns lack: shared context, coordinated file boundaries, metrics collection, and orchestration. Always use team agents.
+
+13. **Don't let cn() utility corrupt array destructuring.** The cn() className merging utility can be mistakenly applied by automated fixes to array destructuring patterns. `const [x, y] = ...` must NOT become `const cn(x, y] = ...`. Always verify cn() is only applied to className string concatenation, not arbitrary bracket syntax.
+
+14. **Don't use picsum.photos or placehold.co for product images.** Owner explicitly rejected placeholder image services. Storybook must look like real e-commerce. Use Unsplash URLs with real product-style images, or verified CDN URLs that allow hotlinking.
+
+15. **Don't create identical story data with different names.** Each story variant MUST have genuinely different data — different product names, prices, images, descriptions, and state. Copy-pasting a Default story and renaming it "WithDiscount" while keeping the same data is unacceptable. Owner got very angry about this.
+
+16. **Don't place 'use client' after import statements.** The `'use client'` directive MUST be the very first line of the file, before any imports. Placing it after imports causes silent SSR failures in Next.js. This was a bug fixed in commit c13379f.

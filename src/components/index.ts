@@ -19,6 +19,7 @@ export { DesktopHeader } from './navigation/DesktopHeader';
 export { DesktopHeaderMinimal } from './navigation/DesktopHeader';
 export { DesktopHeaderRich } from './navigation/DesktopHeader';
 export { DesktopHeaderGlass } from './navigation/DesktopHeader';
+export { DesktopHeaderAliExpress } from './navigation/DesktopHeader';
 export { MegaMenu } from './navigation/MegaMenu';
 export { Breadcrumbs } from './navigation/Breadcrumbs';
 export { Pagination } from './navigation/Pagination';
@@ -94,6 +95,7 @@ export { DesktopNoticeBar } from './content/DesktopNoticeBar';
 export { DesktopPromoBanner } from './content/DesktopPromoBanner';
 export { DesktopSectionHeader } from './content/DesktopSectionHeader';
 export { DesktopSocialProof } from './content/DesktopSocialProof';
+export { DesktopSaleHits } from './content/DesktopSaleHits';
 
 // Data Display
 export { Badge } from './data-display/Badge';
@@ -255,6 +257,7 @@ export type { DesktopHeaderProps } from './navigation/DesktopHeader';
 export type { DesktopHeaderMinimalProps, CategoryItem } from './navigation/DesktopHeader';
 export type { DesktopHeaderRichProps, PromoLink } from './navigation/DesktopHeader';
 export type { DesktopHeaderGlassProps } from './navigation/DesktopHeader';
+export type { DesktopHeaderAliExpressProps, DesktopHeaderPromoTag, DesktopHeaderQuickLink } from './navigation/DesktopHeader';
 export type { MegaMenuProps, MegaMenuCategory, MegaMenuSubcategory } from './navigation/MegaMenu';
 export type { BreadcrumbsProps, BreadcrumbItem } from './navigation/Breadcrumbs';
 export type { PaginationProps } from './navigation/Pagination';
@@ -330,6 +333,7 @@ export type { DesktopNoticeBarProps, DesktopNoticeBarVariant } from './content/D
 export type { DesktopPromoBannerProps, DesktopPromoBannerImageAlign } from './content/DesktopPromoBanner';
 export type { DesktopSectionHeaderProps, DesktopSectionHeaderTab } from './content/DesktopSectionHeader';
 export type { DesktopSocialProofProps, DesktopSocialProofBuyer } from './content/DesktopSocialProof';
+export type { DesktopSaleHitsProps, SaleHitItem } from './content/DesktopSaleHits';
 
 // Types — Data Display
 export type { BadgeProps, BadgeType, BadgeColor, BadgePosition } from './data-display/Badge';

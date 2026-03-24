@@ -31,43 +31,37 @@ describe('DesktopProductCard', () => {
   it('calls onClick when clicked', async () => {
     const onClick = vi.fn();
     const user = userEvent.setup();
-
     render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
     await user.click(screen.getByRole('button', { name: /RTX 4060/i }));
-
     expect(onClick).toHaveBeenCalledOnce();
   });
 
   it('calls onClick on Enter key press', async () => {
     const onClick = vi.fn();
     const user = userEvent.setup();
-
     render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
     screen.getByRole('button', { name: /RTX 4060/i }).focus();
     await user.keyboard('{Enter}');
-
     expect(onClick).toHaveBeenCalledOnce();
   });
 
   it('calls onClick on Space key press', async () => {
     const onClick = vi.fn();
     const user = userEvent.setup();
-
     render(<DesktopProductCard {...defaultProps} onClick={onClick} />);
     screen.getByRole('button', { name: /RTX 4060/i }).focus();
     await user.keyboard(' ');
-
     expect(onClick).toHaveBeenCalledOnce();
   });
 
-  it('renders discount badge when provided', () => {
-    render(<DesktopProductCard {...defaultProps} discount="-26%" />);
+  it('renders discount text when provided', () => {
+    render(<DesktopProductCard {...defaultProps} originalPrice={12_000_000} discount="-26%" />);
     expect(screen.getByText('-26%')).toBeInTheDocument();
   });
 
-  it('renders current price', () => {
+  it('renders current price with currency', () => {
     render(<DesktopProductCard {...defaultProps} />);
-    expect(screen.getByText(/8.900.000/)).toBeInTheDocument();
+    expect(screen.getByText(/8.900.000.*UZS/)).toBeInTheDocument();
   });
 
   it('renders original price with strikethrough when provided', () => {
@@ -81,22 +75,39 @@ describe('DesktopProductCard', () => {
     render(
       <DesktopProductCard {...defaultProps} originalPrice={12_000_000} discount="-26%" />,
     );
-    const discountElements = screen.getAllByText('-26%');
-    expect(discountElements.length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('-26%')).toBeInTheDocument();
   });
 
-  it('renders rating and review count when provided', () => {
-    render(<DesktopProductCard {...defaultProps} rating={4.5} reviewCount={1234} />);
+  it('renders rating when provided', () => {
+    render(<DesktopProductCard {...defaultProps} rating={4.5} />);
     expect(screen.getByText('4.5')).toBeInTheDocument();
-    expect(screen.getByText('(1 234)')).toBeInTheDocument();
   });
 
-  it('renders installment price when provided', () => {
-    render(<DesktopProductCard {...defaultProps} installmentPrice={742000} />);
-    expect(screen.getByText(/742.000/)).toBeInTheDocument();
+  it('renders purchase count when provided', () => {
+    render(<DesktopProductCard {...defaultProps} purchaseCount={120} />);
+    expect(screen.getByText(/120 купили/)).toBeInTheDocument();
   });
 
-  it('renders badges at bottom of image when provided', () => {
+  it('renders reviewCount as purchase count for backward compat', () => {
+    render(<DesktopProductCard {...defaultProps} reviewCount={1234} />);
+    expect(screen.getByText(/1.234 купили/)).toBeInTheDocument();
+  });
+
+  it('renders badges on image when provided', () => {
+    render(
+      <DesktopProductCard
+        {...defaultProps}
+        badges={[
+          { label: 'SALE', variant: 'sale' },
+          { label: 'ТОП', variant: 'top' },
+        ]}
+      />,
+    );
+    expect(screen.getByText('SALE')).toBeInTheDocument();
+    expect(screen.getByText('ТОП')).toBeInTheDocument();
+  });
+
+  it('renders legacy badge format', () => {
     render(
       <DesktopProductCard
         {...defaultProps}
@@ -110,54 +121,24 @@ describe('DesktopProductCard', () => {
     expect(screen.getByText('ARZON NARX')).toBeInTheDocument();
   });
 
-  it('renders CTA button with default text', () => {
-    render(<DesktopProductCard {...defaultProps} />);
-    expect(screen.getByText('Savatga')).toBeInTheDocument();
+  it('renders recommended label when enabled', () => {
+    render(<DesktopProductCard {...defaultProps} recommended />);
+    expect(screen.getByText('Рекомендуем')).toBeInTheDocument();
   });
 
-  it('renders CTA button with custom text', () => {
-    render(<DesktopProductCard {...defaultProps} ctaText="Ertaga" />);
-    expect(screen.getByText('Ertaga')).toBeInTheDocument();
-  });
-
-  it('calls onAddToCart when CTA button is clicked', async () => {
-    const onAddToCart = vi.fn();
-    const user = userEvent.setup();
-
-    render(<DesktopProductCard {...defaultProps} onAddToCart={onAddToCart} />);
-    await user.click(screen.getByText('Savatga'));
-
-    expect(onAddToCart).toHaveBeenCalledOnce();
-  });
-
-  it('renders wishlist button with correct label when not wishlisted', () => {
-    render(<DesktopProductCard {...defaultProps} />);
-    expect(screen.getByLabelText('Add to wishlist')).toBeInTheDocument();
-  });
-
-  it('renders wishlist button with correct label when wishlisted', () => {
-    render(<DesktopProductCard {...defaultProps} isWishlisted />);
-    expect(screen.getByLabelText('Remove from wishlist')).toBeInTheDocument();
-  });
-
-  it('calls onWishlist when wishlist button is clicked', async () => {
-    const onWishlist = vi.fn();
-    const user = userEvent.setup();
-
-    render(<DesktopProductCard {...defaultProps} onWishlist={onWishlist} />);
-    await user.click(screen.getByLabelText('Add to wishlist'));
-
-    expect(onWishlist).toHaveBeenCalledOnce();
+  it('renders custom recommended text', () => {
+    render(<DesktopProductCard {...defaultProps} recommended recommendedText="Bestseller" />);
+    expect(screen.getByText('Bestseller')).toBeInTheDocument();
   });
 
   it('renders delivery text when provided', () => {
-    render(<DesktopProductCard {...defaultProps} deliveryText="Ertaga" />);
-    expect(screen.getByText('Ertaga')).toBeInTheDocument();
+    render(<DesktopProductCard {...defaultProps} deliveryText="до 30 дней, бесплатно" />);
+    expect(screen.getByText('до 30 дней, бесплатно')).toBeInTheDocument();
   });
 
-  it('renders free shipping text when enabled and no delivery text', () => {
+  it('renders default delivery text when freeShipping', () => {
     render(<DesktopProductCard {...defaultProps} freeShipping />);
-    expect(screen.getByText('Bepul yetkazib berish')).toBeInTheDocument();
+    expect(screen.getByText('до 30 дней, бесплатно')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
@@ -167,9 +148,8 @@ describe('DesktopProductCard', () => {
     expect(container.firstElementChild?.className).toContain('my-card');
   });
 
-  it('applies custom CTA color via style', () => {
-    render(<DesktopProductCard {...defaultProps} ctaColor="#7B2BFC" />);
-    const ctaBtn = screen.getByText('Savatga').closest('button');
-    expect(ctaBtn).toHaveStyle({ background: '#7B2BFC' });
+  it('renders custom currency', () => {
+    render(<DesktopProductCard {...defaultProps} currency="USD" />);
+    expect(screen.getByText(/USD/)).toBeInTheDocument();
   });
 });

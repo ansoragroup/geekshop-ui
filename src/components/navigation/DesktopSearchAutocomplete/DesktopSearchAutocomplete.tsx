@@ -58,6 +58,8 @@ export interface DesktopSearchAutocompleteProps extends HTMLAttributes<HTMLDivEl
   onCategoryClick?: (category: { id: string; name: string }) => void;
   /** Placeholder text */
   placeholder?: string;
+  /** Custom submit button label (default: "Search") */
+  submitLabel?: string;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -144,6 +146,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
       onProductClick,
       onCategoryClick,
       placeholder = 'Search products...',
+      submitLabel,
       className,
       ...rest
     },
@@ -461,7 +464,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             </>
           )}
           <button type="submit" className={styles.searchSubmit} aria-label="Submit search">
-            Search
+            {submitLabel ?? 'Search'}
           </button>
         </form>
 

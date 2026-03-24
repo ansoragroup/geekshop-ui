@@ -1,0 +1,350 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Header Root ─────────────────────────────────────────────────────────────
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  width: 100%;
+  font-family: $font-family;
+}
+
+// ─── Main Row (Primary Color Background) ─────────────────────────────────────
+
+.mainRow {
+  background: var(--gs-color-primary);
+  display: flex;
+  justify-content: center;
+}
+
+.mainContent {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: flex;
+  align-items: center;
+  gap: $desktop-spacing-md;
+  min-height: 56px;
+  box-sizing: border-box;
+}
+
+// ─── Logo ───────────────────────────────────────────────────────────────────
+
+.logo {
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-text-white);
+    outline-offset: 2px;
+    border-radius: $radius-xs;
+  }
+}
+
+.logoText {
+  font-size: $desktop-font-size-h2;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-white);
+  white-space: nowrap;
+}
+
+// ─── MegaMenu Catalog Override ──────────────────────────────────────────────
+// MegaMenu renders <nav> with internal trigger button. We override its
+// appearance to match the AliExpress red header style.
+
+.catalogMenu {
+  flex-shrink: 0;
+  width: auto !important;
+  background: transparent !important;
+  border-bottom: none !important;
+
+  // Override MegaMenu's .content wrapper — remove full-width padding
+  > div {
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+
+  // Override MegaMenu trigger button via aria attribute selector
+  [aria-haspopup='true'] {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: $radius-md !important;
+    color: var(--gs-text-white) !important;
+    height: 40px;
+    padding: 0 $desktop-spacing-md;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    transition: background $transition-fast;
+
+    @media (hover: hover) {
+      &:hover {
+        background: rgba(255, 255, 255, 0.25) !important;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--gs-text-white);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// ─── Catalog Button Fallback (no categories) ────────────────────────────────
+
+.catalogBtnFallback {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 40px;
+  padding: 0 $desktop-spacing-md;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--gs-text-white);
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-text-white);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Search Autocomplete Override ───────────────────────────────────────────
+// DesktopSearchAutocomplete renders a form with input + submit button.
+// We override the visual style to match the AliExpress green-button search.
+
+.searchArea {
+  flex: 1;
+
+  // Override the form wrapper — remove default orange border, use white bg
+  form {
+    background: var(--gs-bg-white);
+    border: none !important;
+    border-radius: $radius-md;
+    height: 44px;
+  }
+
+  // Override submit button — green "Найти" style
+  button[type='submit'] {
+    background: #B8E639 !important;
+    color: #1A1A1A !important;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-md;
+    padding: 0 $spacing-xl;
+
+    @media (hover: hover) {
+      &:hover {
+        background: #A6CE30 !important;
+      }
+    }
+  }
+}
+
+// ─── Action Icons ───────────────────────────────────────────────────────────
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: $spacing-xs;
+  border: none;
+  border-radius: $radius-md;
+  background: none;
+  color: var(--gs-text-white);
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-text-white);
+    outline-offset: 2px;
+  }
+}
+
+.actionLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  white-space: nowrap;
+}
+
+.cartBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: #FFE500;
+  color: #FF0000;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  line-height: 16px;
+  text-align: center;
+  border-radius: $radius-round;
+  box-sizing: border-box;
+}
+
+// ─── Promo Row (White Background) ───────────────────────────────────────────
+
+.promoRow {
+  background: var(--gs-bg-white);
+  border-bottom: 1px solid var(--gs-border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.promoContent {
+  width: 100%;
+  max-width: $desktop-content-max-width;
+  padding: 0 $desktop-content-padding;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+  box-sizing: border-box;
+  gap: $desktop-spacing-md;
+}
+
+.promoLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  overflow: hidden;
+}
+
+.promoTag {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-md;
+  border: none;
+  border-radius: $radius-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  transition: opacity $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.quickLink {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.promoRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-shrink: 0;
+}
+
+.locationBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-xs $spacing-sm;
+  border: none;
+  border-radius: $radius-sm;
+  background: none;
+  color: var(--gs-text-secondary);
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.metaItem {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  font-weight: $font-weight-medium;
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid var(--gs-border-color);
+  border-radius: $radius-xs;
+  cursor: default;
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .catalogBtnFallback,
+  .actionBtn,
+  .promoTag,
+  .quickLink,
+  .locationBtn {
+    transition: none;
+  }
+}

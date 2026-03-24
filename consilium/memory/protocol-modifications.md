@@ -13,8 +13,8 @@
 - **Observed:** Session had 4 implementation rounds (audit, phase5a, phase5b, phase5c) but Phase 8 only ran once after audit. 10 agent scores and 3 rounds of metrics were lost.
 - **Proposal:** After each implementation round in a multi-round session, run a lightweight Phase 8: score agents, log metrics, update failures. Full knowledge graph + protocol review only at session end.
 - **Evidence:** Session 20260315 — had to retroactively reconstruct metrics for 3 implementation rounds.
-- **Status:** TESTING (session 1 of 2)
-- **Note:** Testing from 20260315. Will capture per-round metrics, failures, and prompt scores.
+- **Status:** TESTING (session 0 of 2 — stalled)
+- **Note:** TESTING — 0 of 2 sessions tested. Stalled since 20260315. Will test next full consilium session or reject.
 
 ## ADOPTED: Include "remove export default" in forwardRef prompts
 - **Observed:** 2 of 3 forwardRef agents left `export default` statements when converting from FC to forwardRef. Required cleanup agent.
@@ -34,4 +34,11 @@
 - **Proposal:** Sessions with 3+ active agents MUST run Phase 6 (cross-review). Each agent reviews the next agent's code (circular rotation).
 - **Evidence:** Session s3 — stale test assertion (OTPInput import path) would have been caught by review. Session s2 — 71 missing i18n keys would have been caught. 4 total bugs across sessions that review would have prevented.
 - **Status:** TESTING (promoted from PROPOSED on 2026-03-20 evolution review)
-- **Note:** Testing starts next consilium session with 3+ agents. Need 2 successful sessions to adopt.
+- **Note:** TESTING — 0 of 2 sessions tested. Promoted 20260320 but no full protocol session since. Need 2 successful sessions to adopt.
+
+## PROPOSED: Always use TeamCreate for multi-agent work
+- **Observed:** Owner explicitly requires team agents over standalone Agent spawns. Got frustrated when agents were launched outside the team structure.
+- **Proposal:** All multi-agent work MUST use TeamCreate to spawn agents as a coordinated team. Never use standalone Agent spawns for parallel work. Team structure provides: shared context, coordinated file boundaries, proper orchestration, and metrics collection.
+- **Evidence:** Session 20260321 — owner explicitly told to always use team agents, not standalone agents. Frustrated when agents were launched outside team.
+- **Status:** PROPOSED (2026-03-21)
+- **Note:** Strong owner signal. Candidate for fast-track adoption if confirmed in next session.

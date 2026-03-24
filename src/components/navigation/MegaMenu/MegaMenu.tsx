@@ -29,6 +29,10 @@ export interface MegaMenuProps extends HTMLAttributes<HTMLElement> {
   navItems?: { label: string; href?: string; onClick?: () => void }[];
   /** Callback when a category is clicked */
   onCategoryClick?: (category: MegaMenuCategory) => void;
+  /** Custom trigger button label (default: "All Categories") */
+  triggerLabel?: string;
+  /** Custom trigger button icon */
+  triggerIcon?: ReactNode;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -48,7 +52,7 @@ const ChevronRightIcon = () => (
 );
 
 export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
-  ({ categories, navItems, onCategoryClick, className, ...rest }, ref) => {
+  ({ categories, navItems, onCategoryClick, triggerLabel, triggerIcon, className, ...rest }, ref) => {
   const { t } = useGeekShop();
     const rootClass = cn(styles.megaMenu, className);
     const [isOpen, setIsOpen] = useState(false);
@@ -143,8 +147,8 @@ export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
               aria-haspopup="true"
               onKeyDown={handleKeyDown}
             >
-              <MenuIcon />
-              <span>All Categories</span>
+              {triggerIcon ?? <MenuIcon />}
+              <span>{triggerLabel ?? 'All Categories'}</span>
             </button>
           </div>
 

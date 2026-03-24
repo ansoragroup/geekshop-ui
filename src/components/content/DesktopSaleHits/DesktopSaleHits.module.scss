@@ -1,0 +1,241 @@
+@use '../../../theme/tokens' as *;
+
+// ─── Root ────────────────────────────────────────────────────────────────────
+
+.root {
+  background: linear-gradient(135deg, #FFF0F3 0%, #F5F0FF 100%);
+  border-radius: $radius-lg;
+  padding: $desktop-spacing-lg;
+  overflow: hidden;
+}
+
+// ─── Header ─────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: $desktop-spacing-md;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.hitIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: var(--gs-color-sale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gs-text-white);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.5px;
+}
+
+.titleText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: $desktop-font-size-h3;
+  font-weight: $font-weight-bold;
+  color: var(--gs-text-primary);
+  line-height: $line-height-tight;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  line-height: $line-height-normal;
+  margin: 0;
+}
+
+.viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $desktop-spacing-md;
+  background: var(--gs-color-sale);
+  color: var(--gs-text-white);
+  border: none;
+  border-radius: $radius-round;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-error);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-sale);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Scroll Area ─────────────────────────────────────────────────────────────
+
+.scrollWrapper {
+  position: relative;
+}
+
+.scrollRow {
+  display: flex;
+  gap: $desktop-spacing-sm;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: $spacing-xs;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scrollArrow {
+  position: absolute;
+  right: -$spacing-sm;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: $radius-round;
+  background: var(--gs-bg-card);
+  color: var(--gs-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: $shadow-md;
+  z-index: 3;
+  padding: 0;
+  transition: box-shadow $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// ─── Card ───────────────────────────────────────────────────────────────────
+
+.card {
+  flex-shrink: 0;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+    border-radius: $radius-md;
+  }
+}
+
+.cardImageWrap {
+  width: 150px;
+  height: 150px;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: var(--gs-bg-white);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: $spacing-sm 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: var(--gs-color-price);
+  line-height: $line-height-tight;
+}
+
+.cardOldPriceRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.cardOldPrice {
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+  text-decoration: line-through;
+  line-height: $line-height-tight;
+}
+
+.cardDiscount {
+  font-size: $font-size-xs;
+  color: var(--gs-color-success);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
+.cardTitle {
+  font-size: $font-size-xs;
+  color: var(--gs-text-primary);
+  line-height: $line-height-normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .viewAllBtn,
+  .scrollArrow {
+    transition: none !important;
+  }
+
+  .card {
+    &:hover {
+      transform: none;
+    }
+  }
+}

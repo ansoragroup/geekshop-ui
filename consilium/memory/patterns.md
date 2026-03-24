@@ -58,3 +58,15 @@
 23. **color-mix() for CSS var opacity.** `color-mix(in srgb, var(--gs-color-primary) 50%, transparent)` replaces `rgba($color-primary, 0.5)` when using CSS custom properties.
 
 24. **Reusable Table component for MDX docs.** `export const Table = ({ headers, rows }) => <table>...</table>` reduces boilerplate in large doc pages like ComponentStatus.mdx.
+
+## Session 20260321 — Desktop Design System Overhaul + SSR Readiness
+
+25. **Team agents for parallel work (owner requirement).** ALWAYS use TeamCreate for multi-agent work. Owner explicitly requires team agents over standalone Agent spawns. Team structure provides shared context, coordinated file boundaries, and metrics collection.
+
+26. **'use client' must be FIRST line before any imports.** In React Server Components / Next.js, the `'use client'` directive must appear as the very first line of the file, before any `import` statements. Placing it after imports causes silent SSR failures.
+
+27. **margin-top: auto on CTA buttons for equal-height card grids.** When cards are in a CSS Grid with `align-items: stretch`, use `display: flex; flex-direction: column` on the card, then `margin-top: auto` on the CTA/actions container. This pushes CTAs to the bottom regardless of content height, ensuring visual alignment across the row.
+
+28. **CSS vars for colors/shadows, SCSS vars for spacing/breakpoints.** Colors and shadows use `var(--gs-*)` CSS custom properties (runtime-changeable for themes). Spacing and breakpoints use `$spacing-*` SCSS variables (compile-time, no runtime cost). This split ensures theming works while keeping layout performance optimal.
+
+29. **Unsplash for verified demo images.** Newegg/ASUS CDN images get hotlink blocked in Storybook. Use Unsplash URLs (e.g., `https://images.unsplash.com/photo-...?w=400&h=400&fit=crop`) as they allow hotlinking and provide high-quality product-style images.

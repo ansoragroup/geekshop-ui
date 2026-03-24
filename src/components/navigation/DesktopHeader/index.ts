@@ -9,3 +9,6 @@ export type { DesktopHeaderRichProps, PromoLink } from './DesktopHeaderRich';
 
 export { DesktopHeaderGlass } from './DesktopHeaderGlass';
 export type { DesktopHeaderGlassProps } from './DesktopHeaderGlass';
+
+export { DesktopHeaderAliExpress } from './DesktopHeaderAliExpress';
+export type { DesktopHeaderAliExpressProps, DesktopHeaderPromoTag, DesktopHeaderQuickLink } from './DesktopHeaderAliExpress';

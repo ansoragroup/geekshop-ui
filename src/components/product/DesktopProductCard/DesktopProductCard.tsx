@@ -1,50 +1,66 @@
 'use client';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useCallback, type ElementType, type MouseEvent } from 'react';
+import { forwardRef, useCallback, useState, useRef, type ElementType } from 'react';
 import styles from './DesktopProductCard.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface DesktopProductCardBadge {
   label: string;
+  variant?: 'sale' | 'top' | 'hot' | 'custom';
+  bgColor?: string;
+  textColor?: string;
+  /** @deprecated Use variant instead */
   color?: 'green' | 'blue' | 'orange' | 'red' | 'purple';
 }
 
 export interface DesktopProductCardOwnProps {
   /** Product image URL */
   image: string;
+  /** Additional product images for mouse-swipe preview */
+  images?: string[];
   /** Product title */
   title: string;
-  /** Current price in UZS (number) */
+  /** Current price (number) */
   price: number;
   /** Original price before discount */
   originalPrice?: number;
-  /** Discount percentage e.g. "-17%" */
+  /** Discount percentage e.g. "-35%" */
   discount?: string;
-  /** Monthly installment price */
-  installmentPrice?: number;
-  /** Installment period text e.g. "so'm/oyiga" or "so'm/мес" */
-  installmentLabel?: string;
+  /** Currency label e.g. "UZS" */
+  currency?: string;
   /** Rating value 1-5 */
   rating?: number;
-  /** Number of reviews */
+  /** Number of purchases shown as "X купили" */
+  purchaseCount?: number;
+  /** @deprecated Use purchaseCount — shown as "X купили" for backward compat */
   reviewCount?: number;
-  /** Badge labels shown at bottom of image e.g. [{label: "ORIGINAL", color: "green"}] */
+  /** Badge labels shown at top-right of image */
   badges?: DesktopProductCardBadge[];
-  /** CTA button text */
-  ctaText?: string;
-  /** CTA button color (CSS color string) */
-  ctaColor?: string;
+  /** Show "Рекомендуем" label */
+  recommended?: boolean;
+  /** Custom recommended label text */
+  recommendedText?: string;
   /** Whether item has free shipping */
   freeShipping?: boolean;
-  /** Delivery text e.g. "Ertaga" or "Доставка завтра" */
+  /** Delivery text e.g. "до 30 дней, бесплатно" */
   deliveryText?: string;
-  /** Whether wishlist is active */
-  isWishlisted?: boolean;
-  /** Callbacks */
-  onAddToCart?: () => void;
-  onWishlist?: () => void;
+  /** Callback when card is clicked */
   onClick?: () => void;
+  /** @deprecated CTA button removed in AliExpress design */
+  ctaText?: string;
+  /** @deprecated CTA button removed in AliExpress design */
+  ctaColor?: string;
+  /** @deprecated CTA button removed in AliExpress design */
+  onAddToCart?: () => void;
+  /** @deprecated Wishlist button removed in AliExpress design */
+  isWishlisted?: boolean;
+  /** @deprecated Wishlist button removed in AliExpress design */
+  onWishlist?: () => void;
+  /** @deprecated Installment display removed in AliExpress design */
+  installmentPrice?: number;
+  /** @deprecated Installment display removed in AliExpress design */
+  installmentLabel?: string;
 }
 
 export type DesktopProductCardProps<C extends ElementType = 'div'> = DesktopProductCardOwnProps & {
@@ -54,36 +70,14 @@ export type DesktopProductCardProps<C extends ElementType = 'div'> = DesktopProd
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function formatPrice(value: number): string {
-  return value.toLocaleString('ru-RU').replace(/,/g, ' ');
+  const isDecimal = value % 1 !== 0;
+  const str = isDecimal ? value.toFixed(2) : Math.floor(value).toString();
+  const [intPart, decPart] = str.split('.');
+  const formatted = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return decPart ? `${formatted}.${decPart}` : formatted;
 }
 
 // ─── Inline SVG Icons ────────────────────────────────────────────────────────
-
-function HeartOutlineIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  );
-}
-
-function HeartFilledIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  );
-}
-
-function CartIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="9" cy="21" r="1" />
-      <circle cx="20" cy="21" r="1" />
-      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-    </svg>
-  );
-}
 
 function StarIcon() {
   return (
@@ -93,15 +87,39 @@ function StarIcon() {
   );
 }
 
+function TruckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="1" y="3" width="15" height="13" />
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+      <circle cx="5.5" cy="18.5" r="2.5" />
+      <circle cx="18.5" cy="18.5" r="2.5" />
+    </svg>
+  );
+}
+
 // ─── Badge Color Map ─────────────────────────────────────────────────────────
 
-const BADGE_COLORS: Record<string, { bg: string; color: string }> = {
+const BADGE_VARIANTS: Record<string, { bg: string; color: string }> = {
+  sale: { bg: '#FFE500', color: '#FF0000' },
+  top: { bg: '#FF0000', color: '#FFFFFF' },
+  hot: { bg: '#FF5000', color: '#FFFFFF' },
+};
+
+const LEGACY_COLORS: Record<string, { bg: string; color: string }> = {
   green: { bg: '#07C160', color: '#FFFFFF' },
   blue: { bg: '#1890FF', color: '#FFFFFF' },
   orange: { bg: '#FF5000', color: '#FFFFFF' },
-  red: { bg: '#FF3B30', color: '#FFFFFF' },
+  red: { bg: '#FF0000', color: '#FFFFFF' },
   purple: { bg: '#7B2BFC', color: '#FFFFFF' },
 };
+
+function getBadgeColors(badge: DesktopProductCardBadge): { bg: string; color: string } {
+  if (badge.bgColor && badge.textColor) return { bg: badge.bgColor, color: badge.textColor };
+  if (badge.variant && BADGE_VARIANTS[badge.variant]) return BADGE_VARIANTS[badge.variant];
+  if (badge.color && LEGACY_COLORS[badge.color]) return LEGACY_COLORS[badge.color];
+  return BADGE_VARIANTS.sale;
+}
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -109,178 +127,185 @@ function DesktopProductCardInner<C extends ElementType = 'div'>(
   {
     as,
     image,
+    images,
     title,
     price,
     originalPrice,
     discount,
-    installmentPrice,
-    installmentLabel = "so'm/oyiga",
+    currency = 'UZS',
     rating,
+    purchaseCount,
     reviewCount,
     badges,
-    ctaText = 'Savatga',
-    ctaColor,
+    recommended,
+    recommendedText = 'Рекомендуем',
     freeShipping,
     deliveryText,
-    isWishlisted = false,
-    onAddToCart,
-    onWishlist,
     onClick,
     className = '',
+    // Deprecated — accepted but not rendered
+    ctaText: _ctaText,
+    ctaColor: _ctaColor,
+    onAddToCart: _onAddToCart,
+    isWishlisted: _isWishlisted,
+    onWishlist: _onWishlist,
+    installmentPrice: _installmentPrice,
+    installmentLabel: _installmentLabel,
     ...rest
   }: DesktopProductCardProps<C>,
   ref: React.Ref<Element>,
 ) {
-    const Component = as || 'div';
-    const hasDiscount = originalPrice !== undefined && originalPrice > price;
+  const Component = as || 'div';
+  const hasDiscount = originalPrice !== undefined && originalPrice > price;
+  const displayCount = purchaseCount ?? reviewCount;
 
-    const handleAction = useCallback(
-      (e: MouseEvent, handler?: () => void) => {
-        e.stopPropagation();
-        handler?.();
-      },
-      [],
-    );
+  // ─── Image swipe preview ───
+  // Combine primary image with additional images
+  const allImages = images && images.length > 0 ? [image, ...images] : [image];
+  const hasMultipleImages = allImages.length > 1;
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
-    const handleKeyDown = useCallback(
-      (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick?.();
-        }
-      },
-      [onClick],
-    );
+  const handleImageMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!hasMultipleImages) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const ratio = x / rect.width;
+      const idx = Math.min(Math.floor(ratio * allImages.length), allImages.length - 1);
+      setActiveImageIndex(idx);
+    },
+    [hasMultipleImages, allImages.length],
+  );
 
-    return (
-      <Component
-        ref={ref}
-        className={cn(styles.root, className)}
-        onClick={onClick}
-        onKeyDown={handleKeyDown}
-        role="button"
-        tabIndex={0}
-        {...rest}
+  const handleImageMouseLeave = useCallback(() => {
+    setActiveImageIndex(0);
+  }, []);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onClick?.();
+      }
+    },
+    [onClick],
+  );
+
+  return (
+    <Component
+      ref={ref}
+      className={cn(styles.root, className)}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      {...rest}
+    >
+      {/* ─── Image Area with mouse-swipe preview ─── */}
+      <div
+        ref={imageContainerRef}
+        className={styles.imageContainer}
+        onMouseMove={hasMultipleImages ? handleImageMouseMove : undefined}
+        onMouseLeave={hasMultipleImages ? handleImageMouseLeave : undefined}
       >
-        {/* ─── Image Area ─── */}
-        <div className={styles.imageContainer}>
-          <img
-            src={image}
-            alt={title}
-            className={styles.image}
-            loading="lazy"
-            decoding="async"
-          />
+        <img
+          src={allImages[activeImageIndex]}
+          alt={title}
+          className={styles.image}
+          loading="lazy"
+          decoding="async"
+        />
 
-          {/* Discount badge — top left */}
-          {discount && (
-            <span className={styles.discountBadge}>{discount}</span>
-          )}
+        {/* Dot indicators for multiple images */}
+        {hasMultipleImages && (
+          <div className={styles.imageDots}>
+            {allImages.map((_, idx) => (
+              <span
+                key={idx}
+                className={cn(styles.dot, idx === activeImageIndex && styles.dotActive)}
+              />
+            ))}
+          </div>
+        )}
 
-          {/* Wishlist heart — top right */}
-          <button
-            type="button"
-            className={cn(styles.wishlistBtn, isWishlisted ? styles.wishlisted : '')}
-            onClick={(e) => handleAction(e, onWishlist)}
-            aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-          >
-            {isWishlisted ? <HeartFilledIcon /> : <HeartOutlineIcon />}
-          </button>
-
-          {/* Product badges at bottom of image */}
-          {badges && badges.length > 0 && (
-            <div className={styles.badgeRow}>
-              {badges.map((badge, idx) => {
-                const colorSet = BADGE_COLORS[badge.color ?? 'green'];
-                return (
-                  <span
-                    key={idx}
-                    className={styles.badge}
-                    style={{
-                      background: colorSet.bg,
-                      color: colorSet.color,
-                    }}
-                  >
-                    {badge.label}
-                  </span>
-                );
-              })}
-            </div>
-          )}
-        </div>
-
-        {/* ─── Content Area ─── */}
-        <div className={styles.content}>
-          {/* Price */}
-          <div className={styles.priceBlock}>
-            <span className={styles.price}>
-              {formatPrice(price)} so'm
-            </span>
-            {hasDiscount && (
-              <div className={styles.oldPriceRow}>
-                <span className={styles.originalPrice}>
-                  {formatPrice(originalPrice)}
+        {/* Badges — top right, stacked vertically */}
+        {badges && badges.length > 0 && (
+          <div className={styles.badgeColumn}>
+            {badges.map((badge, idx) => {
+              const colors = getBadgeColors(badge);
+              return (
+                <span
+                  key={idx}
+                  className={styles.badge}
+                  style={{ background: colors.bg, color: colors.color }}
+                >
+                  {badge.label}
                 </span>
-                {discount && (
-                  <span className={styles.discountPercent}>{discount}</span>
-                )}
-              </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* ─── Content Area ─── */}
+      <div className={styles.content}>
+        {/* Old price + discount (above current price) */}
+        {hasDiscount && (
+          <div className={styles.oldPriceRow}>
+            <span className={styles.originalPrice}>
+              {formatPrice(originalPrice)} {currency}
+            </span>
+            {discount && (
+              <span className={styles.discountPercent}>{discount}</span>
             )}
           </div>
+        )}
 
-          {/* Installment */}
-          {installmentPrice && (
-            <span className={styles.installment}>
-              {formatPrice(installmentPrice)} {installmentLabel}
-            </span>
-          )}
-
-          {/* Title — 2 line clamp */}
-          <h3 className={styles.title}>{title}</h3>
-
-          {/* Rating row */}
-          {(rating !== undefined || reviewCount !== undefined) && (
-            <div className={styles.ratingRow}>
-              {rating !== undefined && (
-                <>
-                  <span className={styles.star}>
-                    <StarIcon />
-                  </span>
-                  <span className={styles.ratingValue}>{rating.toFixed(1)}</span>
-                </>
-              )}
-              {reviewCount !== undefined && (
-                <span className={styles.reviewCount}>
-                  ({formatPrice(reviewCount)})
-                </span>
-              )}
-            </div>
-          )}
-
-          {/* Free shipping / delivery */}
-          {(freeShipping || deliveryText) && (
-            <div className={styles.deliveryRow}>
-              {deliveryText && <span className={styles.deliveryText}>{deliveryText}</span>}
-              {freeShipping && !deliveryText && <span className={styles.deliveryText}>Bepul yetkazib berish</span>}
-            </div>
-          )}
-
-          {/* Spacer to push CTA to bottom */}
-          <div className={styles.spacer} />
-
-          {/* CTA button — full width */}
-          <button
-            type="button"
-            className={styles.ctaButton}
-            style={ctaColor ? { background: ctaColor } : undefined}
-            onClick={(e) => handleAction(e, onAddToCart)}
-          >
-            <CartIcon />
-            <span>{ctaText}</span>
-          </button>
+        {/* Current price */}
+        <div className={styles.priceBlock}>
+          <span className={styles.price}>
+            {formatPrice(price)} {currency}
+          </span>
         </div>
-      </Component>
-    );
+
+        {/* Rating + purchase count */}
+        {(rating !== undefined || displayCount !== undefined) && (
+          <div className={styles.ratingRow}>
+            {rating !== undefined && (
+              <span className={styles.ratingChip}>
+                <StarIcon />
+                <span className={styles.ratingValue}>{rating.toFixed(1)}</span>
+              </span>
+            )}
+            {displayCount !== undefined && (
+              <span className={styles.purchaseCount}>
+                {formatPrice(displayCount)} купили
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* Title — 2 line clamp */}
+        <h3 className={styles.title}>{title}</h3>
+
+        {/* Recommended label */}
+        {recommended && (
+          <span className={styles.recommended}>{recommendedText}</span>
+        )}
+
+        {/* Delivery info */}
+        {(freeShipping || deliveryText) && (
+          <div className={styles.deliveryRow}>
+            <span className={styles.truckIcon}><TruckIcon /></span>
+            <span className={styles.deliveryText}>
+              {deliveryText || 'до 30 дней, бесплатно'}
+            </span>
+          </div>
+        )}
+      </div>
+    </Component>
+  );
 }
 
 export const DesktopProductCard = forwardRef(DesktopProductCardInner) as <C extends ElementType = 'div'>(
