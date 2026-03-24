@@ -1,5 +1,11 @@
 @use '../../../theme/tokens' as *;
 
+// --- Wrapper (positions the popover relative to the bar) ---
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .searchBar {
   display: flex;
   align-items: center;
@@ -109,6 +115,35 @@
   }
 }
 
+// --- Camera / Image search button ---
+.cameraBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-sm;
+  background: none;
+  color: var(--gs-text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
+  }
+}
+
+.cameraBtnActive {
+  color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+}
+
 // --- Submit button ---
 .submitBtn {
   height: 100%;
@@ -139,10 +174,207 @@
   }
 }
 
+// ─── Image Search Popover ────────────────────────────────────────────────────
+
+.popoverAnchor {
+  position: absolute;
+  top: calc(100% + $spacing-sm);
+  right: 0;
+  z-index: $z-index-popover;
+}
+
+.imageSearchPopover {
+  width: 380px;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $radius-lg;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  border-bottom: 1px solid var(--gs-border-color);
+}
+
+.popoverTitle {
+  font-family: $font-family;
+  font-size: $desktop-font-size-body;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+}
+
+.popoverClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-sm;
+  background: none;
+  color: var(--gs-text-tertiary);
+  cursor: pointer;
+  transition: color $transition-fast, background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-primary);
+      background: var(--gs-bg-page);
+    }
+  }
+}
+
+// --- URL input section ---
+.urlSection {
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+}
+
+.urlInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  height: 40px;
+  border: 1px solid var(--gs-border-color);
+  border-radius: $radius-md;
+  padding: 0 $spacing-sm 0 $desktop-spacing-md;
+  background: var(--gs-bg-page);
+  transition: border-color $transition-fast;
+
+  &:focus-within {
+    border-color: var(--gs-color-primary);
+  }
+}
+
+.urlIcon {
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary);
+  flex-shrink: 0;
+}
+
+.urlInput {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  color: var(--gs-text-primary);
+  min-width: 0;
+
+  &::placeholder {
+    color: var(--gs-text-placeholder);
+  }
+}
+
+.urlSearchBtn {
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 $desktop-spacing-md;
+  border: none;
+  border-radius: $radius-sm;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
+  font-family: $font-family;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
+  }
+}
+
+// --- Divider ---
+.popoverDivider {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 0 $desktop-spacing-lg;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--gs-border-color);
+}
+
+.dividerText {
+  font-family: $font-family;
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+  text-transform: lowercase;
+}
+
+// --- Drop zone ---
+.dropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  margin: $desktop-spacing-md $desktop-spacing-lg $desktop-spacing-lg;
+  min-height: 120px;
+  border: 2px dashed var(--gs-border-color);
+  border-radius: $radius-md;
+  background: var(--gs-bg-page);
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
+  }
+}
+
+.dropZoneActive {
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+}
+
+.dropIcon {
+  display: flex;
+  color: var(--gs-text-tertiary);
+}
+
+.dropText {
+  font-family: $font-family;
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+}
+
+.previewImg {
+  max-width: 100%;
+  max-height: 100px;
+  border-radius: $radius-sm;
+  object-fit: contain;
+}
+
+.fileInput {
+  display: none;
+}
+
+// --- Reduced motion ---
 @media (prefers-reduced-motion: reduce) {
   .searchBar,
   .clearBtn,
-  .submitBtn {
+  .cameraBtn,
+  .submitBtn,
+  .popoverClose,
+  .urlInputWrapper,
+  .urlSearchBtn,
+  .dropZone {
     transition: none;
   }
 }

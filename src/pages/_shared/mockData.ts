@@ -666,3 +666,11 @@ export const mockDeliverySteps: DeliveryStep[] = [
 export function formatPrice(value: number): string {
   return value.toLocaleString('ru-RU').replace(/,/g, ' ');
 }
+
+/**
+ * Formats a price with UZS currency suffix.
+ * Example: 5200000 → "5 200 000 UZS"
+ */
+export function formatPriceUZS(value: number): string {
+  return value.toLocaleString('uz-UZ') + ' UZS';
+}

@@ -123,6 +123,43 @@
   }
 }
 
+// --- Image search button ---
+.imageSearchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: var(--gs-text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.fileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .searchButton {
   display: flex;
   align-items: center;

@@ -50,6 +50,41 @@ export const WithValue: Story = {
   },
 };
 
+export const WithImageSearch: Story = {
+  args: {
+    placeholder: 'Search for GPUs, CPUs, monitors...',
+    showImageSearch: true,
+    onImageSearch: (source) => {
+      if (typeof source === 'string') {
+        alert(`Image search by URL: ${source}`);
+      } else {
+        alert(`Image search by file: ${source.name}`);
+      }
+    },
+  },
+};
+
+export const WithCategoriesAndImageSearch: Story = {
+  args: {
+    placeholder: 'Search products...',
+    categories: [
+      { value: 'all', label: 'All Categories' },
+      { value: 'gpu', label: 'Graphics Cards' },
+      { value: 'cpu', label: 'Processors' },
+      { value: 'ram', label: 'Memory' },
+    ],
+    selectedCategory: 'all',
+    showImageSearch: true,
+    onImageSearch: (source) => {
+      if (typeof source === 'string') {
+        alert(`Image search by URL: ${source}`);
+      } else {
+        alert(`Image search by file: ${source.name}`);
+      }
+    },
+  },
+};
+
 export const Interactive: Story = {
   render: () => {
     const [value, setValue] = useState('');
@@ -70,6 +105,13 @@ export const Interactive: Story = {
         ]}
         selectedCategory={category}
         onCategoryChange={setCategory}
+        onImageSearch={(source) => {
+          if (typeof source === 'string') {
+            alert(`Image search URL: ${source}`);
+          } else {
+            alert(`Image file: ${source.name} (${(source.size / 1024).toFixed(1)}KB)`);
+          }
+        }}
       />
     );
   },

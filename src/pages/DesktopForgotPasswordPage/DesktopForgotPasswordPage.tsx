@@ -1,19 +1,11 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeader,
-  Footer,
   DesktopButton,
   DesktopInput,
 } from '../../components';
+import { DefaultTopBar, DefaultHeader, DefaultFooter } from '../_shared';
 import styles from './DesktopForgotPasswordPage.module.scss';
-
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-];
 
 export interface DesktopForgotPasswordPageProps {
   /** Show the "email sent" confirmation state */
@@ -31,23 +23,9 @@ export const DesktopForgotPasswordPage: React.FC<DesktopForgotPasswordPageProps>
 
   return (
     <DesktopShell
-      topBar={
-        <TopBar
-          leftItems={[<span key="w">Welcome to GeekShop!</span>]}
-          rightItems={[
-            <button key="l" type="button" className={styles.topBarBtn}>EN</button>,
-            <button key="c" type="button" className={styles.topBarBtn}>UZS</button>,
-          ]}
-        />
-      }
-      header={
-        <DesktopHeader
-          logo={<span className={styles.logoText}>GeekShop</span>}
-          searchPlaceholder="Search products..."
-          cartCount={0}
-        />
-      }
-      footer={<Footer columns={footerColumns} copyrightText="© 2026 GeekShop. All rights reserved." />}
+      topBar={<DefaultTopBar />}
+      header={<DefaultHeader />}
+      footer={<DefaultFooter />}
     >
       <div className={styles.centerWrap}>
         <div className={styles.card}>

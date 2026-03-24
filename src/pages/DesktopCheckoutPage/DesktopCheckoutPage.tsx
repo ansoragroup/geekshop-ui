@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
   DesktopHeaderRich,
-  MegaMenu,
-  Footer,
   Breadcrumbs,
   TwoColumnLayout,
   DesktopSteps,
@@ -16,11 +13,8 @@ import {
 import type {
   DesktopAddress,
   DesktopPaymentMethod,
-  MegaMenuCategory,
-  CategoryItem,
-  PromoLink,
 } from '../../components';
-import { mockCartItems } from '../_shared/mockData';
+import { mockCartItems, DefaultTopBar, DefaultMegaMenu, DefaultFooter, defaultHeaderCategories, defaultPromoLinks } from '../_shared';
 import styles from './DesktopCheckoutPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -68,65 +62,12 @@ const paymentMethods: DesktopPaymentMethod[] = [
   { id: 'pm-4', type: 'cash', label: 'Naqd pul', isDefault: false },
 ];
 
-const megaMenuCategories: MegaMenuCategory[] = [
-  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
-  { label: 'Processors', subcategories: [{ label: 'AMD Ryzen 7000' }, { label: 'Intel 14th Gen' }] },
-  { label: 'Monitors' },
-  { label: 'Laptops' },
-  { label: 'Memory (RAM)' },
-  { label: 'Storage' },
-  { label: 'Peripherals' },
-  { label: 'Cases & Cooling' },
-];
-
-const headerCategories: CategoryItem[] = [
-  { id: '1', label: 'Smartphones', icon: 'https://dlcdnwebimgs.asus.com/gain/0FA075BB-D898-43D4-8B05-3F9DA241E070/w240' },
-  { id: '2', label: 'Laptops', icon: 'https://dlcdnwebimgs.asus.com/gain/D4B0EA38-B5D0-4F2A-8C6F-C4AC9CDFF498/w240' },
-  { id: '3', label: 'Headphones', icon: 'https://dlcdnwebimgs.asus.com/gain/C39B4183-6D56-4DC2-A224-2E3A267FA44C/w240' },
-  { id: '4', label: 'Monitors', icon: 'https://dlcdnwebimgs.asus.com/gain/6D76BE3F-52BA-4F8A-A0F0-7E4B2A86C3AB/w240' },
-  { id: '5', label: 'Keyboards', icon: 'https://dlcdnwebimgs.asus.com/gain/5F8DAD71-F3C5-44A1-B7E4-3D8E8D3F8D6F/w240' },
-];
-
-const promoLinks: PromoLink[] = [
-  { id: '1', label: 'Delivery & Returns' },
-  { id: '2', label: 'Sell on GeekShop' },
-  { id: '3', label: 'Premium', highlight: true },
-  { id: '4', label: 'Gift Cards' },
-  { id: '5', label: 'Help' },
-];
-
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }, { label: 'Track Order' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }, { label: 'Blog' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }, { label: 'Cookie Policy' }] },
-  { title: 'Connect', links: [{ label: 'Telegram' }, { label: 'Instagram' }, { label: 'Facebook' }] },
-];
 
 const checkoutSteps = [
   { title: 'Shipping' },
   { title: 'Payment' },
   { title: 'Review' },
 ];
-
-// ─── Shared shell slots ──────────────────────────────────────────────────────
-
-const DesktopTopBar = () => (
-  <TopBar
-    leftItems={[<span key="w">Welcome to GeekShop!</span>, <span key="s">Seller Center</span>, <span key="h">Help</span>]}
-    rightItems={[
-      <button key="l" type="button" className={styles.topBarBtn}>EN</button>,
-      <button key="c" type="button" className={styles.topBarBtn}>UZS</button>,
-    ]}
-  />
-);
-
-const DesktopMegaMenuBar = () => (
-  <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }, { label: 'Top Brands' }]} />
-);
-
-const DesktopFooterSection = () => (
-  <Footer columns={footerColumns} copyrightText={'\u00A9 2026 GeekShop. All rights reserved.'} />
-);
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -160,11 +101,11 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
         onSearchChange={setSearchValue}
         cartCount={selectedCartItems.length}
         wishlistCount={2}
-        categories={headerCategories}
-        promoLinks={promoLinks}
+        categories={defaultHeaderCategories}
+        promoLinks={defaultPromoLinks}
         location="Tashkent"
       />
-      <DesktopMegaMenuBar />
+      <DefaultMegaMenu />
     </div>
   );
 
@@ -186,9 +127,9 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
 
   return (
     <DesktopShell
-      topBar={<DesktopTopBar />}
+      topBar={<DefaultTopBar />}
       header={header}
-      footer={<DesktopFooterSection />}
+      footer={<DefaultFooter />}
     >
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>

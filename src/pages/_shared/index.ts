@@ -1,3 +1,19 @@
+// Shell defaults
+export {
+  DefaultTopBar,
+  DefaultMegaMenu,
+  DefaultFooter,
+  DefaultHeader,
+  DefaultHeaderRich,
+  DefaultHeaderWithMegaMenu,
+  defaultMegaMenuCategories,
+  defaultFooterColumns,
+  defaultHeaderCategories,
+  defaultPromoLinks,
+  defaultMegaMenuNavItems,
+} from './shellDefaults';
+export type { DefaultHeaderRichProps } from './shellDefaults';
+
 // Types
 export type {
   Address,
@@ -32,4 +48,5 @@ export {
   mockNotifications,
   mockDeliverySteps,
   formatPrice,
+  formatPriceUZS,
 } from './mockData';

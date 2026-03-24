@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeader,
-  MegaMenu,
-  Footer,
   Breadcrumbs,
   DesktopProductImageGallery,
   PriceDisplay,
@@ -16,27 +12,9 @@ import {
   DesktopReviewCard,
   DesktopSkuSelector,
 } from '../../components';
-import type { MegaMenuCategory, ReviewUser } from '../../components';
+import type { ReviewUser } from '../../components';
+import { DefaultTopBar, DefaultHeader, DefaultMegaMenu, DefaultFooter } from '../_shared';
 import styles from './DesktopProductDetailPage.module.scss';
-
-// ─── Static data ──────────────────────────────────────────────────────────────
-
-const megaMenuCategories: MegaMenuCategory[] = [
-  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
-  { label: 'Processors', subcategories: [{ label: 'AMD Ryzen 7000' }, { label: 'Intel 14th Gen' }] },
-  { label: 'Monitors', subcategories: [{ label: '4K Monitors' }, { label: '2K 165Hz' }] },
-  { label: 'Laptops', subcategories: [{ label: 'Gaming' }, { label: 'Ultrabook' }] },
-  { label: 'Memory (RAM)' },
-  { label: 'Storage' },
-  { label: 'Peripherals' },
-  { label: 'Cases & Cooling' },
-];
-
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-];
 
 const productImages = [
   'https://picsum.photos/seed/pdp-main/600/600',
@@ -88,35 +66,6 @@ const reviews = [
 ];
 
 
-// ─── Shared shell slots ──────────────────────────────────────────────────────
-
-const DesktopTopBar = () => (
-  <TopBar
-    leftItems={[<span key="w">Welcome to GeekShop!</span>, <span key="s">Seller Center</span>, <span key="h">Help</span>]}
-    rightItems={[
-      <button key="l" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>EN</button>,
-      <button key="c" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>USD</button>,
-    ]}
-  />
-);
-
-const DesktopHeaderBar = () => (
-  <DesktopHeader
-    logo={<span style={{ fontWeight: 700, fontSize: 20, color: '#FF5000' }}>GeekShop</span>}
-    searchPlaceholder="Search products..."
-    cartCount={3}
-    wishlistCount={5}
-  />
-);
-
-const DesktopMegaMenuBar = () => (
-  <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }, { label: 'Top Brands' }]} />
-);
-
-const DesktopFooterSection = () => (
-  <Footer columns={footerColumns} copyrightText="\u00A9 2026 GeekShop. All rights reserved." />
-);
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export interface DesktopProductDetailPageProps {
@@ -156,14 +105,14 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
 
   return (
     <DesktopShell
-      topBar={<DesktopTopBar />}
+      topBar={<DefaultTopBar />}
       header={
         <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-          <DesktopHeaderBar />
-          <DesktopMegaMenuBar />
+          <DefaultHeader />
+          <DefaultMegaMenu />
         </div>
       }
-      footer={<DesktopFooterSection />}
+      footer={<DefaultFooter />}
     >
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>

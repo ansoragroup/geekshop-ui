@@ -113,3 +113,24 @@ export const Interactive: Story = {
     categories: sampleCategories,
   },
 };
+
+export const WithImageSearch: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('');
+    return (
+      <DesktopHeaderGlass
+        {...args}
+        searchValue={value}
+        onSearchChange={setValue}
+        onSearch={(q) => alert(`Searching: ${q}`)}
+        onImageSearch={(file) => alert(`Image search: ${file.name} (${file.type})`)}
+      />
+    );
+  },
+  args: {
+    searchPlaceholder: 'Search by text or upload a photo...',
+    cartCount: 3,
+    wishlistCount: 2,
+    categories: sampleCategories,
+  },
+};

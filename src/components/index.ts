@@ -219,6 +219,7 @@ export { DesktopTabs } from './navigation/DesktopTabs';
 export { DesktopCurrencySwitcher } from './navigation/DesktopCurrencySwitcher';
 export { DesktopLanguageSwitcher } from './navigation/DesktopLanguageSwitcher';
 export { DesktopThemeSwitcher } from './navigation/DesktopThemeSwitcher';
+export { DesktopSearchAutocomplete } from './navigation/DesktopSearchAutocomplete';
 
 // Hooks
 export { useControllableState } from '../hooks/useControllableState';
@@ -448,6 +449,7 @@ export type { DesktopTabsProps, DesktopTabItem, DesktopTabsVariant } from './nav
 export type { DesktopCurrencySwitcherProps, CurrencyOption } from './navigation/DesktopCurrencySwitcher';
 export type { DesktopLanguageSwitcherProps, LanguageOption } from './navigation/DesktopLanguageSwitcher';
 export type { DesktopThemeSwitcherProps, ThemeMode } from './navigation/DesktopThemeSwitcher';
+export type { DesktopSearchAutocompleteProps, DesktopSearchSuggestedProduct, DesktopSearchTrendingItem, DesktopSearchCategoryItem, DesktopPhotoSearchSource } from './navigation/DesktopSearchAutocomplete';
 
 // Types — Hooks
 export type { UseControllableStateProps } from '../hooks/useControllableState';

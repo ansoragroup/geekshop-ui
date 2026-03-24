@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeader,
-  Footer,
   Breadcrumbs,
   TwoColumnLayout,
   DesktopCartItem,
@@ -11,42 +8,9 @@ import {
   DesktopOrderSummary,
   DesktopEmpty,
 } from '../../components';
-import { mockCartItems } from '../_shared/mockData';
+import { mockCartItems, DefaultTopBar, DefaultHeader, DefaultFooter } from '../_shared';
 import type { CartItemData } from '../_shared/types';
 import styles from './DesktopCartPage.module.scss';
-
-// ─── Static data ──────────────────────────────────────────────────────────────
-
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-];
-
-// ─── Shared shell slots ──────────────────────────────────────────────────────
-
-const DesktopTopBar = () => (
-  <TopBar
-    leftItems={[<span key="w">Welcome to GeekShop!</span>, <span key="s">Seller Center</span>, <span key="h">Help</span>]}
-    rightItems={[
-      <button key="l" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>EN</button>,
-      <button key="c" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>USD</button>,
-    ]}
-  />
-);
-
-const DesktopHeaderBar = () => (
-  <DesktopHeader
-    logo={<span style={{ fontWeight: 700, fontSize: 20, color: '#FF5000' }}>GeekShop</span>}
-    searchPlaceholder="Search products..."
-    cartCount={3}
-    wishlistCount={5}
-  />
-);
-
-const DesktopFooterSection = () => (
-  <Footer columns={footerColumns} copyrightText="\u00A9 2026 GeekShop. All rights reserved." />
-);
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -103,9 +67,9 @@ export const DesktopCartPage: React.FC<DesktopCartPageProps> = ({
 
   return (
     <DesktopShell
-      topBar={<DesktopTopBar />}
-      header={<DesktopHeaderBar />}
-      footer={<DesktopFooterSection />}
+      topBar={<DefaultTopBar />}
+      header={<DefaultHeader />}
+      footer={<DefaultFooter />}
     >
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>

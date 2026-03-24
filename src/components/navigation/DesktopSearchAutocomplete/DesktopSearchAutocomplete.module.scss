@@ -1,0 +1,726 @@
+@use '../../../theme/tokens' as *;
+
+// === DesktopSearchAutocomplete ===
+// Full-featured search with autocomplete dropdown + photo search panel
+
+.wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 600px;
+}
+
+// --- Search bar (same as DesktopHeaderRich inline search) ---
+.searchBar {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  background: var(--gs-bg-page);
+  border: 1.5px solid var(--gs-border-color);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus-within {
+    border-color: var(--gs-color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 80, 0, 0.1);
+  }
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: $spacing-lg;
+  color: var(--gs-text-tertiary);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: var(--gs-text-primary);
+  padding: 0 $spacing-md;
+  height: 100%;
+  min-width: 0;
+
+  &::placeholder {
+    color: var(--gs-text-placeholder);
+  }
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: var(--gs-text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-text-secondary);
+      background: var(--gs-border-color);
+    }
+  }
+}
+
+.cameraBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: var(--gs-text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition-fast, background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.cameraBtnActive {
+  color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+}
+
+.fileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.searchSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 $desktop-spacing-md;
+  border: none;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: -2px;
+  }
+}
+
+// --- Dropdown ---
+.dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  width: 100%;
+  background: var(--gs-bg-card);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-dropdown;
+  z-index: $z-index-dropdown;
+  max-height: 480px;
+  overflow-y: auto;
+  animation: dropdownSlide 0.15s ease;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--gs-border-color) transparent;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Sections ---
+.section {
+  padding: $desktop-spacing-md $desktop-spacing-lg;
+  border-bottom: 1px solid var(--gs-border-color-light);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.sectionIcon {
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  flex: 1;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clearAllBtn {
+  padding: $spacing-xxs $spacing-sm;
+  border: none;
+  background: none;
+  color: var(--gs-color-primary);
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  cursor: pointer;
+  border-radius: $radius-xs;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+}
+
+// --- Chips (recent searches) ---
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-md;
+  border: 1px solid var(--gs-border-color);
+  border-radius: $desktop-radius-chip;
+  background: var(--gs-bg-white);
+  font-size: $font-size-sm;
+  font-family: $font-family;
+  color: var(--gs-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-fast, border-color $transition-fast, color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+      border-color: var(--gs-color-primary);
+      color: var(--gs-color-primary);
+    }
+  }
+}
+
+.chipActive {
+  background: var(--gs-color-primary-bg);
+  border-color: var(--gs-color-primary);
+  color: var(--gs-color-primary);
+}
+
+// --- Trending ---
+.trendingList {
+  display: flex;
+  flex-direction: column;
+}
+
+.trendingItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  width: 100%;
+  padding: $spacing-sm $spacing-xs;
+  border: none;
+  background: none;
+  font-family: $font-family;
+  color: var(--gs-text-primary);
+  cursor: pointer;
+  text-align: left;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+}
+
+.trendingItemActive {
+  background: var(--gs-color-primary-bg);
+}
+
+.trendingRank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-tertiary);
+  flex-shrink: 0;
+}
+
+// Top 3 ranks get primary color
+.trendingItem:nth-child(-n+3) .trendingRank {
+  color: var(--gs-color-primary);
+}
+
+.trendingText {
+  flex: 1;
+  font-size: $font-size-md;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trendingCount {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  flex-shrink: 0;
+}
+
+// --- Products ---
+.productList {
+  display: flex;
+  flex-direction: column;
+}
+
+.productItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  width: 100%;
+  padding: $spacing-sm $spacing-xs;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+}
+
+.productItemActive {
+  background: var(--gs-color-primary-bg);
+}
+
+.productImage {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--gs-bg-page);
+}
+
+.productInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xxs;
+}
+
+.productTitle {
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: var(--gs-text-primary);
+  line-height: $line-height-tight;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.productPrice {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-color-price);
+  font-family: $font-family;
+}
+
+.productRating {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xxs;
+  font-size: $font-size-sm;
+  color: var(--gs-color-warning);
+  font-family: $font-family;
+}
+
+.productArrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary);
+}
+
+// --- Categories ---
+.categoryList {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: $spacing-sm $spacing-xs;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: $radius-sm;
+  font-family: $font-family;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-bg);
+    }
+  }
+}
+
+.categoryItemActive {
+  background: var(--gs-color-primary-bg);
+}
+
+.categoryText {
+  font-size: $font-size-md;
+  color: var(--gs-text-primary);
+  font-style: italic;
+}
+
+.categoryCount {
+  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+}
+
+// --- Photo search panel ---
+.photoPanel {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gs-border-color);
+  border-radius: $desktop-radius-card;
+  box-shadow: $desktop-shadow-dropdown;
+  z-index: $z-index-dropdown;
+  padding: $desktop-spacing-lg;
+  animation: dropdownSlide 0.15s ease;
+}
+
+.photoPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $desktop-spacing-md;
+}
+
+.photoPanelTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary);
+}
+
+.photoPanelClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: $radius-round;
+  background: none;
+  color: var(--gs-text-tertiary);
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-border-color);
+      color: var(--gs-text-primary);
+    }
+  }
+}
+
+// URL input row
+.photoUrlRow {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.photoUrlInput {
+  flex: 1;
+  height: 40px;
+  padding: 0 $spacing-lg;
+  border: 1.5px solid var(--gs-border-color);
+  border-radius: $desktop-radius-input;
+  background: var(--gs-bg-white);
+  font-size: $font-size-md;
+  font-family: $font-family;
+  color: var(--gs-text-primary);
+  outline: none;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: var(--gs-text-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--gs-color-primary);
+  }
+}
+
+.photoUrlBtn {
+  height: 40px;
+  padding: 0 $desktop-spacing-md;
+  border: none;
+  border-radius: $desktop-radius-input;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background $transition-fast, opacity $transition-fast;
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      background: var(--gs-color-primary-dark);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Divider
+.photoDivider {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin: $desktop-spacing-md 0;
+  color: var(--gs-text-tertiary);
+  font-size: $font-size-sm;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gs-border-color);
+  }
+}
+
+// Drop zone
+.dropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $desktop-spacing-xl $desktop-spacing-lg;
+  border: 2px dashed var(--gs-border-color);
+  border-radius: $radius-xl;
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+  color: var(--gs-text-tertiary);
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--gs-color-primary);
+      background: var(--gs-color-primary-bg);
+      color: var(--gs-color-primary);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.dropZoneActive {
+  border-color: var(--gs-color-primary);
+  background: var(--gs-color-primary-bg);
+  color: var(--gs-color-primary);
+}
+
+.dropZoneText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}
+
+.dropZoneHint {
+  font-size: $font-size-sm;
+}
+
+// Preview
+.photoPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+}
+
+.photoPreviewImageWrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.photoPreviewImage {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-lg;
+  object-fit: cover;
+}
+
+.photoPreviewRemove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--gs-bg-white);
+  border-radius: $radius-round;
+  background: var(--gs-text-tertiary);
+  color: var(--gs-text-white);
+  cursor: pointer;
+  padding: 0;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-sale);
+    }
+  }
+}
+
+.photoPreviewName {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.photoPreviewCta {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: $desktop-radius-button;
+  background: var(--gs-color-primary);
+  color: var(--gs-text-white);
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--gs-color-primary-dark);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .dropdown,
+  .photoPanel {
+    animation: none;
+  }
+
+  .searchBar,
+  .clearBtn,
+  .cameraBtn,
+  .searchSubmit,
+  .clearAllBtn,
+  .chip,
+  .trendingItem,
+  .productItem,
+  .categoryItem,
+  .photoPanelClose,
+  .photoUrlInput,
+  .photoUrlBtn,
+  .dropZone,
+  .photoPreviewRemove,
+  .photoPreviewCta {
+    transition: none;
+  }
+}

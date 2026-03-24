@@ -1,25 +1,14 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeader,
-  Footer,
   Breadcrumbs,
   TabFilter,
   DesktopOrderCard,
   Pagination,
 } from '../../components';
 import type { DesktopOrderStatus, DesktopOrderAction } from '../../components';
-import { mockOrders } from '../_shared/mockData';
+import { mockOrders, DefaultTopBar, DefaultHeader, DefaultFooter } from '../_shared';
 import styles from './DesktopOrdersPage.module.scss';
-
-// ─── Static data ──────────────────────────────────────────────────────────────
-
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-];
 
 const orderFilterTabs = [
   { key: 'all', label: 'All Orders' },
@@ -38,31 +27,6 @@ function mapStatus(pageStatus: string): DesktopOrderStatus {
     default: return pageStatus as DesktopOrderStatus;
   }
 }
-
-// ─── Shared shell slots ──────────────────────────────────────────────────────
-
-const DesktopTopBar = () => (
-  <TopBar
-    leftItems={[<span key="w">Welcome to GeekShop!</span>, <span key="s">Seller Center</span>, <span key="h">Help</span>]}
-    rightItems={[
-      <button key="l" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>EN</button>,
-      <button key="c" type="button" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>USD</button>,
-    ]}
-  />
-);
-
-const DesktopHeaderBar = () => (
-  <DesktopHeader
-    logo={<span style={{ fontWeight: 700, fontSize: 20, color: '#FF5000' }}>GeekShop</span>}
-    searchPlaceholder="Search products..."
-    cartCount={3}
-    wishlistCount={5}
-  />
-);
-
-const DesktopFooterSection = () => (
-  <Footer columns={footerColumns} copyrightText="\u00A9 2026 GeekShop. All rights reserved." />
-);
 
 // ─── Action helpers ──────────────────────────────────────────────────────────
 
@@ -115,9 +79,9 @@ export const DesktopOrdersPage: React.FC<DesktopOrdersPageProps> = ({
 
   return (
     <DesktopShell
-      topBar={<DesktopTopBar />}
-      header={<DesktopHeaderBar />}
-      footer={<DesktopFooterSection />}
+      topBar={<DefaultTopBar />}
+      header={<DefaultHeader />}
+      footer={<DefaultFooter />}
     >
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>

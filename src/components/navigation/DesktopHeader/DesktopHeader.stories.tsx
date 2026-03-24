@@ -79,3 +79,23 @@ export const Interactive: Story = {
     wishlistCount: 2,
   },
 };
+
+export const WithImageSearch: Story = {
+  render: (args) => {
+    const [value, setValue] = useState('');
+    return (
+      <DesktopHeader
+        {...args}
+        searchValue={value}
+        onSearchChange={setValue}
+        onSearch={(q) => alert(`Searching: ${q}`)}
+        onImageSearch={(file) => alert(`Image search: ${file.name} (${file.type}, ${file.size} bytes)`)}
+        cartCount={3}
+        wishlistCount={2}
+      />
+    );
+  },
+  args: {
+    searchPlaceholder: 'Search by text or upload a photo...',
+  },
+};

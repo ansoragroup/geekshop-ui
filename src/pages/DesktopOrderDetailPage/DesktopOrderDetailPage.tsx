@@ -1,48 +1,17 @@
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeaderRich,
-  MegaMenu,
-  Footer,
   Breadcrumbs,
   DesktopOrderStatusBar,
   DesktopButton,
 } from '../../components';
 import type {
-  MegaMenuCategory,
-  CategoryItem,
-  PromoLink,
   DesktopOrderStep,
 } from '../../components';
+import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter, formatPriceUZS } from '../_shared';
 import styles from './DesktopOrderDetailPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-  { title: 'Connect', links: [{ label: 'Telegram' }, { label: 'Instagram' }, { label: 'Facebook' }] },
-];
-
-const megaMenuCategories: MegaMenuCategory[] = [
-  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
-  { label: 'Processors', subcategories: [{ label: 'AMD Ryzen 7000' }, { label: 'Intel 14th Gen' }] },
-  { label: 'Monitors' },
-  { label: 'Laptops' },
-];
-
-const headerCategories: CategoryItem[] = [
-  { id: '1', label: 'Smartphones', icon: '' },
-  { id: '2', label: 'Laptops', icon: '' },
-  { id: '3', label: 'GPUs', icon: '' },
-];
-
-const promoLinks: PromoLink[] = [
-  { id: '1', label: 'Delivery & Returns' },
-  { id: '2', label: 'Premium', highlight: true },
-  { id: '3', label: 'Help' },
-];
 
 const orderSteps: DesktopOrderStep[] = [
   { label: 'Order Placed', description: 'March 15, 2026' },
@@ -67,12 +36,6 @@ const orderItems = [
     price: 950_000,
   },
 ];
-
-// ─── Helpers ────────────────────────────────────────────────────────────────
-
-function formatPrice(value: number): string {
-  return value.toLocaleString('uz-UZ') + ' UZS';
-}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -112,34 +75,16 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
 
   const header = (
     <div className={styles.headerWrapper}>
-      <DesktopHeaderRich
-        logo={<span className={styles.logoText}>GeekShop</span>}
-        searchPlaceholder="Search products..."
-        searchValue=""
-        onSearchChange={() => {}}
-        cartCount={3}
-        wishlistCount={5}
-        categories={headerCategories}
-        promoLinks={promoLinks}
-        location="Tashkent"
-      />
-      <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }]} />
+      <DefaultHeaderRich searchValue={searchValue} onSearchChange={setSearchValue} />
+      <DefaultMegaMenu />
     </div>
   );
 
   return (
     <DesktopShell
-      topBar={
-        <TopBar
-          leftItems={[<span key="w">Welcome to GeekShop!</span>]}
-          rightItems={[
-            <button key="l" type="button" className={styles.topBarBtn}>EN</button>,
-            <button key="c" type="button" className={styles.topBarBtn}>UZS</button>,
-          ]}
-        />
-      }
+      topBar={<DefaultTopBar />}
       header={header}
-      footer={<Footer columns={footerColumns} copyrightText="© 2026 GeekShop. All rights reserved." />}
+      footer={<DefaultFooter />}
     >
       <div className={styles.breadcrumbs}>
         <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Orders', href: '#' }, { label: 'Order #{orderId}' }]} />
@@ -207,7 +152,7 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
                     <span className={styles.itemName}>{item.name}</span>
                     <span className={styles.itemQty}>Qty: {item.quantity}</span>
                   </div>
-                  <span className={styles.itemPrice}>{formatPrice(item.price)}</span>
+                  <span className={styles.itemPrice}>{formatPriceUZS(item.price)}</span>
                 </div>
               ))}
             </div>
@@ -231,20 +176,20 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
             <h2 className={styles.cardTitle}>Payment Summary</h2>
             <div className={styles.summaryRow}>
               <span>Subtotal</span>
-              <span>{formatPrice(subtotal)}</span>
+              <span>{formatPriceUZS(subtotal)}</span>
             </div>
             <div className={styles.summaryRow}>
               <span>Shipping</span>
-              <span>{formatPrice(shipping)}</span>
+              <span>{formatPriceUZS(shipping)}</span>
             </div>
             <div className={styles.summaryRow}>
               <span>Tax</span>
-              <span>{formatPrice(0)}</span>
+              <span>{formatPriceUZS(0)}</span>
             </div>
             <div className={styles.summaryDivider} />
             <div className={styles.summaryTotal}>
               <span>Total</span>
-              <span>{formatPrice(total)}</span>
+              <span>{formatPriceUZS(total)}</span>
             </div>
           </div>
 

@@ -1,48 +1,22 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeaderRich,
-  MegaMenu,
-  Footer,
   Breadcrumbs,
   DesktopProductGrid,
   DesktopSectionHeader,
   DesktopEmpty,
 } from '../../components';
 import type {
-  MegaMenuCategory,
-  CategoryItem,
-  PromoLink,
   DesktopProductGridItem,
 } from '../../components';
+import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter } from '../_shared';
 import styles from './DesktopWishlistPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-  { title: 'Connect', links: [{ label: 'Telegram' }, { label: 'Instagram' }] },
-];
 
-const megaMenuCategories: MegaMenuCategory[] = [
-  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
-  { label: 'Processors' },
-  { label: 'Monitors' },
-  { label: 'Laptops' },
-];
 
-const headerCategories: CategoryItem[] = [
-  { id: '1', label: 'Smartphones', icon: '' },
-  { id: '2', label: 'Laptops', icon: '' },
-];
 
-const promoLinks: PromoLink[] = [
-  { id: '1', label: 'Delivery & Returns' },
-  { id: '2', label: 'Premium', highlight: true },
-];
 
 const wishlistProducts: DesktopProductGridItem[] = [
   { id: 'w1', image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/34-346-003-V01.jpg', title: 'Apple MacBook Air M3 15" 16GB RAM 512GB', price: 18900000, originalPrice: 21500000, discount: '-12%', rating: 4.9, reviewCount: 567, freeShipping: true },
@@ -68,34 +42,16 @@ export const DesktopWishlistPage: React.FC<DesktopWishlistPageProps> = ({
 
   const header = (
     <div className={styles.headerWrapper}>
-      <DesktopHeaderRich
-        logo={<span className={styles.logoText}>GeekShop</span>}
-        searchPlaceholder="Search products..."
-        searchValue={searchValue}
-        onSearchChange={setSearchValue}
-        cartCount={3}
-        wishlistCount={items.length}
-        categories={headerCategories}
-        promoLinks={promoLinks}
-        location="Tashkent"
-      />
-      <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }]} />
+      <DefaultHeaderRich searchValue={searchValue} onSearchChange={setSearchValue} />
+      <DefaultMegaMenu />
     </div>
   );
 
   return (
     <DesktopShell
-      topBar={
-        <TopBar
-          leftItems={[<span key="w">Welcome to GeekShop!</span>]}
-          rightItems={[
-            <button key="l" type="button" className={styles.topBarBtn}>EN</button>,
-            <button key="c" type="button" className={styles.topBarBtn}>UZS</button>,
-          ]}
-        />
-      }
+      topBar={<DefaultTopBar />}
       header={header}
-      footer={<Footer columns={footerColumns} copyrightText="© 2026 GeekShop. All rights reserved." />}
+      footer={<DefaultFooter />}
     >
       <div className={styles.breadcrumbs}>
         <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Wishlist' }]} />

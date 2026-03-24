@@ -1,7 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
+import { forwardRef, useRef, useCallback, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeader.module.scss';
 
 export interface DesktopHeaderProps extends HTMLAttributes<HTMLElement> {
@@ -29,6 +29,8 @@ export interface DesktopHeaderProps extends HTMLAttributes<HTMLElement> {
   onLogoClick?: () => void;
   /** Callback when "Katalog" button is clicked */
   onCatalogClick?: () => void;
+  /** Callback when user uploads an image for visual search */
+  onImageSearch?: (file: File) => void;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -69,6 +71,13 @@ const UserIcon = () => (
   </svg>
 );
 
+const CameraIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+    <circle cx="12" cy="13" r="4" />
+  </svg>
+);
+
 const GridIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="7" height="7" />
@@ -93,12 +102,14 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
       onUserClick,
       onLogoClick,
       onCatalogClick,
+      onImageSearch,
       className,
       ...rest
     },
     ref,
   ) => {
   const { t } = useGeekShop();
+    const fileInputRef = useRef<HTMLInputElement>(null);
     const rootClass = cn(styles.header, className);
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -114,6 +125,14 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
         onLogoClick?.();
       }
     };
+
+    const handleImageUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file && onImageSearch) {
+        onImageSearch(file);
+      }
+      e.target.value = '';
+    }, [onImageSearch]);
 
     return (
       <header ref={ref} className={rootClass} {...rest}>
@@ -153,6 +172,27 @@ export const DesktopHeader = forwardRef<HTMLElement, DesktopHeaderProps>(
               onChange={(e) => onSearchChange?.(e.target.value)}
               aria-label={t('aria.searchProducts')}
             />
+            {onImageSearch && (
+              <>
+                <button
+                  type="button"
+                  className={styles.imageSearchBtn}
+                  onClick={() => fileInputRef.current?.click()}
+                  aria-label={t('product.cameraSearch')}
+                >
+                  <CameraIcon />
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className={styles.fileInput}
+                  onChange={handleImageUpload}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                />
+              </>
+            )}
             <button type="submit" className={styles.searchButton} aria-label={t('aria.submitSearch')}>
               <SearchIcon />
             </button>

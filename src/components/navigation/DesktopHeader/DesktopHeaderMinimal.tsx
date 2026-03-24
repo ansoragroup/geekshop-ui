@@ -1,7 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
+import { forwardRef, useState, useEffect, useCallback, useRef, type ReactNode, type HTMLAttributes } from 'react';
 import styles from './DesktopHeaderMinimal.module.scss';
 
 export interface CategoryItem {
@@ -42,6 +42,8 @@ export interface DesktopHeaderMinimalProps extends HTMLAttributes<HTMLElement> {
   onCategoryClick?: (category: CategoryItem) => void;
   /** Orders click */
   onOrdersClick?: () => void;
+  /** Callback when user uploads an image for visual search */
+  onImageSearch?: (file: File) => void;
 }
 
 /* ---------- Inline SVG Icons ---------- */
@@ -79,6 +81,13 @@ const PackageIcon = () => (
     <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
     <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
     <line x1="12" y1="22.08" x2="12" y2="12" />
+  </svg>
+);
+
+const CameraIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+    <circle cx="12" cy="13" r="4" />
   </svg>
 );
 
@@ -121,12 +130,14 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
       onCatalogClick,
       onCategoryClick,
       onOrdersClick,
+      onImageSearch,
       className,
       ...rest
     },
     ref,
   ) => {
   const { t } = useGeekShop();
+    const fileInputRef = useRef<HTMLInputElement>(null);
     const [scrolled, setScrolled] = useState(false);
     const [catScrollPos, setCatScrollPos] = useState<'start' | 'middle' | 'end'>('start');
 
@@ -166,6 +177,14 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
         onLogoClick?.();
       }
     };
+
+    const handleImageUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file && onImageSearch) {
+        onImageSearch(file);
+      }
+      e.target.value = '';
+    }, [onImageSearch]);
 
     const rootClass = cn(
       styles.header,
@@ -212,6 +231,27 @@ export const DesktopHeaderMinimal = forwardRef<HTMLElement, DesktopHeaderMinimal
                 onChange={(e) => onSearchChange?.(e.target.value)}
                 aria-label={t('aria.searchProducts')}
               />
+              {onImageSearch && (
+                <>
+                  <button
+                    type="button"
+                    className={styles.imageSearchBtn}
+                    onClick={() => fileInputRef.current?.click()}
+                    aria-label={t('product.cameraSearch')}
+                  >
+                    <CameraIcon />
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    className={styles.fileInput}
+                    onChange={handleImageUpload}
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
               <button type="submit" className={styles.searchSubmit} aria-label={t('aria.submitSearch')}>
                 <SearchIcon />
               </button>

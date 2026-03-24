@@ -1,50 +1,21 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  TopBar,
-  DesktopHeaderRich,
-  MegaMenu,
-  Footer,
   Breadcrumbs,
   DesktopProductGrid,
   DesktopFilterPanel,
   Pagination,
 } from '../../components';
 import type {
-  MegaMenuCategory,
-  CategoryItem,
-  PromoLink,
   DesktopProductGridItem,
   DesktopFilterGroup,
   DesktopFilterValues,
 } from '../../components';
+import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter } from '../_shared';
 import styles from './DesktopSearchResultsPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
-const footerColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }] },
-  { title: 'Connect', links: [{ label: 'Telegram' }, { label: 'Instagram' }] },
-];
-
-const megaMenuCategories: MegaMenuCategory[] = [
-  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
-  { label: 'Processors' },
-  { label: 'Monitors' },
-  { label: 'Laptops' },
-];
-
-const headerCategories: CategoryItem[] = [
-  { id: '1', label: 'Smartphones', icon: '' },
-  { id: '2', label: 'Laptops', icon: '' },
-];
-
-const promoLinks: PromoLink[] = [
-  { id: '1', label: 'Delivery & Returns' },
-  { id: '2', label: 'Premium', highlight: true },
-];
 
 const filterGroups: DesktopFilterGroup[] = [
   {
@@ -122,34 +93,16 @@ export const DesktopSearchResultsPage: React.FC<DesktopSearchResultsPageProps> =
 
   const header = (
     <div className={styles.headerWrapper}>
-      <DesktopHeaderRich
-        logo={<span className={styles.logoText}>GeekShop</span>}
-        searchPlaceholder="Search products..."
-        searchValue={searchValue}
-        onSearchChange={setSearchValue}
-        cartCount={3}
-        wishlistCount={5}
-        categories={headerCategories}
-        promoLinks={promoLinks}
-        location="Tashkent"
-      />
-      <MegaMenu categories={megaMenuCategories} navItems={[{ label: 'Flash Deals' }, { label: 'New Arrivals' }]} />
+      <DefaultHeaderRich searchValue={searchValue} onSearchChange={setSearchValue} />
+      <DefaultMegaMenu />
     </div>
   );
 
   return (
     <DesktopShell
-      topBar={
-        <TopBar
-          leftItems={[<span key="w">Welcome to GeekShop!</span>]}
-          rightItems={[
-            <button key="l" type="button" className={styles.topBarBtn}>EN</button>,
-            <button key="c" type="button" className={styles.topBarBtn}>UZS</button>,
-          ]}
-        />
-      }
+      topBar={<DefaultTopBar />}
       header={header}
-      footer={<Footer columns={footerColumns} copyrightText="© 2026 GeekShop. All rights reserved." />}
+      footer={<DefaultFooter />}
     >
       <div className={styles.breadcrumbs}>
         <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: `Search: "${searchValue}"` }]} />

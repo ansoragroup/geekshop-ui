@@ -2,6 +2,8 @@
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useState, useEffect, useCallback, type ReactNode, type HTMLAttributes } from 'react';
+import { DesktopSearchAutocomplete } from '../DesktopSearchAutocomplete';
+import type { DesktopSearchSuggestedProduct, DesktopSearchTrendingItem, DesktopSearchCategoryItem, DesktopPhotoSearchSource } from '../DesktopSearchAutocomplete';
 import styles from './DesktopHeaderRich.module.scss';
 
 export interface CategoryItem {
@@ -57,16 +59,29 @@ export interface DesktopHeaderRichProps extends HTMLAttributes<HTMLElement> {
   onOrdersClick?: () => void;
   /** Location click */
   onLocationClick?: () => void;
+  /** Callback when user uploads an image for visual search */
+  onImageSearch?: (file: File) => void;
+  /** Photo/image search handler (new autocomplete) */
+  onPhotoSearch?: (source: DesktopPhotoSearchSource) => void;
+  /** Recent searches shown in autocomplete dropdown */
+  recentSearches?: string[];
+  /** Trending searches shown in autocomplete dropdown */
+  trendingSearches?: DesktopSearchTrendingItem[];
+  /** Suggested products shown in autocomplete dropdown */
+  suggestedProducts?: DesktopSearchSuggestedProduct[];
+  /** Category suggestions in autocomplete dropdown */
+  searchCategorySuggestions?: DesktopSearchCategoryItem[];
+  /** Clear recent searches callback */
+  onClearRecentSearches?: () => void;
+  /** Callback when a search suggestion is clicked */
+  onSearchSuggestionClick?: (text: string) => void;
+  /** Callback when a product is clicked in search */
+  onSearchProductClick?: (product: { id: string }) => void;
+  /** Callback when a category is clicked in search */
+  onSearchCategoryClick?: (category: { id: string; name: string }) => void;
 }
 
 /* ---------- Inline SVG Icons ---------- */
-
-const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <circle cx="11" cy="11" r="7" />
-    <path d="M21 21l-4.35-4.35" />
-  </svg>
-);
 
 const HeartIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -147,6 +162,16 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
       onPromoLinkClick,
       onOrdersClick,
       onLocationClick,
+      onImageSearch,
+      onPhotoSearch,
+      recentSearches,
+      trendingSearches,
+      suggestedProducts,
+      searchCategorySuggestions,
+      onClearRecentSearches,
+      onSearchSuggestionClick,
+      onSearchProductClick,
+      onSearchCategoryClick,
       className,
       ...rest
     },
@@ -179,17 +204,17 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
       }
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      if (onSearch && searchValue) onSearch(searchValue);
-    };
-
     const handleLogoKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         onLogoClick?.();
       }
     };
+
+    // Adapter: bridge old onImageSearch to new onPhotoSearch
+    const resolvedPhotoSearch = onPhotoSearch ?? (onImageSearch ? (source: DesktopPhotoSearchSource) => {
+      if (source.type === 'file' && source.file) onImageSearch(source.file);
+    } : undefined);
 
     const rootClass = cn(
       styles.header,
@@ -252,20 +277,21 @@ export const DesktopHeaderRich = forwardRef<HTMLElement, DesktopHeaderRichProps>
               <span>Katalog</span>
             </button>
 
-            <form className={styles.searchBar} onSubmit={handleSubmit} role="search">
-              <span className={styles.searchIcon}><SearchIcon /></span>
-              <input
-                className={styles.searchInput}
-                type="text"
-                placeholder={searchPlaceholder}
-                value={searchValue ?? ''}
-                onChange={(e) => onSearchChange?.(e.target.value)}
-                aria-label={t('aria.searchProducts')}
-              />
-              <button type="submit" className={styles.searchSubmit} aria-label={t('aria.submitSearch')}>
-                Search
-              </button>
-            </form>
+            <DesktopSearchAutocomplete
+              value={searchValue}
+              onChange={onSearchChange}
+              onSearch={onSearch}
+              onPhotoSearch={resolvedPhotoSearch}
+              placeholder={searchPlaceholder}
+              recentSearches={recentSearches}
+              trendingSearches={trendingSearches}
+              suggestedProducts={suggestedProducts}
+              categorySuggestions={searchCategorySuggestions}
+              onClearRecent={onClearRecentSearches}
+              onSuggestionClick={onSearchSuggestionClick}
+              onProductClick={onSearchProductClick}
+              onCategoryClick={onSearchCategoryClick}
+            />
 
             <nav className={styles.actions} aria-label={t('aria.userActions')}>
               <button className={styles.actionBtn} onClick={onWishlistClick} aria-label={wishlistCount ? `Wishlist (${wishlistCount} items)` : 'Wishlist'}>
