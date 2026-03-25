@@ -32,32 +32,18 @@
 
 .catalogMenu {
   flex-shrink: 0;
-  width: auto !important;
-  background: transparent !important;
-  border-bottom: none !important;
 
-  > div { width: auto; max-width: none; padding: 0; }
-
-  // MegaMenu dropdown: absolute, contained within header width
-  [role='menu'] {
-    background: var(--gs-bg-card) !important;
-    z-index: $z-index-modal-backdrop !important;
-    box-shadow: var(--gs-shadow-lg) !important;
-    border-radius: 0 0 $radius-lg $radius-lg;
-  }
-
-  [aria-haspopup='true'] {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: $radius-md !important;
-    color: var(--gs-text-white) !important;
+  // Override trigger for header context (white on primary bg)
+  > button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: $radius-md;
+    color: var(--gs-text-white);
     height: 40px;
     padding: 0 $desktop-spacing-md;
-    font-size: $font-size-md;
-    font-weight: $font-weight-semibold;
 
     @media (hover: hover) {
-      &:hover { background: rgba(255, 255, 255, 0.25) !important; }
+      &:hover { background: rgba(255, 255, 255, 0.25); }
     }
   }
 }
