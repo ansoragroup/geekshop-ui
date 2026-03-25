@@ -1,20 +1,27 @@
 @use '../../../theme/tokens' as *;
 
+// ─── Header Root ─────────────────────────────────────────────────────────────
+
 .header {
   width: 100%;
   font-family: $font-family;
 }
 
+// ─── Main Row ───────────────────────────────────────────────────────────────
+// Red bar — compact, search-focused. ~48px height.
+
 .mainRow {
   background: var(--gs-color-primary);
   border-radius: $radius-lg $radius-lg 0 0;
-  padding: 0 $desktop-content-padding;
+  padding: 0 $desktop-spacing-lg;
   display: flex;
   align-items: center;
-  gap: $desktop-spacing-md;
-  min-height: 56px;
+  gap: $spacing-lg;
+  height: 48px;
   box-sizing: border-box;
 }
+
+// ─── Logo ───────────────────────────────────────────────────────────────────
 
 .logo {
   flex-shrink: 0;
@@ -30,20 +37,25 @@
   }
 }
 
+// ─── Catalog Trigger (inside MegaMenu) ──────────────────────────────────────
+// Compact pill on red bg, subtle differentiation
+
 .catalogMenu {
   flex-shrink: 0;
 
-  // Override trigger for header context (white on primary bg)
   > button {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: $radius-md;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: $radius-sm;
     color: var(--gs-text-white);
-    height: 40px;
-    padding: 0 $desktop-spacing-md;
+    height: 36px;
+    padding: 0 $spacing-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    gap: $spacing-xs;
 
     @media (hover: hover) {
-      &:hover { background: rgba(255, 255, 255, 0.25); }
+      &:hover { background: rgba(255, 255, 255, 0.2); }
     }
   }
 }
@@ -51,14 +63,14 @@
 .catalogBtnFallback {
   display: inline-flex;
   align-items: center;
-  gap: $spacing-sm;
-  height: 40px;
-  padding: 0 $desktop-spacing-md;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: $radius-md;
-  background: rgba(255, 255, 255, 0.15);
+  gap: $spacing-xs;
+  height: 36px;
+  padding: 0 $spacing-md;
+  border: none;
+  border-radius: $radius-sm;
+  background: rgba(255, 255, 255, 0.12);
   color: var(--gs-text-white);
-  font-size: $font-size-md;
+  font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
   font-family: $font-family;
   cursor: pointer;
@@ -67,37 +79,58 @@
   transition: background $transition-fast;
 
   @media (hover: hover) {
-    &:hover { background: rgba(255, 255, 255, 0.25); }
+    &:hover { background: rgba(255, 255, 255, 0.2); }
   }
 }
+
+// ─── Search Area ────────────────────────────────────────────────────────────
+// Dominant — takes ~60% of header width. White input, rounded.
 
 .searchArea {
   flex: 1;
+  min-width: 0;
 
   form {
     background: var(--gs-bg-white);
-    border: none !important;
-    border-radius: $radius-md;
-    height: 44px;
-  }
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: $radius-round;
+    height: 38px;
 
-  button[type='submit'] {
-    background: var(--gs-header-marketplace-search-btn-bg, var(--gs-color-primary)) !important;
-    color: var(--gs-header-marketplace-search-btn-color, var(--gs-text-white)) !important;
-    font-weight: $font-weight-bold;
-    font-size: $font-size-md;
-    padding: 0 $spacing-xl;
-
-    @media (hover: hover) {
-      &:hover { filter: brightness(0.9); }
+    &:focus-within {
+      border-color: rgba(255, 255, 255, 0.6) !important;
     }
   }
+
+  // Search submit — lime-green accent, pill shape, contained
+  button[type='submit'] {
+    background: var(--gs-header-marketplace-search-btn-bg, #B8E639) !important;
+    color: var(--gs-header-marketplace-search-btn-color, #1A1A1A) !important;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    padding: 0 $spacing-lg;
+    border-radius: 0 $radius-round $radius-round 0;
+    height: 100%;
+
+    @media (hover: hover) {
+      &:hover { filter: brightness(0.95); }
+    }
+  }
+
+  // Camera icon — more subtle
+  button[aria-label] {
+    opacity: 0.6;
+
+    &:hover { opacity: 1; }
+  }
 }
+
+// ─── Action Buttons ─────────────────────────────────────────────────────────
+// Compact, secondary — should NOT compete with search.
 
 .actions {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
+  gap: $spacing-xs;
   flex-shrink: 0;
 }
 
@@ -107,57 +140,66 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  min-width: 48px;
-  min-height: 48px;
-  padding: $spacing-xs;
+  gap: 1px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: $spacing-xxs;
   border: none;
-  border-radius: $radius-md;
+  border-radius: $radius-sm;
   background: none;
-  color: var(--gs-text-white);
+  color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
-  transition: background $transition-fast;
+  transition: color $transition-fast;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 
   @media (hover: hover) {
-    &:hover { background: rgba(255, 255, 255, 0.15); }
+    &:hover { color: var(--gs-text-white); }
   }
 }
 
 .actionLabel {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-tight;
+  font-size: 10px;
+  font-weight: $font-weight-regular;
+  line-height: 1;
   white-space: nowrap;
+  opacity: 0.9;
 }
 
 .cartBadge {
   position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 16px;
-  height: 16px;
-  padding: 0 4px;
-  background: var(--gs-header-marketplace-badge-bg, var(--gs-color-warning));
-  color: var(--gs-header-marketplace-badge-color, var(--gs-text-white));
-  font-size: $font-size-xs;
+  top: 2px;
+  right: 2px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  background: #FFE500;
+  color: var(--gs-color-primary);
+  font-size: 9px;
   font-weight: $font-weight-bold;
-  line-height: 16px;
+  line-height: 14px;
   text-align: center;
   border-radius: $radius-round;
   box-sizing: border-box;
 }
 
+// ─── Promo Row ──────────────────────────────────────────────────────────────
+// White bar below header. Compact, ~32px.
+
 .promoRow {
   background: var(--gs-bg-white);
-  border-bottom: 1px solid var(--gs-border-color);
+  border-bottom: 1px solid var(--gs-border-color-light);
   border-radius: 0 0 $radius-lg $radius-lg;
-  padding: 0 $desktop-content-padding;
+  padding: 0 $desktop-spacing-lg;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 36px;
+  height: 32px;
   box-sizing: border-box;
-  gap: $desktop-spacing-md;
+  gap: $spacing-lg;
 }
 
 .promoLeft {
@@ -170,10 +212,10 @@
 .promoTag {
   display: inline-flex;
   align-items: center;
-  padding: $spacing-xs $spacing-md;
+  padding: 2px $spacing-sm;
   border: none;
   border-radius: $radius-xs;
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
   font-weight: $font-weight-bold;
   font-family: $font-family;
   cursor: pointer;
@@ -188,7 +230,7 @@
 }
 
 .quickLink {
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
   color: var(--gs-text-secondary);
   white-space: nowrap;
   text-decoration: none;
@@ -202,35 +244,35 @@
 .promoRight {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
+  gap: $spacing-sm;
   flex-shrink: 0;
 }
 
 .locationBtn {
   display: inline-flex;
   align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-xs $spacing-sm;
+  gap: 3px;
+  padding: 2px $spacing-xs;
   border: none;
-  border-radius: $radius-sm;
+  border-radius: $radius-xs;
   background: none;
-  color: var(--gs-text-secondary);
-  font-size: $font-size-sm;
+  color: var(--gs-text-tertiary);
+  font-size: $font-size-xs;
   font-family: $font-family;
   cursor: pointer;
   white-space: nowrap;
   transition: color $transition-fast;
 
   @media (hover: hover) {
-    &:hover { color: var(--gs-color-primary); }
+    &:hover { color: var(--gs-text-primary); }
   }
 }
 
 .metaItem {
-  font-size: $font-size-sm;
-  color: var(--gs-text-secondary);
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
   font-weight: $font-weight-medium;
-  padding: $spacing-xs $spacing-sm;
+  padding: 2px $spacing-sm;
   border: 1px solid var(--gs-border-color);
   border-radius: $radius-xs;
   cursor: default;
