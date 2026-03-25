@@ -4,6 +4,32 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { Footer } from './Footer';
 import type { FooterColumn } from './Footer';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 const mockColumns: FooterColumn[] = [
   {
     title: 'About Us',
@@ -136,7 +162,7 @@ describe('Footer', () => {
           { label: 'Terms', href: '/terms' },
           { label: 'Privacy', href: '/privacy' },
         ]}
-      />,
+      />
     );
     expect(screen.getByText('Terms')).toBeInTheDocument();
     expect(screen.getByText('Privacy')).toBeInTheDocument();
@@ -146,10 +172,8 @@ describe('Footer', () => {
     render(
       <Footer
         columns={mockColumns}
-        socialLinks={[
-          { icon: <span>TG</span>, label: 'Telegram', href: 'https://t.me/test' },
-        ]}
-      />,
+        socialLinks={[{ icon: <span>TG</span>, label: 'Telegram', href: 'https://t.me/test' }]}
+      />
     );
     expect(screen.getByLabelText('Telegram')).toBeInTheDocument();
   });
@@ -163,7 +187,7 @@ describe('Footer', () => {
 
   it('spreads rest props onto root element', () => {
     const { container } = render(
-      <Footer columns={mockColumns} data-testid="footer" aria-label="site footer" />,
+      <Footer columns={mockColumns} data-testid="footer" aria-label="site footer" />
     );
     const footer = container.querySelector('footer') as HTMLElement;
     expect(footer.getAttribute('data-testid')).toBe('footer');
@@ -171,9 +195,7 @@ describe('Footer', () => {
   });
 
   it('merges custom className', () => {
-    const { container } = render(
-      <Footer columns={mockColumns} className="custom-footer" />,
-    );
+    const { container } = render(<Footer columns={mockColumns} className="custom-footer" />);
     const footer = container.querySelector('footer') as HTMLElement;
     expect(footer.className).toContain('custom-footer');
   });

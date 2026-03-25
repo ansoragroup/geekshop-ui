@@ -1,7 +1,15 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useId,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+} from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopSelect.module.scss';
@@ -17,7 +25,8 @@ export interface DesktopSelectOption {
   icon?: ReactNode;
 }
 
-export interface DesktopSelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+export interface DesktopSelectProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected value (controlled) */
   value?: string | string[];
   /** Default value (uncontrolled) */
@@ -44,13 +53,25 @@ export interface DesktopSelectProps extends Omit<HTMLAttributes<HTMLDivElement>,
 
 const ChevronIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M4 6l4 4 4-4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const CheckIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M3.5 8l3 3 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M3.5 8l3 3 6-6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -79,9 +100,9 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const generatedId = useId();
     const selectId = externalId ?? generatedId;
 
@@ -112,9 +133,10 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
     });
 
     // Filter options by search query
-    const filteredOptions = searchable && searchQuery
-      ? options.filter((o) => o.label.toLowerCase().includes(searchQuery.toLowerCase()))
-      : options;
+    const filteredOptions =
+      searchable && searchQuery
+        ? options.filter((o) => o.label.toLowerCase().includes(searchQuery.toLowerCase()))
+        : options;
 
     const handleOpen = useCallback(() => {
       if (disabled) return;
@@ -137,21 +159,24 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
       }
     }, [isOpen, handleOpen, handleClose]);
 
-    const handleOptionClick = useCallback((option: DesktopSelectOption) => {
-      if (option.disabled) return;
+    const handleOptionClick = useCallback(
+      (option: DesktopSelectOption) => {
+        if (option.disabled) return;
 
-      if (multiple) {
-        setSelectedValue((prev) => {
-          const arr = Array.isArray(prev) ? prev : [];
-          return arr.includes(option.value)
-            ? arr.filter((v) => v !== option.value)
-            : [...arr, option.value];
-        });
-      } else {
-        setSelectedValue(option.value);
-        handleClose();
-      }
-    }, [multiple, setSelectedValue, handleClose]);
+        if (multiple) {
+          setSelectedValue((prev) => {
+            const arr = Array.isArray(prev) ? prev : [];
+            return arr.includes(option.value)
+              ? arr.filter((v) => v !== option.value)
+              : [...arr, option.value];
+          });
+        } else {
+          setSelectedValue(option.value);
+          handleClose();
+        }
+      },
+      [multiple, setSelectedValue, handleClose]
+    );
 
     // Close on outside click
     useEffect(() => {
@@ -173,43 +198,46 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
     }, [isOpen, searchable]);
 
     // Keyboard navigation
-    const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-      if (!isOpen) {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
-          e.preventDefault();
-          handleOpen();
-        }
-        return;
-      }
-
-      switch (e.key) {
-        case 'Escape':
-          e.preventDefault();
-          handleClose();
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          setHighlightedIndex((prev) => {
-            const next = prev + 1;
-            return next >= filteredOptions.length ? 0 : next;
-          });
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          setHighlightedIndex((prev) => {
-            const next = prev - 1;
-            return next < 0 ? filteredOptions.length - 1 : next;
-          });
-          break;
-        case 'Enter':
-        case ' ':
-          e.preventDefault();
-          if (highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
-            handleOptionClick(filteredOptions[highlightedIndex]);
+    const handleKeyDown = useCallback(
+      (e: React.KeyboardEvent) => {
+        if (!isOpen) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            handleOpen();
           }
-          break;
-      }
-    }, [isOpen, highlightedIndex, filteredOptions, handleOpen, handleClose, handleOptionClick]);
+          return;
+        }
+
+        switch (e.key) {
+          case 'Escape':
+            e.preventDefault();
+            handleClose();
+            break;
+          case 'ArrowDown':
+            e.preventDefault();
+            setHighlightedIndex((prev) => {
+              const next = prev + 1;
+              return next >= filteredOptions.length ? 0 : next;
+            });
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            setHighlightedIndex((prev) => {
+              const next = prev - 1;
+              return next < 0 ? filteredOptions.length - 1 : next;
+            });
+            break;
+          case 'Enter':
+          case ' ':
+            e.preventDefault();
+            if (highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
+              handleOptionClick(filteredOptions[highlightedIndex]);
+            }
+            break;
+        }
+      },
+      [isOpen, highlightedIndex, filteredOptions, handleOpen, handleClose, handleOptionClick]
+    );
 
     // Scroll highlighted option into view
     useEffect(() => {
@@ -244,9 +272,11 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className);
+      className
+    );
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- composite widget needs keyboard nav on wrapper
       <div ref={internalRef} className={rootClass} onKeyDown={handleKeyDown} {...rest}>
         {label && (
           <label className={styles.label} htmlFor={selectId} id={`${selectId}-label`}>
@@ -283,7 +313,9 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
           <div className={styles.dropdown}>
             {searchable && (
               <div className={styles.searchWrap}>
-                <span className={styles.searchIcon}><SearchIcon /></span>
+                <span className={styles.searchIcon}>
+                  <SearchIcon />
+                </span>
                 <input
                   ref={searchInputRef}
                   className={styles.searchInput}
@@ -318,7 +350,8 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
                   styles.option,
                   isSelected && styles.optionSelected,
                   option.disabled && styles.optionDisabled,
-                  index === highlightedIndex && styles.optionHighlighted];
+                  index === highlightedIndex && styles.optionHighlighted,
+                ];
 
                 return (
                   <button
@@ -333,7 +366,9 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
                     onMouseEnter={() => setHighlightedIndex(index)}
                   >
                     {multiple && (
-                      <span className={cn(styles.checkbox, isSelected ? styles.checkboxChecked : '')}>
+                      <span
+                        className={cn(styles.checkbox, isSelected ? styles.checkboxChecked : '')}
+                      >
                         {isSelected && <CheckIcon />}
                       </span>
                     )}
@@ -352,7 +387,7 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopSelect.displayName = 'DesktopSelect';

@@ -40,7 +40,6 @@ export const WithErrors: Story = {
 
 /** Edit second address — work address at Mustaqillik ko'chasi */
 export const EditWorkAddress: Story = {
-  name: 'Edit Work Address',
   args: {
     mode: 'edit',
     addressId: 1,
@@ -49,7 +48,6 @@ export const EditWorkAddress: Story = {
 
 /** Add new address with Work label pre-selected */
 export const AddWorkAddress: Story = {
-  name: 'Add Work Address',
   args: {
     mode: 'add',
   },

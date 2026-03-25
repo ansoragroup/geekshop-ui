@@ -1,6 +1,14 @@
 'use client';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useEffect } from 'react';
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useId,
+  useRef,
+  useImperativeHandle,
+  useEffect,
+} from 'react';
 import type { HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopCascadePicker.module.scss';
@@ -16,7 +24,8 @@ export interface DesktopCascadeOption {
   disabled?: boolean;
 }
 
-export interface DesktopCascadePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+export interface DesktopCascadePickerProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected values array (controlled) -- one per column */
   value?: string[];
   /** Default value (uncontrolled) */
@@ -39,20 +48,32 @@ export interface DesktopCascadePickerProps extends Omit<HTMLAttributes<HTMLDivEl
 
 const ChevronDownIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M4 6l4 4 4-4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRightIcon = () => (
   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-    <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M4.5 2.5l3.5 3.5-3.5 3.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 function getOptionsAtDepth(
   options: DesktopCascadeOption[],
   selectedValues: string[],
-  depth: number,
+  depth: number
 ): DesktopCascadeOption[] {
   if (depth === 0) return options;
   const parentValue = selectedValues[depth - 1];
@@ -64,7 +85,7 @@ function getOptionsAtDepth(
 function findOption(
   options: DesktopCascadeOption[],
   selectedValues: string[],
-  targetDepth: number,
+  targetDepth: number
 ): DesktopCascadeOption | undefined {
   let current = options;
   for (let i = 0; i <= targetDepth; i++) {
@@ -104,7 +125,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const generatedId = useId();
     const pickerId = externalId ?? generatedId;
@@ -145,20 +166,23 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
       }
     }, [isOpen, handleOpen, handleClose]);
 
-    const handleOptionClick = useCallback((depth: number, option: DesktopCascadeOption) => {
-      if (option.disabled) return;
-      setTempSelection((prev) => {
-        const next = [...prev.slice(0, depth), option.value];
-        return next;
-      });
+    const handleOptionClick = useCallback(
+      (depth: number, option: DesktopCascadeOption) => {
+        if (option.disabled) return;
+        setTempSelection((prev) => {
+          const next = [...prev.slice(0, depth), option.value];
+          return next;
+        });
 
-      // If this option has no children, auto-confirm
-      if (!option.children || option.children.length === 0) {
-        const nextValue = [...tempSelection.slice(0, depth), option.value];
-        setSelectedValue(nextValue);
-        setIsOpen(false);
-      }
-    }, [tempSelection, setSelectedValue]);
+        // If this option has no children, auto-confirm
+        if (!option.children || option.children.length === 0) {
+          const nextValue = [...tempSelection.slice(0, depth), option.value];
+          setSelectedValue(nextValue);
+          setIsOpen(false);
+        }
+      },
+      [tempSelection, setSelectedValue]
+    );
 
     // Close on outside click
     useEffect(() => {
@@ -173,16 +197,19 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
     }, [isOpen, handleClose]);
 
     // Keyboard: Escape to close
-    const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        e.preventDefault();
-        handleClose();
-      }
-      if (!isOpen && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        handleOpen();
-      }
-    }, [isOpen, handleOpen, handleClose]);
+    const handleKeyDown = useCallback(
+      (e: React.KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) {
+          e.preventDefault();
+          handleClose();
+        }
+        if (!isOpen && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleOpen();
+        }
+      },
+      [isOpen, handleOpen, handleClose]
+    );
 
     // Scroll selected item into view
     useEffect(() => {
@@ -211,9 +238,8 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
     }
 
     // Display text
-    const displayText = selectedValue.length > 0
-      ? getLabelsForValues(options, selectedValue).join(' / ')
-      : '';
+    const displayText =
+      selectedValue.length > 0 ? getLabelsForValues(options, selectedValue).join(' / ') : '';
 
     const isValueSelected = selectedValue.length > 0;
 
@@ -222,9 +248,11 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className);
+      className
+    );
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- composite widget needs keyboard nav on wrapper
       <div ref={internalRef} className={rootClass} onKeyDown={handleKeyDown} {...rest}>
         {label && (
           <label className={styles.label} htmlFor={pickerId} id={`${pickerId}-label`}>
@@ -264,7 +292,9 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                 <div
                   key={depth}
                   className={styles.column}
-                  ref={(el) => { columnRefs.current[depth] = el; }}
+                  ref={(el) => {
+                    columnRefs.current[depth] = el;
+                  }}
                   role="listbox"
                   aria-label={`Level ${depth + 1}`}
                 >
@@ -275,7 +305,8 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                     const optionClass = [
                       styles.option,
                       isSelected && styles.optionSelected,
-                      option.disabled && styles.optionDisabled];
+                      option.disabled && styles.optionDisabled,
+                    ];
 
                     return (
                       <button
@@ -305,7 +336,7 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopCascadePicker.displayName = 'DesktopCascadePicker';

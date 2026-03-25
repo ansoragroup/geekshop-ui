@@ -48,7 +48,6 @@ export const DeleteConfirmation: Story = {
 
 /** Multiple addresses with default indicator and "Add Address" button at bottom */
 export const WithAddButton: Story = {
-  name: 'With Add Button',
   args: {
     empty: false,
     showDeleteConfirm: false,

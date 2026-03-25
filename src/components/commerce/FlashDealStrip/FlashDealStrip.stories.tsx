@@ -28,7 +28,8 @@ type Story = StoryObj<typeof meta>;
 const sampleItems: FlashDealItem[] = [
   {
     id: '1',
-    image: 'https://picsum.photos/seed/fd1/200/200',
+    image:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format',
     title: 'MSI RTX 4060 Ventus 2X',
     price: 4_200_000,
     originalPrice: 5_800_000,
@@ -37,7 +38,8 @@ const sampleItems: FlashDealItem[] = [
   },
   {
     id: '2',
-    image: 'https://picsum.photos/seed/fd2/200/200',
+    image:
+      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&auto=format',
     title: 'AMD Ryzen 5 7600X',
     price: 2_100_000,
     originalPrice: 3_200_000,
@@ -46,7 +48,8 @@ const sampleItems: FlashDealItem[] = [
   },
   {
     id: '3',
-    image: 'https://picsum.photos/seed/fd3/200/200',
+    image:
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop&auto=format',
     title: 'Samsung 990 Pro 1TB',
     price: 3_400_000,
     originalPrice: 4_100_000,
@@ -55,7 +58,8 @@ const sampleItems: FlashDealItem[] = [
   },
   {
     id: '4',
-    image: 'https://picsum.photos/seed/fd4/200/200',
+    image:
+      'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=200&h=200&fit=crop&auto=format',
     title: 'Corsair Vengeance DDR5 32GB',
     price: 1_600_000,
     originalPrice: 2_000_000,
@@ -64,7 +68,8 @@ const sampleItems: FlashDealItem[] = [
   },
   {
     id: '5',
-    image: 'https://picsum.photos/seed/fd5/200/200',
+    image:
+      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
     title: 'Logitech G Pro X Superlight 2',
     price: 850_000,
     originalPrice: 1_200_000,
@@ -73,7 +78,8 @@ const sampleItems: FlashDealItem[] = [
   },
   {
     id: '6',
-    image: 'https://picsum.photos/seed/fd6/200/200',
+    image:
+      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
     title: 'ASUS ROG Strix B650E-F',
     price: 3_800_000,
     originalPrice: 6_900_000,
@@ -82,7 +88,8 @@ const sampleItems: FlashDealItem[] = [
   },
   {
     id: '7',
-    image: 'https://picsum.photos/seed/fd7/200/200',
+    image:
+      'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=200&h=200&fit=crop&auto=format',
     title: 'Noctua NH-D15 Cooler',
     price: 5_100_000,
     originalPrice: 6_000_000,
@@ -112,7 +119,10 @@ export const FewItems: Story = {
 
 export const AlmostSoldOut: Story = {
   args: {
-    items: sampleItems.map((item) => ({ ...item, soldPercent: 90 + Math.floor(Math.random() * 10) })),
+    items: sampleItems.map((item) => ({
+      ...item,
+      soldPercent: 90 + Math.floor(Math.random() * 10),
+    })),
     endTime: new Date(Date.now() + 300_000), // 5 minutes
     title: 'LAST CHANCE',
   },

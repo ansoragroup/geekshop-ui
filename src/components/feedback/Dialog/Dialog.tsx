@@ -2,7 +2,7 @@
 import { cn } from '../../../utils/cn';
 import { forwardRef, useCallback } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { useFocusTrap } from '../../../hooks/useFocusTrap';
+import { useDialog } from '../../../headless/useDialog';
 import { useGeekShop } from '../../../i18n';
 import styles from './Dialog.module.scss';
 
@@ -50,7 +50,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
     const { t } = useGeekShop();
 
@@ -58,31 +58,32 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       onClose?.();
     }, [onClose]);
 
-    const dialogRef = useFocusTrap<HTMLDivElement>(visible, {
-      onEscape: handleClose,
+    const { overlayProps, dialogProps } = useDialog({
+      isOpen: visible,
+      onOpenChange: (isOpen) => {
+        if (!isOpen) handleClose();
+      },
+      role: 'alertdialog',
+      closeOnOverlayClick: true,
     });
 
     const mergedRef = useCallback(
       (node: HTMLDivElement | null) => {
-        dialogRef.current = node;
+        // Assign to the headless hook's ref
+        const hookRef = dialogProps.ref as React.MutableRefObject<HTMLElement | null>;
+        if (hookRef) {
+          hookRef.current = node;
+        }
         if (typeof ref === 'function') {
           ref(node);
         } else if (ref) {
           ref.current = node;
         }
       },
-      [ref, dialogRef],
+      [ref, dialogProps.ref]
     );
 
     if (!visible) return null;
-
-    const handleOverlayClick = () => {
-      handleClose();
-    };
-
-    const handleContentClick = (e: React.MouseEvent) => {
-      e.stopPropagation();
-    };
 
     const handleCancel = () => {
       onCancel?.();
@@ -96,39 +97,40 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     const resolvedCancelText = cancelText ?? t('common.cancel');
 
     return (
-      <div className={cn(styles.overlay, className)} onClick={handleOverlayClick} role="presentation">
-        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <div
+        className={cn(styles.overlay, className)}
+        onClick={overlayProps.onClick}
+        role={overlayProps.role}
+      >
         <div
           ref={mergedRef}
           className={styles.dialog}
-          onClick={handleContentClick}
-          onKeyDown={(e) => e.stopPropagation()}
-          role="alertdialog"
-          aria-modal="true"
+          onClick={dialogProps.onClick}
+          onKeyDown={dialogProps.onKeyDown}
+          role={dialogProps.role}
+          aria-modal={dialogProps['aria-modal']}
           aria-label={title || 'Dialog'}
-          tabIndex={-1}
+          tabIndex={dialogProps.tabIndex}
           {...rest}
         >
           {title && <div className={styles.title}>{title}</div>}
 
           {(message || children) && (
             <div className={styles.body}>
-              {message && (
-                typeof message === 'string'
-                  ? <p className={styles.message}>{message}</p>
-                  : message
-              )}
+              {message &&
+                (typeof message === 'string' ? (
+                  <p className={styles.message}>{message}</p>
+                ) : (
+                  message
+                ))}
               {children}
             </div>
           )}
 
           <div className={styles.actions}>
             {showCancel && (
-              <button
-                className={styles.cancelBtn}
-                onClick={handleCancel}
-                type="button"
-              >
+              <button className={styles.cancelBtn} onClick={handleCancel} type="button">
                 {resolvedCancelText}
               </button>
             )}
@@ -143,7 +145,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 Dialog.displayName = 'Dialog';

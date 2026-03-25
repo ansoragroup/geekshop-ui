@@ -28,7 +28,8 @@ export const Pending: Story = {
     date: '2026-03-14',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-gpu/200/200',
+        image:
+          'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&h=200&fit=crop&auto=format',
         title: 'MSI GeForce RTX 4060 VENTUS 2X 8G OC',
         variant: 'RTX 4060 8GB',
         price: 5_200_000,
@@ -51,23 +52,23 @@ export const Shipping: Story = {
     date: '2026-03-12',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-cpu/200/200',
+        image:
+          'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=200&h=200&fit=crop&auto=format',
         title: 'AMD Ryzen 7 7800X3D Protsessor',
         variant: 'BOX',
         price: 6_400_000,
         quantity: 1,
       },
       {
-        image: 'https://picsum.photos/seed/order-ram/200/200',
+        image:
+          'https://images.unsplash.com/photo-1557683316-973673baf926?w=200&h=200&fit=crop&auto=format',
         title: 'Kingston FURY Beast DDR5 32GB (2x16GB) 6000MHz',
         price: 1_800_000,
         quantity: 1,
       },
     ],
     totalAmount: 8_200_000,
-    actions: [
-      { label: 'Kuzatish', type: 'primary', onClick: () => {} },
-    ],
+    actions: [{ label: 'Kuzatish', type: 'primary', onClick: () => {} }],
   },
 };
 
@@ -79,7 +80,8 @@ export const Review: Story = {
     date: '2026-03-08',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-mouse/200/200',
+        image:
+          'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop&auto=format',
         title: 'Logitech G Pro X Superlight 2',
         variant: 'Qora',
         price: 1_650_000,
@@ -102,16 +104,15 @@ export const Return: Story = {
     date: '2026-03-05',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-ssd/200/200',
+        image:
+          'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=200&fit=crop&auto=format',
         title: 'Samsung 990 PRO 2TB NVMe M.2 SSD',
         price: 3_100_000,
         quantity: 1,
       },
     ],
     totalAmount: 3_100_000,
-    actions: [
-      { label: 'Qaytarish holati', type: 'primary', onClick: () => {} },
-    ],
+    actions: [{ label: 'Qaytarish holati', type: 'primary', onClick: () => {} }],
   },
 };
 
@@ -125,7 +126,8 @@ export const OrdersList: Story = {
         date="2026-03-14"
         products={[
           {
-            image: 'https://picsum.photos/seed/ord-gpu2/200/200',
+            image:
+              'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=200&fit=crop&auto=format',
             title: 'ASUS TUF Gaming RTX 4070 Ti SUPER OC 16GB',
             variant: 'RTX 4070 Ti SUPER',
             price: 11_500_000,
@@ -144,23 +146,23 @@ export const OrdersList: Story = {
         date="2026-03-12"
         products={[
           {
-            image: 'https://picsum.photos/seed/ord-case/200/200',
+            image:
+              'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=200&h=200&fit=crop&auto=format',
             title: 'NZXT H7 Flow ATX Mid Tower Keys',
             variant: 'Oq',
             price: 1_400_000,
             quantity: 1,
           },
           {
-            image: 'https://picsum.photos/seed/ord-fan/200/200',
+            image:
+              'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=200&h=200&fit=crop&auto=format',
             title: 'Noctua NF-A12x25 PWM Fan (3-pack)',
             price: 850_000,
             quantity: 1,
           },
         ]}
         totalAmount={2_250_000}
-        actions={[
-          { label: 'Kuzatish', type: 'primary', onClick: () => {} },
-        ]}
+        actions={[{ label: 'Kuzatish', type: 'primary', onClick: () => {} }]}
       />
     </div>
   ),

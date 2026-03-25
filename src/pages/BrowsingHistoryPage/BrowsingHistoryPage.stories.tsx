@@ -27,18 +27,15 @@ export const EmptyHistory: Story = {
 
 /** Full history with multiple date groups and products with various badges */
 export const FullHistory: Story = {
-  name: 'Full History',
   args: { empty: false },
 };
 
 /** History with products showing price drops and sale badges */
 export const WithSaleProducts: Story = {
-  name: 'With Sale Products',
   args: { empty: false },
 };
 
 /** Browsing history showing trash icon in navbar for clearing */
 export const WithClearAction: Story = {
-  name: 'With Clear Action',
   args: { empty: false },
 };

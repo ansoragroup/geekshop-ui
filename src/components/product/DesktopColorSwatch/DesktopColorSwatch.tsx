@@ -14,7 +14,8 @@ export interface DesktopColorSwatchOption {
   label?: string;
 }
 
-export interface DesktopColorSwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface DesktopColorSwatchProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Swatch options */
   options: DesktopColorSwatchOption[];
   /** Currently selected value */
@@ -26,42 +27,32 @@ export interface DesktopColorSwatchProps extends Omit<React.HTMLAttributes<HTMLD
 }
 
 function DesktopColorSwatchInner(
-  {
-    options,
-    selected,
-    onChange,
-    label,
-    className,
-    ...rest
-  }: DesktopColorSwatchProps,
-  ref: React.Ref<HTMLDivElement>,
+  { options, selected, onChange, label, className, ...rest }: DesktopColorSwatchProps,
+  ref: React.Ref<HTMLDivElement>
 ) {
   const handleSelect = useCallback(
     (value: string) => {
       onChange?.(value);
     },
-    [onChange],
+    [onChange]
   );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent, index: number) => {
-      let nextIndex = index;
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault();
-        nextIndex = Math.min(index + 1, options.length - 1);
+        const nextIndex = Math.min(index + 1, options.length - 1);
+        handleSelect(options[nextIndex].value);
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
-        nextIndex = Math.max(index - 1, 0);
+        const nextIndex = Math.max(index - 1, 0);
+        handleSelect(options[nextIndex].value);
       } else if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         handleSelect(options[index].value);
-        return;
-      } else {
-        return;
       }
-      handleSelect(options[nextIndex].value);
     },
-    [options, handleSelect],
+    [options, handleSelect]
   );
 
   return (
@@ -80,7 +71,7 @@ function DesktopColorSwatchInner(
                 className={cn(
                   styles.swatch,
                   isSelected ? styles.selected : '',
-                  isImage ? styles.imageSwatch : '',
+                  isImage ? styles.imageSwatch : ''
                 )}
                 onClick={() => handleSelect(option.value)}
                 onKeyDown={(e) => handleKeyDown(e, i)}
@@ -103,14 +94,25 @@ function DesktopColorSwatchInner(
                 )}
                 {isSelected && (
                   <span className={styles.checkmark} aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
                 )}
               </button>
               {option.label && (
-                <span className={cn(styles.swatchLabel, isSelected ? styles.swatchLabelActive : '')}>
+                <span
+                  className={cn(styles.swatchLabel, isSelected ? styles.swatchLabelActive : '')}
+                >
                   {option.label}
                 </span>
               )}

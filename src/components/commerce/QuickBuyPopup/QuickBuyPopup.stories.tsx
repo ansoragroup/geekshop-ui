@@ -6,7 +6,8 @@ import type { QuickBuyProduct, QuickBuyVariant } from './QuickBuyPopup';
 
 const mouseProduct: QuickBuyProduct = {
   title: 'Logitech G PRO X Superlight 2 Wireless Gaming Mouse',
-  image: 'https://picsum.photos/seed/logitech-gpro2/200/200',
+  image:
+    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&auto=format',
   price: 1_200_000,
   stock: 45,
 };
@@ -19,7 +20,8 @@ const mouseVariants: QuickBuyVariant[] = [
 
 const keyboardProduct: QuickBuyProduct = {
   title: 'Razer BlackWidow V4 Pro Mechanical Gaming Keyboard',
-  image: 'https://picsum.photos/seed/razer-bw4/200/200',
+  image:
+    'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
   price: 3_400_000,
   stock: 12,
 };
@@ -87,7 +89,8 @@ export const NoVariants: Story = {
   args: {
     product: {
       title: 'SteelSeries QcK Heavy XXL Gaming Mouse Pad 900x400x6mm',
-      image: 'https://picsum.photos/seed/steelseries-pad/200/200',
+      image:
+        'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop&auto=format',
       price: 350_000,
       stock: 100,
     },
@@ -100,13 +103,12 @@ export const LowStock: Story = {
   args: {
     product: {
       title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB GDDR6X',
-      image: 'https://picsum.photos/seed/rtx4090-fe/200/200',
+      image:
+        'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop&auto=format',
       price: 24_500_000,
       stock: 2,
     },
-    variants: [
-      { id: 'fe', name: 'Founders Edition' },
-    ],
+    variants: [{ id: 'fe', name: 'Founders Edition' }],
     open: true,
   },
 };

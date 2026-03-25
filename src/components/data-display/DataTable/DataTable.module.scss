@@ -1,0 +1,281 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  container-type: inline-size;
+  width: 100%;
+}
+
+// Card layout (narrow < 480px)
+.cardLayout {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.tableLayout {
+  display: none;
+}
+
+@container (min-width: 480px) {
+  .cardLayout {
+    display: none;
+  }
+
+  .tableLayout {
+    display: block;
+  }
+}
+
+// Card select all
+.cardSelectAll {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+}
+
+.selectAllLabel {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+}
+
+// Card
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-lg;
+}
+
+.cardSelected {
+  border-color: var(--gs-color-primary, #{$color-primary});
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+}
+
+.cardBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.cardField {
+  display: flex;
+  gap: $spacing-sm;
+  font-size: $font-size-md;
+  line-height: $line-height-normal;
+}
+
+.cardFieldLabel {
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardFieldValue {
+  color: var(--gs-text-primary, #{$color-text-primary});
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Checkbox
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border: 2px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-xs;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background $transition-fast, border-color $transition-fast;
+  color: var(--gs-text-white, #{$color-text-white});
+  margin-top: $spacing-xxs;
+}
+
+.checkboxChecked {
+  background: var(--gs-color-primary, #{$color-primary});
+  border-color: var(--gs-color-primary, #{$color-primary});
+}
+
+// Table scroll
+.tableScroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Table
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-md;
+}
+
+.checkboxCell {
+  width: 44px;
+  min-width: 44px;
+  padding: $spacing-sm;
+  text-align: center;
+}
+
+.th {
+  padding: $spacing-sm $spacing-md;
+  text-align: left;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  border-bottom: 1px solid var(--gs-border, #{$color-border});
+  white-space: nowrap;
+}
+
+.thSortable {
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--gs-text-primary, #{$color-text-primary});
+  }
+}
+
+.thContent {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.sortIcon {
+  flex-shrink: 0;
+}
+
+.tr {
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+}
+
+.trSelected {
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+
+  &:hover {
+    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+.td {
+  padding: $spacing-sm $spacing-md;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  border-bottom: 1px solid var(--gs-border-light, #{$color-border-light});
+  white-space: nowrap;
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  min-height: 44px;
+}
+
+.pageBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  min-width: 44px;
+  padding: $spacing-xs $spacing-md;
+  background: none;
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.pageInfo {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+}
+
+// Loading
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding: $spacing-md;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-lg;
+}
+
+.skeletonLine {
+  height: 14px;
+  background: var(--gs-bg-skeleton, #{$color-bg-skeleton});
+  border-radius: $radius-xs;
+  width: 100%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Empty
+.emptyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xxxl $spacing-lg;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  font-size: $font-size-md;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .tr,
+  .checkbox,
+  .pageBtn {
+    transition: none;
+  }
+
+  .skeletonLine {
+    animation: none;
+  }
+}

@@ -30,7 +30,6 @@ export const SingleItem: Story = {
 
 /** Large order with 5 items — GPU, CPU, RAM, SSD, Monitor */
 export const LargeOrder: Story = {
-  name: 'Large Order',
   args: {
     orderId: 'GS-20260320-010',
     estimatedDays: 7,
@@ -40,7 +39,6 @@ export const LargeOrder: Story = {
 
 /** Express delivery — estimated 1-2 days, Tashkent city order */
 export const ExpressDelivery: Story = {
-  name: 'Express Delivery',
   args: {
     orderId: 'GS-20260325-015',
     estimatedDays: 2,
@@ -50,7 +48,6 @@ export const ExpressDelivery: Story = {
 
 /** Regional delivery — estimated 5-7 days for orders outside Tashkent */
 export const RegionalDelivery: Story = {
-  name: 'Regional Delivery',
   args: {
     orderId: 'GS-20260322-008',
     estimatedDays: 7,
@@ -60,7 +57,6 @@ export const RegionalDelivery: Story = {
 
 /** Bulk order with multiple quantities — RAM x2 + SSD x2 */
 export const BulkQuantity: Story = {
-  name: 'Bulk Quantity',
   args: {
     orderId: 'GS-20260318-020',
     estimatedDays: 5,

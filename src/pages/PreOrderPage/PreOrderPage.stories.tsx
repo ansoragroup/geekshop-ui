@@ -31,7 +31,6 @@ export const NotifyMode: Story = {
 
 /** Pre-order with variant selection available (12GB Black, 12GB White, 16GB Black) */
 export const WithVariantSelection: Story = {
-  name: 'With Variant Selection',
   args: {
     notifyOnly: false,
   },
@@ -39,7 +38,6 @@ export const WithVariantSelection: Story = {
 
 /** Pre-order showing deposit amount (10% of price) and payment terms */
 export const DepositInfo: Story = {
-  name: 'Deposit Info',
   args: {
     notifyOnly: false,
   },

@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { DesktopHeaderMarketplace, DesktopHeaderAliExpress } from './DesktopHeaderMarketplace';
-import type { DesktopHeaderMarketplaceProps } from './DesktopHeaderMarketplace';
 
 // Mock heavy child components to keep unit tests fast
 vi.mock('../DesktopSearchAutocomplete', () => ({
@@ -55,7 +54,7 @@ describe('DesktopHeaderMarketplace', () => {
     render(<DesktopHeaderMarketplace searchPlaceholder="Find something..." />);
     expect(screen.getByTestId('search-autocomplete')).toHaveAttribute(
       'data-placeholder',
-      'Find something...',
+      'Find something...'
     );
   });
 
@@ -67,9 +66,7 @@ describe('DesktopHeaderMarketplace', () => {
   });
 
   it('renders custom actions when actions prop is provided', () => {
-    render(
-      <DesktopHeaderMarketplace actions={<button>Custom</button>} />,
-    );
+    render(<DesktopHeaderMarketplace actions={<button>Custom</button>} />);
     expect(screen.getByText('Custom')).toBeInTheDocument();
     expect(screen.queryByLabelText('Orders')).not.toBeInTheDocument();
   });
@@ -93,7 +90,9 @@ describe('DesktopHeaderMarketplace', () => {
 
   it('sets correct aria-label on cart button with count', () => {
     render(<DesktopHeaderMarketplace cartCount={3} />);
-    expect(screen.getByLabelText('Cart ({count})'?.replace('{count}', '3') || 'Cart (3)')).toBeInTheDocument();
+    expect(
+      screen.getByLabelText('Cart ({count})'?.replace('{count}', '3') || 'Cart (3)')
+    ).toBeInTheDocument();
   });
 
   // ─── Labels / i18n ──────────────────────────────────────────────────
@@ -114,7 +113,7 @@ describe('DesktopHeaderMarketplace', () => {
           cart: 'Savat',
           signIn: 'Kirish',
         }}
-      />,
+      />
     );
     expect(screen.getByText('Buyurtmalar')).toBeInTheDocument();
     expect(screen.getByText('Savat')).toBeInTheDocument();
@@ -196,25 +195,14 @@ describe('DesktopHeaderMarketplace', () => {
 
   it('renders promo tags', () => {
     render(
-      <DesktopHeaderMarketplace
-        promoTags={[
-          { label: 'Flash Sale' },
-          { label: 'New Arrivals' },
-        ]}
-      />,
+      <DesktopHeaderMarketplace promoTags={[{ label: 'Flash Sale' }, { label: 'New Arrivals' }]} />
     );
     expect(screen.getByText('Flash Sale')).toBeInTheDocument();
     expect(screen.getByText('New Arrivals')).toBeInTheDocument();
   });
 
   it('renders quick links', () => {
-    render(
-      <DesktopHeaderMarketplace
-        quickLinks={[
-          { label: 'Help Center', href: '/help' },
-        ]}
-      />,
-    );
+    render(<DesktopHeaderMarketplace quickLinks={[{ label: 'Help Center', href: '/help' }]} />);
     expect(screen.getByText('Help Center')).toBeInTheDocument();
   });
 

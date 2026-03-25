@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'TechZone Official Store',
-    logo: 'https://picsum.photos/seed/shop1/100/100',
+    logo: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop&auto=format',
     rating: 4.8,
     followersCount: 12500,
     productsCount: 356,
@@ -38,7 +38,7 @@ export const Default: Story = {
 export const AlreadyFollowed: Story = {
   args: {
     name: 'PC Master Components',
-    logo: 'https://picsum.photos/seed/shop2/100/100',
+    logo: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=100&h=100&fit=crop&auto=format',
     rating: 4.5,
     followersCount: 8200,
     productsCount: 128,
@@ -52,7 +52,7 @@ export const AlreadyFollowed: Story = {
 export const NoResponseRate: Story = {
   args: {
     name: 'GPU Warehouse Tashkent',
-    logo: 'https://picsum.photos/seed/shop3/100/100',
+    logo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&auto=format',
     rating: 4.2,
     followersCount: 3400,
     productsCount: 89,
@@ -64,7 +64,7 @@ export const NoResponseRate: Story = {
 export const HighFollowers: Story = {
   args: {
     name: 'GeekShop Official',
-    logo: 'https://picsum.photos/seed/shop4/100/100',
+    logo: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=100&h=100&fit=crop&auto=format',
     rating: 4.9,
     followersCount: 156000,
     productsCount: 2450,
@@ -80,7 +80,7 @@ export const Interactive = () => {
   return (
     <ShopCard
       name="Smart Devices UZ"
-      logo="https://picsum.photos/seed/shop5/100/100"
+      logo="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&auto=format"
       rating={4.6}
       followersCount={followed ? 5401 : 5400}
       productsCount={210}
@@ -95,7 +95,7 @@ export const Interactive = () => {
 export const NoEnterButton: Story = {
   args: {
     name: 'Mini Shop',
-    logo: 'https://picsum.photos/seed/shop6/100/100',
+    logo: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=100&h=100&fit=crop&auto=format',
     rating: 3.9,
     followersCount: 120,
     productsCount: 15,

@@ -31,7 +31,6 @@ export const NewUser: Story = {
 
 /** Returning user with address card preview and payment method preview */
 export const WithPreviewCards: Story = {
-  name: 'With Preview Cards',
   args: {
     newUser: false,
   },
@@ -39,7 +38,6 @@ export const WithPreviewCards: Story = {
 
 /** Profile showing order badge count (3) and favorites badge count (12) */
 export const WithBadgeCounts: Story = {
-  name: 'With Badge Counts',
   args: {
     newUser: false,
   },
@@ -47,7 +45,6 @@ export const WithBadgeCounts: Story = {
 
 /** Full profile layout with all sections: orders, addresses, payment, settings, logout */
 export const FullProfile: Story = {
-  name: 'Full Profile',
   args: {
     newUser: false,
   },

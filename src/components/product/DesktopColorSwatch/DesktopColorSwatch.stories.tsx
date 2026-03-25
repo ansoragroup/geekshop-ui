@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DesktopColorSwatch } from './DesktopColorSwatch';
 
 const meta = {
-  title: 'Product/DesktopColorSwatch',
+  title: 'Product (Desktop)/DesktopColorSwatch',
   component: DesktopColorSwatch,
   tags: ['autodocs'],
   parameters: {
@@ -86,10 +86,26 @@ export const MaterialSwatches: Story = {
   args: {
     label: 'Material',
     options: [
-      { value: 'leather', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=80&h=80&fit=crop', label: 'Leather' },
-      { value: 'fabric', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop', label: 'Fabric' },
-      { value: 'metal', image: 'https://images.unsplash.com/photo-1519338381761-c7523edc1f46?w=80&h=80&fit=crop', label: 'Metal' },
-      { value: 'wood', image: 'https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=80&h=80&fit=crop', label: 'Wood' },
+      {
+        value: 'leather',
+        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=80&h=80&fit=crop',
+        label: 'Leather',
+      },
+      {
+        value: 'fabric',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop',
+        label: 'Fabric',
+      },
+      {
+        value: 'metal',
+        image: 'https://images.unsplash.com/photo-1519338381761-c7523edc1f46?w=80&h=80&fit=crop',
+        label: 'Metal',
+      },
+      {
+        value: 'wood',
+        image: 'https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=80&h=80&fit=crop',
+        label: 'Wood',
+      },
     ],
     selected: 'leather',
   },
@@ -201,8 +217,16 @@ export const MixedSwatches: Story = {
     options: [
       { value: 'solid-black', color: '#1A1A1A', label: 'Solid Black' },
       { value: 'solid-white', color: '#FAFAFA', label: 'Solid White' },
-      { value: 'pattern-stripe', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop', label: 'Striped' },
-      { value: 'pattern-plaid', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=80&h=80&fit=crop', label: 'Plaid' },
+      {
+        value: 'pattern-stripe',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop',
+        label: 'Striped',
+      },
+      {
+        value: 'pattern-plaid',
+        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=80&h=80&fit=crop',
+        label: 'Plaid',
+      },
     ],
     selected: 'solid-black',
   },

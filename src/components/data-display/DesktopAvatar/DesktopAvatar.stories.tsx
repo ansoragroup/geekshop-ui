@@ -42,7 +42,6 @@ export const FullFeatured: Story = {
 };
 
 export const AllSizes: Story = {
-  name: 'All Sizes',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
       <div style={{ textAlign: 'center' }}>
@@ -69,10 +68,26 @@ export const WithImages: Story = {
   name: 'With Images (All Sizes)',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <DesktopAvatar src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop" name="Emily Chen" size="sm" />
-      <DesktopAvatar src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop" name="James Wilson" size="md" />
-      <DesktopAvatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=128&h=128&fit=crop" name="Anna Petrova" size="lg" />
-      <DesktopAvatar src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=128&h=128&fit=crop" name="Michael Brown" size="xl" />
+      <DesktopAvatar
+        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop"
+        name="Emily Chen"
+        size="sm"
+      />
+      <DesktopAvatar
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop"
+        name="James Wilson"
+        size="md"
+      />
+      <DesktopAvatar
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=128&h=128&fit=crop"
+        name="Anna Petrova"
+        size="lg"
+      />
+      <DesktopAvatar
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=128&h=128&fit=crop"
+        name="Michael Brown"
+        size="xl"
+      />
     </div>
   ),
 };
@@ -90,7 +105,13 @@ export const OnlineStatus: Story = {
         <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>Offline</p>
       </div>
       <div style={{ textAlign: 'center' }}>
-        <DesktopAvatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop" name="Tech Support" size="xl" showOnline online />
+        <DesktopAvatar
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop"
+          name="Tech Support"
+          size="xl"
+          showOnline
+          online
+        />
         <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>With Image</p>
       </div>
       <div style={{ textAlign: 'center' }}>

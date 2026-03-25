@@ -52,7 +52,13 @@ const CartIcon = () => (
     }}
   >
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M2 2h2l2.5 10h9l2-8H6" stroke="#FF5000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M2 2h2l2.5 10h9l2-8H6"
+        stroke="#FF5000"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
       <circle cx="8.5" cy="16" r="1.5" fill="#FF5000" />
       <circle cx="14.5" cy="16" r="1.5" fill="#FF5000" />
     </svg>
@@ -72,7 +78,12 @@ const BellIcon = () => (
     }}
   >
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M10 2a5 5 0 00-5 5v3l-1.5 2h13L15 10V7a5 5 0 00-5-5zM8.5 17h3" stroke="#07C160" strokeWidth="1.5" strokeLinecap="round" />
+      <path
+        d="M10 2a5 5 0 00-5 5v3l-1.5 2h13L15 10V7a5 5 0 00-5-5zM8.5 17h3"
+        stroke="#07C160"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   </div>
 );
@@ -92,11 +103,21 @@ export const DotAllColors: Story = {
   name: 'Dot — All Colors',
   render: () => (
     <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-      <DesktopBadge type="dot" color="primary"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="dot" color="success"><BellIcon /></DesktopBadge>
-      <DesktopBadge type="dot" color="error"><CartIcon /></DesktopBadge>
-      <DesktopBadge type="dot" color="warning"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="dot" color="info"><IconPlaceholder /></DesktopBadge>
+      <DesktopBadge type="dot" color="primary">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="dot" color="success">
+        <BellIcon />
+      </DesktopBadge>
+      <DesktopBadge type="dot" color="error">
+        <CartIcon />
+      </DesktopBadge>
+      <DesktopBadge type="dot" color="warning">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="dot" color="info">
+        <IconPlaceholder />
+      </DesktopBadge>
     </div>
   ),
 };
@@ -159,11 +180,21 @@ export const CountAllColors: Story = {
   name: 'Count — All Colors',
   render: () => (
     <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-      <DesktopBadge type="count" content={5} color="primary"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="count" content={12} color="success"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="count" content={8} color="error"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="count" content={2} color="warning"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="count" content={99} color="info"><IconPlaceholder /></DesktopBadge>
+      <DesktopBadge type="count" content={5} color="primary">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="count" content={12} color="success">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="count" content={8} color="error">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="count" content={2} color="warning">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="count" content={99} color="info">
+        <IconPlaceholder />
+      </DesktopBadge>
     </div>
   ),
 };
@@ -213,7 +244,6 @@ export const TextLong: Story = {
 // --- POSITIONS ---
 
 export const AllPositions: Story = {
-  name: 'All Positions',
   render: () => (
     <div style={{ display: 'flex', gap: 48, alignItems: 'center' }}>
       <div style={{ textAlign: 'center' }}>
@@ -263,9 +293,15 @@ export const CustomColor: Story = {
   name: 'Custom Background Color',
   render: () => (
     <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-      <DesktopBadge type="count" content={3} customColor="#9C27B0"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="text" content="VIP" customColor="#FFD700"><IconPlaceholder /></DesktopBadge>
-      <DesktopBadge type="dot" customColor="#00BCD4"><IconPlaceholder /></DesktopBadge>
+      <DesktopBadge type="count" content={3} customColor="#9C27B0">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="text" content="VIP" customColor="#FFD700">
+        <IconPlaceholder />
+      </DesktopBadge>
+      <DesktopBadge type="dot" customColor="#00BCD4">
+        <IconPlaceholder />
+      </DesktopBadge>
     </div>
   ),
 };
@@ -275,7 +311,16 @@ export const CustomColor: Story = {
 export const EcommerceHeader: Story = {
   name: 'E-commerce Header Icons',
   render: () => (
-    <div style={{ display: 'flex', gap: 24, alignItems: 'center', background: '#fff', padding: '12px 24px', borderRadius: 12 }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: 24,
+        alignItems: 'center',
+        background: '#fff',
+        padding: '12px 24px',
+        borderRadius: 12,
+      }}
+    >
       <DesktopBadge type="count" content={3} color="error">
         <CartIcon />
       </DesktopBadge>
@@ -283,9 +328,22 @@ export const EcommerceHeader: Story = {
         <BellIcon />
       </DesktopBadge>
       <DesktopBadge type="dot" color="success">
-        <div style={{ width: 40, height: 40, borderRadius: 8, background: '#F0F0FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 8,
+            background: '#F0F0FF',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3a3 3 0 110 6 3 3 0 010-6zm0 11.2a6.4 6.4 0 01-4.8-2.16 4 4 0 013.36-1.84h2.88a4 4 0 013.36 1.84A6.4 6.4 0 0110 16.2z" fill="#6366F1" />
+            <path
+              d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3a3 3 0 110 6 3 3 0 010-6zm0 11.2a6.4 6.4 0 01-4.8-2.16 4 4 0 013.36-1.84h2.88a4 4 0 013.36 1.84A6.4 6.4 0 0110 16.2z"
+              fill="#6366F1"
+            />
           </svg>
         </div>
       </DesktopBadge>

@@ -3,6 +3,32 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import { DesktopProductImageGallery } from './DesktopProductImageGallery';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 const defaultProps = {
   images: ['/img/product1.jpg', '/img/product2.jpg', '/img/product3.jpg', '/img/product4.jpg'],
 };
@@ -16,7 +42,7 @@ describe('DesktopProductImageGallery', () => {
 
   it('renders main image with first image by default', () => {
     render(<DesktopProductImageGallery {...defaultProps} />);
-    const mainImage = screen.getByAltText('Product image 1 of 4');
+    const mainImage = screen.getByAltText('1 of 4');
     expect(mainImage).toHaveAttribute('src', '/img/product1.jpg');
   });
 
@@ -27,7 +53,7 @@ describe('DesktopProductImageGallery', () => {
     const secondThumbnail = screen.getByLabelText('View image 2 of 4');
     await user.click(secondThumbnail);
 
-    const mainImage = screen.getByAltText('Product image 2 of 4');
+    const mainImage = screen.getByAltText('2 of 4');
     expect(mainImage).toHaveAttribute('src', '/img/product2.jpg');
   });
 
@@ -75,7 +101,7 @@ describe('DesktopProductImageGallery', () => {
         {...defaultProps}
         currentIndex={3}
         onIndexChange={onIndexChange}
-      />,
+      />
     );
 
     const lastThumbnail = screen.getByLabelText('View image 4 of 4');
@@ -87,7 +113,7 @@ describe('DesktopProductImageGallery', () => {
 
   it('applies custom className', () => {
     const { container } = render(
-      <DesktopProductImageGallery {...defaultProps} className="my-gallery" />,
+      <DesktopProductImageGallery {...defaultProps} className="my-gallery" />
     );
     expect(container.firstElementChild?.className).toContain('my-gallery');
   });
@@ -120,12 +146,12 @@ describe('DesktopProductImageGallery', () => {
     render(<DesktopProductImageGallery images={['/img/single.jpg']} />);
     const thumbnails = screen.getAllByRole('tab');
     expect(thumbnails).toHaveLength(1);
-    expect(screen.getByAltText('Product image 1 of 1')).toHaveAttribute('src', '/img/single.jpg');
+    expect(screen.getByAltText('1 of 1')).toHaveAttribute('src', '/img/single.jpg');
   });
 
   it('supports controlled currentIndex', () => {
     render(<DesktopProductImageGallery {...defaultProps} currentIndex={2} />);
-    const mainImage = screen.getByAltText('Product image 3 of 4');
+    const mainImage = screen.getByAltText('3 of 4');
     expect(mainImage).toHaveAttribute('src', '/img/product3.jpg');
   });
 });

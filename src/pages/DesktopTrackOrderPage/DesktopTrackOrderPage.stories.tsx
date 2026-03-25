@@ -17,7 +17,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const InTransit: Story = {
-  name: 'In Transit',
   args: {
     currentStep: 2,
     trackingNumber: 'UZ9876543210',
@@ -29,16 +28,35 @@ export const InTransit: Story = {
       { label: 'Delivered', description: 'Expected March 22' },
     ],
     events: [
-      { title: 'In transit to Tashkent', description: 'Package departed from Bukhara sorting center', time: 'March 20, 11:30', status: 'active' as const },
-      { title: 'Arrived at Bukhara facility', description: 'Package received at regional distribution center', time: 'March 19, 22:00', status: 'completed' as const },
-      { title: 'Shipped', description: 'Package picked up from warehouse', time: 'March 19, 09:15', status: 'completed' as const },
-      { title: 'Order placed', description: 'Order #GS-2026-0318-005 confirmed', time: 'March 18, 14:20', status: 'completed' as const },
+      {
+        title: 'In transit to Tashkent',
+        description: 'Package departed from Bukhara sorting center',
+        time: 'March 20, 11:30',
+        status: 'active' as const,
+      },
+      {
+        title: 'Arrived at Bukhara facility',
+        description: 'Package received at regional distribution center',
+        time: 'March 19, 22:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Shipped',
+        description: 'Package picked up from warehouse',
+        time: 'March 19, 09:15',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Order placed',
+        description: 'Order #GS-2026-0318-005 confirmed',
+        time: 'March 18, 14:20',
+        status: 'completed' as const,
+      },
     ],
   },
 };
 
 export const Delivered: Story = {
-  name: 'Delivered',
   args: {
     currentStep: 4,
     trackingNumber: 'UZ1111222233',
@@ -50,12 +68,42 @@ export const Delivered: Story = {
       { label: 'Delivered', description: 'March 13, 2026' },
     ],
     events: [
-      { title: 'Delivered', description: 'Package delivered to recipient at front door', time: 'March 13, 15:30', status: 'active' as const },
-      { title: 'Out for delivery', description: 'Package on the way to Chilonzor, Tashkent', time: 'March 13, 08:00', status: 'completed' as const },
-      { title: 'Arrived at local facility', description: 'Tashkent Central Hub', time: 'March 12, 23:45', status: 'completed' as const },
-      { title: 'In transit', description: 'Package in transit from Namangan', time: 'March 11, 16:00', status: 'completed' as const },
-      { title: 'Shipped', description: 'Package picked up by courier', time: 'March 11, 10:00', status: 'completed' as const },
-      { title: 'Order placed', description: 'Order #GS-2026-0310-003 confirmed', time: 'March 10, 12:00', status: 'completed' as const },
+      {
+        title: 'Delivered',
+        description: 'Package delivered to recipient at front door',
+        time: 'March 13, 15:30',
+        status: 'active' as const,
+      },
+      {
+        title: 'Out for delivery',
+        description: 'Package on the way to Chilonzor, Tashkent',
+        time: 'March 13, 08:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Arrived at local facility',
+        description: 'Tashkent Central Hub',
+        time: 'March 12, 23:45',
+        status: 'completed' as const,
+      },
+      {
+        title: 'In transit',
+        description: 'Package in transit from Namangan',
+        time: 'March 11, 16:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Shipped',
+        description: 'Package picked up by courier',
+        time: 'March 11, 10:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Order placed',
+        description: 'Order #GS-2026-0310-003 confirmed',
+        time: 'March 10, 12:00',
+        status: 'completed' as const,
+      },
     ],
   },
 };
@@ -73,13 +121,17 @@ export const JustPlaced: Story = {
       { label: 'Delivered', description: 'Expected March 30' },
     ],
     events: [
-      { title: 'Order placed', description: 'Order #GS-2026-0325-001 placed successfully. Awaiting payment confirmation.', time: 'March 25, 09:15', status: 'active' as const },
+      {
+        title: 'Order placed',
+        description: 'Order #GS-2026-0325-001 placed successfully. Awaiting payment confirmation.',
+        time: 'March 25, 09:15',
+        status: 'active' as const,
+      },
     ],
   },
 };
 
 export const OutForDelivery: Story = {
-  name: 'Out For Delivery',
   args: {
     currentStep: 3,
     trackingNumber: 'UZ5555666677',
@@ -91,12 +143,43 @@ export const OutForDelivery: Story = {
       { label: 'Delivered', description: 'Expected today' },
     ],
     events: [
-      { title: 'Out for delivery', description: 'Courier is on the way to Mirzo Ulugbek, Tashkent. Estimated arrival: 14:00-16:00', time: 'March 24, 09:30', status: 'active' as const },
-      { title: 'Arrived at local facility', description: 'Tashkent North Distribution Center', time: 'March 23, 21:00', status: 'completed' as const },
-      { title: 'In transit', description: 'Package departed from Fergana regional hub', time: 'March 22, 08:45', status: 'completed' as const },
-      { title: 'Shipped', description: 'Package picked up from warehouse by courier', time: 'March 21, 11:00', status: 'completed' as const },
-      { title: 'Processing', description: 'Payment verified, packaging started', time: 'March 20, 15:00', status: 'completed' as const },
-      { title: 'Order placed', description: 'Order #GS-2026-0320-009 confirmed', time: 'March 20, 14:20', status: 'completed' as const },
+      {
+        title: 'Out for delivery',
+        description:
+          'Courier is on the way to Mirzo Ulugbek, Tashkent. Estimated arrival: 14:00-16:00',
+        time: 'March 24, 09:30',
+        status: 'active' as const,
+      },
+      {
+        title: 'Arrived at local facility',
+        description: 'Tashkent North Distribution Center',
+        time: 'March 23, 21:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'In transit',
+        description: 'Package departed from Fergana regional hub',
+        time: 'March 22, 08:45',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Shipped',
+        description: 'Package picked up from warehouse by courier',
+        time: 'March 21, 11:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Processing',
+        description: 'Payment verified, packaging started',
+        time: 'March 20, 15:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Order placed',
+        description: 'Order #GS-2026-0320-009 confirmed',
+        time: 'March 20, 14:20',
+        status: 'completed' as const,
+      },
     ],
   },
 };
@@ -114,11 +197,36 @@ export const LongDistanceShipping: Story = {
       { label: 'Delivered', description: 'Expected March 27' },
     ],
     events: [
-      { title: 'In transit to Nukus', description: 'Package passed through Bukhara sorting center, heading to Karakalpakstan', time: 'March 18, 16:00', status: 'active' as const },
-      { title: 'In transit', description: 'Package departed Tashkent Central Hub via rail', time: 'March 17, 06:00', status: 'completed' as const },
-      { title: 'Shipped', description: 'Package consolidated at Tashkent warehouse', time: 'March 16, 14:30', status: 'completed' as const },
-      { title: 'Processing', description: 'Order packed and labeled', time: 'March 15, 18:00', status: 'completed' as const },
-      { title: 'Order placed', description: 'Order #GS-2026-0315-012 confirmed', time: 'March 15, 12:45', status: 'completed' as const },
+      {
+        title: 'In transit to Nukus',
+        description: 'Package passed through Bukhara sorting center, heading to Karakalpakstan',
+        time: 'March 18, 16:00',
+        status: 'active' as const,
+      },
+      {
+        title: 'In transit',
+        description: 'Package departed Tashkent Central Hub via rail',
+        time: 'March 17, 06:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Shipped',
+        description: 'Package consolidated at Tashkent warehouse',
+        time: 'March 16, 14:30',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Processing',
+        description: 'Order packed and labeled',
+        time: 'March 15, 18:00',
+        status: 'completed' as const,
+      },
+      {
+        title: 'Order placed',
+        description: 'Order #GS-2026-0315-012 confirmed',
+        time: 'March 15, 12:45',
+        status: 'completed' as const,
+      },
     ],
   },
 };

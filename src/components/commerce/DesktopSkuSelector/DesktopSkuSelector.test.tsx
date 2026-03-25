@@ -7,19 +7,11 @@ const defaultProps = {
   variants: [
     {
       name: 'Color',
-      options: [
-        { value: 'Black' },
-        { value: 'White' },
-        { value: 'Blue' },
-      ],
+      options: [{ value: 'Black' }, { value: 'White' }, { value: 'Blue' }],
     },
     {
       name: 'Storage',
-      options: [
-        { value: '128GB' },
-        { value: '256GB' },
-        { value: '512GB' },
-      ],
+      options: [{ value: '128GB' }, { value: '256GB' }, { value: '512GB' }],
     },
   ],
   selectedValues: { Color: 'Black', Storage: '256GB' },
@@ -65,16 +57,13 @@ describe('DesktopSkuSelector', () => {
     const variants = [
       {
         name: 'Color',
-        options: [
-          { value: 'Black' },
-          { value: 'Red', disabled: true },
-        ],
+        options: [{ value: 'Black' }, { value: 'Red', disabled: true }],
       },
     ];
     render(<DesktopSkuSelector variants={variants} onSelect={onSelect} />);
     await user.click(screen.getByRole('radio', { name: 'Color: Red' }));
     expect(onSelect).not.toHaveBeenCalled();
-  }];
+  });
 
   it('does not call onSelect for out-of-stock options', async () => {
     const onSelect = vi.fn();
@@ -82,16 +71,13 @@ describe('DesktopSkuSelector', () => {
     const variants = [
       {
         name: 'Size',
-        options: [
-          { value: 'S' },
-          { value: 'L', outOfStock: true },
-        ],
+        options: [{ value: 'S' }, { value: 'L', outOfStock: true }],
       },
     ];
     render(<DesktopSkuSelector variants={variants} onSelect={onSelect} />);
     await user.click(screen.getByRole('radio', { name: 'Size: L (out of stock)' }));
     expect(onSelect).not.toHaveBeenCalled();
-  }];
+  });
 
   it('shows stock count', () => {
     render(<DesktopSkuSelector {...defaultProps} stock={24} />);
@@ -115,9 +101,7 @@ describe('DesktopSkuSelector', () => {
   });
 
   it('applies custom className', () => {
-    const { container } = render(
-      <DesktopSkuSelector {...defaultProps} className="my-sku" />,
-    );
+    const { container } = render(<DesktopSkuSelector {...defaultProps} className="my-sku" />);
     expect(container.firstElementChild?.className).toContain('my-sku');
   });
 

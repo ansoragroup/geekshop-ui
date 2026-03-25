@@ -52,9 +52,7 @@ const locationOptions: DesktopCascadeOption[] = [
       {
         value: 'urgut',
         label: 'Urgut',
-        children: [
-          { value: 'urgut-center', label: 'Urgut Center' },
-        ],
+        children: [{ value: 'urgut-center', label: 'Urgut Center' }],
       },
     ],
   },
@@ -162,7 +160,12 @@ const disabledOptions: DesktopCascadeOption[] = [
     label: 'Active Region',
     children: [
       { value: 'city-a', label: 'City A', children: [{ value: 'area-1', label: 'Area 1' }] },
-      { value: 'city-b', label: 'City B (closed)', disabled: true, children: [{ value: 'area-2', label: 'Area 2' }] },
+      {
+        value: 'city-b',
+        label: 'City B (closed)',
+        disabled: true,
+        children: [{ value: 'area-2', label: 'Area 2' }],
+      },
     ],
   },
   {
@@ -185,11 +188,13 @@ const meta = {
     columns: { control: { type: 'number', min: 2, max: 5 } },
     disabled: { control: 'boolean' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 400, padding: 24, background: '#fff', minHeight: 450 }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 400, padding: 24, background: '#fff', minHeight: 450 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopCascadePicker>;
 
 export default meta;
@@ -362,17 +367,24 @@ export const Controlled: Story = {
           placeholder="Select your area"
           columns={3}
         />
-        <div style={{ fontSize: 12, color: '#666' }}>
-          Values: {value.join(' > ') || '(none)'}
-        </div>
-        <div style={{ fontSize: 12, color: '#666' }}>
-          Labels: {labels.join(' > ') || '(none)'}
-        </div>
+        <div style={{ fontSize: 12, color: '#666' }}>Values: {value.join(' > ') || '(none)'}</div>
+        <div style={{ fontSize: 12, color: '#666' }}>Labels: {labels.join(' > ') || '(none)'}</div>
         {value.length > 0 && (
           <button
             type="button"
-            onClick={() => { setValue([]); setLabels([]); }}
-            style={{ alignSelf: 'flex-start', fontSize: 13, color: '#FF5000', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            onClick={() => {
+              setValue([]);
+              setLabels([]);
+            }}
+            style={{
+              alignSelf: 'flex-start',
+              fontSize: 13,
+              color: '#FF5000',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+            }}
           >
             Clear selection
           </button>
@@ -385,7 +397,6 @@ export const Controlled: Story = {
 /* ─── All States ─── */
 
 export const AllStatesOverview: Story = {
-  name: 'All States Overview',
   decorators: [
     (Story) => (
       <div style={{ width: 400, padding: 24, background: '#fff', minHeight: 200 }}>
@@ -395,10 +406,32 @@ export const AllStatesOverview: Story = {
   ],
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <DesktopCascadePicker options={locationOptions} label="Default (Empty)" placeholder="Select..." columns={3} />
-      <DesktopCascadePicker options={locationOptions} label="With Value" value={['tashkent', 'chilonzor', 'chilonzor-1']} columns={3} />
-      <DesktopCascadePicker options={locationOptions} label="Error" error="Required field" placeholder="Select..." columns={3} />
-      <DesktopCascadePicker options={locationOptions} label="Disabled" value={['samarkand']} disabled columns={3} />
+      <DesktopCascadePicker
+        options={locationOptions}
+        label="Default (Empty)"
+        placeholder="Select..."
+        columns={3}
+      />
+      <DesktopCascadePicker
+        options={locationOptions}
+        label="With Value"
+        value={['tashkent', 'chilonzor', 'chilonzor-1']}
+        columns={3}
+      />
+      <DesktopCascadePicker
+        options={locationOptions}
+        label="Error"
+        error="Required field"
+        placeholder="Select..."
+        columns={3}
+      />
+      <DesktopCascadePicker
+        options={locationOptions}
+        label="Disabled"
+        value={['samarkand']}
+        disabled
+        columns={3}
+      />
     </div>
   ),
 };

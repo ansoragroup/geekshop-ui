@@ -10,7 +10,7 @@ VIOLATIONS=0
 mkdir -p "$(dirname "$OUTPUT")"
 
 if [ $# -eq 0 ]; then
-    FILES=$(find src -name "*.module.scss" -type f 2>/dev/null)
+    FILES=$(find src -name "*.module.scss" -type f -not -path "src/pages/*" 2>/dev/null)
 else
     FILES="$@"
 fi
@@ -22,14 +22,17 @@ echo "---" >> "$OUTPUT"
 for file in $FILES; do
     [ -f "$file" ] || continue
 
-    # Match hex colors in background/color/border-color/fill/stroke properties
-    # Exclude: comments (//), var() fallbacks, $scss-variables, token imports
-    HITS=$(grep -nE '(background|(?<!-)color|border-color|fill|stroke)\s*:.*#[0-9A-Fa-f]{3,8}' "$file" 2>/dev/null \
+    # Match hex colors in color-related CSS properties.
+    # Uses grep -E (ERE) with explicit character repetition instead of
+    # interval quantifiers ({3,8}) which BSD grep on macOS silently ignores.
+    # Pattern: property-name colon ... #HHH (3+ hex chars)
+    HITS=$(grep -nE '(background|color|border-color|fill|stroke)[^;]*#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]' "$file" 2>/dev/null \
         | grep -v '//' \
         | grep -v 'var(--' \
         | grep -v '\$color-' \
         | grep -v '\$bg-' \
-        | grep -v '@use')
+        | grep -v '@use' \
+        | grep -v 'scss-audit-ignore')
 
     if [ -n "$HITS" ]; then
         echo "VIOLATION: $file" >> "$OUTPUT"

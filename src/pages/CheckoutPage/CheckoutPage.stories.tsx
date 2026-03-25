@@ -31,7 +31,6 @@ export const WithCouponApplied: Story = {
 
 /** Checkout without coupon — showing coupon input field ready for code entry */
 export const WithCouponInput: Story = {
-  name: 'With Coupon Input',
   args: {
     hasCoupon: false,
   },
@@ -39,7 +38,6 @@ export const WithCouponInput: Story = {
 
 /** Checkout showing multiple address selection with home and work addresses */
 export const MultipleAddresses: Story = {
-  name: 'Multiple Addresses',
   args: {
     hasCoupon: false,
   },
@@ -47,7 +45,6 @@ export const MultipleAddresses: Story = {
 
 /** Full checkout flow with coupon, all payment methods, and bottom action bar */
 export const FullCheckout: Story = {
-  name: 'Full Checkout',
   args: {
     hasCoupon: true,
   },

@@ -80,7 +80,6 @@ export const WithMarkedDates: Story = {
 };
 
 export const WithWeekNumbers: Story = {
-  name: 'With Week Numbers',
   args: {
     showWeekNumber: true,
     value: new Date(2026, 2, 16),
@@ -98,7 +97,6 @@ export const SundayStart: Story = {
 };
 
 export const RussianLocale: Story = {
-  name: 'Russian Locale',
   args: {
     locale: 'ru',
     value: new Date(2026, 2, 16),
@@ -112,12 +110,7 @@ export const InteractiveRange: Story = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <Calendar
-          mode="range"
-          value={dates}
-          onChange={setDates}
-          min={new Date()}
-        />
+        <Calendar mode="range" value={dates} onChange={setDates} min={new Date()} />
         {dates.length > 0 && (
           <div style={{ fontSize: 12, color: '#666', padding: '0 4px' }}>
             {dates.length === 1
@@ -137,14 +130,14 @@ export const InteractiveMultiple: Story = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <Calendar
-          mode="multiple"
-          value={dates}
-          onChange={setDates}
-        />
+        <Calendar mode="multiple" value={dates} onChange={setDates} />
         {dates.length > 0 && (
           <div style={{ fontSize: 12, color: '#666', padding: '0 4px' }}>
-            Tanlangan: {dates.map((d) => d.getDate()).sort((a, b) => a - b).join(', ')}
+            Tanlangan:{' '}
+            {dates
+              .map((d) => d.getDate())
+              .sort((a, b) => a - b)
+              .join(', ')}
           </div>
         )}
       </div>

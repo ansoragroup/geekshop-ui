@@ -1,0 +1,176 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: inline-flex;
+}
+
+// Trigger
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-height: 44px;
+  padding: $spacing-sm $spacing-md;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  cursor: pointer;
+  transition: border-color $transition-fast;
+  width: 100%;
+
+  &:focus-visible {
+    outline: 2px solid var(--gs-color-primary, #{$color-primary});
+    outline-offset: 2px;
+  }
+}
+
+.triggerDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.triggerIcon {
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+}
+
+.triggerText {
+  flex: 1;
+  text-align: left;
+}
+
+.triggerPlaceholder {
+  color: var(--gs-text-placeholder, #{$color-text-placeholder});
+}
+
+.triggerArrow {
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+}
+
+// Wheel container
+.wheelContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: $spacing-lg;
+  min-height: 220px;
+}
+
+.selectionHighlight {
+  position: absolute;
+  left: $spacing-lg;
+  right: $spacing-lg;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  border-radius: $radius-md;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// Scroll columns
+.column {
+  flex: 1;
+  max-width: 80px;
+  position: relative;
+  z-index: $z-index-normal;
+}
+
+.columnScroll {
+  height: 220px;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.columnPadding {
+  height: 88px;
+}
+
+.columnItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-height: 44px;
+  scroll-snap-align: center;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-regular;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: color $transition-fast, font-weight $transition-fast;
+  padding: 0;
+}
+
+.columnItemSelected {
+  color: var(--gs-text-primary, #{$color-text-primary});
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xl;
+}
+
+.columnItemDisabled {
+  color: var(--gs-text-placeholder, #{$color-text-placeholder});
+  cursor: not-allowed;
+}
+
+// Separator
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  padding: 0 $spacing-xs;
+}
+
+// Footer
+.footer {
+  padding: $spacing-md $spacing-lg;
+  padding-bottom: calc(#{$spacing-md} + #{$safe-area-bottom});
+}
+
+.confirmButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  background: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-text-white, #{$color-text-white});
+  border: none;
+  border-radius: $radius-lg;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .columnItem,
+  .trigger,
+  .confirmButton {
+    transition: none;
+  }
+}

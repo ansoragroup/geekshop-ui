@@ -13,13 +13,33 @@ import styles from './DesktopRegisterPage.module.scss';
 // ─── Icons ──────────────────────────────────────────────────────────────────
 
 const PhoneIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.92z" />
   </svg>
 );
 
 const MailIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <rect x="2" y="4" width="20" height="16" rx="2" />
     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
   </svg>
@@ -92,7 +112,10 @@ export const DesktopRegisterPage: React.FC<DesktopRegisterPageProps> = ({
     if (digits.length <= 2) return digits;
     if (digits.length <= 4) return `${digits.slice(0, 2)} ${digits.slice(2)}`;
     if (digits.length <= 7) return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`;
-    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(7, 9)}`;
+    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(
+      7,
+      9
+    )}`;
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,11 +149,7 @@ export const DesktopRegisterPage: React.FC<DesktopRegisterPageProps> = ({
   }, []);
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={<DefaultHeader />}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={<DefaultHeader />} footer={<DefaultFooter />}>
       <div className={styles.centerWrap}>
         <div className={styles.card}>
           <div className={styles.logoSection}>
@@ -196,7 +215,12 @@ export const DesktopRegisterPage: React.FC<DesktopRegisterPageProps> = ({
                     variant="primary"
                     size="lg"
                     fullWidth
-                    disabled={loading || phone.replace(/\D/g, '').length < 9 || !phoneName.trim() || !phoneAgreeTerms}
+                    disabled={
+                      loading ||
+                      phone.replace(/\D/g, '').length < 9 ||
+                      !phoneName.trim() ||
+                      !phoneAgreeTerms
+                    }
                     onClick={handleSendCode}
                   >
                     {loading ? 'Sending...' : 'Send Code'}
@@ -226,7 +250,6 @@ export const DesktopRegisterPage: React.FC<DesktopRegisterPageProps> = ({
                     onComplete={handleOtpComplete}
                     error={!!otpError}
                     errorMessage={otpError}
-                    autoFocus
                     disabled={loading}
                   />
 
@@ -250,7 +273,12 @@ export const DesktopRegisterPage: React.FC<DesktopRegisterPageProps> = ({
 
           {/* ── Email Tab ── */}
           {activeTab === 'email' && (
-            <form className={styles.form} onSubmit={(e) => e.preventDefault()} role="tabpanel" aria-label="Email registration">
+            <form
+              className={styles.form}
+              onSubmit={(e) => e.preventDefault()}
+              role="tabpanel"
+              aria-label="Email registration"
+            >
               <DesktopInput
                 label="Full name"
                 placeholder="Nodira Azimova"
@@ -301,7 +329,9 @@ export const DesktopRegisterPage: React.FC<DesktopRegisterPageProps> = ({
 
           <p className={styles.switchText}>
             Already have an account?{' '}
-            <a href="#" className={styles.switchLink}>Sign In</a>
+            <button type="button" className={styles.switchLink}>
+              Sign In
+            </button>
           </p>
         </div>
       </div>

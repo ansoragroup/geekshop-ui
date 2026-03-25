@@ -140,6 +140,10 @@ export { DesktopSteps } from './data-display/DesktopSteps';
 export { DesktopTag } from './data-display/DesktopTag';
 export { DesktopTimeline } from './data-display/DesktopTimeline';
 export { DesktopRatingDistribution } from './data-display/DesktopRatingDistribution';
+export { DataTable } from './data-display/DataTable';
+export { DesktopDataTable } from './data-display/DesktopDataTable';
+export { TreeView } from './data-display/TreeView';
+export { DesktopTreeView } from './data-display/DesktopTreeView';
 
 // Feedback
 export { Toast } from './feedback/Toast';
@@ -200,6 +204,10 @@ export { DesktopSwitch } from './form/DesktopSwitch';
 export { DesktopTelegramLoginButton } from './form/DesktopTelegramLoginButton';
 export { DesktopTextArea } from './form/DesktopTextArea';
 export { DesktopCascadePicker } from './form/DesktopCascadePicker';
+export { Slider } from './form/Slider';
+export { DesktopSlider } from './form/DesktopSlider';
+export { TimePicker } from './form/TimePicker';
+export { DesktopTimePicker } from './form/DesktopTimePicker';
 
 // Layout
 export { Container } from './layout/Container';
@@ -246,7 +254,12 @@ export type { CategorySidebarProps, CategoryItem } from './navigation/CategorySi
 export type { SearchSuggestionsProps, SearchSuggestion } from './navigation/SearchSuggestions';
 export type { PopularSearchesProps, PopularSearch } from './navigation/PopularSearches';
 export type { FilterBarProps, FilterBarItem } from './navigation/FilterBar';
-export type { FilterPanelProps, FilterOption, FilterGroup, FilterValues } from './navigation/FilterPanel';
+export type {
+  FilterPanelProps,
+  FilterOption,
+  FilterGroup,
+  FilterValues,
+} from './navigation/FilterPanel';
 export type { TabFilterProps, TabFilterItem } from './navigation/TabFilter';
 export type { AppBarProps } from './navigation/AppBar';
 export type { LanguageSwitcherProps } from './navigation/LanguageSwitcher';
@@ -259,21 +272,46 @@ export type { DesktopHeaderProps } from './navigation/DesktopHeader';
 export type { DesktopHeaderMinimalProps, CategoryItem } from './navigation/DesktopHeader';
 export type { DesktopHeaderRichProps, PromoLink } from './navigation/DesktopHeader';
 export type { DesktopHeaderGlassProps } from './navigation/DesktopHeader';
-export type { DesktopHeaderMarketplaceProps, DesktopHeaderMarketplaceLabels } from './navigation/DesktopHeader';
-export type { DesktopHeaderAliExpressProps, DesktopHeaderPromoTag, DesktopHeaderQuickLink } from './navigation/DesktopHeader';
+export type {
+  DesktopHeaderMarketplaceProps,
+  DesktopHeaderMarketplaceLabels,
+} from './navigation/DesktopHeader';
+export type {
+  DesktopHeaderAliExpressProps,
+  DesktopHeaderPromoTag,
+  DesktopHeaderQuickLink,
+} from './navigation/DesktopHeader';
 export type { MegaMenuProps, MegaMenuCategory, MegaMenuSubcategory } from './navigation/MegaMenu';
 export type { BreadcrumbsProps, BreadcrumbItem } from './navigation/Breadcrumbs';
 export type { PaginationProps } from './navigation/Pagination';
 export type { BackToTopProps } from './navigation/BackToTop';
 export type { UserDropdownProps, UserDropdownItem } from './navigation/UserDropdown';
 export type { SearchAutocompleteProps, SearchProduct } from './navigation/SearchAutocomplete';
-export type { DesktopSidebarProps, SidebarCategory, SidebarBrand } from './navigation/DesktopSidebar';
+export type {
+  DesktopSidebarProps,
+  SidebarCategory,
+  SidebarBrand,
+} from './navigation/DesktopSidebar';
 export type { DropdownProps, DropdownItem } from './navigation/Dropdown';
 export type { FloatingToolbarProps, FloatingToolbarItem } from './navigation/FloatingToolbar';
 
 // Types — Product
-export type { PriceDisplayProps, PriceDisplayVariant, PriceDisplaySize } from './product/PriceDisplay';
-export type { ProductCardProps, ProductCardFlatProps, ProductCardCompoundProps, ProductCardImageProps, ProductCardBodyProps, ProductCardTitleProps, ProductCardPriceProps, ProductCardRatingProps, ProductBadge } from './product/ProductCard';
+export type {
+  PriceDisplayProps,
+  PriceDisplayVariant,
+  PriceDisplaySize,
+} from './product/PriceDisplay';
+export type {
+  ProductCardProps,
+  ProductCardFlatProps,
+  ProductCardCompoundProps,
+  ProductCardImageProps,
+  ProductCardBodyProps,
+  ProductCardTitleProps,
+  ProductCardPriceProps,
+  ProductCardRatingProps,
+  ProductBadge,
+} from './product/ProductCard';
 export type { ProductGridProps } from './product/ProductGrid';
 export type { ProductCarouselProps, CarouselProduct, CarouselTab } from './product/ProductCarousel';
 export type { ProductImageGalleryProps } from './product/ProductImageGallery';
@@ -283,18 +321,38 @@ export type { ProductListItemProps } from './product/ProductListItem';
 export type { DesktopProductCardProps } from './product/DesktopProductCard';
 export type { RecommendationFeedProps, RecommendationTab } from './product/RecommendationFeed';
 export type { DesktopProductImageGalleryProps } from './product/DesktopProductImageGallery';
-export type { DesktopProductGridProps, DesktopProductGridItem, SortOption } from './product/DesktopProductGrid';
+export type {
+  DesktopProductGridProps,
+  DesktopProductGridItem,
+  SortOption,
+} from './product/DesktopProductGrid';
 export type { DesktopImageZoomProps } from './product/DesktopImageZoom';
-export type { DesktopColorSwatchProps, DesktopColorSwatchOption } from './product/DesktopColorSwatch';
+export type {
+  DesktopColorSwatchProps,
+  DesktopColorSwatchOption,
+} from './product/DesktopColorSwatch';
 
 // Types — Commerce
 export type { QuantityStepperProps } from './commerce/QuantityStepper';
-export type { SkuSelectorProps, SkuVariant, SkuProduct, SkuSelection } from './commerce/SkuSelector';
+export type {
+  SkuSelectorProps,
+  SkuVariant,
+  SkuProduct,
+  SkuSelection,
+} from './commerce/SkuSelector';
 export type { CartItemProps } from './commerce/CartItem';
 export type { ActionBarProps } from './commerce/ActionBar';
-export type { QuickBuyPopupProps, QuickBuyProduct, QuickBuyVariant } from './commerce/QuickBuyPopup';
+export type {
+  QuickBuyPopupProps,
+  QuickBuyProduct,
+  QuickBuyVariant,
+} from './commerce/QuickBuyPopup';
 export type { AddressCardProps, Address } from './commerce/AddressCard';
-export type { PaymentMethodCardProps, PaymentMethod, PaymentType } from './commerce/PaymentMethodCard';
+export type {
+  PaymentMethodCardProps,
+  PaymentMethod,
+  PaymentType,
+} from './commerce/PaymentMethodCard';
 export type { GroupBuyCardProps, GroupBuyProduct } from './commerce/GroupBuyCard';
 export type { ShopCardProps } from './commerce/ShopCard';
 export type { DeliveryCardProps, DeliveryStatus } from './commerce/DeliveryCard';
@@ -304,16 +362,40 @@ export type { DesktopQuantityStepperProps } from './commerce/DesktopQuantityStep
 export type { DesktopCartItemProps } from './commerce/DesktopCartItem';
 export type { DesktopOrderSummaryProps, TrustBadge } from './commerce/DesktopOrderSummary';
 export type { DesktopAddressCardProps, DesktopAddress } from './commerce/DesktopAddressCard';
-export type { DesktopPaymentMethodCardProps, DesktopPaymentMethod, DesktopPaymentType } from './commerce/DesktopPaymentMethodCard';
-export type { DesktopSkuSelectorProps, DesktopSkuVariant, DesktopSkuOption } from './commerce/DesktopSkuSelector';
+export type {
+  DesktopPaymentMethodCardProps,
+  DesktopPaymentMethod,
+  DesktopPaymentType,
+} from './commerce/DesktopPaymentMethodCard';
+export type {
+  DesktopSkuSelectorProps,
+  DesktopSkuVariant,
+  DesktopSkuOption,
+} from './commerce/DesktopSkuSelector';
 export type { DesktopActionBarProps } from './commerce/DesktopActionBar';
-export type { DesktopDeliveryCardProps, DesktopDeliveryStatus } from './commerce/DesktopDeliveryCard';
-export type { DesktopGroupBuyCardProps, DesktopGroupBuyProduct } from './commerce/DesktopGroupBuyCard';
+export type {
+  DesktopDeliveryCardProps,
+  DesktopDeliveryStatus,
+} from './commerce/DesktopDeliveryCard';
+export type {
+  DesktopGroupBuyCardProps,
+  DesktopGroupBuyProduct,
+} from './commerce/DesktopGroupBuyCard';
 export type { DesktopMiniCartProps, DesktopMiniCartItem } from './commerce/DesktopMiniCart';
-export type { DesktopQuickBuyPopupProps, DesktopQuickBuyProduct, DesktopQuickBuyVariant } from './commerce/DesktopQuickBuyPopup';
+export type {
+  DesktopQuickBuyPopupProps,
+  DesktopQuickBuyProduct,
+  DesktopQuickBuyVariant,
+} from './commerce/DesktopQuickBuyPopup';
 export type { DesktopShopCardProps } from './commerce/DesktopShopCard';
-export type { DesktopInstallmentCalculatorProps, DesktopInstallmentOption } from './commerce/DesktopInstallmentCalculator';
-export type { DesktopDeliverySelectorProps, DesktopDeliveryOption } from './commerce/DesktopDeliverySelector';
+export type {
+  DesktopInstallmentCalculatorProps,
+  DesktopInstallmentOption,
+} from './commerce/DesktopInstallmentCalculator';
+export type {
+  DesktopDeliverySelectorProps,
+  DesktopDeliveryOption,
+} from './commerce/DesktopDeliverySelector';
 
 // Types — Content
 export type { HeroBannerProps } from './content/HeroBanner';
@@ -333,9 +415,18 @@ export type { DesktopCategoryIconProps } from './content/DesktopCategoryIcon';
 export type { DesktopCountdownTimerProps } from './content/DesktopCountdownTimer';
 export type { DesktopHeroBannerProps } from './content/DesktopHeroBanner';
 export type { DesktopNoticeBarProps, DesktopNoticeBarVariant } from './content/DesktopNoticeBar';
-export type { DesktopPromoBannerProps, DesktopPromoBannerImageAlign } from './content/DesktopPromoBanner';
-export type { DesktopSectionHeaderProps, DesktopSectionHeaderTab } from './content/DesktopSectionHeader';
-export type { DesktopSocialProofProps, DesktopSocialProofBuyer } from './content/DesktopSocialProof';
+export type {
+  DesktopPromoBannerProps,
+  DesktopPromoBannerImageAlign,
+} from './content/DesktopPromoBanner';
+export type {
+  DesktopSectionHeaderProps,
+  DesktopSectionHeaderTab,
+} from './content/DesktopSectionHeader';
+export type {
+  DesktopSocialProofProps,
+  DesktopSocialProofBuyer,
+} from './content/DesktopSocialProof';
 export type { DesktopSaleHitsProps, SaleHitItem } from './content/DesktopSaleHits';
 
 // Types — Data Display
@@ -344,7 +435,12 @@ export type { TagProps, TagVariant, TagColor, TagSize } from './data-display/Tag
 export type { RatingProps, RatingSize } from './data-display/Rating';
 export type { AvatarProps, AvatarSize } from './data-display/Avatar';
 export type { ReviewCardProps, ReviewCardUser } from './data-display/ReviewCard';
-export type { OrderCardProps, OrderStatus, OrderProduct, OrderAction } from './data-display/OrderCard';
+export type {
+  OrderCardProps,
+  OrderStatus,
+  OrderProduct,
+  OrderAction,
+} from './data-display/OrderCard';
 export type { SpecsTableProps, SpecItem } from './data-display/SpecsTable';
 export type { OrderStatusBarProps, OrderStatusItem } from './data-display/OrderStatusBar';
 export type { ImageLazyProps } from './data-display/ImageLazy';
@@ -355,31 +451,94 @@ export type { AvatarGroupProps, AvatarGroupSize } from './data-display/AvatarGro
 export type { TimelineProps, TimelineItem } from './data-display/Timeline';
 export type { CollapseProps, CollapsePanelProps } from './data-display/Collapse';
 export type { ProgressProps, ProgressVariant, ProgressSize } from './data-display/Progress';
-export type { AuthenticityBadgeProps, AuthenticityStatus, AuthenticityType } from './data-display/AuthenticityBadge';
-export type { ComparisonTableProps, ComparisonProduct, ComparisonSpec } from './data-display/ComparisonTable';
+export type {
+  AuthenticityBadgeProps,
+  AuthenticityStatus,
+  AuthenticityType,
+} from './data-display/AuthenticityBadge';
+export type {
+  ComparisonTableProps,
+  ComparisonProduct,
+  ComparisonSpec,
+} from './data-display/ComparisonTable';
 export type { QRCodeProps, QRCodeErrorLevel } from './data-display/QRCode';
 export type { CalendarProps, CalendarMarkedDate } from './data-display/Calendar';
 export type { DesktopReviewCardProps, ReviewUser } from './data-display/DesktopReviewCard';
-export type { DesktopSpecsTableProps, DesktopSpecItem, DesktopSpecGroup } from './data-display/DesktopSpecsTable';
-export type { DesktopOrderCardProps, DesktopOrderStatus, DesktopOrderProduct, DesktopOrderAction } from './data-display/DesktopOrderCard';
-export type { DesktopAuthenticityBadgeProps, DesktopAuthenticityStatus } from './data-display/DesktopAuthenticityBadge';
+export type {
+  DesktopSpecsTableProps,
+  DesktopSpecItem,
+  DesktopSpecGroup,
+} from './data-display/DesktopSpecsTable';
+export type {
+  DesktopOrderCardProps,
+  DesktopOrderStatus,
+  DesktopOrderProduct,
+  DesktopOrderAction,
+} from './data-display/DesktopOrderCard';
+export type {
+  DesktopAuthenticityBadgeProps,
+  DesktopAuthenticityStatus,
+} from './data-display/DesktopAuthenticityBadge';
 export type { DesktopAvatarProps, DesktopAvatarSize } from './data-display/DesktopAvatar';
-export type { DesktopAvatarGroupProps, DesktopAvatarGroupItem, DesktopAvatarGroupSize } from './data-display/DesktopAvatarGroup';
-export type { DesktopBadgeProps, DesktopBadgeType, DesktopBadgeColor, DesktopBadgePosition } from './data-display/DesktopBadge';
-export type { DesktopCalendarProps, DesktopCalendarMarkedDate } from './data-display/DesktopCalendar';
+export type {
+  DesktopAvatarGroupProps,
+  DesktopAvatarGroupItem,
+  DesktopAvatarGroupSize,
+} from './data-display/DesktopAvatarGroup';
+export type {
+  DesktopBadgeProps,
+  DesktopBadgeType,
+  DesktopBadgeColor,
+  DesktopBadgePosition,
+} from './data-display/DesktopBadge';
+export type {
+  DesktopCalendarProps,
+  DesktopCalendarMarkedDate,
+} from './data-display/DesktopCalendar';
 export type { DesktopCellProps } from './data-display/DesktopCell';
-export type { DesktopCollapseProps, DesktopCollapsePanelProps } from './data-display/DesktopCollapse';
-export type { DesktopComparisonTableProps, DesktopComparisonProduct, DesktopComparisonSpec } from './data-display/DesktopComparisonTable';
+export type {
+  DesktopCollapseProps,
+  DesktopCollapsePanelProps,
+} from './data-display/DesktopCollapse';
+export type {
+  DesktopComparisonTableProps,
+  DesktopComparisonProduct,
+  DesktopComparisonSpec,
+} from './data-display/DesktopComparisonTable';
 export type { DesktopImageLazyProps } from './data-display/DesktopImageLazy';
 export type { DesktopInfiniteScrollProps } from './data-display/DesktopInfiniteScroll';
-export type { DesktopOrderStatusBarProps, DesktopOrderStep, DesktopOrderStepStatus } from './data-display/DesktopOrderStatusBar';
-export type { DesktopProgressProps, DesktopProgressVariant, DesktopProgressSize } from './data-display/DesktopProgress';
+export type {
+  DesktopOrderStatusBarProps,
+  DesktopOrderStep,
+  DesktopOrderStepStatus,
+} from './data-display/DesktopOrderStatusBar';
+export type {
+  DesktopProgressProps,
+  DesktopProgressVariant,
+  DesktopProgressSize,
+} from './data-display/DesktopProgress';
 export type { DesktopQRCodeProps } from './data-display/DesktopQRCode';
 export type { DesktopRatingProps } from './data-display/DesktopRating';
-export type { DesktopStepsProps, DesktopStepItem, DesktopStepStatus } from './data-display/DesktopSteps';
-export type { DesktopTagProps, DesktopTagColor, DesktopTagVariant, DesktopTagSize } from './data-display/DesktopTag';
+export type {
+  DesktopStepsProps,
+  DesktopStepItem,
+  DesktopStepStatus,
+} from './data-display/DesktopSteps';
+export type {
+  DesktopTagProps,
+  DesktopTagColor,
+  DesktopTagVariant,
+  DesktopTagSize,
+} from './data-display/DesktopTag';
 export type { DesktopTimelineProps, DesktopTimelineItem } from './data-display/DesktopTimeline';
-export type { DesktopRatingDistributionProps, DesktopRatingDistributionData } from './data-display/DesktopRatingDistribution';
+export type {
+  DesktopRatingDistributionProps,
+  DesktopRatingDistributionData,
+} from './data-display/DesktopRatingDistribution';
+export type { DataTableProps, DataTableColumn } from './data-display/DataTable';
+export type { DesktopDataTableProps } from './data-display/DesktopDataTable';
+export type { TreeViewProps, TreeNode } from './data-display/TreeView';
+export type { DesktopTreeViewProps } from './data-display/DesktopTreeView';
 
 // Types — Feedback
 export type { ToastProps, ToastType } from './feedback/Toast';
@@ -404,9 +563,17 @@ export type { DesktopEmptyProps } from './feedback/DesktopEmpty';
 export type { DesktopFloatingBubbleProps } from './feedback/DesktopFloatingBubble';
 export type { DesktopLoadingProps, DesktopLoadingSize } from './feedback/DesktopLoading';
 export type { DesktopModalProps } from './feedback/DesktopModal';
-export type { DesktopPopoverProps, DesktopPopoverPlacement, DesktopPopoverTrigger } from './feedback/DesktopPopover';
+export type {
+  DesktopPopoverProps,
+  DesktopPopoverPlacement,
+  DesktopPopoverTrigger,
+} from './feedback/DesktopPopover';
 export type { DesktopPopupProps } from './feedback/DesktopPopup';
-export type { DesktopResultProps, DesktopResultStatus, DesktopResultAction } from './feedback/DesktopResult';
+export type {
+  DesktopResultProps,
+  DesktopResultStatus,
+  DesktopResultAction,
+} from './feedback/DesktopResult';
 export type { DesktopSkeletonProps, DesktopSkeletonVariant } from './feedback/DesktopSkeleton';
 export type { DesktopToastProps, DesktopToastType } from './feedback/DesktopToast';
 export type { DesktopTooltipProps, DesktopTooltipPlacement } from './feedback/DesktopTooltip';
@@ -425,21 +592,44 @@ export type { ChipProps } from './form/Chip';
 export type { ImageUploaderProps } from './form/ImageUploader';
 export type { OTPInputProps } from './form/OTPInput';
 export type { TelegramLoginButtonProps, TelegramAuthData } from './form/TelegramLoginButton';
-export type { FormProps, FormItemProps, FormHandle, FormContextValue, ValidationRule, ValidationRuleType } from './form/Form';
-export type { DesktopButtonProps, DesktopButtonVariant, DesktopButtonSize } from './form/DesktopButton';
+export type {
+  FormProps,
+  FormItemProps,
+  FormHandle,
+  FormContextValue,
+  ValidationRule,
+  ValidationRuleType,
+} from './form/Form';
+export type {
+  DesktopButtonProps,
+  DesktopButtonVariant,
+  DesktopButtonSize,
+} from './form/DesktopButton';
 export type { DesktopCheckboxProps } from './form/DesktopCheckbox';
 export type { DesktopChipProps, DesktopChipColor } from './form/DesktopChip';
 export type { DesktopDatePickerProps } from './form/DesktopDatePicker';
-export type { DesktopFormProps, DesktopFormItemProps, DesktopFormDividerProps, DesktopFormLayout } from './form/DesktopForm';
+export type {
+  DesktopFormProps,
+  DesktopFormItemProps,
+  DesktopFormDividerProps,
+  DesktopFormLayout,
+} from './form/DesktopForm';
 export type { DesktopImageUploaderProps, DesktopImageFile } from './form/DesktopImageUploader';
 export type { DesktopInputProps, DesktopInputSize } from './form/DesktopInput';
 export type { DesktopOTPInputProps } from './form/DesktopOTPInput';
 export type { DesktopRadioProps, DesktopRadioGroupProps } from './form/DesktopRadio';
 export type { DesktopSelectProps, DesktopSelectOption } from './form/DesktopSelect';
 export type { DesktopSwitchProps, DesktopSwitchSize } from './form/DesktopSwitch';
-export type { DesktopTelegramLoginButtonProps, DesktopTelegramAuthData } from './form/DesktopTelegramLoginButton';
+export type {
+  DesktopTelegramLoginButtonProps,
+  DesktopTelegramAuthData,
+} from './form/DesktopTelegramLoginButton';
 export type { DesktopTextAreaProps } from './form/DesktopTextArea';
 export type { DesktopCascadePickerProps, DesktopCascadeOption } from './form/DesktopCascadePicker';
+export type { SliderProps, SliderMark } from './form/Slider';
+export type { DesktopSliderProps } from './form/DesktopSlider';
+export type { TimePickerProps } from './form/TimePicker';
+export type { DesktopTimePickerProps } from './form/DesktopTimePicker';
 
 // Types — Layout
 export type { ContainerProps } from './layout/Container';
@@ -453,23 +643,67 @@ export type { TwoColumnLayoutProps } from './layout/TwoColumnLayout';
 export type { FooterProps, FooterColumn, FooterLink, FooterSocial } from './layout/Footer';
 export type { DesktopDividerProps } from './layout/DesktopDivider';
 export type { DesktopSectionProps } from './layout/DesktopSection';
-export type { DesktopFooterProps, DesktopFooterColumn, DesktopFooterLink, DesktopFooterAppBadge } from './layout/DesktopFooter';
+export type {
+  DesktopFooterProps,
+  DesktopFooterColumn,
+  DesktopFooterLink,
+  DesktopFooterAppBadge,
+} from './layout/DesktopFooter';
 
 // Types — Navigation (Desktop)
 export type { DesktopAppBarProps, DesktopAppBarAction } from './navigation/DesktopAppBar';
-export type { DesktopFilterBarProps, DesktopFilterBarItem, DesktopFilterBarOption } from './navigation/DesktopFilterBar';
-export type { DesktopFilterPanelProps, DesktopFilterGroup, DesktopFilterOption, DesktopFilterValues } from './navigation/DesktopFilterPanel';
-export type { DesktopPopularSearchesProps, DesktopPopularSearchItem } from './navigation/DesktopPopularSearches';
-export type { DesktopSearchBarProps, DesktopSearchBarCategory } from './navigation/DesktopSearchBar';
-export type { DesktopSearchSuggestionsProps, DesktopSearchSuggestionGroup, DesktopSearchSuggestionItem } from './navigation/DesktopSearchSuggestions';
+export type {
+  DesktopFilterBarProps,
+  DesktopFilterBarItem,
+  DesktopFilterBarOption,
+} from './navigation/DesktopFilterBar';
+export type {
+  DesktopFilterPanelProps,
+  DesktopFilterGroup,
+  DesktopFilterOption,
+  DesktopFilterValues,
+} from './navigation/DesktopFilterPanel';
+export type {
+  DesktopPopularSearchesProps,
+  DesktopPopularSearchItem,
+} from './navigation/DesktopPopularSearches';
+export type {
+  DesktopSearchBarProps,
+  DesktopSearchBarCategory,
+} from './navigation/DesktopSearchBar';
+export type {
+  DesktopSearchSuggestionsProps,
+  DesktopSearchSuggestionGroup,
+  DesktopSearchSuggestionItem,
+} from './navigation/DesktopSearchSuggestions';
 export type { DesktopSegmentedProps, DesktopSegmentedOption } from './navigation/DesktopSegmented';
 export type { DesktopTabFilterProps, DesktopTabFilterItem } from './navigation/DesktopTabFilter';
-export type { DesktopTabsProps, DesktopTabItem, DesktopTabsVariant } from './navigation/DesktopTabs';
-export type { DesktopCurrencySwitcherProps, CurrencyOption } from './navigation/DesktopCurrencySwitcher';
-export type { DesktopLanguageSwitcherProps, LanguageOption } from './navigation/DesktopLanguageSwitcher';
+export type {
+  DesktopTabsProps,
+  DesktopTabItem,
+  DesktopTabsVariant,
+} from './navigation/DesktopTabs';
+export type {
+  DesktopCurrencySwitcherProps,
+  CurrencyOption,
+} from './navigation/DesktopCurrencySwitcher';
+export type {
+  DesktopLanguageSwitcherProps,
+  LanguageOption,
+} from './navigation/DesktopLanguageSwitcher';
 export type { DesktopThemeSwitcherProps, ThemeMode } from './navigation/DesktopThemeSwitcher';
-export type { DesktopSearchAutocompleteProps, DesktopSearchSuggestedProduct, DesktopSearchTrendingItem, DesktopSearchCategoryItem, DesktopPhotoSearchSource } from './navigation/DesktopSearchAutocomplete';
-export type { DesktopNotificationBellProps, DesktopNotification, DesktopNotificationType } from './navigation/DesktopNotificationBell';
+export type {
+  DesktopSearchAutocompleteProps,
+  DesktopSearchSuggestedProduct,
+  DesktopSearchTrendingItem,
+  DesktopSearchCategoryItem,
+  DesktopPhotoSearchSource,
+} from './navigation/DesktopSearchAutocomplete';
+export type {
+  DesktopNotificationBellProps,
+  DesktopNotification,
+  DesktopNotificationType,
+} from './navigation/DesktopNotificationBell';
 
 // Types — Hooks
 export type { UseControllableStateProps } from '../hooks/useControllableState';
@@ -499,4 +733,8 @@ export {
   buildReviewSchema,
   buildOrganizationSchema,
 } from '../seo';
-export type { ProductSchemaInput, BreadcrumbItem as SchemaBreadcrumbItem, ReviewInput } from '../seo';
+export type {
+  ProductSchemaInput,
+  BreadcrumbItem as SchemaBreadcrumbItem,
+  ReviewInput,
+} from '../seo';

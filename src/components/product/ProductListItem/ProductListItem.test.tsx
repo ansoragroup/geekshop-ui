@@ -3,6 +3,32 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { ProductListItem } from './ProductListItem';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 const defaultProps = {
   image: 'https://example.com/gpu.jpg',
   title: 'NVIDIA GeForce RTX 4090',
@@ -28,13 +54,7 @@ describe('ProductListItem', () => {
   });
 
   it('renders original price and discount when provided', () => {
-    render(
-      <ProductListItem
-        {...defaultProps}
-        originalPrice={29990000}
-        discount={17}
-      />,
-    );
+    render(<ProductListItem {...defaultProps} originalPrice={29990000} discount={17} />);
     expect(screen.getByText(/29.*990.*000.*sum/)).toBeInTheDocument();
     expect(screen.getByText('-17%')).toBeInTheDocument();
   });
@@ -169,18 +189,14 @@ describe('ProductListItem', () => {
   });
 
   it('spreads rest props onto root element', () => {
-    const { container } = render(
-      <ProductListItem {...defaultProps} data-testid="list-item" />,
-    );
+    const { container } = render(<ProductListItem {...defaultProps} data-testid="list-item" />);
     const wrapper = container.firstElementChild as HTMLElement;
     const card = wrapper.firstElementChild as HTMLElement;
     expect(card.getAttribute('data-testid')).toBe('list-item');
   });
 
   it('merges custom className', () => {
-    const { container } = render(
-      <ProductListItem {...defaultProps} className="custom-item" />,
-    );
+    const { container } = render(<ProductListItem {...defaultProps} className="custom-item" />);
     const wrapper = container.firstElementChild as HTMLElement;
     const card = wrapper.firstElementChild as HTMLElement;
     expect(card.className).toContain('custom-item');

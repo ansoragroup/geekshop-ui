@@ -31,7 +31,6 @@ export const WithSearch: Story = {
 
 /** GPU category — showing NVIDIA, AMD Radeon, Intel Arc subcategories */
 export const GPUCategory: Story = {
-  name: 'GPU Category',
   args: {
     showSearch: false,
   },
@@ -39,13 +38,14 @@ export const GPUCategory: Story = {
 
 /** CPU category with AMD Ryzen, Intel Core, Server CPU subcategories */
 export const CPUCategory: Story = {
-  name: 'CPU Category',
   args: {
     showSearch: false,
   },
   play: async ({ canvasElement }) => {
     // Find and click the CPU sidebar item
-    const sidebarItems = canvasElement.querySelectorAll('[class*="sidebar"] [role="tab"], [class*="sidebar"] button, [class*="Sidebar"] [role="tab"]');
+    const sidebarItems = canvasElement.querySelectorAll(
+      '[class*="sidebar"] [role="tab"], [class*="sidebar"] button, [class*="Sidebar"] [role="tab"]'
+    );
     if (sidebarItems[1] instanceof HTMLElement) {
       sidebarItems[1].click();
     }
@@ -54,12 +54,13 @@ export const CPUCategory: Story = {
 
 /** Monitor category with Gaming, Office, Ultrawide subcategories */
 export const MonitorCategory: Story = {
-  name: 'Monitor Category',
   args: {
     showSearch: false,
   },
   play: async ({ canvasElement }) => {
-    const sidebarItems = canvasElement.querySelectorAll('[class*="sidebar"] [role="tab"], [class*="sidebar"] button, [class*="Sidebar"] [role="tab"]');
+    const sidebarItems = canvasElement.querySelectorAll(
+      '[class*="sidebar"] [role="tab"], [class*="sidebar"] button, [class*="Sidebar"] [role="tab"]'
+    );
     if (sidebarItems[2] instanceof HTMLElement) {
       sidebarItems[2].click();
     }
@@ -68,7 +69,6 @@ export const MonitorCategory: Story = {
 
 /** Categories page with search bar and TabBar navigation */
 export const FullLayout: Story = {
-  name: 'Full Layout',
   args: {
     showSearch: true,
   },

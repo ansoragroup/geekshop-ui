@@ -19,7 +19,6 @@ export const Default: Story = {};
 
 /** Email tab with email+password form. */
 export const EmailTab: Story = {
-  name: 'Email Tab',
   args: {
     defaultTab: 'email',
   },
@@ -60,7 +59,6 @@ export const PhoneLoginLoading: Story = {
 
 /** Email tab with error message. */
 export const WithError: Story = {
-  name: 'With Error',
   args: {
     defaultTab: 'email',
     error: 'Invalid email or password. Please try again.',

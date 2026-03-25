@@ -59,7 +59,17 @@ function getInitials(name: string): string {
 
 function ThumbUpIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z" />
       <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
     </svg>
@@ -68,7 +78,17 @@ function ThumbUpIcon() {
 
 function ThumbDownIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z" />
       <path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17" />
     </svg>
@@ -95,15 +115,15 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const handleHelpful = useCallback(
       (e: MouseEvent) => {
         e.stopPropagation();
         onHelpful?.();
       },
-      [onHelpful],
+      [onHelpful]
     );
 
     const handleNotHelpful = useCallback(
@@ -111,7 +131,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
         e.stopPropagation();
         onNotHelpful?.();
       },
-      [onNotHelpful],
+      [onNotHelpful]
     );
 
     return (
@@ -120,12 +140,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             {user.avatar ? (
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className={styles.avatar}
-                loading="lazy"
-              />
+              <img src={user.avatar} alt={user.name} className={styles.avatar} loading="lazy" />
             ) : (
               <div className={styles.avatarFallback} aria-hidden="true">
                 {getInitials(user.name)}
@@ -139,7 +154,9 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
                 </span>
                 {variant && (
                   <>
-                    <span className={styles.separator} aria-hidden="true">&bull;</span>
+                    <span className={styles.separator} aria-hidden="true">
+                      &bull;
+                    </span>
                     <span className={styles.variant}>Variant: {variant}</span>
                   </>
                 )}
@@ -159,7 +176,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
               <img
                 key={idx}
                 src={src}
-                alt={`Review image ${idx + 1}`}
+                alt={`${idx + 1}`}
                 className={styles.thumbnail}
                 loading="lazy"
               />
@@ -192,7 +209,7 @@ export const DesktopReviewCard = forwardRef<HTMLDivElement, DesktopReviewCardPro
         </div>
       </div>
     );
-  },
+  }
 );
 
 DesktopReviewCard.displayName = 'DesktopReviewCard';

@@ -17,7 +17,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const EmailSent: Story = {
-  name: 'Email Sent',
   args: {
     initialSubmitted: true,
     initialEmail: 'bekzod.tursunov@mail.uz',

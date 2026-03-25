@@ -15,7 +15,8 @@ export interface CalendarMarkedDate {
   label?: string;
 }
 
-export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+export interface CalendarProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected date(s) (controlled) */
   value?: Date | Date[];
   /** Default selected date(s) (uncontrolled) */
@@ -39,39 +40,108 @@ export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onC
 }
 
 const MONTH_NAMES: Record<string, string[]> = {
-  uz: ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'],
-  ru: ['\u042F\u043D\u0432\u0430\u0440\u044C', '\u0424\u0435\u0432\u0440\u0430\u043B\u044C', '\u041C\u0430\u0440\u0442', '\u0410\u043F\u0440\u0435\u043B\u044C', '\u041C\u0430\u0439', '\u0418\u044E\u043D\u044C', '\u0418\u044E\u043B\u044C', '\u0410\u0432\u0433\u0443\u0441\u0442', '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C', '\u041E\u043A\u0442\u044F\u0431\u0440\u044C', '\u041D\u043E\u044F\u0431\u0440\u044C', '\u0414\u0435\u043A\u0430\u0431\u0440\u044C'],
-  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  uz: [
+    'Yanvar',
+    'Fevral',
+    'Mart',
+    'Aprel',
+    'May',
+    'Iyun',
+    'Iyul',
+    'Avgust',
+    'Sentyabr',
+    'Oktyabr',
+    'Noyabr',
+    'Dekabr',
+  ],
+  ru: [
+    '\u042F\u043D\u0432\u0430\u0440\u044C',
+    '\u0424\u0435\u0432\u0440\u0430\u043B\u044C',
+    '\u041C\u0430\u0440\u0442',
+    '\u0410\u043F\u0440\u0435\u043B\u044C',
+    '\u041C\u0430\u0439',
+    '\u0418\u044E\u043D\u044C',
+    '\u0418\u044E\u043B\u044C',
+    '\u0410\u0432\u0433\u0443\u0441\u0442',
+    '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C',
+    '\u041E\u043A\u0442\u044F\u0431\u0440\u044C',
+    '\u041D\u043E\u044F\u0431\u0440\u044C',
+    '\u0414\u0435\u043A\u0430\u0431\u0440\u044C',
+  ],
+  en: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 };
 
 const DAY_NAMES_MON: Record<string, string[]> = {
   uz: ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'],
-  ru: ['\u041F\u043D', '\u0412\u0442', '\u0421\u0440', '\u0427\u0442', '\u041F\u0442', '\u0421\u0431', '\u0412\u0441'],
+  ru: [
+    '\u041F\u043D',
+    '\u0412\u0442',
+    '\u0421\u0440',
+    '\u0427\u0442',
+    '\u041F\u0442',
+    '\u0421\u0431',
+    '\u0412\u0441',
+  ],
   en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
 };
 
 const DAY_NAMES_SUN: Record<string, string[]> = {
   uz: ['Ya', 'Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh'],
-  ru: ['\u0412\u0441', '\u041F\u043D', '\u0412\u0442', '\u0421\u0440', '\u0427\u0442', '\u041F\u0442', '\u0421\u0431'],
+  ru: [
+    '\u0412\u0441',
+    '\u041F\u043D',
+    '\u0412\u0442',
+    '\u0421\u0440',
+    '\u0427\u0442',
+    '\u041F\u0442',
+    '\u0421\u0431',
+  ],
   en: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
 };
 
 const ChevronLeft = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M12 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M12 15l-5-5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRight = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M8 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M8 5l5 5-5 5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 function isSameDay(a: Date, b: Date): boolean {
-  return a.getFullYear() === b.getFullYear() &&
+  return (
+    a.getFullYear() === b.getFullYear() &&
     a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
+    a.getDate() === b.getDate()
+  );
 }
 
 function dateToKey(date: Date): string {
@@ -109,7 +179,11 @@ function normalizeDates(value: Date | Date[] | undefined): Date[] {
 
 function isInRange(date: Date, rangeStart: Date, rangeEnd: Date): boolean {
   const d = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
-  const s = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate()).getTime();
+  const s = new Date(
+    rangeStart.getFullYear(),
+    rangeStart.getMonth(),
+    rangeStart.getDate()
+  ).getTime();
   const e = new Date(rangeEnd.getFullYear(), rangeEnd.getMonth(), rangeEnd.getDate()).getTime();
   const start = Math.min(s, e);
   const end = Math.max(s, e);
@@ -142,7 +216,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const { t, locale: ctxLocale } = useGeekShop();
     const locale = localeProp ?? ctxLocale;
@@ -155,11 +229,11 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       onChange,
     });
 
-    const [viewYear, setViewYear] = useState(() =>
-      selectedDates[0]?.getFullYear() ?? today.getFullYear(),
+    const [viewYear, setViewYear] = useState(
+      () => selectedDates[0]?.getFullYear() ?? today.getFullYear()
     );
-    const [viewMonth, setViewMonth] = useState(() =>
-      selectedDates[0]?.getMonth() ?? today.getMonth(),
+    const [viewMonth, setViewMonth] = useState(
+      () => selectedDates[0]?.getMonth() ?? today.getMonth()
     );
 
     const handlePrevMonth = useCallback(() => {
@@ -180,17 +254,20 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       }
     }, [viewMonth]);
 
-    const isDateDisabled = useCallback((date: Date): boolean => {
-      if (min) {
-        const minStart = new Date(min.getFullYear(), min.getMonth(), min.getDate());
-        if (date < minStart) return true;
-      }
-      if (max) {
-        const maxEnd = new Date(max.getFullYear(), max.getMonth(), max.getDate());
-        if (date > maxEnd) return true;
-      }
-      return false;
-    }, [min, max]);
+    const isDateDisabled = useCallback(
+      (date: Date): boolean => {
+        if (min) {
+          const minStart = new Date(min.getFullYear(), min.getMonth(), min.getDate());
+          if (date < minStart) return true;
+        }
+        if (max) {
+          const maxEnd = new Date(max.getFullYear(), max.getMonth(), max.getDate());
+          if (date > maxEnd) return true;
+        }
+        return false;
+      },
+      [min, max]
+    );
 
     const handleDayClick = (day: number) => {
       const date = new Date(viewYear, viewMonth, day);
@@ -279,9 +356,10 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     }
 
     const monthNames = MONTH_NAMES[locale] ?? MONTH_NAMES.uz;
-    const dayNames = firstDayOfWeek === 1
-      ? (DAY_NAMES_MON[locale] ?? DAY_NAMES_MON.uz)
-      : (DAY_NAMES_SUN[locale] ?? DAY_NAMES_SUN.uz);
+    const dayNames =
+      firstDayOfWeek === 1
+        ? DAY_NAMES_MON[locale] ?? DAY_NAMES_MON.uz
+        : DAY_NAMES_SUN[locale] ?? DAY_NAMES_SUN.uz;
 
     const gridColumns = showWeekNumber ? 8 : 7;
 
@@ -299,7 +377,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             <ChevronLeft />
           </button>
           <span className={styles.monthLabel}>
-            {monthNamescn(viewMonth)} {viewYear}
+            {monthNames[viewMonth]} {viewYear}
           </span>
           <button
             type="button"
@@ -317,11 +395,13 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         >
           {showWeekNumber && <span className={styles.weekHeader}>#</span>}
           {dayNames.map((name) => (
-            <span key={name} className={styles.dayHeader}>{name}</span>
+            <span key={name} className={styles.dayHeader}>
+              {name}
+            </span>
           ))}
         </div>
 
-        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+        {}
         <div
           className={styles.weeksContainer}
           role="grid"
@@ -343,9 +423,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 className={styles.weekRow}
                 style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}
               >
-                {showWeekNumber && (
-                  <span className={styles.weekNumber}>{weekNum}</span>
-                )}
+                {showWeekNumber && <span className={styles.weekNumber}>{weekNum}</span>}
                 {week.map((day, dayIdx) => {
                   if (day === null) {
                     return <span key={`empty-${dayIdx}`} className={styles.dayEmpty} />;
@@ -359,19 +437,22 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   const marked = markedDates[dateKey];
 
                   // Range mode styling
-                  const inRange = mode === 'range' && selectedDates.length === 2 &&
+                  const inRange =
+                    mode === 'range' &&
+                    selectedDates.length === 2 &&
                     isInRange(date, selectedDates[0], selectedDates[1]);
                   const rangeStart = mode === 'range' && isRangeStart(date, selectedDates);
                   const rangeEnd = mode === 'range' && isRangeEnd(date, selectedDates);
 
-                  const dayClass = [
+                  const dayClass = cn(
                     styles.day,
                     isToday && styles.dayToday,
                     isSelected && styles.daySelected,
                     isDisabled && styles.dayDisabled,
                     inRange && !isSelected && styles.dayInRange,
                     rangeStart && styles.dayRangeStart,
-                    rangeEnd && styles.dayRangeEnd];
+                    rangeEnd && styles.dayRangeEnd
+                  );
 
                   return (
                     <button
@@ -410,7 +491,7 @@ export const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 Calendar.displayName = 'Calendar';

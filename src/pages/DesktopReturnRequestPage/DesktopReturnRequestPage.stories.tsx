@@ -15,7 +15,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {},
 };
 
@@ -24,7 +23,8 @@ export const Defective: Story = {
   args: {
     orderId: 'GS-2024-9012',
     initialReason: 'defective',
-    initialDescription: 'The monitor arrived with dead pixels in the lower-right corner. There are approximately 3-4 stuck pixels visible on white backgrounds.',
+    initialDescription:
+      'The monitor arrived with dead pixels in the lower-right corner. There are approximately 3-4 stuck pixels visible on white backgrounds.',
     item: {
       id: '1',
       image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=160&h=160&fit=crop',
@@ -56,7 +56,8 @@ export const WrongItem: Story = {
   args: {
     orderId: 'GS-2024-4567',
     initialReason: 'wrong-item',
-    initialDescription: 'I ordered the black version but received the silver one. The packaging had the correct label but the product inside was wrong.',
+    initialDescription:
+      'I ordered the black version but received the silver one. The packaging had the correct label but the product inside was wrong.',
     item: {
       id: '1',
       image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=160&h=160&fit=crop',
@@ -68,11 +69,11 @@ export const WrongItem: Story = {
 };
 
 export const NotAsDescribed: Story = {
-  name: 'Not As Described',
   args: {
     orderId: 'GS-2024-3333',
     initialReason: 'not-as-described',
-    initialDescription: 'The listing said 2TB storage but the product only has 1TB. The model number also does not match what was advertised.',
+    initialDescription:
+      'The listing said 2TB storage but the product only has 1TB. The model number also does not match what was advertised.',
     item: {
       id: '1',
       image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
@@ -84,11 +85,11 @@ export const NotAsDescribed: Story = {
 };
 
 export const HighValueReturn: Story = {
-  name: 'High Value Return',
   args: {
     orderId: 'GS-2024-1001',
     initialReason: 'defective',
-    initialDescription: 'The laptop screen has a visible dark spot in the center. Battery only lasts 2 hours instead of the advertised 18 hours.',
+    initialDescription:
+      'The laptop screen has a visible dark spot in the center. Battery only lasts 2 hours instead of the advertised 18 hours.',
     initialRefundMethod: 'original',
     item: {
       id: '1',

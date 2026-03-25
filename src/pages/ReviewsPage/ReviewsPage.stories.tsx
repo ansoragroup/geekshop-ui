@@ -19,13 +19,10 @@ type Story = StoryObj<typeof ReviewsPage>;
 export const Default: Story = {};
 
 /** All reviews tab showing the full list with infinite scroll */
-export const AllReviews: Story = {
-  name: 'All Reviews',
-};
+export const AllReviews: Story = {};
 
 /** Reviews filtered to only show reviews with photos */
 export const PhotoReviews: Story = {
-  name: 'Photo Reviews',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[1] instanceof HTMLElement) {
@@ -36,7 +33,6 @@ export const PhotoReviews: Story = {
 
 /** 5-star reviews only — positive feedback filter */
 export const FiveStarReviews: Story = {
-  name: 'Five Star Reviews',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[2] instanceof HTMLElement) {
@@ -47,7 +43,6 @@ export const FiveStarReviews: Story = {
 
 /** 3-star reviews — average/mixed feedback */
 export const ThreeStarReviews: Story = {
-  name: 'Three Star Reviews',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[4] instanceof HTMLElement) {
@@ -58,7 +53,6 @@ export const ThreeStarReviews: Story = {
 
 /** Low rating (1-2 star) reviews showing negative feedback */
 export const LowRatingReviews: Story = {
-  name: 'Low Rating Reviews',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[6] instanceof HTMLElement) {

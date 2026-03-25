@@ -1,0 +1,172 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  container-type: inline-size;
+  width: 100%;
+}
+
+.nodeRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-height: 36px;
+  padding: $spacing-xs $spacing-sm;
+  cursor: default;
+  transition: background $transition-fast;
+  border-radius: $radius-sm;
+  outline: none;
+
+  &:hover {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+}
+
+.nodeRowSelected {
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+
+  &:hover {
+    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+.nodeRowFocused {
+  box-shadow: inset 0 0 0 2px var(--gs-color-primary, #{$color-primary});
+}
+
+.nodeRowDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+
+  &:hover {
+    background: none;
+  }
+}
+
+// Expand/collapse button
+.expandBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  border-radius: $radius-xs;
+  flex-shrink: 0;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: var(--gs-border, #{$color-border});
+    color: var(--gs-text-primary, #{$color-text-primary});
+  }
+}
+
+.chevron {
+  transition: transform $transition-fast;
+}
+
+.chevronExpanded {
+  transform: rotate(90deg);
+}
+
+// Leaf spacer (matches expand button width)
+.leafSpacer {
+  width: 24px;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+// Checkbox
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 1.5px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-xs;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background $transition-fast, border-color $transition-fast;
+  color: var(--gs-text-white, #{$color-text-white});
+
+  &:hover {
+    border-color: var(--gs-color-primary, #{$color-primary});
+  }
+}
+
+.checkboxChecked {
+  background: var(--gs-color-primary, #{$color-primary});
+  border-color: var(--gs-color-primary, #{$color-primary});
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+    border-color: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+// Icon
+.nodeIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+// Label
+.nodeLabel {
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  line-height: $line-height-normal;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Loading skeleton
+.loadingRow {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: $spacing-xs $spacing-sm;
+}
+
+.skeleton {
+  height: 14px;
+  background: var(--gs-bg-skeleton, #{$color-bg-skeleton});
+  border-radius: $radius-xs;
+  width: 60%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .chevron,
+  .nodeRow,
+  .expandBtn,
+  .checkbox {
+    transition: none;
+  }
+
+  .skeleton {
+    animation: none;
+  }
+}

@@ -12,7 +12,17 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: 24, background: '#fff', borderRadius: 12, display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'center' }}>
+      <div
+        style={{
+          padding: 24,
+          background: '#fff',
+          borderRadius: 12,
+          display: 'flex',
+          gap: 24,
+          flexWrap: 'wrap',
+          alignItems: 'center',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -24,7 +34,19 @@ type Story = StoryObj<typeof meta>;
 
 /* Box placeholder for overlay demos */
 const Box = ({ children }: { children?: React.ReactNode }) => (
-  <div style={{ width: 40, height: 40, borderRadius: 8, background: '#F0F0F0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, color: '#999' }}>
+  <div
+    style={{
+      width: 40,
+      height: 40,
+      borderRadius: 8,
+      background: '#F0F0F0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: 12,
+      color: '#999',
+    }}
+  >
     {children}
   </div>
 );
@@ -35,7 +57,11 @@ export const Dot: Story = {
     <Badge type="dot" color="error">
       <Box>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="1.8">
-          <path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
           <path d="M13.73 21a2 2 0 01-3.46 0" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </Box>
@@ -54,7 +80,11 @@ export const Count: Story = {
     <Badge {...args}>
       <Box>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="1.8">
-          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </Box>
     </Badge>
@@ -143,7 +173,7 @@ export const OnProductImage: Story = {
     <div style={{ position: 'relative', width: 160 }}>
       <Badge type="text" content="HOT" color="error" position="top-left">
         <img
-          src="https://picsum.photos/seed/rtx4060/160/160"
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&auto=format"
           alt="RTX 4060"
           style={{ width: 160, height: 160, borderRadius: 12, objectFit: 'cover' }}
         />

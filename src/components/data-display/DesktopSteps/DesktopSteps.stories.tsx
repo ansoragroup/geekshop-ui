@@ -103,7 +103,6 @@ export const Vertical: Story = {
 };
 
 export const VerticalWithError: Story = {
-  name: 'Vertical With Error',
   args: {
     current: 3,
     direction: 'vertical',
@@ -111,7 +110,11 @@ export const VerticalWithError: Story = {
       { title: 'Return Requested', description: 'You submitted a return request' },
       { title: 'Approved', description: 'Return request approved' },
       { title: 'Item Shipped', description: 'You shipped the item back' },
-      { title: 'Inspection Failed', description: 'Item did not meet return conditions', status: 'error' },
+      {
+        title: 'Inspection Failed',
+        description: 'Item did not meet return conditions',
+        status: 'error',
+      },
       { title: 'Refund', description: 'Pending resolution' },
     ],
   },
@@ -144,15 +147,9 @@ export const SixSteps: Story = {
 };
 
 export const WithoutDescriptions: Story = {
-  name: 'Without Descriptions',
   args: {
     current: 2,
-    items: [
-      { title: 'Step 1' },
-      { title: 'Step 2' },
-      { title: 'Step 3' },
-      { title: 'Step 4' },
-    ],
+    items: [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }, { title: 'Step 4' }],
   },
 };
 
@@ -175,7 +172,15 @@ export const Interactive: Story = {
             type="button"
             disabled={current <= 0}
             onClick={() => setCurrent((p) => Math.max(0, p - 1))}
-            style={{ padding: '8px 16px', borderRadius: 6, border: '1px solid #ddd', background: current <= 0 ? '#f5f5f5' : '#fff', cursor: current <= 0 ? 'default' : 'pointer', fontSize: 13, color: current <= 0 ? '#ccc' : '#333' }}
+            style={{
+              padding: '8px 16px',
+              borderRadius: 6,
+              border: '1px solid #ddd',
+              background: current <= 0 ? '#f5f5f5' : '#fff',
+              cursor: current <= 0 ? 'default' : 'pointer',
+              fontSize: 13,
+              color: current <= 0 ? '#ccc' : '#333',
+            }}
           >
             Back
           </button>
@@ -183,14 +188,33 @@ export const Interactive: Story = {
             type="button"
             disabled={current >= items.length}
             onClick={() => setCurrent((p) => Math.min(items.length, p + 1))}
-            style={{ padding: '8px 16px', borderRadius: 6, border: 'none', background: current >= items.length ? '#ccc' : '#FF5000', color: '#fff', cursor: current >= items.length ? 'default' : 'pointer', fontSize: 13 }}
+            style={{
+              padding: '8px 16px',
+              borderRadius: 6,
+              border: 'none',
+              background: current >= items.length ? '#ccc' : '#FF5000',
+              color: '#fff',
+              cursor: current >= items.length ? 'default' : 'pointer',
+              fontSize: 13,
+            }}
           >
-            {current < items.length - 1 ? 'Next' : current === items.length - 1 ? 'Complete' : 'Done'}
+            {current < items.length - 1
+              ? 'Next'
+              : current === items.length - 1
+              ? 'Complete'
+              : 'Done'}
           </button>
           <button
             type="button"
             onClick={() => setCurrent(0)}
-            style={{ padding: '8px 16px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', cursor: 'pointer', fontSize: 13 }}
+            style={{
+              padding: '8px 16px',
+              borderRadius: 6,
+              border: '1px solid #ddd',
+              background: '#fff',
+              cursor: 'pointer',
+              fontSize: 13,
+            }}
           >
             Reset
           </button>

@@ -124,33 +124,33 @@
 
 // Payment type color accents on selected
 .type-visa.selected {
-  border-color: #1A1F71;
-  box-shadow: 0 0 0 1px #1A1F71;
+  border-color: #1a1f71; /* scss-audit-ignore — Visa brand color */
+  box-shadow: 0 0 0 1px #1a1f71; /* scss-audit-ignore — Visa brand color */
 }
 
 .type-mastercard.selected {
-  border-color: #EB001B;
-  box-shadow: 0 0 0 1px #EB001B;
+  border-color: #eb001b; /* scss-audit-ignore — Mastercard brand color */
+  box-shadow: 0 0 0 1px #eb001b; /* scss-audit-ignore — Mastercard brand color */
 }
 
 .type-uzcard.selected {
-  border-color: #00A651;
-  box-shadow: 0 0 0 1px #00A651;
+  border-color: #00a651; /* scss-audit-ignore — Uzcard brand color */
+  box-shadow: 0 0 0 1px #00a651; /* scss-audit-ignore — Uzcard brand color */
 }
 
 .type-humo.selected {
-  border-color: #5B2D8E;
-  box-shadow: 0 0 0 1px #5B2D8E;
+  border-color: #5b2d8e; /* scss-audit-ignore — Humo brand color */
+  box-shadow: 0 0 0 1px #5b2d8e; /* scss-audit-ignore — Humo brand color */
 }
 
 .type-click.selected {
-  border-color: #00AEEF;
-  box-shadow: 0 0 0 1px #00AEEF;
+  border-color: #00aeef; /* scss-audit-ignore — Click brand color */
+  box-shadow: 0 0 0 1px #00aeef; /* scss-audit-ignore — Click brand color */
 }
 
 .type-payme.selected {
-  border-color: #33CCCC;
-  box-shadow: 0 0 0 1px #33CCCC;
+  border-color: #33cccc; /* scss-audit-ignore — Payme brand color */
+  box-shadow: 0 0 0 1px #33cccc; /* scss-audit-ignore — Payme brand color */
 }
 
 .type-cash.selected {

@@ -1,7 +1,33 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { Timeline } from './Timeline';
 import type { TimelineItem } from './Timeline';
+
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
 
 const defaultItems: TimelineItem[] = [
   { time: '15:30', title: 'Buyurtma yetkazildi', description: 'Toshkent', status: 'completed' },
@@ -44,11 +70,7 @@ describe('Timeline', () => {
   });
 
   it('does not render description when not provided', () => {
-    render(
-      <Timeline
-        items={[{ title: 'Test', status: 'completed' }]}
-      />,
-    );
+    render(<Timeline items={[{ title: 'Test', status: 'completed' }]} />);
     const items = screen.getAllByRole('listitem');
     expect(items[0].querySelectorAll('[class*="description"]')).toHaveLength(0);
   });
@@ -62,9 +84,7 @@ describe('Timeline', () => {
   });
 
   it('defaults status to pending when not specified', () => {
-    const { container } = render(
-      <Timeline items={[{ title: 'No status' }]} />,
-    );
+    const { container } = render(<Timeline items={[{ title: 'No status' }]} />);
     const item = container.querySelector('[class*="item"]');
     expect(item?.className).toContain('status-pending');
   });
@@ -80,9 +100,13 @@ describe('Timeline', () => {
     render(
       <Timeline
         items={[
-          { title: 'With icon', status: 'completed', icon: <span data-testid="custom-icon">X</span> },
+          {
+            title: 'With icon',
+            status: 'completed',
+            icon: <span data-testid="custom-icon">X</span>,
+          },
         ]}
-      />,
+      />
     );
     expect(screen.getByTestId('custom-icon')).toBeInTheDocument();
   });
@@ -101,9 +125,7 @@ describe('Timeline', () => {
   });
 
   it('applies custom className', () => {
-    const { container } = render(
-      <Timeline items={defaultItems} className="my-timeline" />,
-    );
+    const { container } = render(<Timeline items={defaultItems} className="my-timeline" />);
     expect(container.firstElementChild?.className).toContain('my-timeline');
   });
 

@@ -10,7 +10,17 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: 24, background: '#fff', borderRadius: 12, display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+      <div
+        style={{
+          padding: 24,
+          background: '#fff',
+          borderRadius: 12,
+          display: 'flex',
+          gap: 16,
+          flexWrap: 'wrap',
+          alignItems: 'center',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -23,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 // --- With image ---
 export const WithImage: Story = {
   args: {
-    src: 'https://picsum.photos/seed/user1/100/100',
+    src: 'https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=100&h=100&fit=crop&auto=format',
     name: 'Aziz Karimov',
     size: 'md',
   },
@@ -41,10 +51,26 @@ export const Initials: Story = {
 export const AllSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-      <Avatar src="https://picsum.photos/seed/user-sm/100/100" name="User" size="sm" />
-      <Avatar src="https://picsum.photos/seed/user-md/100/100" name="User" size="md" />
-      <Avatar src="https://picsum.photos/seed/user-lg/100/100" name="User" size="lg" />
-      <Avatar src="https://picsum.photos/seed/user-xl/100/100" name="User" size="xl" />
+      <Avatar
+        src="https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=100&h=100&fit=crop&auto=format"
+        name="User"
+        size="sm"
+      />
+      <Avatar
+        src="https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=100&h=100&fit=crop&auto=format"
+        name="User"
+        size="md"
+      />
+      <Avatar
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&auto=format"
+        name="User"
+        size="lg"
+      />
+      <Avatar
+        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=100&h=100&fit=crop&auto=format"
+        name="User"
+        size="xl"
+      />
     </div>
   ),
 };
@@ -64,7 +90,7 @@ export const AllSizesInitials: Story = {
 // --- Online indicator ---
 export const Online: Story = {
   args: {
-    src: 'https://picsum.photos/seed/online-user/100/100',
+    src: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=100&h=100&fit=crop&auto=format',
     name: 'Sardor Usmonov',
     size: 'lg',
     showOnline: true,
@@ -97,16 +123,28 @@ export const BrokenImage: Story = {
 export const ProfileHeader: Story = {
   name: 'Profile Page Header',
   render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 16, background: 'linear-gradient(180deg, #FF5000 0%, #FF8A56 100%)', borderRadius: 12, width: 340 }}>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 12,
+        padding: 16,
+        background: 'linear-gradient(180deg, #FF5000 0%, #FF8A56 100%)',
+        borderRadius: 12,
+        width: 340,
+      }}
+    >
       <Avatar
-        src="https://picsum.photos/seed/profile-user/100/100"
+        src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=100&h=100&fit=crop&auto=format"
         name="Sardor Usmonov"
         size="xl"
         showOnline
       />
       <div>
         <div style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>Sardor Usmonov</div>
-        <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 }}>+998 90 123 45 67</div>
+        <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 }}>
+          +998 90 123 45 67
+        </div>
       </div>
     </div>
   ),

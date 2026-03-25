@@ -1,4 +1,4 @@
-export type ThemePreset = 'default' | 'teal' | 'red' | 'yellow' | 'green' | 'monochrome';
+export type ThemePreset = 'default' | 'teal' | 'red' | 'yellow' | 'green' | 'monochrome' | 'dark';
 
 export interface ThemePresetColors {
   // Primary family
@@ -165,6 +165,36 @@ export const THEME_PRESETS: Record<ThemePreset, ThemePresetConfig> = {
       textLink: '#1A1A1A',
     },
   },
+  dark: {
+    name: 'dark',
+    label: 'Dark Mode',
+    colors: {
+      primary: '#FF6A1F',
+      primaryLight: '#FF8C4D',
+      primaryDark: '#E64800',
+      primaryBg: '#2A1500',
+      primaryGradient: 'linear-gradient(135deg, #FF6A1F 0%, #FF8C4D 100%)',
+      primaryGradientHeader: 'linear-gradient(180deg, #FF6A1F 0%, #FF8C4D 50%, #FFB088 100%)',
+      price: '#FF6B6B',
+      priceDark: '#E55A5A',
+      sale: '#FF6B6B',
+      error: '#FF6B6B',
+      success: '#2DD4A8',
+      successLight: '#0A2E23',
+      warning: '#FFB347',
+      warningLight: '#2E1F00',
+      info: '#4DA6FF',
+      textLink: '#FF6A1F',
+    },
+  },
 };
 
-export const THEME_PRESET_NAMES: ThemePreset[] = ['default', 'teal', 'red', 'yellow', 'green', 'monochrome'];
+export const THEME_PRESET_NAMES: ThemePreset[] = [
+  'default',
+  'teal',
+  'red',
+  'yellow',
+  'green',
+  'monochrome',
+  'dark',
+];

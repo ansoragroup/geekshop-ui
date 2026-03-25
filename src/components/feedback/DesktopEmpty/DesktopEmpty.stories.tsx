@@ -11,7 +11,15 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ width: 800, padding: 24, background: '#ffffff', borderRadius: 12, border: '1px solid #eee' }}>
+      <div
+        style={{
+          width: 800,
+          padding: 24,
+          background: '#ffffff',
+          borderRadius: 12,
+          border: '1px solid #eee',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -26,7 +34,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: 'No data available',
-    description: 'There are no items to display at the moment. Try adjusting your filters or check back later.',
+    description:
+      'There are no items to display at the moment. Try adjusting your filters or check back later.',
   },
 };
 
@@ -38,14 +47,28 @@ export const FullFeatured: Story = {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" fill="#FFF5F0" />
-        <path d="M45 52h12l6 6h36l-4 32H58l-7-32H45" stroke="#FF5000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path
+          d="M45 52h12l6 6h36l-4 32H58l-7-32H45"
+          stroke="#FF5000"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
         <circle cx="66" cy="100" r="4" fill="#FF5000" />
         <circle cx="90" cy="100" r="4" fill="#FF5000" />
-        <path d="M70 74h20M80 64v20" stroke="#FF5000" strokeWidth="2.5" strokeLinecap="round" opacity="0.3" />
+        <path
+          d="M70 74h20M80 64v20"
+          stroke="#FF5000"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          opacity="0.3"
+        />
       </svg>
     ),
     title: 'Your cart is empty',
-    description: 'Looks like you haven\'t added any items to your cart yet. Start shopping to find amazing deals!',
+    description:
+      "Looks like you haven't added any items to your cart yet. Start shopping to find amazing deals!",
     actionText: 'Browse Products',
     onAction: () => console.log('Browse clicked'),
   },
@@ -54,19 +77,32 @@ export const FullFeatured: Story = {
 // --- EMPTY CART ---
 
 export const EmptyCart: Story = {
-  name: 'Empty Cart',
   args: {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" fill="#FFF5F0" />
-        <path d="M45 52h12l6 6h36l-4 32H58l-7-32H45" stroke="#FF5000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path
+          d="M45 52h12l6 6h36l-4 32H58l-7-32H45"
+          stroke="#FF5000"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
         <circle cx="66" cy="100" r="4" fill="#FF5000" />
         <circle cx="90" cy="100" r="4" fill="#FF5000" />
-        <path d="M70 74h20M80 64v20" stroke="#FF5000" strokeWidth="2.5" strokeLinecap="round" opacity="0.3" />
+        <path
+          d="M70 74h20M80 64v20"
+          stroke="#FF5000"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          opacity="0.3"
+        />
       </svg>
     ),
     title: 'Your cart is empty',
-    description: 'Looks like you haven\'t added any items to your cart yet. Start shopping to find amazing deals!',
+    description:
+      "Looks like you haven't added any items to your cart yet. Start shopping to find amazing deals!",
     actionText: 'Browse Products',
     onAction: () => console.log('Browse clicked'),
   },
@@ -75,7 +111,6 @@ export const EmptyCart: Story = {
 // --- NO SEARCH RESULTS ---
 
 export const NoSearchResults: Story = {
-  name: 'No Search Results',
   args: {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
@@ -86,7 +121,8 @@ export const NoSearchResults: Story = {
       </svg>
     ),
     title: 'No results found',
-    description: 'We couldn\'t find anything matching "RTX 5090 Ti". Try different keywords or browse our categories.',
+    description:
+      'We couldn\'t find anything matching "RTX 5090 Ti". Try different keywords or browse our categories.',
     actionText: 'Clear Search',
     onAction: () => console.log('Clear search'),
   },
@@ -98,7 +134,8 @@ export const NoOrders: Story = {
   name: 'No Orders Yet',
   args: {
     title: 'No orders yet',
-    description: 'You haven\'t placed any orders. When you do, they will appear here so you can track and manage them.',
+    description:
+      "You haven't placed any orders. When you do, they will appear here so you can track and manage them.",
     actionText: 'Start Shopping',
     onAction: () => console.log('Start shopping'),
   },
@@ -107,16 +144,23 @@ export const NoOrders: Story = {
 // --- EMPTY WISHLIST ---
 
 export const EmptyWishlist: Story = {
-  name: 'Empty Wishlist',
   args: {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" fill="#FFF0F3" />
-        <path d="M80 120s-30-20-40-40c-6-12-2-28 10-32s20 2 28 14l2 3 2-3c8-12 16-18 28-14s16 20 10 32c-10 20-40 40-40 40z" stroke="#FF3B70" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M80 120s-30-20-40-40c-6-12-2-28 10-32s20 2 28 14l2 3 2-3c8-12 16-18 28-14s16 20 10 32c-10 20-40 40-40 40z"
+          stroke="#FF3B70"
+          strokeWidth="3"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     title: 'Your wishlist is empty',
-    description: 'Save items you love by tapping the heart icon on any product. They will appear here for easy access.',
+    description:
+      'Save items you love by tapping the heart icon on any product. They will appear here for easy access.',
     actionText: 'Explore Products',
     onAction: () => console.log('Explore'),
   },
@@ -125,10 +169,10 @@ export const EmptyWishlist: Story = {
 // --- NO NOTIFICATIONS ---
 
 export const NoNotifications: Story = {
-  name: 'No Notifications',
   args: {
     title: 'No notifications',
-    description: 'You\'re all caught up! Check back later for order updates, promotions, and new arrivals.',
+    description:
+      "You're all caught up! Check back later for order updates, promotions, and new arrivals.",
   },
 };
 
@@ -140,11 +184,18 @@ export const NoReviews: Story = {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" fill="#FFFBEB" />
-        <path d="M80 45l8.5 17.2L108 65l-14 13.6 3.3 19.4L80 89.3 62.7 98l3.3-19.4L52 65l19.5-2.8L80 45z" stroke="#FFC107" strokeWidth="3" fill="none" strokeLinejoin="round" />
+        <path
+          d="M80 45l8.5 17.2L108 65l-14 13.6 3.3 19.4L80 89.3 62.7 98l3.3-19.4L52 65l19.5-2.8L80 45z"
+          stroke="#FFC107"
+          strokeWidth="3"
+          fill="none"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     title: 'No reviews yet',
-    description: 'Be the first to review this product! Share your experience to help other shoppers make informed decisions.',
+    description:
+      'Be the first to review this product! Share your experience to help other shoppers make informed decisions.',
     actionText: 'Write a Review',
     onAction: () => console.log('Write review'),
   },
@@ -165,7 +216,7 @@ export const WithoutAction: Story = {
   name: 'Without Action Button',
   args: {
     title: 'No saved addresses',
-    description: 'You haven\'t saved any delivery addresses yet. Add one during your next checkout.',
+    description: "You haven't saved any delivery addresses yet. Add one during your next checkout.",
   },
 };
 
@@ -177,8 +228,23 @@ export const CustomIcon: Story = {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" fill="#EFF6FF" />
-        <rect x="50" y="55" width="60" height="45" rx="6" stroke="#1890FF" strokeWidth="3" fill="none" />
-        <path d="M50 70l30 20 30-20" stroke="#1890FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <rect
+          x="50"
+          y="55"
+          width="60"
+          height="45"
+          rx="6"
+          stroke="#1890FF"
+          strokeWidth="3"
+          fill="none"
+        />
+        <path
+          d="M50 70l30 20 30-20"
+          stroke="#1890FF"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     title: 'Inbox is empty',
@@ -191,17 +257,21 @@ export const CustomIcon: Story = {
 // --- ERROR STATE EMPTY ---
 
 export const ConnectionError: Story = {
-  name: 'Connection Error',
   args: {
     icon: (
       <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" fill="#FFF0F0" />
-        <path d="M60 60l40 40M100 60L60 100" stroke="#FF3B30" strokeWidth="4" strokeLinecap="round" />
+        <path
+          d="M60 60l40 40M100 60L60 100"
+          stroke="#FF3B30"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
         <circle cx="80" cy="80" r="30" stroke="#FF3B30" strokeWidth="3" fill="none" />
       </svg>
     ),
     title: 'Connection lost',
-    description: 'We couldn\'t load your data. Please check your internet connection and try again.',
+    description: "We couldn't load your data. Please check your internet connection and try again.",
     actionText: 'Retry',
     onAction: () => console.log('Retry'),
   },

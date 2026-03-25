@@ -4,9 +4,9 @@ import { expect, fn, within } from 'storybook/test';
 import { ImageUploader } from './ImageUploader';
 
 const sampleImages = [
-  'https://picsum.photos/id/1/200/200',
-  'https://picsum.photos/id/2/200/200',
-  'https://picsum.photos/id/3/200/200',
+  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=200&fit=crop&auto=format',
 ];
 
 const meta = {
@@ -45,11 +45,11 @@ export const WithImages: Story = {
 export const MaxReached: Story = {
   args: {
     value: [
-      'https://picsum.photos/id/10/200/200',
-      'https://picsum.photos/id/11/200/200',
-      'https://picsum.photos/id/12/200/200',
-      'https://picsum.photos/id/13/200/200',
-      'https://picsum.photos/id/14/200/200',
+      'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=200&fit=crop&auto=format',
     ],
     maxCount: 5,
   },
@@ -89,19 +89,13 @@ export const Interactive: Story = {
   name: 'Review Photo Upload',
   render: () => {
     const [images, setImages] = useState<string[]>([
-      'https://picsum.photos/id/20/200/200',
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&auto=format',
     ]);
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A' }}>
-          Product Photos
-        </div>
-        <ImageUploader
-          value={images}
-          onChange={setImages}
-          maxCount={5}
-        />
+        <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A' }}>Product Photos</div>
+        <ImageUploader value={images} onChange={setImages} maxCount={5} />
         <div style={{ fontSize: 12, color: '#999' }}>
           {images.length}/5 photos uploaded. Max 5MB each.
         </div>
@@ -123,15 +117,8 @@ export const WithUploadHandler: Story = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A' }}>
-          Upload Product Images
-        </div>
-        <ImageUploader
-          value={images}
-          onChange={setImages}
-          maxCount={3}
-          onUpload={simulateUpload}
-        />
+        <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A' }}>Upload Product Images</div>
+        <ImageUploader value={images} onChange={setImages} maxCount={3} onUpload={simulateUpload} />
         <div style={{ fontSize: 12, color: '#999' }}>
           Click + to upload (simulated). Max 3 images.
         </div>
@@ -147,15 +134,8 @@ export const SingleImage: Story = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 120 }}>
-        <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A' }}>
-          Profile Photo
-        </div>
-        <ImageUploader
-          value={images}
-          onChange={setImages}
-          maxCount={1}
-          columns={1}
-        />
+        <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A' }}>Profile Photo</div>
+        <ImageUploader value={images} onChange={setImages} maxCount={1} columns={1} />
       </div>
     );
   },

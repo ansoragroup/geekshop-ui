@@ -20,21 +20,53 @@ const TelegramIcon = () => (
 
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
-    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+    <path
+      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
+      fill="#4285F4"
+    />
+    <path
+      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+      fill="#34A853"
+    />
+    <path
+      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+      fill="#FBBC05"
+    />
+    <path
+      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+      fill="#EA4335"
+    />
   </svg>
 );
 
 const PhoneIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.92z" />
   </svg>
 );
 
 const MailIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <rect x="2" y="4" width="20" height="16" rx="2" />
     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
   </svg>
@@ -133,7 +165,10 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
     if (digits.length <= 2) return digits;
     if (digits.length <= 4) return `${digits.slice(0, 2)} ${digits.slice(2)}`;
     if (digits.length <= 7) return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`;
-    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(7, 9)}`;
+    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(
+      7,
+      9
+    )}`;
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -142,11 +177,7 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
   };
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={<DefaultHeader />}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={<DefaultHeader />} footer={<DefaultFooter />}>
       <div className={styles.centerWrap}>
         <div className={styles.card}>
           <div className={styles.logoSection}>
@@ -182,7 +213,9 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
           {activeTab === 'phone' && (
             <div className={styles.form} role="tabpanel" aria-label="Phone login">
               {error && (
-                <div className={styles.errorBanner} role="alert">{error}</div>
+                <div className={styles.errorBanner} role="alert">
+                  {error}
+                </div>
               )}
 
               {phoneStep === 'input' && (
@@ -232,7 +265,6 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
                     onComplete={handleOtpComplete}
                     error={!!otpError}
                     errorMessage={otpError}
-                    autoFocus
                     disabled={loading}
                   />
 
@@ -256,9 +288,16 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
 
           {/* ── Email Tab ── */}
           {activeTab === 'email' && (
-            <form className={styles.form} onSubmit={(e) => e.preventDefault()} role="tabpanel" aria-label="Email login">
+            <form
+              className={styles.form}
+              onSubmit={(e) => e.preventDefault()}
+              role="tabpanel"
+              aria-label="Email login"
+            >
               {error && (
-                <div className={styles.errorBanner} role="alert">{error}</div>
+                <div className={styles.errorBanner} role="alert">
+                  {error}
+                </div>
               )}
               <DesktopInput
                 label="Email address"
@@ -283,7 +322,9 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
                   checked={rememberMe}
                   onChange={setRememberMe}
                 />
-                <a href="#" className={styles.forgotLink}>Forgot password?</a>
+                <button type="button" className={styles.forgotLink}>
+                  Forgot password?
+                </button>
               </div>
 
               <DesktopButton variant="primary" size="lg" fullWidth type="submit" disabled={loading}>
@@ -307,7 +348,9 @@ export const DesktopLoginPage: React.FC<DesktopLoginPageProps> = ({
 
           <p className={styles.switchText}>
             Don&apos;t have an account?{' '}
-            <a href="#" className={styles.switchLink}>Register</a>
+            <button type="button" className={styles.switchLink}>
+              Register
+            </button>
           </p>
         </div>
       </div>

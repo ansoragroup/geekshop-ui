@@ -97,13 +97,7 @@ export const Interactive: Story = {
         <p style={{ fontSize: 14, color: '#666', marginBottom: 8 }}>
           Bahoyingiz: {val > 0 ? `${val} yulduz` : 'Tanlang'}
         </p>
-        <Rating
-          value={val}
-          size="lg"
-          interactive
-          onChange={setVal}
-          showCount={false}
-        />
+        <Rating value={val} size="lg" interactive onChange={setVal} showCount={false} />
       </div>
     );
   },
@@ -113,13 +107,30 @@ export const Interactive: Story = {
 export const InProductCard: Story = {
   name: 'In Product Card Context',
   render: () => (
-    <div style={{ width: 180, padding: 12, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+    <div
+      style={{
+        width: 180,
+        padding: 12,
+        background: '#fff',
+        borderRadius: 12,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+      }}
+    >
       <img
-        src="https://picsum.photos/seed/gpu4060/180/140"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=180&h=140&fit=crop&auto=format"
         alt="RTX 4060"
         style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 8, marginBottom: 8 }}
       />
-      <div style={{ fontSize: 13, color: '#1a1a1a', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <div
+        style={{
+          fontSize: 13,
+          color: '#1a1a1a',
+          marginBottom: 4,
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
         MSI RTX 4060 VENTUS 2X
       </div>
       <Rating value={4.6} count={87} size="sm" />

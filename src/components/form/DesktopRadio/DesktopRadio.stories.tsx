@@ -15,11 +15,13 @@ const meta = {
     direction: { control: 'radio', options: ['vertical', 'horizontal'] },
     disabled: { control: 'boolean' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 500, padding: 24, background: '#fff' }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 500, padding: 24, background: '#fff' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopRadioGroup>;
 
 export default meta;
@@ -145,8 +147,12 @@ export const PartiallyDisabled: Story = {
   render: (args) => (
     <DesktopRadioGroup {...args}>
       <DesktopRadio value="available">In Stock (245 units)</DesktopRadio>
-      <DesktopRadio value="preorder" description="Ships in 2-3 weeks">Pre-order</DesktopRadio>
-      <DesktopRadio value="outofstock" disabled description="Currently unavailable">Out of Stock</DesktopRadio>
+      <DesktopRadio value="preorder" description="Ships in 2-3 weeks">
+        Pre-order
+      </DesktopRadio>
+      <DesktopRadio value="outofstock" disabled description="Currently unavailable">
+        Out of Stock
+      </DesktopRadio>
     </DesktopRadioGroup>
   ),
 };
@@ -181,10 +187,16 @@ export const FullFeatured: Story = {
   },
   render: (args) => (
     <DesktopRadioGroup {...args}>
-      <DesktopRadio value="same-day" description="Order before 2pm for same-day delivery in Tashkent">
+      <DesktopRadio
+        value="same-day"
+        description="Order before 2pm for same-day delivery in Tashkent"
+      >
         Same Day Delivery
       </DesktopRadio>
-      <DesktopRadio value="express" description="Guaranteed delivery within 24-48 hours. Free for orders over 500,000 UZS.">
+      <DesktopRadio
+        value="express"
+        description="Guaranteed delivery within 24-48 hours. Free for orders over 500,000 UZS."
+      >
         Express Delivery
       </DesktopRadio>
       <DesktopRadio value="standard" description="3-5 business days. Free for all orders.">
@@ -207,13 +219,17 @@ export const Controlled: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <DesktopRadioGroup value={value} onChange={setValue}>
-          <DesktopRadio value="monthly" description="12,000 UZS/month">Monthly Plan</DesktopRadio>
-          <DesktopRadio value="quarterly" description="10,000 UZS/month (save 17%)">Quarterly Plan</DesktopRadio>
-          <DesktopRadio value="annual" description="8,000 UZS/month (save 33%)">Annual Plan</DesktopRadio>
+          <DesktopRadio value="monthly" description="12,000 UZS/month">
+            Monthly Plan
+          </DesktopRadio>
+          <DesktopRadio value="quarterly" description="10,000 UZS/month (save 17%)">
+            Quarterly Plan
+          </DesktopRadio>
+          <DesktopRadio value="annual" description="8,000 UZS/month (save 33%)">
+            Annual Plan
+          </DesktopRadio>
         </DesktopRadioGroup>
-        <div style={{ fontSize: 12, color: '#666' }}>
-          Selected plan: {value}
-        </div>
+        <div style={{ fontSize: 12, color: '#666' }}>Selected plan: {value}</div>
       </div>
     );
   },
@@ -260,7 +276,6 @@ export const SingleOption: Story = {
 /* ─── Realistic: Shipping Method ─── */
 
 export const ShippingMethodSelector: Story = {
-  name: 'Shipping Method Selector',
   render: () => {
     const [method, setMethod] = useState('standard');
 
@@ -290,9 +305,20 @@ export const ShippingMethodSelector: Story = {
             Economy
           </DesktopRadio>
         </DesktopRadioGroup>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16, paddingTop: 12, borderTop: '1px solid #f0f0f0', fontSize: 14 }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: 16,
+            paddingTop: 12,
+            borderTop: '1px solid #f0f0f0',
+            fontSize: 14,
+          }}
+        >
           <span style={{ color: '#666' }}>Shipping cost:</span>
-          <span style={{ fontWeight: 600, color: prices[method] === 'Free' ? '#07C160' : '#1A1A1A' }}>
+          <span
+            style={{ fontWeight: 600, color: prices[method] === 'Free' ? '#07C160' : '#1A1A1A' }}
+          >
             {prices[method]}
           </span>
         </div>
@@ -313,9 +339,15 @@ export const HorizontalWithDescriptions: Story = {
   },
   render: (args) => (
     <DesktopRadioGroup {...args}>
-      <DesktopRadio value="monthly" description="$10/mo">Monthly</DesktopRadio>
-      <DesktopRadio value="quarterly" description="$8/mo">Quarterly</DesktopRadio>
-      <DesktopRadio value="yearly" description="$6/mo">Yearly</DesktopRadio>
+      <DesktopRadio value="monthly" description="$10/mo">
+        Monthly
+      </DesktopRadio>
+      <DesktopRadio value="quarterly" description="$8/mo">
+        Quarterly
+      </DesktopRadio>
+      <DesktopRadio value="yearly" description="$6/mo">
+        Yearly
+      </DesktopRadio>
     </DesktopRadioGroup>
   ),
 };

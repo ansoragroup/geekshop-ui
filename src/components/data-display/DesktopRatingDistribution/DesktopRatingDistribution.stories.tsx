@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopRatingDistribution } from './DesktopRatingDistribution';
 
 const meta = {
-  title: 'Data Display/DesktopRatingDistribution',
+  title: 'Data Display (Desktop)/DesktopRatingDistribution',
   component: DesktopRatingDistribution,
   tags: ['autodocs'],
   parameters: {
@@ -81,7 +81,6 @@ export const FewReviews: Story = {
 };
 
 export const SingleReview: Story = {
-  name: 'Single Review',
   args: {
     distribution: { 5: 1, 4: 0, 3: 0, 2: 0, 1: 0 },
     average: 5.0,

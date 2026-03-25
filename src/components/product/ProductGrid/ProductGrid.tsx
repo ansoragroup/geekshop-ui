@@ -30,7 +30,7 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
       style,
       ...rest
     },
-    ref,
+    ref
   ) => {
     if (layout === 'waterfall') {
       // Distribute items into columns: item 0->col0, 1->col1, 2->col0, 3->col1...
@@ -46,7 +46,6 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
       return (
         <ul
           ref={ref as React.Ref<HTMLUListElement>}
-          role="list"
           className={cn(styles.waterfall, className)}
           style={{ ...style, gap: `${gap}px` }}
           {...rest}
@@ -81,7 +80,12 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
     };
 
     return (
-      <ul ref={ref as React.Ref<HTMLUListElement>} role="list" className={cn(styles.root, className)} style={gridStyle} {...rest}>
+      <ul
+        ref={ref as React.Ref<HTMLUListElement>}
+        className={cn(styles.root, className)}
+        style={gridStyle}
+        {...rest}
+      >
         {products.map((product, index) => (
           <li key={index} className={styles.gridItem}>
             <ProductCard
@@ -95,7 +99,7 @@ export const ProductGrid = forwardRef<HTMLDivElement, ProductGridProps>(
         ))}
       </ul>
     );
-  },
+  }
 );
 
 ProductGrid.displayName = 'ProductGrid';

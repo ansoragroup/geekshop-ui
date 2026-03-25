@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopImageZoom } from './DesktopImageZoom';
 
 const meta = {
-  title: 'Product/DesktopImageZoom',
+  title: 'Product (Desktop)/DesktopImageZoom',
   component: DesktopImageZoom,
   tags: ['autodocs'],
   parameters: {

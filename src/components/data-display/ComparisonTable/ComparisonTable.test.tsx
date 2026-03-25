@@ -66,12 +66,7 @@ describe('ComparisonTable', () => {
 
   it('renders remove buttons when onRemove is provided', () => {
     const onRemove = vi.fn();
-    render(
-      <ComparisonTable
-        products={products.map((p) => ({ ...p, onRemove }))}
-        specs={specs}
-      />,
-    );
+    render(<ComparisonTable products={products.map((p) => ({ ...p, onRemove }))} specs={specs} />);
     const removeBtns = screen.getAllByLabelText(/O'chirish/);
     expect(removeBtns).toHaveLength(2);
   });
@@ -86,7 +81,7 @@ describe('ComparisonTable', () => {
           { ...products[1], onRemove: onRemoveB },
         ]}
         specs={specs}
-      />,
+      />
     );
     const removeBtns = screen.getAllByLabelText(/O'chirish/);
     fireEvent.click(removeBtns[0]);
@@ -107,7 +102,7 @@ describe('ComparisonTable', () => {
 
   it('applies custom className', () => {
     const { container } = render(
-      <ComparisonTable products={products} specs={specs} className="my-table" />,
+      <ComparisonTable products={products} specs={specs} className="my-table" />
     );
     expect(container.firstElementChild?.className).toContain('my-table');
   });
@@ -124,7 +119,7 @@ describe('ComparisonTable', () => {
     ];
     render(<ComparisonTable products={products} specs={specsWithMissing} />);
     expect(screen.getByText('-')).toBeInTheDocument();
-  }];
+  });
 
   it('renders string spec values', () => {
     render(<ComparisonTable products={products} specs={specs} />);

@@ -31,7 +31,13 @@ const recentOrders: Array<{
   {
     id: 'GS-2026-0315-001',
     status: 'delivered',
-    products: [{ id: '1', image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/14-137-781-V01.jpg', title: 'MSI RTX 4060 Ti Ventus 2X 8GB' }],
+    products: [
+      {
+        id: '1',
+        image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/14-137-781-V01.jpg',
+        title: 'MSI RTX 4060 Ti Ventus 2X 8GB',
+      },
+    ],
     totalAmount: 4_800_000,
     date: 'March 15, 2026',
     actions: [{ id: 'review', label: 'Write Review', variant: 'primary' }],
@@ -39,7 +45,13 @@ const recentOrders: Array<{
   {
     id: 'GS-2026-0310-002',
     status: 'shipping',
-    products: [{ id: '2', image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/26-104-747-V01.jpg', title: 'Logitech MX Master 3S' }],
+    products: [
+      {
+        id: '2',
+        image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/26-104-747-V01.jpg',
+        title: 'Logitech MX Master 3S',
+      },
+    ],
     totalAmount: 950_000,
     date: 'March 10, 2026',
     actions: [{ id: 'track', label: 'Track Order', variant: 'primary' }],
@@ -73,11 +85,7 @@ export const DesktopProfilePage: React.FC<DesktopProfilePageProps> = ({
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
         <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Profile' }]} />
       </div>
@@ -124,11 +132,25 @@ export const DesktopProfilePage: React.FC<DesktopProfilePageProps> = ({
                 <DesktopInput label="First name" placeholder="Islom" defaultValue="Islom" />
                 <DesktopInput label="Last name" placeholder="Karimov" defaultValue="Karimov" />
               </div>
-              <DesktopInput label="Email" type="email" placeholder="islom.karimov@example.com" defaultValue="islom.karimov@example.com" />
-              <DesktopInput label="Phone" type="tel" placeholder="+998 90 123 45 67" defaultValue="+998 90 123 45 67" />
+              <DesktopInput
+                label="Email"
+                type="email"
+                placeholder="islom.karimov@example.com"
+                defaultValue="islom.karimov@example.com"
+              />
+              <DesktopInput
+                label="Phone"
+                type="tel"
+                placeholder="+998 90 123 45 67"
+                defaultValue="+998 90 123 45 67"
+              />
               <div className={styles.formActions}>
-                <DesktopButton variant="primary" size="md" type="submit">Save Changes</DesktopButton>
-                <DesktopButton variant="ghost" size="md" type="button">Cancel</DesktopButton>
+                <DesktopButton variant="primary" size="md" type="submit">
+                  Save Changes
+                </DesktopButton>
+                <DesktopButton variant="ghost" size="md" type="button">
+                  Cancel
+                </DesktopButton>
               </div>
             </form>
           </div>
@@ -137,7 +159,9 @@ export const DesktopProfilePage: React.FC<DesktopProfilePageProps> = ({
           <div className={styles.card}>
             <div className={styles.cardHeader}>
               <h2 className={styles.cardTitle}>Recent Orders</h2>
-              <a href="#" className={styles.viewAllLink}>View All</a>
+              <button type="button" className={styles.viewAllLink}>
+                View All
+              </button>
             </div>
             <div className={styles.ordersList}>
               {recentOrders.map((order) => (

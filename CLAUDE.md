@@ -613,35 +613,24 @@ After Phase 8:
 # ===== END CONSILIUM v2 PROTOCOL =====
 
 <!-- repo-task-proof-loop:start -->
-## Task Evidence Workflow (RTPL + Consilium Integration)
+## Repo task proof loop
 
-For tasks requiring auditable proof (features, refactors, migrations), use the evidence workflow.
+For substantial features, refactors, and bug fixes, use the repo-task-proof-loop workflow.
 
-Artifact path: `.agent/tasks/<TASK_ID>/`
+Required artifact path:
+- Keep all task artifacts in `.agent/tasks/<TASK_ID>/` inside this repository.
 
-Sequence:
-1. Freeze `spec.md` with acceptance criteria (AC1, AC2, ...) before implementation.
-2. Implement against the spec. Write tests for every change.
-3. Pack `evidence.md`, `evidence.json`, and `raw/` artifacts (build, test, lint, screenshot outputs).
-4. Fresh verification: a separate agent judges the current codebase against the spec.
-5. If verdict != PASS: write `problems.md`, apply minimal fix, re-verify.
+Required sequence:
+1. Freeze `.agent/tasks/<TASK_ID>/spec.md` before implementation.
+2. Implement against explicit acceptance criteria (`AC1`, `AC2`, ...).
+3. Create `evidence.md`, `evidence.json`, and raw artifacts.
+4. Run a fresh verification pass against the current codebase and rerun checks.
+5. If verification is not `PASS`, write `problems.md`, apply the smallest safe fix, and reverify.
 
 Hard rules:
-- Never claim completion unless every AC is PASS.
-- Verifiers judge current code, not prior claims.
-- Fixers make the smallest defensible diff.
-
-When running inside a consilium session:
-- Phase 4 (Plan): each task gets numbered ACs with evidence types
-- Phase 5 (Implement): builders pack evidence.json + raw/ artifacts at completion
-- Phase 6b (Verify): fresh verifier agent judges against ACs independently
-- Phase 6c (Fix): targeted fix loop, max 3 iterations, then escalate
-
-Quality gate scripts:
-- `scripts/scss-token-audit.sh` — scan for hardcoded hex in SCSS
-- `scripts/verify-barrel-exports.sh` — check component exports
-- `scripts/verify-storybook-stories.sh` — validate story conventions
-- `scripts/geekshop-ac-template.json` — standard AC templates
+- Do not claim completion unless every acceptance criterion is `PASS`.
+- Verifiers judge current code and current command results, not prior chat claims.
+- Fixers should make the smallest defensible diff.
 
 Installed workflow agents:
 - `.claude/agents/task-spec-freezer.md`

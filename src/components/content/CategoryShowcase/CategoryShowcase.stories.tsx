@@ -22,16 +22,76 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const categories: ShowcaseCategory[] = [
-  { label: 'GPUs', image: 'https://picsum.photos/seed/cat-gpu/400/300', count: 42, onClick: () => console.log('GPUs') },
-  { label: 'CPUs', image: 'https://picsum.photos/seed/cat-cpu/400/300', count: 38, onClick: () => console.log('CPUs') },
-  { label: 'Monitors', image: 'https://picsum.photos/seed/cat-monitor/400/300', count: 25, onClick: () => console.log('Monitors') },
-  { label: 'Laptops', image: 'https://picsum.photos/seed/cat-laptop/400/300', count: 31, onClick: () => console.log('Laptops') },
-  { label: 'Storage', image: 'https://picsum.photos/seed/cat-ssd/400/300', count: 56, onClick: () => console.log('Storage') },
-  { label: 'Keyboards', image: 'https://picsum.photos/seed/cat-kb/400/300', count: 19, onClick: () => console.log('Keyboards') },
-  { label: 'Mice', image: 'https://picsum.photos/seed/cat-mouse/400/300', count: 27, onClick: () => console.log('Mice') },
-  { label: 'Coolers', image: 'https://picsum.photos/seed/cat-cooler/400/300', count: 14, onClick: () => console.log('Coolers') },
-  { label: 'Cases', image: 'https://picsum.photos/seed/cat-case/400/300', count: 11, onClick: () => console.log('Cases') },
-  { label: 'PSUs', image: 'https://picsum.photos/seed/cat-psu/400/300', count: 22, onClick: () => console.log('PSUs') },
+  {
+    label: 'GPUs',
+    image:
+      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=400&h=300&fit=crop&auto=format',
+    count: 42,
+    onClick: () => console.log('GPUs'),
+  },
+  {
+    label: 'CPUs',
+    image:
+      'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=300&fit=crop&auto=format',
+    count: 38,
+    onClick: () => console.log('CPUs'),
+  },
+  {
+    label: 'Monitors',
+    image:
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+    count: 25,
+    onClick: () => console.log('Monitors'),
+  },
+  {
+    label: 'Laptops',
+    image:
+      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop&auto=format',
+    count: 31,
+    onClick: () => console.log('Laptops'),
+  },
+  {
+    label: 'Storage',
+    image:
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&auto=format',
+    count: 56,
+    onClick: () => console.log('Storage'),
+  },
+  {
+    label: 'Keyboards',
+    image:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=300&fit=crop&auto=format',
+    count: 19,
+    onClick: () => console.log('Keyboards'),
+  },
+  {
+    label: 'Mice',
+    image:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=300&fit=crop&auto=format',
+    count: 27,
+    onClick: () => console.log('Mice'),
+  },
+  {
+    label: 'Coolers',
+    image:
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop&auto=format',
+    count: 14,
+    onClick: () => console.log('Coolers'),
+  },
+  {
+    label: 'Cases',
+    image:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=300&fit=crop&auto=format',
+    count: 11,
+    onClick: () => console.log('Cases'),
+  },
+  {
+    label: 'PSUs',
+    image:
+      'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=300&fit=crop&auto=format',
+    count: 22,
+    onClick: () => console.log('PSUs'),
+  },
 ];
 
 export const Default: Story = {

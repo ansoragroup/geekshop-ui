@@ -31,7 +31,6 @@ export const EmptyState: Story = {
 
 /** Order notifications tab — delivery updates, payment confirmations */
 export const OrderNotifications: Story = {
-  name: 'Order Notifications',
   args: {
     empty: false,
   },
@@ -45,7 +44,6 @@ export const OrderNotifications: Story = {
 
 /** Promo notifications — discount alerts, coupon gifts, seasonal sales */
 export const PromoNotifications: Story = {
-  name: 'Promo Notifications',
   args: {
     empty: false,
   },
@@ -59,7 +57,6 @@ export const PromoNotifications: Story = {
 
 /** System notifications — security alerts, app updates */
 export const SystemNotifications: Story = {
-  name: 'System Notifications',
   args: {
     empty: false,
   },
@@ -73,7 +70,6 @@ export const SystemNotifications: Story = {
 
 /** Notifications with unread count badge and mark-all-read action */
 export const WithUnreadBadge: Story = {
-  name: 'With Unread Badge',
   args: {
     empty: false,
   },

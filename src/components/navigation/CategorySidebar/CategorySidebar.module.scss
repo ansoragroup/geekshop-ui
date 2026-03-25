@@ -7,7 +7,7 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background: var(--gs-bg-page);
+  background: $color-bg-page;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: touch;
@@ -31,7 +31,7 @@
   padding: $spacing-sm $spacing-xs;
   border: none;
   background: transparent;
-  color: var(--gs-text-secondary);
+  color: $color-text-secondary;
   cursor: pointer;
   outline: none;
   transition: color $transition-fast, background $transition-fast;
@@ -43,7 +43,7 @@
 
   &.active {
     color: var(--gs-color-primary);
-    background: var(--gs-bg-white);
+    background: $color-bg-white;
 
     // Orange left border indicator
     &::before {

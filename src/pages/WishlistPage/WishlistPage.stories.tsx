@@ -31,7 +31,6 @@ export const EmptyState: Story = {
 
 /** On Sale tab — showing products with price drops and discount badges */
 export const OnSaleFilter: Story = {
-  name: 'On Sale Filter',
   args: {
     empty: false,
   },
@@ -45,7 +44,6 @@ export const OnSaleFilter: Story = {
 
 /** Low Stock tab — items running low, urgency to purchase */
 export const LowStockFilter: Story = {
-  name: 'Low Stock Filter',
   args: {
     empty: false,
   },
@@ -59,7 +57,6 @@ export const LowStockFilter: Story = {
 
 /** Full wishlist with all tab filter badges showing counts (8, 4, 3) */
 export const WithBadgeCounts: Story = {
-  name: 'With Badge Counts',
   args: {
     empty: false,
   },

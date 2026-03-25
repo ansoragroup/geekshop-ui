@@ -3,6 +3,32 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { Calendar } from './Calendar';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 describe('Calendar', () => {
   afterEach(() => {
     cleanup();
@@ -51,17 +77,17 @@ describe('Calendar', () => {
   it('highlights today', () => {
     render(<Calendar />);
     // Find today's date cell
-    const todayCell = screen.getAllByRole('gridcell').find(
-      (cell) => cell.getAttribute('aria-current') === 'date',
-    );
+    const todayCell = screen
+      .getAllByRole('gridcell')
+      .find((cell) => cell.getAttribute('aria-current') === 'date');
     expect(todayCell).toBeInTheDocument();
   });
 
   it('marks selected date', () => {
     render(<Calendar value={new Date(2026, 2, 16)} />);
-    const selected = screen.getAllByRole('gridcell').filter(
-      (cell) => cell.getAttribute('aria-selected') === 'true',
-    );
+    const selected = screen
+      .getAllByRole('gridcell')
+      .filter((cell) => cell.getAttribute('aria-selected') === 'true');
     expect(selected).toHaveLength(1);
   });
 
@@ -70,7 +96,7 @@ describe('Calendar', () => {
     const user = userEvent.setup();
     render(<Calendar value={new Date(2026, 2, 16)} onChange={onChange} mode="single" />);
 
-    const day20 = screen.getByLabelText(/20 Mart 2026/);
+    const day20 = screen.getByLabelText(/20 March 2026/);
     await user.click(day20);
 
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -85,7 +111,7 @@ describe('Calendar', () => {
     render(<Calendar onChange={onChange} mode="multiple" value={new Date(2026, 2, 16)} />);
 
     // Select another date
-    const day10 = screen.getByLabelText(/10 Mart 2026/);
+    const day10 = screen.getByLabelText(/10 March 2026/);
     await user.click(day10);
 
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -101,11 +127,11 @@ describe('Calendar', () => {
         onChange={onChange}
         mode="multiple"
         value={[new Date(2026, 2, 10), new Date(2026, 2, 15)]}
-      />,
+      />
     );
 
     // Click on already selected date
-    const day10 = screen.getByLabelText(/10 Mart 2026/);
+    const day10 = screen.getByLabelText(/10 March 2026/);
     await user.click(day10);
 
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -153,7 +179,7 @@ describe('Calendar', () => {
         markedDates={{
           '2026-03-10': { dot: true, color: '#FF3B30' },
         }}
-      />,
+      />
     );
     const dots = container.querySelectorAll('[class*="dayDot"]');
     expect(dots.length).toBeGreaterThanOrEqual(1);
@@ -166,7 +192,7 @@ describe('Calendar', () => {
         markedDates={{
           '2026-03-10': { dot: true, label: 'Sale' },
         }}
-      />,
+      />
     );
     expect(screen.getByText('Sale')).toBeInTheDocument();
   });

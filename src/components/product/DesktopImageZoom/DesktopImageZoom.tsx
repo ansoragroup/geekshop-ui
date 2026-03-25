@@ -47,7 +47,7 @@ function DesktopImageZoomInner(
     className,
     ...rest
   }: DesktopImageZoomProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLDivElement>
 ) {
   const l = { ...DEFAULT_ZOOM_LABELS, ...labelsProp };
   const [internalIndex, setInternalIndex] = useState(0);
@@ -63,18 +63,15 @@ function DesktopImageZoomInner(
       setInternalIndex(index);
       onSelect?.(index);
     },
-    [onSelect],
+    [onSelect]
   );
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setZoomPos({ x, y });
-    },
-    [],
-  );
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomPos({ x, y });
+  }, []);
 
   const handleMouseEnter = useCallback(() => setIsZooming(true), []);
   const handleMouseLeave = useCallback(() => setIsZooming(false), []);
@@ -82,15 +79,12 @@ function DesktopImageZoomInner(
   const handleMainClick = useCallback(() => setLightboxOpen(true), []);
   const handleCloseLightbox = useCallback(() => setLightboxOpen(false), []);
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        setLightboxOpen(true);
-      }
-    },
-    [],
-  );
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setLightboxOpen(true);
+    }
+  }, []);
 
   // Close lightbox on Escape
   useEffect(() => {
@@ -118,7 +112,7 @@ function DesktopImageZoomInner(
         handleSelect(index);
       }
     },
-    [images.length, handleSelect],
+    [images.length, handleSelect]
   );
 
   const currentImage = images[selectedIndex] ?? images[0];
@@ -137,7 +131,10 @@ function DesktopImageZoomInner(
           onKeyDown={handleKeyDown}
           role="button"
           tabIndex={0}
-          aria-label={l.mainImage.replace('{alt}', altPrefix).replace('{index}', String(selectedIndex + 1)).replace('{total}', String(images.length))}
+          aria-label={l.mainImage
+            .replace('{alt}', altPrefix)
+            .replace('{index}', String(selectedIndex + 1))
+            .replace('{total}', String(images.length))}
         >
           <img
             src={currentImage}
@@ -186,6 +183,7 @@ function DesktopImageZoomInner(
 
       {/* Lightbox overlay */}
       {lightboxOpen && (
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events -- dialog dismiss on backdrop click
         <div
           className={styles.lightbox}
           onClick={handleCloseLightbox}
@@ -199,11 +197,22 @@ function DesktopImageZoomInner(
             onClick={handleCloseLightbox}
             aria-label={l.closeFullscreen}
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- stopPropagation on image prevents backdrop dismiss */}
           <img
             src={currentImage}
             alt={`${altPrefix} ${selectedIndex + 1} fullscreen`}
@@ -212,12 +221,16 @@ function DesktopImageZoomInner(
           />
           {/* Lightbox thumbnails */}
           {images.length > 1 && (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- stopPropagation prevents backdrop dismiss
             <div className={styles.lightboxThumbnails} onClick={(e) => e.stopPropagation()}>
               {images.map((img, i) => (
                 <button
                   key={i}
                   type="button"
-                  className={cn(styles.lightboxThumb, i === selectedIndex ? styles.lightboxThumbActive : '')}
+                  className={cn(
+                    styles.lightboxThumb,
+                    i === selectedIndex ? styles.lightboxThumbActive : ''
+                  )}
                   onClick={() => handleSelect(i)}
                   aria-label={`${altPrefix} ${i + 1}`}
                 >

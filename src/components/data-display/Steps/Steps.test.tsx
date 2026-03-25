@@ -1,6 +1,32 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { Steps } from './Steps';
+
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
 
 const defaultItems = [
   { title: "To'lov" },
@@ -45,11 +71,8 @@ describe('Steps', () => {
     render(
       <Steps
         current={0}
-        items={[
-          { title: "To'lov", description: "Muvaffaqiyatli to'landi" },
-          { title: 'Yuborish' },
-        ]}
-      />,
+        items={[{ title: "To'lov", description: "Muvaffaqiyatli to'landi" }, { title: 'Yuborish' }]}
+      />
     );
     expect(screen.getByText("Muvaffaqiyatli to'landi")).toBeInTheDocument();
   });
@@ -89,15 +112,13 @@ describe('Steps', () => {
       <Steps
         current={0}
         items={[{ title: 'Step 1', icon: <span data-testid="custom-icon">X</span> }]}
-      />,
+      />
     );
     expect(screen.getByTestId('custom-icon')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
-    const { container } = render(
-      <Steps current={0} items={defaultItems} className="my-steps" />,
-    );
+    const { container } = render(<Steps current={0} items={defaultItems} className="my-steps" />);
     const root = container.firstElementChild as HTMLElement;
     expect(root.className).toContain('my-steps');
   });
@@ -107,7 +128,7 @@ describe('Steps', () => {
     const listitems = container.querySelectorAll('[class*="step"]');
     // First two steps should have SVG checkmarks (completed)
     const completedSteps = Array.from(listitems).filter((el) =>
-      el.className.includes('status-completed'),
+      el.className.includes('status-completed')
     );
     expect(completedSteps).toHaveLength(2);
     completedSteps.forEach((step) => {
@@ -124,6 +145,6 @@ describe('Steps', () => {
 
   it('has aria-label on root', () => {
     render(<Steps current={0} items={defaultItems} />);
-    expect(screen.getByLabelText('Progress steps')).toBeInTheDocument();
+    expect(screen.getByRole('list')).toHaveAttribute('aria-label', 'Progress steps');
   });
 });

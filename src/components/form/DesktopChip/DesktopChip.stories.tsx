@@ -10,7 +10,16 @@ const StarIcon = () => (
 );
 
 const CheckIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 14 14"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M3.5 7l2.5 2.5 4.5-4.5" />
   </svg>
 );
@@ -22,7 +31,16 @@ const FlameIcon = () => (
 );
 
 const TagIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 14 14"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M1.5 7.5L7 2h5v5L6.5 12.5z" />
     <circle cx="10" cy="4" r="1" fill="currentColor" />
   </svg>
@@ -104,11 +122,21 @@ export const ColorVariantsSelected: Story = {
   name: 'Color Variants (Selected)',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <DesktopChip color="default" selected>Default</DesktopChip>
-      <DesktopChip color="primary" selected>Primary</DesktopChip>
-      <DesktopChip color="success" selected>Success</DesktopChip>
-      <DesktopChip color="warning" selected>Warning</DesktopChip>
-      <DesktopChip color="error" selected>Error</DesktopChip>
+      <DesktopChip color="default" selected>
+        Default
+      </DesktopChip>
+      <DesktopChip color="primary" selected>
+        Primary
+      </DesktopChip>
+      <DesktopChip color="success" selected>
+        Success
+      </DesktopChip>
+      <DesktopChip color="warning" selected>
+        Warning
+      </DesktopChip>
+      <DesktopChip color="error" selected>
+        Error
+      </DesktopChip>
     </div>
   ),
 };
@@ -129,10 +157,18 @@ export const IconVariants: Story = {
   name: 'Icons with Colors',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <DesktopChip icon={<StarIcon />} color="primary" selected>Featured</DesktopChip>
-      <DesktopChip icon={<CheckIcon />} color="success" selected>Verified</DesktopChip>
-      <DesktopChip icon={<FlameIcon />} color="error" selected>Hot Deal</DesktopChip>
-      <DesktopChip icon={<TagIcon />} color="warning" selected>Limited</DesktopChip>
+      <DesktopChip icon={<StarIcon />} color="primary" selected>
+        Featured
+      </DesktopChip>
+      <DesktopChip icon={<CheckIcon />} color="success" selected>
+        Verified
+      </DesktopChip>
+      <DesktopChip icon={<FlameIcon />} color="error" selected>
+        Hot Deal
+      </DesktopChip>
+      <DesktopChip icon={<TagIcon />} color="warning" selected>
+        Limited
+      </DesktopChip>
     </div>
   ),
 };
@@ -210,7 +246,16 @@ export const FullFeatured: Story = {
 export const FilterGroup: Story = {
   name: 'Category Filter',
   render: () => {
-    const categories = ['All', 'Laptops', 'Monitors', 'Keyboards', 'Mice', 'GPUs', 'SSDs', 'Headphones'];
+    const categories = [
+      'All',
+      'Laptops',
+      'Monitors',
+      'Keyboards',
+      'Mice',
+      'GPUs',
+      'SSDs',
+      'Headphones',
+    ];
     const [active, setActive] = useState('All');
 
     return (
@@ -238,7 +283,7 @@ export const MultiSelectFilter: Story = {
 
     const toggle = (brand: string) => {
       setSelected((prev) =>
-        prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand],
+        prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
       );
     };
 
@@ -269,7 +314,11 @@ export const TagsWithRemove: Story = {
   name: 'Removable Tags',
   render: () => {
     const [tags, setTags] = useState([
-      'RTX 4090', 'MacBook Pro', 'Mechanical keyboard', 'Samsung monitor', '32GB RAM',
+      'RTX 4090',
+      'MacBook Pro',
+      'Mechanical keyboard',
+      'Samsung monitor',
+      '32GB RAM',
     ]);
 
     return (
@@ -291,7 +340,9 @@ export const TagsWithRemove: Story = {
           ))}
         </div>
         {tags.length === 0 && (
-          <div style={{ fontSize: 13, color: '#999', marginTop: 8 }}>No tags. Search for something!</div>
+          <div style={{ fontSize: 13, color: '#999', marginTop: 8 }}>
+            No tags. Search for something!
+          </div>
         )}
       </div>
     );
@@ -304,10 +355,18 @@ export const StatusChips: Story = {
   name: 'Order Status Chips',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-      <DesktopChip color="warning" selected icon={<FlameIcon />}>Pending</DesktopChip>
-      <DesktopChip color="primary" selected icon={<CheckIcon />}>Processing</DesktopChip>
-      <DesktopChip color="success" selected icon={<CheckIcon />}>Delivered</DesktopChip>
-      <DesktopChip color="error" selected>Cancelled</DesktopChip>
+      <DesktopChip color="warning" selected icon={<FlameIcon />}>
+        Pending
+      </DesktopChip>
+      <DesktopChip color="primary" selected icon={<CheckIcon />}>
+        Processing
+      </DesktopChip>
+      <DesktopChip color="success" selected icon={<CheckIcon />}>
+        Delivered
+      </DesktopChip>
+      <DesktopChip color="error" selected>
+        Cancelled
+      </DesktopChip>
     </div>
   ),
 };
@@ -315,7 +374,6 @@ export const StatusChips: Story = {
 /* ─── Edge Cases ─── */
 
 export const LongLabel: Story = {
-  name: 'Long Label',
   args: {
     children: 'Very Long Category Name That Might Overflow',
     selected: true,
@@ -325,12 +383,15 @@ export const LongLabel: Story = {
 };
 
 export const SingleCharacter: Story = {
-  name: 'Single Character',
   render: () => (
     <div style={{ display: 'flex', gap: 8 }}>
       <DesktopChip selected>A</DesktopChip>
-      <DesktopChip selected color="primary">B</DesktopChip>
-      <DesktopChip selected color="success">C</DesktopChip>
+      <DesktopChip selected color="primary">
+        B
+      </DesktopChip>
+      <DesktopChip selected color="success">
+        C
+      </DesktopChip>
     </div>
   ),
 };
@@ -339,9 +400,22 @@ export const ManyChips: Story = {
   name: 'Many Chips (Wrapping)',
   render: () => {
     const items = [
-      'Laptops', 'Monitors', 'Keyboards', 'Mice', 'Headphones', 'Webcams',
-      'Speakers', 'Cables', 'Adapters', 'Power Banks', 'Cases', 'Screen Protectors',
-      'Chargers', 'USB Drives', 'External SSDs', 'Docking Stations',
+      'Laptops',
+      'Monitors',
+      'Keyboards',
+      'Mice',
+      'Headphones',
+      'Webcams',
+      'Speakers',
+      'Cables',
+      'Adapters',
+      'Power Banks',
+      'Cases',
+      'Screen Protectors',
+      'Chargers',
+      'USB Drives',
+      'External SSDs',
+      'Docking Stations',
     ];
     return (
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

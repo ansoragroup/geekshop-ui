@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import {
-  DesktopShell,
-  DesktopButton,
-  DesktopInput,
-} from '../../components';
+import { DesktopShell, DesktopButton, DesktopInput } from '../../components';
 import { DefaultTopBar, DefaultHeader, DefaultFooter } from '../_shared';
 import styles from './DesktopForgotPasswordPage.module.scss';
 
@@ -22,11 +18,7 @@ export const DesktopForgotPasswordPage: React.FC<DesktopForgotPasswordPageProps>
   const [submitted, setSubmitted] = useState(initialSubmitted);
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={<DefaultHeader />}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={<DefaultHeader />} footer={<DefaultFooter />}>
       <div className={styles.centerWrap}>
         <div className={styles.card}>
           <div className={styles.logoSection}>
@@ -39,7 +31,13 @@ export const DesktopForgotPasswordPage: React.FC<DesktopForgotPasswordPageProps>
           </div>
 
           {!submitted ? (
-            <form className={styles.form} onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+            <form
+              className={styles.form}
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSubmitted(true);
+              }}
+            >
               <DesktopInput
                 label="Email address"
                 type="email"
@@ -55,15 +53,31 @@ export const DesktopForgotPasswordPage: React.FC<DesktopForgotPasswordPageProps>
           ) : (
             <div className={styles.successMessage}>
               <div className={styles.successIcon}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#07C160" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#07C160"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
               </div>
               <p className={styles.successText}>
-                We sent a password reset link to <strong>{email}</strong>. Please check your email and follow the instructions.
+                We sent a password reset link to <strong>{email}</strong>. Please check your email
+                and follow the instructions.
               </p>
-              <DesktopButton variant="outline" size="lg" fullWidth onClick={() => setSubmitted(false)}>
+              <DesktopButton
+                variant="outline"
+                size="lg"
+                fullWidth
+                onClick={() => setSubmitted(false)}
+              >
                 Resend Email
               </DesktopButton>
             </div>
@@ -71,7 +85,9 @@ export const DesktopForgotPasswordPage: React.FC<DesktopForgotPasswordPageProps>
 
           <p className={styles.switchText}>
             Remember your password?{' '}
-            <a href="#" className={styles.switchLink}>Sign In</a>
+            <button type="button" className={styles.switchLink}>
+              Sign In
+            </button>
           </p>
         </div>
       </div>

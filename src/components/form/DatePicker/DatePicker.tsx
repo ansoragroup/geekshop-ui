@@ -1,12 +1,21 @@
 'use client';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useMemo } from 'react';
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useId,
+  useRef,
+  useImperativeHandle,
+  useMemo,
+} from 'react';
 import type { HTMLAttributes } from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { useGeekShop } from '../../../i18n';
 import styles from './DatePicker.module.scss';
 
-export interface DatePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+export interface DatePickerProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected date (controlled) */
   value?: Date | string;
   /** Default date (uncontrolled) */
@@ -32,40 +41,117 @@ export interface DatePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'o
 }
 
 const MONTH_NAMES: Record<string, string[]> = {
-  uz: ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'],
-  ru: ['\u042F\u043D\u0432\u0430\u0440\u044C', '\u0424\u0435\u0432\u0440\u0430\u043B\u044C', '\u041C\u0430\u0440\u0442', '\u0410\u043F\u0440\u0435\u043B\u044C', '\u041C\u0430\u0439', '\u0418\u044E\u043D\u044C', '\u0418\u044E\u043B\u044C', '\u0410\u0432\u0433\u0443\u0441\u0442', '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C', '\u041E\u043A\u0442\u044F\u0431\u0440\u044C', '\u041D\u043E\u044F\u0431\u0440\u044C', '\u0414\u0435\u043A\u0430\u0431\u0440\u044C'],
-  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  uz: [
+    'Yanvar',
+    'Fevral',
+    'Mart',
+    'Aprel',
+    'May',
+    'Iyun',
+    'Iyul',
+    'Avgust',
+    'Sentyabr',
+    'Oktyabr',
+    'Noyabr',
+    'Dekabr',
+  ],
+  ru: [
+    '\u042F\u043D\u0432\u0430\u0440\u044C',
+    '\u0424\u0435\u0432\u0440\u0430\u043B\u044C',
+    '\u041C\u0430\u0440\u0442',
+    '\u0410\u043F\u0440\u0435\u043B\u044C',
+    '\u041C\u0430\u0439',
+    '\u0418\u044E\u043D\u044C',
+    '\u0418\u044E\u043B\u044C',
+    '\u0410\u0432\u0433\u0443\u0441\u0442',
+    '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C',
+    '\u041E\u043A\u0442\u044F\u0431\u0440\u044C',
+    '\u041D\u043E\u044F\u0431\u0440\u044C',
+    '\u0414\u0435\u043A\u0430\u0431\u0440\u044C',
+  ],
+  en: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 };
 
 const DAY_NAMES: Record<string, string[]> = {
   uz: ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'],
-  ru: ['\u041F\u043D', '\u0412\u0442', '\u0421\u0440', '\u0427\u0442', '\u041F\u0442', '\u0421\u0431', '\u0412\u0441'],
+  ru: [
+    '\u041F\u043D',
+    '\u0412\u0442',
+    '\u0421\u0440',
+    '\u0427\u0442',
+    '\u041F\u0442',
+    '\u0421\u0431',
+    '\u0412\u0441',
+  ],
   en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
 };
 
 const CalendarIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="2" y="3" width="12" height="11" rx="2" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.3" />
+    <rect
+      x="2"
+      y="3"
+      width="12"
+      height="11"
+      rx="2"
+      stroke="var(--gs-text-tertiary, #999)"
+      strokeWidth="1.3"
+    />
     <path d="M2 6.5h12" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.3" />
-    <path d="M5 1.5v3M11 1.5v3" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.3" strokeLinecap="round" />
+    <path
+      d="M5 1.5v3M11 1.5v3"
+      stroke="var(--gs-text-tertiary, #999)"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M5 5l10 10M15 5l-10 10" stroke="var(--gs-text-tertiary, #999)" strokeWidth="1.8" strokeLinecap="round" />
+    <path
+      d="M5 5l10 10M15 5l-10 10"
+      stroke="var(--gs-text-tertiary, #999)"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 const ChevronLeft = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M12 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M12 15l-5-5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRight = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M8 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M8 5l5 5-5 5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -77,19 +163,18 @@ function parseDate(d: Date | string | undefined): Date | undefined {
 }
 
 function isSameDay(a: Date, b: Date): boolean {
-  return a.getFullYear() === b.getFullYear() &&
+  return (
+    a.getFullYear() === b.getFullYear() &&
     a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
+    a.getDate() === b.getDate()
+  );
 }
 
 function formatDateDisplay(date: Date, format: string): string {
   const dd = String(date.getDate()).padStart(2, '0');
   const mm = String(date.getMonth() + 1).padStart(2, '0');
   const yyyy = String(date.getFullYear());
-  return format
-    .replace('dd', dd)
-    .replace('MM', mm)
-    .replace('yyyy', yyyy);
+  return format.replace('dd', dd).replace('MM', mm).replace('yyyy', yyyy);
 }
 
 function getDaysInMonth(year: number, month: number): number {
@@ -120,7 +205,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const { t, locale: ctxLocale } = useGeekShop();
     const locale = localeProp ?? ctxLocale;
@@ -142,12 +227,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     // Calendar view state
     const today = useMemo(() => new Date(), []);
-    const [viewYear, setViewYear] = useState(() =>
-      selectedDate?.getFullYear() ?? today.getFullYear(),
+    const [viewYear, setViewYear] = useState(
+      () => selectedDate?.getFullYear() ?? today.getFullYear()
     );
-    const [viewMonth, setViewMonth] = useState(() =>
-      selectedDate?.getMonth() ?? today.getMonth(),
-    );
+    const [viewMonth, setViewMonth] = useState(() => selectedDate?.getMonth() ?? today.getMonth());
 
     // Temp selection in the sheet
     const [tempDate, setTempDate] = useState<Date | undefined>(undefined);
@@ -163,7 +246,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       (node: HTMLDivElement | null) => {
         sheetRef.current = node;
       },
-      [sheetRef],
+      [sheetRef]
     );
 
     const handleOpen = () => {
@@ -267,7 +350,11 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
     const isDateDisabled = (date: Date): boolean => {
       if (parsedMin) {
-        const minStart = new Date(parsedMin.getFullYear(), parsedMin.getMonth(), parsedMin.getDate());
+        const minStart = new Date(
+          parsedMin.getFullYear(),
+          parsedMin.getMonth(),
+          parsedMin.getDate()
+        );
         if (date < minStart) return true;
       }
       if (parsedMax) {
@@ -299,7 +386,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       styles.root,
       error && styles.hasError,
       disabled && styles.disabled,
-      className);
+      className
+    );
 
     const sheetTitle = t('datePicker.title');
     const placeholderText = placeholder || t('datePicker.placeholder');
@@ -377,7 +465,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                     <ChevronLeft />
                   </button>
                   <span className={styles.monthLabel}>
-                    {monthNamescn(viewMonth)} {viewYear}
+                    {monthNames[viewMonth]} {viewYear}
                   </span>
                   <button
                     type="button"
@@ -391,7 +479,9 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
                 <div className={styles.dayHeaders}>
                   {dayNames.map((name) => (
-                    <span key={name} className={styles.dayHeader}>{name}</span>
+                    <span key={name} className={styles.dayHeader}>
+                      {name}
+                    </span>
                   ))}
                 </div>
 
@@ -416,7 +506,8 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                       styles.day,
                       isToday && styles.dayToday,
                       isSelected && styles.daySelected,
-                      isDisabled && styles.dayDisabled];
+                      isDisabled && styles.dayDisabled,
+                    ];
 
                     return (
                       <button
@@ -453,7 +544,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 DatePicker.displayName = 'DatePicker';

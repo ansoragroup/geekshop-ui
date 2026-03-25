@@ -20,13 +20,3 @@ Behavior:
 - Do not write `verdict.json`.
 
 Keep all workflow artifacts inside the repository under `.agent/tasks/`.
-
-## GeekShop UI Fix Rules
-
-- Read CLAUDE.md component development rules before any fix
-- Verify fix doesn't introduce hardcoded hex colors (check with grep)
-- Verify fix doesn't break existing component exports
-- Re-capture Playwright screenshot after visual fixes
-- If fixing SCSS: ensure all values use design tokens from src/theme/tokens.scss
-- If fixing stories: ensure genuinely different data per story variant
-- Regenerate affected raw artifacts (lint.txt, test-unit.txt, etc.) after fix

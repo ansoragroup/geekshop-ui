@@ -1,0 +1,213 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: $spacing-lg 0;
+  touch-action: none;
+  user-select: none;
+
+  &.vertical {
+    flex-direction: column;
+    min-width: 44px;
+    min-height: 160px;
+    padding: 0 $spacing-lg;
+  }
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+
+  .root:not(.vertical) & {
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .root.vertical & {
+    width: 44px;
+    height: 100%;
+    min-height: 160px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.rail {
+  position: absolute;
+  background: var(--gs-border, #{$color-border});
+  border-radius: $radius-round;
+
+  .root:not(.vertical) & {
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+  }
+
+  .root.vertical & {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+  }
+}
+
+.fill {
+  position: absolute;
+  background: var(--gs-color-primary, #{$color-primary});
+  border-radius: $radius-round;
+
+  .root:not(.vertical) & {
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+  }
+
+  .root.vertical & {
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+  }
+}
+
+.thumbWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: $z-index-normal;
+  cursor: grab;
+  outline: none;
+
+  .root:not(.vertical) & {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .root.vertical & {
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  &:hover .thumb,
+  &:focus-visible .thumb {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 4px var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 2px solid var(--gs-color-primary, #{$color-primary});
+  box-shadow: $shadow-sm;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+  pointer-events: none;
+}
+
+// Tooltip
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: var(--gs-text-primary, #{$color-text-primary});
+  color: var(--gs-text-white, #{$color-text-white});
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-xs;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity $transition-fast, transform $transition-fast;
+}
+
+.tooltipVisible {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.thumbWrapper:hover .tooltip,
+.thumbWrapper:focus-within .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+// Marks
+.mark {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+
+  .root:not(.vertical) & {
+    top: 50%;
+    transform: translateX(-50%);
+  }
+
+  .root.vertical & {
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+}
+
+.markDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-round;
+  background: var(--gs-border, #{$color-border});
+  border: 2px solid var(--gs-bg-card, #{$color-bg-card});
+
+  .root:not(.vertical) & {
+    margin-top: 14px;
+  }
+
+  .root.vertical & {
+    margin-left: 14px;
+  }
+}
+
+.markLabel {
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  margin-top: $spacing-xs;
+  white-space: nowrap;
+}
+
+// Disabled state
+.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+
+  .track {
+    cursor: not-allowed;
+  }
+
+  .thumbWrapper {
+    cursor: not-allowed;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .thumb,
+  .tooltip {
+    transition: none;
+  }
+}

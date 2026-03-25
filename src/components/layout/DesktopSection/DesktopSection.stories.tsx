@@ -109,7 +109,16 @@ export const NoPadding: Story = {
     padding: 'none',
     background: 'card',
     children: (
-      <div style={{ height: 120, background: '#e0e0e0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}>
+      <div
+        style={{
+          height: 120,
+          background: '#e0e0e0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#666',
+        }}
+      >
         Edge-to-edge content, no internal padding
       </div>
     ),
@@ -151,16 +160,64 @@ export const AllPaddings: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <DesktopSection title="None" padding="none" background="card">
-        <div style={{ height: 60, background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: '#666' }}>padding: none</div>
+        <div
+          style={{
+            height: 60,
+            background: '#f0f0f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 13,
+            color: '#666',
+          }}
+        >
+          padding: none
+        </div>
       </DesktopSection>
       <DesktopSection title="Small" padding="sm" background="card">
-        <div style={{ height: 60, background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: '#666' }}>padding: sm</div>
+        <div
+          style={{
+            height: 60,
+            background: '#f0f0f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 13,
+            color: '#666',
+          }}
+        >
+          padding: sm
+        </div>
       </DesktopSection>
       <DesktopSection title="Medium" padding="md" background="card">
-        <div style={{ height: 60, background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: '#666' }}>padding: md</div>
+        <div
+          style={{
+            height: 60,
+            background: '#f0f0f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 13,
+            color: '#666',
+          }}
+        >
+          padding: md
+        </div>
       </DesktopSection>
       <DesktopSection title="Large" padding="lg" background="card">
-        <div style={{ height: 60, background: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: '#666' }}>padding: lg</div>
+        <div
+          style={{
+            height: 60,
+            background: '#f0f0f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 13,
+            color: '#666',
+          }}
+        >
+          padding: lg
+        </div>
       </DesktopSection>
     </div>
   ),
@@ -207,7 +264,17 @@ export const StackedSections: Story = {
       <DesktopSection title="Popular Categories" background="card" padding="md">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12 }}>
           {['Laptops', 'Phones', 'GPUs', 'Audio', 'Monitors', 'Gaming'].map((cat) => (
-            <div key={cat} style={{ background: '#f5f5f5', borderRadius: 8, padding: 16, textAlign: 'center', fontSize: 13, color: '#666' }}>
+            <div
+              key={cat}
+              style={{
+                background: '#f5f5f5',
+                borderRadius: 8,
+                padding: 16,
+                textAlign: 'center',
+                fontSize: 13,
+                color: '#666',
+              }}
+            >
               {cat}
             </div>
           ))}
@@ -223,7 +290,6 @@ export const StackedSections: Story = {
 /* ─── Edge Cases ─── */
 
 export const LongTitle: Story = {
-  name: 'Long Title',
   args: {
     title: 'Products You Might Like Based on Your Recent Browsing History and Purchase Patterns',
     background: 'card',
@@ -254,10 +320,15 @@ export const RichContent: Story = {
           { name: 'Sony WH-1000', price: '3,200,000 UZS' },
           { name: 'iPad Air M2', price: '8,500,000 UZS' },
         ].map((product) => (
-          <div key={product.name} style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #eee' }}>
+          <div
+            key={product.name}
+            style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #eee' }}
+          >
             <div style={{ aspectRatio: '1', background: '#f0f0f0' }} />
             <div style={{ padding: 12 }}>
-              <div style={{ fontSize: 14, fontWeight: 500, color: '#1A1A1A', marginBottom: 4 }}>{product.name}</div>
+              <div style={{ fontSize: 14, fontWeight: 500, color: '#1A1A1A', marginBottom: 4 }}>
+                {product.name}
+              </div>
               <div style={{ fontSize: 16, fontWeight: 700, color: '#FF0000' }}>{product.price}</div>
             </div>
           </div>

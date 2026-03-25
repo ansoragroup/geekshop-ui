@@ -1,6 +1,6 @@
 {
   "name": "@ansoragroup/ui",
-  "version": "0.4.1",
+  "version": "0.5.1",
   "type": "module",
   "main": "dist/cjs/components/index.cjs",
   "module": "dist/es/components/index.mjs",
@@ -11,12 +11,17 @@
       "require": "./dist/cjs/components/index.cjs",
       "types": "./dist/components/index.d.ts"
     },
-    "./styles": "./dist/es/ui.css"
+    "./headless": {
+      "import": "./dist/es/headless/index.mjs",
+      "require": "./dist/cjs/headless/index.cjs",
+      "types": "./dist/headless/index.d.ts"
+    }
   },
   "files": [
     "dist/es",
     "dist/cjs",
     "dist/components",
+    "dist/headless",
     "README.md",
     "LICENSE"
   ],
@@ -54,7 +59,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "release": "changeset publish",
-    "version": "changeset version"
+    "version": "changeset version",
+    "prepare": "husky",
+    "sync-tokens": "bash scripts/sync-tokens.sh --check"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -87,7 +94,9 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-storybook": "^10.2.19",
     "globals": "^17.4.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.0.0",
+    "lint-staged": "^16.4.0",
     "lucide-react": "^0.577.0",
     "playwright": "^1.58.2",
     "react": "^19.2.4",
@@ -100,5 +109,14 @@
     "vite": "^8.0.0",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }

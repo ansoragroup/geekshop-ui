@@ -25,7 +25,7 @@ type Story = StoryObj<typeof ImageLazy>;
 // --- Default ---
 export const Default: Story = {
   args: {
-    src: 'https://picsum.photos/seed/geekshop1/400/400',
+    src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&auto=format',
     alt: 'Product image',
     aspectRatio: '1/1',
     radius: 8,
@@ -42,9 +42,9 @@ export const WithPlaceholder: Story = {
   render: () => (
     <div style={{ width: 280 }}>
       <ImageLazy
-        src="https://picsum.photos/seed/geekshop2/600/400"
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&auto=format"
         alt="Product with placeholder"
-        placeholder="https://picsum.photos/seed/geekshop2/30/20"
+        placeholder="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=30&h=20&fit=crop&auto=format"
         aspectRatio="3/2"
         radius={12}
       />
@@ -58,7 +58,7 @@ export const AspectRatio: Story = {
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
       <div style={{ width: 160 }}>
         <ImageLazy
-          src="https://picsum.photos/seed/ar1/300/300"
+          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=300&fit=crop&auto=format"
           alt="1:1 square"
           aspectRatio="1/1"
           radius={8}
@@ -68,7 +68,7 @@ export const AspectRatio: Story = {
       </div>
       <div style={{ width: 200 }}>
         <ImageLazy
-          src="https://picsum.photos/seed/ar2/400/300"
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&auto=format"
           alt="4:3 landscape"
           aspectRatio="4/3"
           radius={8}
@@ -78,7 +78,7 @@ export const AspectRatio: Story = {
       </div>
       <div style={{ width: 240 }}>
         <ImageLazy
-          src="https://picsum.photos/seed/ar3/480/270"
+          src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=480&h=270&fit=crop&auto=format"
           alt="16:9 widescreen"
           aspectRatio="16/9"
           radius={8}
@@ -98,11 +98,13 @@ export const ErrorFallback: Story = {
         <ImageLazy
           src="https://invalid-url.example/broken.jpg"
           alt="Broken image with fallback"
-          fallback="https://picsum.photos/seed/fallback/300/300"
+          fallback="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=300&h=300&fit=crop&auto=format"
           aspectRatio="1/1"
           radius={8}
         />
-        <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>With fallback</p>
+        <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>
+          With fallback
+        </p>
       </div>
       <div style={{ width: 160 }}>
         <ImageLazy
@@ -111,7 +113,9 @@ export const ErrorFallback: Story = {
           aspectRatio="1/1"
           radius={8}
         />
-        <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>No fallback</p>
+        <p style={{ fontSize: 12, color: '#999', marginTop: 4, textAlign: 'center' }}>
+          No fallback
+        </p>
       </div>
     </div>
   ),
@@ -122,7 +126,7 @@ export const Priority: Story = {
   render: () => (
     <div style={{ width: 280 }}>
       <ImageLazy
-        src="https://picsum.photos/seed/priority/600/400"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop&auto=format"
         alt="Above-fold hero image"
         width={600}
         height={400}
@@ -143,7 +147,7 @@ export const WithDimensions: Story = {
     <div style={{ display: 'flex', gap: 16 }}>
       <div style={{ width: 200 }}>
         <ImageLazy
-          src="https://picsum.photos/seed/dim1/400/400"
+          src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&auto=format"
           alt="With dimensions"
           width={400}
           height={400}
@@ -156,7 +160,7 @@ export const WithDimensions: Story = {
       </div>
       <div style={{ width: 200 }}>
         <ImageLazy
-          src="https://picsum.photos/seed/dim2/400/300"
+          src="https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=400&h=300&fit=crop&auto=format"
           alt="Without dimensions"
           aspectRatio="4/3"
           radius={8}
@@ -192,16 +196,36 @@ export const Grid: Story = {
         }}
       >
         {products.map((p) => (
-          <div key={p.id} style={{ background: '#fff', borderRadius: 8, overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+          <div
+            key={p.id}
+            style={{
+              background: '#fff',
+              borderRadius: 8,
+              overflow: 'hidden',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+            }}
+          >
             <ImageLazy
-              src={`https://picsum.photos/seed/product${p.id}/300/300`}
+              src={`https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=300&h=300&fit=crop&auto=format`}
               alt={p.name}
-              placeholder={`https://picsum.photos/seed/product${p.id}/15/15`}
+              placeholder={`https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=15&h=15&fit=crop&auto=format`}
               aspectRatio="1/1"
             />
             <div style={{ padding: '8px 10px' }}>
-              <div style={{ fontSize: 12, color: '#333', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
-              <div style={{ fontSize: 14, color: '#FF5000', fontWeight: 600, marginTop: 2 }}>{p.price}</div>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: '#333',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {p.name}
+              </div>
+              <div style={{ fontSize: 14, color: '#FF5000', fontWeight: 600, marginTop: 2 }}>
+                {p.price}
+              </div>
             </div>
           </div>
         ))}

@@ -28,7 +28,6 @@ export const Default: Story = {
 };
 
 export const OnSale: Story = {
-  name: 'On Sale',
   args: {
     productTitle: 'Samsung Galaxy S24 Ultra 256GB Titanium Black',
     price: 12_500_000,
@@ -54,7 +53,6 @@ export const OutOfStock: Story = {
 };
 
 export const WithReviews: Story = {
-  name: 'With Reviews',
   args: {
     productTitle: 'Apple MacBook Air M3 15" 16GB 512GB Space Gray',
     price: 18_900_000,
@@ -64,22 +62,33 @@ export const WithReviews: Story = {
     stock: 15,
     productReviews: [
       {
-        user: { name: 'Alisher Karimov', avatar: 'https://picsum.photos/seed/rv-user1/64/64' } as ReviewUser,
+        user: {
+          name: 'Alisher Karimov',
+          avatar: 'https://picsum.photos/seed/rv-user1/64/64',
+        } as ReviewUser,
         rating: 5,
-        content: 'Ajoyib noutbuk! M3 chip juda tez ishlaydi. Batareya 18 soatgacha chidaydi. MacOS ham juda qulay.',
+        content:
+          'Ajoyib noutbuk! M3 chip juda tez ishlaydi. Batareya 18 soatgacha chidaydi. MacOS ham juda qulay.',
         date: '20 mart, 2026',
         variant: 'Space Gray / 512GB',
-        images: ['https://picsum.photos/seed/rv-img1/200/200', 'https://picsum.photos/seed/rv-img2/200/200'],
+        images: [
+          'https://picsum.photos/seed/rv-img1/200/200',
+          'https://picsum.photos/seed/rv-img2/200/200',
+        ],
       },
       {
         user: { name: 'Madina Yusupova' } as ReviewUser,
         rating: 3,
-        content: 'Ekrani juda yaxshi lekin narxi biroz qimmat. Dasturlash uchun ideal, lekin o\'yinlar uchun emas.',
+        content:
+          "Ekrani juda yaxshi lekin narxi biroz qimmat. Dasturlash uchun ideal, lekin o'yinlar uchun emas.",
         date: '18 mart, 2026',
         variant: 'Space Gray / 512GB',
       },
       {
-        user: { name: 'Sardor Abdurahmonov', avatar: 'https://picsum.photos/seed/rv-user3/64/64' } as ReviewUser,
+        user: {
+          name: 'Sardor Abdurahmonov',
+          avatar: 'https://picsum.photos/seed/rv-user3/64/64',
+        } as ReviewUser,
         rating: 5,
         content: 'Oldingi Intel MacBook dan 3x tezroq. Dizayn ham juda chiroyli, yengil va nozik.',
         date: '15 mart, 2026',
@@ -87,16 +96,20 @@ export const WithReviews: Story = {
         images: ['https://picsum.photos/seed/rv-img3/200/200'],
       },
       {
-        user: { name: 'Dilnoza Ergasheva', avatar: 'https://picsum.photos/seed/rv-user4/64/64' } as ReviewUser,
+        user: {
+          name: 'Dilnoza Ergasheva',
+          avatar: 'https://picsum.photos/seed/rv-user4/64/64',
+        } as ReviewUser,
         rating: 5,
-        content: 'Eng yaxshi noutbuk sotib olganim. Grafik dizayn ishlari uchun juda qulay. Retina ekrani ajoyib.',
+        content:
+          'Eng yaxshi noutbuk sotib olganim. Grafik dizayn ishlari uchun juda qulay. Retina ekrani ajoyib.',
         date: '12 mart, 2026',
         variant: 'Starlight / 256GB',
       },
       {
         user: { name: 'Farhod Toshmatov' } as ReviewUser,
         rating: 4,
-        content: 'Yaxshi mahsulot lekin portlar kam. USB-C faqat 2 ta bor. Adapter kerak bo\'ladi.',
+        content: "Yaxshi mahsulot lekin portlar kam. USB-C faqat 2 ta bor. Adapter kerak bo'ladi.",
         date: '10 mart, 2026',
         variant: 'Space Gray / 512GB',
       },

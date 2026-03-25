@@ -14,11 +14,15 @@ import {
   DesktopOTPInput,
   Button,
 } from '../../components';
-import type {
-  DesktopAddress,
-  DesktopPaymentMethod,
-} from '../../components';
-import { mockCartItems, DefaultTopBar, DefaultMegaMenu, DefaultFooter, defaultHeaderCategories, defaultPromoLinks } from '../_shared';
+import type { DesktopAddress, DesktopPaymentMethod } from '../../components';
+import {
+  mockCartItems,
+  DefaultTopBar,
+  DefaultMegaMenu,
+  DefaultFooter,
+  defaultHeaderCategories,
+  defaultPromoLinks,
+} from '../_shared';
 import styles from './DesktopCheckoutPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -60,18 +64,27 @@ const addresses: DesktopAddress[] = [
 ];
 
 const paymentMethods: DesktopPaymentMethod[] = [
-  { id: 'pm-1', type: 'uzcard', label: 'UzCard', lastFour: '4523', expiryDate: '09/27', isDefault: true },
-  { id: 'pm-2', type: 'humo', label: 'Humo', lastFour: '8901', expiryDate: '03/28', isDefault: false },
+  {
+    id: 'pm-1',
+    type: 'uzcard',
+    label: 'UzCard',
+    lastFour: '4523',
+    expiryDate: '09/27',
+    isDefault: true,
+  },
+  {
+    id: 'pm-2',
+    type: 'humo',
+    label: 'Humo',
+    lastFour: '8901',
+    expiryDate: '03/28',
+    isDefault: false,
+  },
   { id: 'pm-3', type: 'payme', label: 'Payme', isDefault: false },
   { id: 'pm-4', type: 'cash', label: 'Naqd pul', isDefault: false },
 ];
 
-
-const checkoutSteps = [
-  { title: 'Shipping' },
-  { title: 'Payment' },
-  { title: 'Review' },
-];
+const checkoutSteps = [{ title: 'Shipping' }, { title: 'Payment' }, { title: 'Review' }];
 
 // ─── Guest OTP State Type ────────────────────────────────────────────────────
 
@@ -111,7 +124,9 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
   const [selectedPayment, setSelectedPayment] = useState<string>(paymentMethods[0].id);
 
   // Guest OTP state
-  const [guestStep, setGuestStep] = useState<GuestStep>(isAuthenticated ? 'done' : initialGuestStep);
+  const [guestStep, setGuestStep] = useState<GuestStep>(
+    isAuthenticated ? 'done' : initialGuestStep
+  );
   const [guestPhone, setGuestPhone] = useState(initialGuestPhone);
   const [guestOtp, setGuestOtp] = useState(initialGuestOtp);
   const [guestCountdown, setGuestCountdown] = useState(initialGuestCountdown ?? 0);
@@ -137,7 +152,10 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
     if (digits.length <= 2) return digits;
     if (digits.length <= 4) return `${digits.slice(0, 2)} ${digits.slice(2)}`;
     if (digits.length <= 7) return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`;
-    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(7, 9)}`;
+    return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5, 7)} ${digits.slice(
+      7,
+      9
+    )}`;
   };
 
   const handleGuestPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -203,14 +221,16 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Cart', href: '#' }, { label: 'Checkout' }]} />
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'Cart', href: '#' },
+            { label: 'Checkout' },
+          ]}
+        />
       </div>
 
       {/* Guest auth banner */}
@@ -220,7 +240,9 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
             <div className={styles.guestPrompt}>
               <div className={styles.guestPromptLeft}>
                 <p className={styles.guestPromptTitle}>Already have an account?</p>
-                <p className={styles.guestPromptSubtitle}>Sign in for faster checkout and order tracking</p>
+                <p className={styles.guestPromptSubtitle}>
+                  Sign in for faster checkout and order tracking
+                </p>
               </div>
               <div className={styles.guestPromptActions}>
                 <DesktopButton variant="primary" size="md" onClick={() => setGuestStep('phone')}>
@@ -277,7 +299,6 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
                 onComplete={handleGuestOtpComplete}
                 error={!!guestOtpError}
                 errorMessage={guestOtpError}
-                autoFocus
               />
               <div className={styles.guestResendRow}>
                 {guestCountdown > 0 ? (
@@ -304,10 +325,14 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
 
       {emptyCart ? (
         <div className={styles.emptyState}>
-          <div className={styles.emptyIcon} aria-hidden="true">🛒</div>
+          <div className={styles.emptyIcon} aria-hidden="true">
+            🛒
+          </div>
           <h2 className={styles.emptyTitle}>Your cart is empty</h2>
           <p className={styles.emptyText}>Add items to your cart before checking out.</p>
-          <Button variant="primary" size="lg">Continue Shopping</Button>
+          <Button variant="primary" size="lg">
+            Continue Shopping
+          </Button>
         </div>
       ) : (
         <TwoColumnLayout
@@ -320,7 +345,9 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
           {/* Shipping Address Section */}
           {currentStep === 0 && (
             <section className={styles.formSection} aria-labelledby="shipping-heading">
-              <h2 id="shipping-heading" className={styles.formSectionTitle}>Shipping Address</h2>
+              <h2 id="shipping-heading" className={styles.formSectionTitle}>
+                Shipping Address
+              </h2>
               <div className={styles.addressList}>
                 {addresses.map((addr) => (
                   <DesktopAddressCard
@@ -341,7 +368,9 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
           {/* Payment Method Section */}
           {currentStep <= 1 && (
             <section className={styles.formSection} aria-labelledby="payment-heading">
-              <h2 id="payment-heading" className={styles.formSectionTitle}>Payment Method</h2>
+              <h2 id="payment-heading" className={styles.formSectionTitle}>
+                Payment Method
+              </h2>
               <div className={styles.paymentList}>
                 {paymentMethods.map((method) => (
                   <DesktopPaymentMethodCard
@@ -359,7 +388,9 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
           {/* Review Section */}
           {currentStep === 2 && (
             <section className={styles.formSection} aria-labelledby="review-heading">
-              <h2 id="review-heading" className={styles.formSectionTitle}>Order Review</h2>
+              <h2 id="review-heading" className={styles.formSectionTitle}>
+                Order Review
+              </h2>
               <div className={styles.reviewSummary}>
                 <div className={styles.reviewBlock}>
                   <h3 className={styles.reviewBlockTitle}>Shipping to</h3>
@@ -370,7 +401,8 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
                 <div className={styles.reviewBlock}>
                   <h3 className={styles.reviewBlockTitle}>Payment</h3>
                   <p className={styles.reviewBlockText}>
-                    {paymentMethods[0].label} {paymentMethods[0].lastFour ? `•••• ${paymentMethods[0].lastFour}` : ''}
+                    {paymentMethods[0].label}{' '}
+                    {paymentMethods[0].lastFour ? `•••• ${paymentMethods[0].lastFour}` : ''}
                   </p>
                 </div>
                 <div className={styles.reviewBlock}>

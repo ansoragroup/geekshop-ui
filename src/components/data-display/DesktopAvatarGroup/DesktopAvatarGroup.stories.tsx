@@ -22,13 +22,28 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const sampleAvatars = [
-  { src: 'https://picsum.photos/seed/grp1/128/128', name: 'Dilshod Rahimov' },
-  { src: 'https://picsum.photos/seed/grp2/128/128', name: 'Aziza Karimova' },
-  { src: 'https://picsum.photos/seed/grp3/128/128', name: 'Rustam Toshmatov' },
+  {
+    src: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=128&h=128&fit=crop&auto=format',
+    name: 'Dilshod Rahimov',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=128&h=128&fit=crop&auto=format',
+    name: 'Aziza Karimova',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=128&h=128&fit=crop&auto=format',
+    name: 'Rustam Toshmatov',
+  },
   { name: 'Nodira Saidova' },
-  { src: 'https://picsum.photos/seed/grp5/128/128', name: 'Sardor Yusupov' },
+  {
+    src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=128&h=128&fit=crop&auto=format',
+    name: 'Sardor Yusupov',
+  },
   { name: 'Malika Umarova' },
-  { src: 'https://picsum.photos/seed/grp7/128/128', name: 'Jasur Kamolov' },
+  {
+    src: 'https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=128&h=128&fit=crop&auto=format',
+    name: 'Jasur Kamolov',
+  },
   { name: 'Gulnora Alimova' },
 ];
 

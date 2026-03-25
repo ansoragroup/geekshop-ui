@@ -40,7 +40,6 @@ export const WithCoupon: Story = {
 
 /** Cart with items showing select-all checkbox and bottom action bar */
 export const WithSelectAll: Story = {
-  name: 'With Select All',
   args: {
     empty: false,
     hasCoupon: false,
@@ -49,7 +48,6 @@ export const WithSelectAll: Story = {
 
 /** Full cart with coupon, price summary breakdown, and place order button */
 export const FullCart: Story = {
-  name: 'Full Cart',
   args: {
     empty: false,
     hasCoupon: true,

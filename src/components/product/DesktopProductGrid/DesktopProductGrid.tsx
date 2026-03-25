@@ -58,7 +58,17 @@ export interface DesktopProductGridProps extends HTMLAttributes<HTMLDivElement> 
 
 function GridIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <rect x="2" y="2" width="5.5" height="5.5" />
       <rect x="10.5" y="2" width="5.5" height="5.5" />
       <rect x="2" y="10.5" width="5.5" height="5.5" />
@@ -69,7 +79,17 @@ function GridIcon() {
 
 function ListIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <line x1="5" y1="4" x2="16" y2="4" />
       <line x1="5" y1="9" x2="16" y2="9" />
       <line x1="5" y1="14" x2="16" y2="14" />
@@ -82,7 +102,17 @@ function ListIcon() {
 
 function ChevronDownIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
@@ -107,9 +137,9 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const displayCount = products.length;
     const total = totalCount ?? displayCount;
 
@@ -120,29 +150,25 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
           onSortChange?.(sortId);
         }
       },
-      [onSortChange],
+      [onSortChange]
     );
 
     const handleViewMode = useCallback(
       (mode: 'grid' | 'list') => {
         onViewModeChange?.(mode);
       },
-      [onViewModeChange],
+      [onViewModeChange]
     );
 
     const handleColumns = useCallback(
       (cols: 4 | 5) => {
         onColumnsChange?.(cols);
       },
-      [onColumnsChange],
+      [onColumnsChange]
     );
 
     return (
-      <div
-        ref={ref}
-        className={cn(styles.root, className)}
-        {...rest}
-      >
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Toolbar */}
         <div className={styles.toolbar}>
           {/* Sort options */}
@@ -151,7 +177,10 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
               <button
                 key={option.id}
                 type="button"
-                className={cn(styles.sortButton, option.id === activeSortId ? styles.sortButtonActive : '')}
+                className={cn(
+                  styles.sortButton,
+                  option.id === activeSortId ? styles.sortButtonActive : ''
+                )}
                 data-sort-id={option.id}
                 onClick={handleSortClick}
                 aria-pressed={option.id === activeSortId}
@@ -173,7 +202,10 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
             <div className={styles.viewToggle} role="group" aria-label={t('aria.viewMode')}>
               <button
                 type="button"
-                className={cn(styles.viewButton, viewMode === 'grid' ? styles.viewButtonActive : '')}
+                className={cn(
+                  styles.viewButton,
+                  viewMode === 'grid' ? styles.viewButtonActive : ''
+                )}
                 onClick={() => handleViewMode('grid')}
                 aria-label={t('aria.gridView')}
                 aria-pressed={viewMode === 'grid'}
@@ -182,7 +214,10 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
               </button>
               <button
                 type="button"
-                className={cn(styles.viewButton, viewMode === 'list' ? styles.viewButtonActive : '')}
+                className={cn(
+                  styles.viewButton,
+                  viewMode === 'list' ? styles.viewButtonActive : ''
+                )}
                 onClick={() => handleViewMode('list')}
                 aria-label={t('aria.listView')}
                 aria-pressed={viewMode === 'list'}
@@ -196,7 +231,10 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
               <div className={styles.columnToggle} role="group" aria-label={t('aria.gridColumns')}>
                 <button
                   type="button"
-                  className={cn(styles.columnButton, columns === 4 ? styles.columnButtonActive : '')}
+                  className={cn(
+                    styles.columnButton,
+                    columns === 4 ? styles.columnButtonActive : ''
+                  )}
                   onClick={() => handleColumns(4)}
                   aria-label={t('aria.fourColumns')}
                   aria-pressed={columns === 4}
@@ -205,7 +243,10 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
                 </button>
                 <button
                   type="button"
-                  className={cn(styles.columnButton, columns === 5 ? styles.columnButtonActive : '')}
+                  className={cn(
+                    styles.columnButton,
+                    columns === 5 ? styles.columnButtonActive : ''
+                  )}
                   onClick={() => handleColumns(5)}
                   aria-label={t('aria.fiveColumns')}
                   aria-pressed={columns === 5}
@@ -219,11 +260,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
 
         {/* Product grid / list */}
         {viewMode === 'grid' ? (
-          <ul
-            role="list"
-            className={styles.grid}
-            style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
-          >
+          <ul className={styles.grid} style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
             {products.map((product) => (
               <li key={product.id} className={styles.gridItem}>
                 <DesktopProductCard
@@ -246,7 +283,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
             ))}
           </ul>
         ) : (
-          <ul role="list" className={styles.list}>
+          <ul className={styles.list}>
             {products.map((product) => (
               <li key={product.id} className={styles.listItem}>
                 <ProductListItem
@@ -265,7 +302,7 @@ export const DesktopProductGrid = forwardRef<HTMLDivElement, DesktopProductGridP
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopProductGrid.displayName = 'DesktopProductGrid';

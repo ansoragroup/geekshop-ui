@@ -1,0 +1,179 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: $spacing-sm 0;
+  touch-action: none;
+  user-select: none;
+
+  &.vertical {
+    flex-direction: column;
+    min-width: 44px;
+    min-height: 120px;
+    padding: 0 $spacing-sm;
+  }
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+
+  .root:not(.vertical) & {
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .root.vertical & {
+    width: 44px;
+    height: 100%;
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.rail {
+  position: absolute;
+  background: var(--gs-border, #{$color-border});
+  border-radius: $radius-round;
+
+  .root:not(.vertical) & {
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+  }
+
+  .root.vertical & {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+  }
+}
+
+.fill {
+  position: absolute;
+  background: var(--gs-color-primary, #{$color-primary});
+  border-radius: $radius-round;
+
+  .root:not(.vertical) & {
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+  }
+
+  .root.vertical & {
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+  }
+}
+
+.thumbWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: $z-index-normal;
+  cursor: grab;
+  outline: none;
+
+  .root:not(.vertical) & {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .root.vertical & {
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  &:focus-visible .thumb {
+    box-shadow: 0 0 0 3px var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-round;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 2px solid var(--gs-color-primary, #{$color-primary});
+  box-shadow: $shadow-sm;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+  pointer-events: none;
+}
+
+.mark {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+
+  .root:not(.vertical) & {
+    top: 50%;
+    transform: translateX(-50%);
+  }
+
+  .root.vertical & {
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+}
+
+.markDot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-round;
+  background: var(--gs-border, #{$color-border});
+
+  .root:not(.vertical) & {
+    margin-top: $spacing-md;
+  }
+
+  .root.vertical & {
+    margin-left: $spacing-md;
+  }
+}
+
+.markLabel {
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  margin-top: $spacing-xxs;
+  white-space: nowrap;
+}
+
+// Disabled state
+.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+
+  .track {
+    cursor: not-allowed;
+  }
+
+  .thumbWrapper {
+    cursor: not-allowed;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition: none;
+  }
+}

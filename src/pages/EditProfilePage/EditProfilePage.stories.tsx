@@ -49,7 +49,6 @@ export const AvatarSheet: Story = {
 
 /** Filled profile ready to save — all fields populated with gender selector */
 export const FilledProfile: Story = {
-  name: 'Filled Profile',
   args: {
     empty: false,
     showErrors: false,

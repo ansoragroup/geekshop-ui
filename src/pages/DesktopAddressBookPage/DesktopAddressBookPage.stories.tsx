@@ -25,14 +25,13 @@ export const Empty: Story = {
 };
 
 export const SingleAddress: Story = {
-  name: 'Single Address',
   args: {
     addresses: [
       {
         id: 'addr-1',
         name: 'Dilshod Rahimov',
         phone: '+998 94 555 66 77',
-        street: "Registon maydoni, 3-uy",
+        street: 'Registon maydoni, 3-uy',
         city: 'Samarqand',
         region: 'Samarqand viloyati',
         postalCode: '140100',
@@ -106,7 +105,7 @@ export const ManyAddresses: Story = {
         id: 'addr-6',
         name: 'Jasur Karimov',
         phone: '+998 90 123 45 67',
-        street: "Tashkent City Mall, 3-qavat, A-302",
+        street: 'Tashkent City Mall, 3-qavat, A-302',
         city: 'Toshkent',
         region: 'Sergeli tumani',
         postalCode: '100204',
@@ -118,7 +117,6 @@ export const ManyAddresses: Story = {
 };
 
 export const DifferentCities: Story = {
-  name: 'Different Cities',
   args: {
     addresses: [
       {
@@ -136,7 +134,7 @@ export const DifferentCities: Story = {
         id: 'addr-2',
         name: 'Sardor Tursunov',
         phone: '+998 93 111 22 33',
-        street: "Buyuk Ipak Yoli, 88-uy",
+        street: 'Buyuk Ipak Yoli, 88-uy',
         city: 'Namangan',
         region: 'Namangan viloyati',
         postalCode: '160000',

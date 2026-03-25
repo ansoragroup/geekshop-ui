@@ -23,7 +23,8 @@ type Story = StoryObj<typeof meta>;
 
 const sampleProduct = {
   name: 'NVIDIA GeForce RTX 4060 Ti 8GB GDDR6',
-  image: 'https://picsum.photos/seed/gpu1/200/200',
+  image:
+    'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=200&h=200&fit=crop&auto=format',
   price: 4_199_000,
   originalPrice: 5_999_000,
 };
@@ -33,10 +34,7 @@ export const Default: Story = {
     product: sampleProduct,
     groupSize: 3,
     currentMembers: 2,
-    memberAvatars: [
-      'https://i.pravatar.cc/80?u=aziz',
-      'https://i.pravatar.cc/80?u=nodira',
-    ],
+    memberAvatars: ['https://i.pravatar.cc/80?u=aziz', 'https://i.pravatar.cc/80?u=nodira'],
     timeLeft: 4 * 3600 + 23 * 60,
     onJoinGroup: () => console.log('Join group'),
     onBuyAlone: () => console.log('Buy alone'),
@@ -47,7 +45,8 @@ export const OneJoined: Story = {
   args: {
     product: {
       name: 'Intel Core i7-14700K Processor 20-Core',
-      image: 'https://picsum.photos/seed/cpu1/200/200',
+      image:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&auto=format',
       price: 3_499_000,
       originalPrice: 4_799_000,
     },
@@ -64,7 +63,8 @@ export const GroupFull: Story = {
   args: {
     product: {
       name: 'Samsung 990 EVO Plus SSD 2TB NVMe M.2',
-      image: 'https://picsum.photos/seed/ssd1/200/200',
+      image:
+        'https://images.unsplash.com/photo-1557683316-973673baf926?w=200&h=200&fit=crop&auto=format',
       price: 1_299_000,
       originalPrice: 1_799_000,
     },
@@ -85,7 +85,8 @@ export const AlmostExpired: Story = {
   args: {
     product: {
       name: 'Logitech G Pro X Superlight 2 Wireless Mouse',
-      image: 'https://picsum.photos/seed/mouse1/200/200',
+      image:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format',
       price: 799_000,
       originalPrice: 1_199_000,
     },
@@ -102,7 +103,8 @@ export const NoAvatars: Story = {
   args: {
     product: {
       name: 'Kingston FURY Beast DDR5 32GB (2x16GB) 6000MHz',
-      image: 'https://picsum.photos/seed/ram1/200/200',
+      image:
+        'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop&auto=format',
       price: 899_000,
       originalPrice: 1_299_000,
     },

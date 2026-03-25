@@ -16,11 +16,13 @@ const meta = {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 450, padding: 24, background: '#fff' }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 450, padding: 24, background: '#fff' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopSwitch>;
 
 export default meta;
@@ -188,7 +190,6 @@ export const FullFeatured: Story = {
 /* ─── All States Overview ─── */
 
 export const AllStatesOverview: Story = {
-  name: 'All States Overview',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <DesktopSwitch label="Off" defaultChecked={false} />
@@ -197,7 +198,12 @@ export const AllStatesOverview: Story = {
       <DesktopSwitch label="Small on" size="sm" defaultChecked />
       <DesktopSwitch label="Disabled off" disabled checked={false} />
       <DesktopSwitch label="Disabled on" disabled checked />
-      <DesktopSwitch label="With inline labels" onLabel="ON" offLabel="OFF" defaultChecked={false} />
+      <DesktopSwitch
+        label="With inline labels"
+        onLabel="ON"
+        offLabel="OFF"
+        defaultChecked={false}
+      />
       <DesktopSwitch label="With description" description="Extra context here" defaultChecked />
     </div>
   ),
@@ -217,9 +223,7 @@ export const Controlled: Story = {
           checked={checked}
           onChange={setChecked}
         />
-        <div style={{ fontSize: 12, color: '#666' }}>
-          Value: {String(checked)}
-        </div>
+        <div style={{ fontSize: 12, color: '#666' }}>Value: {String(checked)}</div>
       </div>
     );
   },
@@ -230,20 +234,36 @@ export const Controlled: Story = {
 export const SettingsGroup: Story = {
   name: 'Settings Page Section',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 0, border: '1px solid #eee', borderRadius: 12, overflow: 'hidden' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 0,
+        border: '1px solid #eee',
+        borderRadius: 12,
+        overflow: 'hidden',
+      }}
+    >
       {[
-        { label: 'Push notifications', desc: 'Get notified about order status changes', checked: true },
+        {
+          label: 'Push notifications',
+          desc: 'Get notified about order status changes',
+          checked: true,
+        },
         { label: 'SMS notifications', desc: 'Receive delivery updates via SMS', checked: false },
         { label: 'Marketing emails', desc: 'Weekly deals and exclusive offers', checked: false },
-        { label: 'Price drop alerts', desc: 'Get notified when items in your wishlist go on sale', checked: true },
+        {
+          label: 'Price drop alerts',
+          desc: 'Get notified when items in your wishlist go on sale',
+          checked: true,
+        },
         { label: 'Security alerts', desc: 'Login attempts and password changes', checked: true },
       ].map(({ label, desc, checked }, index) => (
-        <div key={label} style={{ padding: '16px 20px', borderTop: index > 0 ? '1px solid #f0f0f0' : undefined }}>
-          <DesktopSwitch
-            label={label}
-            description={desc}
-            defaultChecked={checked}
-          />
+        <div
+          key={label}
+          style={{ padding: '16px 20px', borderTop: index > 0 ? '1px solid #f0f0f0' : undefined }}
+        >
+          <DesktopSwitch label={label} description={desc} defaultChecked={checked} />
         </div>
       ))}
     </div>
@@ -255,8 +275,10 @@ export const SettingsGroup: Story = {
 export const LongLabel: Story = {
   name: 'Long Label (Overflow)',
   args: {
-    label: 'Automatically apply the best available discount code when checking out products from verified sellers',
-    description: 'This feature scans all available promo codes and applies the one that gives you the highest discount on your current cart',
+    label:
+      'Automatically apply the best available discount code when checking out products from verified sellers',
+    description:
+      'This feature scans all available promo codes and applies the one that gives you the highest discount on your current cart',
     defaultChecked: true,
     onChange: fn(),
   },

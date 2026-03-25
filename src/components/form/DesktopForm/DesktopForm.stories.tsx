@@ -167,13 +167,20 @@ export const WithDescriptions: Story = {
     onSubmit: fn(),
     children: (
       <>
-        <DesktopFormItem label="Store Name" required description="Your public-facing store name. Max 50 characters.">
+        <DesktopFormItem
+          label="Store Name"
+          required
+          description="Your public-facing store name. Max 50 characters."
+        >
           <input type="text" placeholder="GeekShop" style={inputStyle} />
         </DesktopFormItem>
         <DesktopFormItem label="Store URL" description="geekshop.uz/store/your-slug">
           <input type="text" placeholder="your-slug" style={inputStyle} />
         </DesktopFormItem>
-        <DesktopFormItem label="Tax ID" description="Required for B2B transactions. Contact support if you need help.">
+        <DesktopFormItem
+          label="Tax ID"
+          description="Required for B2B transactions. Contact support if you need help."
+        >
           <input type="text" placeholder="123456789" style={inputStyle} />
         </DesktopFormItem>
       </>
@@ -184,7 +191,6 @@ export const WithDescriptions: Story = {
 /* ─── Mixed Field Types ─── */
 
 export const MixedFieldTypes: Story = {
-  name: 'Mixed Field Types',
   args: {
     layout: 'vertical',
     onSubmit: fn(),
@@ -296,7 +302,6 @@ export const FullFeatured: Story = {
 /* ─── Realistic: Checkout Form ─── */
 
 export const CheckoutForm: Story = {
-  name: 'Checkout Form',
   args: {
     layout: 'vertical',
     onSubmit: fn(),
@@ -325,7 +330,10 @@ export const CheckoutForm: Story = {
           </DesktopFormItem>
         </div>
         <DesktopFormDivider title="Order Notes" />
-        <DesktopFormItem label="Delivery Instructions" description="Any special instructions for the courier">
+        <DesktopFormItem
+          label="Delivery Instructions"
+          description="Any special instructions for the courier"
+        >
           <textarea placeholder="Ring the doorbell twice..." rows={2} style={textareaStyle} />
         </DesktopFormItem>
       </>

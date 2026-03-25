@@ -43,7 +43,12 @@ export interface DesktopQuickBuyPopupProps extends HTMLAttributes<HTMLDivElement
 function CloseIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path
+        d="M5 5L15 15M15 5L5 15"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -67,22 +72,11 @@ function PlusIcon() {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPopupProps>(
-  (
-    {
-      product,
-      variants = [],
-      onClose,
-      onAddToCart,
-      open = true,
-      className = '',
-      ...rest
-    },
-    ref,
-  ) => {
-  const { t } = useGeekShop();
+  ({ product, variants = [], onClose, onAddToCart, open = true, className = '', ...rest }, ref) => {
+    const { t } = useGeekShop();
     const [quantity, setQuantity] = useState(1);
     const [selectedVariant, setSelectedVariant] = useState<string | null>(
-      variants.length > 0 ? variants[0].id : null,
+      variants.length > 0 ? variants[0].id : null
     );
     const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -110,7 +104,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
 
         if (e.key === 'Tab' && dialogRef.current) {
           const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           );
           const first = focusable[0];
           const last = focusable[focusable.length - 1];
@@ -150,6 +144,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
         role="presentation"
         {...rest}
       >
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- dialog needs stopPropagation for overlay dismiss */}
         <div
           ref={dialogRef}
           className={styles.dialog}
@@ -192,12 +187,19 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
               {variants.length > 0 && (
                 <div className={styles.variantSection}>
                   <span className={styles.sectionLabel}>Variant</span>
-                  <div className={styles.chips} role="radiogroup" aria-label={t('aria.selectVariant')}>
+                  <div
+                    className={styles.chips}
+                    role="radiogroup"
+                    aria-label={t('aria.selectVariant')}
+                  >
                     {variants.map((v) => (
                       <button
                         type="button"
                         key={v.id}
-                        className={cn(styles.chip, selectedVariant === v.id ? styles.chipActive : '')}
+                        className={cn(
+                          styles.chip,
+                          selectedVariant === v.id ? styles.chipActive : ''
+                        )}
                         onClick={() => setSelectedVariant(v.id)}
                         role="radio"
                         aria-checked={selectedVariant === v.id}
@@ -241,11 +243,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
               </div>
 
               {/* Add to cart */}
-              <button
-                type="button"
-                className={styles.addToCartBtn}
-                onClick={handleAddToCart}
-              >
+              <button type="button" className={styles.addToCartBtn} onClick={handleAddToCart}>
                 Add to Cart
               </button>
             </div>
@@ -253,7 +251,7 @@ export const DesktopQuickBuyPopup = forwardRef<HTMLDivElement, DesktopQuickBuyPo
         </div>
       </div>
     );
-  },
+  }
 );
 
 DesktopQuickBuyPopup.displayName = 'DesktopQuickBuyPopup';

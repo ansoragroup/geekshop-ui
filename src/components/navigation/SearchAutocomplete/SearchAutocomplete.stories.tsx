@@ -6,29 +6,28 @@ import type { SearchAutocompleteProps } from './SearchAutocomplete';
 
 const sampleRecent = ['RTX 4060', 'Ryzen 7', 'DDR5', 'Samsung SSD'];
 
-const sampleSuggestions = [
-  'RTX 4070 Super 12GB',
-  'RTX 4070 Ti 12GB',
-  'RTX 4070 Super Gaming OC',
-];
+const sampleSuggestions = ['RTX 4070 Super 12GB', 'RTX 4070 Ti 12GB', 'RTX 4070 Super Gaming OC'];
 
 const sampleProducts = [
   {
     id: '1',
     title: 'ASUS ROG Strix RTX 4070 Super 12GB OC',
-    image: 'https://picsum.photos/seed/rtx4070s/100/100',
+    image:
+      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&auto=format',
     price: 8900000,
   },
   {
     id: '2',
     title: 'MSI GeForce RTX 4070 Ti Gaming X Trio 12GB',
-    image: 'https://picsum.photos/seed/rtx4070ti/100/100',
+    image:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&auto=format',
     price: 9500000,
   },
   {
     id: '3',
     title: 'Gigabyte RTX 4070 Super Eagle OC 12GB',
-    image: 'https://picsum.photos/seed/rtx4070e/100/100',
+    image:
+      'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=100&h=100&fit=crop&auto=format',
     price: 8700000,
   },
 ];
@@ -80,30 +79,15 @@ export const WithValue: Story = {
 };
 
 export const RecentOnly: Story = {
-  render: () => (
-    <InteractiveSearch
-      suggestions={[]}
-      products={[]}
-    />
-  ),
+  render: () => <InteractiveSearch suggestions={[]} products={[]} />,
 };
 
 export const SuggestionsOnly: Story = {
-  render: () => (
-    <InteractiveSearch
-      recentSearches={[]}
-      products={[]}
-    />
-  ),
+  render: () => <InteractiveSearch recentSearches={[]} products={[]} />,
 };
 
 export const ProductsOnly: Story = {
-  render: () => (
-    <InteractiveSearch
-      recentSearches={[]}
-      suggestions={[]}
-    />
-  ),
+  render: () => <InteractiveSearch recentSearches={[]} suggestions={[]} />,
 };
 
 export const Empty: Story = {
@@ -118,11 +102,7 @@ export const Empty: Story = {
 };
 
 export const CustomPlaceholder: Story = {
-  render: () => (
-    <InteractiveSearch
-      placeholder="Search for GPUs, CPUs, monitors..."
-    />
-  ),
+  render: () => <InteractiveSearch placeholder="Search for GPUs, CPUs, monitors..." />,
 };
 
 export const AllSections: Story = {
@@ -139,13 +119,15 @@ export const AllSections: Story = {
         {
           id: '1',
           title: 'ASUS ROG Strix RTX 4070 Super OC 12GB GDDR6X',
-          image: 'https://picsum.photos/seed/gpu1/100/100',
+          image:
+            'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=100&h=100&fit=crop&auto=format',
           price: 8900000,
         },
         {
           id: '2',
           title: 'MSI GeForce RTX 4070 Ti Gaming X Trio 12GB',
-          image: 'https://picsum.photos/seed/gpu2/100/100',
+          image:
+            'https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=100&h=100&fit=crop&auto=format',
           price: 9500000,
         },
       ]}

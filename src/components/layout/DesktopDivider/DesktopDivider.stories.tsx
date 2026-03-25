@@ -60,7 +60,6 @@ export const DashedWithLabel: Story = {
 };
 
 export const LongLabel: Story = {
-  name: 'Long Label',
   args: {
     label: 'Continue with social accounts',
   },
@@ -104,7 +103,17 @@ export const CustomColorInfo: Story = {
 export const Vertical: Story = {
   decorators: [
     (Story) => (
-      <div style={{ width: 900, padding: 24, background: '#fff', display: 'flex', alignItems: 'center', gap: 16, height: 48 }}>
+      <div
+        style={{
+          width: 900,
+          padding: 24,
+          background: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16,
+          height: 48,
+        }}
+      >
         <span style={{ fontSize: 14, color: '#666' }}>Section A</span>
         <Story />
         <span style={{ fontSize: 14, color: '#666' }}>Section B</span>
@@ -117,10 +126,19 @@ export const Vertical: Story = {
 };
 
 export const VerticalDashed: Story = {
-  name: 'Vertical Dashed',
   decorators: [
     (Story) => (
-      <div style={{ width: 900, padding: 24, background: '#fff', display: 'flex', alignItems: 'center', gap: 16, height: 48 }}>
+      <div
+        style={{
+          width: 900,
+          padding: 24,
+          background: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16,
+          height: 48,
+        }}
+      >
         <span style={{ fontSize: 14, color: '#666' }}>Left</span>
         <Story />
         <span style={{ fontSize: 14, color: '#666' }}>Right</span>
@@ -137,7 +155,17 @@ export const VerticalColored: Story = {
   name: 'Vertical with Custom Color',
   decorators: [
     (Story) => (
-      <div style={{ width: 900, padding: 24, background: '#fff', display: 'flex', alignItems: 'center', gap: 16, height: 48 }}>
+      <div
+        style={{
+          width: 900,
+          padding: 24,
+          background: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16,
+          height: 48,
+        }}
+      >
         <span style={{ fontSize: 14, color: '#666' }}>Price</span>
         <Story />
         <span style={{ fontSize: 14, color: '#666' }}>Discount</span>
@@ -177,31 +205,90 @@ export const MultipleVertical: Story = {
 /* ─── All Variants Overview ─── */
 
 export const AllVariantsOverview: Story = {
-  name: 'All Variants Overview',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Solid</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Solid
+        </div>
         <DesktopDivider variant="solid" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Dashed</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Dashed
+        </div>
         <DesktopDivider variant="dashed" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>With Label (Solid)</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          With Label (Solid)
+        </div>
         <DesktopDivider label="OR" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>With Label (Dashed)</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          With Label (Dashed)
+        </div>
         <DesktopDivider variant="dashed" label="OR" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Primary Color</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Primary Color
+        </div>
         <DesktopDivider color="#FF5000" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Primary + Label</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Primary + Label
+        </div>
         <DesktopDivider color="#FF5000" label="GeekShop" />
       </div>
     </div>
@@ -225,8 +312,22 @@ export const FullFeatured: Story = {
 export const LoginFormDivider: Story = {
   name: 'Login Form (OR Divider)',
   render: () => (
-    <div style={{ maxWidth: 360, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <div style={{ height: 44, background: '#0088CC', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 14, fontWeight: 500 }}>
+    <div
+      style={{ maxWidth: 360, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}
+    >
+      <div
+        style={{
+          height: 44,
+          background: '#0088CC',
+          borderRadius: 8,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff',
+          fontSize: 14,
+          fontWeight: 500,
+        }}
+      >
         Continue with Telegram
       </div>
       <DesktopDivider label="OR" />
@@ -234,14 +335,42 @@ export const LoginFormDivider: Story = {
         <input
           type="email"
           placeholder="Email address"
-          style={{ width: '100%', height: 44, padding: '0 12px', border: '1.5px solid #eee', borderRadius: 8, fontSize: 14, boxSizing: 'border-box' }}
+          style={{
+            width: '100%',
+            height: 44,
+            padding: '0 12px',
+            border: '1.5px solid #eee',
+            borderRadius: 8,
+            fontSize: 14,
+            boxSizing: 'border-box',
+          }}
         />
         <input
           type="password"
           placeholder="Password"
-          style={{ width: '100%', height: 44, padding: '0 12px', border: '1.5px solid #eee', borderRadius: 8, fontSize: 14, boxSizing: 'border-box' }}
+          style={{
+            width: '100%',
+            height: 44,
+            padding: '0 12px',
+            border: '1.5px solid #eee',
+            borderRadius: 8,
+            fontSize: 14,
+            boxSizing: 'border-box',
+          }}
         />
-        <div style={{ height: 44, background: '#FF5000', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 14, fontWeight: 600 }}>
+        <div
+          style={{
+            height: 44,
+            background: '#FF5000',
+            borderRadius: 8,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff',
+            fontSize: 14,
+            fontWeight: 600,
+          }}
+        >
           Log In
         </div>
       </div>
@@ -252,13 +381,13 @@ export const LoginFormDivider: Story = {
 /* ─── Realistic: Product Detail Sections ─── */
 
 export const ProductDetailSections: Story = {
-  name: 'Product Detail Sections',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div>
         <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 8 }}>Product Description</h3>
         <p style={{ fontSize: 14, color: '#666', lineHeight: 1.6 }}>
-          The NVIDIA GeForce RTX 4090 is the ultimate gaming GPU, powered by the NVIDIA Ada Lovelace architecture.
+          The NVIDIA GeForce RTX 4090 is the ultimate gaming GPU, powered by the NVIDIA Ada Lovelace
+          architecture.
         </p>
       </div>
       <DesktopDivider />

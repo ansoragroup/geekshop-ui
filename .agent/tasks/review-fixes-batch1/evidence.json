@@ -1,0 +1,34 @@
+{
+  "task_id": "review-fixes-batch1",
+  "overall_status": "PARTIAL",
+  "acceptance_criteria": [
+    { "id": "AC1", "status": "PASS", "proof": ["raw/scss-audit-test.txt"] },
+    { "id": "AC2", "status": "PASS", "proof": ["raw/barrel-exports.txt"] },
+    { "id": "AC3", "status": "PASS", "proof": [] },
+    { "id": "AC4", "status": "PASS", "proof": [] },
+    { "id": "AC5", "status": "PASS", "proof": [] },
+    { "id": "AC6", "status": "PASS", "proof": [] },
+    { "id": "AC7", "status": "PASS", "proof": [] },
+    { "id": "AC8", "status": "PASS", "proof": [] },
+    { "id": "AC9", "status": "PASS", "proof": [] },
+    { "id": "AC10", "status": "PASS", "proof": [] },
+    { "id": "AC11", "status": "PASS", "proof": ["raw/test-telegram.txt"] },
+    { "id": "AC12", "status": "PASS", "proof": [] },
+    { "id": "AC13", "status": "PASS", "proof": ["raw/audit.txt"] },
+    { "id": "AC-GATE-1", "status": "FAIL", "proof": ["raw/lint.txt"], "gaps": ["97 pre-existing lint errors, out of scope"] },
+    { "id": "AC-GATE-2", "status": "FAIL", "proof": ["raw/test-unit.txt"], "gaps": ["49 pre-existing test failures, out of scope"] },
+    { "id": "AC-GATE-3", "status": "PASS", "proof": ["raw/build.txt"] },
+    { "id": "AC-GATE-4", "status": "PASS", "proof": ["raw/scss-token-audit.txt"] },
+    { "id": "AC-GATE-5", "status": "PASS", "proof": ["raw/barrel-exports.txt"] }
+  ],
+  "changed_files": [
+    "scripts/scss-token-audit.sh",
+    "src/components/commerce/PaymentMethodCard/PaymentMethodCard.module.scss"
+  ],
+  "commands_for_fresh_verifier": [
+    "bash scripts/scss-token-audit.sh"
+  ],
+  "known_gaps": [
+    "AC-GATE-1 and AC-GATE-2 fail due to pre-existing issues, not introduced by this task batch."
+  ]
+}

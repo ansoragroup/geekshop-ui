@@ -6,7 +6,8 @@ import type { SkuProduct, SkuVariant } from './SkuSelector';
 
 const gpuProduct: SkuProduct = {
   title: 'NVIDIA GeForce RTX 4070 Ti SUPER 16GB',
-  image: 'https://picsum.photos/seed/rtx4070ti/200/200',
+  image:
+    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format',
   priceRange: [8_200_000, 12_500_000],
 };
 
@@ -14,42 +15,48 @@ const gpuVariants: SkuVariant[] = [
   {
     id: 'msi-ventus',
     name: 'MSI Ventus 3X OC',
-    image: 'https://picsum.photos/seed/msi-ventus/200/200',
+    image:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format',
     price: 8_200_000,
     stock: 12,
   },
   {
     id: 'asus-tuf',
     name: 'ASUS TUF Gaming OC',
-    image: 'https://picsum.photos/seed/asus-tuf/200/200',
+    image:
+      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=200&h=200&fit=crop&auto=format',
     price: 9_100_000,
     stock: 8,
   },
   {
     id: 'gigabyte-eagle',
     name: 'Gigabyte Eagle OC',
-    image: 'https://picsum.photos/seed/gigabyte-eagle/200/200',
+    image:
+      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&auto=format',
     price: 8_500_000,
     stock: 5,
   },
   {
     id: 'evga-ftw3',
     name: 'EVGA FTW3 Ultra',
-    image: 'https://picsum.photos/seed/evga-ftw3/200/200',
+    image:
+      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop&auto=format',
     price: 10_800_000,
     stock: 3,
   },
   {
     id: 'zotac-amp',
     name: 'Zotac AMP Extreme',
-    image: 'https://picsum.photos/seed/zotac-amp/200/200',
+    image:
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&auto=format',
     price: 12_500_000,
     stock: 2,
   },
   {
     id: 'palit-gamerock',
     name: 'Palit GameRock OC',
-    image: 'https://picsum.photos/seed/palit-gamerock/200/200',
+    image:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&auto=format',
     price: 9_400_000,
     stock: 7,
   },
@@ -59,7 +66,8 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
   {
     id: 'msi-ventus',
     name: 'MSI Ventus 3X OC',
-    image: 'https://picsum.photos/seed/msi-ventus/200/200',
+    image:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format',
     price: 8_200_000,
     stock: 12,
     hotRank: 1,
@@ -67,7 +75,8 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
   {
     id: 'asus-tuf',
     name: 'ASUS TUF Gaming OC',
-    image: 'https://picsum.photos/seed/asus-tuf/200/200',
+    image:
+      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=200&h=200&fit=crop&auto=format',
     price: 9_100_000,
     stock: 8,
     hotRank: 2,
@@ -75,7 +84,8 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
   {
     id: 'gigabyte-eagle',
     name: 'Gigabyte Eagle OC',
-    image: 'https://picsum.photos/seed/gigabyte-eagle/200/200',
+    image:
+      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&auto=format',
     price: 8_500_000,
     stock: 5,
     hotRank: 3,
@@ -83,21 +93,24 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
   {
     id: 'evga-ftw3',
     name: 'EVGA FTW3 Ultra',
-    image: 'https://picsum.photos/seed/evga-ftw3/200/200',
+    image:
+      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop&auto=format',
     price: 10_800_000,
     stock: 3,
   },
   {
     id: 'zotac-amp',
     name: 'Zotac AMP Extreme',
-    image: 'https://picsum.photos/seed/zotac-amp/200/200',
+    image:
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&auto=format',
     price: 12_500_000,
     stock: 2,
   },
   {
     id: 'palit-gamerock',
     name: 'Palit GameRock OC',
-    image: 'https://picsum.photos/seed/palit-gamerock/200/200',
+    image:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&auto=format',
     price: 9_400_000,
     stock: 7,
   },

@@ -8,7 +8,15 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div style={{ padding: 16, background: '#f5f5f5', borderRadius: 12, maxHeight: 400, overflow: 'auto' }}>
+      <div
+        style={{
+          padding: 16,
+          background: '#f5f5f5',
+          borderRadius: 12,
+          maxHeight: 400,
+          overflow: 'auto',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -98,11 +106,7 @@ const DefaultDemo = () => {
   }, []);
 
   return (
-    <InfiniteScroll
-      onLoadMore={handleLoadMore}
-      hasMore={hasMore}
-      loading={loading}
-    >
+    <InfiniteScroll onLoadMore={handleLoadMore} hasMore={hasMore} loading={loading}>
       {items.map((p, i) => (
         <ProductItem key={p.id} name={p.name} price={p.price} index={i} />
       ))}
@@ -155,10 +159,7 @@ export const EndReached: Story = {
     const items = generateProducts(0, 6);
 
     return (
-      <InfiniteScroll
-        onLoadMore={() => {}}
-        hasMore={false}
-      >
+      <InfiniteScroll onLoadMore={() => {}} hasMore={false}>
         {items.map((p, i) => (
           <ProductItem key={p.id} name={p.name} price={p.price} index={i} />
         ))}
@@ -174,11 +175,7 @@ export const LoadingState: Story = {
     const items = generateProducts(0, 4);
 
     return (
-      <InfiniteScroll
-        onLoadMore={() => {}}
-        hasMore={true}
-        loading={true}
-      >
+      <InfiniteScroll onLoadMore={() => {}} hasMore={true} loading={true}>
         {items.map((p, i) => (
           <ProductItem key={p.id} name={p.name} price={p.price} index={i} />
         ))}
@@ -249,7 +246,6 @@ export const CustomEndContent: Story = {
 
 // --- Custom Error Content ---
 export const CustomErrorContent: Story = {
-  name: 'Custom Error Content',
   render: () => {
     const items = generateProducts(0, 3);
 
@@ -259,9 +255,19 @@ export const CustomErrorContent: Story = {
         hasMore={true}
         error={true}
         errorContent={
-          <div style={{ textAlign: 'center', padding: 16, background: '#FFF5F5', borderRadius: 8, color: '#FF3B30' }}>
+          <div
+            style={{
+              textAlign: 'center',
+              padding: 16,
+              background: '#FFF5F5',
+              borderRadius: 8,
+              color: '#FF3B30',
+            }}
+          >
             <div style={{ fontWeight: 600, marginBottom: 4 }}>Network connection lost</div>
-            <div style={{ fontSize: 12, color: '#999' }}>Check your internet connection and try again</div>
+            <div style={{ fontSize: 12, color: '#999' }}>
+              Check your internet connection and try again
+            </div>
           </div>
         }
       >
@@ -292,12 +298,7 @@ const LargeThresholdDemo = () => {
   }, []);
 
   return (
-    <InfiniteScroll
-      onLoadMore={handleLoadMore}
-      hasMore={hasMore}
-      loading={loading}
-      threshold={500}
-    >
+    <InfiniteScroll onLoadMore={handleLoadMore} hasMore={hasMore} loading={loading} threshold={500}>
       {items.map((p, i) => (
         <ProductItem key={p.id} name={p.name} price={p.price} index={i} />
       ))}
@@ -364,11 +365,7 @@ export const EmptyInitial: Story = {
   name: 'Empty Initial (No Items Yet)',
   render: () => {
     return (
-      <InfiniteScroll
-        onLoadMore={() => {}}
-        hasMore={true}
-        loading={true}
-      >
+      <InfiniteScroll onLoadMore={() => {}} hasMore={true} loading={true}>
         <div style={{ textAlign: 'center', padding: 24, color: '#999', fontSize: 13 }}>
           Loading products...
         </div>

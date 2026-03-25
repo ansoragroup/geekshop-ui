@@ -30,7 +30,7 @@ describe('OrderStatusBar', () => {
     ];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.getByText('Custom Status')).toBeInTheDocument();
-  }];
+  });
 
   it('calls onTap with correct index when button is clicked', async () => {
     const user = userEvent.setup();
@@ -51,33 +51,25 @@ describe('OrderStatusBar', () => {
   });
 
   it('shows badge count when count > 0', () => {
-    const statuses: OrderStatusItem[] = [
-      { icon: <span>I</span>, label: 'Pending', count: 5 },
-    ];
+    const statuses: OrderStatusItem[] = [{ icon: <span>I</span>, label: 'Pending', count: 5 }];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.getByText('5')).toBeInTheDocument();
-  }];
+  });
 
   it('does not show badge when count is 0', () => {
-    const statuses: OrderStatusItem[] = [
-      { icon: <span>I</span>, label: 'Pending', count: 0 },
-    ];
+    const statuses: OrderStatusItem[] = [{ icon: <span>I</span>, label: 'Pending', count: 0 }];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.queryByText('0')).toBeNull();
-  }];
+  });
 
   it('shows "99+" for count over 99', () => {
-    const statuses: OrderStatusItem[] = [
-      { icon: <span>I</span>, label: 'Many', count: 150 },
-    ];
+    const statuses: OrderStatusItem[] = [{ icon: <span>I</span>, label: 'Many', count: 150 }];
     render(<OrderStatusBar statuses={statuses} />);
     expect(screen.getByText('99+')).toBeInTheDocument();
-  }];
+  });
 
   it('does not show badge when count is undefined', () => {
-    const statuses: OrderStatusItem[] = [
-      { icon: <span>I</span>, label: 'No Count' },
-    ];
+    const statuses: OrderStatusItem[] = [{ icon: <span>I</span>, label: 'No Count' }];
     const { container } = render(<OrderStatusBar statuses={statuses} />);
     // No badge span should exist - only the icon wrap and label
     const button = container.querySelector('button') as HTMLElement;
@@ -86,7 +78,7 @@ describe('OrderStatusBar', () => {
 
   it('applies custom className', () => {
     const { container } = render(
-      <OrderStatusBar statuses={DEFAULT_ORDER_STATUSES} className="my-bar" />,
+      <OrderStatusBar statuses={DEFAULT_ORDER_STATUSES} className="my-bar" />
     );
     const root = container.firstElementChild as HTMLElement;
     expect(root.className).toContain('my-bar');

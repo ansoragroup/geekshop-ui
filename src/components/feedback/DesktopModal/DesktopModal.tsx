@@ -2,7 +2,15 @@
 import { createPortal } from 'react-dom';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useCallback, useEffect, useId, useState, type ReactNode, type HTMLAttributes } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useId,
+  useState,
+  type ReactNode,
+  type HTMLAttributes,
+} from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopModal.module.scss';
 
@@ -25,7 +33,12 @@ export interface DesktopModalProps extends HTMLAttributes<HTMLDivElement> {
 
 const CloseIcon = () => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-    <path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path
+      d="M4.5 4.5l9 9M13.5 4.5l-9 9"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
@@ -42,12 +55,13 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const titleId = useId();
-    const [visible, setVisible] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
+    const [closing, setClosing] = useState(false);
+    // visible = either currently open or in the middle of close animation
+    const visible = open || closing;
 
     const trapRef = useFocusTrap<HTMLDivElement>(open, {
       onEscape: closable ? handleClose : undefined,
@@ -62,23 +76,18 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
           ref.current = node;
         }
       },
-      [ref, trapRef],
+      [ref, trapRef]
     );
 
-    // Track open/close state for exit animation
+    // Handle close animation: when open transitions false -> start closing timer
     useEffect(() => {
-      if (open) {
-        setVisible(true);
-        setIsClosing(false);
-      } else if (visible) {
-        setIsClosing(true);
+      if (!open && closing) {
         const timer = setTimeout(() => {
-          setVisible(false);
-          setIsClosing(false);
+          setClosing(false);
         }, 200);
         return () => clearTimeout(timer);
       }
-    }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [open, closing]);
 
     // Body scroll lock
     useEffect(() => {
@@ -93,12 +102,8 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
 
     function handleClose() {
       if (closable) {
-        setIsClosing(true);
-        setTimeout(() => {
-          setIsClosing(false);
-          setVisible(false);
-          onClose();
-        }, 200);
+        setClosing(true);
+        onClose();
       }
     }
 
@@ -114,14 +119,14 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
 
     const modal = (
       <div
-        className={cn(styles.backdrop, isClosing && styles.closing, className)}
+        className={cn(styles.backdrop, closing && styles.closing, className)}
         onClick={handleBackdropClick}
         role="presentation"
       >
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
-          className={cn(styles.modal, isClosing && styles.closing)}
+          className={cn(styles.modal, closing && styles.closing)}
           style={{ width }}
           onClick={handleContentClick}
           onKeyDown={(e) => e.stopPropagation()}
@@ -135,7 +140,9 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
           {/* Header */}
           <div className={styles.header}>
             {title && (
-              <h2 id={titleId} className={styles.title}>{title}</h2>
+              <h2 id={titleId} className={styles.title}>
+                {title}
+              </h2>
             )}
             {closable && (
               <button
@@ -160,7 +167,7 @@ export const DesktopModal = forwardRef<HTMLDivElement, DesktopModalProps>(
 
     if (typeof document === 'undefined') return modal;
     return createPortal(modal, document.body);
-  },
+  }
 );
 
 DesktopModal.displayName = 'DesktopModal';

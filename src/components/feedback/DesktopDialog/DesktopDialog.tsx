@@ -1,7 +1,14 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useCallback, useEffect, useState, type ReactNode, type HTMLAttributes } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useState,
+  type ReactNode,
+  type HTMLAttributes,
+} from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopDialog.module.scss';
 
@@ -43,10 +50,10 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-    const [visible, setVisible] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
+    const [closing, setClosing] = useState(false);
+    const visible = open || closing;
 
     const trapRef = useFocusTrap<HTMLDivElement>(open, {
       onEscape: handleClose,
@@ -61,23 +68,18 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
           ref.current = node;
         }
       },
-      [ref, trapRef],
+      [ref, trapRef]
     );
 
-    // Track open/close state for exit animation
+    // Handle close animation: when open becomes false, start closing timer
     useEffect(() => {
-      if (open) {
-        setVisible(true);
-        setIsClosing(false);
-      } else if (visible) {
-        setIsClosing(true);
+      if (!open && closing) {
         const timer = setTimeout(() => {
-          setVisible(false);
-          setIsClosing(false);
+          setClosing(false);
         }, 200);
         return () => clearTimeout(timer);
       }
-    }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [open, closing]);
 
     // Body scroll lock
     useEffect(() => {
@@ -91,12 +93,8 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
     }, [visible]);
 
     function handleClose() {
-      setIsClosing(true);
-      setTimeout(() => {
-        setIsClosing(false);
-        setVisible(false);
-        onClose();
-      }, 200);
+      setClosing(true);
+      onClose();
     }
 
     const handleBackdropClick = () => {
@@ -120,14 +118,14 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
 
     const dialog = (
       <div
-        className={cn(styles.backdrop, isClosing && styles.closing, className)}
+        className={cn(styles.backdrop, closing && styles.closing, className)}
         onClick={handleBackdropClick}
         role="presentation"
       >
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
-          className={cn(styles.dialog, isClosing && styles.closing)}
+          className={cn(styles.dialog, closing && styles.closing)}
           onClick={handleContentClick}
           onKeyDown={(e) => e.stopPropagation()}
           role="alertdialog"
@@ -144,11 +142,7 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
 
           {/* Actions */}
           <div className={styles.actions}>
-            <button
-              type="button"
-              className={styles.cancelBtn}
-              onClick={handleCancel}
-            >
+            <button type="button" className={styles.cancelBtn} onClick={handleCancel}>
               {cancelText}
             </button>
             <button
@@ -165,7 +159,7 @@ export const DesktopDialog = forwardRef<HTMLDivElement, DesktopDialogProps>(
 
     if (typeof document === 'undefined') return dialog;
     return createPortal(dialog, document.body);
-  },
+  }
 );
 
 DesktopDialog.displayName = 'DesktopDialog';

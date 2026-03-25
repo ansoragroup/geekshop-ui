@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopOrderStatusBar, type DesktopOrderStep } from './DesktopOrderStatusBar';
 
@@ -168,7 +168,11 @@ export const InteractiveStepProgression: Story = {
 
     const steps = allSteps.map((step, i) => ({
       ...step,
-      status: (i < currentStep ? 'completed' : i === currentStep ? 'active' : 'pending') as DesktopOrderStep['status'],
+      status: (i < currentStep
+        ? 'completed'
+        : i === currentStep
+        ? 'active'
+        : 'pending') as DesktopOrderStep['status'],
     }));
 
     return (
@@ -241,7 +245,15 @@ export const CustomIcons: Story = {
         date: '20 Mar',
         icon: (
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="1.5" />
+            <rect
+              x="2"
+              y="4"
+              width="12"
+              height="8"
+              rx="1"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
             <path d="M2 7h12" stroke="currentColor" strokeWidth="1.5" />
           </svg>
         ),
@@ -252,7 +264,15 @@ export const CustomIcons: Story = {
         date: '21 Mar',
         icon: (
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" />
+            <rect
+              x="2"
+              y="3"
+              width="12"
+              height="10"
+              rx="1"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
             <path d="M6 3v10M2 8h12" stroke="currentColor" strokeWidth="1.2" />
           </svg>
         ),

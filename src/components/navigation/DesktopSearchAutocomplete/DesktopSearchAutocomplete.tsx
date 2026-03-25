@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '../../../utils/cn';
 import { formatNumber } from '../../../utils/formatPrice';
-import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes } from 'react';
+import { forwardRef, useState, useEffect, useRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import styles from './DesktopSearchAutocomplete.module.scss';
 
@@ -140,54 +140,131 @@ export interface DesktopSearchAutocompleteProps extends HTMLAttributes<HTMLDivEl
 /* ---------- Inline SVG Icons ---------- */
 
 const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <circle cx="11" cy="11" r="7" />
     <path d="M21 21l-4.35-4.35" />
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 );
 
 const ClockIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <circle cx="12" cy="12" r="10" />
     <polyline points="12 6 12 12 16 14" />
   </svg>
 );
 
 const FireIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M12 2c.5 3-2 5.5-2 8a4 4 0 008 0c0-3.5-3-6-3-8" />
     <path d="M12 14a2 2 0 01-2-2c0-1.5 1-2.5 1-4 .5 1.5 3 3 3 4a2 2 0 01-2 2z" />
   </svg>
 );
 
 const FolderIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
   </svg>
 );
 
 const CameraIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
     <circle cx="12" cy="13" r="4" />
   </svg>
 );
 
 const StarIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="none"
+    aria-hidden="true"
+  >
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   </svg>
 );
 
 const UploadIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
     <polyline points="17 8 12 3 7 8" />
     <line x1="12" y1="3" x2="12" y2="15" />
@@ -195,7 +272,17 @@ const UploadIcon = () => (
 );
 
 const ArrowRightIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M9 18l6-6-6-6" />
   </svg>
 );
@@ -222,7 +309,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const l = { ...DEFAULT_SEARCH_LABELS, ...labelsProp };
     const [value, setValue] = useControllableState({
@@ -251,193 +338,175 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
       categorySuggestions.length > 0;
 
     // Build flat list of navigable items for keyboard nav
-    const flatItems: Array<{ type: 'recent' | 'trending' | 'product' | 'category'; index: number }> = [];
+    const flatItems: Array<{
+      type: 'recent' | 'trending' | 'product' | 'category';
+      index: number;
+    }> = [];
     recentSearches.forEach((_, i) => flatItems.push({ type: 'recent', index: i }));
     trendingSearches.forEach((_, i) => flatItems.push({ type: 'trending', index: i }));
     suggestedProducts.forEach((_, i) => flatItems.push({ type: 'product', index: i }));
     categorySuggestions.forEach((_, i) => flatItems.push({ type: 'category', index: i }));
 
-    const handleFocus = useCallback(() => {
+    const handleFocus = () => {
       if (hasDropdownContent) {
         setIsOpen(true);
       }
       setShowPhotoSearch(false);
-    }, [hasDropdownContent]);
+    };
 
-    const handleBlur = useCallback(() => {
+    const handleBlur = () => {
       blurTimeoutRef.current = setTimeout(() => {
         setIsOpen(false);
         setShowPhotoSearch(false);
         setActiveIndex(-1);
       }, 200);
-    }, []);
+    };
 
-    const handleInputChange = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = e.target.value;
-        if (debounceRef.current) clearTimeout(debounceRef.current);
-        debounceRef.current = setTimeout(() => {
-          setValue(newValue);
-        }, 300);
-        // Update the input immediately for responsive feel
-        // but debounce the onChange callback
-        e.target.value = newValue; // keep input responsive
-        if (hasDropdownContent) {
-          setIsOpen(true);
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value;
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(() => {
+        setValue(newValue);
+      }, 300);
+      // Update the input immediately for responsive feel
+      // but debounce the onChange callback
+      e.target.value = newValue; // keep input responsive
+      if (hasDropdownContent) {
+        setIsOpen(true);
+      }
+      setActiveIndex(-1);
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      const inputValue = inputRef.current?.value ?? value;
+      onSearch?.(inputValue);
+      setIsOpen(false);
+      setActiveIndex(-1);
+    };
+
+    const handleSelectItem = (item: (typeof flatItems)[number]) => {
+      switch (item.type) {
+        case 'recent': {
+          const text = recentSearches[item.index];
+          setValue(text);
+          if (inputRef.current) inputRef.current.value = text;
+          onSuggestionClick?.(text);
+          break;
         }
-        setActiveIndex(-1);
-      },
-      [setValue, hasDropdownContent],
-    );
+        case 'trending': {
+          const text = trendingSearches[item.index].text;
+          setValue(text);
+          if (inputRef.current) inputRef.current.value = text;
+          onSuggestionClick?.(text);
+          break;
+        }
+        case 'product':
+          onProductClick?.(suggestedProducts[item.index]);
+          break;
+        case 'category':
+          onCategoryClick?.(categorySuggestions[item.index]);
+          break;
+      }
+      setIsOpen(false);
+      setActiveIndex(-1);
+    };
 
-    const handleSubmit = useCallback(
-      (e: React.FormEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        if (activeIndex >= 0 && activeIndex < flatItems.length) {
+          e.preventDefault();
+          handleSelectItem(flatItems[activeIndex]);
+        } else {
+          handleSubmit(e);
+        }
+        return;
+      }
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+        setShowPhotoSearch(false);
+        setActiveIndex(-1);
+        inputRef.current?.blur();
+        return;
+      }
+      if (e.key === 'ArrowDown') {
         e.preventDefault();
-        const inputValue = inputRef.current?.value ?? value;
-        onSearch?.(inputValue);
-        setIsOpen(false);
-        setActiveIndex(-1);
-      },
-      [value, onSearch],
-    );
+        if (!isOpen && hasDropdownContent) {
+          setIsOpen(true);
+          setActiveIndex(0);
+        } else if (isOpen) {
+          setActiveIndex((prev) => (prev < flatItems.length - 1 ? prev + 1 : 0));
+        }
+        return;
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (isOpen) {
+          setActiveIndex((prev) => (prev > 0 ? prev - 1 : flatItems.length - 1));
+        }
+      }
+    };
 
-    const handleSelectItem = useCallback(
-      (item: typeof flatItems[number]) => {
-        switch (item.type) {
-          case 'recent': {
-            const text = recentSearches[item.index];
-            setValue(text);
-            if (inputRef.current) inputRef.current.value = text;
-            onSuggestionClick?.(text);
-            break;
-          }
-          case 'trending': {
-            const text = trendingSearches[item.index].text;
-            setValue(text);
-            if (inputRef.current) inputRef.current.value = text;
-            onSuggestionClick?.(text);
-            break;
-          }
-          case 'product':
-            onProductClick?.(suggestedProducts[item.index]);
-            break;
-          case 'category':
-            onCategoryClick?.(categorySuggestions[item.index]);
-            break;
-        }
-        setIsOpen(false);
-        setActiveIndex(-1);
-      },
-      [recentSearches, trendingSearches, suggestedProducts, categorySuggestions, setValue, onSuggestionClick, onProductClick, onCategoryClick],
-    );
-
-    const handleKeyDown = useCallback(
-      (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-          if (activeIndex >= 0 && activeIndex < flatItems.length) {
-            e.preventDefault();
-            handleSelectItem(flatItems[activeIndex]);
-          } else {
-            handleSubmit(e);
-          }
-          return;
-        }
-        if (e.key === 'Escape') {
-          setIsOpen(false);
-          setShowPhotoSearch(false);
-          setActiveIndex(-1);
-          inputRef.current?.blur();
-          return;
-        }
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          if (!isOpen && hasDropdownContent) {
-            setIsOpen(true);
-            setActiveIndex(0);
-          } else if (isOpen) {
-            setActiveIndex((prev) => (prev < flatItems.length - 1 ? prev + 1 : 0));
-          }
-          return;
-        }
-        if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          if (isOpen) {
-            setActiveIndex((prev) => (prev > 0 ? prev - 1 : flatItems.length - 1));
-          }
-        }
-      },
-      [activeIndex, flatItems, handleSelectItem, handleSubmit, isOpen, hasDropdownContent],
-    );
-
-    const handleClearInput = useCallback(() => {
+    const handleClearInput = () => {
       setValue('');
       if (inputRef.current) inputRef.current.value = '';
       inputRef.current?.focus();
-    }, [setValue]);
+    };
 
-    const handleCameraClick = useCallback(() => {
+    const handleCameraClick = () => {
       setShowPhotoSearch((prev) => !prev);
       setIsOpen(false);
-    }, []);
+    };
 
     // Photo search handlers
-    const handlePhotoUrlSearch = useCallback(() => {
+    const handlePhotoUrlSearch = () => {
       if (photoUrl.trim()) {
         onPhotoSearch?.({ type: 'url', url: photoUrl.trim() });
         setPhotoPreview({ url: photoUrl.trim(), name: 'URL image' });
       }
-    }, [photoUrl, onPhotoSearch]);
+    };
 
-    const handleFileSelect = useCallback(
-      (file: File) => {
-        const previewUrl = URL.createObjectURL(file);
-        setPhotoPreview({ url: previewUrl, name: file.name });
-        onPhotoSearch?.({ type: 'file', file });
-      },
-      [onPhotoSearch],
-    );
+    const handleFileSelect = (file: File) => {
+      const previewUrl = URL.createObjectURL(file);
+      setPhotoPreview({ url: previewUrl, name: file.name });
+      onPhotoSearch?.({ type: 'file', file });
+    };
 
-    const handleFileInputChange = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) handleFileSelect(file);
-        e.target.value = '';
-      },
-      [handleFileSelect],
-    );
+    const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file) handleFileSelect(file);
+      e.target.value = '';
+    };
 
-    const handleDrop = useCallback(
-      (e: React.DragEvent) => {
-        e.preventDefault();
-        setIsDragOver(false);
-        const file = e.dataTransfer.files[0];
-        if (file && file.type.startsWith('image/')) {
-          handleFileSelect(file);
-        }
-      },
-      [handleFileSelect],
-    );
+    const handleDrop = (e: React.DragEvent) => {
+      e.preventDefault();
+      setIsDragOver(false);
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        handleFileSelect(file);
+      }
+    };
 
-    const handleDragOver = useCallback((e: React.DragEvent) => {
+    const handleDragOver = (e: React.DragEvent) => {
       e.preventDefault();
       setIsDragOver(true);
-    }, []);
+    };
 
-    const handleDragLeave = useCallback(() => {
+    const handleDragLeave = () => {
       setIsDragOver(false);
-    }, []);
+    };
 
-    const handleRemovePhoto = useCallback(() => {
+    const handleRemovePhoto = () => {
       setPhotoPreview(null);
       setPhotoUrl('');
-    }, []);
+    };
 
-    const handlePhotoSearchSubmit = useCallback(() => {
+    const handlePhotoSearchSubmit = () => {
       if (photoPreview) {
         // Already submitted via handleFileSelect or handlePhotoUrlSearch
         setShowPhotoSearch(false);
       }
-    }, [photoPreview]);
+    };
 
     // Click outside to close
     useEffect(() => {
@@ -553,7 +622,9 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             {recentSearches.length > 0 && (
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionIcon}><ClockIcon /></span>
+                  <span className={styles.sectionIcon}>
+                    <ClockIcon />
+                  </span>
                   <span className={styles.sectionTitle}>{l.recentSearches}</span>
                   {onClearRecent && (
                     <button
@@ -572,7 +643,10 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       key={index}
                       id={`search-item-${recentOffset + index}`}
                       type="button"
-                      className={cn(styles.chip, activeIndex === recentOffset + index ? styles.chipActive : '')}
+                      className={cn(
+                        styles.chip,
+                        activeIndex === recentOffset + index ? styles.chipActive : ''
+                      )}
                       onClick={() => handleSelectItem({ type: 'recent', index })}
                       role="option"
                       aria-selected={activeIndex === recentOffset + index}
@@ -589,7 +663,9 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             {trendingSearches.length > 0 && (
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionIcon}><FireIcon /></span>
+                  <span className={styles.sectionIcon}>
+                    <FireIcon />
+                  </span>
                   <span className={styles.sectionTitle}>{l.trending}</span>
                 </div>
                 <div className={styles.trendingList}>
@@ -598,7 +674,10 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       key={index}
                       id={`search-item-${trendingOffset + index}`}
                       type="button"
-                      className={cn(styles.trendingItem, activeIndex === trendingOffset + index ? styles.trendingItemActive : '')}
+                      className={cn(
+                        styles.trendingItem,
+                        activeIndex === trendingOffset + index ? styles.trendingItemActive : ''
+                      )}
                       onClick={() => handleSelectItem({ type: 'trending', index })}
                       role="option"
                       aria-selected={activeIndex === trendingOffset + index}
@@ -627,7 +706,10 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       key={product.id}
                       id={`search-item-${productOffset + index}`}
                       type="button"
-                      className={cn(styles.productItem, activeIndex === productOffset + index ? styles.productItemActive : '')}
+                      className={cn(
+                        styles.productItem,
+                        activeIndex === productOffset + index ? styles.productItemActive : ''
+                      )}
                       onClick={() => handleSelectItem({ type: 'product', index })}
                       role="option"
                       aria-selected={activeIndex === productOffset + index}
@@ -642,7 +724,9 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       <div className={styles.productInfo}>
                         <span className={styles.productTitle}>{product.title}</span>
                         <div className={styles.productMeta}>
-                          <span className={styles.productPrice}>{formatNumber(product.price)} sum</span>
+                          <span className={styles.productPrice}>
+                            {formatNumber(product.price)} sum
+                          </span>
                           {product.rating != null && (
                             <span className={styles.productRating}>
                               <StarIcon />
@@ -651,7 +735,9 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                           )}
                         </div>
                       </div>
-                      <span className={styles.productArrow}><ArrowRightIcon /></span>
+                      <span className={styles.productArrow}>
+                        <ArrowRightIcon />
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -662,7 +748,9 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
             {categorySuggestions.length > 0 && (
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionIcon}><FolderIcon /></span>
+                  <span className={styles.sectionIcon}>
+                    <FolderIcon />
+                  </span>
                   <span className={styles.sectionTitle}>{l.categories}</span>
                 </div>
                 <div className={styles.categoryList}>
@@ -671,15 +759,22 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                       key={cat.id}
                       id={`search-item-${categoryOffset + index}`}
                       type="button"
-                      className={cn(styles.categoryItem, activeIndex === categoryOffset + index ? styles.categoryItemActive : '')}
+                      className={cn(
+                        styles.categoryItem,
+                        activeIndex === categoryOffset + index ? styles.categoryItemActive : ''
+                      )}
                       onClick={() => handleSelectItem({ type: 'category', index })}
                       role="option"
                       aria-selected={activeIndex === categoryOffset + index}
                       tabIndex={-1}
                     >
-                      <span className={styles.categoryText}>{l.categoryPrefix} {cat.name}</span>
+                      <span className={styles.categoryText}>
+                        {l.categoryPrefix} {cat.name}
+                      </span>
                       {cat.count != null && (
-                        <span className={styles.categoryCount}>{cat.count.toLocaleString()} {l.categoryItemsSuffix}</span>
+                        <span className={styles.categoryCount}>
+                          {cat.count.toLocaleString()} {l.categoryItemsSuffix}
+                        </span>
                       )}
                     </button>
                   ))}
@@ -754,9 +849,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                   aria-label={l.dropZone}
                 >
                   <UploadIcon />
-                  <span className={styles.dropZoneText}>
-                    {l.dropZone}
-                  </span>
+                  <span className={styles.dropZoneText}>{l.dropZone}</span>
                   <span className={styles.dropZoneHint}>{l.dropZoneHint}</span>
                 </div>
               </>
@@ -766,7 +859,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
                 <div className={styles.photoPreviewImageWrap}>
                   <img
                     src={photoPreview.url}
-                    alt="Search image preview"
+                    alt="Search preview"
                     className={styles.photoPreviewImage}
                   />
                   <button
@@ -792,7 +885,7 @@ export const DesktopSearchAutocomplete = forwardRef<HTMLDivElement, DesktopSearc
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopSearchAutocomplete.displayName = 'DesktopSearchAutocomplete';

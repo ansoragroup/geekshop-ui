@@ -38,7 +38,6 @@ export const Slide3: Story = {
 
 /** First slide with dot pagination and Next button visible */
 export const WithNavigation: Story = {
-  name: 'With Navigation',
   args: {
     initialSlide: 0,
   },
@@ -46,7 +45,6 @@ export const WithNavigation: Story = {
 
 /** Last slide with "Get Started" CTA and Skip button at bottom */
 export const LastSlideWithCTA: Story = {
-  name: 'Last Slide With CTA',
   args: {
     initialSlide: 2,
   },

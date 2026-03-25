@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopProductCard } from './DesktopProductCard';
 
 const meta = {
-  title: 'Product/DesktopProductCard',
+  title: 'Product (Desktop)/DesktopProductCard',
   component: DesktopProductCard,
   tags: ['autodocs'],
   parameters: {
@@ -200,7 +200,6 @@ export const Recommended: Story = {
 // ─── Custom Recommended Text ─────────────────────────────────────────────────
 
 export const CustomRecommendedText: Story = {
-  name: 'Custom Recommended Text',
   args: {
     image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop',
     title: 'Fujifilm X-T5 Mirrorless Camera Body',
@@ -348,7 +347,8 @@ export const LongTitle: Story = {
   name: 'Edge: Long Title',
   args: {
     image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
-    title: 'DUCATI Performance Motorcycle Frame Slider CNC Aluminum Crash Protector Left Right Set Universal Sport Naked Bike 2024 Model',
+    title:
+      'DUCATI Performance Motorcycle Frame Slider CNC Aluminum Crash Protector Left Right Set Universal Sport Naked Bike 2024 Model',
     price: 723_000,
     originalPrice: 1_447_000,
     discount: '-50%',

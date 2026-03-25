@@ -39,7 +39,8 @@ export const WithImage: Story = {
     subtitle: 'RTX 4070 & 4080 chegirmada',
     badge: 'HOT',
     bgGradient: 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
-    image: 'https://picsum.photos/seed/gpu-hero/800/400',
+    image:
+      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&h=400&fit=crop&auto=format',
   },
 };
 

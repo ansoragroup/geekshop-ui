@@ -44,11 +44,21 @@ export const Default: Story = {
 export const FullFeatured: Story = {
   name: 'Full Featured (all props)',
   args: {
-    content: 'Your coupon GEEK50K has been applied successfully! You saved 50,000 UZS on this order.',
+    content:
+      'Your coupon GEEK50K has been applied successfully! You saved 50,000 UZS on this order.',
     variant: 'success',
     dismissible: true,
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
         <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
@@ -99,7 +109,6 @@ export const Error: Story = {
 // ─── Not Dismissible ─────────────────────────────────────────────────────────
 
 export const NotDismissible: Story = {
-  name: 'Not Dismissible',
   args: {
     content: 'Flash sale ends in 2 hours. Prices will return to normal at midnight.',
     variant: 'warning',
@@ -115,7 +124,16 @@ export const CustomIcon: Story = {
     variant: 'info',
     dismissible: true,
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     ),
@@ -127,7 +145,8 @@ export const CustomIcon: Story = {
 export const LongContent: Story = {
   name: 'Edge: Long Content',
   args: {
-    content: 'Attention shoppers! Due to unprecedented demand during our Spring Tech Festival, delivery times for some items may be extended by 2-3 business days. We apologize for the inconvenience and are working hard to fulfill all orders as quickly as possible. Thank you for your patience.',
+    content:
+      'Attention shoppers! Due to unprecedented demand during our Spring Tech Festival, delivery times for some items may be extended by 2-3 business days. We apologize for the inconvenience and are working hard to fulfill all orders as quickly as possible. Thank you for your patience.',
     variant: 'warning',
     dismissible: true,
   },
@@ -160,10 +179,7 @@ export const AllVariants: Story = {
         variant="success"
         dismissible
       />
-      <DesktopNoticeBar
-        content="Flash sale ends in 2 hours. Hurry up!"
-        variant="warning"
-      />
+      <DesktopNoticeBar content="Flash sale ends in 2 hours. Hurry up!" variant="warning" />
       <DesktopNoticeBar
         content="Unable to connect to payment service. Please try again later."
         variant="error"

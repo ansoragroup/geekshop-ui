@@ -23,7 +23,6 @@ export const Default: Story = {
 };
 
 export const FemaleUser: Story = {
-  name: 'Female User',
   args: {
     userName: 'Nodira Rustamova',
     userEmail: 'nodira.rustamova@geekshop.uz',
@@ -41,7 +40,6 @@ export const NewUser: Story = {
 };
 
 export const BusinessUser: Story = {
-  name: 'Business User',
   args: {
     userName: 'Dilmurod Xasanov',
     userEmail: 'dilmurod.xasanov@ansora.group',

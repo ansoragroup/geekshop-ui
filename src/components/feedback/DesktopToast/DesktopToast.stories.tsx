@@ -68,7 +68,6 @@ export const Info: Story = {
 // --- NOT CLOSABLE ---
 
 export const NotClosable: Story = {
-  name: 'Not Closable',
   args: {
     type: 'info',
     message: 'Syncing your cart with the server...',
@@ -95,7 +94,8 @@ export const LongMessage: Story = {
   name: 'Long Message Text',
   args: {
     type: 'error',
-    message: 'We encountered an unexpected error while processing your order #GS-2026-0082. Please check your payment details, ensure your card has sufficient funds, and try again. If the problem persists, contact our customer support at support@geekshop.uz.',
+    message:
+      'We encountered an unexpected error while processing your order #GS-2026-0082. Please check your payment details, ensure your card has sufficient funds, and try again. If the problem persists, contact our customer support at support@geekshop.uz.',
     visible: true,
     duration: 0,
     onClose: fn(),
@@ -103,7 +103,6 @@ export const LongMessage: Story = {
 };
 
 export const ShortMessage: Story = {
-  name: 'Short Message',
   args: {
     type: 'success',
     message: 'Saved!',
@@ -167,10 +166,34 @@ export const AllTypesStack: Story = {
   name: 'All Types Stacked',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-      <DesktopToast type="success" message="Item added to cart" visible duration={0} onClose={fn()} />
-      <DesktopToast type="warning" message="Low stock warning: only 3 left" visible duration={0} onClose={fn()} />
-      <DesktopToast type="error" message="Network connection lost" visible duration={0} onClose={fn()} />
-      <DesktopToast type="info" message="New coupon available: SAVE20" visible duration={0} onClose={fn()} />
+      <DesktopToast
+        type="success"
+        message="Item added to cart"
+        visible
+        duration={0}
+        onClose={fn()}
+      />
+      <DesktopToast
+        type="warning"
+        message="Low stock warning: only 3 left"
+        visible
+        duration={0}
+        onClose={fn()}
+      />
+      <DesktopToast
+        type="error"
+        message="Network connection lost"
+        visible
+        duration={0}
+        onClose={fn()}
+      />
+      <DesktopToast
+        type="info"
+        message="New coupon available: SAVE20"
+        visible
+        duration={0}
+        onClose={fn()}
+      />
     </div>
   ),
 };
@@ -180,7 +203,9 @@ export const AllTypesStack: Story = {
 export const Interactive: Story = {
   name: 'Interactive (Click to Trigger)',
   render: () => {
-    const [toasts, setToasts] = useState<Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>>([]);
+    const [toasts, setToasts] = useState<
+      Array<{ id: number; type: 'success' | 'error' | 'warning' | 'info'; message: string }>
+    >([]);
     let counter = 0;
 
     const messages: Record<string, string> = {
@@ -210,7 +235,14 @@ export const Interactive: Story = {
                 padding: '8px 16px',
                 borderRadius: 8,
                 border: 'none',
-                background: type === 'success' ? '#07C160' : type === 'error' ? '#FF3B30' : type === 'warning' ? '#FFA726' : '#1890FF',
+                background:
+                  type === 'success'
+                    ? '#07C160'
+                    : type === 'error'
+                    ? '#FF3B30'
+                    : type === 'warning'
+                    ? '#FFA726'
+                    : '#1890FF',
                 color: '#fff',
                 cursor: 'pointer',
                 fontSize: 13,

@@ -44,9 +44,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const titleId = useId();
 
     const trapRef = useFocusTrap<HTMLDivElement>(open, {
@@ -62,7 +62,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           ref.current = node;
         }
       },
-      cn(ref, trapRef),
+      [ref, trapRef]
     );
 
     if (!open) return null;
@@ -102,7 +102,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
           {/* Header */}
           {title && (
             <div className={styles.header}>
-              <h2 id={titleId} className={styles.title}>{title}</h2>
+              <h2 id={titleId} className={styles.title}>
+                {title}
+              </h2>
               <button
                 type="button"
                 className={styles.closeButton}
@@ -136,7 +138,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 Modal.displayName = 'Modal';

@@ -1,0 +1,211 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+// Trigger
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-height: 40px;
+  padding: $spacing-sm $spacing-md;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $desktop-radius-input;
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  cursor: pointer;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  min-width: 160px;
+
+  &:hover {
+    border-color: var(--gs-color-primary, #{$color-primary});
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--gs-color-primary, #{$color-primary});
+    box-shadow: 0 0 0 2px var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+.triggerDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+
+  &:hover {
+    border-color: var(--gs-border, #{$color-border});
+  }
+}
+
+.triggerIcon {
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+}
+
+.triggerText {
+  flex: 1;
+  text-align: left;
+}
+
+.triggerArrow {
+  display: flex;
+  align-items: center;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  transition: transform $transition-fast;
+}
+
+// Panel
+.panel {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  z-index: $z-index-dropdown;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $desktop-radius-input;
+  box-shadow: $desktop-shadow-dropdown;
+  min-width: 240px;
+  overflow: hidden;
+}
+
+.panelAbove {
+  top: auto;
+  bottom: calc(100% + $spacing-xs);
+}
+
+// Columns
+.columns {
+  display: flex;
+  padding: $spacing-sm;
+  gap: $spacing-xs;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.columnHeader {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  padding: $spacing-xs $spacing-sm;
+  text-align: center;
+}
+
+.columnScroll {
+  height: 180px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--gs-border, #{$color-border}) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gs-border, #{$color-border});
+    border-radius: $radius-round;
+  }
+}
+
+.columnItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-height: 36px;
+  scroll-snap-align: center;
+  font-size: $desktop-font-size-body;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  background: none;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  width: 100%;
+  padding: 0;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+.columnItemSelected {
+  background: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-text-white, #{$color-text-white});
+  font-weight: $font-weight-medium;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+.columnItemDisabled {
+  color: var(--gs-text-placeholder, #{$color-text-placeholder});
+  cursor: not-allowed;
+
+  &:hover {
+    background: none;
+  }
+}
+
+// Panel footer
+.panelFooter {
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+  border-top: 1px solid var(--gs-border, #{$color-border});
+}
+
+.cancelBtn {
+  flex: 1;
+  min-height: 36px;
+  background: none;
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+}
+
+.confirmBtn {
+  flex: 1;
+  min-height: 36px;
+  background: var(--gs-color-primary, #{$color-primary});
+  border: none;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: var(--gs-text-white, #{$color-text-white});
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .triggerArrow,
+  .columnItem,
+  .cancelBtn,
+  .confirmBtn {
+    transition: none;
+  }
+}

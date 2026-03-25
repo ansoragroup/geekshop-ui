@@ -4,34 +4,77 @@ import { fn, expect, userEvent, within } from 'storybook/test';
 import { DesktopInput } from './DesktopInput';
 
 const SearchIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+  >
     <circle cx="7" cy="7" r="5" />
     <path d="M11 11l3 3" />
   </svg>
 );
 
 const LockIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="3" y="7" width="10" height="7" rx="2" />
     <path d="M5 7V5a3 3 0 0 1 6 0v2" />
   </svg>
 );
 
 const MailIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="2" y="3" width="12" height="10" rx="2" />
     <path d="M2 5l6 4 6-4" />
   </svg>
 );
 
 const PhoneIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M5 2H4a2 2 0 00-2 2v1a10 10 0 005 5h0a10 10 0 005 5h1a2 2 0 002-2v-1l-3-2-1.5 1.5a8 8 0 01-4-4L8 5 5 2z" />
   </svg>
 );
 
 const DollarIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+  >
     <path d="M8 2v12M5 5a2.5 2.5 0 005 0c0-2-5-2-5-4a2.5 2.5 0 015 0" />
   </svg>
 );
@@ -173,14 +216,7 @@ export const WithValueAndClearable: Story = {
   render: () => {
     const [value, setValue] = useState('john@geekshop.uz');
 
-    return (
-      <DesktopInput
-        label="Email"
-        value={value}
-        onChange={setValue}
-        clearable
-      />
-    );
+    return <DesktopInput label="Email" value={value} onChange={setValue} clearable />;
   },
 };
 
@@ -267,17 +303,18 @@ export const FullFeatured: Story = {
 export const LongLabel: Story = {
   name: 'Long Label (Overflow)',
   args: {
-    label: 'Please enter your full legal name as it appears on your government-issued identification document',
+    label:
+      'Please enter your full legal name as it appears on your government-issued identification document',
     placeholder: 'Full legal name...',
     onChange: fn(),
   },
 };
 
 export const LongPlaceholder: Story = {
-  name: 'Long Placeholder',
   args: {
     label: 'Search',
-    placeholder: 'Search for products, categories, brands, sellers, and more across the entire marketplace...',
+    placeholder:
+      'Search for products, categories, brands, sellers, and more across the entire marketplace...',
     prefix: <SearchIcon />,
     onChange: fn(),
   },
@@ -288,7 +325,8 @@ export const LongError: Story = {
   args: {
     label: 'Tax ID',
     value: '123',
-    error: 'The Tax Identification Number you entered does not match our records. Please verify and try again or contact support at help@geekshop.uz.',
+    error:
+      'The Tax Identification Number you entered does not match our records. Please verify and try again or contact support at help@geekshop.uz.',
     onChange: fn(),
   },
 };
@@ -336,7 +374,6 @@ export const LoginForm: Story = {
 };
 
 export const ShippingAddressForm: Story = {
-  name: 'Shipping Address Form',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <DesktopInput label="Full Name" placeholder="John Doe" size="md" />
@@ -361,7 +398,6 @@ export const ShippingAddressForm: Story = {
 };
 
 export const AllStatesOverview: Story = {
-  name: 'All States Overview',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <DesktopInput label="Default" placeholder="Default state" />

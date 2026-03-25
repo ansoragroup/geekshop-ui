@@ -10,7 +10,13 @@ import {
   DesktopQuantityStepper,
 } from '../../components';
 import type { DesktopImageFile } from '../../components';
-import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter, formatPriceUZS } from '../_shared';
+import {
+  DefaultTopBar,
+  DefaultHeaderRich,
+  DefaultMegaMenu,
+  DefaultFooter,
+  formatPriceUZS,
+} from '../_shared';
 import styles from './DesktopReturnRequestPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -58,7 +64,9 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
   const [reason, setReason] = useState(initialReason);
   const [description, setDescription] = useState(initialDescription);
   const [photos, setPhotos] = useState<DesktopImageFile[]>(initialPhotos ?? []);
-  const [refundMethod, setRefundMethod] = useState<'original' | 'store-credit'>(initialRefundMethod);
+  const [refundMethod, setRefundMethod] = useState<'original' | 'store-credit'>(
+    initialRefundMethod
+  );
   const [quantity, setQuantity] = useState(1);
 
   const displayItem = propItem ?? defaultItem;
@@ -72,18 +80,16 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[
-          { label: 'Home', href: '#' },
-          { label: 'My Orders', href: '#' },
-          { label: `#${orderId}`, href: '#' },
-          { label: 'Return Request' },
-        ]} />
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'My Orders', href: '#' },
+            { label: `#${orderId}`, href: '#' },
+            { label: 'Return Request' },
+          ]}
+        />
       </div>
 
       <h1 className={styles.pageTitle}>Return Request</h1>
@@ -136,19 +142,17 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
             <p className={styles.uploadHint}>
               Upload photos showing the defect or issue. This helps speed up the return process.
             </p>
-            <DesktopImageUploader
-              value={photos}
-              onChange={setPhotos}
-              maxCount={5}
-            />
+            <DesktopImageUploader value={photos} onChange={setPhotos} maxCount={5} />
           </div>
 
           {/* Refund method */}
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>Refund Method</h2>
             <div className={styles.refundOptions}>
-              <label className={styles.refundOption}>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control -- label wraps radio with text in nested spans */}
+              <label htmlFor="refund-original" className={styles.refundOption}>
                 <input
+                  id="refund-original"
                   type="radio"
                   name="refund-method"
                   value="original"
@@ -158,11 +162,15 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
                 />
                 <div className={styles.refundContent}>
                   <span className={styles.refundLabel}>Original Payment Method</span>
-                  <span className={styles.refundDesc}>Refund to the card or account used for purchase</span>
+                  <span className={styles.refundDesc}>
+                    Refund to the card or account used for purchase
+                  </span>
                 </div>
               </label>
-              <label className={styles.refundOption}>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control -- label wraps radio with text in nested spans */}
+              <label htmlFor="refund-store-credit" className={styles.refundOption}>
                 <input
+                  id="refund-store-credit"
                   type="radio"
                   name="refund-method"
                   value="store-credit"
@@ -172,7 +180,9 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
                 />
                 <div className={styles.refundContent}>
                   <span className={styles.refundLabel}>Store Credit</span>
-                  <span className={styles.refundDesc}>Receive store credit for faster processing</span>
+                  <span className={styles.refundDesc}>
+                    Receive store credit for faster processing
+                  </span>
                 </div>
               </label>
             </div>
@@ -203,12 +213,7 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
             </p>
           </div>
 
-          <DesktopButton
-            variant="primary"
-            size="lg"
-            fullWidth
-            disabled={!reason}
-          >
+          <DesktopButton variant="primary" size="lg" fullWidth disabled={!reason}>
             Submit Return Request
           </DesktopButton>
         </div>

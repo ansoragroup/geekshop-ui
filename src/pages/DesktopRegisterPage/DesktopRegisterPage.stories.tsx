@@ -19,7 +19,6 @@ export const Default: Story = {};
 
 /** Email tab with full registration form. */
 export const EmailTab: Story = {
-  name: 'Email Tab',
   args: {
     defaultTab: 'email',
   },
@@ -53,7 +52,6 @@ export const PhoneOTPStep: Story = {
 
 /** Email tab with validation errors. */
 export const WithValidationErrors: Story = {
-  name: 'With Validation Errors',
   args: {
     defaultTab: 'email',
     initialValues: {

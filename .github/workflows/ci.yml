@@ -59,9 +59,16 @@ jobs:
       - run: npx playwright install chromium --with-deps
       - run: npx vitest run --project storybook
 
+  token-sync:
+    name: Token Sync Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: bash scripts/sync-tokens.sh --check
+
   build:
     name: Build Library
-    needs: [lint, typecheck, test]
+    needs: [lint, typecheck, test, token-sync]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6

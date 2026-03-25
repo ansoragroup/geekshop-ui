@@ -2,6 +2,32 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { RecommendationFeed, type RecommendationTab } from './RecommendationFeed';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 const tabs: RecommendationTab[] = [
   { key: 'all', label: 'All' },
   { key: 'gpus', label: 'GPUs' },
@@ -15,7 +41,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} title="Recommended">
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByText('Recommended')).toBeInTheDocument();
   });
@@ -24,7 +50,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByText('Recommended For You')).toBeInTheDocument();
   });
@@ -33,7 +59,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} icon={<span data-testid="icon">I</span>}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
@@ -42,7 +68,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     const tabElements = screen.getAllByRole('tab');
     expect(tabElements).toHaveLength(3);
@@ -54,7 +80,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     const tabElements = screen.getAllByRole('tab');
     expect(tabElements[0]).toHaveAttribute('aria-selected', 'true');
@@ -65,7 +91,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} activeTab="gpus">
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     const tabElements = screen.getAllByRole('tab');
     expect(tabElements[1]).toHaveAttribute('aria-selected', 'true');
@@ -76,7 +102,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} onTabChange={onTabChange}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     fireEvent.click(screen.getAllByRole('tab')[1]);
     expect(onTabChange).toHaveBeenCalledWith('gpus');
@@ -88,7 +114,7 @@ describe('RecommendationFeed', () => {
         <ProductStub title="P1" />
         <ProductStub title="P2" />
         <ProductStub title="P3" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getAllByTestId('product')).toHaveLength(3);
   });
@@ -97,7 +123,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} hasMore>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByText('Load More Products')).toBeInTheDocument();
   });
@@ -106,7 +132,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} hasMore={false}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.queryByText('Load More Products')).not.toBeInTheDocument();
   });
@@ -116,7 +142,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} hasMore onLoadMore={onLoadMore}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     fireEvent.click(screen.getByText('Load More Products'));
     expect(onLoadMore).toHaveBeenCalledOnce();
@@ -126,7 +152,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} hasMore loading>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByText('Loading...')).toBeInTheDocument();
     expect(screen.getByText('Loading...')).toBeDisabled();
@@ -136,7 +162,7 @@ describe('RecommendationFeed', () => {
     const { container } = render(
       <RecommendationFeed tabs={tabs} className="custom">
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(container.firstChild).toHaveClass('custom');
   });
@@ -145,7 +171,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs} data-testid="feed">
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByTestId('feed')).toBeInTheDocument();
   });
@@ -154,7 +180,7 @@ describe('RecommendationFeed', () => {
     render(
       <RecommendationFeed tabs={tabs}>
         <ProductStub title="P1" />
-      </RecommendationFeed>,
+      </RecommendationFeed>
     );
     expect(screen.getByRole('tablist', { name: 'Category filter' })).toBeInTheDocument();
   });

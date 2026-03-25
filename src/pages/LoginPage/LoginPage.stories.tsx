@@ -38,7 +38,6 @@ export const Success: Story = {
 
 /** Phone step with initial empty state — shows placeholder text and disabled button */
 export const PhoneEmpty: Story = {
-  name: 'Phone Empty',
   args: {
     step: 'phone',
   },
@@ -46,7 +45,6 @@ export const PhoneEmpty: Story = {
 
 /** Login page showing Telegram login button alternative and terms agreement */
 export const WithTelegramLogin: Story = {
-  name: 'With Telegram Login',
   args: {
     step: 'phone',
   },

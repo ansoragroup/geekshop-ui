@@ -4,43 +4,44 @@
 // ============================================
 
 // === Colors ===
-$color-primary: #FF5000;
-$color-primary-light: #FF7A33;
-$color-primary-dark: #E64800;
-$color-primary-bg: #FFF5F0;
-$color-primary-gradient: linear-gradient(135deg, #FF5000 0%, #FF7A33 100%);
-$color-primary-gradient-header: linear-gradient(180deg, #FF5000 0%, #FF8A56 50%, #FFB088 100%);
+$color-primary: #ff5000;
+$color-primary-light: #ff7a33;
+$color-primary-dark: #e64800;
+$color-primary-bg: #fff5f0;
+$color-primary-gradient: linear-gradient(135deg, #ff5000 0%, #ff7a33 100%);
+$color-primary-gradient-header: linear-gradient(180deg, #ff5000 0%, #ff8a56 50%, #ffb088 100%);
 
-$color-price: #FF0000;
-$color-price-dark: #E8380D;
-$color-sale: #FF3B30;
+$color-price: #ff0000;
+$color-price-dark: #e8380d;
+$color-sale: #ff3b30;
 
-$color-success: #07C160;
-$color-success-light: #E8F8EF;
-$color-warning: #FFA726;
-$color-warning-light: #FFF8E6;
-$color-error: #FF3B30;
-$color-info: #1890FF;
+$color-success: #07c160;
+$color-success-light: #e8f8ef;
+$color-warning: #ffa726;
+$color-warning-light: #fff8e6;
+$color-error: #ff3b30;
+$color-info: #1890ff;
 
-$color-text-primary: #1A1A1A;
+$color-text-primary: #1a1a1a;
 $color-text-secondary: #666666;
 $color-text-tertiary: #999999;
-$color-text-placeholder: #CCCCCC;
-$color-text-white: #FFFFFF;
-$color-text-link: #FF5000;
+$color-text-placeholder: #cccccc;
+$color-text-white: #ffffff;
+$color-text-link: #ff5000;
 
-$color-bg-page: #FFFFFF;
-$color-bg-white: #FFFFFF;
-$color-bg-card: #FFFFFF;
+$color-bg-page: #f5f5f5;
+$color-bg-white: #ffffff;
+$color-bg-card: #ffffff;
 $color-bg-overlay: rgba(0, 0, 0, 0.5);
-$color-bg-skeleton: #F0F0F0;
+$color-bg-skeleton: #f0f0f0;
 
-$color-border: #EEEEEE;
-$color-border-light: #F5F5F5;
-$color-divider: #F0F0F0;
+$color-border: #eeeeee;
+$color-border-light: #f5f5f5;
+$color-divider: #f0f0f0;
 
 // === Typography ===
-$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  sans-serif;
 
 $font-size-xs: 10px;
 $font-size-sm: 12px;
@@ -130,9 +131,9 @@ $desktop-topbar-height: 32px;
 $desktop-footer-min-height: 200px;
 
 // === Desktop Grid ===
-$desktop-grid-columns-sm: 3;   // 1024px
-$desktop-grid-columns-md: 4;   // 1280px
-$desktop-grid-columns-lg: 5;   // 1440px+
+$desktop-grid-columns-sm: 3; // 1024px
+$desktop-grid-columns-md: 4; // 1280px
+$desktop-grid-columns-lg: 5; // 1440px+
 $desktop-card-gap: 16px;
 $desktop-section-gap: 48px;
 
@@ -160,7 +161,7 @@ $desktop-hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 $desktop-hover-transition: all 0.2s ease;
 
 // === Desktop Surfaces ===
-$desktop-bg-page: #FFFFFF;
+$desktop-bg-page: #ffffff;
 $desktop-radius-card: 16px;
 $desktop-radius-banner: 20px;
 $desktop-radius-button: 12px;

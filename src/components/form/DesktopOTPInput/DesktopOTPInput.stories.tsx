@@ -18,11 +18,13 @@ const meta = {
     mask: { control: 'boolean' },
     autoFocus: { control: 'boolean' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 500, padding: 24, background: '#fff' }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 500, padding: 24, background: '#fff' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopOTPInput>;
 
 export default meta;
@@ -78,7 +80,6 @@ export const PreFilled: Story = {
 };
 
 export const PartiallyFilled: Story = {
-  name: 'Partially Filled',
   args: {
     length: 6,
     value: '38',
@@ -183,31 +184,90 @@ export const FullFeatured: Story = {
 /* ─── All States Overview ─── */
 
 export const AllStatesOverview: Story = {
-  name: 'All States Overview',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Empty</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Empty
+        </div>
         <DesktopOTPInput length={6} />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Partially filled</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Partially filled
+        </div>
         <DesktopOTPInput length={6} value="48" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Complete</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Complete
+        </div>
         <DesktopOTPInput length={6} value="482901" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Masked</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Masked
+        </div>
         <DesktopOTPInput length={6} value="482901" mask />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Error</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Error
+        </div>
         <DesktopOTPInput length={6} value="123456" error errorMessage="Invalid code" />
       </div>
       <div>
-        <div style={{ fontSize: 12, color: '#999', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Disabled</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: '#999',
+            marginBottom: 8,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+          }}
+        >
+          Disabled
+        </div>
         <DesktopOTPInput length={6} value="482901" disabled />
       </div>
     </div>
@@ -233,7 +293,6 @@ export const Controlled: Story = {
             setCompleted(false);
           }}
           onComplete={() => setCompleted(true)}
-          autoFocus
         />
         <div style={{ fontSize: 12, color: '#666' }}>
           Entered: {value || '(empty)'} | Complete: {completed ? 'Yes' : 'No'}
@@ -277,13 +336,14 @@ export const VerificationFlow: Story = {
           error={status === 'error'}
           errorMessage={status === 'error' ? 'Wrong code. Try 123456.' : undefined}
           disabled={status === 'verifying' || status === 'success'}
-          autoFocus
         />
         {status === 'verifying' && (
           <div style={{ fontSize: 13, color: '#999', marginTop: 12 }}>Verifying...</div>
         )}
         {status === 'success' && (
-          <div style={{ fontSize: 13, color: '#07C160', marginTop: 12, fontWeight: 500 }}>Phone verified successfully!</div>
+          <div style={{ fontSize: 13, color: '#07C160', marginTop: 12, fontWeight: 500 }}>
+            Phone verified successfully!
+          </div>
         )}
         {status === 'idle' && (
           <div style={{ fontSize: 13, color: '#999', marginTop: 16 }}>

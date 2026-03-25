@@ -33,7 +33,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-15"
-      />,
+      />
     );
     expect(screen.getByText('Buyurtma #12345')).toBeInTheDocument();
   });
@@ -46,7 +46,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-03-20"
-      />,
+      />
     );
     expect(screen.getByText('2024-03-20')).toBeInTheDocument();
   });
@@ -59,7 +59,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText("To'lov kutilmoqda")).toBeInTheDocument();
   });
@@ -72,7 +72,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText('Yetkazilmoqda')).toBeInTheDocument();
   });
@@ -85,7 +85,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText('Baholash')).toBeInTheDocument();
   });
@@ -98,7 +98,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText('Qaytarish')).toBeInTheDocument();
   });
@@ -111,7 +111,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText('iPhone 15 Pro')).toBeInTheDocument();
     expect(screen.getByText('AirPods Pro')).toBeInTheDocument();
@@ -125,7 +125,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText('256GB, Black')).toBeInTheDocument();
   });
@@ -141,11 +141,11 @@ describe('OrderCard', () => {
         products={products}
         totalAmount={1000}
         date="2024-01-01"
-      />,
-    ];
+      />
+    );
     // Only one product with no variant
     expect(screen.queryByText(/256GB/)).toBeNull();
-  }];
+  });
 
   it('renders product quantities', () => {
     render(
@@ -155,7 +155,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByText('x1')).toBeInTheDocument();
     expect(screen.getByText('x2')).toBeInTheDocument();
@@ -169,7 +169,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     // Total quantity is 1 + 2 = 3
     expect(screen.getByText(/3 ta mahsulot/)).toBeInTheDocument();
@@ -183,7 +183,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     expect(screen.getByAltText('iPhone 15 Pro')).toBeInTheDocument();
     expect(screen.getByAltText('AirPods Pro')).toBeInTheDocument();
@@ -202,8 +202,8 @@ describe('OrderCard', () => {
         totalAmount={22000000}
         date="2024-01-01"
         actions={actions}
-      />,
-    ];
+      />
+    );
     expect(screen.getByText("To'lash")).toBeInTheDocument();
     expect(screen.getByText('Bekor qilish')).toBeInTheDocument();
   });
@@ -216,7 +216,7 @@ describe('OrderCard', () => {
         products={mockProducts}
         totalAmount={22000000}
         date="2024-01-01"
-      />,
+      />
     );
     const buttons = container.querySelectorAll('button');
     expect(buttons.length).toBe(0);
@@ -225,9 +225,7 @@ describe('OrderCard', () => {
   it('calls action onClick when button is clicked', async () => {
     const user = userEvent.setup();
     const onClick = vi.fn();
-    const actions: OrderAction[] = [
-      { label: 'Click Me', onClick },
-    ];
+    const actions: OrderAction[] = [{ label: 'Click Me', onClick }];
     render(
       <OrderCard
         orderId="1"
@@ -236,8 +234,8 @@ describe('OrderCard', () => {
         totalAmount={22000000}
         date="2024-01-01"
         actions={actions}
-      />,
-    ];
+      />
+    );
     await user.click(screen.getByText('Click Me'));
     expect(onClick).toHaveBeenCalledOnce();
   });
@@ -251,7 +249,7 @@ describe('OrderCard', () => {
         totalAmount={22000000}
         date="2024-01-01"
         className="my-order"
-      />,
+      />
     );
     const root = container.firstElementChild as HTMLElement;
     expect(root.className).toContain('my-order');
@@ -265,7 +263,7 @@ describe('OrderCard', () => {
         products={[{ image: 'a.jpg', title: 'P', price: 1500000, quantity: 1 }]}
         totalAmount={1500000}
         date="2024-01-01"
-      />,
+      />
     );
     // formatPrice uses ru-RU locale which produces space separators
     // The exact format depends on the locale, but the text should contain "so'm"

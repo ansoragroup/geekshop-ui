@@ -27,7 +27,6 @@ export const Empty: Story = {
 
 /** Active conversation with messages exchanged between user and bot */
 export const ActiveConversation: Story = {
-  name: 'Active Conversation',
   args: {
     hasMessages: true,
   },
@@ -35,7 +34,6 @@ export const ActiveConversation: Story = {
 
 /** New conversation showing FAQ quick action chips (order status, payment, return, delivery) */
 export const WithFAQChips: Story = {
-  name: 'With FAQ Chips',
   args: {
     hasMessages: false,
   },
@@ -43,7 +41,6 @@ export const WithFAQChips: Story = {
 
 /** Chat with bot reply containing a "Track Order" action button */
 export const WithActionButton: Story = {
-  name: 'With Action Button',
   args: {
     hasMessages: true,
   },

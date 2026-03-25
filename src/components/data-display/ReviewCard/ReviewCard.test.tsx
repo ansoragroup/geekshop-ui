@@ -51,7 +51,7 @@ describe('ReviewCard', () => {
     render(<ReviewCard {...baseProps} images={images} />);
     expect(screen.getByAltText('Rasm 1')).toBeInTheDocument();
     expect(screen.getByAltText('Rasm 2')).toBeInTheDocument();
-  }];
+  });
 
   it('does not render images section when no images', () => {
     const { container } = render(<ReviewCard {...baseProps} />);

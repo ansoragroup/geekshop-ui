@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopInstallmentCalculator } from './DesktopInstallmentCalculator';
 
 const meta = {
-  title: 'Commerce/DesktopInstallmentCalculator',
+  title: 'Commerce (Desktop)/DesktopInstallmentCalculator',
   component: DesktopInstallmentCalculator,
   tags: ['autodocs'],
   parameters: {
@@ -99,9 +99,7 @@ export const LongTermOnly: Story = {
 export const SingleOption: Story = {
   args: {
     price: 5_600_000,
-    options: [
-      { months: 6, rate: 0 },
-    ],
+    options: [{ months: 6, rate: 0 }],
   },
 };
 
@@ -176,12 +174,12 @@ export const UzbekLabels: Story = {
     ],
     labels: {
       title: "Bo'lib to'lash",
-      zeroBadge: "0% ustama",
+      zeroBadge: '0% ustama',
       monthSuffix: 'oy',
       monthlyPayment: "Oylik to'lov",
-      totalAmount: "Umumiy summa",
+      totalAmount: 'Umumiy summa',
       markup: 'Ustama',
-      acceptedPayments: "Qabul qilinadi:",
+      acceptedPayments: 'Qabul qilinadi:',
     },
   },
 };

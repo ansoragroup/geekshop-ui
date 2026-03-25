@@ -33,7 +33,7 @@ describe('TelegramLoginButton', () => {
     expect(openSpy).toHaveBeenCalledWith(
       expect.stringContaining('https://t.me/GeekShopBot?start=auth_'),
       '_blank',
-      'noopener,noreferrer',
+      'noopener,noreferrer'
     );
 
     openSpy.mockRestore();
@@ -45,14 +45,14 @@ describe('TelegramLoginButton', () => {
       <TelegramLoginButton
         botUsername="GeekShopBot"
         callbackUrl="https://geekshop.uz/auth/telegram"
-      />,
+      />
     );
 
     fireEvent.click(screen.getByRole('button'));
     expect(openSpy).toHaveBeenCalledWith(
       expect.stringContaining('https://oauth.telegram.org/auth'),
       '_blank',
-      'noopener,noreferrer',
+      'noopener,noreferrer'
     );
 
     openSpy.mockRestore();
@@ -87,6 +87,20 @@ describe('TelegramLoginButton', () => {
   it('renders widget variant container', () => {
     render(<TelegramLoginButton botUsername="GeekShopBot" variant="widget" />);
     expect(screen.getByTestId('telegram-widget')).toBeInTheDocument();
+  });
+
+  it('renders nothing for invalid botUsername (script injection)', () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const { container } = render(<TelegramLoginButton botUsername="<script>" />);
+    expect(container.innerHTML).toBe('');
+    expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('Invalid botUsername'));
+    errorSpy.mockRestore();
+  });
+
+  it('renders normally for valid botUsername', () => {
+    render(<TelegramLoginButton botUsername="GeekShopBot" />);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByText('Login via Telegram')).toBeInTheDocument();
   });
 
   it('renders Telegram icon svg', () => {

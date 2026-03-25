@@ -3,14 +3,38 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { Swipe } from './Swipe';
 import type { SwipeAction } from './Swipe';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 describe('Swipe', () => {
   afterEach(() => {
     cleanup();
   });
 
-  const leftActions: SwipeAction[] = [
-    { key: 'pin', label: 'Pin', onClick: vi.fn() },
-  ];
+  const leftActions: SwipeAction[] = [{ key: 'pin', label: 'Pin', onClick: vi.fn() }];
 
   const rightActions: SwipeAction[] = [
     { key: 'delete', label: 'Delete', backgroundColor: '#FF3B30', onClick: vi.fn() },
@@ -69,13 +93,11 @@ describe('Swipe', () => {
     expect(btn.style.color).toBe('rgb(0, 0, 0)');
   });
 
-  it('defaults right action button color to white', () => {
-    const actions: SwipeAction[] = [
-      { key: 'del', label: 'Del', onClick: vi.fn() },
-    ];
+  it('defaults right action button color to CSS var', () => {
+    const actions: SwipeAction[] = [{ key: 'del', label: 'Del', onClick: vi.fn() }];
     render(<Swipe rightActions={actions}>Content</Swipe>);
     const btn = screen.getByText('Del');
-    expect(btn.style.color).toBe('rgb(255, 255, 255)');
+    expect(btn.style.color).toBe('var(--gs-color-bg-card, #fff)');
   });
 
   it('sets left actions width based on count', () => {

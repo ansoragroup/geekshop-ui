@@ -11,7 +11,15 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ width: 600, padding: 48, background: '#ffffff', borderRadius: 12, border: '1px solid #eee' }}>
+      <div
+        style={{
+          width: 600,
+          padding: 48,
+          background: '#ffffff',
+          borderRadius: 12,
+          border: '1px solid #eee',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -108,7 +116,6 @@ export const AllSizesNoText: Story = {
 // --- WITH CUSTOM TEXT ---
 
 export const TextVariations: Story = {
-  name: 'Text Variations',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32, alignItems: 'center' }}>
       <DesktopLoading size="md" text="Loading products..." />
@@ -122,7 +129,6 @@ export const TextVariations: Story = {
 // --- OVERLAY MODE ---
 
 export const OverlayMode: Story = {
-  name: 'Overlay Mode',
   args: {
     size: 'md',
     text: 'Updating...',
@@ -130,12 +136,23 @@ export const OverlayMode: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ position: 'relative', width: 600, padding: 24, background: '#fff', borderRadius: 12, border: '1px solid #eee' }}>
+      <div
+        style={{
+          position: 'relative',
+          width: 600,
+          padding: 24,
+          background: '#fff',
+          borderRadius: 12,
+          border: '1px solid #eee',
+        }}
+      >
         <div style={{ opacity: 0.5 }}>
           <h3 style={{ margin: '0 0 8px', fontSize: 16 }}>Order #GS-2026-0047</h3>
           <p style={{ margin: '0 0 4px', fontSize: 14, color: '#666' }}>MSI RTX 4060 Ventus 2X</p>
           <p style={{ margin: '0 0 4px', fontSize: 14, color: '#666' }}>AMD Ryzen 7 7800X3D</p>
-          <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: '#FF0000' }}>23,700,000 UZS</p>
+          <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: '#FF0000' }}>
+            23,700,000 UZS
+          </p>
         </div>
         <Story />
       </div>
@@ -152,7 +169,16 @@ export const OverlayLargeContent: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ position: 'relative', width: 600, background: '#fff', borderRadius: 12, border: '1px solid #eee', overflow: 'hidden' }}>
+      <div
+        style={{
+          position: 'relative',
+          width: 600,
+          background: '#fff',
+          borderRadius: 12,
+          border: '1px solid #eee',
+          overflow: 'hidden',
+        }}
+      >
         <div style={{ opacity: 0.4, padding: 24 }}>
           <h3 style={{ margin: '0 0 16px', fontSize: 18 }}>Product Specifications</h3>
           {[
@@ -163,7 +189,16 @@ export const OverlayLargeContent: Story = {
             ['Interface', 'PCIe 4.0 x16'],
             ['TDP', '115W'],
           ].map(([label, value]) => (
-            <div key={label} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #f5f5f5', fontSize: 14 }}>
+            <div
+              key={label}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '8px 0',
+                borderBottom: '1px solid #f5f5f5',
+                fontSize: 14,
+              }}
+            >
               <span style={{ color: '#666' }}>{label}</span>
               <span style={{ fontWeight: 500 }}>{value}</span>
             </div>
@@ -178,7 +213,6 @@ export const OverlayLargeContent: Story = {
 // --- FULLSCREEN MODE ---
 
 export const FullscreenMode: Story = {
-  name: 'Fullscreen Mode',
   args: {
     size: 'lg',
     text: 'Loading GeekShop...',
@@ -246,7 +280,15 @@ export const InlineInButton: Story = {
 export const ScenarioProductLoading: Story = {
   name: 'Scenario: Product Page Loading',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, padding: 40 }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 8,
+        padding: 40,
+      }}
+    >
       <DesktopLoading size="lg" text="Loading product details..." />
     </div>
   ),
@@ -255,7 +297,15 @@ export const ScenarioProductLoading: Story = {
 export const ScenarioCheckout: Story = {
   name: 'Scenario: Checkout Processing',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, padding: 40 }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 8,
+        padding: 40,
+      }}
+    >
       <DesktopLoading size="md" text="Verifying your payment method..." />
     </div>
   ),

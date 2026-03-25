@@ -190,9 +190,7 @@ export const Controlled: Story = {
           onChange={setDate}
           placeholder="Pick a date..."
         />
-        <div style={{ fontSize: 13, color: '#666' }}>
-          Selected: {date || '(none)'}
-        </div>
+        <div style={{ fontSize: 13, color: '#666' }}>Selected: {date || '(none)'}</div>
         {date && (
           <button
             type="button"
@@ -218,7 +216,6 @@ export const Controlled: Story = {
 /* ─── All States Overview ─── */
 
 export const AllStatesOverview: Story = {
-  name: 'All States Overview',
   decorators: [
     (Story) => (
       <div style={{ width: 500, padding: 24, background: '#fff', minHeight: 200 }}>
@@ -232,7 +229,12 @@ export const AllStatesOverview: Story = {
       <DesktopDatePicker label="With Value" value="2025-06-15" />
       <DesktopDatePicker label="With Error" error="Invalid date" />
       <DesktopDatePicker label="Disabled" value="2025-01-01" disabled />
-      <DesktopDatePicker label="With Constraints" minDate="2025-03-01" maxDate="2025-03-31" placeholder="March only" />
+      <DesktopDatePicker
+        label="With Constraints"
+        minDate="2025-03-01"
+        maxDate="2025-03-31"
+        placeholder="March only"
+      />
     </div>
   ),
 };
@@ -246,10 +248,17 @@ export const BookingForm: Story = {
     const [checkOut, setCheckOut] = useState('');
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, border: '1px solid #eee', borderRadius: 12, padding: 20 }}>
-        <div style={{ fontSize: 16, fontWeight: 600, color: '#1A1A1A' }}>
-          Select Delivery Dates
-        </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+          border: '1px solid #eee',
+          borderRadius: 12,
+          padding: 20,
+        }}
+      >
+        <div style={{ fontSize: 16, fontWeight: 600, color: '#1A1A1A' }}>Select Delivery Dates</div>
         <div style={{ display: 'flex', gap: 16 }}>
           <div style={{ flex: 1 }}>
             <DesktopDatePicker
@@ -271,9 +280,7 @@ export const BookingForm: Story = {
           </div>
         </div>
         <div style={{ fontSize: 12, color: '#666' }}>
-          {checkIn && checkOut
-            ? `${checkIn} to ${checkOut}`
-            : 'Select both dates to continue'}
+          {checkIn && checkOut ? `${checkIn} to ${checkOut}` : 'Select both dates to continue'}
         </div>
       </div>
     );

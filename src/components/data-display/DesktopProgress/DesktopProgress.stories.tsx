@@ -43,7 +43,6 @@ export const FullFeatured: Story = {
 };
 
 export const AllSizes: Story = {
-  name: 'All Sizes',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <DesktopProgress value={40} size="sm" showLabel label="Small" />
@@ -79,7 +78,14 @@ export const StripedVariants: Story = {
   name: 'Striped (All Variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      <DesktopProgress value={40} variant="default" striped size="md" showLabel label="Processing" />
+      <DesktopProgress
+        value={40}
+        variant="default"
+        striped
+        size="md"
+        showLabel
+        label="Processing"
+      />
       <DesktopProgress value={65} variant="success" striped size="md" showLabel label="Uploading" />
       <DesktopProgress value={78} variant="warning" striped size="md" showLabel label="Storage" />
       <DesktopProgress value={95} variant="error" striped size="md" showLabel label="Disk Space" />
@@ -130,16 +136,31 @@ export const EcommerceScenarios: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
-        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Order #GS-2026-0047 Fulfillment</p>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>
+          Order #GS-2026-0047 Fulfillment
+        </p>
         <DesktopProgress value={75} variant="default" showLabel label="Packing" size="md" />
       </div>
       <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
         <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Image Upload</p>
-        <DesktopProgress value={45} variant="success" striped showLabel label="Uploading 3 of 7 photos" size="md" />
+        <DesktopProgress
+          value={45}
+          variant="success"
+          striped
+          showLabel
+          label="Uploading 3 of 7 photos"
+          size="md"
+        />
       </div>
       <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
         <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Profile Completeness</p>
-        <DesktopProgress value={60} variant="warning" showLabel label="Add phone number to reach 80%" size="md" />
+        <DesktopProgress
+          value={60}
+          variant="warning"
+          showLabel
+          label="Add phone number to reach 80%"
+          size="md"
+        />
       </div>
       <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
         <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Warehouse Capacity</p>

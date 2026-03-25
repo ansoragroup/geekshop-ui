@@ -49,7 +49,6 @@ export const Loading: Story = {
 
 /** Videokartalar category — GPU products */
 export const GPUCategory: Story = {
-  name: 'GPU Category',
   args: {
     categoryName: 'Videokartalar',
     showFilter: false,
@@ -58,7 +57,6 @@ export const GPUCategory: Story = {
 
 /** Kompyuterlar category — computer products sorted by price (cheap first) */
 export const CheapFirst: Story = {
-  name: 'Cheap First',
   args: {
     categoryName: 'Kompyuterlar',
     showFilter: false,

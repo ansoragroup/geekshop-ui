@@ -1,12 +1,51 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { describe, it, expect, vi } from 'vitest'
-import { MiniCart } from './MiniCart'
+import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, it, expect, vi } from 'vitest';
+import { MiniCart } from './MiniCart';
+
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
 
 describe('MiniCart', () => {
   const sampleItems = [
-    { id: '1', title: 'RTX 4070 Super', image: 'https://example.com/img.jpg', price: 8900000, quantity: 1, variant: '12GB' },
-    { id: '2', title: 'Ryzen 7 7800X3D', image: 'https://example.com/img2.jpg', price: 5600000, quantity: 2 },
+    {
+      id: '1',
+      title: 'RTX 4070 Super',
+      image: 'https://example.com/img.jpg',
+      price: 8900000,
+      quantity: 1,
+      variant: '12GB',
+    },
+    {
+      id: '2',
+      title: 'Ryzen 7 7800X3D',
+      image: 'https://example.com/img2.jpg',
+      price: 5600000,
+      quantity: 2,
+    },
   ];
 
   // Rendering
@@ -81,7 +120,9 @@ describe('MiniCart', () => {
 
   it('shows singular item label', async () => {
     const user = userEvent.setup();
-    const singleItem = [{ id: '1', title: 'RTX 4070', image: 'img.jpg', price: 8900000, quantity: 1 }];
+    const singleItem = [
+      { id: '1', title: 'RTX 4070', image: 'img.jpg', price: 8900000, quantity: 1 },
+    ];
     render(<MiniCart items={singleItem} />);
 
     await user.click(screen.getByRole('button', { name: 'Shopping cart' }));
@@ -192,7 +233,10 @@ describe('MiniCart', () => {
   // Aria attributes
   it('has aria-haspopup on trigger', () => {
     render(<MiniCart />);
-    expect(screen.getByRole('button', { name: 'Shopping cart' })).toHaveAttribute('aria-haspopup', 'true');
+    expect(screen.getByRole('button', { name: 'Shopping cart' })).toHaveAttribute(
+      'aria-haspopup',
+      'true'
+    );
   });
 
   it('sets aria-expanded when open', async () => {

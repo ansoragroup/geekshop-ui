@@ -1,0 +1,234 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  container-type: inline-size;
+  width: 100%;
+  background: var(--gs-bg-card, #{$color-bg-card});
+  border-radius: $desktop-radius-card;
+  border: 1px solid var(--gs-border, #{$color-border});
+  overflow: hidden;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.stickyWrapper {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $desktop-font-size-body;
+}
+
+.stickyHead {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+// Checkbox cell
+.checkboxCell {
+  width: 48px;
+  min-width: 48px;
+  padding: $spacing-sm $spacing-md;
+  text-align: center;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 1.5px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-xs;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background $transition-fast, border-color $transition-fast;
+  color: var(--gs-text-white, #{$color-text-white});
+
+  &:hover {
+    border-color: var(--gs-color-primary, #{$color-primary});
+  }
+}
+
+.checkboxChecked {
+  background: var(--gs-color-primary, #{$color-primary});
+  border-color: var(--gs-color-primary, #{$color-primary});
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+// Table header
+.th {
+  padding: $spacing-md $spacing-lg;
+  text-align: left;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  background: var(--gs-bg-page, #{$color-bg-page});
+  border-bottom: 1px solid var(--gs-border, #{$color-border});
+  white-space: nowrap;
+  user-select: none;
+}
+
+.thSortable {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--gs-text-primary, #{$color-text-primary});
+    background: var(--gs-border-light, #{$color-border-light});
+  }
+}
+
+.thContent {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.sortIcon {
+  flex-shrink: 0;
+}
+
+// Table row
+.tr {
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+}
+
+.trSelected {
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+
+  &:hover {
+    background: var(--gs-color-primary-bg, #{$color-primary-bg});
+  }
+}
+
+// Table cell
+.td {
+  padding: $spacing-md $spacing-lg;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  border-bottom: 1px solid var(--gs-border-light, #{$color-border-light});
+}
+
+// Empty
+.emptyCell {
+  padding: $spacing-xxxl $spacing-lg;
+  text-align: center;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  font-size: $font-size-md;
+}
+
+// Skeleton
+.skeleton {
+  height: 16px;
+  background: var(--gs-bg-skeleton, #{$color-bg-skeleton});
+  border-radius: $radius-xs;
+  width: 80%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  border-top: 1px solid var(--gs-border, #{$color-border});
+}
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  min-height: 36px;
+  padding: $spacing-xs $spacing-md;
+  background: none;
+  border: 1px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  gap: $spacing-xxs;
+}
+
+.pageNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: var(--gs-text-secondary, #{$color-text-secondary});
+  cursor: pointer;
+  padding: 0;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: var(--gs-bg-page, #{$color-bg-page});
+  }
+}
+
+.pageNumActive {
+  background: var(--gs-color-primary, #{$color-primary});
+  color: var(--gs-text-white, #{$color-text-white});
+  border-color: var(--gs-color-primary, #{$color-primary});
+
+  &:hover {
+    background: var(--gs-color-primary-dark, #{$color-primary-dark});
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .tr,
+  .checkbox,
+  .pageBtn,
+  .pageNum {
+    transition: none;
+  }
+
+  .skeleton {
+    animation: none;
+  }
+}

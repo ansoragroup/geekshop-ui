@@ -19,13 +19,10 @@ type Story = StoryObj<typeof FAQPage>;
 export const Default: Story = {};
 
 /** FAQ with all items collapsed — initial state */
-export const AllCollapsed: Story = {
-  name: 'All Collapsed',
-};
+export const AllCollapsed: Story = {};
 
 /** Order-related FAQ items filtered by category tab */
 export const OrderCategory: Story = {
-  name: 'Order Category',
   play: async ({ canvasElement }) => {
     // Click the "Buyurtma" (Order) tab
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
@@ -37,7 +34,6 @@ export const OrderCategory: Story = {
 
 /** Payment category filtered FAQ items */
 export const PaymentCategory: Story = {
-  name: 'Payment Category',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[2] instanceof HTMLElement) {
@@ -48,7 +44,6 @@ export const PaymentCategory: Story = {
 
 /** Delivery category FAQ items */
 export const DeliveryCategory: Story = {
-  name: 'Delivery Category',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[3] instanceof HTMLElement) {
@@ -59,7 +54,6 @@ export const DeliveryCategory: Story = {
 
 /** Return policy FAQ items */
 export const ReturnCategory: Story = {
-  name: 'Return Category',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[4] instanceof HTMLElement) {

@@ -2,6 +2,32 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { FloatingToolbar, type FloatingToolbarItem } from './FloatingToolbar';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 const TestIcon = () => <span data-testid="icon">icon</span>;
 
 const items: FloatingToolbarItem[] = [
@@ -39,27 +65,23 @@ describe('FloatingToolbar', () => {
     ];
     render(<FloatingToolbar items={itemsHighBadge} />);
     expect(screen.getByText('99+')).toBeInTheDocument();
-  }];
+  });
 
   it('does not render badge when badge is 0', () => {
-    const itemsZeroBadge: FloatingToolbarItem[] = [
-      { icon: <TestIcon />, label: 'Cart', badge: 0 },
-    ];
+    const itemsZeroBadge: FloatingToolbarItem[] = [{ icon: <TestIcon />, label: 'Cart', badge: 0 }];
     render(<FloatingToolbar items={itemsZeroBadge} />);
     expect(screen.queryByLabelText(/items/)).not.toBeInTheDocument();
-  }];
+  });
 
   it('calls onClick when item is clicked', () => {
     const onClick = vi.fn();
-    render(
-      <FloatingToolbar items={[{ icon: <TestIcon />, label: 'Chat', onClick }]} />,
-    );
+    render(<FloatingToolbar items={[{ icon: <TestIcon />, label: 'Chat', onClick }]} />);
     fireEvent.click(screen.getByLabelText('Chat'));
     expect(onClick).toHaveBeenCalledOnce();
   });
 
   it('hides showOnScroll items when not scrolled', () => {
-    const { container } = render(<FloatingToolbar items={items} />);
+    render(<FloatingToolbar items={items} />);
     const backToTop = screen.getByLabelText('Back to Top');
     expect(backToTop.className).toMatch(/itemHidden/);
     expect(backToTop).toHaveAttribute('tabIndex', '-1');
@@ -82,18 +104,16 @@ describe('FloatingToolbar', () => {
 
   it('applies right position class by default', () => {
     const { container } = render(<FloatingToolbar items={items} />);
-    expect(container.firstChild).toHaveClass('right');
+    expect((container.firstChild as HTMLElement).className).toMatch(/right/);
   });
 
   it('applies left position class', () => {
     const { container } = render(<FloatingToolbar items={items} position="left" />);
-    expect(container.firstChild).toHaveClass('left');
+    expect((container.firstChild as HTMLElement).className).toMatch(/left/);
   });
 
   it('applies custom className', () => {
-    const { container } = render(
-      <FloatingToolbar items={items} className="custom" />,
-    );
+    const { container } = render(<FloatingToolbar items={items} className="custom" />);
     expect(container.firstChild).toHaveClass('custom');
   });
 

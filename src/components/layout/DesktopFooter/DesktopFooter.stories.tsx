@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopFooter } from './DesktopFooter';
-import type { DesktopFooterColumn, DesktopFooterAppBadge, DesktopFooterLink } from './DesktopFooter';
+import type {
+  DesktopFooterColumn,
+  DesktopFooterAppBadge,
+  DesktopFooterLink,
+} from './DesktopFooter';
 
 const fullColumns: DesktopFooterColumn[] = [
   {
@@ -60,8 +64,16 @@ const minimalColumns: DesktopFooterColumn[] = [
 ];
 
 const defaultAppBadges: DesktopFooterAppBadge[] = [
-  { label: 'Google Play', image: 'https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg', href: '#' },
-  { label: 'App Store', image: 'https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg', href: '#' },
+  {
+    label: 'Google Play',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg',
+    href: '#',
+  },
+  {
+    label: 'App Store',
+    image: 'https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg',
+    href: '#',
+  },
 ];
 
 const defaultPolicyLinks: DesktopFooterLink[] = [
@@ -126,7 +138,6 @@ export const WithAppBadges: Story = {
 /* ─── With Policy Links ─── */
 
 export const WithPolicyLinks: Story = {
-  name: 'With Policy Links',
   args: {
     columns: minimalColumns,
     copyright: '© GeekShop 2026',
@@ -141,7 +152,8 @@ export const WithLegalText: Story = {
   args: {
     columns: minimalColumns,
     copyright: '© GeekShop 2026. All rights reserved.',
-    legalText: 'GeekShop LLC is registered in Uzbekistan. Registration No. 12345. All transactions are processed securely through PCI DSS compliant payment gateways.',
+    legalText:
+      'GeekShop LLC is registered in Uzbekistan. Registration No. 12345. All transactions are processed securely through PCI DSS compliant payment gateways.',
     policyLinks: [
       { label: 'Privacy', href: '/privacy' },
       { label: 'Terms', href: '/terms' },
@@ -152,12 +164,20 @@ export const WithLegalText: Story = {
 /* ─── Custom Bottom Bar ─── */
 
 export const CustomBottomBar: Story = {
-  name: 'Custom Bottom Bar',
   args: {
     columns: fullColumns,
     bottomBar: (
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <span style={{ fontSize: 13, color: '#666' }}>© GeekShop 2026 | Made with care in Tashkent</span>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        <span style={{ fontSize: 13, color: '#666' }}>
+          © GeekShop 2026 | Made with care in Tashkent
+        </span>
         <div style={{ display: 'flex', gap: 16 }}>
           <span style={{ fontSize: 13, color: '#FF5000', fontWeight: 600 }}>UZ</span>
           <span style={{ fontSize: 13, color: '#666' }}>RU</span>
@@ -232,7 +252,8 @@ export const FullFeatured: Story = {
   args: {
     columns: fullColumns,
     copyright: '© GeekShop 2024 - 2026. All rights reserved.',
-    legalText: 'GeekShop LLC | Registration No. 12345 | Tashkent, Uzbekistan. Prices include VAT where applicable.',
+    legalText:
+      'GeekShop LLC | Registration No. 12345 | Tashkent, Uzbekistan. Prices include VAT where applicable.',
     policyLinks: [
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Terms of Service', href: '/terms' },

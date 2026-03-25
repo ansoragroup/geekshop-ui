@@ -44,31 +44,38 @@ export interface DesktopBannerCarouselProps extends HTMLAttributes<HTMLDivElemen
 }
 
 const ChevronLeft = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="15 18 9 12 15 6" />
   </svg>
 );
 
 const ChevronRight = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="9 6 15 12 9 18" />
   </svg>
 );
 
 export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCarouselProps>(
-  (
-    {
-      slides,
-      interval = 5000,
-      sidePanel,
-      sidePanel2,
-      height = 400,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
-  const { t } = useGeekShop();
+  ({ slides, interval = 5000, sidePanel, sidePanel2, height = 400, className, ...rest }, ref) => {
+    const { t } = useGeekShop();
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
@@ -87,7 +94,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
       (index: number) => {
         setActiveIndex(((index % slideCount) + slideCount) % slideCount);
       },
-      [slideCount],
+      [slideCount]
     );
 
     const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
@@ -131,8 +138,12 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
 
     return (
       <div ref={ref} className={rootClass} {...rest}>
-        <div className={styles.layout} style={{ '--carousel-height': `${height}px` } as CSSProperties}>
+        <div
+          className={styles.layout}
+          style={{ '--carousel-height': `${height}px` } as CSSProperties}
+        >
           {/* Main Carousel */}
+          {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex -- carousel region needs keyboard nav */}
           <div
             className={styles.carousel}
             onMouseEnter={handleMouseEnter}
@@ -143,6 +154,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
             aria-roledescription="carousel"
             tabIndex={0}
           >
+            {/* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
             {/* Slides */}
             <div className={styles.slidesContainer}>
               {slides.map((slide, index) => {
@@ -150,15 +162,22 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                 return (
                   <div
                     key={index}
-                    className={cn(styles.slide, isActive ? styles.slideActive : styles.slideInactive)}
+                    className={cn(
+                      styles.slide,
+                      isActive ? styles.slideActive : styles.slideInactive
+                    )}
                     role="group"
                     aria-roledescription="slide"
                     aria-label={`Slide ${index + 1} of ${slideCount}`}
                     aria-hidden={!isActive}
-                    style={{
-                      '--slide-bg': slide.bgGradient || 'linear-gradient(135deg, var(--gs-color-primary, #FF5000) 0%, var(--gs-color-primary-light, #FF7A33) 100%)',
-                      '--slide-text-color': slide.textColor || 'var(--gs-bg-card, #FFFFFF)',
-                    } as CSSProperties}
+                    style={
+                      {
+                        '--slide-bg':
+                          slide.bgGradient ||
+                          'linear-gradient(135deg, var(--gs-color-primary, #FF5000) 0%, var(--gs-color-primary-light, #FF7A33) 100%)',
+                        '--slide-text-color': slide.textColor || 'var(--gs-bg-card, #FFFFFF)',
+                      } as CSSProperties
+                    }
                   >
                     {slide.bgImage && (
                       <img
@@ -170,9 +189,7 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                     )}
                     <div className={styles.slideContent}>
                       <h2 className={styles.slideTitle}>{slide.title}</h2>
-                      {slide.subtitle && (
-                        <p className={styles.slideSubtitle}>{slide.subtitle}</p>
-                      )}
+                      {slide.subtitle && <p className={styles.slideSubtitle}>{slide.subtitle}</p>}
                       {slide.ctaText && (
                         <a
                           className={styles.ctaButton}
@@ -192,7 +209,11 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
             {slideCount > 1 && (
               <>
                 <button
-                  className={cn(styles.arrow, styles.arrowLeft, isHovered ? styles.arrowVisible : '')}
+                  className={cn(
+                    styles.arrow,
+                    styles.arrowLeft,
+                    isHovered ? styles.arrowVisible : ''
+                  )}
                   onClick={goPrev}
                   aria-label={t('aria.previousSlide')}
                   type="button"
@@ -201,7 +222,11 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
                   <ChevronLeft />
                 </button>
                 <button
-                  className={cn(styles.arrow, styles.arrowRight, isHovered ? styles.arrowVisible : '')}
+                  className={cn(
+                    styles.arrow,
+                    styles.arrowRight,
+                    isHovered ? styles.arrowVisible : ''
+                  )}
                   onClick={goNext}
                   aria-label={t('aria.nextSlide')}
                   type="button"
@@ -233,18 +258,14 @@ export const DesktopBannerCarousel = forwardRef<HTMLDivElement, DesktopBannerCar
           {/* Side Panels */}
           {hasSidePanels && (
             <div className={styles.sidePanels}>
-              {sidePanel && (
-                <div className={styles.sidePanel}>{sidePanel}</div>
-              )}
-              {sidePanel2 && (
-                <div className={styles.sidePanel}>{sidePanel2}</div>
-              )}
+              {sidePanel && <div className={styles.sidePanel}>{sidePanel}</div>}
+              {sidePanel2 && <div className={styles.sidePanel}>{sidePanel2}</div>}
             </div>
           )}
         </div>
       </div>
     );
-  },
+  }
 );
 
 DesktopBannerCarousel.displayName = 'DesktopBannerCarousel';

@@ -3,16 +3,16 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ProductImageGallery } from './ProductImageGallery';
 
 const gpuImages = [
-  'https://picsum.photos/seed/gallery1/800/800',
-  'https://picsum.photos/seed/gallery2/800/800',
-  'https://picsum.photos/seed/gallery3/800/800',
-  'https://picsum.photos/seed/gallery4/800/800',
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=800&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=800&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&h=800&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=800&h=800&fit=crop&auto=format',
 ];
 
 const monitorImages = [
-  'https://picsum.photos/seed/mongal1/800/800',
-  'https://picsum.photos/seed/mongal2/800/800',
-  'https://picsum.photos/seed/mongal3/800/800',
+  'https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=800&h=800&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=800&h=800&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=800&h=800&fit=crop&auto=format',
 ];
 
 const meta = {
@@ -49,7 +49,9 @@ export const Default: Story = {
 // --- Single image ---
 export const SingleImage: Story = {
   args: {
-    images: ['https://picsum.photos/seed/single1/800/800'],
+    images: [
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=800&fit=crop&auto=format',
+    ],
   },
 };
 
@@ -105,12 +107,12 @@ export const Interactive: Story = {
 export const ManyImages: Story = {
   args: {
     images: [
-      'https://picsum.photos/seed/many1/800/800',
-      'https://picsum.photos/seed/many2/800/800',
-      'https://picsum.photos/seed/many3/800/800',
-      'https://picsum.photos/seed/many4/800/800',
-      'https://picsum.photos/seed/many5/800/800',
-      'https://picsum.photos/seed/many6/800/800',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=800&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=800&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=800&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=800&h=800&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=800&h=800&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=800&fit=crop&auto=format',
     ],
   },
 };

@@ -1,5 +1,4 @@
 'use client';
-import { cn } from '../../../utils/cn';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { useControllableState } from '../../../hooks/useControllableState';
 import { useGeekShop } from '../../../i18n';
@@ -27,14 +26,32 @@ export interface SearchBarProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const SearchIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="11" cy="11" r="7" />
     <path d="M21 21l-4.35-4.35" />
   </svg>
 );
 
 const CameraIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
     <circle cx="12" cy="13" r="4" />
   </svg>
@@ -56,7 +73,7 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
       className,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const { t } = useGeekShop();
     const resolvedPlaceholder = placeholder ?? t('search.placeholder');
@@ -77,14 +94,24 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
       styles.searchBar,
       styles[variant],
       compact ? styles.compact : '',
-      className ?? ''];
+      className ?? '',
+    ];
 
     return (
       <div
         ref={ref}
         className={wrapperClass}
         onClick={readOnly ? onClick : undefined}
-        onKeyDown={readOnly ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(e as unknown as React.MouseEvent<HTMLDivElement>); } } : undefined}
+        onKeyDown={
+          readOnly
+            ? (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onClick?.(e as unknown as React.MouseEvent<HTMLDivElement>);
+                }
+              }
+            : undefined
+        }
         role={readOnly ? 'button' : undefined}
         tabIndex={readOnly ? 0 : undefined}
         {...rest}
@@ -107,13 +134,20 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
         )}
 
         {onCamera && (
-          <button className={styles.cameraBtn} onClick={(e) => { e.stopPropagation(); onCamera(); }} aria-label={t('product.cameraSearch')}>
+          <button
+            className={styles.cameraBtn}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCamera();
+            }}
+            aria-label={t('product.cameraSearch')}
+          >
             <CameraIcon />
           </button>
         )}
       </div>
     );
-  },
+  }
 );
 
 SearchBar.displayName = 'SearchBar';

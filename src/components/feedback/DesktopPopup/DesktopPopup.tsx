@@ -2,7 +2,14 @@
 import { createPortal } from 'react-dom';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useCallback, useEffect, useState, type ReactNode, type HTMLAttributes } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useState,
+  type ReactNode,
+  type HTMLAttributes,
+} from 'react';
 import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import styles from './DesktopPopup.module.scss';
 
@@ -23,15 +30,23 @@ export interface DesktopPopupProps extends HTMLAttributes<HTMLDivElement> {
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M5 5l10 10M15 5l-10 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <path
+      d="M5 5l10 10M15 5l-10 10"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
-  ({ open, onClose, children, closable = true, width = 480, title, className = '', ...rest }, ref) => {
-  const { t } = useGeekShop();
-    const [visible, setVisible] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
+  (
+    { open, onClose, children, closable = true, width = 480, title, className = '', ...rest },
+    ref
+  ) => {
+    const { t } = useGeekShop();
+    const [closing, setClosing] = useState(false);
+    const visible = open || closing;
 
     const popupRef = useFocusTrap<HTMLDivElement>(open, {
       onEscape: closable ? handleClose : undefined,
@@ -46,23 +61,18 @@ export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
           ref.current = node;
         }
       },
-      [ref, popupRef],
+      [ref, popupRef]
     );
 
-    // Track open/close state for exit animation
+    // Handle close animation
     useEffect(() => {
-      if (open) {
-        setVisible(true);
-        setIsClosing(false);
-      } else if (visible) {
-        setIsClosing(true);
+      if (!open && closing) {
         const timer = setTimeout(() => {
-          setVisible(false);
-          setIsClosing(false);
+          setClosing(false);
         }, 200);
         return () => clearTimeout(timer);
       }
-    }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [open, closing]);
 
     // Body scroll lock
     useEffect(() => {
@@ -77,12 +87,8 @@ export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
 
     function handleClose() {
       if (closable) {
-        setIsClosing(true);
-        setTimeout(() => {
-          setIsClosing(false);
-          setVisible(false);
-          onClose?.();
-        }, 200);
+        setClosing(true);
+        onClose?.();
       }
     }
 
@@ -99,11 +105,15 @@ export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
     const popupWidth = typeof width === 'number' ? `${width}px` : width;
 
     const popup = (
-      <div className={cn(styles.overlay, isClosing && styles.closing, className)} onClick={handleOverlayClick} role="presentation">
+      <div
+        className={cn(styles.overlay, closing && styles.closing, className)}
+        onClick={handleOverlayClick}
+        role="presentation"
+      >
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
         <div
           ref={mergedRef}
-          className={cn(styles.popup, isClosing && styles.closing)}
+          className={cn(styles.popup, closing && styles.closing)}
           style={{ width: popupWidth }}
           onClick={handleContentClick}
           onKeyDown={(e) => e.stopPropagation()}
@@ -137,7 +147,7 @@ export const DesktopPopup = forwardRef<HTMLDivElement, DesktopPopupProps>(
 
     if (typeof document === 'undefined') return popup;
     return createPortal(popup, document.body);
-  },
+  }
 );
 
 DesktopPopup.displayName = 'DesktopPopup';

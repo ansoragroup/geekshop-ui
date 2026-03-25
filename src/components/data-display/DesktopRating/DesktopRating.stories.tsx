@@ -57,13 +57,10 @@ export const Interactive: Story = {
     const [value, setValue] = useState(3);
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        <DesktopRating
-          value={value}
-          onChange={setValue}
-          showValue
-          size={32}
-        />
-        <span style={{ fontSize: 14, color: '#666' }}>Click a star to rate. Current: {value} star{value !== 1 ? 's' : ''}</span>
+        <DesktopRating value={value} onChange={setValue} showValue size={32} />
+        <span style={{ fontSize: 14, color: '#666' }}>
+          Click a star to rate. Current: {value} star{value !== 1 ? 's' : ''}
+        </span>
       </div>
     );
   },
@@ -185,7 +182,6 @@ export const CustomMax3Stars: Story = {
 // --- EDGE CASES ---
 
 export const ZeroRating: Story = {
-  name: 'Zero Rating',
   args: {
     value: 0,
     readonly: true,
@@ -210,10 +206,20 @@ export const HighCount: Story = {
 export const ProductCardRating: Story = {
   name: 'Product Card Context',
   render: () => (
-    <div style={{ background: '#fff', padding: 20, borderRadius: 12, border: '1px solid #eee', maxWidth: 300 }}>
+    <div
+      style={{
+        background: '#fff',
+        padding: 20,
+        borderRadius: 12,
+        border: '1px solid #eee',
+        maxWidth: 300,
+      }}
+    >
       <h3 style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 600 }}>MSI RTX 4060 Ventus 2X</h3>
       <DesktopRating value={4.5} allowHalf readonly showValue count={1287} size={16} />
-      <p style={{ margin: '12px 0 0', fontSize: 18, fontWeight: 700, color: '#FF0000' }}>12,500,000 UZS</p>
+      <p style={{ margin: '12px 0 0', fontSize: 18, fontWeight: 700, color: '#FF0000' }}>
+        12,500,000 UZS
+      </p>
     </div>
   ),
 };

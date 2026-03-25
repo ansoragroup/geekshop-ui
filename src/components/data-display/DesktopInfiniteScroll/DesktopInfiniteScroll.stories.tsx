@@ -51,10 +51,14 @@ const productTitles = [
   'Bose QuietComfort Ultra Earbuds',
 ];
 
-function InfiniteScrollDemo({ initialCount = 6, hasMoreInitial = true }: { initialCount?: number; hasMoreInitial?: boolean }) {
-  const [items, setItems] = useState(
-    Array.from({ length: initialCount }, (_, i) => i),
-  );
+function InfiniteScrollDemo({
+  initialCount = 6,
+  hasMoreInitial = true,
+}: {
+  initialCount?: number;
+  hasMoreInitial?: boolean;
+}) {
+  const [items, setItems] = useState(Array.from({ length: initialCount }, (_, i) => i));
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(hasMoreInitial);
 
@@ -129,7 +133,6 @@ export const EndOfList: Story = {
 };
 
 export const CustomLoadingText: Story = {
-  name: 'Custom Loading Text',
   args: {
     hasMore: true,
     loading: true,
@@ -151,9 +154,7 @@ export const SingleItemEndOfList: Story = {
     hasMore: false,
     loading: false,
     onLoadMore: () => {},
-    children: (
-      <DemoCard index={0} title="The only product matching your search" />
-    ),
+    children: <DemoCard index={0} title="The only product matching your search" />,
   },
 };
 
@@ -257,7 +258,20 @@ export const GridLayout: Story = {
                   textAlign: 'center',
                 }}
               >
-                <div style={{ width: '100%', height: 80, background: '#f8f8f8', borderRadius: 6, marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ccc', fontSize: 12 }}>
+                <div
+                  style={{
+                    width: '100%',
+                    height: 80,
+                    background: '#f8f8f8',
+                    borderRadius: 6,
+                    marginBottom: 8,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ccc',
+                    fontSize: 12,
+                  }}
+                >
                   Product Image
                 </div>
                 <div style={{ fontSize: 13, fontWeight: 500, color: '#333', marginBottom: 4 }}>

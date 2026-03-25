@@ -36,7 +36,6 @@ export const LiveSale2PM: Story = {
 
 /** Upcoming 20:00 slot showing "notify me" button */
 export const UpcomingSlot: Story = {
-  name: 'Upcoming Slot',
   play: async ({ canvasElement }) => {
     const tabs = canvasElement.querySelectorAll('[role="tab"]');
     if (tabs[2] instanceof HTMLElement) {
@@ -46,11 +45,7 @@ export const UpcomingSlot: Story = {
 };
 
 /** Flash sale with countdown timer running — products with various sell-through % */
-export const WithCountdown: Story = {
-  name: 'With Countdown',
-};
+export const WithCountdown: Story = {};
 
 /** Flash sale showing products near sold out (high sell-through percentage) */
-export const NearSoldOut: Story = {
-  name: 'Near Sold Out',
-};
+export const NearSoldOut: Story = {};

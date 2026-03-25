@@ -3,7 +3,7 @@ import { DesktopNotificationBell } from './DesktopNotificationBell';
 import type { DesktopNotification } from './DesktopNotificationBell';
 
 const meta = {
-  title: 'Navigation/DesktopNotificationBell',
+  title: 'Navigation (Desktop)/DesktopNotificationBell',
   component: DesktopNotificationBell,
   tags: ['autodocs'],
   parameters: {
@@ -31,8 +31,8 @@ const sampleNotifications: DesktopNotification[] = [
   {
     id: '1',
     type: 'order',
-    title: 'Buyurtma jo\'natildi',
-    body: 'Buyurtma #GS-28431 — Samsung Galaxy S24 Ultra jo\'natildi. Yetkazib berish: 2 kun.',
+    title: "Buyurtma jo'natildi",
+    body: "Buyurtma #GS-28431 — Samsung Galaxy S24 Ultra jo'natildi. Yetkazib berish: 2 kun.",
     time: '15 daqiqa oldin',
     read: false,
   },
@@ -56,14 +56,14 @@ const sampleNotifications: DesktopNotification[] = [
     id: '4',
     type: 'promotion',
     title: 'Kupon kodi tayyor',
-    body: 'SPRING2026 kodi bilan qo\'shimcha 10% chegirma oling.',
+    body: "SPRING2026 kodi bilan qo'shimcha 10% chegirma oling.",
     time: '1 kun oldin',
     read: true,
   },
   {
     id: '5',
     type: 'system',
-    title: 'Parol muvaffaqiyatli o\'zgartirildi',
+    title: "Parol muvaffaqiyatli o'zgartirildi",
     body: 'Sizning akkaunt parolingiz muvaffaqiyatli yangilandi.',
     time: '2 kun oldin',
     read: true,
@@ -77,21 +77,21 @@ export const Default: Story = {
 };
 
 export const AllRead: Story = {
-  name: 'Hammasi o\'qilgan',
+  name: "Hammasi o'qilgan",
   args: {
     notifications: sampleNotifications.map((n) => ({ ...n, read: true })),
   },
 };
 
 export const Empty: Story = {
-  name: 'Bo\'sh',
+  name: "Bo'sh",
   args: {
     notifications: [],
   },
 };
 
 export const ManyUnread: Story = {
-  name: 'Ko\'p o\'qilmagan (99+)',
+  name: "Ko'p o'qilmagan (99+)",
   args: {
     notifications: sampleNotifications,
     count: 127,

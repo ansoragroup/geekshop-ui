@@ -114,7 +114,6 @@ export const NoCta: Story = {
 // ─── No Badge ────────────────────────────────────────────────────────────────
 
 export const NoBadge: Story = {
-  name: 'No Badge',
   args: {
     title: 'Monitor Upgrade Week',
     subtitle: '4K and 2K monitors from Samsung, LG, and ASUS at special prices',
@@ -126,7 +125,6 @@ export const NoBadge: Story = {
 // ─── No Subtitle ─────────────────────────────────────────────────────────────
 
 export const NoSubtitle: Story = {
-  name: 'No Subtitle',
   args: {
     title: 'BLACK FRIDAY MEGA SALE',
     badge: '-70%',
@@ -177,7 +175,8 @@ export const LongTitle: Story = {
   name: 'Edge: Very Long Title and Subtitle',
   args: {
     title: 'The Ultimate Spring Technology Festival with Unbelievable Discounts on Every Category',
-    subtitle: 'From laptops and GPUs to mechanical keyboards, gaming mice, monitors, SSDs, RAM kits, CPU coolers, and power supplies — everything you need for the perfect setup at prices you will not believe',
+    subtitle:
+      'From laptops and GPUs to mechanical keyboards, gaming mice, monitors, SSDs, RAM kits, CPU coolers, and power supplies — everything you need for the perfect setup at prices you will not believe',
     badge: 'MEGA',
     ctaText: 'Start Shopping',
     bgGradient: 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',

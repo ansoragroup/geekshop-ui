@@ -135,8 +135,9 @@ export const Default: Story = {
 
 ## Testing
 
-- Tests run via Vitest with Playwright browser mode.
-- Storybook interaction tests are the primary testing strategy.
+- Tests run via Vitest with @testing-library/react using the jsdom environment.
+- Storybook interaction tests complement unit tests via play functions.
+- Playwright MCP is used separately for visual QA in Storybook (not part of `npm test`).
 - Run tests locally before pushing:
 
 ```bash

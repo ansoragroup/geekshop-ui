@@ -220,7 +220,6 @@ export const LargeGap: Story = {
 /* ─── Edge Cases ─── */
 
 export const SingleItem: Story = {
-  name: 'Single Item',
   args: {
     columns: 4,
     gap: 24,
@@ -251,10 +250,16 @@ export const UnevenHeights: Story = {
     children: (
       <>
         <Card label="Short content" height={80} />
-        <Card label="This card has significantly more content which makes it taller than others in the row" height={120} />
+        <Card
+          label="This card has significantly more content which makes it taller than others in the row"
+          height={120}
+        />
         <Card label="Medium" height={100} />
         <Card label="Tiny" height={60} />
-        <Card label="This is another card with a lot of text content that wraps to multiple lines" height={140} />
+        <Card
+          label="This is another card with a lot of text content that wraps to multiple lines"
+          height={140}
+        />
         <Card label="Normal" height={80} />
         <Card label="Short" height={60} />
         <Card label="Also normal height here" height={80} />
@@ -279,10 +284,27 @@ export const ProductGrid: Story = {
         { name: 'iPad Air M2', price: '8,500,000' },
         { name: 'AirPods Pro 3', price: '2,900,000' },
       ].map((product, i) => (
-        <div key={i} style={{ background: '#fff', borderRadius: 8, overflow: 'hidden', border: '1px solid #eee' }}>
+        <div
+          key={i}
+          style={{
+            background: '#fff',
+            borderRadius: 8,
+            overflow: 'hidden',
+            border: '1px solid #eee',
+          }}
+        >
           <div style={{ width: '100%', aspectRatio: '1', background: '#F5F5F5' }} />
           <div style={{ padding: 12 }}>
-            <div style={{ fontSize: 13, color: '#1A1A1A', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <div
+              style={{
+                fontSize: 13,
+                color: '#1A1A1A',
+                marginBottom: 4,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
               {product.name}
             </div>
             <div style={{ fontSize: 16, color: '#FF0000', fontWeight: 700 }}>
@@ -301,9 +323,45 @@ export const CategoryGrid: Story = {
   name: 'Category Icons Grid (6 col)',
   render: () => (
     <DesktopGrid columns={6} gap={16}>
-      {['Laptops', 'Phones', 'Monitors', 'Audio', 'Gaming', 'Storage', 'Networking', 'Cameras', 'Wearables', 'Tablets', 'Components', 'Accessories'].map((cat) => (
-        <div key={cat} style={{ background: '#fff', borderRadius: 12, padding: 20, textAlign: 'center', border: '1px solid #eee', cursor: 'pointer' }}>
-          <div style={{ width: 48, height: 48, background: '#FFF5F0', borderRadius: '50%', margin: '0 auto 8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FF5000', fontSize: 20 }}>
+      {[
+        'Laptops',
+        'Phones',
+        'Monitors',
+        'Audio',
+        'Gaming',
+        'Storage',
+        'Networking',
+        'Cameras',
+        'Wearables',
+        'Tablets',
+        'Components',
+        'Accessories',
+      ].map((cat) => (
+        <div
+          key={cat}
+          style={{
+            background: '#fff',
+            borderRadius: 12,
+            padding: 20,
+            textAlign: 'center',
+            border: '1px solid #eee',
+            cursor: 'pointer',
+          }}
+        >
+          <div
+            style={{
+              width: 48,
+              height: 48,
+              background: '#FFF5F0',
+              borderRadius: '50%',
+              margin: '0 auto 8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#FF5000',
+              fontSize: 20,
+            }}
+          >
             {cat[0]}
           </div>
           <div style={{ fontSize: 13, color: '#1A1A1A' }}>{cat}</div>

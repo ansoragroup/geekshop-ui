@@ -32,12 +32,10 @@ describe('CategoryShowcase', () => {
   });
 
   it('does not render item count when not provided', () => {
-    const noCounts: ShowcaseCategory[] = [
-      { label: 'GPUs', image: '/img/gpu.jpg' },
-    ];
+    const noCounts: ShowcaseCategory[] = [{ label: 'GPUs', image: '/img/gpu.jpg' }];
     render(<CategoryShowcase categories={noCounts} />);
     expect(screen.queryByText(/items/)).not.toBeInTheDocument();
-  }];
+  });
 
   it('renders section title when provided', () => {
     render(<CategoryShowcase categories={categories} title="Shop by Category" />);
@@ -74,9 +72,7 @@ describe('CategoryShowcase', () => {
   it('handles Enter key on clickable cards', async () => {
     const onClick = vi.fn();
     const user = userEvent.setup();
-    const clickable: ShowcaseCategory[] = [
-      { label: 'GPUs', image: '/img/gpu.jpg', onClick },
-    ];
+    const clickable: ShowcaseCategory[] = [{ label: 'GPUs', image: '/img/gpu.jpg', onClick }];
 
     render(<CategoryShowcase categories={clickable} />);
     screen.getByRole('button').focus();
@@ -88,9 +84,7 @@ describe('CategoryShowcase', () => {
   it('handles Space key on clickable cards', async () => {
     const onClick = vi.fn();
     const user = userEvent.setup();
-    const clickable: ShowcaseCategory[] = [
-      { label: 'GPUs', image: '/img/gpu.jpg', onClick },
-    ];
+    const clickable: ShowcaseCategory[] = [{ label: 'GPUs', image: '/img/gpu.jpg', onClick }];
 
     render(<CategoryShowcase categories={clickable} />);
     screen.getByRole('button').focus();
@@ -114,7 +108,7 @@ describe('CategoryShowcase', () => {
     ];
     render(<CategoryShowcase categories={clickable} />);
     expect(screen.getByLabelText('GPUs, 42 items')).toBeInTheDocument();
-  }];
+  });
 
   it('sets grid columns from columns prop', () => {
     const { container } = render(<CategoryShowcase categories={categories} columns={4} />);
@@ -130,7 +124,7 @@ describe('CategoryShowcase', () => {
 
   it('applies custom className', () => {
     const { container } = render(
-      <CategoryShowcase categories={categories} className="my-showcase" />,
+      <CategoryShowcase categories={categories} className="my-showcase" />
     );
     expect(container.firstElementChild?.className).toContain('my-showcase');
   });

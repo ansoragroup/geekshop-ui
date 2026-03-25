@@ -4,7 +4,7 @@ import { DesktopProductGrid } from './DesktopProductGrid';
 import type { DesktopProductGridItem, SortOption } from './DesktopProductGrid';
 
 const meta = {
-  title: 'Product/DesktopProductGrid',
+  title: 'Product (Desktop)/DesktopProductGrid',
   component: DesktopProductGrid,
   tags: ['autodocs'],
   parameters: {

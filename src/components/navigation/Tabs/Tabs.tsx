@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '../../../utils/cn';
 import { forwardRef, useRef, useEffect, type ReactNode, type HTMLAttributes } from 'react';
-import { useControllableState } from '../../../hooks/useControllableState';
+import { useTabs } from '../../../headless/useTabs';
 import styles from './Tabs.module.scss';
 
 export interface TabItem {
@@ -46,14 +46,17 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-    const firstKey = items[0]?.key ?? '';
+    const tabKeys = items.map((item) => item.key);
+    const disabledKeys = items.filter((item) => item.disabled).map((item) => item.key);
 
-    const [activeKey, setActiveKey] = useControllableState({
-      value: activeKeyProp,
-      defaultValue: defaultActiveKey ?? firstKey,
+    const { tabListProps, tabProps, panelProps, activeKey } = useTabs({
+      activeKey: activeKeyProp,
+      defaultActiveKey: defaultActiveKey ?? items[0]?.key ?? '',
       onChange,
+      tabs: tabKeys,
+      disabledKeys,
     });
 
     const tabListRef = useRef<HTMLDivElement>(null);
@@ -63,7 +66,9 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     useEffect(() => {
       if (variant !== 'line' || !tabListRef.current || !inkRef.current) return;
 
-      const activeTab = tabListRef.current.querySelector(`[data-key="${activeKey}"]`) as HTMLElement;
+      const activeTab = tabListRef.current.querySelector(
+        `[data-key="${activeKey}"]`
+      ) as HTMLElement;
       if (activeTab) {
         inkRef.current.style.width = `${activeTab.offsetWidth}px`;
         inkRef.current.style.transform = `translateX(${activeTab.offsetLeft}px)`;
@@ -73,53 +78,45 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     const activeItem = items.find((item) => item.key === activeKey);
 
     return (
-      <div
-        ref={ref}
-        className={cn(styles.root, styles[`variant-${variant}`], className)}
-        {...rest}
-      >
+      <div ref={ref} className={cn(styles.root, styles[`variant-${variant}`], className)} {...rest}>
         <div
           className={cn(styles.tabBar, sticky ? styles.sticky : '')}
-          role="tablist"
           ref={tabListRef}
+          {...tabListProps}
         >
           {items.map((item) => {
             const isActive = item.key === activeKey;
+            const tp = tabProps(item.key);
             return (
               <button
                 key={item.key}
                 data-key={item.key}
-                role="tab"
-                aria-selected={isActive}
+                ref={tp.ref as React.Ref<HTMLButtonElement>}
+                role={tp.role}
+                aria-selected={tp['aria-selected']}
+                aria-controls={tp['aria-controls']}
                 aria-disabled={item.disabled}
-                tabIndex={item.disabled ? -1 : 0}
-                className={cn(styles.tab, isActive ? styles.active : '', item.disabled ? styles.disabled : '')}
-                onClick={() => {
-                  if (!item.disabled) {
-                    setActiveKey(item.key);
-                  }
-                }}
+                tabIndex={item.disabled ? -1 : isActive ? 0 : -1}
+                className={cn(
+                  styles.tab,
+                  isActive ? styles.active : '',
+                  item.disabled ? styles.disabled : ''
+                )}
+                onClick={tp.onClick}
+                onKeyDown={tp.onKeyDown}
                 type="button"
               >
                 <span className={styles.label}>{item.label}</span>
                 {item.badge != null && item.badge > 0 && (
-                  <span className={styles.badge}>
-                    {item.badge > 99 ? '99+' : item.badge}
-                  </span>
+                  <span className={styles.badge}>{item.badge > 99 ? '99+' : item.badge}</span>
                 )}
               </button>
             );
           })}
-          {variant === 'line' && (
-            <div ref={inkRef} className={styles.ink} aria-hidden="true" />
-          )}
+          {variant === 'line' && <div ref={inkRef} className={styles.ink} aria-hidden="true" />}
         </div>
 
-        <div
-          className={styles.content}
-          role="tabpanel"
-          aria-label={activeItem?.label}
-        >
+        <div className={styles.content} {...panelProps(activeKey)} hidden={false}>
           {activeItem?.children}
         </div>
       </div>

@@ -1,0 +1,148 @@
+@use '../../../theme/tokens' as *;
+
+.root {
+  container-type: inline-size;
+  width: 100%;
+}
+
+.nodeRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  min-height: 44px;
+  padding: $spacing-xs $spacing-md;
+  cursor: default;
+  transition: background $transition-fast;
+  border-radius: $radius-sm;
+}
+
+.nodeRowSelected {
+  background: var(--gs-color-primary-bg, #{$color-primary-bg});
+}
+
+.nodeRowDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+// Expand/collapse button
+.expandBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gs-text-tertiary, #{$color-text-tertiary});
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chevron {
+  transition: transform $transition-fast;
+}
+
+.chevronExpanded {
+  transform: rotate(90deg);
+}
+
+// Leaf bullet
+.leafBullet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+}
+
+.leafDot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-round;
+  background: var(--gs-text-tertiary, #{$color-text-tertiary});
+}
+
+// Checkbox
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--gs-border, #{$color-border});
+  border-radius: $radius-xs;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background $transition-fast, border-color $transition-fast;
+  color: var(--gs-text-white, #{$color-text-white});
+}
+
+.checkboxChecked {
+  background: var(--gs-color-primary, #{$color-primary});
+  border-color: var(--gs-color-primary, #{$color-primary});
+}
+
+// Icon
+.nodeIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+// Label
+.nodeLabel {
+  font-size: $font-size-md;
+  color: var(--gs-text-primary, #{$color-text-primary});
+  line-height: $line-height-normal;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Loading skeleton
+.loadingRow {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+}
+
+.skeleton {
+  height: 14px;
+  background: var(--gs-bg-skeleton, #{$color-bg-skeleton});
+  border-radius: $radius-xs;
+  width: 80%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .chevron,
+  .nodeRow,
+  .checkbox {
+    transition: none;
+  }
+
+  .skeleton {
+    animation: none;
+  }
+}

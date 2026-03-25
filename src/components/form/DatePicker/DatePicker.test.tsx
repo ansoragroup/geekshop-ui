@@ -3,6 +3,32 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { DatePicker } from './DatePicker';
 
+vi.mock('../../../i18n/GeekShopProvider', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../../../i18n/GeekShopProvider')>();
+  const { TRANSLATIONS } = await import('../../../i18n/translations');
+  const { CURRENCY_CONFIGS } = await import('../../../i18n/currencies');
+  const { formatWithConfig } = await import('../../../utils/formatPrice');
+  const en = (TRANSLATIONS.en ?? {}) as Record<string, string>;
+  return {
+    ...actual,
+    useGeekShop: () => ({
+      locale: 'en' as const,
+      currency: 'UZS' as const,
+      platform: 'desktop' as const,
+      t: (key, params) => {
+        const tmpl = en[key];
+        if (tmpl === undefined) return key;
+        if (!params) return tmpl;
+        return tmpl.replace(/\{(\w+)\}/g, (_, k) => (k in params ? String(params[k]) : `{${k}}`));
+      },
+      formatPrice: (amount, options) => {
+        const config = CURRENCY_CONFIGS[options?.currency ?? 'UZS'] ?? CURRENCY_CONFIGS.UZS;
+        return formatWithConfig(amount, config, 'en', { showCurrency: options?.showCurrency });
+      },
+    }),
+  };
+});
+
 describe('DatePicker', () => {
   afterEach(() => {
     cleanup();
@@ -60,7 +86,7 @@ describe('DatePicker', () => {
     render(<DatePicker value={new Date(2026, 2, 16)} locale="uz" />);
 
     await user.click(screen.getByRole('button'));
-    const prevBtn = screen.getByLabelText('Oldingi oy');
+    const prevBtn = screen.getByLabelText('Previous month');
     await user.click(prevBtn);
     expect(screen.getByText('Fevral 2026')).toBeInTheDocument();
   });
@@ -70,7 +96,7 @@ describe('DatePicker', () => {
     render(<DatePicker value={new Date(2026, 2, 16)} locale="uz" />);
 
     await user.click(screen.getByRole('button'));
-    const nextBtn = screen.getByLabelText('Keyingi oy');
+    const nextBtn = screen.getByLabelText('Next month');
     await user.click(nextBtn);
     expect(screen.getByText('Aprel 2026')).toBeInTheDocument();
   });
@@ -87,7 +113,7 @@ describe('DatePicker', () => {
     await user.click(day20);
 
     // Confirm
-    const confirmBtn = screen.getByText('Tanlash');
+    const confirmBtn = screen.getByText('Select');
     await user.click(confirmBtn);
 
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -137,7 +163,9 @@ describe('DatePicker', () => {
     render(<DatePicker value={today} />);
 
     await user.click(screen.getByRole('button'));
-    const todayCell = screen.getByLabelText(new RegExp(`${today.getDate()}.*${today.getFullYear()}`));
+    const todayCell = screen.getByLabelText(
+      new RegExp(`${today.getDate()}.*${today.getFullYear()}`)
+    );
     expect(todayCell).toHaveAttribute('aria-current', 'date');
   });
 
@@ -164,7 +192,7 @@ describe('DatePicker', () => {
     await user.click(screen.getByRole('button'));
     expect(screen.getByRole('dialog')).toBeInTheDocument();
 
-    const closeBtn = screen.getByLabelText('Yopish');
+    const closeBtn = screen.getByLabelText('Close');
     await user.click(closeBtn);
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
@@ -214,7 +242,7 @@ describe('DatePicker', () => {
     render(<DatePicker />);
 
     await user.click(screen.getByRole('button'));
-    const confirmBtn = screen.getByText('Tanlash');
+    const confirmBtn = screen.getByText('Select');
     expect(confirmBtn).toBeDisabled();
   });
 });

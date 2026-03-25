@@ -141,7 +141,6 @@ export const FullFeatured: Story = {
 /* ─── All States Grid ─── */
 
 export const AllStatesOverview: Story = {
-  name: 'All States Overview',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <DesktopCheckbox label="Unchecked (default)" />
@@ -169,9 +168,7 @@ export const CheckboxGroup: Story = {
     const [selected, setSelected] = useState<string[]>(['free-shipping', 'in-stock']);
 
     const toggle = (id: string) => {
-      setSelected((prev) =>
-        prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id],
-      );
+      setSelected((prev) => (prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]));
     };
 
     return (
@@ -200,7 +197,13 @@ export const CheckboxGroup: Story = {
 export const SelectAllPattern: Story = {
   name: 'Select All with Indeterminate',
   render: () => {
-    const items = ['MacBook Pro 16"', 'iPhone 15 Pro Max', 'iPad Air M2', 'AirPods Pro 3', 'Apple Watch Ultra 2'];
+    const items = [
+      'MacBook Pro 16"',
+      'iPhone 15 Pro Max',
+      'iPad Air M2',
+      'AirPods Pro 3',
+      'Apple Watch Ultra 2',
+    ];
     const [selected, setSelected] = useState<string[]>(['MacBook Pro 16"', 'iPad Air M2']);
 
     const allSelected = selected.length === items.length;
@@ -212,12 +215,21 @@ export const SelectAllPattern: Story = {
 
     const toggleItem = (item: string) => {
       setSelected((prev) =>
-        prev.includes(item) ? prev.filter((s) => s !== item) : [...prev, item],
+        prev.includes(item) ? prev.filter((s) => s !== item) : [...prev, item]
       );
     };
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, border: '1px solid #eee', borderRadius: 8, padding: 16 }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 4,
+          border: '1px solid #eee',
+          borderRadius: 8,
+          padding: 16,
+        }}
+      >
         <DesktopCheckbox
           label={`Select all (${selected.length}/${items.length})`}
           checked={allSelected}
@@ -244,7 +256,8 @@ export const SelectAllPattern: Story = {
 export const LongLabel: Story = {
   name: 'Long Label (Multiline)',
   args: {
-    label: 'I have read and agree to the Terms of Service, Privacy Policy, and Cookie Policy. I understand that my data will be processed in accordance with applicable laws.',
+    label:
+      'I have read and agree to the Terms of Service, Privacy Policy, and Cookie Policy. I understand that my data will be processed in accordance with applicable laws.',
     onChange: fn(),
   },
 };
@@ -259,7 +272,16 @@ export const TermsCheckboxes: Story = {
     const [marketing, setMarketing] = useState(true);
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, border: '1px solid #eee', borderRadius: 8, padding: 16 }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12,
+          border: '1px solid #eee',
+          borderRadius: 8,
+          padding: 16,
+        }}
+      >
         <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A', marginBottom: 4 }}>
           Before completing your order
         </div>
@@ -278,10 +300,10 @@ export const TermsCheckboxes: Story = {
           checked={marketing}
           onChange={setMarketing}
         />
-        <div style={{ fontSize: 12, color: terms && privacy ? '#07C160' : '#FF3B30', marginTop: 4 }}>
-          {terms && privacy
-            ? 'Ready to proceed!'
-            : 'Please accept required agreements to continue'}
+        <div
+          style={{ fontSize: 12, color: terms && privacy ? '#07C160' : '#FF3B30', marginTop: 4 }}
+        >
+          {terms && privacy ? 'Ready to proceed!' : 'Please accept required agreements to continue'}
         </div>
       </div>
     );

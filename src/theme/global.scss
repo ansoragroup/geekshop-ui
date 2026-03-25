@@ -4,7 +4,8 @@
 // GeekShop.uz Global Styles
 // ============================================
 
-:root, [data-theme="light"] {
+:root,
+[data-theme='light'] {
   // Colors
   --gs-color-primary: #{$color-primary};
   --gs-color-primary-light: #{$color-primary-light};
@@ -33,15 +34,15 @@
   --gs-color-error-bg: #fff2f0;
   --gs-color-error-text: #a8071a;
   --gs-color-error-border: #ffa39e;
-  --gs-color-error-light: #FFF0F0;
-  --gs-color-sale-bg: #FEE2E2;
-  --gs-color-primary-bg-warm: #FFE0D0;
+  --gs-color-error-light: #fff0f0;
+  --gs-color-sale-bg: #fee2e2;
+  --gs-color-primary-bg-warm: #ffe0d0;
   --gs-color-primary-bg-hover: #ffece0;
-  --gs-color-warning-dark: #E69500;
-  --gs-color-cart-badge: #FFE500;
-  --gs-color-info-bg-deep: #E6F2FF;
+  --gs-color-warning-dark: #e69500;
+  --gs-color-cart-badge: #ffe500;
+  --gs-color-info-bg-deep: #e6f2ff;
   --gs-switch-off: #d1d5db;
-  --gs-tag-default-bg: #EAEAEA;
+  --gs-tag-default-bg: #eaeaea;
   --gs-coupon-orange-from: #fff3e0;
   --gs-coupon-orange-to: #ffe0b2;
   --gs-coupon-red-from: #ffebee;
@@ -112,72 +113,83 @@
   --gs-desktop-bg-page: #{$desktop-bg-page};
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   // Colors
-  --gs-color-primary: #FF6B33;
-  --gs-color-primary-light: #3D2A1A;
-  --gs-color-primary-dark: #CC5200;
-  --gs-color-primary-bg: #2A1A10;
-  --gs-color-primary-gradient: linear-gradient(135deg, #FF6B33 0%, #FF8F5C 100%);
-  --gs-color-primary-gradient-header: linear-gradient(180deg, #FF6B33 0%, #CC5200 50%, #993D00 100%);
-  --gs-color-price: #FF4D4D;
-  --gs-color-price-dark: #FF6B5C;
-  --gs-color-sale: #FF5247;
-  --gs-color-success: #2ED573;
-  --gs-color-success-light: #1A2E1F;
-  --gs-color-warning: #FFB84D;
-  --gs-color-warning-light: #2E2510;
-  --gs-color-error: #FF5247;
-  --gs-color-info: #40A9FF;
-  --gs-color-info-bg: #0D2A3D;
-  --gs-color-info-text: #6CB8FF;
-  --gs-color-info-border: #1A3A50;
-  --gs-color-success-bg: #0D2A15;
-  --gs-color-success-text: #5AE08A;
-  --gs-color-success-border: #1A3D25;
-  --gs-color-warning-bg: #2E2510;
-  --gs-color-warning-text: #FFD080;
-  --gs-color-warning-border: #3D3015;
-  --gs-color-error-bg: #2A1515;
-  --gs-color-error-text: #FF7A70;
-  --gs-color-error-border: #3D1A1A;
-  --gs-color-error-light: #2A1515;
-  --gs-color-sale-bg: #2A1515;
-  --gs-color-primary-bg-warm: #2A1A10;
-  --gs-color-primary-bg-hover: #33200D;
-  --gs-color-warning-dark: #FFD080;
-  --gs-color-cart-badge: #FFE500;
-  --gs-color-info-bg-deep: #0D2A3D;
+  --gs-color-primary: #ff6b33;
+  --gs-color-primary-light: #3d2a1a;
+  --gs-color-primary-dark: #cc5200;
+  --gs-color-primary-bg: #2a1a10;
+  --gs-color-primary-gradient: linear-gradient(135deg, #ff6b33 0%, #ff8f5c 100%);
+  --gs-color-primary-gradient-header: linear-gradient(
+    180deg,
+    #ff6b33 0%,
+    #cc5200 50%,
+    #993d00 100%
+  );
+  --gs-color-price: #ff4d4d;
+  --gs-color-price-dark: #ff6b5c;
+  --gs-color-sale: #ff5247;
+  --gs-color-success: #2ed573;
+  --gs-color-success-light: #1a2e1f;
+  --gs-color-warning: #ffb84d;
+  --gs-color-warning-light: #2e2510;
+  --gs-color-error: #ff5247;
+  --gs-color-info: #40a9ff;
+  --gs-color-info-bg: #0d2a3d;
+  --gs-color-info-text: #6cb8ff;
+  --gs-color-info-border: #1a3a50;
+  --gs-color-success-bg: #0d2a15;
+  --gs-color-success-text: #5ae08a;
+  --gs-color-success-border: #1a3d25;
+  --gs-color-warning-bg: #2e2510;
+  --gs-color-warning-text: #ffd080;
+  --gs-color-warning-border: #3d3015;
+  --gs-color-error-bg: #2a1515;
+  --gs-color-error-text: #ff7a70;
+  --gs-color-error-border: #3d1a1a;
+  --gs-color-error-light: #2a1515;
+  --gs-color-sale-bg: #2a1515;
+  --gs-color-primary-bg-warm: #2a1a10;
+  --gs-color-primary-bg-hover: #33200d;
+  --gs-color-warning-dark: #ffd080;
+  --gs-color-cart-badge: #ffe500;
+  --gs-color-info-bg-deep: #0d2a3d;
   --gs-switch-off: #555555;
   --gs-tag-default-bg: #333333;
-  --gs-coupon-orange-from: #2A1A10;
-  --gs-coupon-orange-to: #33200D;
-  --gs-coupon-red-from: #2A1515;
-  --gs-coupon-red-to: #331A1A;
-  --gs-coupon-green-from: #0D2A15;
+  --gs-coupon-orange-from: #2a1a10;
+  --gs-coupon-orange-to: #33200d;
+  --gs-coupon-red-from: #2a1515;
+  --gs-coupon-red-to: #331a1a;
+  --gs-coupon-green-from: #0d2a15;
   --gs-coupon-green-to: #153320;
-  --gs-coupon-blue-from: #0D2A3D;
-  --gs-coupon-blue-to: #152D3D;
+  --gs-coupon-blue-from: #0d2a3d;
+  --gs-coupon-blue-to: #152d3d;
 
   // Text
-  --gs-text-primary: #E5E5E5;
-  --gs-text-secondary: #A0A0A0;
+  --gs-text-primary: #e5e5e5;
+  --gs-text-secondary: #a0a0a0;
   --gs-text-tertiary: #707070;
   --gs-text-placeholder: #555555;
-  --gs-text-white: #E5E5E5;
-  --gs-text-link: #FF6B33;
+  --gs-text-white: #e5e5e5;
+  --gs-text-link: #ff6b33;
 
   // Background
-  --gs-bg-page: #121212;
-  --gs-bg-white: #1E1E1E;
-  --gs-bg-card: #1E1E1E;
-  --gs-bg-overlay: rgba(0, 0, 0, 0.7);
-  --gs-bg-skeleton: #2A2A2A;
+  --gs-bg-page: #0f0f0f;
+  --gs-bg-white: #1a1a1a;
+  --gs-bg-card: #1a1a1a;
+  --gs-bg-overlay: rgba(0, 0, 0, 0.75);
+  --gs-bg-skeleton: #2a2a2a;
+
+  // Text (dark preset overrides)
+  --gs-text-primary: #f5f5f5;
+  --gs-text-secondary: #aaaaaa;
+  --gs-text-tertiary: #666666;
+  --gs-text-placeholder: #555555;
 
   // Border
-  --gs-border-color: #333333;
-  --gs-border-color-light: #2A2A2A;
-  --gs-divider-color: #2E2E2E;
+  --gs-border-color: #2a2a2a;
+  --gs-border-color-light: #222222;
+  --gs-divider-color: #222222;
 
   // Shadows
   --gs-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -191,70 +203,81 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     // Colors
-    --gs-color-primary: #FF6B33;
-    --gs-color-primary-light: #3D2A1A;
-    --gs-color-primary-dark: #CC5200;
-    --gs-color-primary-bg: #2A1A10;
-    --gs-color-primary-gradient: linear-gradient(135deg, #FF6B33 0%, #FF8F5C 100%);
-    --gs-color-primary-gradient-header: linear-gradient(180deg, #FF6B33 0%, #CC5200 50%, #993D00 100%);
-    --gs-color-price: #FF4D4D;
-    --gs-color-price-dark: #FF6B5C;
-    --gs-color-sale: #FF5247;
-    --gs-color-success: #2ED573;
-    --gs-color-success-light: #1A2E1F;
-    --gs-color-warning: #FFB84D;
-    --gs-color-warning-light: #2E2510;
-    --gs-color-error: #FF5247;
-    --gs-color-info: #40A9FF;
-    --gs-color-info-bg: #0D2A3D;
-    --gs-color-info-text: #6CB8FF;
-    --gs-color-info-border: #1A3A50;
-    --gs-color-success-bg: #0D2A15;
-    --gs-color-success-text: #5AE08A;
-    --gs-color-success-border: #1A3D25;
-    --gs-color-warning-bg: #2E2510;
-    --gs-color-warning-text: #FFD080;
-    --gs-color-warning-border: #3D3015;
-    --gs-color-error-bg: #2A1515;
-    --gs-color-error-text: #FF7A70;
-    --gs-color-error-border: #3D1A1A;
-    --gs-color-error-light: #2A1515;
-    --gs-color-sale-bg: #2A1515;
-    --gs-color-primary-bg-warm: #2A1A10;
-    --gs-color-primary-bg-hover: #33200D;
-    --gs-color-warning-dark: #FFD080;
-    --gs-color-cart-badge: #FFE500;
-    --gs-color-info-bg-deep: #0D2A3D;
+    --gs-color-primary: #ff6b33;
+    --gs-color-primary-light: #3d2a1a;
+    --gs-color-primary-dark: #cc5200;
+    --gs-color-primary-bg: #2a1a10;
+    --gs-color-primary-gradient: linear-gradient(135deg, #ff6b33 0%, #ff8f5c 100%);
+    --gs-color-primary-gradient-header: linear-gradient(
+      180deg,
+      #ff6b33 0%,
+      #cc5200 50%,
+      #993d00 100%
+    );
+    --gs-color-price: #ff4d4d;
+    --gs-color-price-dark: #ff6b5c;
+    --gs-color-sale: #ff5247;
+    --gs-color-success: #2ed573;
+    --gs-color-success-light: #1a2e1f;
+    --gs-color-warning: #ffb84d;
+    --gs-color-warning-light: #2e2510;
+    --gs-color-error: #ff5247;
+    --gs-color-info: #40a9ff;
+    --gs-color-info-bg: #0d2a3d;
+    --gs-color-info-text: #6cb8ff;
+    --gs-color-info-border: #1a3a50;
+    --gs-color-success-bg: #0d2a15;
+    --gs-color-success-text: #5ae08a;
+    --gs-color-success-border: #1a3d25;
+    --gs-color-warning-bg: #2e2510;
+    --gs-color-warning-text: #ffd080;
+    --gs-color-warning-border: #3d3015;
+    --gs-color-error-bg: #2a1515;
+    --gs-color-error-text: #ff7a70;
+    --gs-color-error-border: #3d1a1a;
+    --gs-color-error-light: #2a1515;
+    --gs-color-sale-bg: #2a1515;
+    --gs-color-primary-bg-warm: #2a1a10;
+    --gs-color-primary-bg-hover: #33200d;
+    --gs-color-warning-dark: #ffd080;
+    --gs-color-cart-badge: #ffe500;
+    --gs-color-info-bg-deep: #0d2a3d;
     --gs-switch-off: #555555;
     --gs-tag-default-bg: #333333;
-    --gs-coupon-orange-from: #2A1A10;
-    --gs-coupon-orange-to: #33200D;
-    --gs-coupon-red-from: #2A1515;
-    --gs-coupon-red-to: #331A1A;
-    --gs-coupon-green-from: #0D2A15;
+    --gs-coupon-orange-from: #2a1a10;
+    --gs-coupon-orange-to: #33200d;
+    --gs-coupon-red-from: #2a1515;
+    --gs-coupon-red-to: #331a1a;
+    --gs-coupon-green-from: #0d2a15;
     --gs-coupon-green-to: #153320;
-    --gs-coupon-blue-from: #0D2A3D;
-    --gs-coupon-blue-to: #152D3D;
+    --gs-coupon-blue-from: #0d2a3d;
+    --gs-coupon-blue-to: #152d3d;
 
     // Text
-    --gs-text-primary: #E5E5E5;
-    --gs-text-secondary: #A0A0A0;
+    --gs-text-primary: #e5e5e5;
+    --gs-text-secondary: #a0a0a0;
     --gs-text-tertiary: #707070;
     --gs-text-placeholder: #555555;
-    --gs-text-white: #E5E5E5;
-    --gs-text-link: #FF6B33;
+    --gs-text-white: #e5e5e5;
+    --gs-text-link: #ff6b33;
 
     // Background
-    --gs-bg-page: #121212;
-    --gs-bg-white: #1E1E1E;
-    --gs-bg-card: #1E1E1E;
-    --gs-bg-overlay: rgba(0, 0, 0, 0.7);
-    --gs-bg-skeleton: #2A2A2A;
+    --gs-bg-page: #0f0f0f;
+    --gs-bg-white: #1a1a1a;
+    --gs-bg-card: #1a1a1a;
+    --gs-bg-overlay: rgba(0, 0, 0, 0.75);
+    --gs-bg-skeleton: #2a2a2a;
+
+    // Text (dark preset overrides)
+    --gs-text-primary: #f5f5f5;
+    --gs-text-secondary: #aaaaaa;
+    --gs-text-tertiary: #666666;
+    --gs-text-placeholder: #555555;
 
     // Border
-    --gs-border-color: #333333;
-    --gs-border-color-light: #2A2A2A;
-    --gs-divider-color: #2E2E2E;
+    --gs-border-color: #2a2a2a;
+    --gs-border-color-light: #222222;
+    --gs-divider-color: #222222;
 
     // Shadows
     --gs-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -298,7 +321,8 @@ img {
   display: block;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -309,18 +333,30 @@ button {
   font-family: inherit;
 }
 
-input, textarea {
+input,
+textarea {
   border: none;
   outline: none;
   font-family: inherit;
 }
 
 // Utility classes
-.gs-text-primary { color: var(--gs-text-primary); }
-.gs-text-secondary { color: var(--gs-text-secondary); }
-.gs-text-tertiary { color: var(--gs-text-tertiary); }
-.gs-text-price { color: var(--gs-color-price); font-weight: $font-weight-bold; }
-.gs-text-orange { color: var(--gs-color-primary); }
+.gs-text-primary {
+  color: var(--gs-text-primary);
+}
+.gs-text-secondary {
+  color: var(--gs-text-secondary);
+}
+.gs-text-tertiary {
+  color: var(--gs-text-tertiary);
+}
+.gs-text-price {
+  color: var(--gs-color-price);
+  font-weight: $font-weight-bold;
+}
+.gs-text-orange {
+  color: var(--gs-color-primary);
+}
 
 .gs-ellipsis {
   overflow: hidden;

@@ -84,18 +84,47 @@ export const WithImages: Story = {
     max: 4,
     size: 'md',
     children: [
-      <Avatar key={1} src="https://picsum.photos/seed/u1/100/100" name="User 1" size="md" />,
-      <Avatar key={2} src="https://picsum.photos/seed/u2/100/100" name="User 2" size="md" />,
-      <Avatar key={3} src="https://picsum.photos/seed/u3/100/100" name="User 3" size="md" />,
-      <Avatar key={4} src="https://picsum.photos/seed/u4/100/100" name="User 4" size="md" />,
-      <Avatar key={5} src="https://picsum.photos/seed/u5/100/100" name="User 5" size="md" />,
-      <Avatar key={6} src="https://picsum.photos/seed/u6/100/100" name="User 6" size="md" />,
+      <Avatar
+        key={1}
+        src="https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=100&h=100&fit=crop&auto=format"
+        name="User 1"
+        size="md"
+      />,
+      <Avatar
+        key={2}
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&auto=format"
+        name="User 2"
+        size="md"
+      />,
+      <Avatar
+        key={3}
+        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&auto=format"
+        name="User 3"
+        size="md"
+      />,
+      <Avatar
+        key={4}
+        src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=100&h=100&fit=crop&auto=format"
+        name="User 4"
+        size="md"
+      />,
+      <Avatar
+        key={5}
+        src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=100&h=100&fit=crop&auto=format"
+        name="User 5"
+        size="md"
+      />,
+      <Avatar
+        key={6}
+        src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=100&h=100&fit=crop&auto=format"
+        name="User 6"
+        size="md"
+      />,
     ],
   },
 };
 
 export const ReviewersContext: Story = {
-  name: 'Reviewers Context',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
       <AvatarGroup max={3} size="sm">

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { DesktopAuthenticityBadge, type DesktopAuthenticityStatus } from './DesktopAuthenticityBadge';
+import {
+  DesktopAuthenticityBadge,
+  type DesktopAuthenticityStatus,
+} from './DesktopAuthenticityBadge';
 
 const meta = {
   title: 'Data Display (Desktop)/DesktopAuthenticityBadge',
@@ -12,7 +15,16 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ width: 900, padding: 24, background: '#f5f5f5', display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div
+        style={{
+          width: 900,
+          padding: 24,
+          background: '#f5f5f5',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 24,
+        }}
+      >
         <Story />
       </div>
     ),
@@ -49,8 +61,16 @@ export const Unverified: Story = {
 export const AllStatuses: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <DesktopAuthenticityBadge status="verified" verifiedBy="GeekShop Verify" verifiedDate="15 Mar 2026" />
-      <DesktopAuthenticityBadge status="official" verifiedBy="Apple Official" verifiedDate="1 Feb 2026" />
+      <DesktopAuthenticityBadge
+        status="verified"
+        verifiedBy="GeekShop Verify"
+        verifiedDate="15 Mar 2026"
+      />
+      <DesktopAuthenticityBadge
+        status="official"
+        verifiedBy="Apple Official"
+        verifiedDate="1 Feb 2026"
+      />
       <DesktopAuthenticityBadge status="unverified" />
     </div>
   ),
@@ -72,7 +92,8 @@ export const CustomTooltip: Story = {
     status: 'official',
     verifiedBy: 'Xiaomi Official',
     verifiedDate: '22 Mar 2026',
-    tooltip: 'Xiaomi authorized retail partner in Uzbekistan since 2023. All products come with official warranty.',
+    tooltip:
+      'Xiaomi authorized retail partner in Uzbekistan since 2023. All products come with official warranty.',
   },
 };
 
@@ -85,7 +106,6 @@ export const NoVerifiedDate: Story = {
 };
 
 export const LongVerifierName: Story = {
-  name: 'Long Verifier Name',
   args: {
     status: 'official',
     label: 'Authorized Dealer',
@@ -95,12 +115,12 @@ export const LongVerifierName: Story = {
 };
 
 export const OfficialAppleStore: Story = {
-  name: 'Official Apple Store',
   args: {
     status: 'official',
     verifiedBy: 'Apple Inc.',
     verifiedDate: '12 Mar 2026',
-    tooltip: 'Apple Authorized Reseller verified by GeekShop. All products carry manufacturer warranty.',
+    tooltip:
+      'Apple Authorized Reseller verified by GeekShop. All products carry manufacturer warranty.',
   },
 };
 
@@ -162,9 +182,15 @@ export const InProductContext: Story = {
           gap: 12,
         }}
       >
-        <div style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A' }}>Samsung Galaxy S24 Ultra 256GB</div>
+        <div style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A' }}>
+          Samsung Galaxy S24 Ultra 256GB
+        </div>
         <div style={{ fontSize: 20, fontWeight: 700, color: '#FF5000' }}>14 990 000 UZS</div>
-        <DesktopAuthenticityBadge status="official" verifiedBy="Samsung Official" verifiedDate="10 Mar 2026" />
+        <DesktopAuthenticityBadge
+          status="official"
+          verifiedBy="Samsung Official"
+          verifiedDate="10 Mar 2026"
+        />
       </div>
 
       <div
@@ -178,7 +204,9 @@ export const InProductContext: Story = {
           gap: 12,
         }}
       >
-        <div style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A' }}>Generic USB-C Cable 2m</div>
+        <div style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A' }}>
+          Generic USB-C Cable 2m
+        </div>
         <div style={{ fontSize: 20, fontWeight: 700, color: '#FF5000' }}>45 000 UZS</div>
         <DesktopAuthenticityBadge status="unverified" verifiedBy="Unknown Seller" />
       </div>
@@ -194,9 +222,15 @@ export const InProductContext: Story = {
           gap: 12,
         }}
       >
-        <div style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A' }}>Sony WH-1000XM5 Headphones</div>
+        <div style={{ fontSize: 18, fontWeight: 600, color: '#1A1A1A' }}>
+          Sony WH-1000XM5 Headphones
+        </div>
         <div style={{ fontSize: 20, fontWeight: 700, color: '#FF5000' }}>4 200 000 UZS</div>
-        <DesktopAuthenticityBadge status="verified" verifiedBy="GeekShop Verify" verifiedDate="8 Mar 2026" />
+        <DesktopAuthenticityBadge
+          status="verified"
+          verifiedBy="GeekShop Verify"
+          verifiedDate="8 Mar 2026"
+        />
       </div>
     </div>
   ),

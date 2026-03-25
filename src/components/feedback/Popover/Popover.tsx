@@ -1,15 +1,7 @@
 'use client';
 import { cn } from '../../../utils/cn';
-import {
-  forwardRef,
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  type ReactNode,
-  type HTMLAttributes,
-} from 'react';
-import { useControllableState } from '../../../hooks/useControllableState';
+import { forwardRef, type ReactNode, type HTMLAttributes } from 'react';
+import { usePopover } from '../../../headless/usePopover';
 import styles from './Popover.module.scss';
 
 export type PopoverPlacement =
@@ -60,150 +52,70 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-    const [isVisible, setIsVisible] = useControllableState({
-      value: visibleProp,
-      defaultValue: false,
-      onChange: onVisibleChange,
+    const basePlacement = placement.split('-')[0] as 'top' | 'bottom' | 'left' | 'right';
+
+    const popover = usePopover({
+      isOpen: visibleProp,
+      onOpenChange: onVisibleChange,
+      placement: basePlacement,
+      offset,
+      closeOnClickOutside,
+      closeOnEscape: true,
+      triggerMode: trigger,
     });
 
-    const [position, setPosition] = useState({ top: 0, left: 0 });
-    const triggerRef = useRef<HTMLDivElement>(null);
-    const popoverRef = useRef<HTMLDivElement>(null);
+    const { isOpen, floatingStyle } = popover;
+    const {
+      ref: triggerRefCb,
+      onClick: triggerOnClick,
+      onMouseEnter: triggerOnMouseEnter,
+      onMouseLeave: triggerOnMouseLeave,
+      onFocus: triggerOnFocus,
+      onBlur: triggerOnBlur,
+    } = popover.triggerProps;
+    const {
+      ref: popoverRefCb,
+      role: popoverRole,
+      'aria-modal': popoverAriaModal,
+      onMouseEnter: popoverOnMouseEnter,
+      onMouseLeave: popoverOnMouseLeave,
+    } = popover.popoverProps;
 
-    const getBasePlacement = (p: PopoverPlacement): string => {
-      return p.split('-')[0];
+    const handleTriggerKeyDown = (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        triggerOnClick?.();
+      }
     };
 
-    const updatePosition = useCallback(() => {
-      if (!triggerRef.current || !popoverRef.current) return;
-
-      const triggerRect = triggerRef.current.getBoundingClientRect();
-      const popoverRect = popoverRef.current.getBoundingClientRect();
-
-      let top = 0;
-      let left = 0;
-
-      const base = getBasePlacement(placement);
-      const alignment = placement.includes('-') ? placement.split('-')[1] : 'center';
-
-      // Vertical positioning
-      switch (base) {
-        case 'top':
-          top = -(popoverRect.height + offset);
-          break;
-        case 'bottom':
-          top = triggerRect.height + offset;
-          break;
-        case 'left':
-          top = (triggerRect.height - popoverRect.height) / 2;
-          break;
-        case 'right':
-          top = (triggerRect.height - popoverRect.height) / 2;
-          break;
-      }
-
-      // Horizontal positioning
-      switch (base) {
-        case 'top':
-        case 'bottom':
-          if (alignment === 'start') {
-            left = 0;
-          } else if (alignment === 'end') {
-            left = triggerRect.width - popoverRect.width;
-          } else {
-            left = (triggerRect.width - popoverRect.width) / 2;
-          }
-          break;
-        case 'left':
-          left = -(popoverRect.width + offset);
-          break;
-        case 'right':
-          left = triggerRect.width + offset;
-          break;
-      }
-
-      setPosition({ top, left });
-    }, [placement, offset]);
-
-    useEffect(() => {
-      if (isVisible) {
-        requestAnimationFrame(updatePosition);
-      }
-    }, [isVisible, updatePosition]);
-
-    const handleShow = () => setIsVisible(true);
-    const handleHide = () => setIsVisible(false);
-    const handleToggle = () => setIsVisible(!isVisible);
-
-    const triggerProps: Record<string, unknown> = {};
-
-    if (trigger === 'hover') {
-      triggerProps.onMouseEnter = handleShow;
-      triggerProps.onMouseLeave = handleHide;
-      triggerProps.onFocus = handleShow;
-      triggerProps.onBlur = handleHide;
-    } else {
-      triggerProps.onClick = handleToggle;
-    }
-
-    // Close on outside click
-    useEffect(() => {
-      if (!closeOnClickOutside || !isVisible) return;
-
-      const handleClickOutside = (e: MouseEvent) => {
-        if (
-          triggerRef.current &&
-          !triggerRef.current.contains(e.target as Node) &&
-          popoverRef.current &&
-          !popoverRef.current.contains(e.target as Node)
-        ) {
-          setIsVisible(false);
-        }
-      };
-
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [closeOnClickOutside, isVisible, setIsVisible]);
-
-    // Close on Escape
-    useEffect(() => {
-      if (!isVisible) return;
-
-      const handleEscape = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          setIsVisible(false);
-        }
-      };
-
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
-    }, [isVisible, setIsVisible]);
-
-    const basePlacement = getBasePlacement(placement);
-
     return (
-      <div
-        ref={ref}
-        className={cn(styles.root, className)}
-        {...rest}
-      >
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         <div
-          ref={triggerRef}
+          ref={triggerRefCb as React.Ref<HTMLDivElement>}
           className={styles.trigger}
-          {...triggerProps}
+          role="button"
+          tabIndex={0}
+          onClick={triggerOnClick}
+          onKeyDown={handleTriggerKeyDown}
+          onMouseEnter={triggerOnMouseEnter}
+          onMouseLeave={triggerOnMouseLeave}
+          onFocus={triggerOnFocus}
+          onBlur={triggerOnBlur}
         >
           {children}
         </div>
 
-        {isVisible && (
+        {isOpen && (
           <div
-            ref={popoverRef}
+            ref={popoverRefCb as React.Ref<HTMLDivElement>}
             className={cn(styles.popover, styles[`placement-${basePlacement}`])}
-            style={{ top: position.top, left: position.left }}
-            role="dialog"
-            aria-modal="false"
+            style={{ top: floatingStyle.top as number, left: floatingStyle.left as number }}
+            role={popoverRole}
+            aria-modal={popoverAriaModal}
+            onMouseEnter={popoverOnMouseEnter}
+            onMouseLeave={popoverOnMouseLeave}
           >
             <div className={styles.content}>{content}</div>
             {arrow && <span className={styles.arrow} aria-hidden="true" />}
