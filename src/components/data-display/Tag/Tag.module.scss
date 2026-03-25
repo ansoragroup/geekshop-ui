@@ -85,7 +85,7 @@
   }
 
   &.color-default {
-    background-color: #EAEAEA;
+    background-color: var(--gs-tag-default-bg);
     color: var(--gs-text-secondary);
   }
 }
@@ -135,11 +135,11 @@
 
   &.color-warning {
     background-color: var(--gs-color-warning-light);
-    color: #E69500;
+    color: var(--gs-color-warning-dark);
   }
 
   &.color-error {
-    background-color: #FFF0F0;
+    background-color: var(--gs-color-error-light);
     color: var(--gs-color-error);
   }
 

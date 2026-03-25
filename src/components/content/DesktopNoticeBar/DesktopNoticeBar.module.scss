@@ -15,27 +15,27 @@
 // ─── Variant Styles ──────────────────────────────────────────────────────────
 
 .info {
-  background: #e6f7ff;
-  color: #0050b3;
-  border: 1px solid #91d5ff;
+  background: var(--gs-color-info-bg);
+  color: var(--gs-color-info-text);
+  border: 1px solid var(--gs-color-info-border);
 }
 
 .success {
-  background: #f6ffed;
-  color: #237804;
-  border: 1px solid #b7eb8f;
+  background: var(--gs-color-success-bg);
+  color: var(--gs-color-success-text);
+  border: 1px solid var(--gs-color-success-border);
 }
 
 .warning {
-  background: #fffbe6;
-  color: #ad6800;
-  border: 1px solid #ffe58f;
+  background: var(--gs-color-warning-bg);
+  color: var(--gs-color-warning-text);
+  border: 1px solid var(--gs-color-warning-border);
 }
 
 .error {
-  background: #fff2f0;
-  color: #a8071a;
-  border: 1px solid #ffa39e;
+  background: var(--gs-color-error-bg);
+  color: var(--gs-color-error-text);
+  border: 1px solid var(--gs-color-error-border);
 }
 
 // ─── Icon ─────────────────────────────────────────────────────────────────────

@@ -53,7 +53,7 @@
 }
 
 .status-official {
-  background: #E6F2FF;
+  background: var(--gs-color-info-bg-deep);
 
   .label {
     color: var(--gs-color-info);

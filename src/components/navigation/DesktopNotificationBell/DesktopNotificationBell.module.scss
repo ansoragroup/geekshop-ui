@@ -185,7 +185,7 @@
 
   @media (hover: hover) {
     &:hover {
-      background: #ffece0;
+      background: var(--gs-color-primary-bg-hover);
     }
   }
 }

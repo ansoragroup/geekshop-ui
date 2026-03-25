@@ -126,7 +126,7 @@
   border: none;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
-  color: #fff;
+  color: var(--gs-text-white);
   cursor: pointer;
   opacity: 0;
   transition: opacity $transition-fast, background $transition-fast;
@@ -190,7 +190,7 @@
 }
 
 .dotActive {
-  background: #fff;
+  background: var(--gs-bg-white);
   transform: scale(1.3);
 }
 

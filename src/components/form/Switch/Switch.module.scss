@@ -38,7 +38,7 @@
 // ---- States ----
 
 .off {
-  background: #e0e0e0;
+  background: var(--gs-switch-off);
 }
 
 .on {

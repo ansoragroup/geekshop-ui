@@ -28,7 +28,7 @@
 }
 
 .barFillUrgent {
-  background: linear-gradient(90deg, var(--gs-color-sale), #FF6B6B);
+  background: linear-gradient(90deg, var(--gs-color-sale), var(--gs-color-error));
 }
 
 .barText {
@@ -44,7 +44,7 @@
 
 .barUrgent {
   .barTrack {
-    background: #FEE2E2;
+    background: var(--gs-color-sale-bg);
   }
 }
 
@@ -87,7 +87,7 @@
 }
 
 .badgeUrgent {
-  background: #FEE2E2;
+  background: var(--gs-color-sale-bg);
   color: var(--gs-color-sale);
   font-weight: $font-weight-semibold;
 }

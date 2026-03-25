@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use '../../../theme/tokens' as *;
 
 .button {
@@ -52,7 +51,7 @@
 
   @media (hover: hover) {
     &:hover:not(.disabled):not(.loading) {
-      background: color.adjust(#FF3B30, $lightness: -8%);
+      background: color-mix(in srgb, var(--gs-color-error) 85%, black);
     }
   }
 }

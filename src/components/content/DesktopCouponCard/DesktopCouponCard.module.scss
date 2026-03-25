@@ -51,7 +51,7 @@
 // ─── Color Variants (pastel / softer backgrounds) ────────────────────────────
 
 .color-orange {
-  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  background: linear-gradient(135deg, var(--gs-coupon-orange-from), var(--gs-coupon-orange-to));
   .discountValue,
   .discountLabel {
     color: var(--gs-color-primary);
@@ -59,7 +59,7 @@
 }
 
 .color-red {
-  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+  background: linear-gradient(135deg, var(--gs-coupon-red-from), var(--gs-coupon-red-to));
   .discountValue,
   .discountLabel {
     color: var(--gs-color-sale);
@@ -67,7 +67,7 @@
 }
 
 .color-green {
-  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  background: linear-gradient(135deg, var(--gs-coupon-green-from), var(--gs-coupon-green-to));
   .discountValue,
   .discountLabel {
     color: var(--gs-color-success);
@@ -75,7 +75,7 @@
 }
 
 .color-blue {
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  background: linear-gradient(135deg, var(--gs-coupon-blue-from), var(--gs-coupon-blue-to));
   .discountValue,
   .discountLabel {
     color: var(--gs-color-info);

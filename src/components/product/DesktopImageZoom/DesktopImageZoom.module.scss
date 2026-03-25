@@ -145,7 +145,7 @@
   border: none;
   border-radius: $radius-round;
   background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  color: var(--gs-text-white);
   cursor: pointer;
   transition: background $transition-fast;
 
@@ -156,7 +156,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--gs-text-white);
     outline-offset: 2px;
   }
 }
@@ -192,13 +192,13 @@
   }
 
   &:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--gs-text-white);
     outline-offset: 2px;
   }
 }
 
 .lightboxThumbActive {
-  border-color: #fff;
+  border-color: var(--gs-text-white);
 }
 
 .lightboxThumbImg {

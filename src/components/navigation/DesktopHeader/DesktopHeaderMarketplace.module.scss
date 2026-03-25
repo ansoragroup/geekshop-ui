@@ -201,7 +201,7 @@
   min-width: 14px;
   height: 14px;
   padding: 0 3px;
-  background: #FFE500;
+  background: var(--gs-color-cart-badge);
   color: var(--gs-color-primary);
   font-size: 9px;
   font-weight: $font-weight-bold;

@@ -83,14 +83,14 @@
 }
 
 .utilBtnActive {
-  color: #ff0000;
-  border-color: #ff0000;
+  color: var(--gs-color-price);
+  border-color: var(--gs-color-price);
 
   @media (hover: hover) {
     &:hover {
-      color: #ff0000;
-      border-color: #ff0000;
-      background: rgba(#ff0000, 0.05);
+      color: var(--gs-color-price);
+      border-color: var(--gs-color-price);
+      background: color-mix(in srgb, var(--gs-color-price) 5%, transparent);
     }
   }
 }
