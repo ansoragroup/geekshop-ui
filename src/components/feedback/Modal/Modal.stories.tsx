@@ -33,7 +33,13 @@ const CancelButton = ({ onClick }: { onClick?: () => void }) => (
   </button>
 );
 
-const ConfirmButton = ({ onClick, label = 'Confirm' }: { onClick?: () => void; label?: string }) => (
+const ConfirmButton = ({
+  onClick,
+  label = 'Confirm',
+}: {
+  onClick?: () => void;
+  label?: string;
+}) => (
   <button
     onClick={onClick}
     style={{
@@ -60,8 +66,8 @@ export const Default: Story = {
     children: (
       <div>
         <p style={{ color: '#666', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-          You are about to place an order for <strong>NVIDIA GeForce RTX 4090</strong>.
-          The total amount is <strong style={{ color: '#FF0000' }}>24 990 000 sum</strong>.
+          You are about to place an order for <strong>NVIDIA GeForce RTX 4090</strong>. The total
+          amount is <strong style={{ color: '#FF0000' }}>24 990 000 sum</strong>.
         </p>
         <p style={{ color: '#999', fontSize: 13, marginTop: 12 }}>
           Your order will be shipped within 1-3 business days.
@@ -177,31 +183,29 @@ export const Interactive: Story = {
         >
           <div style={{ fontSize: 14, color: '#666', lineHeight: 1.6 }}>
             <div style={{ display: 'flex', gap: 16, marginBottom: 16 }}>
-              <div style={{
-                width: 80,
-                height: 80,
-                background: '#F5F5F5',
-                borderRadius: 8,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#999',
-                fontSize: 12,
-              }}>
+              <div
+                style={{
+                  width: 80,
+                  height: 80,
+                  background: '#F5F5F5',
+                  borderRadius: 8,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#999',
+                  fontSize: 12,
+                }}
+              >
                 Image
               </div>
               <div>
                 <div style={{ fontWeight: 600, color: '#1A1A1A', marginBottom: 4 }}>
                   AMD Ryzen 9 7950X
                 </div>
-                <div style={{ color: '#FF0000', fontWeight: 700, fontSize: 16 }}>
-                  8 990 000 sum
-                </div>
+                <div style={{ color: '#FF0000', fontWeight: 700, fontSize: 16 }}>8 990 000 sum</div>
               </div>
             </div>
-            <p style={{ margin: 0 }}>
-              16 cores, 32 threads, 5.7 GHz boost clock. AM5 platform.
-            </p>
+            <p style={{ margin: 0 }}>16 cores, 32 threads, 5.7 GHz boost clock. AM5 platform.</p>
           </div>
         </Modal>
       </div>
@@ -225,8 +229,8 @@ export const CloseTest: Story = {
     await expect(dialog).toBeInTheDocument();
     await expect(dialog).toHaveAttribute('aria-modal', 'true');
 
-    // Find and click the close button
-    const closeButton = canvas.getByRole('button', { name: /close/i });
+    // Find and click the close button (aria-label is t('aria.close') — Uzbek: "Yopish")
+    const closeButton = canvas.getByRole('button', { name: /yopish/i });
     await expect(closeButton).toBeInTheDocument();
     await userEvent.click(closeButton);
 

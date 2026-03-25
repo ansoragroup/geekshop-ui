@@ -158,8 +158,8 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
     )}`;
   };
 
-  const handleGuestPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const raw = e.target.value.replace(/\D/g, '').slice(0, 9);
+  const handleGuestPhoneChange = (value: string) => {
+    const raw = value.replace(/\D/g, '').slice(0, 9);
     setGuestPhone(formatPhone(raw));
   };
 

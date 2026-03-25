@@ -32,10 +32,16 @@ type Story = StoryObj<typeof meta>;
 /* ─── Basic ─── */
 
 export const Default: Story = {
-  args: {
-    label: 'Product Review',
-    placeholder: 'Tell us what you think about this product...',
-    onChange: fn(),
+  render: () => {
+    const [value, setValue] = useState('');
+    return (
+      <DesktopTextArea
+        label="Product Review"
+        placeholder="Tell us what you think about this product..."
+        value={value}
+        onChange={setValue}
+      />
+    );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

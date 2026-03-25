@@ -43,7 +43,7 @@ export const DesktopForgotPasswordPage: React.FC<DesktopForgotPasswordPageProps>
                 type="email"
                 placeholder="you@example.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={setEmail}
               />
 
               <DesktopButton variant="primary" size="lg" fullWidth type="submit">

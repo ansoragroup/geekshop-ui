@@ -108,10 +108,16 @@ type Story = StoryObj<typeof meta>;
 /* ─── Basic ─── */
 
 export const Default: Story = {
-  args: {
-    label: 'Email',
-    placeholder: 'Enter your email',
-    onChange: fn(),
+  render: () => {
+    const [value, setValue] = useState('');
+    return (
+      <DesktopInput
+        label="Email"
+        placeholder="Enter your email"
+        value={value}
+        onChange={setValue}
+      />
+    );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

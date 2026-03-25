@@ -58,8 +58,12 @@ function ControlledDemo() {
         <ThemeSwitcher value={preset} onChange={setPreset} />
       </div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <Button variant="primary" size="md">Buy Now</Button>
-        <Button variant="secondary" size="md">Add to Cart</Button>
+        <Button variant="primary" size="md">
+          Buy Now
+        </Button>
+        <Button variant="secondary" size="md">
+          Add to Cart
+        </Button>
       </div>
       <PriceDisplay price={149900} originalPrice={259900} currency="UZS" size="lg" />
       <div style={{ display: 'flex', gap: 8 }}>
@@ -104,7 +108,8 @@ export const ClickTest: Story = {
 
     const radiogroup = canvas.getByRole('radiogroup');
     await expect(radiogroup).toBeInTheDocument();
-    await expect(radiogroup).toHaveAttribute('aria-label', 'Theme preset');
+    // Default locale is Uzbek, so aria-label is t('aria.themePreset') = "Rang sxemasi"
+    await expect(radiogroup).toHaveAttribute('aria-label', 'Rang sxemasi');
 
     // Default should be checked
     const defaultRadio = canvas.getByRole('radio', { name: /GeekShop Orange/i });

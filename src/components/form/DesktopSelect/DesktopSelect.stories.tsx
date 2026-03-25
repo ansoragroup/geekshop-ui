@@ -62,11 +62,13 @@ const meta = {
     searchable: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 360, padding: 24, background: '#fff', minHeight: 400 }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 360, padding: 24, background: '#fff', minHeight: 400 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopSelect>;
 
 export default meta;
@@ -83,7 +85,8 @@ export const Default: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const trigger = canvas.getByRole('button', { name: /select size/i });
+    // The trigger button gets its accessible name from aria-labelledby pointing to the label ("Size")
+    const trigger = canvas.getByRole('button', { name: /size/i });
     await userEvent.click(trigger);
     await expect(canvas.getByRole('listbox')).toBeInTheDocument();
   },
@@ -225,9 +228,7 @@ export const Controlled: Story = {
           label="Sort Products By"
           placeholder="Choose sorting..."
         />
-        <div style={{ fontSize: 12, color: '#666' }}>
-          Selected: {value || '(none)'}
-        </div>
+        <div style={{ fontSize: 12, color: '#666' }}>Selected: {value || '(none)'}</div>
       </div>
     );
   },
@@ -249,9 +250,7 @@ export const ControlledMulti: Story = {
           multiple
           searchable
         />
-        <div style={{ fontSize: 12, color: '#666' }}>
-          Selected: {values.join(', ') || '(none)'}
-        </div>
+        <div style={{ fontSize: 12, color: '#666' }}>Selected: {values.join(', ') || '(none)'}</div>
       </div>
     );
   },
@@ -265,10 +264,36 @@ export const ManyOptions: Story = {
     options: Array.from({ length: 30 }, (_, i) => ({
       value: `brand-${i}`,
       label: [
-        'Samsung', 'Apple', 'Xiaomi', 'Huawei', 'Lenovo', 'ASUS', 'Dell',
-        'HP', 'Acer', 'MSI', 'Sony', 'LG', 'OnePlus', 'Google', 'Motorola',
-        'Nokia', 'Oppo', 'Vivo', 'Realme', 'ZTE', 'TCL', 'Philips', 'Bose',
-        'JBL', 'Razer', 'Corsair', 'Logitech', 'SteelSeries', 'HyperX', 'Anker',
+        'Samsung',
+        'Apple',
+        'Xiaomi',
+        'Huawei',
+        'Lenovo',
+        'ASUS',
+        'Dell',
+        'HP',
+        'Acer',
+        'MSI',
+        'Sony',
+        'LG',
+        'OnePlus',
+        'Google',
+        'Motorola',
+        'Nokia',
+        'Oppo',
+        'Vivo',
+        'Realme',
+        'ZTE',
+        'TCL',
+        'Philips',
+        'Bose',
+        'JBL',
+        'Razer',
+        'Corsair',
+        'Logitech',
+        'SteelSeries',
+        'HyperX',
+        'Anker',
       ][i],
     })),
     label: 'Brand',
@@ -301,21 +326,9 @@ export const ProductFilter: Story = {
         placeholder="All categories"
         searchable
       />
-      <DesktopSelect
-        options={sizeOptions}
-        label="Size"
-        placeholder="Any size"
-      />
-      <DesktopSelect
-        options={sortOptions}
-        label="Sort By"
-        value="relevance"
-      />
-      <DesktopSelect
-        options={countryOptions}
-        label="Ships From"
-        placeholder="Any country"
-      />
+      <DesktopSelect options={sizeOptions} label="Size" placeholder="Any size" />
+      <DesktopSelect options={sortOptions} label="Sort By" value="relevance" />
+      <DesktopSelect options={countryOptions} label="Ships From" placeholder="Any country" />
     </div>
   ),
 };
