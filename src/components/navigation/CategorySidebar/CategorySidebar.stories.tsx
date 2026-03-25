@@ -23,15 +23,250 @@ function InteractiveSidebar(props: Partial<CategorySidebarProps> & { initialKey?
   return <CategorySidebar activeKey={active} onChange={setActive} {...rest} />;
 }
 
-export const Default: Story = {
-  render: () => (
-    <div style={{ display: 'flex', width: '390px', height: '600px', background: '#FFF' }}>
-      <InteractiveSidebar />
-      <div style={{ flex: 1, padding: 16, background: '#FFF' }}>
-        <p style={{ fontSize: 14, color: '#666' }}>Product list area</p>
+/* ---- Taobao-style product grid data per category ---- */
+const categoryProducts: Record<
+  string,
+  { name: string; price: string; img: string; badge?: string; sold?: string }[]
+> = {
+  gpu: [
+    {
+      name: 'RTX 4090 FE 24GB GDDR6X',
+      price: '28 900 000',
+      img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=180&h=180&fit=crop',
+      badge: 'TOP',
+      sold: '120 sotilgan',
+    },
+    {
+      name: 'RTX 4070 Ti Super OC 16GB',
+      price: '12 500 000',
+      img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=180&h=180&fit=crop',
+      badge: '-25%',
+      sold: '340 sotilgan',
+    },
+    {
+      name: 'RX 7900 XTX 24GB',
+      price: '15 200 000',
+      img: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=180&h=180&fit=crop',
+      sold: '89 sotilgan',
+    },
+    {
+      name: 'RTX 4060 Ventus 8GB',
+      price: '5 400 000',
+      img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=180&h=180&fit=crop',
+      badge: 'SALE',
+      sold: '560 sotilgan',
+    },
+    {
+      name: 'Intel Arc A770 16GB',
+      price: '4 100 000',
+      img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=180&h=180&fit=crop',
+      sold: '45 sotilgan',
+    },
+    {
+      name: 'RTX 4080 Super FE',
+      price: '18 700 000',
+      img: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=180&h=180&fit=crop',
+      badge: 'TOP',
+      sold: '210 sotilgan',
+    },
+  ],
+  cpu: [
+    {
+      name: 'Intel Core i9-14900K',
+      price: '8 200 000',
+      img: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=180&h=180&fit=crop',
+      badge: 'TOP',
+      sold: '98 sotilgan',
+    },
+    {
+      name: 'AMD Ryzen 9 7950X3D',
+      price: '9 100 000',
+      img: 'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=180&h=180&fit=crop',
+      badge: 'TOP',
+      sold: '76 sotilgan',
+    },
+    {
+      name: 'Ryzen 7 7800X3D',
+      price: '5 400 000',
+      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=180&h=180&fit=crop',
+      badge: '-30%',
+      sold: '430 sotilgan',
+    },
+    {
+      name: 'Intel Core i7-14700K',
+      price: '6 300 000',
+      img: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=180&h=180&fit=crop',
+      sold: '155 sotilgan',
+    },
+    {
+      name: 'Ryzen 5 7600X',
+      price: '3 200 000',
+      img: 'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=180&h=180&fit=crop',
+      badge: 'SALE',
+      sold: '890 sotilgan',
+    },
+    {
+      name: 'Intel Core i5-14600K',
+      price: '4 500 000',
+      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=180&h=180&fit=crop',
+      sold: '320 sotilgan',
+    },
+  ],
+  monitor: [
+    {
+      name: 'Samsung Odyssey G9 49"',
+      price: '16 800 000',
+      img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=180&h=180&fit=crop',
+      badge: 'TOP',
+      sold: '34 sotilgan',
+    },
+    {
+      name: 'LG 27GP950 4K 144Hz',
+      price: '9 600 000',
+      img: 'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=180&h=180&fit=crop',
+      sold: '112 sotilgan',
+    },
+    {
+      name: 'ASUS ROG PG27AQDM OLED',
+      price: '14 200 000',
+      img: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=180&h=180&fit=crop',
+      badge: '-15%',
+      sold: '67 sotilgan',
+    },
+    {
+      name: 'Dell U2723QE 27" 4K',
+      price: '7 800 000',
+      img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=180&h=180&fit=crop',
+      sold: '205 sotilgan',
+    },
+    {
+      name: 'AOC 24G2SP 165Hz',
+      price: '2 900 000',
+      img: 'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=180&h=180&fit=crop',
+      badge: 'SALE',
+      sold: '780 sotilgan',
+    },
+    {
+      name: 'BenQ PD2725U Design',
+      price: '11 400 000',
+      img: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=180&h=180&fit=crop',
+      sold: '23 sotilgan',
+    },
+  ],
+};
+
+function DefaultDemo() {
+  const [active, setActive] = useState('gpu');
+  const products = categoryProducts[active] ?? categoryProducts.gpu;
+  const labels: Record<string, string> = {
+    gpu: 'Videokartalar',
+    cpu: 'Protsessorlar',
+    monitor: 'Monitorlar',
+    laptop: 'Noutbuklar',
+    ram: 'Operativ xotira',
+    storage: 'SSD/HDD',
+    motherboard: 'Ona platalar',
+    periphery: 'Periferiya',
+  };
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        width: 390,
+        height: 700,
+        background: '#F5F5F5',
+        fontFamily: '-apple-system, sans-serif',
+      }}
+    >
+      <CategorySidebar activeKey={active} onChange={setActive} />
+      <div style={{ flex: 1, overflowY: 'auto', padding: '12px 10px' }}>
+        {/* Category title */}
+        <div style={{ fontSize: 15, fontWeight: 700, color: '#1A1A1A', marginBottom: 10 }}>
+          {labels[active]}
+        </div>
+
+        {/* Product grid — 2 columns like Taobao */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+          {products.map((p) => (
+            <div
+              key={p.name}
+              style={{
+                background: '#FFF',
+                borderRadius: 8,
+                overflow: 'hidden',
+                border: '1px solid #F0F0F0',
+              }}
+            >
+              {/* Image */}
+              <div style={{ position: 'relative', aspectRatio: '1', background: '#FAFAFA' }}>
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                {p.badge && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: 6,
+                      left: 6,
+                      fontSize: 9,
+                      fontWeight: 700,
+                      padding: '2px 6px',
+                      borderRadius: 4,
+                      color: '#FFF',
+                      background:
+                        p.badge === 'TOP' ? '#FF5000' : p.badge === 'SALE' ? '#FF3B30' : '#FF5000',
+                    }}
+                  >
+                    {p.badge}
+                  </span>
+                )}
+              </div>
+              {/* Info */}
+              <div style={{ padding: '8px 8px 10px' }}>
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: '#333',
+                    lineHeight: 1.4,
+                    height: 34,
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical' as const,
+                  }}
+                >
+                  {p.name}
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    justifyContent: 'space-between',
+                    marginTop: 6,
+                  }}
+                >
+                  <span style={{ fontSize: 14, fontWeight: 700, color: '#FF0000' }}>
+                    {p.price}{' '}
+                    <span style={{ fontSize: 10, fontWeight: 400, color: '#999' }}>so'm</span>
+                  </span>
+                </div>
+                {p.sold && (
+                  <div style={{ fontSize: 10, color: '#999', marginTop: 3 }}>{p.sold}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  ),
+  );
+}
+
+export const Default: Story = {
+  render: () => <DefaultDemo />,
 };
 
 export const GpuActive: Story = {
