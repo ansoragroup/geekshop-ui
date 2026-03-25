@@ -61,9 +61,18 @@ export const Default: Story = {
     onPhotoSearch: (source: { type: string }) => { alert(`Photo search: ${source.type}`); },
     recentSearches: ['bluetooth headphones', 'phone case', 'running shoes'],
     trendingSearches: [
-      { text: 'wireless earbuds', count: 12500 },
-      { text: 'laptop stand', count: 8900 },
-      { text: 'phone charger', count: 7200 },
+      { text: 'wireless earbuds', count: 45200 },
+      { text: 'laptop stand', count: 38100 },
+      { text: 'phone charger', count: 29800 },
+    ],
+    suggestedProducts: [
+      { id: 'sp1', title: 'Sony WH-1000XM5 Headphones', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop', price: 349, rating: 4.9 },
+      { id: 'sp2', title: 'Apple AirPods Pro 2nd Gen', image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=80&h=80&fit=crop', price: 249, rating: 4.8 },
+    ],
+    searchCategorySuggestions: [
+      { id: 'cat1', name: 'Electronics', count: 15420 },
+      { id: 'cat2', name: 'Headphones & Earbuds', count: 8930 },
+      { id: 'cat3', name: 'Phone Accessories', count: 12100 },
     ],
   },
 };

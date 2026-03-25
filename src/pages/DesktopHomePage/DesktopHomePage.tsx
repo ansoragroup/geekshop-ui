@@ -78,6 +78,10 @@ export interface DesktopHomePageProps {
   recentSearches?: string[];
   /** Trending search terms */
   trendingSearches?: { text: string; count?: number }[];
+  /** Suggested products for search autocomplete */
+  suggestedProducts?: { id: string; title: string; image: string; price: number; rating?: number }[];
+  /** Category suggestions for search autocomplete */
+  searchCategorySuggestions?: { id: string; name: string; count?: number }[];
   /** Photo search callback */
   onPhotoSearch?: (source: { type: 'url' | 'file'; url?: string; file?: File }) => void;
 }
@@ -129,6 +133,8 @@ export function DesktopHomePage({
   searchButtonColor,
   recentSearches,
   trendingSearches,
+  suggestedProducts,
+  searchCategorySuggestions,
   onPhotoSearch,
 }: DesktopHomePageProps) {
   const [searchValue, setSearchValue] = useState('');
@@ -166,6 +172,8 @@ export function DesktopHomePage({
       searchButtonColor={searchButtonColor}
       recentSearches={recentSearches}
       trendingSearches={trendingSearches}
+      suggestedProducts={suggestedProducts}
+      searchCategorySuggestions={searchCategorySuggestions}
       onPhotoSearch={onPhotoSearch}
     />
   );
