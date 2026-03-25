@@ -15,12 +15,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Default: open popup with product, 4 color variants, and stock. */
 export const Default: Story = {
   args: {
     open: true,
     product: {
       title: 'Samsung Galaxy S24 Ultra 5G Smartphone 256GB',
-      image: 'https://picsum.photos/seed/phone2/400/400',
+      image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&h=400&fit=crop',
       price: 14_500_000,
       stock: 24,
     },
@@ -35,12 +36,13 @@ export const Default: Story = {
   },
 };
 
+/** No variants: single-option product, just quantity selection. */
 export const NoVariants: Story = {
   args: {
     open: true,
     product: {
       title: 'Apple AirPods Pro 2nd Generation with MagSafe Charging Case (USB-C)',
-      image: 'https://picsum.photos/seed/airpods2/400/400',
+      image: 'https://images.unsplash.com/photo-1606220838315-056192d5e927?w=400&h=400&fit=crop',
       price: 3_200_000,
       stock: 12,
     },
@@ -49,17 +51,129 @@ export const NoVariants: Story = {
   },
 };
 
+/** Low stock warning: only 2 items left. */
 export const LowStock: Story = {
   args: {
     open: true,
     product: {
       title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB GDDR6X Graphics Card',
-      image: 'https://picsum.photos/seed/gpu2/400/400',
+      image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
       price: 28_900_000,
       stock: 2,
     },
     variants: [
       { id: 'default', name: 'Founders Edition' },
+    ],
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+};
+
+/** Many variants to test overflow. */
+export const ManyVariants: Story = {
+  args: {
+    open: true,
+    product: {
+      title: 'Nike Air Max 270 React Running Shoes',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      price: 1_450_000,
+      stock: 45,
+    },
+    variants: [
+      { id: 'black', name: 'Black — White' },
+      { id: 'red', name: 'University Red' },
+      { id: 'blue', name: 'Royal Blue' },
+      { id: 'green', name: 'Pine Green' },
+      { id: 'grey', name: 'Wolf Grey' },
+      { id: 'pink', name: 'Barely Rose' },
+      { id: 'navy', name: 'Midnight Navy' },
+      { id: 'orange', name: 'Total Orange' },
+    ],
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+};
+
+/** Single variant option. */
+export const SingleVariant: Story = {
+  args: {
+    open: true,
+    product: {
+      title: 'Corsair K100 RGB Mechanical Gaming Keyboard',
+      image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=400&h=400&fit=crop',
+      price: 3_290_000,
+      stock: 8,
+    },
+    variants: [
+      { id: 'cherry', name: 'Cherry MX Speed' },
+    ],
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+};
+
+/** Very long product title. */
+export const LongTitle: Story = {
+  args: {
+    open: true,
+    product: {
+      title: 'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with Aura Sync RGB LED Lighting and Triple Axial-tech Fan Design',
+      image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
+      price: 28_990_000,
+      stock: 3,
+    },
+    variants: [
+      { id: 'oc', name: 'OC Edition' },
+      { id: 'standard', name: 'Standard Edition' },
+    ],
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+};
+
+/** High stock count. */
+export const HighStock: Story = {
+  args: {
+    open: true,
+    product: {
+      title: 'Anker USB-C to Lightning Cable 1m',
+      image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&h=400&fit=crop',
+      price: 85_000,
+      stock: 500,
+    },
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+};
+
+/** Closed state: popup is hidden. */
+export const Closed: Story = {
+  args: {
+    open: false,
+    product: {
+      title: 'Test Product',
+      image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&h=400&fit=crop',
+      price: 1_000_000,
+      stock: 10,
+    },
+    onClose: fn(),
+    onAddToCart: fn(),
+  },
+};
+
+/** Expensive product with variants. */
+export const ExpensiveProduct: Story = {
+  args: {
+    open: true,
+    product: {
+      title: 'Apple MacBook Pro 16" M3 Max 48GB 1TB',
+      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+      price: 42_500_000,
+      stock: 5,
+    },
+    variants: [
+      { id: 'space-black', name: 'Space Black' },
+      { id: 'silver', name: 'Silver' },
     ],
     onClose: fn(),
     onAddToCart: fn(),

@@ -76,3 +76,142 @@ export const MultipleSections: Story = {
     </div>
   ),
 };
+
+export const NoTitle: Story = {
+  name: 'Without Title',
+  args: {
+    children: (
+      <div style={{ fontSize: 14, color: '#666', lineHeight: 1.6 }}>
+        <p>Bu bo'limda sarlavha yo'q. Faqat kontent ko'rinadi.</p>
+        <p style={{ marginTop: 8 }}>Masalan, mahsulot tavsifi yoki qo'shimcha ma'lumot.</p>
+      </div>
+    ),
+  },
+};
+
+export const LargePadding: Story = {
+  name: 'Large Padding (24px 32px)',
+  args: {
+    title: 'Keng bo\'lim',
+    padding: '24px 32px',
+    children: (
+      <p style={{ fontSize: 14, color: '#666' }}>Bu bo'limda ko'proq ichki bo'shliq bor.</p>
+    ),
+  },
+};
+
+export const ZeroPadding: Story = {
+  name: 'Edge: Zero Padding',
+  args: {
+    title: 'Rasm galereyasi',
+    padding: '0',
+    children: (
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <div key={i} style={{ aspectRatio: '1', background: `hsl(${i * 60}, 50%, 85%)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, color: '#666' }}>
+            Rasm {i + 1}
+          </div>
+        ))}
+      </div>
+    ),
+  },
+};
+
+export const LongTitle: Story = {
+  name: 'Edge: Very Long Title',
+  args: {
+    title: 'NVIDIA GeForce RTX 4090 Super — xususiyatlari va texnik parametrlari',
+    children: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {[
+          ['GPU', 'AD102-300'],
+          ['CUDA yadrolari', '16384'],
+          ['Soat chastotasi', '2.52 GHz'],
+          ['Xotira', '24GB GDDR6X'],
+        ].map(([label, value]) => (
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14 }}>
+            <span style={{ color: '#999' }}>{label}</span>
+            <span style={{ color: '#1A1A1A' }}>{value}</span>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+};
+
+export const NestedSections: Story = {
+  render: () => (
+    <Section title="Mahsulot ma'lumotlari">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <Section title="Umumiy" padding="8px 0">
+          <p style={{ fontSize: 14, color: '#666' }}>Brend: Lenovo, Model: ThinkPad X1 Carbon</p>
+        </Section>
+        <Section title="Protsessor" padding="8px 0">
+          <p style={{ fontSize: 14, color: '#666' }}>Intel Core i7-1365U, 10 yadro, 4.9 GHz gacha</p>
+        </Section>
+        <Section title="Xotira" padding="8px 0">
+          <p style={{ fontSize: 14, color: '#666' }}>32GB LPDDR5, 512GB NVMe SSD</p>
+        </Section>
+      </div>
+    </Section>
+  ),
+};
+
+export const RichContent: Story = {
+  name: 'Rich Content (Product Detail)',
+  args: {
+    title: 'Tavsif',
+    children: (
+      <div style={{ fontSize: 14, color: '#666', lineHeight: 1.8 }}>
+        <p style={{ marginBottom: 12 }}>
+          <strong style={{ color: '#1A1A1A' }}>Samsung Galaxy S24 Ultra</strong> — eng ilg'or smartfon.
+          Titanium korpus, 200MP kamera, va yangi Galaxy AI sun'iy intellekt funksiyalari bilan jihozlangan.
+        </p>
+        <ul style={{ paddingLeft: 20, margin: '8px 0' }}>
+          <li>6.8" Dynamic AMOLED 2X ekran, 120Hz</li>
+          <li>Snapdragon 8 Gen 3 protsessor</li>
+          <li>12GB RAM, 256GB/512GB/1TB xotira</li>
+          <li>5000mAh batareya, 45W tez zaryadlash</li>
+          <li>IP68 suv va changdan himoya</li>
+        </ul>
+        <p style={{ color: '#07C160', fontWeight: 600, marginTop: 12 }}>
+          Kafolat: 12 oy | Bepul yetkazib berish
+        </p>
+      </div>
+    ),
+  },
+};
+
+export const EmptySection: Story = {
+  name: 'Edge: Empty Children',
+  args: {
+    title: 'Sharhlar',
+    children: (
+      <div style={{ padding: '24px 0', textAlign: 'center', color: '#999', fontSize: 14 }}>
+        Hali sharhlar yo'q. Birinchi bo'ling!
+      </div>
+    ),
+  },
+};
+
+export const WithCustomAriaLabel: Story = {
+  name: 'Custom aria-label Override',
+  args: {
+    title: 'Texnik xususiyatlar',
+    'aria-label': 'Product technical specifications section',
+    children: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {[
+          ['Vazni', '1.24 kg'],
+          ['O\'lchami', '315 x 222 x 15.6 mm'],
+          ['Rangi', 'Space Black'],
+        ].map(([label, value]) => (
+          <div key={label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14 }}>
+            <span style={{ color: '#999' }}>{label}</span>
+            <span style={{ color: '#1A1A1A' }}>{value}</span>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+};

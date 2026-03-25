@@ -71,7 +71,52 @@ run_quality_gates() {
     fi
 }
 
+# GeekShop-specific quality gates
+run_geekshop_gates() {
+    if ! grep -q '"@geekshop/ui"\|"@ansoragroup/ui"' package.json 2>/dev/null; then
+        return
+    fi
+
+    # Gate: Library build
+    if grep -q '"build:lib"' package.json 2>/dev/null; then
+        OUTPUT=$(npm run build:lib 2>&1)
+        [ $? -ne 0 ] && ERRORS="$ERRORS\n\nBUILD:LIB FAILURE:\n$OUTPUT"
+    fi
+
+    # Gate: SCSS token compliance (modified files only)
+    MODIFIED_SCSS=$(git diff --cached --name-only 2>/dev/null | grep "\.module\.scss$")
+    if [ -z "$MODIFIED_SCSS" ]; then
+        MODIFIED_SCSS=$(git diff --name-only HEAD 2>/dev/null | grep "\.module\.scss$")
+    fi
+    if [ -n "$MODIFIED_SCSS" ]; then
+        for scss_file in $MODIFIED_SCSS; do
+            [ -f "$scss_file" ] || continue
+            HEX_HITS=$(grep -nE '(background|[^-]color|border-color)\s*:.*#[0-9A-Fa-f]{3,8}' "$scss_file" 2>/dev/null \
+                | grep -v '//' | grep -v 'var(--' | grep -v '\$color-' | grep -v '\$bg-')
+            if [ -n "$HEX_HITS" ]; then
+                ERRORS="$ERRORS\n\nHARDCODED HEX in $scss_file:\n$HEX_HITS\nUse var(--gs-*) instead."
+            fi
+        done
+    fi
+}
+
+# Collect RTPL raw artifacts (non-blocking)
+collect_rtpl_artifacts() {
+    EVIDENCE_RAW="/tmp/consilium/current/evidence/raw"
+    [ -d "/tmp/consilium/current" ] || return
+    mkdir -p "$EVIDENCE_RAW"
+
+    if [ -f "package.json" ]; then
+        npm run lint 2>&1 > "$EVIDENCE_RAW/lint.txt" 2>&1 || true
+        npm test -- --passWithNoTests 2>&1 > "$EVIDENCE_RAW/test-unit.txt" 2>&1 || true
+        npm run build:lib 2>&1 > "$EVIDENCE_RAW/build.txt" 2>&1 || true
+        npx tsc --noEmit 2>&1 > "$EVIDENCE_RAW/typecheck.txt" 2>&1 || true
+    fi
+}
+
 run_quality_gates
+run_geekshop_gates
+collect_rtpl_artifacts
 
 if [ -n "$ERRORS" ]; then
     echo -e "QUALITY GATE FAILED:\n$ERRORS"

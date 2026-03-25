@@ -1,0 +1,82 @@
+{
+  "description": "Standard acceptance criteria templates for GeekShop UI components",
+  "common_acs": [
+    {
+      "id": "GS-LINT",
+      "text": "npm run lint exits 0 with no errors",
+      "evidence_type": "command",
+      "verification": "raw/lint.txt"
+    },
+    {
+      "id": "GS-TEST",
+      "text": "npm test passes all tests",
+      "evidence_type": "command",
+      "verification": "raw/test-unit.txt"
+    },
+    {
+      "id": "GS-BUILD",
+      "text": "npm run build:lib succeeds",
+      "evidence_type": "command",
+      "verification": "raw/build.txt"
+    },
+    {
+      "id": "GS-TYPES",
+      "text": "npx tsc --noEmit exits 0",
+      "evidence_type": "command",
+      "verification": "raw/typecheck.txt"
+    },
+    {
+      "id": "GS-EXPORT",
+      "text": "All new components exported from src/components/index.ts",
+      "evidence_type": "grep",
+      "verification": "raw/barrel-export-check.txt"
+    },
+    {
+      "id": "GS-SCSS-TOKENS",
+      "text": "No hardcoded hex in background/color/border-color CSS properties",
+      "evidence_type": "grep",
+      "verification": "raw/scss-token-audit.txt"
+    },
+    {
+      "id": "GS-USE-CLIENT",
+      "text": "'use client' is the first line of all component .tsx files",
+      "evidence_type": "code-review"
+    },
+    {
+      "id": "GS-NAMED-EXPORT",
+      "text": "No export default in any component file",
+      "evidence_type": "grep"
+    }
+  ],
+  "component_acs": [
+    {
+      "id_template": "GS-VISUAL-{component}-{viewport}",
+      "text_template": "{component} renders correctly at {viewport}px viewport",
+      "evidence_type": "screenshot",
+      "verification_template": "raw/screenshots/{component}-{viewport}.png"
+    },
+    {
+      "id_template": "GS-STORY-{component}",
+      "text_template": "{component} has Storybook stories with tags: ['autodocs'] and satisfies Meta pattern",
+      "evidence_type": "code-review"
+    },
+    {
+      "id_template": "GS-FORWARD-REF-{component}",
+      "text_template": "{component} uses forwardRef for interactive elements",
+      "evidence_type": "code-review"
+    },
+    {
+      "id_template": "GS-REST-PROPS-{component}",
+      "text_template": "{component} spreads ...rest props on root element",
+      "evidence_type": "code-review"
+    }
+  ],
+  "page_acs": [
+    {
+      "id_template": "GS-PAGE-VISUAL-{page}-{viewport}-{section}",
+      "text_template": "{page} {section} section renders correctly at {viewport}px",
+      "evidence_type": "screenshot",
+      "verification_template": "raw/screenshots/{page}-{viewport}-{section}.png"
+    }
+  ]
+}

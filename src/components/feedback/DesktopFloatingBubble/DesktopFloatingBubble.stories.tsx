@@ -31,7 +31,26 @@ export const Default: Story = {
   },
 };
 
+export const FullFeatured: Story = {
+  name: 'Full Featured (All Props)',
+  args: {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.255-.964L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="8.5" cy="12" r="1" fill="currentColor" />
+        <circle cx="12" cy="12" r="1" fill="currentColor" />
+        <circle cx="15.5" cy="12" r="1" fill="currentColor" />
+      </svg>
+    ),
+    label: 'Live Chat Support',
+    badgeCount: 5,
+    offset: { right: 32, bottom: 32 },
+    onClick: () => console.log('Chat clicked'),
+  },
+};
+
 export const WithBadge: Story = {
+  name: 'With Badge Count (3)',
   args: {
     label: 'Messages',
     badgeCount: 3,
@@ -40,6 +59,7 @@ export const WithBadge: Story = {
 };
 
 export const HighBadgeCount: Story = {
+  name: 'High Badge Count (150 = 99+)',
   args: {
     label: 'Notifications',
     badgeCount: 150,
@@ -47,7 +67,17 @@ export const HighBadgeCount: Story = {
   },
 };
 
+export const ZeroBadge: Story = {
+  name: 'Zero Badge Count (Hidden)',
+  args: {
+    label: 'Messages',
+    badgeCount: 0,
+    onClick: () => console.log('Messages clicked'),
+  },
+};
+
 export const CustomIcon: Story = {
+  name: 'Custom Star Icon',
   args: {
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -59,10 +89,42 @@ export const CustomIcon: Story = {
   },
 };
 
+export const CartIcon: Story = {
+  name: 'Custom Cart Icon',
+  args: {
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 3h2l2.5 12h11l2-9H7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="9" cy="20" r="1.5" fill="currentColor" />
+        <circle cx="17" cy="20" r="1.5" fill="currentColor" />
+      </svg>
+    ),
+    label: 'Quick Cart',
+    badgeCount: 7,
+    onClick: () => console.log('Cart clicked'),
+  },
+};
+
 export const CustomOffset: Story = {
+  name: 'Custom Offset (80px from edges)',
   args: {
     label: 'Help',
     offset: { right: 80, bottom: 80 },
     onClick: () => console.log('Help clicked'),
+  },
+};
+
+export const NoLabel: Story = {
+  name: 'Without Label',
+  args: {
+    badgeCount: 2,
+    onClick: () => console.log('Clicked'),
+  },
+};
+
+export const NoLabelNoBadge: Story = {
+  name: 'Minimal (No Label, No Badge)',
+  args: {
+    onClick: () => console.log('Clicked'),
   },
 };

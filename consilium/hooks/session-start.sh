@@ -84,6 +84,26 @@ if [ -d "$MEMORY_DIR" ]; then
     fi
 fi
 
+# RTPL evidence status from recent tasks
+AGENT_DIR="$(pwd)/.agent/tasks"
+if [ -d "$AGENT_DIR" ]; then
+    TASK_COUNT=$(ls -d "$AGENT_DIR"/*/ 2>/dev/null | wc -l | tr -d ' ')
+    if [ "$TASK_COUNT" -gt 0 ]; then
+        LATEST_TASK=$(ls -dt "$AGENT_DIR"/*/ 2>/dev/null | head -1)
+        LATEST_ID=$(basename "$LATEST_TASK")
+        if [ -f "$LATEST_TASK/verdict.json" ]; then
+            VERDICT=$(jq -r '.overall_verdict' "$LATEST_TASK/verdict.json" 2>/dev/null)
+        else
+            VERDICT="NO_VERDICT"
+        fi
+        echo ""
+        echo "  RTPL Evidence:"
+        echo "    Tasks tracked:     $TASK_COUNT"
+        echo "    Latest task:       $LATEST_ID"
+        echo "    Latest verdict:    $VERDICT"
+    fi
+fi
+
 echo ""
 echo "Workspace: $SESSION_DIR"
 echo "════════════════════════════════════════"

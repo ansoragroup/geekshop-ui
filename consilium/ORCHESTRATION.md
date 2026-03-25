@@ -187,6 +187,32 @@ Lead only. Synthesizes everything.
 - Verification criteria per task
 - Risk register with mitigations
 
+### Acceptance Criteria Format (RTPL Integration)
+Each task in PLAN.md must include numbered acceptance criteria:
+
+```
+#### Acceptance Criteria
+- AC1: [criterion description] [evidence-type: screenshot|grep|test|code-review]
+- AC2: ...
+```
+
+Every AC must be independently verifiable with one of:
+- `screenshot` — Playwright visual verification at target viewport
+- `grep` — automated code scan (e.g., no hardcoded hex)
+- `test` — test suite output
+- `code-review` — structural code inspection
+- `command` — CLI command with expected exit code
+
+Standard GeekShop ACs to include for all component tasks:
+- Visual correctness at target viewport [screenshot]
+- Zero hardcoded hex in .module.scss [grep]
+- Named exports only [code-review]
+- Component exported from barrel [grep]
+- `'use client'` as first line [code-review]
+- Lint passes [command]
+- Tests pass [command]
+- Build succeeds [command]
+
 **Conditionally required** (if marked REQUIRED by plan evolution):
 - Integration contracts (API interfaces between domains)
 - Rollback strategy
@@ -225,33 +251,93 @@ On task completion, hooks/task-completed.sh runs:
 If gate fails: teammate MUST fix before marking complete.
 If gate fails 3x: escalate per self-healing protocol.
 
+### Evidence Packing (RTPL Integration)
+After implementation, each teammate produces an evidence package:
+
+1. Create evidence directory: `/tmp/consilium/current/phase5/{role}-evidence/`
+2. Write `evidence.json` with per-AC status:
+   ```json
+   {
+     "role": "{role}",
+     "task": "{task description}",
+     "acceptance_criteria": [
+       {"id": "AC1", "status": "PASS|FAIL|UNKNOWN", "evidence_type": "screenshot", "evidence_path": "raw/...", "notes": ""}
+     ],
+     "automated_gates": {"lint": "PASS", "tsc": "PASS", "test": "PASS", "build": "PASS"}
+   }
+   ```
+3. Capture raw artifacts to `raw/`:
+   - `lint.txt` — ESLint output
+   - `typecheck.txt` — tsc --noEmit output
+   - `test-unit.txt` — Vitest output
+   - `build.txt` — Vite build:lib output
+   - `screenshots/{ComponentName}-{viewport}[-{variant}].png`
+   - `scss-token-audit.txt` — hardcoded hex scan
+
+**New completion gate for Phase 5:**
+All teammates must report:
+1. "Implementation complete"
+2. "Evidence packed" (evidence.json exists with all ACs addressed)
+3. "Quality gates passed" (lint/tsc/test)
+
 ### Gate
-ALL teammates report implementation complete, all quality gates passed.
+ALL teammates report implementation complete, evidence packed, and all quality gates passed.
 
 ---
 
-## Phase 6: CROSS-REVIEW
+## Phase 6: VERIFICATION
 
-### Rotation
-Each reviews the next teammate's code (circular):
-architect → backend → frontend → data → infra → core → architect
+### Phase 6a: Automated Gates (2-3 minutes)
+Run full automated quality gates:
+- `npm run lint` — 0 errors
+- `npx tsc --noEmit` — 0 errors
+- `npm test` — all pass
+- `npm run build:lib` — succeeds
+- SCSS token audit — 0 hardcoded hex violations
 
-### Output
-`{reviewer}-review-of-{reviewee}.md` containing:
-- Issues found: CRITICAL / WARNING / SUGGESTION
-- Convention compliance
-- Test coverage assessment
-- Security concerns
-- Performance concerns
-- Edge cases missed
+If any gate fails: block. Original builder fixes before fresh verification.
 
-### Rules
-- CRITICAL issues MUST be fixed before Phase 7
-- WARNING issues SHOULD be fixed, reviewer decides
-- SUGGESTION issues are optional improvements
+### Phase 6b: Fresh Verification (RTPL-Inspired)
+Spawn a NEW verification agent with restricted context.
+
+The verifier receives ONLY:
+- PLAN.md (with acceptance criteria)
+- Evidence packages from `/tmp/consilium/current/phase5/`
+- Read access to the codebase
+- Storybook at http://localhost:6006
+
+The verifier does NOT receive:
+- Debate artifacts (Phase 3)
+- Investigation findings (Phase 1)
+- Builder conversations
+
+Verifier process:
+1. Read PLAN.md acceptance criteria
+2. Read each builder's evidence.json
+3. For each AC: independently verify against codebase and/or Storybook
+4. For visual ACs: navigate to stories, take own screenshots
+5. Write `verdict.json` with per-AC PASS/FAIL/UNKNOWN
+6. If any FAIL: write `problems.md` with actionable fix descriptions
+
+**Skip conditions:**
+- task_type == "compliance" (pattern-identical changes, automated gates suffice)
+- task_type == "bugfix" AND estimated_files < 3 AND no visual changes
+
+### Phase 6c: Fix Loop (conditional)
+If verdict.json contains any FAIL:
+1. Lead reads problems.md, assigns fixes to original builder
+2. Builder applies **smallest safe fix** (minimal diff)
+3. Builder re-packs evidence for failed ACs only
+4. Fresh verifier re-checks ONLY failed ACs
+5. Loop until all PASS, max 3 iterations
+
+**Escalation after 3 iterations:**
+- Same AC keeps failing → AC may be ambiguous. Lead revises.
+- Different ACs keep failing → builder capability issue. Reassign agent.
+- Log in failures.jsonl for evolution engine.
 
 ### Gate
-ALL reviews complete. ALL critical issues resolved.
+All verdicts PASS, or escalation resolved.
 
 ---
 
@@ -261,21 +347,14 @@ ALL reviews complete. ALL critical issues resolved.
 Architect teammate (or most senior role).
 
 ### Steps
-1. Run full test suite
-2. Run lint + type checks
-3. Verify all Phase 6 critical issues resolved
-4. Check for file boundary violations
-5. Check for merge conflicts
-6. Run build (if applicable)
-7. Smoke test key flows (if possible)
+1. Confirm all verdict.json files show PASS
+2. Check for file boundary violations across all teammates
+3. Run final `npm run build:lib` (regression check)
+4. Smoke test key Storybook stories (2-3 page compositions)
+5. Verify no merge conflicts between teammates' changes
 
 ### Output
-`integration-report.md` with pass/fail per check.
-
-### Failure Handling
-If failures: lead assigns fixes to responsible teammate.
-Re-run integration after fixes.
-If integration fails 3x: log as systemic failure, escalate.
+`integration-report.md` referencing verdict.json results per task.
 
 ### Gate
 ALL checks pass. Integration report is green.
@@ -310,6 +389,18 @@ Execute ALL applicable evolution tactics from consilium/EVOLUTION.md:
 8k. Owner profile update → memory/owner-profile.jsonl
 8l. Synthesize owner preferences (every 3 sessions) → memory/owner-preferences.md
 8m. Decision log → memory/decision-log.jsonl
+8n. Evidence quality → memory/evidence-quality.jsonl
+    - Builder self-assessment accuracy (PASS confirmed vs PASS rejected by verifier)
+    - Fix-loop iterations per task
+    - AC types with highest FAIL rate
+8o. Verifier effectiveness → memory/verifier-metrics.jsonl
+    - Issues caught that builders missed
+    - False positive rate
+    - Verification time per AC type
+8p. AC quality → memory/ac-quality.jsonl
+    - UNKNOWN ACs (untestable) → rewrite for next session
+    - ACs that caught real issues → template for reuse
+    - ACs that always trivially PASS → strengthen or remove
 ```
 
 ### Part 3: Memory Maintenance

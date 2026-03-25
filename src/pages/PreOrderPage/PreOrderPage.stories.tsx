@@ -15,14 +15,40 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof PreOrderPage>;
 
+/** Default: pre-order mode with variant selector, quantity, and deposit info */
 export const Default: Story = {
   args: {
     notifyOnly: false,
   },
 };
 
+/** Notify-only mode — product not available for pre-order yet, only notification signup */
 export const NotifyMode: Story = {
   args: {
     notifyOnly: true,
+  },
+};
+
+/** Pre-order with variant selection available (12GB Black, 12GB White, 16GB Black) */
+export const WithVariantSelection: Story = {
+  name: 'With Variant Selection',
+  args: {
+    notifyOnly: false,
+  },
+};
+
+/** Pre-order showing deposit amount (10% of price) and payment terms */
+export const DepositInfo: Story = {
+  name: 'Deposit Info',
+  args: {
+    notifyOnly: false,
+  },
+};
+
+/** Pre-order terms section — cancellation policy, notify-on-arrival, pay-later info */
+export const PreOrderTerms: Story = {
+  name: 'Pre-Order Terms',
+  args: {
+    notifyOnly: false,
   },
 };

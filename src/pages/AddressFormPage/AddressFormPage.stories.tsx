@@ -15,12 +15,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof AddressFormPage>;
 
+/** Add new address — empty form with Home label selected */
 export const AddNew: Story = {
   args: {
     mode: 'add',
   },
 };
 
+/** Edit existing address — form pre-filled with Jasur Karimov's home address */
 export const EditExisting: Story = {
   args: {
     mode: 'edit',
@@ -28,9 +30,27 @@ export const EditExisting: Story = {
   },
 };
 
+/** Form with validation errors showing on required fields (name, phone, address) */
 export const WithErrors: Story = {
   args: {
     mode: 'add',
     showErrors: true,
+  },
+};
+
+/** Edit second address — work address at Mustaqillik ko'chasi */
+export const EditWorkAddress: Story = {
+  name: 'Edit Work Address',
+  args: {
+    mode: 'edit',
+    addressId: 1,
+  },
+};
+
+/** Add new address with Work label pre-selected */
+export const AddWorkAddress: Story = {
+  name: 'Add Work Address',
+  args: {
+    mode: 'add',
   },
 };

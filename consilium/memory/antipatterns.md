@@ -68,3 +68,9 @@
 21. **Don't interpret "audit all" as "audit what I changed".** When the owner says "все компоненты" or "абсолютно все" or "audit all 150+ components", that means EVERY SINGLE component directory. Not just the 4 components the agent touched in the current session. Create a checklist of every component directory and track progress through the full list. Incomplete audits waste the owner's time and erode trust.
 
 22. **Don't use competitor brand names in open-source component naming.** `DesktopHeaderAliExpress` is unacceptable for a library published on npm/GitHub. Component names must be brand-neutral: `DesktopHeaderMarketplace`, `DesktopHeaderModern`, etc. Competitor brand names (AliExpress, Ozon, Uzum, Taobao) are acceptable as design REFERENCES in comments/docs but never in exported component names, CSS classes, or file paths.
+
+## Session 20260325b — Rich Stories + Theme Fix
+
+23. **Don't hardcode hex colors in theme-sensitive CSS properties.** `background: linear-gradient(135deg, #FFF0F3 0%, #F5F0FF 100%)` breaks in any non-orange theme. Owner: "оранжевый для темы монохром херня подзалупная, серая должна быть нет?" Always use `var(--gs-color-primary-bg)`, `var(--gs-bg-card)`, or other CSS custom properties. If a component needs a custom background, expose it via `var(--gs-{component}-bg, var(--gs-color-primary-bg))`.
+
+24. **Don't add padding that misaligns content with sibling sections.** SaleHits had `padding: 24px` which made its content narrower than the header and product grid above/below. Owner: "why such clinical moments of design not mentioned and skipped?" Before adding padding to any section component, verify that its content aligns horizontally with adjacent sections.

@@ -474,6 +474,100 @@ When similar decisions arise in future sessions, the lead references past outcom
 
 ---
 
+## TACTIC 14: EVIDENCE QUALITY TRACKING (RTPL Integration)
+
+### Purpose
+Track how accurate builder self-assessments are vs fresh verifier verdicts.
+
+### Data Format
+
+```json
+{
+  "session_id": "20260325_191511",
+  "task_type": "feature",
+  "evidence_metrics": {
+    "ac_total": 12,
+    "ac_builder_pass": 11,
+    "ac_verifier_pass": 10,
+    "ac_builder_accuracy": 0.91,
+    "fix_loops": 2,
+    "fix_loop_details": [
+      {"ac_id": "AC3", "iterations": 1, "root_cause": "hardcoded_hex"},
+      {"ac_id": "AC7", "iterations": 1, "root_cause": "missing_forwardRef"}
+    ],
+    "visual_acs_total": 4,
+    "visual_acs_pass": 3,
+    "visual_acs_builder_accuracy": 0.75,
+    "evidence_freshness_seconds": 120,
+    "gap_density": 0.08
+  }
+}
+```
+
+### Evolution Rules
+1. **Builder accuracy < 0.8 for 2+ sessions:** Add stricter self-check instructions to builder spawn prompt
+2. **Visual AC accuracy < builder overall accuracy:** Builders overestimate visual correctness → add "take screenshot and compare to reference before claiming PASS"
+3. **Same AC type fails 3+ sessions:** Systemic → add to critical-rules.md and quality gate scripts
+4. **Fix loops averaging > 2:** Spec quality issue → tighten AC writing in Phase 4
+
+---
+
+## TACTIC 15: VERIFIER EFFECTIVENESS
+
+### Purpose
+Track whether fresh verification catches real issues vs creating false positives.
+
+### Data Format
+
+```json
+{
+  "session_id": "20260325_191511",
+  "verifier_metrics": {
+    "acs_verified": 12,
+    "builder_pass_confirmed": 9,
+    "builder_pass_rejected": 1,
+    "builder_fail_confirmed": 1,
+    "builder_unknown_resolved": 1,
+    "false_positive_rate": 0.0,
+    "unique_issues_found": 2,
+    "verification_time_minutes": 8,
+    "verification_depth_avg": 2.3
+  }
+}
+```
+
+### Evolution Rules
+1. **False positive rate > 0.2:** Verifier prompt needs more project context → add critical-rules.md content
+2. **unique_issues_found == 0 for 3+ sessions:** Verification may be rubber-stamping → increase adversarial pressure in verifier prompt
+3. **Verification time trending UP:** Consider splitting into parallel verifiers per domain
+
+---
+
+## TACTIC 16: AC QUALITY ANALYSIS
+
+### Purpose
+Track which acceptance criteria templates produce useful signal vs noise.
+
+### Data Format
+
+```json
+{
+  "session_id": "20260325_191511",
+  "ac_analysis": [
+    {"ac_template": "GS-SCSS-TOKENS", "times_used": 5, "times_caught_real_issue": 3, "value": "high"},
+    {"ac_template": "GS-VISUAL-*", "times_used": 12, "times_caught_real_issue": 4, "value": "high"},
+    {"ac_template": "GS-USE-CLIENT", "times_used": 5, "times_caught_real_issue": 0, "value": "low"}
+  ]
+}
+```
+
+### Evolution Rules
+1. **AC template value == "low" for 5+ sessions:** Remove from standard template or weaken to WARN
+2. **AC template catches issues > 50% of uses:** Strengthen to hard gate in quality gate scripts
+3. **New AC type discovered during fix loop:** Add to geekshop-ac-template.json
+
+---
+
 ## Evolution Loading Checklist (Session Start)
 
 ```
@@ -489,6 +583,9 @@ When similar decisions arise in future sessions, the lead references past outcom
 □ Read owner-preferences.md → calibrate to owner
 □ Read decision-log.jsonl → load relevant precedents
 □ Check for expertise packs matching detected stack
+□ Read evidence-quality.jsonl → track builder accuracy trends
+□ Read verifier-metrics.jsonl → calibrate verifier prompt
+□ Read ac-quality.jsonl → prune/strengthen AC templates
 □ Log evolution state summary
 ```
 

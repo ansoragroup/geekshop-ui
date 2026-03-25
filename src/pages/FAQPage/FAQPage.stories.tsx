@@ -15,4 +15,55 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof FAQPage>;
 
+/** Default: all FAQ categories visible with search */
 export const Default: Story = {};
+
+/** FAQ with all items collapsed — initial state */
+export const AllCollapsed: Story = {
+  name: 'All Collapsed',
+};
+
+/** Order-related FAQ items filtered by category tab */
+export const OrderCategory: Story = {
+  name: 'Order Category',
+  play: async ({ canvasElement }) => {
+    // Click the "Buyurtma" (Order) tab
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[1] instanceof HTMLElement) {
+      tabs[1].click();
+    }
+  },
+};
+
+/** Payment category filtered FAQ items */
+export const PaymentCategory: Story = {
+  name: 'Payment Category',
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[2] instanceof HTMLElement) {
+      tabs[2].click();
+    }
+  },
+};
+
+/** Delivery category FAQ items */
+export const DeliveryCategory: Story = {
+  name: 'Delivery Category',
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[3] instanceof HTMLElement) {
+      tabs[3].click();
+    }
+  },
+};
+
+/** Return policy FAQ items */
+export const ReturnCategory: Story = {
+  name: 'Return Category',
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[4] instanceof HTMLElement) {
+      tabs[4].click();
+    }
+  },
+};

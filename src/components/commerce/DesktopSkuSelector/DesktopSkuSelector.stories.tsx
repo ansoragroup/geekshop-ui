@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 import { DesktopSkuSelector } from './DesktopSkuSelector';
@@ -23,6 +24,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Default: two variant groups (Color + Storage) with selection, stock, and price. */
 export const Default: Story = {
   args: {
     variants: [
@@ -50,27 +52,29 @@ export const Default: Story = {
   },
 };
 
+/** Color options with thumbnail images. */
 export const WithImages: Story = {
   args: {
     variants: [
       {
         name: 'Color',
         options: [
-          { value: 'Midnight Black', image: 'https://picsum.photos/seed/black/48/48' },
-          { value: 'Pearl White', image: 'https://picsum.photos/seed/white/48/48' },
-          { value: 'Ocean Blue', image: 'https://picsum.photos/seed/blue/48/48' },
-          { value: 'Sunset Gold', image: 'https://picsum.photos/seed/gold/48/48' },
+          { value: 'Midnight Black', image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop' },
+          { value: 'Pearl White', image: 'https://images.unsplash.com/photo-1580910051074-3eb694886f3b?w=48&h=48&fit=crop' },
+          { value: 'Ocean Blue', image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=48&h=48&fit=crop' },
+          { value: 'Sunset Gold', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=48&h=48&fit=crop' },
         ],
       },
     ],
     selectedValues: { Color: 'Midnight Black' },
     stock: 12,
     price: 14_500_000,
-    image: 'https://picsum.photos/seed/phone-black/200/200',
+    image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200&h=200&fit=crop',
     onSelect: fn(),
   },
 };
 
+/** Some options out of stock, some disabled. */
 export const OutOfStock: Story = {
   args: {
     variants: [
@@ -99,6 +103,7 @@ export const OutOfStock: Story = {
   },
 };
 
+/** Single variant group (RAM selection for a laptop). */
 export const SingleVariant: Story = {
   args: {
     variants: [
@@ -116,5 +121,198 @@ export const SingleVariant: Story = {
     stock: 47,
     price: 12_300_000,
     onSelect: fn(),
+  },
+};
+
+/** Three variant groups: Color, Storage, and RAM. */
+export const ThreeVariantGroups: Story = {
+  args: {
+    variants: [
+      {
+        name: 'Color',
+        options: [
+          { value: 'Space Gray' },
+          { value: 'Silver' },
+          { value: 'Midnight' },
+        ],
+      },
+      {
+        name: 'Storage',
+        options: [
+          { value: '256GB' },
+          { value: '512GB' },
+          { value: '1TB' },
+          { value: '2TB' },
+        ],
+      },
+      {
+        name: 'RAM',
+        options: [
+          { value: '16GB' },
+          { value: '32GB' },
+          { value: '64GB' },
+        ],
+      },
+    ],
+    selectedValues: { Color: 'Space Gray', Storage: '512GB', RAM: '32GB' },
+    stock: 8,
+    price: 35_900_000,
+    onSelect: fn(),
+  },
+};
+
+/** All props filled: preview image, 3 variant groups, stock, price. */
+export const FullFeatured: Story = {
+  args: {
+    variants: [
+      {
+        name: 'Color',
+        options: [
+          { value: 'Titanium Black', image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop' },
+          { value: 'Titanium Gray', image: 'https://images.unsplash.com/photo-1580910051074-3eb694886f3b?w=48&h=48&fit=crop' },
+          { value: 'Titanium Violet', image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=48&h=48&fit=crop' },
+          { value: 'Titanium Yellow', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=48&h=48&fit=crop' },
+        ],
+      },
+      {
+        name: 'Storage',
+        options: [
+          { value: '256GB' },
+          { value: '512GB' },
+          { value: '1TB', outOfStock: true },
+        ],
+      },
+    ],
+    selectedValues: { Color: 'Titanium Black', Storage: '512GB' },
+    stock: 5,
+    price: 16_200_000,
+    image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200&h=200&fit=crop',
+    onSelect: fn(),
+  },
+};
+
+/** Zero stock (completely sold out). */
+export const ZeroStock: Story = {
+  args: {
+    variants: [
+      {
+        name: 'Model',
+        options: [
+          { value: 'Standard', outOfStock: true },
+          { value: 'Pro', outOfStock: true },
+        ],
+      },
+    ],
+    selectedValues: {},
+    stock: 0,
+    price: 5_900_000,
+    onSelect: fn(),
+  },
+};
+
+/** Low stock warning (less than 5 items). */
+export const LowStock: Story = {
+  args: {
+    variants: [
+      {
+        name: 'Edition',
+        options: [
+          { value: 'Standard' },
+          { value: 'Limited Edition' },
+        ],
+      },
+    ],
+    selectedValues: { Edition: 'Limited Edition' },
+    stock: 2,
+    price: 18_990_000,
+    onSelect: fn(),
+  },
+};
+
+/** No stock or price displayed (undefined). */
+export const NoStockOrPrice: Story = {
+  args: {
+    variants: [
+      {
+        name: 'Size',
+        options: [
+          { value: 'Small' },
+          { value: 'Medium' },
+          { value: 'Large' },
+        ],
+      },
+    ],
+    selectedValues: { Size: 'Medium' },
+    onSelect: fn(),
+  },
+};
+
+/** Many options in a single variant group. */
+export const ManyOptions: Story = {
+  args: {
+    variants: [
+      {
+        name: 'Size (EU)',
+        options: [
+          { value: '36' },
+          { value: '37' },
+          { value: '38' },
+          { value: '39' },
+          { value: '40' },
+          { value: '41' },
+          { value: '42' },
+          { value: '43' },
+          { value: '44' },
+          { value: '45' },
+          { value: '46', outOfStock: true },
+          { value: '47', outOfStock: true },
+        ],
+      },
+    ],
+    selectedValues: { 'Size (EU)': '42' },
+    stock: 15,
+    price: 890_000,
+    onSelect: fn(),
+  },
+};
+
+/** Interactive: selecting options updates the state. */
+export const Interactive: Story = {
+  render: () => {
+    const [selected, setSelected] = useState<Record<string, string>>({ Color: 'Black', Storage: '256GB' });
+    const prices: Record<string, number> = { '128GB': 8_900_000, '256GB': 10_500_000, '512GB': 14_200_000 };
+
+    return (
+      <div>
+        <DesktopSkuSelector
+          variants={[
+            {
+              name: 'Color',
+              options: [
+                { value: 'Black' },
+                { value: 'White' },
+                { value: 'Blue' },
+                { value: 'Green', outOfStock: true },
+              ],
+            },
+            {
+              name: 'Storage',
+              options: [
+                { value: '128GB' },
+                { value: '256GB' },
+                { value: '512GB' },
+              ],
+            },
+          ]}
+          selectedValues={selected}
+          stock={selected.Color === 'Green' ? 0 : 18}
+          price={prices[selected.Storage] ?? 8_900_000}
+          onSelect={(name, value) => setSelected((prev) => ({ ...prev, [name]: value }))}
+        />
+        <p style={{ marginTop: 16, color: '#666', fontSize: 14 }}>
+          Selected: {JSON.stringify(selected)}
+        </p>
+      </div>
+    );
   },
 };

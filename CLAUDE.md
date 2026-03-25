@@ -611,3 +611,41 @@ After Phase 8:
 ```
 
 # ===== END CONSILIUM v2 PROTOCOL =====
+
+<!-- repo-task-proof-loop:start -->
+## Task Evidence Workflow (RTPL + Consilium Integration)
+
+For tasks requiring auditable proof (features, refactors, migrations), use the evidence workflow.
+
+Artifact path: `.agent/tasks/<TASK_ID>/`
+
+Sequence:
+1. Freeze `spec.md` with acceptance criteria (AC1, AC2, ...) before implementation.
+2. Implement against the spec. Write tests for every change.
+3. Pack `evidence.md`, `evidence.json`, and `raw/` artifacts (build, test, lint, screenshot outputs).
+4. Fresh verification: a separate agent judges the current codebase against the spec.
+5. If verdict != PASS: write `problems.md`, apply minimal fix, re-verify.
+
+Hard rules:
+- Never claim completion unless every AC is PASS.
+- Verifiers judge current code, not prior claims.
+- Fixers make the smallest defensible diff.
+
+When running inside a consilium session:
+- Phase 4 (Plan): each task gets numbered ACs with evidence types
+- Phase 5 (Implement): builders pack evidence.json + raw/ artifacts at completion
+- Phase 6b (Verify): fresh verifier agent judges against ACs independently
+- Phase 6c (Fix): targeted fix loop, max 3 iterations, then escalate
+
+Quality gate scripts:
+- `scripts/scss-token-audit.sh` — scan for hardcoded hex in SCSS
+- `scripts/verify-barrel-exports.sh` — check component exports
+- `scripts/verify-storybook-stories.sh` — validate story conventions
+- `scripts/geekshop-ac-template.json` — standard AC templates
+
+Installed workflow agents:
+- `.claude/agents/task-spec-freezer.md`
+- `.claude/agents/task-builder.md`
+- `.claude/agents/task-verifier.md`
+- `.claude/agents/task-fixer.md`
+<!-- repo-task-proof-loop:end -->

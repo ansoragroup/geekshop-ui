@@ -1,9 +1,9 @@
 @use '../../../theme/tokens' as *;
 
 .root {
-  background: var(--gs-sale-hits-bg, linear-gradient(135deg, #FFF0F3 0%, #F5F0FF 100%));
+  background: var(--gs-sale-hits-bg, var(--gs-color-primary-bg));
   border-radius: $radius-lg;
-  padding: $desktop-spacing-lg;
+  padding: $desktop-spacing-md 0;
   overflow: hidden;
 }
 
@@ -12,6 +12,7 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: $desktop-spacing-md;
+  padding: 0 $desktop-spacing-md;
 }
 
 .titleArea {
@@ -89,7 +90,7 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding-bottom: $spacing-xs;
+  padding: 0 $desktop-spacing-md $spacing-xs;
 
   &::-webkit-scrollbar { display: none; }
 }

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopProgress } from './DesktopProgress';
 
@@ -29,7 +30,20 @@ export const Default: Story = {
   },
 };
 
-export const Sizes: Story = {
+export const FullFeatured: Story = {
+  name: 'Full Featured (All Props)',
+  args: {
+    value: 72,
+    variant: 'warning',
+    size: 'lg',
+    showLabel: true,
+    label: 'Disk Space',
+    striped: true,
+  },
+};
+
+export const AllSizes: Story = {
+  name: 'All Sizes',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <DesktopProgress value={40} size="sm" showLabel label="Small" />
@@ -39,7 +53,8 @@ export const Sizes: Story = {
   ),
 };
 
-export const Variants: Story = {
+export const AllVariants: Story = {
+  name: 'All Color Variants',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <DesktopProgress value={70} variant="default" showLabel label="Default" />
@@ -61,6 +76,7 @@ export const Striped: Story = {
 };
 
 export const StripedVariants: Story = {
+  name: 'Striped (All Variants)',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <DesktopProgress value={40} variant="default" striped size="md" showLabel label="Processing" />
@@ -72,9 +88,89 @@ export const StripedVariants: Story = {
 };
 
 export const NoLabel: Story = {
+  name: 'Without Label',
   args: {
     value: 45,
     variant: 'success',
     size: 'md',
+  },
+};
+
+export const ZeroValue: Story = {
+  name: 'Zero Progress (Empty)',
+  args: {
+    value: 0,
+    showLabel: true,
+    label: 'Not Started',
+  },
+};
+
+export const FullValue: Story = {
+  name: 'Full Progress (100%)',
+  args: {
+    value: 100,
+    variant: 'success',
+    showLabel: true,
+    label: 'Complete',
+  },
+};
+
+export const CustomLabel: Story = {
+  name: 'Custom Label (Not Percentage)',
+  args: {
+    value: 30,
+    showLabel: true,
+    label: '3 of 10 items packed',
+    variant: 'default',
+  },
+};
+
+export const EcommerceScenarios: Story = {
+  name: 'E-commerce Scenarios',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Order #GS-2026-0047 Fulfillment</p>
+        <DesktopProgress value={75} variant="default" showLabel label="Packing" size="md" />
+      </div>
+      <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Image Upload</p>
+        <DesktopProgress value={45} variant="success" striped showLabel label="Uploading 3 of 7 photos" size="md" />
+      </div>
+      <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Profile Completeness</p>
+        <DesktopProgress value={60} variant="warning" showLabel label="Add phone number to reach 80%" size="md" />
+      </div>
+      <div style={{ background: '#fff', padding: 16, borderRadius: 8, border: '1px solid #eee' }}>
+        <p style={{ margin: '0 0 8px', fontSize: 13, color: '#666' }}>Warehouse Capacity</p>
+        <DesktopProgress value={94} variant="error" showLabel label="Almost Full" size="lg" />
+      </div>
+    </div>
+  ),
+};
+
+export const Animated: Story = {
+  name: 'Animated Progress',
+  render: () => {
+    const [value, setValue] = useState(0);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setValue((prev) => {
+          if (prev >= 100) return 0;
+          return prev + 2;
+        });
+      }, 100);
+      return () => clearInterval(interval);
+    }, []);
+    return (
+      <DesktopProgress
+        value={value}
+        variant={value < 50 ? 'default' : value < 80 ? 'warning' : 'success'}
+        showLabel
+        label={value < 100 ? `Downloading... ${value}%` : 'Complete!'}
+        size="lg"
+        striped={value < 100}
+      />
+    );
   },
 };

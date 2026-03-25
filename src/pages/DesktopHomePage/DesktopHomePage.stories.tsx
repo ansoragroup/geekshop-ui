@@ -4,6 +4,7 @@ import { DesktopHomePage } from './DesktopHomePage';
 const meta = {
   title: 'Pages (Desktop)/DesktopHomePage',
   component: DesktopHomePage,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     viewport: { defaultViewport: 'desktop' },
@@ -92,5 +93,95 @@ export const Loading: Story = {
     products: products.slice(0, 5),
     hasMore: true,
     isLoading: true,
+  },
+};
+
+export const NoBannerMinimal: Story = {
+  name: 'No Banner (Minimal)',
+  args: {
+    ...Default.args,
+    bannerSlides: [],
+    saleHits: [],
+    products: products.slice(0, 4),
+  },
+};
+
+export const NoProducts: Story = {
+  name: 'No Products (Empty Store)',
+  args: {
+    ...Default.args,
+    bannerSlides,
+    saleHits: [],
+    products: [],
+  },
+};
+
+export const SaleHitsOnly: Story = {
+  name: 'Sale Hits Only (No Products Grid)',
+  args: {
+    ...Default.args,
+    products: [],
+    bannerSlides: [
+      { title: 'Flash Sale', subtitle: 'Limited time — 70% off everything', ctaText: 'Grab Now', bgGradient: 'linear-gradient(135deg, #FF3B30 0%, #FF5000 100%)', image: 'https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=600&h=300&fit=crop' },
+    ],
+    saleHits: [
+      { id: 'fsh1', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop', title: 'Nike Air Max 270 React', price: 8900, originalPrice: 14900, discount: '-40%', currency: 'USD' },
+      { id: 'fsh2', image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=300&h=300&fit=crop', title: 'Seiko Presage Automatic', price: 28900, originalPrice: 45000, discount: '-36%', currency: 'USD' },
+      { id: 'fsh3', image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop', title: 'Ray-Ban Aviator Classic', price: 12500, originalPrice: 19900, discount: '-37%', currency: 'USD' },
+      { id: 'fsh4', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=300&h=300&fit=crop', title: 'Vintage Canvas Backpack', price: 4500, originalPrice: 12000, discount: '-63%', currency: 'USD' },
+      { id: 'fsh5', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop', title: 'Linen Summer Dress', price: 18900, originalPrice: 35000, discount: '-46%', currency: 'USD' },
+      { id: 'fsh6', image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=300&h=300&fit=crop', title: 'Perfume Set Luxury 3x50ml', price: 39900, originalPrice: 89000, discount: '-55%', currency: 'USD' },
+    ],
+  },
+};
+
+export const FullFeatured: Story = {
+  name: 'Full Featured (All Sections)',
+  args: {
+    logo: <span style={{ fontSize: 24, fontWeight: 700, color: '#fff' }}>GeekShop</span>,
+    bannerSlides: [
+      { title: 'Ramadan Sale', subtitle: 'Barcha mahsulotlarga 40% gacha chegirma', ctaText: 'Xarid qilish', bgGradient: 'linear-gradient(135deg, #1A5276 0%, #2E86C1 100%)', image: 'https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=600&h=300&fit=crop' },
+      { title: 'Tech Week', subtitle: 'Latest gadgets at unbeatable prices', ctaText: 'Shop Tech', bgGradient: 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=300&fit=crop' },
+      { title: 'Back to School', subtitle: 'Laptops, tablets & accessories', ctaText: 'Explore', bgGradient: 'linear-gradient(135deg, #7B2BFC 0%, #A855F7 100%)', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&h=300&fit=crop' },
+      { title: 'Free Delivery', subtitle: '50,000 UZS dan oshgan buyurtmalar uchun', ctaText: 'Batafsil', bgGradient: 'linear-gradient(135deg, #07C160 0%, #34D399 100%)' },
+    ],
+    saleHits,
+    products: [
+      ...products,
+      { id: 'p11', image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop', title: 'Luxury perfume set gift box 3x50ml', price: 39900, originalPrice: 89000, discount: '-55%', currency: 'USD', rating: 4.7, purchaseCount: 312, badges: [{ label: 'SALE', variant: 'sale' as const }] },
+      { id: 'p12', image: 'https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=400&h=400&fit=crop', title: 'Smart home starter kit WiFi hub', price: 25400, originalPrice: 42000, discount: '-40%', currency: 'USD', rating: 4.6, purchaseCount: 890, recommended: true, freeShipping: true },
+    ],
+    promoTags: [
+      { label: 'RAMADAN SALE', bgColor: '#1A5276' },
+      { label: 'TECH WEEK', bgColor: '#FF5000' },
+      { label: 'FREE SHIPPING', bgColor: '#07C160' },
+    ],
+    quickLinks: [
+      { label: 'Hot Deals' },
+      { label: 'Top Products' },
+      { label: 'New Arrivals' },
+      { label: 'Free Shipping' },
+    ],
+    searchButtonColor: '#FF5000',
+    recentSearches: ['macbook air m3', 'rtx 4070', 'airpods pro'],
+    trendingSearches: [
+      { text: 'samsung galaxy s24', count: 67800 },
+      { text: 'mechanical keyboard', count: 45200 },
+      { text: 'running shoes nike', count: 38100 },
+      { text: 'wireless earbuds', count: 29800 },
+    ],
+    suggestedProducts: [
+      { id: 'sp1', title: 'Sony WH-1000XM5 Headphones', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop', price: 349, rating: 4.9 },
+      { id: 'sp2', title: 'Apple AirPods Pro 2nd Gen', image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=80&h=80&fit=crop', price: 249, rating: 4.8 },
+      { id: 'sp3', title: 'Keychron Q1 Pro Keyboard', image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop', price: 185, rating: 4.7 },
+    ],
+    searchCategorySuggestions: [
+      { id: 'cat1', name: 'Electronics', count: 15420 },
+      { id: 'cat2', name: 'Headphones & Earbuds', count: 8930 },
+      { id: 'cat3', name: 'Phone Accessories', count: 12100 },
+      { id: 'cat4', name: 'Laptops & Computers', count: 6780 },
+    ],
+    hasMore: true,
+    isLoading: false,
   },
 };

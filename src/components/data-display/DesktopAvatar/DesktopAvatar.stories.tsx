@@ -23,58 +23,120 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    src: 'https://picsum.photos/seed/avatar1/128/128',
-    name: 'Dilshod Rahimov',
+    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop',
+    name: 'Sarah Mitchell',
     size: 'lg',
   },
 };
 
-export const Sizes: Story = {
+export const FullFeatured: Story = {
+  name: 'Full Featured (All Props)',
+  args: {
+    src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop',
+    alt: 'James Wilson avatar',
+    name: 'James Wilson',
+    size: 'xl',
+    showOnline: true,
+    online: true,
+  },
+};
+
+export const AllSizes: Story = {
+  name: 'All Sizes',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <DesktopAvatar name="John Doe" size="sm" />
-      <DesktopAvatar name="John Doe" size="md" />
-      <DesktopAvatar name="John Doe" size="lg" />
-      <DesktopAvatar name="John Doe" size="xl" />
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Sarah Mitchell" size="sm" />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>sm (32px)</p>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Sarah Mitchell" size="md" />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>md (48px)</p>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Sarah Mitchell" size="lg" />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>lg (64px)</p>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Sarah Mitchell" size="xl" />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>xl (80px)</p>
+      </div>
     </div>
   ),
 };
 
-export const WithImage: Story = {
+export const WithImages: Story = {
+  name: 'With Images (All Sizes)',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <DesktopAvatar src="https://picsum.photos/seed/av1/128/128" name="Aziza Karimova" size="sm" />
-      <DesktopAvatar src="https://picsum.photos/seed/av2/128/128" name="Rustam Toshmatov" size="md" />
-      <DesktopAvatar src="https://picsum.photos/seed/av3/128/128" name="Nodira Saidova" size="lg" />
-      <DesktopAvatar src="https://picsum.photos/seed/av4/128/128" name="Sardor Yusupov" size="xl" />
+      <DesktopAvatar src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop" name="Emily Chen" size="sm" />
+      <DesktopAvatar src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&h=128&fit=crop" name="James Wilson" size="md" />
+      <DesktopAvatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=128&h=128&fit=crop" name="Anna Petrova" size="lg" />
+      <DesktopAvatar src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=128&h=128&fit=crop" name="Michael Brown" size="xl" />
     </div>
   ),
 };
 
 export const OnlineStatus: Story = {
+  name: 'Online — Offline Status',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-      <DesktopAvatar name="Online User" size="lg" showOnline online />
-      <DesktopAvatar name="Offline User" size="lg" showOnline online={false} />
-      <DesktopAvatar
-        src="https://picsum.photos/seed/av5/128/128"
-        name="Dilshod"
-        size="xl"
-        showOnline
-        online
-      />
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Online User" size="lg" showOnline online />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>Online</p>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Offline User" size="lg" showOnline online={false} />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>Offline</p>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop" name="Tech Support" size="xl" showOnline online />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>With Image</p>
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <DesktopAvatar name="Away" size="md" showOnline={false} />
+        <p style={{ fontSize: 11, color: '#999', marginTop: 4 }}>No indicator</p>
+      </div>
     </div>
   ),
 };
 
 export const InitialsFallback: Story = {
+  name: 'Initials Fallback (Various Names)',
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <DesktopAvatar name="Aziza Karimova" size="lg" />
-      <DesktopAvatar name="Rustam" size="lg" />
-      <DesktopAvatar name="Nodira Saidova" size="lg" />
-      <DesktopAvatar name="Sardor Yusupov" size="lg" />
+      <DesktopAvatar name="Emily Chen" size="lg" />
+      <DesktopAvatar name="Robert" size="lg" />
+      <DesktopAvatar name="Anna Petrova" size="lg" />
+      <DesktopAvatar name="Michael Brown" size="lg" />
+      <DesktopAvatar name="K" size="lg" />
       <DesktopAvatar size="lg" />
     </div>
   ),
+};
+
+export const BrokenImage: Story = {
+  name: 'Broken Image (Fallback to Initials)',
+  args: {
+    src: 'https://invalid-url.example.com/avatar.jpg',
+    name: 'David Park',
+    size: 'lg',
+  },
+};
+
+export const NoName: Story = {
+  name: 'No Name (? Fallback)',
+  args: {
+    size: 'lg',
+  },
+};
+
+export const CustomAlt: Story = {
+  name: 'Custom Alt Text',
+  args: {
+    src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=128&h=128&fit=crop',
+    alt: 'Customer service representative',
+    name: 'Maria Santos',
+    size: 'lg',
+  },
 };

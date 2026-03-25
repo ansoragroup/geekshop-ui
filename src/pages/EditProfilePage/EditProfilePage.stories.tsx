@@ -15,6 +15,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof EditProfilePage>;
 
+/** Default: pre-filled profile form (Jasur Karimov) with avatar and all fields */
 export const Default: Story = {
   args: {
     empty: false,
@@ -23,12 +24,14 @@ export const Default: Story = {
   },
 };
 
+/** Empty form for new user — blank fields, no avatar */
 export const Empty: Story = {
   args: {
     empty: true,
   },
 };
 
+/** Form with validation errors displayed on all required fields */
 export const WithErrors: Story = {
   args: {
     empty: true,
@@ -36,9 +39,20 @@ export const WithErrors: Story = {
   },
 };
 
+/** Avatar change bottom sheet open — take photo, choose from gallery, remove options */
 export const AvatarSheet: Story = {
   args: {
     empty: false,
     showAvatarSheet: true,
+  },
+};
+
+/** Filled profile ready to save — all fields populated with gender selector */
+export const FilledProfile: Story = {
+  name: 'Filled Profile',
+  args: {
+    empty: false,
+    showErrors: false,
+    showAvatarSheet: false,
   },
 };

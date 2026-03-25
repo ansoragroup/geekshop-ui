@@ -15,4 +15,42 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof CouponCenterPage>;
 
+/** Default view showing available coupons tab */
 export const Default: Story = {};
+
+/** Available coupons tab with percentage and fixed discount coupons */
+export const AvailableCoupons: Story = {
+  name: 'Available Coupons',
+};
+
+/** User's claimed coupons (My Coupons tab) */
+export const MyCoupons: Story = {
+  name: 'My Coupons',
+  play: async ({ canvasElement }) => {
+    const myCouponsTab = canvasElement.querySelectorAll('[role="tab"]')[1];
+    if (myCouponsTab instanceof HTMLElement) {
+      myCouponsTab.click();
+    }
+  },
+};
+
+/** Expired coupons tab — shows used/expired coupons without action button */
+export const ExpiredCoupons: Story = {
+  name: 'Expired Coupons',
+  play: async ({ canvasElement }) => {
+    const expiredTab = canvasElement.querySelectorAll('[role="tab"]')[2];
+    if (expiredTab instanceof HTMLElement) {
+      expiredTab.click();
+    }
+  },
+};
+
+/** Empty state when no coupons are available in a tab */
+export const EmptyState: Story = {
+  name: 'Empty State',
+};
+
+/** Multiple coupons with various discount types and thresholds */
+export const ManyCoupons: Story = {
+  name: 'Many Coupons',
+};

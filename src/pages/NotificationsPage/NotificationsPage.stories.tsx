@@ -15,14 +15,66 @@ const meta: Meta<typeof NotificationsPage> = {
 export default meta;
 type Story = StoryObj<typeof NotificationsPage>;
 
+/** Default: all notifications with unread indicators and swipe-to-dismiss */
 export const WithNotifications: Story = {
   args: {
     empty: false,
   },
 };
 
+/** Empty state — no notifications received yet */
 export const EmptyState: Story = {
   args: {
     empty: true,
+  },
+};
+
+/** Order notifications tab — delivery updates, payment confirmations */
+export const OrderNotifications: Story = {
+  name: 'Order Notifications',
+  args: {
+    empty: false,
+  },
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[1] instanceof HTMLElement) {
+      tabs[1].click();
+    }
+  },
+};
+
+/** Promo notifications — discount alerts, coupon gifts, seasonal sales */
+export const PromoNotifications: Story = {
+  name: 'Promo Notifications',
+  args: {
+    empty: false,
+  },
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[2] instanceof HTMLElement) {
+      tabs[2].click();
+    }
+  },
+};
+
+/** System notifications — security alerts, app updates */
+export const SystemNotifications: Story = {
+  name: 'System Notifications',
+  args: {
+    empty: false,
+  },
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelectorAll('[role="tab"]');
+    if (tabs[3] instanceof HTMLElement) {
+      tabs[3].click();
+    }
+  },
+};
+
+/** Notifications with unread count badge and mark-all-read action */
+export const WithUnreadBadge: Story = {
+  name: 'With Unread Badge',
+  args: {
+    empty: false,
   },
 };

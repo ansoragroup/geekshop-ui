@@ -434,7 +434,7 @@ export const Disabled: Story = {
 };
 
 export const TwoLevels: Story = {
-  name: '2-Level Picker (City/District)',
+  name: '2-Level Picker (City — District)',
   args: {
     options: uzbekistanAddresses,
     label: 'Shahar va tuman',

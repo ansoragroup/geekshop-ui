@@ -52,3 +52,8 @@ playwright-report
 .cache
 .turbo
 *.tsbuildinfo
+
+# RTPL evidence artifacts (screenshots are large/binary)
+.agent/tasks/*/raw/screenshot-*.png
+.agent/tasks/*/raw/screenshots/
+# Keep spec, evidence, verdict tracked for audit trail

@@ -122,6 +122,86 @@ export const Monitor: Story = {
   },
 };
 
+export const CustomPurple: Story = {
+  args: {
+    icon: <KeyboardIcon />,
+    label: 'Klaviaturalar',
+    color: '#722ED1',
+  },
+};
+
+export const CustomRed: Story = {
+  args: {
+    icon: <HeadphoneIcon />,
+    label: 'Quloqchinlar',
+    color: '#F5222D',
+  },
+};
+
+export const LongLabel: Story = {
+  name: 'Edge: Long Label',
+  args: {
+    icon: <CpuIcon />,
+    label: 'Protsessorlar va chipsetlar',
+    color: '#2F54EB',
+  },
+};
+
+export const ShortLabel: Story = {
+  name: 'Edge: Short Label',
+  args: {
+    icon: <SsdIcon />,
+    label: 'SSD',
+    color: '#13C2C2',
+  },
+};
+
+export const Clickable: Story = {
+  name: 'Interactive: Clickable',
+  args: {
+    icon: <MouseIcon />,
+    label: 'Sichqoncha',
+    color: '#FA8C16',
+    onClick: () => {},
+  },
+  argTypes: {
+    onClick: { action: 'clicked' },
+  },
+};
+
+export const DefaultColor: Story = {
+  name: 'Default Color (Primary)',
+  args: {
+    icon: <RamIcon />,
+    label: 'RAM modullar',
+  },
+};
+
+export const CategoryGrid: Story = {
+  name: 'Grid of Categories',
+  decorators: [
+    (Story) => (
+      <div style={{ width: '375px', padding: '12px', background: '#FFF', borderRadius: '12px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 8 }}>
+      <CategoryIcon icon={<LaptopIcon />} label="Noutbuklar" color="#FF5000" />
+      <CategoryIcon icon={<GpuIcon />} label="GPU" color="#07C160" />
+      <CategoryIcon icon={<MonitorIcon />} label="Monitorlar" color="#1890FF" />
+      <CategoryIcon icon={<KeyboardIcon />} label="Klaviatura" color="#722ED1" />
+      <CategoryIcon icon={<MouseIcon />} label="Sichqoncha" color="#FA8C16" />
+      <CategoryIcon icon={<HeadphoneIcon />} label="Quloqchin" color="#F5222D" />
+      <CategoryIcon icon={<SsdIcon />} label="SSD" color="#13C2C2" />
+      <CategoryIcon icon={<RamIcon />} label="RAM" color="#EB2F96" />
+      <CategoryIcon icon={<ChairIcon />} label="Kreslo" color="#52C41A" />
+      <CategoryIcon icon={<CpuIcon />} label="Protsessor" color="#2F54EB" />
+    </div>
+  ),
+};
+
 // Row story
 export const ScrollableRow: StoryObj<typeof CategoryIconRow> = {
   decorators: [
@@ -147,4 +227,15 @@ export const ScrollableRow: StoryObj<typeof CategoryIconRow> = {
       ]}
     />
   ),
+};
+
+export const AsLink: Story = {
+  name: 'Rendered as <a> Link',
+  args: {
+    as: 'a' as const,
+    icon: <ChairIcon />,
+    label: 'O\'yinchi kreslolari',
+    color: '#52C41A',
+    href: '#gaming-chairs',
+  },
 };

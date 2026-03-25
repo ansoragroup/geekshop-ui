@@ -51,7 +51,7 @@ export const WithStringValue: Story = {
 };
 
 export const WithMinMax: Story = {
-  name: 'Min/Max Date Constraints',
+  name: 'Min — Max Date Constraints',
   args: {
     label: 'Yetkazib berish sanasi',
     placeholder: 'Tanlang',

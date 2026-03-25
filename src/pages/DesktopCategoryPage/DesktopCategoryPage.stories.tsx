@@ -16,44 +16,75 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    categoryName: 'Graphics Cards',
+  },
+};
+
+export const Laptops: Story = {
+  name: 'Laptops (4 columns)',
+  args: {
     categoryName: 'Laptops',
     columns: 4,
     initialProducts: [
-      { id: '1', image: 'https://picsum.photos/seed/cat-lap1/400/400', title: 'Apple MacBook Air M3 15" 16GB 512GB', price: 18900000, originalPrice: 21500000, discount: '-12%', rating: 4.9, reviewCount: 567, freeShipping: true },
-      { id: '2', image: 'https://picsum.photos/seed/cat-lap2/400/400', title: 'ASUS ROG Zephyrus G14 Ryzen 9 RTX 4060', price: 16200000, originalPrice: 18500000, discount: '-12%', rating: 4.7, reviewCount: 234, freeShipping: true },
-      { id: '3', image: 'https://picsum.photos/seed/cat-lap3/400/400', title: 'Lenovo ThinkPad X1 Carbon Gen 11 i7 16GB', price: 14800000, rating: 4.6, reviewCount: 189, freeShipping: true },
-      { id: '4', image: 'https://picsum.photos/seed/cat-lap4/400/400', title: 'Dell XPS 15 i9 32GB RTX 4070 OLED', price: 22500000, originalPrice: 25000000, discount: '-10%', rating: 4.8, reviewCount: 312, freeShipping: true },
-      { id: '5', image: 'https://picsum.photos/seed/cat-lap5/400/400', title: 'HP Omen 16 Ryzen 7 RTX 4060 16GB', price: 11200000, rating: 4.4, reviewCount: 456, freeShipping: false },
-      { id: '6', image: 'https://picsum.photos/seed/cat-lap6/400/400', title: 'MSI Raider GE78 i9 RTX 4080 32GB', price: 28500000, originalPrice: 32000000, discount: '-11%', rating: 4.7, reviewCount: 78, freeShipping: true },
-      { id: '7', image: 'https://picsum.photos/seed/cat-lap7/400/400', title: 'Acer Nitro 5 Ryzen 5 RTX 4050 16GB', price: 8500000, rating: 4.2, reviewCount: 890, freeShipping: false },
-      { id: '8', image: 'https://picsum.photos/seed/cat-lap8/400/400', title: 'Samsung Galaxy Book3 Ultra i7 RTX 4050', price: 15900000, originalPrice: 18200000, discount: '-13%', rating: 4.5, reviewCount: 123, freeShipping: true },
-      { id: '9', image: 'https://picsum.photos/seed/cat-lap9/400/400', title: 'Apple MacBook Pro 16" M3 Max 36GB 1TB', price: 42000000, rating: 4.9, reviewCount: 234, freeShipping: true },
-      { id: '10', image: 'https://picsum.photos/seed/cat-lap10/400/400', title: 'Lenovo Legion Pro 7 R9 RTX 4090 32GB', price: 31000000, originalPrice: 35000000, discount: '-11%', rating: 4.8, reviewCount: 45, freeShipping: true },
-      { id: '11', image: 'https://picsum.photos/seed/cat-lap11/400/400', title: 'ASUS TUF Gaming A15 Ryzen 7 RTX 4060', price: 10500000, rating: 4.3, reviewCount: 678, freeShipping: false },
-      { id: '12', image: 'https://picsum.photos/seed/cat-lap12/400/400', title: 'Dell Inspiron 16 Plus i7 16GB 512GB', price: 9200000, originalPrice: 10500000, discount: '-12%', rating: 4.1, reviewCount: 345, freeShipping: true },
+      { id: '1', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'Apple MacBook Air M3 15" 16GB 512GB', price: 18900000, originalPrice: 21500000, discount: '-12%', rating: 4.9, reviewCount: 567, freeShipping: true },
+      { id: '2', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'ASUS ROG Zephyrus G14 Ryzen 9 RTX 4060', price: 16200000, originalPrice: 18500000, discount: '-12%', rating: 4.7, reviewCount: 234, freeShipping: true },
+      { id: '3', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'Lenovo ThinkPad X1 Carbon Gen 11 i7 16GB', price: 14800000, rating: 4.6, reviewCount: 189, freeShipping: true },
+      { id: '4', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'Dell XPS 15 i9 32GB RTX 4070 OLED', price: 22500000, originalPrice: 25000000, discount: '-10%', rating: 4.8, reviewCount: 312, freeShipping: true },
+      { id: '5', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'HP Omen 16 Ryzen 7 RTX 4060 16GB', price: 11200000, rating: 4.4, reviewCount: 456, freeShipping: false },
+      { id: '6', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'MSI Raider GE78 i9 RTX 4080 32GB', price: 28500000, originalPrice: 32000000, discount: '-11%', rating: 4.7, reviewCount: 78, freeShipping: true },
+      { id: '7', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'Acer Nitro 5 Ryzen 5 RTX 4050 16GB', price: 8500000, rating: 4.2, reviewCount: 890, freeShipping: false },
+      { id: '8', image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop', title: 'Samsung Galaxy Book3 Ultra i7 RTX 4050', price: 15900000, originalPrice: 18200000, discount: '-13%', rating: 4.5, reviewCount: 123, freeShipping: true },
     ],
   },
 };
 
-export const GridView: Story = {
-  name: 'Wide Grid (5 columns)',
+export const WideGrid: Story = {
+  name: 'Monitors (5 columns)',
   args: {
     categoryName: 'Monitors',
     columns: 5,
     initialProducts: [
-      { id: '1', image: 'https://picsum.photos/seed/cat-mon1/400/400', title: 'LG UltraGear 27GP950-B 27" 4K 160Hz Nano IPS', price: 8500000, originalPrice: 9800000, discount: '-13%', rating: 4.8, reviewCount: 456, freeShipping: true },
-      { id: '2', image: 'https://picsum.photos/seed/cat-mon2/400/400', title: 'Samsung Odyssey G9 49" DQHD 240Hz', price: 14200000, rating: 4.7, reviewCount: 234, freeShipping: true },
-      { id: '3', image: 'https://picsum.photos/seed/cat-mon3/400/400', title: 'Dell UltraSharp U2723QE 27" 4K USB-C', price: 5600000, rating: 4.6, reviewCount: 567, freeShipping: true },
-      { id: '4', image: 'https://picsum.photos/seed/cat-mon4/400/400', title: 'ASUS ROG Swift PG27AQDM 27" 1440p 240Hz OLED', price: 11500000, originalPrice: 13000000, discount: '-12%', rating: 4.9, reviewCount: 123, freeShipping: true },
-      { id: '5', image: 'https://picsum.photos/seed/cat-mon5/400/400', title: 'BenQ MOBIUZ EX2710Q 27" 2K 165Hz', price: 4200000, rating: 4.5, reviewCount: 789, freeShipping: false },
+      { id: '1', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop', title: 'LG UltraGear 27GP950-B 27" 4K 160Hz Nano IPS', price: 8500000, originalPrice: 9800000, discount: '-13%', rating: 4.8, reviewCount: 456, freeShipping: true },
+      { id: '2', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop', title: 'Samsung Odyssey G9 49" DQHD 240Hz', price: 14200000, rating: 4.7, reviewCount: 234, freeShipping: true },
+      { id: '3', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop', title: 'Dell UltraSharp U2723QE 27" 4K USB-C', price: 5600000, rating: 4.6, reviewCount: 567, freeShipping: true },
+      { id: '4', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop', title: 'ASUS ROG Swift PG27AQDM 27" 1440p 240Hz OLED', price: 11500000, originalPrice: 13000000, discount: '-12%', rating: 4.9, reviewCount: 123, freeShipping: true },
+      { id: '5', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop', title: 'BenQ MOBIUZ EX2710Q 27" 2K 165Hz', price: 4200000, rating: 4.5, reviewCount: 789, freeShipping: false },
     ],
   },
 };
 
-export const WithNoResults: Story = {
+export const NoResults: Story = {
   name: 'No Results',
   args: {
     categoryName: 'Quantum Computers',
     initialProducts: [],
+  },
+};
+
+export const Headphones: Story = {
+  name: 'Headphones (3 columns)',
+  args: {
+    categoryName: 'Headphones & Earbuds',
+    columns: 3,
+    initialProducts: [
+      { id: '1', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop', title: 'Sony WH-1000XM5 Wireless Noise Cancelling', price: 3900000, rating: 4.8, reviewCount: 2100, freeShipping: true },
+      { id: '2', image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop', title: 'Apple AirPods Pro 2nd Gen USB-C', price: 2800000, originalPrice: 3500000, discount: '-20%', rating: 4.9, reviewCount: 892, freeShipping: true },
+      { id: '3', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop', title: 'Bose QuietComfort Ultra Headphones', price: 4200000, rating: 4.7, reviewCount: 567, freeShipping: true },
+      { id: '4', image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop', title: 'Samsung Galaxy Buds3 Pro', price: 2200000, originalPrice: 2800000, discount: '-21%', rating: 4.5, reviewCount: 1234, freeShipping: false },
+      { id: '5', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop', title: 'Sennheiser Momentum 4 Wireless', price: 3600000, rating: 4.6, reviewCount: 345, freeShipping: true },
+      { id: '6', image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop', title: 'JBL Live 770NC Over-Ear', price: 1200000, originalPrice: 1800000, discount: '-33%', rating: 4.3, reviewCount: 678, freeShipping: false },
+    ],
+  },
+};
+
+export const FewProducts: Story = {
+  name: 'Few Products (2)',
+  args: {
+    categoryName: 'Server Components',
+    columns: 4,
+    initialProducts: [
+      { id: '1', image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop', title: 'Intel Xeon w9-3495X 56-Core Processor', price: 58000000, rating: 4.9, reviewCount: 12, freeShipping: true },
+      { id: '2', image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop', title: 'Samsung 960GB PM9A3 NVMe Enterprise SSD', price: 4800000, originalPrice: 5500000, discount: '-13%', rating: 4.8, reviewCount: 34, freeShipping: true },
+    ],
   },
 };

@@ -31,11 +31,17 @@ that agents most commonly violate. ~30 lines, survives any context window.
 19. When owner says "all components" or "every component" or "все" or "абсолютно все" = audit/fix EVERY SINGLE ONE. Do not scope-reduce to "components I touched". Create a checklist, track progress, report remaining count.
 20. Component names on npm/GitHub must be brand-neutral — NO competitor names (AliExpress, Ozon, Uzum, Taobao) in exported identifiers, file paths, or CSS classes
 
+## CSS & Theming Rules
+21. NEVER hardcode hex colors in background/color/border-color. Use `var(--gs-color-primary-bg)`, `var(--gs-bg-card)`, etc. Hardcoded `#FFF0F3` breaks in gray/blue/dark themes.
+22. Section backgrounds: use `var(--gs-{component}-bg, var(--gs-color-primary-bg))` — cascades to any theme palette automatically.
+23. Before adding padding to section components, verify content aligns horizontally with adjacent sections (header, grid, footer). Extra padding = misalignment.
+
 ## Design Rules
-21. Header is CONTAINED inside max-width container — NOT full-width/edge-to-edge. Has rounded corners like the reference design.
-22. When owner provides reference screenshots: match EVERY detail exactly. Compare pixel-by-pixel before committing.
-23. MegaMenu dropdown must stay within the content container width — not overflow to full viewport.
-24. Every design correction from owner MUST be recorded in owner-profile.jsonl AND critical-rules.md immediately.
+24. Header is CONTAINED inside max-width container — NOT full-width/edge-to-edge. Has rounded corners like the reference design.
+25. When owner provides reference screenshots: match EVERY detail exactly. Compare pixel-by-pixel before committing.
+26. MegaMenu dropdown must stay within the content container width — not overflow to full viewport.
+27. Every design correction from owner MUST be recorded in owner-profile.jsonl AND critical-rules.md immediately.
+28. Story files: 8+ stories per component covering all props, variants, edge cases, interactive state. Genuinely different data per story.
 
 ## Component Reuse Map
 - Search functionality → `DesktopSearchAutocomplete` (autocomplete, photo search, keyboard nav)

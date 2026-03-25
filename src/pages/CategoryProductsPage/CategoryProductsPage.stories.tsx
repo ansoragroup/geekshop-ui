@@ -15,6 +15,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof CategoryProductsPage>;
 
+/** Default: Elektronika category with products, tab filters, and filter chips */
 export const Default: Story = {
   args: {
     categoryName: 'Elektronika',
@@ -22,6 +23,7 @@ export const Default: Story = {
   },
 };
 
+/** Category with filter panel overlay open */
 export const WithFilter: Story = {
   args: {
     categoryName: 'Elektronika',
@@ -29,6 +31,7 @@ export const WithFilter: Story = {
   },
 };
 
+/** No results — empty category with no products found */
 export const NoResults: Story = {
   args: {
     categoryName: 'Elektr jihozlar',
@@ -36,9 +39,28 @@ export const NoResults: Story = {
   },
 };
 
+/** Loading state — infinite scroll spinner active */
 export const Loading: Story = {
   args: {
     categoryName: 'Elektronika',
     loading: true,
+  },
+};
+
+/** Videokartalar category — GPU products */
+export const GPUCategory: Story = {
+  name: 'GPU Category',
+  args: {
+    categoryName: 'Videokartalar',
+    showFilter: false,
+  },
+};
+
+/** Kompyuterlar category — computer products sorted by price (cheap first) */
+export const CheapFirst: Story = {
+  name: 'Cheap First',
+  args: {
+    categoryName: 'Kompyuterlar',
+    showFilter: false,
   },
 };

@@ -59,3 +59,91 @@ export const GPUDeal: Story = {
     label: 'GPU Aksiya',
   },
 };
+
+/** 3 days from now */
+const threeDaysFromNow = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000 + 14 * 60 * 60 * 1000);
+
+/** 30 seconds from now */
+const thirtySecondsFromNow = new Date(Date.now() + 30 * 1000);
+
+/** Already expired */
+const alreadyExpired = new Date(Date.now() - 60 * 1000);
+
+/** 7 days from now (long duration) */
+const sevenDaysFromNow = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000 + 23 * 60 * 60 * 1000 + 59 * 60 * 1000);
+
+export const MultiDaySale: Story = {
+  name: 'Multi-Day Sale (3+ days)',
+  args: {
+    endTime: threeDaysFromNow,
+    label: 'Mega aksiya',
+  },
+};
+
+export const LastSeconds: Story = {
+  name: 'Edge: Last 30 Seconds',
+  args: {
+    endTime: thirtySecondsFromNow,
+    label: 'Tugayapti!',
+  },
+};
+
+export const Expired: Story = {
+  name: 'Edge: Already Expired',
+  args: {
+    endTime: alreadyExpired,
+    label: 'Aksiya tugadi',
+  },
+};
+
+export const WeekLong: Story = {
+  name: 'Week-Long Campaign (168+ hours)',
+  args: {
+    endTime: sevenDaysFromNow,
+    label: 'Haftalik aksiya',
+  },
+};
+
+export const RussianLabel: Story = {
+  name: 'Locale: Russian Label',
+  args: {
+    endTime: eightHoursFromNow,
+    label: 'Распродажа электроники',
+  },
+};
+
+export const EnglishLabel: Story = {
+  name: 'Locale: English Label',
+  args: {
+    endTime: oneHourFromNow,
+    label: 'Limited Time Offer',
+  },
+};
+
+export const LongLabelText: Story = {
+  name: 'Edge: Very Long Label',
+  args: {
+    endTime: eightHoursFromNow,
+    label: 'Barcha noutbuklar va aksessuarlarga maxsus chegirma',
+  },
+};
+
+export const WithOnEndCallback: Story = {
+  name: 'Interactive: onEnd Callback',
+  args: {
+    endTime: thirtySecondsFromNow,
+    label: 'Callback test',
+    onEnd: () => {},
+  },
+  argTypes: {
+    onEnd: { action: 'countdown ended!' },
+  },
+};
+
+export const ISOStringEndTime: Story = {
+  name: 'ISO String endTime',
+  args: {
+    endTime: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
+    label: 'ISO format test',
+  },
+};

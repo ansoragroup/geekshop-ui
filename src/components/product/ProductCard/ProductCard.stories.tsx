@@ -122,7 +122,7 @@ export const FullFeatured: Story = {
 // ═══════════════════════════════════════════════════════════════════
 
 export const CompoundBasic: Story = {
-  name: 'Compound / Basic',
+  name: 'Compound — Basic',
   render: () => (
     <ProductCard>
       <ProductCard.Image src="https://picsum.photos/seed/phone1/400/400" alt="iPhone 15" />
@@ -135,7 +135,7 @@ export const CompoundBasic: Story = {
 };
 
 export const CompoundWithDiscount: Story = {
-  name: 'Compound / With Discount',
+  name: 'Compound — With Discount',
   render: () => (
     <ProductCard>
       <ProductCard.Image
@@ -152,7 +152,7 @@ export const CompoundWithDiscount: Story = {
 };
 
 export const CompoundWithBadges: Story = {
-  name: 'Compound / With Badges',
+  name: 'Compound — With Badges',
   render: () => (
     <ProductCard>
       <ProductCard.Image
@@ -171,7 +171,7 @@ export const CompoundWithBadges: Story = {
 };
 
 export const CompoundWithRating: Story = {
-  name: 'Compound / With Rating',
+  name: 'Compound — With Rating',
   render: () => (
     <ProductCard>
       <ProductCard.Image
@@ -189,7 +189,7 @@ export const CompoundWithRating: Story = {
 };
 
 export const CompoundWithInstallment: Story = {
-  name: 'Compound / With Installment',
+  name: 'Compound — With Installment',
   render: () => (
     <ProductCard>
       <ProductCard.Image
@@ -211,7 +211,7 @@ export const CompoundWithInstallment: Story = {
 };
 
 export const CompoundLineClamp: Story = {
-  name: 'Compound / Title Line Clamp',
+  name: 'Compound — Title Line Clamp',
   render: () => (
     <ProductCard>
       <ProductCard.Image src="https://picsum.photos/seed/mouse1/400/400" alt="Mouse" />
@@ -226,7 +226,7 @@ export const CompoundLineClamp: Story = {
 };
 
 export const CompoundFullFeatured: Story = {
-  name: 'Compound / Full Featured',
+  name: 'Compound — Full Featured',
   render: () => (
     <ProductCard onClick={() => console.log('clicked')}>
       <ProductCard.Image

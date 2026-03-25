@@ -33,7 +33,19 @@ export const Default: Story = {
   },
 };
 
+export const FullFeatured: Story = {
+  name: 'Full Featured (All Props)',
+  args: {
+    children: 'New Arrival',
+    color: 'primary',
+    variant: 'solid',
+    size: 'md',
+    closable: true,
+  },
+};
+
 export const SolidColors: Story = {
+  name: 'Variant: Solid (All Colors)',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
       <DesktopTag color="primary">Primary</DesktopTag>
@@ -46,6 +58,7 @@ export const SolidColors: Story = {
 };
 
 export const OutlineColors: Story = {
+  name: 'Variant: Outline (All Colors)',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
       <DesktopTag color="primary" variant="outline">Primary</DesktopTag>
@@ -57,7 +70,8 @@ export const OutlineColors: Story = {
   ),
 };
 
-export const Sizes: Story = {
+export const AllSizes: Story = {
+  name: 'All Sizes',
   render: () => (
     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
       <DesktopTag size="sm" color="primary">Small</DesktopTag>
@@ -67,26 +81,78 @@ export const Sizes: Story = {
   ),
 };
 
+export const AllSizesOutline: Story = {
+  name: 'All Sizes (Outline)',
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <DesktopTag size="sm" color="success" variant="outline">Small</DesktopTag>
+      <DesktopTag size="md" color="success" variant="outline">Medium</DesktopTag>
+      <DesktopTag size="lg" color="success" variant="outline">Large</DesktopTag>
+    </div>
+  ),
+};
+
 export const Closable: Story = {
+  name: 'Closable Tags',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
       <DesktopTag color="primary" closable>React</DesktopTag>
       <DesktopTag color="success" closable>TypeScript</DesktopTag>
       <DesktopTag color="warning" closable>SCSS</DesktopTag>
+      <DesktopTag color="error" closable>Vite</DesktopTag>
       <DesktopTag color="default" closable variant="outline">Storybook</DesktopTag>
     </div>
   ),
 };
 
+export const Clickable: Story = {
+  name: 'Clickable Tags',
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <DesktopTag color="default" variant="outline" onClick={() => console.log('GPU')}>GPU</DesktopTag>
+      <DesktopTag color="default" variant="outline" onClick={() => console.log('RAM')}>RAM</DesktopTag>
+      <DesktopTag color="default" variant="outline" onClick={() => console.log('SSD')}>SSD</DesktopTag>
+      <DesktopTag color="primary" onClick={() => console.log('Selected')}>Selected</DesktopTag>
+    </div>
+  ),
+};
+
 export const ProductTags: Story = {
+  name: 'E-commerce Product Tags',
   render: () => (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
       <DesktopTag color="error" variant="solid" size="sm">-25% OFF</DesktopTag>
       <DesktopTag color="success" variant="outline" size="sm">Free Shipping</DesktopTag>
       <DesktopTag color="primary" variant="solid" size="sm">New Arrival</DesktopTag>
-      <DesktopTag color="warning" variant="outline" size="sm">Limited</DesktopTag>
+      <DesktopTag color="warning" variant="outline" size="sm">Limited Edition</DesktopTag>
       <DesktopTag color="default" variant="outline" size="sm">GPU</DesktopTag>
       <DesktopTag color="default" variant="outline" size="sm">Gaming</DesktopTag>
+      <DesktopTag color="default" variant="outline" size="sm">RTX 4060</DesktopTag>
+    </div>
+  ),
+};
+
+export const OrderStatusTags: Story = {
+  name: 'Order Status Tags',
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <DesktopTag color="warning">Pending</DesktopTag>
+      <DesktopTag color="primary">Processing</DesktopTag>
+      <DesktopTag color="primary" variant="outline">Shipping</DesktopTag>
+      <DesktopTag color="success">Delivered</DesktopTag>
+      <DesktopTag color="error">Cancelled</DesktopTag>
+      <DesktopTag color="default">Returned</DesktopTag>
+    </div>
+  ),
+};
+
+export const LongText: Story = {
+  name: 'Long Text Content',
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <DesktopTag color="primary" size="sm">Extended Manufacturer Warranty</DesktopTag>
+      <DesktopTag color="success" size="md" closable>International Free Shipping Available</DesktopTag>
+      <DesktopTag color="default" variant="outline">Samsung Galaxy S24 Ultra 256GB Titanium Black</DesktopTag>
     </div>
   ),
 };

@@ -23,3 +23,26 @@ export const EmailSent: Story = {
     initialEmail: 'bekzod.tursunov@mail.uz',
   },
 };
+
+export const PrefilledEmail: Story = {
+  name: 'Pre-filled Email',
+  args: {
+    initialEmail: 'nodira.rustamova@geekshop.uz',
+  },
+};
+
+export const GmailUser: Story = {
+  name: 'Gmail User — Confirmation Sent',
+  args: {
+    initialSubmitted: true,
+    initialEmail: 'alisher.karimov@gmail.com',
+  },
+};
+
+export const CorporateEmail: Story = {
+  name: 'Corporate Email — Confirmation Sent',
+  args: {
+    initialSubmitted: true,
+    initialEmail: 'jasur.abdullayev@ansora.group',
+  },
+};

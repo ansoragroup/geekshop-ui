@@ -15,6 +15,7 @@ const meta = {
       options: ['sm', 'md', 'lg', 'xl'],
     },
     color: { control: 'color' },
+    showCurrency: { control: 'boolean' },
   },
   decorators: [
     (Story) => (
@@ -28,7 +29,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// --- Default ---
+// ─── Default ─────────────────────────────────────────────────────────────────
+
 export const Default: Story = {
   args: {
     price: 5_200_000,
@@ -37,7 +39,22 @@ export const Default: Story = {
   },
 };
 
-// --- Sale with original price ---
+// ─── Full Featured ───────────────────────────────────────────────────────────
+
+export const FullFeatured: Story = {
+  name: 'Full Featured (sale + xl + color)',
+  args: {
+    price: 8_900_000,
+    originalPrice: 12_000_000,
+    variant: 'sale',
+    size: 'xl',
+    showCurrency: true,
+    color: '#FF0000',
+  },
+};
+
+// ─── Variant: Sale ───────────────────────────────────────────────────────────
+
 export const Sale: Story = {
   args: {
     price: 4_890_000,
@@ -47,7 +64,8 @@ export const Sale: Story = {
   },
 };
 
-// --- Range ---
+// ─── Variant: Range ──────────────────────────────────────────────────────────
+
 export const Range: Story = {
   args: {
     price: 0,
@@ -58,36 +76,80 @@ export const Range: Story = {
   },
 };
 
-// --- Sizes ---
+// ─── Size: Small ─────────────────────────────────────────────────────────────
+
 export const Small: Story = {
   args: { price: 1_290_000, size: 'sm' },
 };
+
+// ─── Size: Medium ────────────────────────────────────────────────────────────
 
 export const Medium: Story = {
   args: { price: 2_450_000, size: 'md' },
 };
 
+// ─── Size: Large ─────────────────────────────────────────────────────────────
+
 export const Large: Story = {
   args: { price: 5_200_000, size: 'lg' },
 };
+
+// ─── Size: Extra Large ───────────────────────────────────────────────────────
 
 export const ExtraLarge: Story = {
   args: { price: 12_500_000, size: 'xl' },
 };
 
-// --- All sizes side by side ---
+// ─── All Sizes ───────────────────────────────────────────────────────────────
+
 export const AllSizes: Story = {
+  name: 'All Sizes Comparison',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <PriceDisplay price={5_200_000} size="sm" />
-      <PriceDisplay price={5_200_000} size="md" />
-      <PriceDisplay price={5_200_000} size="lg" />
-      <PriceDisplay price={5_200_000} size="xl" />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <span style={{ width: 40, fontSize: 12, color: '#999' }}>sm</span>
+        <PriceDisplay price={5_200_000} size="sm" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <span style={{ width: 40, fontSize: 12, color: '#999' }}>md</span>
+        <PriceDisplay price={5_200_000} size="md" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <span style={{ width: 40, fontSize: 12, color: '#999' }}>lg</span>
+        <PriceDisplay price={5_200_000} size="lg" />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <span style={{ width: 40, fontSize: 12, color: '#999' }}>xl</span>
+        <PriceDisplay price={5_200_000} size="xl" />
+      </div>
     </div>
   ),
 };
 
-// --- Without currency ---
+// ─── All Variants ────────────────────────────────────────────────────────────
+
+export const AllVariants: Story = {
+  name: 'All Variants Comparison',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div>
+        <span style={{ fontSize: 12, color: '#999', display: 'block', marginBottom: 4 }}>Default</span>
+        <PriceDisplay price={5_200_000} variant="default" size="lg" />
+      </div>
+      <div>
+        <span style={{ fontSize: 12, color: '#999', display: 'block', marginBottom: 4 }}>Sale</span>
+        <PriceDisplay price={4_890_000} originalPrice={5_200_000} variant="sale" size="lg" />
+      </div>
+      <div>
+        <span style={{ fontSize: 12, color: '#999', display: 'block', marginBottom: 4 }}>Range</span>
+        <PriceDisplay price={0} minPrice={3_500_000} maxPrice={7_800_000} variant="range" size="lg" />
+      </div>
+    </div>
+  ),
+};
+
+// ─── Without Currency ────────────────────────────────────────────────────────
+
 export const NoCurrency: Story = {
   args: {
     price: 3_750_000,
@@ -96,7 +158,8 @@ export const NoCurrency: Story = {
   },
 };
 
-// --- Custom colour ---
+// ─── Custom Color ────────────────────────────────────────────────────────────
+
 export const CustomColor: Story = {
   args: {
     price: 8_900_000,
@@ -105,13 +168,60 @@ export const CustomColor: Story = {
   },
 };
 
-// --- GPU price example ---
-export const GPUPrice: Story = {
-  name: 'RTX 4060 Price',
+// ─── Custom Currency Label ───────────────────────────────────────────────────
+
+export const CustomCurrency: Story = {
+  name: 'Custom Currency (USD)',
   args: {
-    price: 5_200_000,
-    originalPrice: 5_800_000,
+    price: 89.99,
+    originalPrice: 129.99,
     variant: 'sale',
+    size: 'lg',
+    currency: '$',
+  },
+};
+
+// ─── Large Sale Price ────────────────────────────────────────────────────────
+
+export const LargeSalePrice: Story = {
+  name: 'RTX 4090 Sale Price',
+  args: {
+    price: 28_500_000,
+    originalPrice: 32_000_000,
+    variant: 'sale',
+    size: 'xl',
+  },
+};
+
+// ─── Small Price ─────────────────────────────────────────────────────────────
+
+export const SmallPrice: Story = {
+  name: 'Edge: Very Small Price',
+  args: {
+    price: 5_000,
+    size: 'md',
+  },
+};
+
+// ─── Large Price ─────────────────────────────────────────────────────────────
+
+export const LargePrice: Story = {
+  name: 'Edge: Very Large Price',
+  args: {
+    price: 150_000_000,
+    size: 'lg',
+  },
+};
+
+// ─── Wide Range ──────────────────────────────────────────────────────────────
+
+export const WideRange: Story = {
+  name: 'Edge: Wide Price Range',
+  args: {
+    price: 0,
+    minPrice: 500_000,
+    maxPrice: 42_990_000,
+    variant: 'range',
     size: 'lg',
   },
 };

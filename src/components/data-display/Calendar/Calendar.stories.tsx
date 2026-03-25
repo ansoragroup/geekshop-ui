@@ -55,7 +55,7 @@ export const MultipleSelection: Story = {
 };
 
 export const WithMinMax: Story = {
-  name: 'Min/Max Constraints',
+  name: 'Min — Max Constraints',
   args: {
     min: new Date(2026, 2, 5),
     max: new Date(2026, 2, 25),

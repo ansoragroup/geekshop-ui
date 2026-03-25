@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 import { DesktopShopCard } from './DesktopShopCard';
@@ -20,10 +21,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Default: all actions (follow, enter, chat), response rate visible. */
 export const Default: Story = {
   args: {
     name: 'GeekTech Official Store',
-    logo: 'https://picsum.photos/seed/shop1/112/112',
+    logo: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=112&h=112&fit=crop',
     rating: 4.8,
     followersCount: 12500,
     productsCount: 342,
@@ -35,17 +37,27 @@ export const Default: Story = {
   },
 };
 
+/** Following state: follow button shows "Following" with check icon. */
 export const Following: Story = {
   args: {
-    ...Default.args,
+    name: 'Apple Premium Reseller Tashkent',
+    logo: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=112&h=112&fit=crop',
+    rating: 5.0,
+    followersCount: 45000,
+    productsCount: 89,
+    responseRate: 100,
     isFollowed: true,
+    onFollow: fn(),
+    onEnter: fn(),
+    onChat: fn(),
   },
 };
 
+/** No response rate column. */
 export const NoResponseRate: Story = {
   args: {
     name: 'Samsung Official',
-    logo: 'https://picsum.photos/seed/shop2/112/112',
+    logo: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=112&h=112&fit=crop',
     rating: 4.9,
     followersCount: 85000,
     productsCount: 1200,
@@ -56,10 +68,11 @@ export const NoResponseRate: Story = {
   },
 };
 
+/** Small shop: low counts and average rating. */
 export const SmallShop: Story = {
   args: {
     name: 'Micro Electronics',
-    logo: 'https://picsum.photos/seed/shop3/112/112',
+    logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=112&h=112&fit=crop',
     rating: 4.2,
     followersCount: 156,
     productsCount: 28,
@@ -70,16 +83,89 @@ export const SmallShop: Story = {
   },
 };
 
+/** Without chat button. */
 export const WithoutChat: Story = {
   args: {
-    name: 'Apple Premium Reseller Tashkent',
-    logo: 'https://picsum.photos/seed/shop4/112/112',
-    rating: 5.0,
-    followersCount: 45000,
-    productsCount: 89,
-    responseRate: 100,
+    name: 'Corsair Official Store',
+    logo: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=112&h=112&fit=crop',
+    rating: 4.7,
+    followersCount: 23400,
+    productsCount: 156,
+    responseRate: 92,
     isFollowed: true,
     onFollow: fn(),
     onEnter: fn(),
+  },
+};
+
+/** Without follow or chat (view-only). */
+export const ViewOnly: Story = {
+  args: {
+    name: 'Sony Store Uzbekistan',
+    logo: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=112&h=112&fit=crop',
+    rating: 4.6,
+    followersCount: 67800,
+    productsCount: 450,
+    responseRate: 88,
+    isFollowed: false,
+    onEnter: fn(),
+  },
+};
+
+/** Very large shop with huge follower/product counts. */
+export const LargeShop: Story = {
+  args: {
+    name: 'Alibaba Global Marketplace',
+    logo: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=112&h=112&fit=crop',
+    rating: 4.5,
+    followersCount: 2500000,
+    productsCount: 150000,
+    responseRate: 95,
+    isFollowed: false,
+    onFollow: fn(),
+    onEnter: fn(),
+    onChat: fn(),
+  },
+};
+
+/** Long shop name to test text wrapping. */
+export const LongName: Story = {
+  args: {
+    name: 'International Electronics & Computer Components Wholesale Distribution Center',
+    logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=112&h=112&fit=crop',
+    rating: 3.9,
+    followersCount: 450,
+    productsCount: 8900,
+    responseRate: 65,
+    isFollowed: false,
+    onFollow: fn(),
+    onEnter: fn(),
+    onChat: fn(),
+  },
+};
+
+/** Interactive: toggle follow state on click. */
+export const Interactive: Story = {
+  render: () => {
+    const [isFollowed, setIsFollowed] = useState(false);
+    const [followers, setFollowers] = useState(12500);
+
+    return (
+      <DesktopShopCard
+        name="GeekTech Official Store"
+        logo="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=112&h=112&fit=crop"
+        rating={4.8}
+        followersCount={followers}
+        productsCount={342}
+        responseRate={98}
+        isFollowed={isFollowed}
+        onFollow={() => {
+          setIsFollowed((prev) => !prev);
+          setFollowers((prev) => isFollowed ? prev - 1 : prev + 1);
+        }}
+        onEnter={() => alert('Navigating to shop page...')}
+        onChat={() => alert('Opening chat...')}
+      />
+    );
   },
 };
