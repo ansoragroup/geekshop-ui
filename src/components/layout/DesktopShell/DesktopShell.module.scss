@@ -20,17 +20,14 @@
 }
 
 .header {
+  position: relative;
+  z-index: $z-index-modal-backdrop;
   width: 100%;
-  min-height: $desktop-header-height;
-  background: var(--gs-bg-white);
-  border-bottom: 1px solid var(--gs-border-color);
-  box-shadow: var(--gs-shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .bodyWrapper {
+  position: relative;
+  z-index: $z-index-normal;
   flex: 1;
   width: 100%;
   display: flex;
@@ -66,10 +63,4 @@
 
 .footer {
   width: 100%;
-  min-height: $desktop-footer-min-height;
-  background: var(--gs-text-primary);
-  color: var(--gs-text-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

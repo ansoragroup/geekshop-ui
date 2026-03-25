@@ -47,10 +47,17 @@
 
   > div { width: auto; max-width: none; padding: 0; }
 
-  // Ensure MegaMenu dropdown has opaque background (not transparent from parent override)
-  [role='navigation'],
-  [aria-label] > div:last-child {
+  // MegaMenu dropdown: fixed position to render above page content
+  [role='menu'] {
+    position: fixed !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
     background: var(--gs-bg-card) !important;
+    z-index: $z-index-modal-backdrop !important;
+    box-shadow: var(--gs-shadow-lg) !important;
   }
 
   [aria-haspopup='true'] {
