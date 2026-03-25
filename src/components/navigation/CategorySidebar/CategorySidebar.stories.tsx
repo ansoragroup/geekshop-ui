@@ -174,64 +174,72 @@ function DefaultDemo() {
       style={{
         display: 'flex',
         width: 390,
-        height: 700,
+        height: 740,
         background: '#F5F5F5',
         fontFamily: '-apple-system, sans-serif',
       }}
     >
       <CategorySidebar activeKey={active} onChange={setActive} />
-      <div style={{ flex: 1, overflowY: 'auto', padding: '12px 10px' }}>
-        {/* Category title */}
-        <div style={{ fontSize: 15, fontWeight: 700, color: '#1A1A1A', marginBottom: 10 }}>
-          {labels[active]}
+      <div style={{ flex: 1, overflowY: 'auto', padding: '6px 6px 6px 4px' }}>
+        {/* Category header — compact like Taobao */}
+        <div
+          style={{
+            padding: '6px 4px 8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <span style={{ fontSize: 14, fontWeight: 700, color: '#1A1A1A' }}>{labels[active]}</span>
+          <span style={{ fontSize: 11, color: '#999' }}>{products.length} ta</span>
         </div>
 
-        {/* Product grid — 2 columns like Taobao */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+        {/* 3-column grid — Taobao density */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4 }}>
           {products.map((p) => (
             <div
               key={p.name}
               style={{
                 background: '#FFF',
-                borderRadius: 8,
+                borderRadius: 4,
                 overflow: 'hidden',
-                border: '1px solid #F0F0F0',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
               }}
             >
-              {/* Image */}
-              <div style={{ position: 'relative', aspectRatio: '1', background: '#FAFAFA' }}>
+              {/* Square image */}
+              <div style={{ position: 'relative', aspectRatio: '1', background: '#F8F8F8' }}>
                 <img
                   src={p.img}
                   alt={p.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 {p.badge && (
                   <span
                     style={{
                       position: 'absolute',
-                      top: 6,
-                      left: 6,
-                      fontSize: 9,
-                      fontWeight: 700,
-                      padding: '2px 6px',
-                      borderRadius: 4,
+                      bottom: 0,
+                      left: 0,
+                      fontSize: 10,
+                      fontWeight: 600,
+                      padding: '1px 5px',
                       color: '#FFF',
-                      background:
-                        p.badge === 'TOP' ? '#FF5000' : p.badge === 'SALE' ? '#FF3B30' : '#FF5000',
+                      lineHeight: '16px',
+                      background: p.badge.startsWith('-') ? '#FF3B30' : '#FF5000',
+                      borderTopRightRadius: 4,
                     }}
                   >
                     {p.badge}
                   </span>
                 )}
               </div>
-              {/* Info */}
-              <div style={{ padding: '8px 8px 10px' }}>
+              {/* Compact info */}
+              <div style={{ padding: '4px 5px 6px' }}>
                 <div
                   style={{
-                    fontSize: 12,
+                    fontSize: 11,
                     color: '#333',
-                    lineHeight: 1.4,
-                    height: 34,
+                    lineHeight: 1.3,
+                    height: 28,
                     overflow: 'hidden',
                     display: '-webkit-box',
                     WebkitLineClamp: 2,
@@ -240,22 +248,10 @@ function DefaultDemo() {
                 >
                   {p.name}
                 </div>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    justifyContent: 'space-between',
-                    marginTop: 6,
-                  }}
-                >
-                  <span style={{ fontSize: 14, fontWeight: 700, color: '#FF0000' }}>
-                    {p.price}{' '}
-                    <span style={{ fontSize: 10, fontWeight: 400, color: '#999' }}>so'm</span>
-                  </span>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#FF4400', marginTop: 2 }}>
+                  ¥<span style={{ fontSize: 15 }}>{p.price}</span>
                 </div>
-                {p.sold && (
-                  <div style={{ fontSize: 10, color: '#999', marginTop: 3 }}>{p.sold}</div>
-                )}
+                {p.sold && <div style={{ fontSize: 9, color: '#BBB', marginTop: 1 }}>{p.sold}</div>}
               </div>
             </div>
           ))}
