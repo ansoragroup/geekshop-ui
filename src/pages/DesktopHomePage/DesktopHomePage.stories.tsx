@@ -58,6 +58,7 @@ export const Default: Story = {
       { label: 'Top Products' },
     ],
     searchButtonColor: '#B8E639',
+    onPhotoSearch: (source: { type: string }) => { alert(`Photo search: ${source.type}`); },
     recentSearches: ['bluetooth headphones', 'phone case', 'running shoes'],
     trendingSearches: [
       { text: 'wireless earbuds', count: 12500 },
