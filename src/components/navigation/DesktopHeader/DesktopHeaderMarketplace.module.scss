@@ -1,22 +1,13 @@
 @use '../../../theme/tokens' as *;
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: $z-index-sticky;
   width: 100%;
   font-family: $font-family;
 }
 
 .mainRow {
   background: var(--gs-color-primary);
-  display: flex;
-  justify-content: center;
-}
-
-.mainContent {
-  width: 100%;
-  max-width: $desktop-content-max-width;
+  border-radius: $radius-lg $radius-lg 0 0;
   padding: 0 $desktop-content-padding;
   display: flex;
   align-items: center;
@@ -47,17 +38,12 @@
 
   > div { width: auto; max-width: none; padding: 0; }
 
-  // MegaMenu dropdown: fixed position to render above page content
+  // MegaMenu dropdown: absolute, contained within header width
   [role='menu'] {
-    position: fixed !important;
-    top: auto !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    max-width: none !important;
     background: var(--gs-bg-card) !important;
     z-index: $z-index-modal-backdrop !important;
     box-shadow: var(--gs-shadow-lg) !important;
+    border-radius: 0 0 $radius-lg $radius-lg;
   }
 
   [aria-haspopup='true'] {
@@ -178,13 +164,7 @@
 .promoRow {
   background: var(--gs-bg-white);
   border-bottom: 1px solid var(--gs-border-color);
-  display: flex;
-  justify-content: center;
-}
-
-.promoContent {
-  width: 100%;
-  max-width: $desktop-content-max-width;
+  border-radius: 0 0 $radius-lg $radius-lg;
   padding: 0 $desktop-content-padding;
   display: flex;
   align-items: center;

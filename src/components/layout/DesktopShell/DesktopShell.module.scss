@@ -21,8 +21,12 @@
 
 .header {
   position: relative;
-  z-index: $z-index-modal-backdrop;
+  z-index: $z-index-sticky;
   width: 100%;
+  max-width: $desktop-content-max-width;
+  margin: 0 auto;
+  padding: 0 $desktop-content-padding;
+  box-sizing: border-box;
 }
 
 .bodyWrapper {

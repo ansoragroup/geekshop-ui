@@ -31,6 +31,12 @@ that agents most commonly violate. ~30 lines, survives any context window.
 19. When owner says "all components" or "every component" or "все" or "абсолютно все" = audit/fix EVERY SINGLE ONE. Do not scope-reduce to "components I touched". Create a checklist, track progress, report remaining count.
 20. Component names on npm/GitHub must be brand-neutral — NO competitor names (AliExpress, Ozon, Uzum, Taobao) in exported identifiers, file paths, or CSS classes
 
+## Design Rules
+21. Header is CONTAINED inside max-width container — NOT full-width/edge-to-edge. Has rounded corners like the reference design.
+22. When owner provides reference screenshots: match EVERY detail exactly. Compare pixel-by-pixel before committing.
+23. MegaMenu dropdown must stay within the content container width — not overflow to full viewport.
+24. Every design correction from owner MUST be recorded in owner-profile.jsonl AND critical-rules.md immediately.
+
 ## Component Reuse Map
 - Search functionality → `DesktopSearchAutocomplete` (autocomplete, photo search, keyboard nav)
 - Category menu/catalog → `MegaMenu` (hover dropdown, keyboard nav, subcategories)

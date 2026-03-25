@@ -167,7 +167,6 @@ export const DesktopHeaderMarketplace = forwardRef<HTMLElement, DesktopHeaderMar
     return (
       <header ref={ref} className={cn(styles.header, className)} {...rest}>
         <div className={styles.mainRow}>
-          <div className={styles.mainContent}>
             {logo && (
               <div
                 className={styles.logo}
@@ -232,11 +231,9 @@ export const DesktopHeaderMarketplace = forwardRef<HTMLElement, DesktopHeaderMar
               </nav>
             )}
           </div>
-        </div>
 
         {hasPromoRow && (
           <div className={styles.promoRow}>
-            <div className={styles.promoContent}>
               <div className={styles.promoLeft}>
                 {promoTags.map((tag, idx) => (
                   <button key={idx} type="button" className={styles.promoTag}
@@ -258,7 +255,6 @@ export const DesktopHeaderMarketplace = forwardRef<HTMLElement, DesktopHeaderMar
                 <span className={styles.metaItem}>{language}</span>
                 <span className={styles.metaItem}>{currency}</span>
               </div>
-            </div>
           </div>
         )}
       </header>
