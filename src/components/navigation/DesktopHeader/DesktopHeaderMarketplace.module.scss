@@ -8,16 +8,16 @@
 }
 
 // ─── Main Row ───────────────────────────────────────────────────────────────
-// Red bar — compact, search-focused. ~48px height.
+// Single red bar. Logo + Catalog left, Search center (dominant), Actions far right.
+// Key: search is THE focus. Everything else is secondary.
 
 .mainRow {
   background: var(--gs-color-primary);
   border-radius: $radius-lg $radius-lg 0 0;
-  padding: 0 $desktop-spacing-lg;
+  padding: 0 $desktop-spacing-xl;
   display: flex;
   align-items: center;
-  gap: $spacing-lg;
-  height: 48px;
+  height: 52px;
   box-sizing: border-box;
 }
 
@@ -29,6 +29,7 @@
   display: flex;
   align-items: center;
   user-select: none;
+  margin-right: $spacing-lg;
 
   &:focus-visible {
     outline: 2px solid var(--gs-text-white);
@@ -37,25 +38,29 @@
   }
 }
 
-// ─── Catalog Trigger (inside MegaMenu) ──────────────────────────────────────
-// Compact pill on red bg, subtle differentiation
+// ─── Catalog Trigger ────────────────────────────────────────────────────────
+// Small, secondary. Should NOT compete with search.
 
 .catalogMenu {
   flex-shrink: 0;
+  margin-right: $spacing-lg;
 
   > button {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: $radius-sm;
-    color: var(--gs-text-white);
-    height: 36px;
+    color: rgba(255, 255, 255, 0.9);
+    height: 34px;
     padding: 0 $spacing-md;
     font-size: $font-size-sm;
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-medium;
     gap: $spacing-xs;
 
     @media (hover: hover) {
-      &:hover { background: rgba(255, 255, 255, 0.2); }
+      &:hover {
+        background: rgba(255, 255, 255, 0.18);
+        color: var(--gs-text-white);
+      }
     }
   }
 }
@@ -64,74 +69,93 @@
   display: inline-flex;
   align-items: center;
   gap: $spacing-xs;
-  height: 36px;
+  height: 34px;
   padding: 0 $spacing-md;
   border: none;
   border-radius: $radius-sm;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--gs-text-white);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
   font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-medium;
   font-family: $font-family;
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-right: $spacing-lg;
   transition: background $transition-fast;
 
   @media (hover: hover) {
-    &:hover { background: rgba(255, 255, 255, 0.2); }
+    &:hover { background: rgba(255, 255, 255, 0.18); }
   }
 }
 
 // ─── Search Area ────────────────────────────────────────────────────────────
-// Dominant — takes ~60% of header width. White input, rounded.
+// THE dominant element. Takes all available space.
+// Seamless: input + camera + button = one unified control.
 
 .searchArea {
   flex: 1;
   min-width: 0;
 
+  // Unified form wrapper — one continuous shape
   form {
     background: var(--gs-bg-white);
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border: none !important;
     border-radius: $radius-round;
-    height: 38px;
-
-    &:focus-within {
-      border-color: rgba(255, 255, 255, 0.6) !important;
-    }
+    height: 36px;
+    box-shadow: none !important;
+    overflow: hidden;
   }
 
-  // Search submit — lime-green accent, pill shape, contained
-  button[type='submit'] {
-    background: var(--gs-header-marketplace-search-btn-bg, #B8E639) !important;
-    color: var(--gs-header-marketplace-search-btn-color, #1A1A1A) !important;
-    font-weight: $font-weight-bold;
+  // Input — no visible borders/separators
+  input {
     font-size: $font-size-sm;
-    padding: 0 $spacing-lg;
+  }
+
+  // Search icon (left) — subtle
+  > div > form > span:first-child {
+    opacity: 0.5;
+  }
+
+  // Camera button — subtle, seamless
+  button[aria-label*="photo"],
+  button[aria-label*="camera"],
+  button[aria-label*="image"] {
+    opacity: 0.4;
+    border: none !important;
+    background: none !important;
+
+    &:hover { opacity: 0.7; }
+  }
+
+  // Search submit — muted green, seamless right end
+  button[type='submit'] {
+    background: var(--gs-header-marketplace-search-btn-bg, #A8D85B) !important;
+    color: var(--gs-header-marketplace-search-btn-color, #2D5016) !important;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    padding: 0 $desktop-spacing-md;
     border-radius: 0 $radius-round $radius-round 0;
     height: 100%;
+    border: none;
+    letter-spacing: 0.2px;
 
     @media (hover: hover) {
       &:hover { filter: brightness(0.95); }
     }
   }
-
-  // Camera icon — more subtle
-  button[aria-label] {
-    opacity: 0.6;
-
-    &:hover { opacity: 1; }
-  }
 }
 
 // ─── Action Buttons ─────────────────────────────────────────────────────────
-// Compact, secondary — should NOT compete with search.
+// Far right, very subtle. Icons only with tiny labels.
+// Must NOT compete with search AT ALL.
 
 .actions {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: 0;
   flex-shrink: 0;
+  margin-left: $desktop-spacing-lg;
 }
 
 .actionBtn {
@@ -141,38 +165,37 @@
   align-items: center;
   justify-content: center;
   gap: 1px;
-  min-width: 44px;
-  min-height: 44px;
-  padding: $spacing-xxs;
+  width: 52px;
+  height: 44px;
+  padding: 0;
   border: none;
-  border-radius: $radius-sm;
+  border-radius: $radius-xs;
   background: none;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.65);
   cursor: pointer;
   transition: color $transition-fast;
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   @media (hover: hover) {
-    &:hover { color: var(--gs-text-white); }
+    &:hover { color: rgba(255, 255, 255, 0.95); }
   }
 }
 
 .actionLabel {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: $font-weight-regular;
   line-height: 1;
   white-space: nowrap;
-  opacity: 0.9;
 }
 
 .cartBadge {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 4px;
+  right: 6px;
   min-width: 14px;
   height: 14px;
   padding: 0 3px;
@@ -187,17 +210,17 @@
 }
 
 // ─── Promo Row ──────────────────────────────────────────────────────────────
-// White bar below header. Compact, ~32px.
+// Clean, light. Consistent tab-like system.
 
 .promoRow {
   background: var(--gs-bg-white);
   border-bottom: 1px solid var(--gs-border-color-light);
   border-radius: 0 0 $radius-lg $radius-lg;
-  padding: 0 $desktop-spacing-lg;
+  padding: 0 $desktop-spacing-xl;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 32px;
+  height: 34px;
   box-sizing: border-box;
   gap: $spacing-lg;
 }
@@ -205,17 +228,17 @@
 .promoLeft {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
+  gap: $spacing-sm;
   overflow: hidden;
 }
 
 .promoTag {
   display: inline-flex;
   align-items: center;
-  padding: 2px $spacing-sm;
+  padding: 3px $spacing-sm;
   border: none;
   border-radius: $radius-xs;
-  font-size: $font-size-xs;
+  font-size: 11px;
   font-weight: $font-weight-bold;
   font-family: $font-family;
   cursor: pointer;
@@ -230,7 +253,7 @@
 }
 
 .quickLink {
-  font-size: $font-size-xs;
+  font-size: 11px;
   color: var(--gs-text-secondary);
   white-space: nowrap;
   text-decoration: none;
@@ -257,7 +280,7 @@
   border-radius: $radius-xs;
   background: none;
   color: var(--gs-text-tertiary);
-  font-size: $font-size-xs;
+  font-size: 11px;
   font-family: $font-family;
   cursor: pointer;
   white-space: nowrap;
@@ -269,7 +292,7 @@
 }
 
 .metaItem {
-  font-size: $font-size-xs;
+  font-size: 11px;
   color: var(--gs-text-tertiary);
   font-weight: $font-weight-medium;
   padding: 2px $spacing-sm;
