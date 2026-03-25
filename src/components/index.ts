@@ -3,6 +3,7 @@ export { TabBar } from './navigation/TabBar';
 export { NavBar } from './navigation/NavBar';
 export { SearchBar } from './navigation/SearchBar';
 export { CategorySidebar } from './navigation/CategorySidebar';
+export { CategorySidebarLegacy } from './navigation/CategorySidebarLegacy';
 export { SearchSuggestions } from './navigation/SearchSuggestions';
 export { PopularSearches } from './navigation/PopularSearches';
 export { FilterBar } from './navigation/FilterBar';
@@ -251,6 +252,10 @@ export type { TabBarProps, TabBarItem } from './navigation/TabBar';
 export type { NavBarProps, NavBarAction } from './navigation/NavBar';
 export type { SearchBarProps } from './navigation/SearchBar';
 export type { CategorySidebarProps, CategoryItem } from './navigation/CategorySidebar';
+export type {
+  CategorySidebarLegacyProps,
+  CategoryItemLegacy,
+} from './navigation/CategorySidebarLegacy';
 export type { SearchSuggestionsProps, SearchSuggestion } from './navigation/SearchSuggestions';
 export type { PopularSearchesProps, PopularSearch } from './navigation/PopularSearches';
 export type { FilterBarProps, FilterBarItem } from './navigation/FilterBar';
