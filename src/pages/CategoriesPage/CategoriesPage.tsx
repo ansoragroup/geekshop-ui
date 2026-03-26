@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-  NavBar,
-  SearchBar,
-  CategorySidebar,
-  TabBar,
-  useGeekShop,
-} from '../../components';
+import { NavBar, SearchBar, CategorySidebar, TabBar, useGeekShop } from '../../components';
 import type { ProductCardFlatProps } from '../../components/product/ProductCard/ProductCard';
 import { ProductCard } from '../../components';
 import styles from './CategoriesPage.module.scss';
@@ -26,7 +20,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'NVIDIA',
       color: '#76B900',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#76B900" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#76B900"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M2 12l5-5v3h8V7l5 5-5 5v-3H7v3z" />
         </svg>
       ),
@@ -36,7 +39,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'AMD Radeon',
       color: '#ED1C24',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ED1C24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#ED1C24"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <polygon points="12 2 22 20 2 20" />
         </svg>
       ),
@@ -46,7 +58,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Intel Arc',
       color: '#0071C5',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0071C5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#0071C5"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="4" y="4" width="16" height="16" rx="3" />
           <path d="M9 12h6M12 9v6" />
         </svg>
@@ -57,7 +78,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Workstation',
       color: '#8B5CF6',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#8B5CF6"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <circle cx="12" cy="12" r="4" />
         </svg>
@@ -70,7 +100,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'AMD Ryzen',
       color: '#ED1C24',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ED1C24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#ED1C24"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <polygon points="12 2 22 20 2 20" />
         </svg>
       ),
@@ -80,7 +119,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Intel Core',
       color: '#0071C5',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0071C5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#0071C5"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="4" y="4" width="16" height="16" rx="3" />
           <path d="M9 12h6M12 9v6" />
         </svg>
@@ -91,7 +139,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Server CPU',
       color: '#059669',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#059669"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="2" y="3" width="20" height="6" rx="1" />
           <rect x="2" y="15" width="20" height="6" rx="1" />
           <path d="M6 9v6M12 9v6M18 9v6" />
@@ -105,7 +162,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Gaming',
       color: '#EF4444',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#EF4444"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="2" y="3" width="20" height="14" rx="2" />
           <path d="M8 21h8M12 17v4" />
         </svg>
@@ -116,7 +182,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Ofis',
       color: '#3B82F6',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#3B82F6"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="2" y="3" width="20" height="14" rx="2" />
           <path d="M8 21h8M12 17v4" />
         </svg>
@@ -127,7 +202,16 @@ const categorySubcategories: Record<string, SubcategoryItem[]> = {
       label: 'Ultrawide',
       color: '#8B5CF6',
       icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#8B5CF6"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="1" y="5" width="22" height="12" rx="2" />
           <path d="M8 21h8M12 17v4" />
         </svg>
@@ -151,7 +235,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #059669 0%, #34D399 100%)',
     productCount: 4,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="2" y="6" width="20" height="12" rx="2" />
         <circle cx="12" cy="12" r="3" />
         <path d="M6 6V4M10 6V4M14 6V4M18 6V4" />
@@ -163,7 +256,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #2563EB 0%, #60A5FA 100%)',
     productCount: 4,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="4" y="4" width="16" height="16" rx="2" />
         <rect x="9" y="9" width="6" height="6" rx="1" />
         <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3" />
@@ -175,7 +277,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)',
     productCount: 3,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="2" y="3" width="20" height="14" rx="2" />
         <path d="M8 21h8M12 17v4" />
       </svg>
@@ -186,7 +297,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #DC2626 0%, #F87171 100%)',
     productCount: 5,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v8H4V6z" />
         <path d="M2 18h20" />
       </svg>
@@ -197,7 +317,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #D97706 0%, #FBBF24 100%)',
     productCount: 6,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="2" y="8" width="20" height="8" rx="1" />
         <path d="M6 8V6M10 8V6M14 8V6M18 8V6" />
         <path d="M6 16v2M10 16v2M14 16v2M18 16v2" />
@@ -209,7 +338,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #0891B2 0%, #67E8F9 100%)',
     productCount: 8,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="3" y="6" width="18" height="12" rx="2" />
         <path d="M7 10h4M7 14h2" />
       </svg>
@@ -220,7 +358,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #4338CA 0%, #818CF8 100%)',
     productCount: 3,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <rect x="3" y="3" width="18" height="18" rx="2" />
         <rect x="7" y="7" width="4" height="4" rx="0.5" />
         <rect x="14" y="7" width="3" height="3" rx="0.5" />
@@ -233,7 +380,16 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
     gradient: 'linear-gradient(135deg, #BE185D 0%, #F472B6 100%)',
     productCount: 12,
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M6 17a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2" />
         <path d="M8 21h8" />
         <rect x="9" y="17" width="6" height="4" rx="1" />
@@ -247,39 +403,39 @@ const categoryBannerConfig: Record<string, CategoryBannerConfig> = {
 const categoryProducts: Record<string, ProductCardFlatProps[]> = {
   gpu: [
     {
-      image: 'https://picsum.photos/seed/cat-rtx4090/300/400',
+      image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=400&fit=crop',
       title: 'RTX 4090 Founders Edition 24GB',
       price: 19800000,
       soldCount: '120+ sotilgan',
       badge: 'hot' as const,
     },
     {
-      image: 'https://picsum.photos/seed/cat-rtx4080/300/340',
+      image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=340&fit=crop',
       title: 'RTX 4080 Super ASUS TUF 16GB',
       price: 13500000,
       originalPrice: 15000000,
       discount: '-10%',
     },
     {
-      image: 'https://picsum.photos/seed/cat-rtx4070ti/300/360',
+      image: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=300&h=360&fit=crop',
       title: 'RTX 4070 Ti MSI Gaming X 12GB',
       price: 9200000,
       badge: 'top' as const,
       soldCount: '340+ sotilgan',
     },
     {
-      image: 'https://picsum.photos/seed/cat-rx7900xtx/300/320',
+      image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=320&fit=crop',
       title: 'RX 7900 XTX Sapphire Nitro+ 24GB',
       price: 12800000,
     },
     {
-      image: 'https://picsum.photos/seed/cat-rtx4060/300/380',
+      image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=380&fit=crop',
       title: 'RTX 4060 Ti MSI Ventus 2X 8GB',
       price: 5200000,
       badge: 'new' as const,
     },
     {
-      image: 'https://picsum.photos/seed/cat-rx7800xt/300/350',
+      image: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=300&h=350&fit=crop',
       title: 'RX 7800 XT PowerColor Red Devil 16GB',
       price: 7400000,
       soldCount: '90+ sotilgan',
@@ -287,25 +443,25 @@ const categoryProducts: Record<string, ProductCardFlatProps[]> = {
   ],
   cpu: [
     {
-      image: 'https://picsum.photos/seed/cat-r9-7950x/300/360',
+      image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=360&fit=crop',
       title: 'AMD Ryzen 9 7950X 16 yadro',
       price: 7490000,
       badge: 'hot' as const,
     },
     {
-      image: 'https://picsum.photos/seed/cat-i9-14900k/300/340',
+      image: 'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=300&h=340&fit=crop',
       title: 'Intel Core i9-14900K',
       price: 8200000,
     },
     {
-      image: 'https://picsum.photos/seed/cat-r7-7800x3d/300/380',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=380&fit=crop',
       title: 'AMD Ryzen 7 7800X3D',
       price: 4100000,
       badge: 'top' as const,
       soldCount: '250+ sotilgan',
     },
     {
-      image: 'https://picsum.photos/seed/cat-i7-14700k/300/320',
+      image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=320&fit=crop',
       title: 'Intel Core i7-14700K',
       price: 5800000,
       originalPrice: 6200000,
@@ -318,9 +474,7 @@ export interface CategoriesPageProps {
   showSearch?: boolean;
 }
 
-export const CategoriesPage: React.FC<CategoriesPageProps> = ({
-  showSearch = false,
-}) => {
+export const CategoriesPage: React.FC<CategoriesPageProps> = ({ showSearch = false }) => {
   const { t } = useGeekShop();
   const [activeCategory, setActiveCategory] = useState('gpu');
   const [searchValue, setSearchValue] = useState('');
@@ -330,9 +484,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
   const subcategories = categorySubcategories[activeCategory] ?? [];
 
   const filteredProducts = searchValue
-    ? products.filter((p) =>
-        p.title.toLowerCase().includes(searchValue.toLowerCase()),
-      )
+    ? products.filter((p) => p.title.toLowerCase().includes(searchValue.toLowerCase()))
     : products;
 
   // Split products into two rows for display
@@ -343,29 +495,24 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
     <div className={styles.page}>
       <NavBar title={t('page.categories')} showBack={false} />
 
-      {showSearch && (
-        <div className={styles.searchWrap}>
-          <SearchBar
-            value={searchValue}
-            onChange={setSearchValue}
-            placeholder={t('category.searchPlaceholder')}
-            variant="filled"
-          />
-        </div>
-      )}
-
       <div className={styles.body}>
-        <CategorySidebar
-          activeKey={activeCategory}
-          onChange={setActiveCategory}
-        />
+        <CategorySidebar activeKey={activeCategory} onChange={setActiveCategory} />
 
         <main className={styles.content}>
+          {/* Search inside content area */}
+          {showSearch && (
+            <div className={styles.searchWrap}>
+              <SearchBar
+                value={searchValue}
+                onChange={setSearchValue}
+                placeholder={t('category.searchPlaceholder')}
+                variant="filled"
+              />
+            </div>
+          )}
+
           {/* Category Banner */}
-          <div
-            className={styles.banner}
-            style={{ background: banner.gradient }}
-          >
+          <div className={styles.banner} style={{ background: banner.gradient }}>
             <div className={styles.bannerText}>
               <h2 className={styles.bannerTitle}>{t(banner.title)}</h2>
               <span className={styles.bannerCount}>
@@ -381,11 +528,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
               <h3 className={styles.sectionTitle}>{t('category.subcategories')}</h3>
               <div className={styles.subcategoriesRow}>
                 {subcategories.map((sub) => (
-                  <button
-                    key={sub.key}
-                    type="button"
-                    className={styles.subcategoryItem}
-                  >
+                  <button key={sub.key} type="button" className={styles.subcategoryItem}>
                     <div
                       className={styles.subcategoryIcon}
                       style={{ background: `${sub.color}15` }}
@@ -406,11 +549,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
               <div className={styles.horizontalScroll}>
                 {popularProducts.map((product, i) => (
                   <div key={i} className={styles.scrollCard}>
-                    <ProductCard
-                      {...product}
-                      imageAspectRatio="1/1"
-                      className={styles.miniCard}
-                    />
+                    <ProductCard {...product} imageAspectRatio="1/1" className={styles.miniCard} />
                   </div>
                 ))}
               </div>
@@ -423,11 +562,7 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
               <div className={styles.horizontalScroll}>
                 {moreProducts.map((product, i) => (
                   <div key={i} className={styles.scrollCard}>
-                    <ProductCard
-                      {...product}
-                      imageAspectRatio="1/1"
-                      className={styles.miniCard}
-                    />
+                    <ProductCard {...product} imageAspectRatio="1/1" className={styles.miniCard} />
                   </div>
                 ))}
               </div>
@@ -437,7 +572,16 @@ export const CategoriesPage: React.FC<CategoriesPageProps> = ({
           {/* View All Button */}
           <button type="button" className={styles.viewAllBtn}>
             {t('common.viewAll')}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>

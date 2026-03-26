@@ -95,7 +95,9 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
       styles[variant],
       compact ? styles.compact : '',
       className ?? '',
-    ];
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return (
       <div
