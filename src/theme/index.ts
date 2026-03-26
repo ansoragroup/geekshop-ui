@@ -21,7 +21,7 @@ export const tokens = {
     textPlaceholder: '#CCCCCC',
     textWhite: '#FFFFFF',
     textLink: '#FF5000',
-    bgPage: '#F5F5F5',
+    bgPage: '#FFFFFF',
     bgWhite: '#FFFFFF',
     bgCard: '#FFFFFF',
     bgOverlay: 'rgba(0, 0, 0, 0.5)',
@@ -53,7 +53,8 @@ export const tokens = {
     xxl: '24px',
     round: '9999px',
   },
-  fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+  fontFamily:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
   fontSize: {
     xs: '10px',
     sm: '12px',
@@ -186,7 +187,7 @@ export function setThemePreset(preset: ThemePreset): void {
 
   // For default preset, remove all inline overrides to revert to CSS-defined defaults
   if (preset === 'default') {
-    ALL_PRESET_PROPS.forEach(p => root.style.removeProperty(p));
+    ALL_PRESET_PROPS.forEach((p) => root.style.removeProperty(p));
     delete root.dataset.gsPreset;
     return;
   }
