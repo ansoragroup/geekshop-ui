@@ -50,7 +50,7 @@ const sortOptions: DesktopSelectOption[] = [
 ];
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopSelect',
+  title: 'Form (Desktop)/DesktopSelect',
   component: DesktopSelect,
   tags: ['autodocs'],
   parameters: {

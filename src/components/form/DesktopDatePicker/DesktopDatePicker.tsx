@@ -1,11 +1,21 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
-import { forwardRef, useState, useCallback, useId, useRef, useImperativeHandle, useMemo, useEffect } from 'react';
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useId,
+  useRef,
+  useImperativeHandle,
+  useMemo,
+  useEffect,
+} from 'react';
 import type { HTMLAttributes } from 'react';
 import styles from './DesktopDatePicker.module.scss';
 
-export interface DesktopDatePickerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+export interface DesktopDatePickerProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   /** Selected date value as string (e.g., '2025-03-15') */
   value?: string;
   /** Change handler — receives formatted date string */
@@ -26,8 +36,19 @@ export interface DesktopDatePickerProps extends Omit<HTMLAttributes<HTMLDivEleme
   error?: string;
 }
 
-const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December',
+const MONTH_NAMES = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 const DAY_NAMES = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
@@ -42,13 +63,25 @@ const CalendarIcon = () => (
 
 const ChevronLeft = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M10 12l-4-4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M10 12l-4-4 4-4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRight = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M6 4l4 4-4 4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -59,19 +92,18 @@ function parseDate(d: string | undefined): Date | undefined {
 }
 
 function isSameDay(a: Date, b: Date): boolean {
-  return a.getFullYear() === b.getFullYear() &&
+  return (
+    a.getFullYear() === b.getFullYear() &&
     a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
+    a.getDate() === b.getDate()
+  );
 }
 
 function formatDateDisplay(date: Date, format: string): string {
   const dd = String(date.getDate()).padStart(2, '0');
   const mm = String(date.getMonth() + 1).padStart(2, '0');
   const yyyy = String(date.getFullYear());
-  return format
-    .replace('dd', dd)
-    .replace('MM', mm)
-    .replace('yyyy', yyyy);
+  return format.replace('dd', dd).replace('MM', mm).replace('yyyy', yyyy);
 }
 
 function formatDateISO(date: Date): string {
@@ -107,9 +139,9 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const internalRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => internalRef.current!, []);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -123,22 +155,17 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
     const parsedMax = parseDate(maxDate);
     const today = useMemo(() => new Date(), []);
 
-    const [viewYear, setViewYear] = useState(() =>
-      selectedDate?.getFullYear() ?? today.getFullYear(),
+    const [viewYear, setViewYear] = useState(
+      () => selectedDate?.getFullYear() ?? today.getFullYear()
     );
-    const [viewMonth, setViewMonth] = useState(() =>
-      selectedDate?.getMonth() ?? today.getMonth(),
-    );
+    const [viewMonth, setViewMonth] = useState(() => selectedDate?.getMonth() ?? today.getMonth());
 
     // Close on outside click
     useEffect(() => {
       if (!isOpen) return;
 
       const handleClickOutside = (e: MouseEvent) => {
-        if (
-          internalRef.current &&
-          !internalRef.current.contains(e.target as Node)
-        ) {
+        if (internalRef.current && !internalRef.current.contains(e.target as Node)) {
           setIsOpen(false);
         }
       };
@@ -176,7 +203,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
         onChange?.(formatDateISO(newDate));
         setIsOpen(false);
       },
-      [viewYear, viewMonth, onChange],
+      [viewYear, viewMonth, onChange]
     );
 
     const handlePrevMonth = () => {
@@ -199,7 +226,11 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
 
     const isDateDisabled = (date: Date): boolean => {
       if (parsedMin) {
-        const minStart = new Date(parsedMin.getFullYear(), parsedMin.getMonth(), parsedMin.getDate());
+        const minStart = new Date(
+          parsedMin.getFullYear(),
+          parsedMin.getMonth(),
+          parsedMin.getDate()
+        );
         if (date < minStart) return true;
       }
       if (parsedMax) {
@@ -228,7 +259,8 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
       error && styles.hasError,
       disabled && styles.disabled,
       isOpen && styles.open,
-      className);
+      className
+    );
 
     return (
       <div ref={internalRef} className={rootClass} {...rest}>
@@ -266,7 +298,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
             ref={dropdownRef}
             className={styles.dropdown}
             role="dialog"
-            aria-modal="false"
+            aria-modal="true"
             aria-label={t('aria.calendar')}
           >
             <div className={styles.monthNav}>
@@ -279,7 +311,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
                 <ChevronLeft />
               </button>
               <span className={styles.monthLabel}>
-                {MONTH_NAMEScn(viewMonth)} {viewYear}
+                {MONTH_NAMES[viewMonth]} {viewYear}
               </span>
               <button
                 type="button"
@@ -293,11 +325,17 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
 
             <div className={styles.dayHeaders}>
               {DAY_NAMES.map((name) => (
-                <span key={name} className={styles.dayHeader}>{name}</span>
+                <span key={name} className={styles.dayHeader}>
+                  {name}
+                </span>
               ))}
             </div>
 
-            <div className={styles.daysGrid} role="grid" aria-label={`${MONTH_NAMES[viewMonth]} ${viewYear}`}>
+            <div
+              className={styles.daysGrid}
+              role="grid"
+              aria-label={`${MONTH_NAMES[viewMonth]} ${viewYear}`}
+            >
               {calendarDays.map((day, i) => {
                 if (day === null) {
                   return <span key={`empty-${i}`} className={styles.dayEmpty} />;
@@ -308,11 +346,12 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
                 const isToday = isSameDay(date, today);
                 const isSelected = selectedDate ? isSameDay(date, selectedDate) : false;
 
-                const dayClass = [
+                const dayClass = cn(
                   styles.day,
                   isToday && styles.dayToday,
                   isSelected && styles.daySelected,
-                  isDayDisabled && styles.dayDisabled];
+                  isDayDisabled && styles.dayDisabled
+                );
 
                 return (
                   <button
@@ -334,7 +373,7 @@ export const DesktopDatePicker = forwardRef<HTMLDivElement, DesktopDatePickerPro
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopDatePicker.displayName = 'DesktopDatePicker';

@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { DesktopSearchSuggestions, type DesktopSearchSuggestionGroup } from './DesktopSearchSuggestions';
+import {
+  DesktopSearchSuggestions,
+  type DesktopSearchSuggestionGroup,
+} from './DesktopSearchSuggestions';
 
 const meta = {
   title: 'Navigation (Desktop)/DesktopSearchSuggestions',
@@ -45,9 +48,24 @@ const allSuggestions: DesktopSearchSuggestionGroup[] = [
     type: 'products',
     label: 'Products',
     items: [
-      { id: 'p1', text: 'ASUS ROG Strix RTX 4090 OC', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=GPU' },
-      { id: 'p2', text: 'MSI GeForce RTX 4080 Gaming X Trio', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=GPU' },
-      { id: 'p3', text: 'Gigabyte RTX 4070 Ti Eagle OC', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=GPU' },
+      {
+        id: 'p1',
+        text: 'ASUS ROG Strix RTX 4090 OC',
+        thumbnail:
+          'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
+      },
+      {
+        id: 'p2',
+        text: 'MSI GeForce RTX 4080 Gaming X Trio',
+        thumbnail:
+          'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
+      },
+      {
+        id: 'p3',
+        text: 'Gigabyte RTX 4070 Ti Eagle OC',
+        thumbnail:
+          'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
+      },
     ],
   },
 ];
@@ -80,11 +98,36 @@ export const WithProducts: Story = {
         type: 'products',
         label: 'Matching Products',
         items: [
-          { id: 'p1', text: 'ASUS ROG Strix RTX 4090', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=1' },
-          { id: 'p2', text: 'MSI RTX 4090 Suprim X', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=2' },
-          { id: 'p3', text: 'Gigabyte RTX 4090 Aorus Master', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=3' },
-          { id: 'p4', text: 'EVGA RTX 4090 FTW3 Ultra', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=4' },
-          { id: 'p5', text: 'Zotac RTX 4090 AMP Extreme', thumbnail: 'https://placehold.co/64x64/f5f5f5/999?text=5' },
+          {
+            id: 'p1',
+            text: 'ASUS ROG Strix RTX 4090',
+            thumbnail:
+              'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
+          },
+          {
+            id: 'p2',
+            text: 'MSI RTX 4090 Suprim X',
+            thumbnail:
+              'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=64&h=64&fit=crop',
+          },
+          {
+            id: 'p3',
+            text: 'Gigabyte RTX 4090 Aorus Master',
+            thumbnail:
+              'https://images.unsplash.com/photo-1555618254-5e4ec5e33217?w=64&h=64&fit=crop',
+          },
+          {
+            id: 'p4',
+            text: 'EVGA RTX 4090 FTW3 Ultra',
+            thumbnail:
+              'https://images.unsplash.com/photo-1600348712270-3c9f3e0ce7f4?w=64&h=64&fit=crop',
+          },
+          {
+            id: 'p5',
+            text: 'Zotac RTX 4090 AMP Extreme',
+            thumbnail:
+              'https://images.unsplash.com/photo-1623820919239-0d0ff10797a1?w=64&h=64&fit=crop',
+          },
         ],
       },
     ],

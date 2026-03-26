@@ -31,12 +31,13 @@
   cursor: pointer;
   text-align: left;
   font-family: $font-family;
-  transition: border-color $transition-fast, background $transition-fast, box-shadow $transition-fast;
+  transition: border-color $transition-fast, background $transition-fast,
+    box-shadow $transition-fast;
 
   @media (hover: hover) {
     &:hover {
       border-color: var(--gs-color-primary-light);
-      box-shadow: 0 2px 8px rgba(255, 80, 0, 0.06);
+      box-shadow: 0 2px 8px rgba($color-primary, 0.06);
     }
   }
 
@@ -49,7 +50,7 @@
 .cardSelected {
   border-color: var(--gs-color-primary);
   background: var(--gs-color-primary-bg);
-  box-shadow: 0 2px 8px rgba(255, 80, 0, 0.08);
+  box-shadow: 0 2px 8px rgba($color-primary, 0.08);
 }
 
 .cardIcon {

@@ -2,21 +2,73 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopHeaderRich } from './DesktopHeaderRich';
 import type { CategoryItem, PromoLink } from './DesktopHeaderRich';
-import type { DesktopSearchTrendingItem, DesktopSearchSuggestedProduct, DesktopSearchCategoryItem } from '../DesktopSearchAutocomplete';
+import type {
+  DesktopSearchTrendingItem,
+  DesktopSearchSuggestedProduct,
+  DesktopSearchCategoryItem,
+} from '../DesktopSearchAutocomplete';
 
 const sampleCategories: CategoryItem[] = [
-  { id: '1', label: 'Smartphones', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=📱' },
-  { id: '2', label: 'Laptops', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=💻' },
-  { id: '3', label: 'Headphones', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🎧' },
-  { id: '4', label: 'Monitors', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🖥' },
-  { id: '5', label: 'Keyboards', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=⌨️' },
-  { id: '6', label: 'Mice', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🖱' },
-  { id: '7', label: 'GPUs', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🎮' },
-  { id: '8', label: 'Storage', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=💾' },
-  { id: '9', label: 'Cameras', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=📷' },
-  { id: '10', label: 'Accessories', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🔌' },
-  { id: '11', label: 'Smart Home', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🏠' },
-  { id: '12', label: 'Audio', icon: 'https://placehold.co/64x64/FFF5F0/FF5000?text=🔊' },
+  {
+    id: '1',
+    label: 'Smartphones',
+    icon: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=64&h=64&fit=crop',
+  },
+  {
+    id: '2',
+    label: 'Laptops',
+    icon: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=64&h=64&fit=crop',
+  },
+  {
+    id: '3',
+    label: 'Headphones',
+    icon: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=64&h=64&fit=crop',
+  },
+  {
+    id: '4',
+    label: 'Monitors',
+    icon: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=64&h=64&fit=crop',
+  },
+  {
+    id: '5',
+    label: 'Keyboards',
+    icon: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=64&h=64&fit=crop',
+  },
+  {
+    id: '6',
+    label: 'Mice',
+    icon: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=64&h=64&fit=crop',
+  },
+  {
+    id: '7',
+    label: 'GPUs',
+    icon: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
+  },
+  {
+    id: '8',
+    label: 'Storage',
+    icon: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=64&h=64&fit=crop',
+  },
+  {
+    id: '9',
+    label: 'Cameras',
+    icon: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=64&h=64&fit=crop',
+  },
+  {
+    id: '10',
+    label: 'Accessories',
+    icon: 'https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=64&h=64&fit=crop',
+  },
+  {
+    id: '11',
+    label: 'Smart Home',
+    icon: 'https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=64&h=64&fit=crop',
+  },
+  {
+    id: '12',
+    label: 'Audio',
+    icon: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=64&h=64&fit=crop',
+  },
 ];
 
 const samplePromoLinks: PromoLink[] = [
@@ -36,8 +88,20 @@ const sampleTrendingSearches: DesktopSearchTrendingItem[] = [
 ];
 
 const sampleSearchProducts: DesktopSearchSuggestedProduct[] = [
-  { id: '1', title: 'NVIDIA GeForce RTX 4090 24GB', image: 'https://placehold.co/96x96/f5f5f5/333?text=4090', price: 18990000, rating: 4.9 },
-  { id: '2', title: 'AMD Ryzen 9 7950X', image: 'https://placehold.co/96x96/f5f5f5/333?text=7950X', price: 7490000, rating: 4.8 },
+  {
+    id: '1',
+    title: 'NVIDIA GeForce RTX 4090 24GB',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=96&h=96&fit=crop',
+    price: 18990000,
+    rating: 4.9,
+  },
+  {
+    id: '2',
+    title: 'AMD Ryzen 9 7950X',
+    image: 'https://images.unsplash.com/photo-1555618254-5e4ec5e33217?w=96&h=96&fit=crop',
+    price: 7490000,
+    rating: 4.8,
+  },
 ];
 
 const sampleSearchCategories: DesktopSearchCategoryItem[] = [
@@ -113,7 +177,10 @@ export const Interactive: Story = {
           onSearchCategoryClick={(c) => alert(`Category: ${c.name}`)}
         />
         <div style={{ height: 2000, padding: 40, background: '#f5f5f5' }}>
-          <p>Scroll down to see the sticky shadow transition. Click the search bar to see autocomplete.</p>
+          <p>
+            Scroll down to see the sticky shadow transition. Click the search bar to see
+            autocomplete.
+          </p>
         </div>
       </div>
     );

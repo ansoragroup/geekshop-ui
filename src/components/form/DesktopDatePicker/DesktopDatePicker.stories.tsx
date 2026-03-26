@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { DesktopDatePicker } from './DesktopDatePicker';
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopDatePicker',
+  title: 'Form (Desktop)/DesktopDatePicker',
   component: DesktopDatePicker,
   tags: ['autodocs'],
   parameters: {

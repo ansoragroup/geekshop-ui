@@ -134,7 +134,7 @@
   @media (hover: hover) {
     &:hover {
       opacity: 1;
-      background: rgba(0, 0, 0, 0.08);
+      background: rgba(black, 0.08);
     }
   }
 
@@ -163,7 +163,7 @@
   .color-success.selected .closeBtn:hover,
   .color-warning.selected .closeBtn:hover,
   .color-error.selected .closeBtn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(white, 0.2);
   }
 }
 

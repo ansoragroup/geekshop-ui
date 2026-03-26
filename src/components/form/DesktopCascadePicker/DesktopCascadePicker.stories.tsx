@@ -177,7 +177,7 @@ const disabledOptions: DesktopCascadeOption[] = [
 ];
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopCascadePicker',
+  title: 'Form (Desktop)/DesktopCascadePicker',
   component: DesktopCascadePicker,
   tags: ['autodocs'],
   parameters: {

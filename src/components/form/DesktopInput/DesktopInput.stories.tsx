@@ -80,7 +80,7 @@ const DollarIcon = () => (
 );
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopInput',
+  title: 'Form (Desktop)/DesktopInput',
   component: DesktopInput,
   tags: ['autodocs'],
   parameters: {

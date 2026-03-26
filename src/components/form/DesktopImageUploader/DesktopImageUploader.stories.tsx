@@ -5,21 +5,45 @@ import { DesktopImageUploader } from './DesktopImageUploader';
 import type { DesktopImageFile } from './DesktopImageUploader';
 
 const sampleImages: DesktopImageFile[] = [
-  { url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop', name: 'headphones-front.jpg' },
-  { url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop', name: 'watch-angle.jpg' },
-  { url: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop', name: 'camera-detail.jpg' },
+  {
+    url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
+    name: 'headphones-front.jpg',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop',
+    name: 'watch-angle.jpg',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop',
+    name: 'camera-detail.jpg',
+  },
 ];
 
 const manyImages: DesktopImageFile[] = [
-  { url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop', name: 'product-1.jpg' },
-  { url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop', name: 'product-2.jpg' },
-  { url: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop', name: 'product-3.jpg' },
-  { url: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop', name: 'product-4.jpg' },
-  { url: 'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=200&h=200&fit=crop', name: 'product-5.jpg' },
+  {
+    url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
+    name: 'product-1.jpg',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop',
+    name: 'product-2.jpg',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop',
+    name: 'product-3.jpg',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop',
+    name: 'product-4.jpg',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=200&h=200&fit=crop',
+    name: 'product-5.jpg',
+  },
 ];
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopImageUploader',
+  title: 'Form (Desktop)/DesktopImageUploader',
   component: DesktopImageUploader,
   tags: ['autodocs'],
   parameters: {
@@ -59,13 +83,7 @@ export const WithImages: Story = {
   render: () => {
     const [images, setImages] = useState<DesktopImageFile[]>(sampleImages);
 
-    return (
-      <DesktopImageUploader
-        value={images}
-        onChange={setImages}
-        maxCount={6}
-      />
-    );
+    return <DesktopImageUploader value={images} onChange={setImages} maxCount={6} />;
   },
 };
 
@@ -73,22 +91,12 @@ export const WithImages: Story = {
 
 export const MaxReached: Story = {
   name: 'Max Images Reached',
-  render: () => (
-    <DesktopImageUploader
-      value={manyImages}
-      maxCount={5}
-    />
-  ),
+  render: () => <DesktopImageUploader value={manyImages} maxCount={5} />,
 };
 
 export const MaxReachedThree: Story = {
   name: 'Max 3 Images Reached',
-  render: () => (
-    <DesktopImageUploader
-      value={sampleImages}
-      maxCount={3}
-    />
-  ),
+  render: () => <DesktopImageUploader value={sampleImages} maxCount={3} />,
 };
 
 /* ─── Different Max Counts ─── */
@@ -124,7 +132,10 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     value: [
-      { url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop', name: 'locked-image.jpg' },
+      {
+        url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
+        name: 'locked-image.jpg',
+      },
     ],
   },
 };
@@ -209,9 +220,7 @@ export const FullFeatured: Story = {
           accept="image/jpeg,image/png"
           multiple
         />
-        <div style={{ fontSize: 12, color: '#999' }}>
-          {images.length}/8 images uploaded
-        </div>
+        <div style={{ fontSize: 12, color: '#999' }}>{images.length}/8 images uploaded</div>
       </div>
     );
   },
@@ -226,25 +235,27 @@ export const InteractiveDemo: Story = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <DesktopImageUploader
-          value={images}
-          onChange={setImages}
-          maxCount={5}
-        />
+        <DesktopImageUploader value={images} onChange={setImages} maxCount={5} />
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <button
             type="button"
             onClick={() => {
               const newImage: DesktopImageFile = {
-                url: `https://images.unsplash.com/photo-${1505740420928 + images.length}-5e560c06d30e?w=200&h=200&fit=crop`,
+                url: `https://images.unsplash.com/photo-${
+                  1505740420928 + images.length
+                }-5e560c06d30e?w=200&h=200&fit=crop`,
                 name: `demo-${images.length + 1}.jpg`,
               };
               setImages((prev) => [...prev, newImage]);
             }}
             disabled={images.length >= 5}
             style={{
-              fontSize: 13, padding: '6px 12px', borderRadius: 6,
-              border: '1px solid #eee', background: '#fff', cursor: images.length >= 5 ? 'not-allowed' : 'pointer',
+              fontSize: 13,
+              padding: '6px 12px',
+              borderRadius: 6,
+              border: '1px solid #eee',
+              background: '#fff',
+              cursor: images.length >= 5 ? 'not-allowed' : 'pointer',
               color: images.length >= 5 ? '#ccc' : '#1A1A1A',
             }}
           >
@@ -255,16 +266,18 @@ export const InteractiveDemo: Story = {
             onClick={() => setImages([])}
             disabled={images.length === 0}
             style={{
-              fontSize: 13, padding: '6px 12px', borderRadius: 6,
-              border: '1px solid #eee', background: '#fff', cursor: images.length === 0 ? 'not-allowed' : 'pointer',
+              fontSize: 13,
+              padding: '6px 12px',
+              borderRadius: 6,
+              border: '1px solid #eee',
+              background: '#fff',
+              cursor: images.length === 0 ? 'not-allowed' : 'pointer',
               color: images.length === 0 ? '#ccc' : '#FF3B30',
             }}
           >
             Clear all
           </button>
-          <span style={{ fontSize: 12, color: '#999' }}>
-            {images.length}/5
-          </span>
+          <span style={{ fontSize: 12, color: '#999' }}>{images.length}/5</span>
         </div>
       </div>
     );
@@ -288,11 +301,7 @@ export const ProductUploadForm: Story = {
           <div style={{ fontSize: 13, color: '#666', marginBottom: 12 }}>
             The first image will be used as the product thumbnail. Recommended: 800x800px.
           </div>
-          <DesktopImageUploader
-            value={mainImages}
-            onChange={setMainImages}
-            maxCount={5}
-          />
+          <DesktopImageUploader value={mainImages} onChange={setMainImages} maxCount={5} />
         </div>
         <div style={{ borderTop: '1px solid #eee', paddingTop: 24 }}>
           <div style={{ fontSize: 14, fontWeight: 600, color: '#1A1A1A', marginBottom: 4 }}>
@@ -301,11 +310,7 @@ export const ProductUploadForm: Story = {
           <div style={{ fontSize: 13, color: '#666', marginBottom: 12 }}>
             Show the product in use or highlight specific features.
           </div>
-          <DesktopImageUploader
-            value={detailImages}
-            onChange={setDetailImages}
-            maxCount={10}
-          />
+          <DesktopImageUploader value={detailImages} onChange={setDetailImages} maxCount={10} />
         </div>
       </div>
     );

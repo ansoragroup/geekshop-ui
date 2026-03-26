@@ -31,7 +31,7 @@ const selectStyle: React.CSSProperties = {
 };
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopForm',
+  title: 'Form (Desktop)/DesktopForm',
   component: DesktopForm,
   tags: ['autodocs'],
   parameters: {

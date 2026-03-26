@@ -29,33 +29,94 @@ export interface DesktopCalendarProps extends Omit<HTMLAttributes<HTMLDivElement
 }
 
 const MONTH_NAMES: Record<string, string[]> = {
-  uz: ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'],
-  ru: ['\u042F\u043D\u0432\u0430\u0440\u044C', '\u0424\u0435\u0432\u0440\u0430\u043B\u044C', '\u041C\u0430\u0440\u0442', '\u0410\u043F\u0440\u0435\u043B\u044C', '\u041C\u0430\u0439', '\u0418\u044E\u043D\u044C', '\u0418\u044E\u043B\u044C', '\u0410\u0432\u0433\u0443\u0441\u0442', '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C', '\u041E\u043A\u0442\u044F\u0431\u0440\u044C', '\u041D\u043E\u044F\u0431\u0440\u044C', '\u0414\u0435\u043A\u0430\u0431\u0440\u044C'],
-  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  uz: [
+    'Yanvar',
+    'Fevral',
+    'Mart',
+    'Aprel',
+    'May',
+    'Iyun',
+    'Iyul',
+    'Avgust',
+    'Sentyabr',
+    'Oktyabr',
+    'Noyabr',
+    'Dekabr',
+  ],
+  ru: [
+    '\u042F\u043D\u0432\u0430\u0440\u044C',
+    '\u0424\u0435\u0432\u0440\u0430\u043B\u044C',
+    '\u041C\u0430\u0440\u0442',
+    '\u0410\u043F\u0440\u0435\u043B\u044C',
+    '\u041C\u0430\u0439',
+    '\u0418\u044E\u043D\u044C',
+    '\u0418\u044E\u043B\u044C',
+    '\u0410\u0432\u0433\u0443\u0441\u0442',
+    '\u0421\u0435\u043D\u0442\u044F\u0431\u0440\u044C',
+    '\u041E\u043A\u0442\u044F\u0431\u0440\u044C',
+    '\u041D\u043E\u044F\u0431\u0440\u044C',
+    '\u0414\u0435\u043A\u0430\u0431\u0440\u044C',
+  ],
+  en: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 };
 
 const DAY_NAMES: Record<string, string[]> = {
   uz: ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'],
-  ru: ['\u041F\u043D', '\u0412\u0442', '\u0421\u0440', '\u0427\u0442', '\u041F\u0442', '\u0421\u0431', '\u0412\u0441'],
+  ru: [
+    '\u041F\u043D',
+    '\u0412\u0442',
+    '\u0421\u0440',
+    '\u0427\u0442',
+    '\u041F\u0442',
+    '\u0421\u0431',
+    '\u0412\u0441',
+  ],
   en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
 };
 
 const ChevronLeft = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M12 15l-5-5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M12 15l-5-5 5-5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRight = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M8 5l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M8 5l5 5-5 5"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 function isSameDay(a: Date, b: Date): boolean {
-  return a.getFullYear() === b.getFullYear() &&
+  return (
+    a.getFullYear() === b.getFullYear() &&
     a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
+    a.getDate() === b.getDate()
+  );
 }
 
 function dateToKey(date: Date): string {
@@ -76,27 +137,14 @@ function getStartDayOfWeek(year: number, month: number): number {
 
 export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
   (
-    {
-      value,
-      onChange,
-      markedDates = {},
-      minDate,
-      maxDate,
-      locale = 'en',
-      className = '',
-      ...rest
-    },
-    ref,
+    { value, onChange, markedDates = {}, minDate, maxDate, locale = 'en', className = '', ...rest },
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const today = useMemo(() => new Date(), []);
 
-    const [viewYear, setViewYear] = useState(() =>
-      value?.getFullYear() ?? today.getFullYear(),
-    );
-    const [viewMonth, setViewMonth] = useState(() =>
-      value?.getMonth() ?? today.getMonth(),
-    );
+    const [viewYear, setViewYear] = useState(() => value?.getFullYear() ?? today.getFullYear());
+    const [viewMonth, setViewMonth] = useState(() => value?.getMonth() ?? today.getMonth());
 
     const handlePrevMonth = useCallback(() => {
       if (viewMonth === 0) {
@@ -116,57 +164,66 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
       }
     }, [viewMonth]);
 
-    const isDateDisabled = useCallback((date: Date): boolean => {
-      if (minDate) {
-        const minStart = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
-        if (date < minStart) return true;
-      }
-      if (maxDate) {
-        const maxEnd = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
-        if (date > maxEnd) return true;
-      }
-      return false;
-    }, [minDate, maxDate]);
+    const isDateDisabled = useCallback(
+      (date: Date): boolean => {
+        if (minDate) {
+          const minStart = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
+          if (date < minStart) return true;
+        }
+        if (maxDate) {
+          const maxEnd = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
+          if (date > maxEnd) return true;
+        }
+        return false;
+      },
+      [minDate, maxDate]
+    );
 
-    const handleDayClick = useCallback((day: number) => {
-      const date = new Date(viewYear, viewMonth, day);
-      if (isDateDisabled(date)) return;
-      onChange?.(date);
-    }, [viewYear, viewMonth, isDateDisabled, onChange]);
+    const handleDayClick = useCallback(
+      (day: number) => {
+        const date = new Date(viewYear, viewMonth, day);
+        if (isDateDisabled(date)) return;
+        onChange?.(date);
+      },
+      [viewYear, viewMonth, isDateDisabled, onChange]
+    );
 
-    const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-      const currentDate = value ?? today;
-      let newDate: Date | undefined;
+    const handleKeyDown = useCallback(
+      (e: React.KeyboardEvent) => {
+        const currentDate = value ?? today;
+        let newDate: Date | undefined;
 
-      switch (e.key) {
-        case 'ArrowLeft':
-          e.preventDefault();
-          newDate = new Date(currentDate);
-          newDate.setDate(newDate.getDate() - 1);
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          newDate = new Date(currentDate);
-          newDate.setDate(newDate.getDate() + 1);
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          newDate = new Date(currentDate);
-          newDate.setDate(newDate.getDate() - 7);
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          newDate = new Date(currentDate);
-          newDate.setDate(newDate.getDate() + 7);
-          break;
-      }
+        switch (e.key) {
+          case 'ArrowLeft':
+            e.preventDefault();
+            newDate = new Date(currentDate);
+            newDate.setDate(newDate.getDate() - 1);
+            break;
+          case 'ArrowRight':
+            e.preventDefault();
+            newDate = new Date(currentDate);
+            newDate.setDate(newDate.getDate() + 1);
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            newDate = new Date(currentDate);
+            newDate.setDate(newDate.getDate() - 7);
+            break;
+          case 'ArrowDown':
+            e.preventDefault();
+            newDate = new Date(currentDate);
+            newDate.setDate(newDate.getDate() + 7);
+            break;
+        }
 
-      if (newDate && !isDateDisabled(newDate)) {
-        setViewYear(newDate.getFullYear());
-        setViewMonth(newDate.getMonth());
-        onChange?.(newDate);
-      }
-    }, [value, today, isDateDisabled, onChange]);
+        if (newDate && !isDateDisabled(newDate)) {
+          setViewYear(newDate.getFullYear());
+          setViewMonth(newDate.getMonth());
+          onChange?.(newDate);
+        }
+      },
+      [value, today, isDateDisabled, onChange]
+    );
 
     // Build calendar grid
     const daysInMonth = getDaysInMonth(viewYear, viewMonth);
@@ -219,7 +276,9 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
 
         <div className={styles.dayHeaders}>
           {dayNames.map((name) => (
-            <span key={name} className={styles.dayHeader}>{name}</span>
+            <span key={name} className={styles.dayHeader}>
+              {name}
+            </span>
           ))}
         </div>
 
@@ -244,11 +303,12 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
                 const isSelected = value ? isSameDay(date, value) : false;
                 const marked = markedDates[dateKey];
 
-                const dayClass = [
+                const dayClass = cn(
                   styles.day,
                   isToday && styles.dayToday,
                   isSelected && styles.daySelected,
-                  isDisabled && styles.dayDisabled];
+                  isDisabled && styles.dayDisabled
+                );
 
                 return (
                   <button
@@ -286,7 +346,7 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 DesktopCalendar.displayName = 'DesktopCalendar';

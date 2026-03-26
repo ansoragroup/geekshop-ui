@@ -47,7 +47,7 @@ const TagIcon = () => (
 );
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopChip',
+  title: 'Form (Desktop)/DesktopChip',
   component: DesktopChip,
   tags: ['autodocs'],
   parameters: {

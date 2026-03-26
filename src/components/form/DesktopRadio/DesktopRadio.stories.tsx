@@ -4,7 +4,7 @@ import { fn, expect, userEvent, within } from 'storybook/test';
 import { DesktopRadio, DesktopRadioGroup } from './DesktopRadio';
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopRadio',
+  title: 'Form (Desktop)/DesktopRadio',
   component: DesktopRadioGroup,
   tags: ['autodocs'],
   parameters: {

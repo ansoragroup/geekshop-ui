@@ -346,12 +346,12 @@ export const DesktopSelect = forwardRef<HTMLDivElement, DesktopSelectProps>(
                   ? (Array.isArray(selectedValue) ? selectedValue : []).includes(option.value)
                   : selectedValue === option.value;
 
-                const optionClass = [
+                const optionClass = cn(
                   styles.option,
                   isSelected && styles.optionSelected,
                   option.disabled && styles.optionDisabled,
-                  index === highlightedIndex && styles.optionHighlighted,
-                ];
+                  index === highlightedIndex && styles.optionHighlighted
+                );
 
                 return (
                   <button

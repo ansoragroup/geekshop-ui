@@ -4,7 +4,7 @@ import { fn, expect, userEvent, within } from 'storybook/test';
 import { DesktopTextArea } from './DesktopTextArea';
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopTextArea',
+  title: 'Form (Desktop)/DesktopTextArea',
   component: DesktopTextArea,
   tags: ['autodocs'],
   parameters: {

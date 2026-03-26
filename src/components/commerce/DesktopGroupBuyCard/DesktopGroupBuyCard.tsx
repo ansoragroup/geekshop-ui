@@ -2,7 +2,14 @@
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { formatNumber } from '../../../utils/formatPrice';
-import { forwardRef, useState, useEffect, useCallback, type HTMLAttributes, type MouseEvent } from 'react';
+import {
+  forwardRef,
+  useState,
+  useEffect,
+  useCallback,
+  type HTMLAttributes,
+  type MouseEvent,
+} from 'react';
 import styles from './DesktopGroupBuyCard.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -54,7 +61,7 @@ function useSecondsCountdown(initialSeconds: number) {
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [remaining > 0]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [remaining]);
 
   const isExpired = remaining <= 0;
   const hours = Math.floor(remaining / 3600);
@@ -84,7 +91,17 @@ function PersonIcon() {
 
 function ClockIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>
@@ -106,9 +123,9 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const countdown = useSecondsCountdown(timeLeft);
     const timeDisplay = countdown.isExpired
       ? 'Expired'
@@ -134,7 +151,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
         e.stopPropagation();
         onJoinGroup?.();
       },
-      [onJoinGroup],
+      [onJoinGroup]
     );
 
     const handleBuyAlone = useCallback(
@@ -142,7 +159,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
         e.stopPropagation();
         onBuyAlone?.();
       },
-      [onBuyAlone],
+      [onBuyAlone]
     );
 
     return (
@@ -178,7 +195,11 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
           </div>
 
           {/* Avatars */}
-          <div className={styles.avatarRow} role="group" aria-label={`${currentMembers} of ${groupSize} joined`}>
+          <div
+            className={styles.avatarRow}
+            role="group"
+            aria-label={`${currentMembers} of ${groupSize} joined`}
+          >
             {avatarSlots.map((slot, i) => (
               <span key={i} className={styles.avatarSlot}>
                 {slot.type === 'avatar' ? (
@@ -195,7 +216,9 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
                     <PersonIcon />
                   </span>
                 ) : (
-                  <span className={styles.avatarEmpty} aria-hidden="true">?</span>
+                  <span className={styles.avatarEmpty} aria-hidden="true">
+                    ?
+                  </span>
                 )}
               </span>
             ))}
@@ -216,10 +239,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
           {/* Progress bar */}
           <div className={styles.progressWrapper}>
             <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{ width: `${progressPercent}%` }}
-              />
+              <div className={styles.progressFill} style={{ width: `${progressPercent}%` }} />
             </div>
             <span className={styles.progressLabel}>{Math.round(progressPercent)}% filled</span>
           </div>
@@ -245,7 +265,7 @@ export const DesktopGroupBuyCard = forwardRef<HTMLDivElement, DesktopGroupBuyCar
         </div>
       </div>
     );
-  },
+  }
 );
 
 DesktopGroupBuyCard.displayName = 'DesktopGroupBuyCard';

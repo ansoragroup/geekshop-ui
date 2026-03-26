@@ -42,7 +42,7 @@ export const DesktopPopover = forwardRef<HTMLDivElement, DesktopPopoverProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
     const [isOpen, setIsOpen] = useControllableState({
       value: openProp,
@@ -138,16 +138,8 @@ export const DesktopPopover = forwardRef<HTMLDivElement, DesktopPopoverProps>(
     }
 
     return (
-      <div
-        ref={ref}
-        className={cn(styles.root, className)}
-        {...rest}
-      >
-        <div
-          ref={triggerRef}
-          className={styles.trigger}
-          {...triggerProps}
-        >
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
+        <div ref={triggerRef} className={styles.trigger} {...triggerProps}>
           {children}
         </div>
 
@@ -156,7 +148,7 @@ export const DesktopPopover = forwardRef<HTMLDivElement, DesktopPopoverProps>(
             ref={popoverRef}
             className={cn(styles.popover, styles[`placement-${placement}`])}
             style={{ top: position.top, left: position.left }}
-            role="tooltip"
+            role={trigger === 'click' ? 'dialog' : 'tooltip'}
             onMouseEnter={trigger === 'hover' ? () => setIsOpen(true) : undefined}
             onMouseLeave={trigger === 'hover' ? () => setIsOpen(false) : undefined}
           >
@@ -166,7 +158,7 @@ export const DesktopPopover = forwardRef<HTMLDivElement, DesktopPopoverProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopPopover.displayName = 'DesktopPopover';

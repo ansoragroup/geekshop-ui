@@ -23,7 +23,6 @@
   line-height: $line-height-normal;
   padding: $spacing-sm $desktop-spacing-sm;
   border-radius: $radius-sm;
-  white-space: nowrap;
   max-width: 280px;
   overflow-wrap: break-word;
   white-space: normal;
@@ -72,5 +71,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tooltip { animation: none; }
+  .tooltip {
+    animation: none;
+  }
 }

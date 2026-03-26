@@ -2,7 +2,15 @@
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
 import { formatNumber } from '../../../utils/formatPrice';
-import { forwardRef, useState, useEffect, useRef, useCallback, type HTMLAttributes, type ReactNode } from 'react';
+import {
+  forwardRef,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react';
 import styles from './DesktopMiniCart.module.scss';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -43,7 +51,17 @@ export interface DesktopMiniCartProps extends HTMLAttributes<HTMLDivElement> {
 
 function CartIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
       <line x1="3" y1="6" x2="21" y2="6" />
       <path d="M16 10a4 4 0 01-8 0" />
@@ -53,7 +71,17 @@ function CartIcon() {
 
 function RemoveIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -62,7 +90,17 @@ function RemoveIcon() {
 
 function EmptyBagIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
       <line x1="3" y1="6" x2="21" y2="6" />
       <path d="M16 10a4 4 0 01-8 0" />
@@ -85,9 +123,9 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
       className = '',
       ...rest
     },
-    ref,
+    ref
   ) => {
-  const { t } = useGeekShop();
+    const { t } = useGeekShop();
     const isControlled = openProp !== undefined;
     const [internalOpen, setInternalOpen] = useState(false);
     const isOpen = isControlled ? openProp : internalOpen;
@@ -113,7 +151,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
       (id: string | number) => {
         onRemoveItem?.(id);
       },
-      [onRemoveItem],
+      [onRemoveItem]
     );
 
     const handleViewCart = useCallback(() => {
@@ -200,7 +238,12 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
 
         {/* Dropdown panel */}
         {isOpen && (
-          <div className={styles.dropdown} role="dialog" aria-label={t('aria.shoppingCart')}>
+          <div
+            className={styles.dropdown}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('aria.shoppingCart')}
+          >
             {items.length === 0 ? (
               <div className={styles.emptyState}>
                 <span className={styles.emptyIcon}>
@@ -238,9 +281,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
                       />
                       <div className={styles.itemInfo}>
                         <span className={styles.itemTitle}>{item.title}</span>
-                        {item.variant && (
-                          <span className={styles.itemVariant}>{item.variant}</span>
-                        )}
+                        {item.variant && <span className={styles.itemVariant}>{item.variant}</span>}
                         <div className={styles.itemBottom}>
                           <span className={styles.itemPrice}>{formatNumber(item.price)} sum</span>
                           <span className={styles.itemQuantity}>x{item.quantity}</span>
@@ -267,18 +308,10 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
                     <span className={styles.subtotalValue}>{formatNumber(subtotal)} sum</span>
                   </div>
                   <div className={styles.actions}>
-                    <button
-                      type="button"
-                      className={styles.viewCartBtn}
-                      onClick={handleViewCart}
-                    >
+                    <button type="button" className={styles.viewCartBtn} onClick={handleViewCart}>
                       View Cart
                     </button>
-                    <button
-                      type="button"
-                      className={styles.checkoutBtn}
-                      onClick={handleCheckout}
-                    >
+                    <button type="button" className={styles.checkoutBtn} onClick={handleCheckout}>
                       Checkout
                     </button>
                   </div>
@@ -289,7 +322,7 @@ export const DesktopMiniCart = forwardRef<HTMLDivElement, DesktopMiniCartProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopMiniCart.displayName = 'DesktopMiniCart';

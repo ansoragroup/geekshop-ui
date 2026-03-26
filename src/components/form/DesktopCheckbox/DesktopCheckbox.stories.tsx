@@ -4,7 +4,7 @@ import { fn, expect, userEvent, within } from 'storybook/test';
 import { DesktopCheckbox } from './DesktopCheckbox';
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopCheckbox',
+  title: 'Form (Desktop)/DesktopCheckbox',
   component: DesktopCheckbox,
   tags: ['autodocs'],
   parameters: {

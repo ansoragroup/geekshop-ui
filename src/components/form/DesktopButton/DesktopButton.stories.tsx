@@ -81,7 +81,7 @@ const DownloadIcon = () => (
 );
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopButton',
+  title: 'Form (Desktop)/DesktopButton',
   component: DesktopButton,
   tags: ['autodocs'],
   parameters: {

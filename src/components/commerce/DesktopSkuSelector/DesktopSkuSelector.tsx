@@ -37,24 +37,15 @@ export interface DesktopSkuSelectorProps extends Omit<HTMLAttributes<HTMLDivElem
 
 export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorProps>(
   (
-    {
-      variants,
-      selectedValues = {},
-      onSelect,
-      stock,
-      price,
-      image,
-      className = '',
-      ...rest
-    },
-    ref,
+    { variants, selectedValues = {}, onSelect, stock, price, image, className = '', ...rest },
+    ref
   ) => {
     const handleOptionClick = useCallback(
       (variantName: string, option: DesktopSkuOption) => {
         if (option.disabled || option.outOfStock) return;
         onSelect?.(variantName, option.value);
       },
-      [onSelect],
+      [onSelect]
     );
 
     const handleOptionKeyDown = useCallback(
@@ -66,7 +57,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
           }
         }
       },
-      [onSelect],
+      [onSelect]
     );
 
     const getStockClass = () => {
@@ -77,11 +68,7 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
     };
 
     return (
-      <div
-        ref={ref}
-        className={cn(styles.root, className)}
-        {...rest}
-      >
+      <div ref={ref} className={cn(styles.root, className)} {...rest}>
         {/* Preview Image */}
         {image && (
           <div className={styles.previewWrapper}>
@@ -109,11 +96,12 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
                   const isSelected = selectedValues[variant.name] === option.value;
                   const isDisabled = option.disabled || option.outOfStock;
 
-                  const chipClass = [
+                  const chipClass = cn(
                     styles.chip,
                     isSelected && styles.chipSelected,
                     isDisabled && styles.chipDisabled,
-                    option.outOfStock && styles.chipOutOfStock];
+                    option.outOfStock && styles.chipOutOfStock
+                  );
 
                   return (
                     <div
@@ -122,7 +110,9 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
                       role="radio"
                       aria-checked={isSelected}
                       aria-disabled={isDisabled}
-                      aria-label={`${variant.name}: ${option.value}${option.outOfStock ? ' (out of stock)' : ''}`}
+                      aria-label={`${variant.name}: ${option.value}${
+                        option.outOfStock ? ' (out of stock)' : ''
+                      }`}
                       tabIndex={isDisabled ? -1 : 0}
                       onClick={() => handleOptionClick(variant.name, option)}
                       onKeyDown={(e) => handleOptionKeyDown(e, variant.name, option)}
@@ -153,18 +143,18 @@ export const DesktopSkuSelector = forwardRef<HTMLDivElement, DesktopSkuSelectorP
               </span>
             )}
             {stock !== undefined && price !== undefined && (
-              <span className={styles.stockSeparator} aria-hidden="true">&bull;</span>
+              <span className={styles.stockSeparator} aria-hidden="true">
+                &bull;
+              </span>
             )}
             {price !== undefined && (
-              <span className={styles.priceText}>
-                {formatNumber(price)} so'm
-              </span>
+              <span className={styles.priceText}>{formatNumber(price)} so'm</span>
             )}
           </div>
         )}
       </div>
     );
-  },
+  }
 );
 
 DesktopSkuSelector.displayName = 'DesktopSkuSelector';

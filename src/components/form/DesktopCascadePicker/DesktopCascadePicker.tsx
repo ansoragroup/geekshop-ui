@@ -286,7 +286,12 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
         )}
 
         {isOpen && (
-          <div className={styles.dropdown} role="dialog" aria-label={label ?? 'Cascade picker'}>
+          <div
+            className={styles.dropdown}
+            role="dialog"
+            aria-modal="true"
+            aria-label={label ?? 'Cascade picker'}
+          >
             <div className={styles.columnsContainer}>
               {visibleColumns.map(({ depth, options: colOpts }) => (
                 <div
@@ -302,11 +307,11 @@ export const DesktopCascadePicker = forwardRef<HTMLDivElement, DesktopCascadePic
                     const isSelected = tempSelection[depth] === option.value;
                     const hasChildren = !!(option.children && option.children.length > 0);
 
-                    const optionClass = [
+                    const optionClass = cn(
                       styles.option,
                       isSelected && styles.optionSelected,
-                      option.disabled && styles.optionDisabled,
-                    ];
+                      option.disabled && styles.optionDisabled
+                    );
 
                     return (
                       <button

@@ -4,7 +4,7 @@ import { fn, expect, userEvent, within } from 'storybook/test';
 import { DesktopSwitch } from './DesktopSwitch';
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopSwitch',
+  title: 'Form (Desktop)/DesktopSwitch',
   component: DesktopSwitch,
   tags: ['autodocs'],
   parameters: {

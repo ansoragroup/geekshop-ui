@@ -4,7 +4,7 @@ import { fn, expect, userEvent, within } from 'storybook/test';
 import { DesktopOTPInput } from './DesktopOTPInput';
 
 const meta = {
-  title: 'Forms (Desktop)/DesktopOTPInput',
+  title: 'Form (Desktop)/DesktopOTPInput',
   component: DesktopOTPInput,
   tags: ['autodocs'],
   parameters: {
