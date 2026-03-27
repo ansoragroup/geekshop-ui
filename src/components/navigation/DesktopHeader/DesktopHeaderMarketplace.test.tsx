@@ -8,8 +8,8 @@ vi.mock('../DesktopSearchAutocomplete', () => ({
     <div data-testid="search-autocomplete" data-placeholder={props.placeholder} />
   ),
 }));
-vi.mock('../MegaMenu', () => ({
-  MegaMenu: (props: Record<string, unknown>) => (
+vi.mock('../DesktopMegaMenu', () => ({
+  DesktopMegaMenu: (props: Record<string, unknown>) => (
     <div data-testid="mega-menu" data-trigger-label={props.triggerLabel} />
   ),
 }));

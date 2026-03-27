@@ -12,7 +12,7 @@ import { DesktopTabFilter } from '../../components/navigation/DesktopTabFilter';
 import type { DesktopTabFilterItem } from '../../components/navigation/DesktopTabFilter';
 import { DesktopFooter } from '../../components/layout/DesktopFooter';
 import type { DesktopFooterColumn } from '../../components/layout/DesktopFooter';
-import type { MegaMenuCategory } from '../../components/navigation/MegaMenu';
+import type { MegaMenuCategory } from '../../components/navigation/DesktopMegaMenu';
 import type { DesktopHeaderMarketplaceLabels } from '../../components/navigation/DesktopHeader';
 import styles from './DesktopHomePage.module.scss';
 
@@ -79,7 +79,13 @@ export interface DesktopHomePageProps {
   /** Trending search terms */
   trendingSearches?: { text: string; count?: number }[];
   /** Suggested products for search autocomplete */
-  suggestedProducts?: { id: string; title: string; image: string; price: number; rating?: number }[];
+  suggestedProducts?: {
+    id: string;
+    title: string;
+    image: string;
+    price: number;
+    rating?: number;
+  }[];
   /** Category suggestions for search autocomplete */
   searchCategorySuggestions?: { id: string; name: string; count?: number }[];
   /** Photo search callback */
@@ -89,7 +95,10 @@ export interface DesktopHomePageProps {
 // ─── Defaults ────────────────────────────────────────────────────────────────
 
 const defaultCategories: MegaMenuCategory[] = [
-  { label: 'Electronics', subcategories: [{ label: 'Smartphones' }, { label: 'Laptops' }, { label: 'Headphones' }] },
+  {
+    label: 'Electronics',
+    subcategories: [{ label: 'Smartphones' }, { label: 'Laptops' }, { label: 'Headphones' }],
+  },
   { label: 'Clothing', subcategories: [{ label: 'Men' }, { label: 'Women' }, { label: 'Kids' }] },
   { label: 'Home & Garden', subcategories: [{ label: 'Furniture' }, { label: 'Kitchen' }] },
   { label: 'Beauty', subcategories: [{ label: 'Skincare' }, { label: 'Makeup' }] },
@@ -97,7 +106,10 @@ const defaultCategories: MegaMenuCategory[] = [
 ];
 
 const defaultFooterColumns: DesktopFooterColumn[] = [
-  { title: 'CUSTOMERS', links: [{ label: 'Support' }, { label: 'Sale Calendar' }, { label: 'Help Center' }] },
+  {
+    title: 'CUSTOMERS',
+    links: [{ label: 'Support' }, { label: 'Sale Calendar' }, { label: 'Help Center' }],
+  },
   { title: 'PARTNERS', links: [{ label: 'Sell on Platform' }, { label: 'Affiliate Program' }] },
   { title: 'ABOUT', links: [{ label: 'Careers' }, { label: 'Press' }] },
   { title: 'SOCIAL', links: [{ label: 'Instagram' }, { label: 'Telegram' }] },
@@ -146,17 +158,22 @@ export function DesktopHomePage({
     const el = loadMoreRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      (entries) => { if (entries[0].isIntersecting) onLoadMore(); },
-      { rootMargin: '200px' },
+      (entries) => {
+        if (entries[0].isIntersecting) onLoadMore();
+      },
+      { rootMargin: '200px' }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, [onLoadMore, hasMore, isLoading]);
 
-  const handleTabChange = useCallback((key: string) => {
-    setActiveTab(key);
-    onFilterChange?.(key);
-  }, [onFilterChange]);
+  const handleTabChange = useCallback(
+    (key: string) => {
+      setActiveTab(key);
+      onFilterChange?.(key);
+    },
+    [onFilterChange]
+  );
 
   const header = (
     <DesktopHeaderMarketplace

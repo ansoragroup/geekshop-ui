@@ -14,22 +14,22 @@ export { CurrencySwitcher } from './navigation/CurrencySwitcher';
 export { ThemeSwitcher } from './navigation/ThemeSwitcher';
 export { Segmented } from './navigation/Segmented';
 export { Tabs } from './navigation/Tabs';
-export { TopBar } from './navigation/TopBar';
+export { DesktopTopBar } from './navigation/DesktopTopBar';
 export { DesktopHeader } from './navigation/DesktopHeader';
 export { DesktopHeaderMinimal } from './navigation/DesktopHeader';
 export { DesktopHeaderRich } from './navigation/DesktopHeader';
 export { DesktopHeaderGlass } from './navigation/DesktopHeader';
 export { DesktopHeaderMarketplace } from './navigation/DesktopHeader';
 export { DesktopHeaderAliExpress } from './navigation/DesktopHeader';
-export { MegaMenu } from './navigation/MegaMenu';
-export { Breadcrumbs } from './navigation/Breadcrumbs';
-export { Pagination } from './navigation/Pagination';
+export { DesktopMegaMenu } from './navigation/DesktopMegaMenu';
+export { DesktopBreadcrumbs } from './navigation/DesktopBreadcrumbs';
+export { DesktopPagination } from './navigation/DesktopPagination';
 export { BackToTop } from './navigation/BackToTop';
-export { UserDropdown } from './navigation/UserDropdown';
+export { DesktopUserDropdown } from './navigation/DesktopUserDropdown';
 export { SearchAutocomplete } from './navigation/SearchAutocomplete';
 export { DesktopSidebar } from './navigation/DesktopSidebar';
 export { Dropdown } from './navigation/Dropdown';
-export { FloatingToolbar } from './navigation/FloatingToolbar';
+export { DesktopFloatingToolbar } from './navigation/DesktopFloatingToolbar';
 
 // Product
 export { PriceDisplay } from './product/PriceDisplay';
@@ -85,7 +85,7 @@ export { CategoryIcon, CategoryIconRow } from './content/CategoryIcon';
 export { SectionHeader } from './content/SectionHeader';
 export { NoticeBar } from './content/NoticeBar';
 export { SocialProof } from './content/SocialProof';
-export { CategoryShowcase } from './content/CategoryShowcase';
+export { DesktopCategoryShowcase } from './content/DesktopCategoryShowcase';
 export { DesktopBannerCarousel } from './content/DesktopBannerCarousel';
 export { DesktopDealCard } from './content/DesktopDealCard';
 export { DesktopCouponCard } from './content/DesktopCouponCard';
@@ -217,7 +217,7 @@ export { Grid } from './layout/Grid';
 export { DesktopContainer } from './layout/DesktopContainer';
 export { DesktopShell } from './layout/DesktopShell';
 export { DesktopGrid } from './layout/DesktopGrid';
-export { TwoColumnLayout } from './layout/TwoColumnLayout';
+export { DesktopTwoColumnLayout } from './layout/DesktopTwoColumnLayout';
 export { Footer } from './layout/Footer';
 export { DesktopDivider } from './layout/DesktopDivider';
 export { DesktopSection } from './layout/DesktopSection';
@@ -267,7 +267,7 @@ export type { CurrencySwitcherProps } from './navigation/CurrencySwitcher';
 export type { ThemeSwitcherProps } from './navigation/ThemeSwitcher';
 export type { SegmentedProps, SegmentedOption } from './navigation/Segmented';
 export type { TabsProps, TabItem, TabsVariant } from './navigation/Tabs';
-export type { TopBarProps } from './navigation/TopBar';
+export type { DesktopTopBarProps } from './navigation/DesktopTopBar';
 export type { DesktopHeaderProps } from './navigation/DesktopHeader';
 export type { DesktopHeaderMinimalProps, CategoryItem } from './navigation/DesktopHeader';
 export type { DesktopHeaderRichProps, PromoLink } from './navigation/DesktopHeader';
@@ -281,11 +281,18 @@ export type {
   DesktopHeaderPromoTag,
   DesktopHeaderQuickLink,
 } from './navigation/DesktopHeader';
-export type { MegaMenuProps, MegaMenuCategory, MegaMenuSubcategory } from './navigation/MegaMenu';
-export type { BreadcrumbsProps, BreadcrumbItem } from './navigation/Breadcrumbs';
-export type { PaginationProps } from './navigation/Pagination';
+export type {
+  DesktopMegaMenuProps,
+  MegaMenuCategory,
+  MegaMenuSubcategory,
+} from './navigation/DesktopMegaMenu';
+export type { DesktopBreadcrumbsProps, BreadcrumbItem } from './navigation/DesktopBreadcrumbs';
+export type { DesktopPaginationProps } from './navigation/DesktopPagination';
 export type { BackToTopProps } from './navigation/BackToTop';
-export type { UserDropdownProps, UserDropdownItem } from './navigation/UserDropdown';
+export type {
+  DesktopUserDropdownProps,
+  DesktopUserDropdownItem,
+} from './navigation/DesktopUserDropdown';
 export type { SearchAutocompleteProps, SearchProduct } from './navigation/SearchAutocomplete';
 export type {
   DesktopSidebarProps,
@@ -293,7 +300,10 @@ export type {
   SidebarBrand,
 } from './navigation/DesktopSidebar';
 export type { DropdownProps, DropdownItem } from './navigation/Dropdown';
-export type { FloatingToolbarProps, FloatingToolbarItem } from './navigation/FloatingToolbar';
+export type {
+  DesktopFloatingToolbarProps,
+  DesktopFloatingToolbarItem,
+} from './navigation/DesktopFloatingToolbar';
 
 // Types — Product
 export type {
@@ -407,7 +417,10 @@ export type { CategoryIconProps, CategoryIconRowProps } from './content/Category
 export type { SectionHeaderProps } from './content/SectionHeader';
 export type { NoticeBarProps } from './content/NoticeBar';
 export type { SocialProofProps, SocialProofVariant } from './content/SocialProof';
-export type { CategoryShowcaseProps, ShowcaseCategory } from './content/CategoryShowcase';
+export type {
+  DesktopCategoryShowcaseProps,
+  ShowcaseCategory,
+} from './content/DesktopCategoryShowcase';
 export type { DesktopBannerCarouselProps, BannerSlide } from './content/DesktopBannerCarousel';
 export type { DesktopDealCardProps } from './content/DesktopDealCard';
 export type { DesktopCouponCardProps, DesktopCouponCardColor } from './content/DesktopCouponCard';
@@ -639,7 +652,7 @@ export type { GridProps } from './layout/Grid';
 export type { DesktopContainerProps } from './layout/DesktopContainer';
 export type { DesktopShellProps } from './layout/DesktopShell';
 export type { DesktopGridProps } from './layout/DesktopGrid';
-export type { TwoColumnLayoutProps } from './layout/TwoColumnLayout';
+export type { DesktopTwoColumnLayoutProps } from './layout/DesktopTwoColumnLayout';
 export type { FooterProps, FooterColumn, FooterLink, FooterSocial } from './layout/Footer';
 export type { DesktopDividerProps } from './layout/DesktopDivider';
 export type { DesktopSectionProps } from './layout/DesktopSection';

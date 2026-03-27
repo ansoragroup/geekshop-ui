@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DesktopHeaderMarketplace } from './DesktopHeaderMarketplace';
-import type { MegaMenuCategory } from '../MegaMenu';
+import type { MegaMenuCategory } from '../DesktopMegaMenu';
 
 const meta = {
   title: 'Navigation (Desktop)/DesktopHeaderMarketplace',
@@ -29,14 +29,80 @@ type Story = StoryObj<typeof meta>;
 // ─── Data ───────────────────────────────────────────────────────────────────
 
 const mockCategories: MegaMenuCategory[] = [
-  { label: 'Electronics', subcategories: [{ label: 'Smartphones' }, { label: 'Laptops' }, { label: 'Tablets' }, { label: 'Headphones' }, { label: 'Cameras' }] },
-  { label: 'Clothing', subcategories: [{ label: 'Men' }, { label: 'Women' }, { label: 'Kids' }, { label: 'Shoes' }, { label: 'Accessories' }] },
-  { label: 'Home & Garden', subcategories: [{ label: 'Furniture' }, { label: 'Lighting' }, { label: 'Kitchen' }, { label: 'Bedding' }] },
-  { label: 'Beauty', subcategories: [{ label: 'Skincare' }, { label: 'Makeup' }, { label: 'Fragrance' }, { label: 'Hair Care' }] },
-  { label: 'Sports', subcategories: [{ label: 'Fitness' }, { label: 'Cycling' }, { label: 'Camping' }, { label: 'Swimming' }] },
-  { label: 'Auto', subcategories: [{ label: 'Parts' }, { label: 'Accessories' }, { label: 'Tools' }, { label: 'Electronics' }] },
-  { label: 'Books', subcategories: [{ label: 'Fiction' }, { label: 'Non-Fiction' }, { label: 'Textbooks' }, { label: 'Comics' }] },
-  { label: 'Toys & Kids', subcategories: [{ label: 'Action Figures' }, { label: 'Board Games' }, { label: 'LEGO' }, { label: 'Dolls' }] },
+  {
+    label: 'Electronics',
+    subcategories: [
+      { label: 'Smartphones' },
+      { label: 'Laptops' },
+      { label: 'Tablets' },
+      { label: 'Headphones' },
+      { label: 'Cameras' },
+    ],
+  },
+  {
+    label: 'Clothing',
+    subcategories: [
+      { label: 'Men' },
+      { label: 'Women' },
+      { label: 'Kids' },
+      { label: 'Shoes' },
+      { label: 'Accessories' },
+    ],
+  },
+  {
+    label: 'Home & Garden',
+    subcategories: [
+      { label: 'Furniture' },
+      { label: 'Lighting' },
+      { label: 'Kitchen' },
+      { label: 'Bedding' },
+    ],
+  },
+  {
+    label: 'Beauty',
+    subcategories: [
+      { label: 'Skincare' },
+      { label: 'Makeup' },
+      { label: 'Fragrance' },
+      { label: 'Hair Care' },
+    ],
+  },
+  {
+    label: 'Sports',
+    subcategories: [
+      { label: 'Fitness' },
+      { label: 'Cycling' },
+      { label: 'Camping' },
+      { label: 'Swimming' },
+    ],
+  },
+  {
+    label: 'Auto',
+    subcategories: [
+      { label: 'Parts' },
+      { label: 'Accessories' },
+      { label: 'Tools' },
+      { label: 'Electronics' },
+    ],
+  },
+  {
+    label: 'Books',
+    subcategories: [
+      { label: 'Fiction' },
+      { label: 'Non-Fiction' },
+      { label: 'Textbooks' },
+      { label: 'Comics' },
+    ],
+  },
+  {
+    label: 'Toys & Kids',
+    subcategories: [
+      { label: 'Action Figures' },
+      { label: 'Board Games' },
+      { label: 'LEGO' },
+      { label: 'Dolls' },
+    ],
+  },
 ];
 
 const trendingSearches = [
@@ -132,7 +198,13 @@ export const CustomSearchButton: Story = {
   args: {
     ...Default.args,
     searchButtonColor: '#B8E639',
-    labels: { search: 'Find', catalog: 'Browse', orders: 'My Orders', cart: 'Bag', signIn: 'Log in' },
+    labels: {
+      search: 'Find',
+      catalog: 'Browse',
+      orders: 'My Orders',
+      cart: 'Bag',
+      signIn: 'Log in',
+    },
   },
 };
 
@@ -271,10 +343,31 @@ export const CustomActions: Story = {
     searchPlaceholder: 'Search...',
     actions: (
       <div style={{ display: 'flex', gap: 12 }}>
-        <button type="button" style={{ background: '#fff', border: 'none', borderRadius: 8, padding: '8px 16px', cursor: 'pointer', fontWeight: 600 }}>
+        <button
+          type="button"
+          style={{
+            background: '#fff',
+            border: 'none',
+            borderRadius: 8,
+            padding: '8px 16px',
+            cursor: 'pointer',
+            fontWeight: 600,
+          }}
+        >
           Sell
         </button>
-        <button type="button" style={{ background: '#FF5000', color: '#fff', border: 'none', borderRadius: 8, padding: '8px 16px', cursor: 'pointer', fontWeight: 600 }}>
+        <button
+          type="button"
+          style={{
+            background: '#FF5000',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 8,
+            padding: '8px 16px',
+            cursor: 'pointer',
+            fontWeight: 600,
+          }}
+        >
           Download App
         </button>
       </div>
