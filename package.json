@@ -62,7 +62,7 @@
     "react-dom": ">=18.0.0"
   },
   "devDependencies": {
-    "lucide-react": "^0.577.0",
+    "lucide-react": "^1.7.0",
     "sass": "^1.98.0",
     "@changesets/changelog-github": "^0.6.0",
     "@changesets/cli": "^2.30.0",
