@@ -156,6 +156,46 @@
   cursor: not-allowed;
 }
 
+// --- Range mode ---
+.dayInRange {
+  background: var(--gs-color-primary-bg);
+  border-radius: 0;
+
+  .dayNumber {
+    color: var(--gs-color-primary);
+  }
+}
+
+.dayRangeStart {
+  border-radius: $radius-md 0 0 $radius-md;
+}
+
+.dayRangeEnd {
+  border-radius: 0 $radius-md $radius-md 0;
+}
+
+.dayRangeStart.dayRangeEnd {
+  border-radius: $radius-md;
+}
+
+// --- Week numbers ---
+.weekHeader {
+  text-align: center;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: var(--gs-text-tertiary);
+  padding: $spacing-sm 0;
+}
+
+.weekNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-xs;
+  color: var(--gs-text-tertiary);
+  min-height: 48px;
+}
+
 .dayDot {
   width: 5px;
   height: 5px;

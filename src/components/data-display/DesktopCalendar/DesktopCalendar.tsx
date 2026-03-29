@@ -1,6 +1,7 @@
 'use client';
 import { useGeekShop } from '../../../i18n';
 import { cn } from '../../../utils/cn';
+import { useControllableState } from '../../../hooks/useControllableState';
 import { forwardRef, useState, useMemo, useCallback, type HTMLAttributes } from 'react';
 import styles from './DesktopCalendar.module.scss';
 
@@ -13,11 +14,16 @@ export interface DesktopCalendarMarkedDate {
   label?: string;
 }
 
-export interface DesktopCalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /** Selected date (controlled) */
-  value?: Date;
+export interface DesktopCalendarProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+  /** Selected date(s) (controlled) */
+  value?: Date | Date[];
+  /** Default selected date(s) (uncontrolled) */
+  defaultValue?: Date | Date[];
   /** Change handler */
-  onChange?: (date: Date) => void;
+  onChange?: (dates: Date[]) => void;
+  /** Selection mode */
+  mode?: 'single' | 'range' | 'multiple';
   /** Dates with special marks (dots, labels) keyed by YYYY-MM-DD */
   markedDates?: Record<string, DesktopCalendarMarkedDate>;
   /** Minimum selectable date */
@@ -26,6 +32,10 @@ export interface DesktopCalendarProps extends Omit<HTMLAttributes<HTMLDivElement
   maxDate?: Date;
   /** Locale for month/day names */
   locale?: 'uz' | 'ru' | 'en';
+  /** Show ISO week numbers */
+  showWeekNumber?: boolean;
+  /** First day of week: 0=Sunday, 1=Monday (default 1) */
+  firstDayOfWeek?: 0 | 1;
 }
 
 const MONTH_NAMES: Record<string, string[]> = {
@@ -126,25 +136,97 @@ function dateToKey(date: Date): string {
   return `${y}-${m}-${d}`;
 }
 
+const DAY_NAMES_SUN: Record<string, string[]> = {
+  uz: ['Ya', 'Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh'],
+  ru: [
+    '\u0412\u0441',
+    '\u041F\u043D',
+    '\u0412\u0442',
+    '\u0421\u0440',
+    '\u0427\u0442',
+    '\u041F\u0442',
+    '\u0421\u0431',
+  ],
+  en: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+};
+
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate();
 }
 
-function getStartDayOfWeek(year: number, month: number): number {
+function getStartDayOfWeek(year: number, month: number, firstDay: 0 | 1 = 1): number {
   const day = new Date(year, month, 1).getDay();
-  return day === 0 ? 6 : day - 1; // Monday first
+  if (firstDay === 1) return day === 0 ? 6 : day - 1;
+  return day;
+}
+
+function getISOWeekNumber(date: Date): number {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+}
+
+function normalizeDates(value: Date | Date[] | undefined): Date[] {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  return [value];
+}
+
+function isInRange(date: Date, rangeStart: Date, rangeEnd: Date): boolean {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+  const s = new Date(
+    rangeStart.getFullYear(),
+    rangeStart.getMonth(),
+    rangeStart.getDate()
+  ).getTime();
+  const e = new Date(rangeEnd.getFullYear(), rangeEnd.getMonth(), rangeEnd.getDate()).getTime();
+  return d >= Math.min(s, e) && d <= Math.max(s, e);
+}
+
+function isRangeStart(date: Date, dates: Date[]): boolean {
+  return dates.length >= 1 && isSameDay(date, dates[0]);
+}
+
+function isRangeEnd(date: Date, dates: Date[]): boolean {
+  return dates.length >= 2 && isSameDay(date, dates[1]);
 }
 
 export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
   (
-    { value, onChange, markedDates = {}, minDate, maxDate, locale = 'en', className = '', ...rest },
+    {
+      value: controlledValue,
+      defaultValue,
+      onChange,
+      mode = 'single',
+      markedDates = {},
+      minDate,
+      maxDate,
+      locale: localeProp,
+      showWeekNumber = false,
+      firstDayOfWeek = 1,
+      className,
+      ...rest
+    },
     ref
   ) => {
-    const { t } = useGeekShop();
+    const { t, locale: ctxLocale } = useGeekShop();
+    const locale = localeProp ?? ctxLocale;
     const today = useMemo(() => new Date(), []);
 
-    const [viewYear, setViewYear] = useState(() => value?.getFullYear() ?? today.getFullYear());
-    const [viewMonth, setViewMonth] = useState(() => value?.getMonth() ?? today.getMonth());
+    const [selectedDates, setSelectedDates] = useControllableState<Date[]>({
+      value: controlledValue !== undefined ? normalizeDates(controlledValue) : undefined,
+      defaultValue: normalizeDates(defaultValue),
+      onChange,
+    });
+
+    const [viewYear, setViewYear] = useState(
+      () => selectedDates[0]?.getFullYear() ?? today.getFullYear()
+    );
+    const [viewMonth, setViewMonth] = useState(
+      () => selectedDates[0]?.getMonth() ?? today.getMonth()
+    );
 
     const handlePrevMonth = useCallback(() => {
       if (viewMonth === 0) {
@@ -179,76 +261,80 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
       [minDate, maxDate]
     );
 
-    const handleDayClick = useCallback(
-      (day: number) => {
-        const date = new Date(viewYear, viewMonth, day);
-        if (isDateDisabled(date)) return;
-        onChange?.(date);
-      },
-      [viewYear, viewMonth, isDateDisabled, onChange]
-    );
+    const handleDayClick = (day: number) => {
+      const date = new Date(viewYear, viewMonth, day);
+      if (isDateDisabled(date)) return;
 
-    const handleKeyDown = useCallback(
-      (e: React.KeyboardEvent) => {
-        const currentDate = value ?? today;
-        let newDate: Date | undefined;
+      if (mode === 'single') {
+        setSelectedDates([date]);
+      } else if (mode === 'multiple') {
+        setSelectedDates((prev) => {
+          const existing = prev.findIndex((d) => isSameDay(d, date));
+          if (existing >= 0) return prev.filter((_, i) => i !== existing);
+          return [...prev, date];
+        });
+      } else if (mode === 'range') {
+        setSelectedDates((prev) => {
+          if (prev.length === 0 || prev.length === 2) return [date];
+          const start = prev[0];
+          return date < start ? [date, start] : [start, date];
+        });
+      }
+    };
 
-        switch (e.key) {
-          case 'ArrowLeft':
-            e.preventDefault();
-            newDate = new Date(currentDate);
-            newDate.setDate(newDate.getDate() - 1);
-            break;
-          case 'ArrowRight':
-            e.preventDefault();
-            newDate = new Date(currentDate);
-            newDate.setDate(newDate.getDate() + 1);
-            break;
-          case 'ArrowUp':
-            e.preventDefault();
-            newDate = new Date(currentDate);
-            newDate.setDate(newDate.getDate() - 7);
-            break;
-          case 'ArrowDown':
-            e.preventDefault();
-            newDate = new Date(currentDate);
-            newDate.setDate(newDate.getDate() + 7);
-            break;
-        }
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+      const currentDate = selectedDates[selectedDates.length - 1] ?? today;
+      let newDate: Date | undefined;
 
-        if (newDate && !isDateDisabled(newDate)) {
-          setViewYear(newDate.getFullYear());
-          setViewMonth(newDate.getMonth());
-          onChange?.(newDate);
-        }
-      },
-      [value, today, isDateDisabled, onChange]
-    );
+      switch (e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          newDate = new Date(currentDate);
+          newDate.setDate(newDate.getDate() - 1);
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          newDate = new Date(currentDate);
+          newDate.setDate(newDate.getDate() + 1);
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          newDate = new Date(currentDate);
+          newDate.setDate(newDate.getDate() - 7);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          newDate = new Date(currentDate);
+          newDate.setDate(newDate.getDate() + 7);
+          break;
+      }
+
+      if (newDate && !isDateDisabled(newDate)) {
+        setViewYear(newDate.getFullYear());
+        setViewMonth(newDate.getMonth());
+        handleDayClick(newDate.getDate());
+      }
+    };
 
     // Build calendar grid
     const daysInMonth = getDaysInMonth(viewYear, viewMonth);
-    const startDay = getStartDayOfWeek(viewYear, viewMonth);
+    const startDay = getStartDayOfWeek(viewYear, viewMonth, firstDayOfWeek);
     const calendarDays: (number | null)[] = [];
 
-    for (let i = 0; i < startDay; i++) {
-      calendarDays.push(null);
-    }
-    for (let d = 1; d <= daysInMonth; d++) {
-      calendarDays.push(d);
-    }
-
-    // Pad to full rows
-    while (calendarDays.length % 7 !== 0) {
-      calendarDays.push(null);
-    }
+    for (let i = 0; i < startDay; i++) calendarDays.push(null);
+    for (let d = 1; d <= daysInMonth; d++) calendarDays.push(d);
 
     const weeks: (number | null)[][] = [];
-    for (let i = 0; i < calendarDays.length; i += 7) {
-      weeks.push(calendarDays.slice(i, i + 7));
-    }
+    for (let i = 0; i < calendarDays.length; i += 7) weeks.push(calendarDays.slice(i, i + 7));
+    const lastWeek = weeks[weeks.length - 1];
+    while (lastWeek && lastWeek.length < 7) lastWeek.push(null);
 
     const monthNames = MONTH_NAMES[locale] ?? MONTH_NAMES.en;
-    const dayNames = DAY_NAMES[locale] ?? DAY_NAMES.en;
+    const dayNames =
+      firstDayOfWeek === 1
+        ? DAY_NAMES[locale] ?? DAY_NAMES.en
+        : DAY_NAMES_SUN[locale] ?? DAY_NAMES_SUN.en;
+    const gridColumns = showWeekNumber ? 8 : 7;
 
     return (
       <div ref={ref} className={cn(styles.root, className)} {...rest}>
@@ -274,7 +360,11 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
           </button>
         </div>
 
-        <div className={styles.dayHeaders}>
+        <div
+          className={styles.dayHeaders}
+          style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}
+        >
+          {showWeekNumber && <span className={styles.weekHeader}>#</span>}
           {dayNames.map((name) => (
             <span key={name} className={styles.dayHeader}>
               {name}
@@ -289,60 +379,82 @@ export const DesktopCalendar = forwardRef<HTMLDivElement, DesktopCalendarProps>(
           onKeyDown={handleKeyDown}
           tabIndex={0}
         >
-          {weeks.map((week, weekIdx) => (
-            <div key={weekIdx} className={styles.weekRow}>
-              {week.map((day, dayIdx) => {
-                if (day === null) {
-                  return <span key={`empty-${dayIdx}`} className={styles.dayEmpty} />;
-                }
+          {weeks.map((week, weekIdx) => {
+            const firstDay = week.find((d) => d !== null);
+            const weekDate = firstDay
+              ? new Date(viewYear, viewMonth, firstDay)
+              : new Date(viewYear, viewMonth, 1);
+            const weekNum = getISOWeekNumber(weekDate);
 
-                const date = new Date(viewYear, viewMonth, day);
-                const dateKey = dateToKey(date);
-                const isDisabled = isDateDisabled(date);
-                const isToday = isSameDay(date, today);
-                const isSelected = value ? isSameDay(date, value) : false;
-                const marked = markedDates[dateKey];
+            return (
+              <div
+                key={weekIdx}
+                className={styles.weekRow}
+                style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}
+              >
+                {showWeekNumber && <span className={styles.weekNumber}>{weekNum}</span>}
+                {week.map((day, dayIdx) => {
+                  if (day === null)
+                    return <span key={`empty-${dayIdx}`} className={styles.dayEmpty} />;
 
-                const dayClass = cn(
-                  styles.day,
-                  isToday && styles.dayToday,
-                  isSelected && styles.daySelected,
-                  isDisabled && styles.dayDisabled
-                );
+                  const date = new Date(viewYear, viewMonth, day);
+                  const dateKey = dateToKey(date);
+                  const isDisabled = isDateDisabled(date);
+                  const isToday = isSameDay(date, today);
+                  const isSelected = selectedDates.some((d) => isSameDay(d, date));
+                  const marked = markedDates[dateKey];
 
-                return (
-                  <button
-                    key={day}
-                    type="button"
-                    className={dayClass}
-                    onClick={() => handleDayClick(day)}
-                    disabled={isDisabled}
-                    aria-label={`${day} ${monthNames[viewMonth]} ${viewYear}`}
-                    aria-selected={isSelected}
-                    aria-disabled={isDisabled}
-                    aria-current={isToday ? 'date' : undefined}
-                    role="gridcell"
-                  >
-                    <span className={styles.dayNumber}>{day}</span>
-                    {marked?.dot && (
-                      <span
-                        className={styles.dayDot}
-                        style={marked.color ? { background: marked.color } : undefined}
-                      />
-                    )}
-                    {marked?.label && (
-                      <span
-                        className={styles.dayLabel}
-                        style={marked.color ? { color: marked.color } : undefined}
-                      >
-                        {marked.label}
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          ))}
+                  const inRange =
+                    mode === 'range' &&
+                    selectedDates.length === 2 &&
+                    isInRange(date, selectedDates[0], selectedDates[1]);
+                  const rangeStart = mode === 'range' && isRangeStart(date, selectedDates);
+                  const rangeEnd = mode === 'range' && isRangeEnd(date, selectedDates);
+
+                  const dayClass = cn(
+                    styles.day,
+                    isToday && styles.dayToday,
+                    isSelected && styles.daySelected,
+                    isDisabled && styles.dayDisabled,
+                    inRange && !isSelected && styles.dayInRange,
+                    rangeStart && styles.dayRangeStart,
+                    rangeEnd && styles.dayRangeEnd
+                  );
+
+                  return (
+                    <button
+                      key={day}
+                      type="button"
+                      className={dayClass}
+                      onClick={() => handleDayClick(day)}
+                      disabled={isDisabled}
+                      aria-label={`${day} ${monthNames[viewMonth]} ${viewYear}`}
+                      aria-selected={isSelected}
+                      aria-disabled={isDisabled}
+                      aria-current={isToday ? 'date' : undefined}
+                      role="gridcell"
+                    >
+                      <span className={styles.dayNumber}>{day}</span>
+                      {marked?.dot && (
+                        <span
+                          className={styles.dayDot}
+                          style={marked.color ? { background: marked.color } : undefined}
+                        />
+                      )}
+                      {marked?.label && (
+                        <span
+                          className={styles.dayLabel}
+                          style={marked.color ? { color: marked.color } : undefined}
+                        >
+                          {marked.label}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
