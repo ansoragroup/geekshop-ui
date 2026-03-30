@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopButton,
   DesktopInput,
   DesktopAvatar,
@@ -87,7 +87,7 @@ export const DesktopProfilePage: React.FC<DesktopProfilePageProps> = ({
   return (
     <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Profile' }]} />
+        <DesktopBreadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Profile' }]} />
       </div>
 
       <h1 className={styles.pageTitle}>My Account</h1>

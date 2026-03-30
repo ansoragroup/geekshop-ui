@@ -1,11 +1,13 @@
 'use client';
 import { useState } from 'react';
+import { DesktopShell, DesktopBreadcrumbs, DesktopButton } from '../../components';
 import {
-  DesktopShell,
-  Breadcrumbs,
-  DesktopButton,
-} from '../../components';
-import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter, formatPriceUZS } from '../_shared';
+  DefaultTopBar,
+  DefaultHeaderRich,
+  DefaultMegaMenu,
+  DefaultFooter,
+  formatPriceUZS,
+} from '../_shared';
 import styles from './DesktopOrderConfirmationPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
@@ -80,29 +82,32 @@ export const DesktopOrderConfirmationPage: React.FC<DesktopOrderConfirmationPage
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Order Confirmation' }]} />
+        <DesktopBreadcrumbs
+          items={[{ label: 'Home', href: '#' }, { label: 'Order Confirmation' }]}
+        />
       </div>
 
       {/* Success banner */}
       <div className={styles.successBanner}>
         <div className={styles.checkmarkCircle}>
           <svg className={styles.checkmarkIcon} viewBox="0 0 24 24" fill="none">
-            <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M5 13l4 4L19 7"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
         <h1 className={styles.successTitle}>Order placed successfully!</h1>
         <p className={styles.successSubtitle}>
-          Order <strong>#{orderId}</strong> — estimated delivery: <strong>{estimatedDelivery}</strong>
+          Order <strong>#{orderId}</strong> — estimated delivery:{' '}
+          <strong>{estimatedDelivery}</strong>
         </p>
-        {expressDelivery && (
-          <span className={styles.expressBadge}>Express Delivery</span>
-        )}
+        {expressDelivery && <span className={styles.expressBadge}>Express Delivery</span>}
       </div>
 
       <div className={styles.contentGrid}>
@@ -150,9 +155,12 @@ export const DesktopOrderConfirmationPage: React.FC<DesktopOrderConfirmationPage
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>Shipping Address</h2>
             <p className={styles.addressText}>
-              {addr.name}<br />
-              {addr.phone}<br />
-              {addr.street}<br />
+              {addr.name}
+              <br />
+              {addr.phone}
+              <br />
+              {addr.street}
+              <br />
               {addr.city} {addr.postal}
             </p>
           </div>
@@ -163,7 +171,8 @@ export const DesktopOrderConfirmationPage: React.FC<DesktopOrderConfirmationPage
             <p className={styles.paymentText}>{paymentMethod}</p>
             {withInstallment && (
               <p className={styles.installmentNote}>
-                Paid via {installmentMonths}-month installment plan — {formatPriceUZS(monthlyAmount)}/month
+                Paid via {installmentMonths}-month installment plan —{' '}
+                {formatPriceUZS(monthlyAmount)}/month
               </p>
             )}
           </div>

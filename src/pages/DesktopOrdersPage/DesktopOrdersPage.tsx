@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   TabFilter,
   DesktopOrderCard,
-  Pagination,
+  DesktopPagination,
 } from '../../components';
 import type { DesktopOrderStatus, DesktopOrderAction } from '../../components';
 import { mockOrders, DefaultTopBar, DefaultHeader, DefaultFooter } from '../_shared';
@@ -22,9 +22,12 @@ const orderFilterTabs = [
 // Map page-level status to DesktopOrderStatus
 function mapStatus(pageStatus: string): DesktopOrderStatus {
   switch (pageStatus) {
-    case 'review': return 'delivered';
-    case 'return': return 'returned';
-    default: return pageStatus as DesktopOrderStatus;
+    case 'review':
+      return 'delivered';
+    case 'return':
+      return 'returned';
+    default:
+      return pageStatus as DesktopOrderStatus;
   }
 }
 
@@ -38,22 +41,16 @@ function getOrderActions(status: string): DesktopOrderAction[] {
         { id: 'cancel', label: 'Cancel', variant: 'danger' },
       ];
     case 'shipping':
-      return [
-        { id: 'track', label: 'Track Order', variant: 'primary' },
-      ];
+      return [{ id: 'track', label: 'Track Order', variant: 'primary' }];
     case 'delivered':
       return [
         { id: 'review', label: 'Write Review', variant: 'primary' },
         { id: 'rebuy', label: 'Buy Again', variant: 'secondary' },
       ];
     case 'review':
-      return [
-        { id: 'review', label: 'Write Review', variant: 'primary' },
-      ];
+      return [{ id: 'review', label: 'Write Review', variant: 'primary' }];
     case 'cancelled':
-      return [
-        { id: 'rebuy', label: 'Buy Again', variant: 'primary' },
-      ];
+      return [{ id: 'rebuy', label: 'Buy Again', variant: 'primary' }];
     default:
       return [];
   }
@@ -66,26 +63,19 @@ export interface DesktopOrdersPageProps {
   initialOrders?: typeof mockOrders;
 }
 
-export const DesktopOrdersPage: React.FC<DesktopOrdersPageProps> = ({
-  initialOrders,
-}) => {
+export const DesktopOrdersPage: React.FC<DesktopOrdersPageProps> = ({ initialOrders }) => {
   const [activeTab, setActiveTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const orders = initialOrders ?? mockOrders;
 
-  const filteredOrders = activeTab === 'all'
-    ? orders
-    : orders.filter((order) => order.status === activeTab);
+  const filteredOrders =
+    activeTab === 'all' ? orders : orders.filter((order) => order.status === activeTab);
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={<DefaultHeader />}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={<DefaultHeader />} footer={<DefaultFooter />}>
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Orders' }]} />
+        <DesktopBreadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Orders' }]} />
       </div>
 
       <h1 className={styles.pageTitle}>My Orders</h1>
@@ -95,7 +85,10 @@ export const DesktopOrdersPage: React.FC<DesktopOrdersPageProps> = ({
         <TabFilter
           tabs={orderFilterTabs}
           activeTab={activeTab}
-          onChange={(tab) => { setActiveTab(tab); setCurrentPage(1); }}
+          onChange={(tab) => {
+            setActiveTab(tab);
+            setCurrentPage(1);
+          }}
         />
       </div>
 
@@ -126,11 +119,7 @@ export const DesktopOrdersPage: React.FC<DesktopOrdersPageProps> = ({
 
       {/* Pagination */}
       <div className={styles.paginationWrap}>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={5}
-          onPageChange={setCurrentPage}
-        />
+        <DesktopPagination currentPage={currentPage} totalPages={5} onPageChange={setCurrentPage} />
       </div>
     </DesktopShell>
   );

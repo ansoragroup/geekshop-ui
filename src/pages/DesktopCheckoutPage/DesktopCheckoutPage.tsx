@@ -3,8 +3,8 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   DesktopShell,
   DesktopHeaderRich,
-  Breadcrumbs,
-  TwoColumnLayout,
+  DesktopBreadcrumbs,
+  DesktopTwoColumnLayout,
   DesktopSteps,
   DesktopAddressCard,
   DesktopPaymentMethodCard,
@@ -224,7 +224,7 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
     <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs
+        <DesktopBreadcrumbs
           items={[
             { label: 'Home', href: '#' },
             { label: 'Cart', href: '#' },
@@ -335,7 +335,7 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
           </Button>
         </div>
       ) : (
-        <TwoColumnLayout
+        <DesktopTwoColumnLayout
           sidebar={orderSummary}
           sidebarWidth={380}
           sidebarPosition="right"
@@ -416,7 +416,7 @@ export const DesktopCheckoutPage: React.FC<DesktopCheckoutPageProps> = ({
               </div>
             </section>
           )}
-        </TwoColumnLayout>
+        </DesktopTwoColumnLayout>
       )}
     </DesktopShell>
   );

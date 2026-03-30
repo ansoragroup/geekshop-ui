@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopButton,
   DesktopTextArea,
   DesktopImageUploader,
@@ -9,10 +9,6 @@ import {
 } from '../../components';
 import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter } from '../_shared';
 import styles from './DesktopReviewWritePage.module.scss';
-
-
-
-
 
 const ratingLabels = ['', 'Terrible', 'Poor', 'Average', 'Good', 'Excellent'];
 
@@ -48,18 +44,16 @@ export const DesktopReviewWritePage: React.FC<DesktopReviewWritePageProps> = ({
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[
-          { label: 'Home', href: '#' },
-          { label: 'My Orders', href: '#' },
-          { label: 'Order #GS-2026-0315-001', href: '#' },
-          { label: 'Write Review' },
-        ]} />
+        <DesktopBreadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'My Orders', href: '#' },
+            { label: 'Order #GS-2026-0315-001', href: '#' },
+            { label: 'Write Review' },
+          ]}
+        />
       </div>
 
       <div className={styles.centerWrap}>
@@ -68,11 +62,7 @@ export const DesktopReviewWritePage: React.FC<DesktopReviewWritePageProps> = ({
 
           {/* Product summary */}
           <div className={styles.productSummary}>
-            <img
-              src={productImage}
-              alt={productName}
-              className={styles.productImage}
-            />
+            <img src={productImage} alt={productName} className={styles.productImage} />
             <div className={styles.productInfo}>
               <h2 className={styles.productName}>{productName}</h2>
               <p className={styles.productVariant}>{productVariant}</p>
@@ -103,11 +93,7 @@ export const DesktopReviewWritePage: React.FC<DesktopReviewWritePageProps> = ({
           {/* Photos */}
           <div className={styles.photoSection}>
             <h3 className={styles.sectionLabel}>Add Photos (optional)</h3>
-            <DesktopImageUploader
-              maxCount={5}
-              maxSize={10 * 1024 * 1024}
-              onChange={() => {}}
-            />
+            <DesktopImageUploader maxCount={5} maxSize={10 * 1024 * 1024} onChange={() => {}} />
           </div>
 
           {/* Actions */}
@@ -115,7 +101,11 @@ export const DesktopReviewWritePage: React.FC<DesktopReviewWritePageProps> = ({
             <DesktopButton variant="ghost" size="lg">
               Cancel
             </DesktopButton>
-            <DesktopButton variant="primary" size="lg" disabled={rating === 0 || review.length < 10}>
+            <DesktopButton
+              variant="primary"
+              size="lg"
+              disabled={rating === 0 || review.length < 10}
+            >
               Submit Review
             </DesktopButton>
           </div>

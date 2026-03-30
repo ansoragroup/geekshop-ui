@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopOrderStatusBar,
   DesktopButton,
 } from '../../components';
-import type {
-  DesktopOrderStep,
-} from '../../components';
-import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter, formatPriceUZS } from '../_shared';
+import type { DesktopOrderStep } from '../../components';
+import {
+  DefaultTopBar,
+  DefaultHeaderRich,
+  DefaultMegaMenu,
+  DefaultFooter,
+  formatPriceUZS,
+} from '../_shared';
 import styles from './DesktopOrderDetailPage.module.scss';
 
 // ─── Static data ──────────────────────────────────────────────────────────────
-
 
 const orderSteps: DesktopOrderStep[] = [
   { label: 'Order Placed', description: 'March 15, 2026' },
@@ -70,7 +73,13 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
   const [searchValue, setSearchValue] = useState('');
   const displayItems = propItems ?? orderItems;
   const displaySteps = propSteps ?? orderSteps;
-  const addr = shippingAddress ?? { name: 'Islom Karimov', phone: '+998 90 123 45 67', street: '123 Amir Temur Street, Apt 42', city: 'Tashkent, Uzbekistan', postal: '100000' };
+  const addr = shippingAddress ?? {
+    name: 'Islom Karimov',
+    phone: '+998 90 123 45 67',
+    street: '123 Amir Temur Street, Apt 42',
+    city: 'Tashkent, Uzbekistan',
+    postal: '100000',
+  };
   const subtotal = displayItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = 50_000;
   const total = subtotal + shipping;
@@ -83,13 +92,15 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Orders', href: '#' }, { label: 'Order #{orderId}' }]} />
+        <DesktopBreadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'My Orders', href: '#' },
+            { label: 'Order #{orderId}' },
+          ]}
+        />
       </div>
 
       <h1 className={styles.pageTitle}>Order #{orderId}</h1>
@@ -164,9 +175,12 @@ export const DesktopOrderDetailPage: React.FC<DesktopOrderDetailPageProps> = ({
           <div className={styles.infoCard}>
             <h2 className={styles.cardTitle}>Shipping Address</h2>
             <p className={styles.addressText}>
-              {addr.name}<br />
-              {addr.phone}<br />
-              {addr.street}<br />
+              {addr.name}
+              <br />
+              {addr.phone}
+              <br />
+              {addr.street}
+              <br />
               {addr.city} {addr.postal}
             </p>
           </div>

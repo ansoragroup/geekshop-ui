@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopOrderStatusBar,
   DesktopTimeline,
   DesktopButton,
 } from '../../components';
-import type {
-  DesktopOrderStep,
-  DesktopTimelineItem,
-} from '../../components';
-import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter, formatPriceUZS } from '../_shared';
+import type { DesktopOrderStep, DesktopTimelineItem } from '../../components';
+import {
+  DefaultTopBar,
+  DefaultHeaderRich,
+  DefaultMegaMenu,
+  DefaultFooter,
+  formatPriceUZS,
+} from '../_shared';
 import styles from './DesktopTrackOrderPage.module.scss';
-
 
 const orderSteps: DesktopOrderStep[] = [
   { label: 'Order Placed', description: 'March 15, 2026' },
@@ -23,12 +25,42 @@ const orderSteps: DesktopOrderStep[] = [
 ];
 
 const trackingEvents: DesktopTimelineItem[] = [
-  { title: 'Package out for delivery', description: 'Your package is on the way to Amir Temur 15, Tashkent', time: 'March 19, 08:45', status: 'active' },
-  { title: 'Arrived at local facility', description: 'Tashkent Distribution Center', time: 'March 18, 22:10', status: 'completed' },
-  { title: 'In transit', description: 'Package departed from Samarkand sorting center', time: 'March 17, 14:30', status: 'completed' },
-  { title: 'Shipped', description: 'Package picked up by courier from warehouse', time: 'March 16, 10:00', status: 'completed' },
-  { title: 'Processing', description: 'Order confirmed and payment verified', time: 'March 15, 16:20', status: 'completed' },
-  { title: 'Order placed', description: 'Order #GS-2026-0315-001 placed successfully', time: 'March 15, 15:45', status: 'completed' },
+  {
+    title: 'Package out for delivery',
+    description: 'Your package is on the way to Amir Temur 15, Tashkent',
+    time: 'March 19, 08:45',
+    status: 'active',
+  },
+  {
+    title: 'Arrived at local facility',
+    description: 'Tashkent Distribution Center',
+    time: 'March 18, 22:10',
+    status: 'completed',
+  },
+  {
+    title: 'In transit',
+    description: 'Package departed from Samarkand sorting center',
+    time: 'March 17, 14:30',
+    status: 'completed',
+  },
+  {
+    title: 'Shipped',
+    description: 'Package picked up by courier from warehouse',
+    time: 'March 16, 10:00',
+    status: 'completed',
+  },
+  {
+    title: 'Processing',
+    description: 'Order confirmed and payment verified',
+    time: 'March 15, 16:20',
+    status: 'completed',
+  },
+  {
+    title: 'Order placed',
+    description: 'Order #GS-2026-0315-001 placed successfully',
+    time: 'March 15, 15:45',
+    status: 'completed',
+  },
 ];
 
 export interface DesktopTrackOrderPageProps {
@@ -60,18 +92,16 @@ export const DesktopTrackOrderPage: React.FC<DesktopTrackOrderPageProps> = ({
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[
-          { label: 'Home', href: '#' },
-          { label: 'My Orders', href: '#' },
-          { label: 'Order #GS-2026-0315-001', href: '#' },
-          { label: 'Track Order' },
-        ]} />
+        <DesktopBreadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'My Orders', href: '#' },
+            { label: 'Order #GS-2026-0315-001', href: '#' },
+            { label: 'Track Order' },
+          ]}
+        />
       </div>
 
       <h1 className={styles.pageTitle}>Track Order</h1>
@@ -127,9 +157,12 @@ export const DesktopTrackOrderPage: React.FC<DesktopTrackOrderPageProps> = ({
           <div className={styles.card}>
             <h2 className={styles.cardTitle}>Delivery Address</h2>
             <p className={styles.addressText}>
-              Jasur Karimov<br />
-              +998 90 123 45 67<br />
-              Amir Temur ko&apos;chasi, 15-uy, 42-xonadon<br />
+              Jasur Karimov
+              <br />
+              +998 90 123 45 67
+              <br />
+              Amir Temur ko&apos;chasi, 15-uy, 42-xonadon
+              <br />
               Toshkent, 100000
             </p>
           </div>

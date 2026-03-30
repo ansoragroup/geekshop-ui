@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopButton,
   DesktopEmpty,
   DesktopBadge,
   DesktopAvatar,
   TabFilter,
 } from '../../components';
-import { mockNotifications, DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter } from '../_shared';
+import {
+  mockNotifications,
+  DefaultTopBar,
+  DefaultHeaderRich,
+  DefaultMegaMenu,
+  DefaultFooter,
+} from '../_shared';
 import styles from './DesktopNotificationsPage.module.scss';
 
 const filterTabs = [
@@ -38,9 +44,8 @@ export const DesktopNotificationsPage: React.FC<DesktopNotificationsPageProps> =
   const [activeTab, setActiveTab] = useState('all');
   const [notifications, setNotifications] = useState(initialNotifications ?? mockNotifications);
 
-  const filtered = activeTab === 'all'
-    ? notifications
-    : notifications.filter((n) => n.type === activeTab);
+  const filtered =
+    activeTab === 'all' ? notifications : notifications.filter((n) => n.type === activeTab);
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
@@ -56,13 +61,9 @@ export const DesktopNotificationsPage: React.FC<DesktopNotificationsPageProps> =
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Notifications' }]} />
+        <DesktopBreadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Notifications' }]} />
       </div>
 
       <div className={styles.pageHeader}>
@@ -94,13 +95,13 @@ export const DesktopNotificationsPage: React.FC<DesktopNotificationsPageProps> =
               className={`${styles.notificationItem} ${!notification.read ? styles.unread : ''}`}
             >
               <div className={styles.notifAvatar}>
-                <DesktopAvatar
-                  name={notification.avatarName}
-                  src={notification.avatar}
-                  size="md"
-                />
+                <DesktopAvatar name={notification.avatarName} src={notification.avatar} size="md" />
                 {notification.badgeColor && (
-                  <span className={`${styles.dotBadge} ${styles[`dot_${badgeColorMap[notification.badgeColor] || 'blue'}`]}`} />
+                  <span
+                    className={`${styles.dotBadge} ${
+                      styles[`dot_${badgeColorMap[notification.badgeColor] || 'blue'}`]
+                    }`}
+                  />
                 )}
               </div>
               <div className={styles.notifContent}>

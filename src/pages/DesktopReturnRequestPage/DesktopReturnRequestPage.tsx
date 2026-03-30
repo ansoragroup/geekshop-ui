@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopButton,
   DesktopSelect,
   DesktopTextArea,
@@ -82,7 +82,7 @@ export const DesktopReturnRequestPage: React.FC<DesktopReturnRequestPageProps> =
   return (
     <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs
+        <DesktopBreadcrumbs
           items={[
             { label: 'Home', href: '#' },
             { label: 'My Orders', href: '#' },

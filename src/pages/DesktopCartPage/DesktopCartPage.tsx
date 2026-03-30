@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
-  TwoColumnLayout,
+  DesktopBreadcrumbs,
+  DesktopTwoColumnLayout,
   DesktopCartItem,
   DesktopCouponCard,
   DesktopOrderSummary,
@@ -28,11 +28,11 @@ export const DesktopCartPage: React.FC<DesktopCartPageProps> = ({
   const [cartItems, setCartItems] = useState<CartItemData[]>(initialItems ?? mockCartItems);
 
   const handleQuantityChange = (id: number, quantity: number) => {
-    setCartItems((prev) => prev.map((item) => item.id === id ? { ...item, quantity } : item));
+    setCartItems((prev) => prev.map((item) => (item.id === id ? { ...item, quantity } : item)));
   };
 
   const handleSelect = (id: number, selected: boolean) => {
-    setCartItems((prev) => prev.map((item) => item.id === id ? { ...item, selected } : item));
+    setCartItems((prev) => prev.map((item) => (item.id === id ? { ...item, selected } : item)));
   };
 
   const handleDelete = (id: number) => {
@@ -41,7 +41,7 @@ export const DesktopCartPage: React.FC<DesktopCartPageProps> = ({
 
   const selectedItems = cartItems.filter((item) => item.selected);
   const subtotal = selectedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const discount = appliedCoupon ? Math.round(subtotal * appliedCoupon.discountPercent / 100) : 0;
+  const discount = appliedCoupon ? Math.round((subtotal * appliedCoupon.discountPercent) / 100) : 0;
   const afterDiscount = subtotal - discount;
   const shipping = afterDiscount > 5000000 ? 0 : 50000;
   const tax = Math.round(afterDiscount * 0.12);
@@ -66,14 +66,10 @@ export const DesktopCartPage: React.FC<DesktopCartPageProps> = ({
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={<DefaultHeader />}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={<DefaultHeader />} footer={<DefaultFooter />}>
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Cart' }]} />
+        <DesktopBreadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'Cart' }]} />
       </div>
 
       <h1 className={styles.pageTitle}>Shopping Cart ({cartItems.length} items)</h1>
@@ -84,43 +80,43 @@ export const DesktopCartPage: React.FC<DesktopCartPageProps> = ({
           description="Browse our products and add items to your cart."
         />
       ) : (
-      <TwoColumnLayout
-        sidebar={orderSummary}
-        sidebarWidth={340}
-        sidebarPosition="right"
-        gap={24}
-        stickyTop={24}
-      >
-        {/* Cart items */}
-        <div className={styles.cartList}>
-          {cartItems.map((item) => (
-            <DesktopCartItem
-              key={item.id}
-              image={item.image}
-              title={item.name}
-              variant={item.variant}
-              price={item.price}
-              quantity={item.quantity}
-              selected={item.selected}
-              onSelect={(selected) => handleSelect(item.id, selected)}
-              onQuantityChange={(quantity) => handleQuantityChange(item.id, quantity)}
-              onDelete={() => handleDelete(item.id)}
-            />
-          ))}
-        </div>
+        <DesktopTwoColumnLayout
+          sidebar={orderSummary}
+          sidebarWidth={340}
+          sidebarPosition="right"
+          gap={24}
+          stickyTop={24}
+        >
+          {/* Cart items */}
+          <div className={styles.cartList}>
+            {cartItems.map((item) => (
+              <DesktopCartItem
+                key={item.id}
+                image={item.image}
+                title={item.name}
+                variant={item.variant}
+                price={item.price}
+                quantity={item.quantity}
+                selected={item.selected}
+                onSelect={(selected) => handleSelect(item.id, selected)}
+                onQuantityChange={(quantity) => handleQuantityChange(item.id, quantity)}
+                onDelete={() => handleDelete(item.id)}
+              />
+            ))}
+          </div>
 
-        {/* Coupon section */}
-        <div className={styles.couponSection}>
-          <h3 className={styles.sectionTitle}>Have a coupon?</h3>
-          <DesktopCouponCard
-            discount="-10%"
-            code="GEEK10"
-            expiryDate="2026-04-01"
-            minAmount="Orders over 500,000 so'm"
-            color="orange"
-          />
-        </div>
-      </TwoColumnLayout>
+          {/* Coupon section */}
+          <div className={styles.couponSection}>
+            <h3 className={styles.sectionTitle}>Have a coupon?</h3>
+            <DesktopCouponCard
+              discount="-10%"
+              code="GEEK10"
+              expiryDate="2026-04-01"
+              minAmount="Orders over 500,000 so'm"
+              color="orange"
+            />
+          </div>
+        </DesktopTwoColumnLayout>
       )}
     </DesktopShell>
   );

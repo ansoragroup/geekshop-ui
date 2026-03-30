@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopProductImageGallery,
   PriceDisplay,
   Rating,
@@ -43,30 +43,41 @@ const specs = [
 
 const reviews = [
   {
-    user: { name: 'Dilshod Rahimov', avatar: 'https://picsum.photos/seed/user-1/64/64' } as ReviewUser,
+    user: {
+      name: 'Dilshod Rahimov',
+      avatar: 'https://picsum.photos/seed/user-1/64/64',
+    } as ReviewUser,
     rating: 5,
-    content: 'Excellent GPU! Runs all games at ultra settings 1440p 60+ FPS. Temperature stays under 65C. Highly recommended for the price.',
+    content:
+      'Excellent GPU! Runs all games at ultra settings 1440p 60+ FPS. Temperature stays under 65C. Highly recommended for the price.',
     date: '14 March, 2026',
     variant: '12GB / Black',
-    images: ['https://picsum.photos/seed/review-img-1/200/200', 'https://picsum.photos/seed/review-img-2/200/200'],
+    images: [
+      'https://picsum.photos/seed/review-img-1/200/200',
+      'https://picsum.photos/seed/review-img-2/200/200',
+    ],
   },
   {
     user: { name: 'Nodira Karimova' } as ReviewUser,
     rating: 4,
-    content: 'Good product, but the box arrived slightly damaged. The card itself works perfectly. Delivery took 2 days within Tashkent.',
+    content:
+      'Good product, but the box arrived slightly damaged. The card itself works perfectly. Delivery took 2 days within Tashkent.',
     date: '12 March, 2026',
     variant: '12GB / Black',
   },
   {
-    user: { name: 'Bekzod Tursunov', avatar: 'https://picsum.photos/seed/user-3/64/64' } as ReviewUser,
+    user: {
+      name: 'Bekzod Tursunov',
+      avatar: 'https://picsum.photos/seed/user-3/64/64',
+    } as ReviewUser,
     rating: 5,
-    content: 'Best value for money. Massive upgrade from my GTX 1660. DLSS 3 technology works great and significantly boosts FPS.',
+    content:
+      'Best value for money. Massive upgrade from my GTX 1660. DLSS 3 technology works great and significantly boosts FPS.',
     date: '10 March, 2026',
     variant: '12GB / Black',
     images: ['https://picsum.photos/seed/review-img-3/200/200'],
   },
 ];
-
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -118,7 +129,7 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
     >
       {/* Breadcrumbs */}
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs
+        <DesktopBreadcrumbs
           items={[
             { label: 'Home', href: '#' },
             { label: 'Graphics Cards', href: '#' },
@@ -140,10 +151,17 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
           <h1 className={styles.productTitle}>{productTitle}</h1>
           <div className={styles.ratingRow}>
             <Rating value={ratingValue} count={displayReviewCount} />
-            <span className={styles.stockLabel} style={inStock ? {} : { color: '#FF3B30' }}>{inStock ? 'In Stock' : 'Out of Stock'}</span>
+            <span className={styles.stockLabel} style={inStock ? {} : { color: '#FF3B30' }}>
+              {inStock ? 'In Stock' : 'Out of Stock'}
+            </span>
           </div>
           <div className={styles.priceRow}>
-            <PriceDisplay price={price} originalPrice={originalPrice} variant={originalPrice ? 'sale' : 'default'} size="lg" />
+            <PriceDisplay
+              price={price}
+              originalPrice={originalPrice}
+              variant={originalPrice ? 'sale' : 'default'}
+              size="lg"
+            />
           </div>
 
           {/* Installment Calculator */}
@@ -165,7 +183,9 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
               { name: 'Memory', options: [{ value: '12GB GDDR6X' }] },
             ]}
             selectedValues={{ Color: selectedColor, Memory: '12GB GDDR6X' }}
-            onSelect={(name, value) => { if (name === 'Color') setSelectedColor(value); }}
+            onSelect={(name, value) => {
+              if (name === 'Color') setSelectedColor(value);
+            }}
             stock={stock}
             price={price}
           />
@@ -180,11 +200,17 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
           <div className={styles.actionRow}>
             {inStock ? (
               <>
-                <Button variant="outline" size="lg" style={{ flex: 1 }}>Add to Cart</Button>
-                <Button variant="primary" size="lg" style={{ flex: 1 }}>Buy Now</Button>
+                <Button variant="outline" size="lg" style={{ flex: 1 }}>
+                  Add to Cart
+                </Button>
+                <Button variant="primary" size="lg" style={{ flex: 1 }}>
+                  Buy Now
+                </Button>
               </>
             ) : (
-              <Button variant="primary" size="lg" style={{ flex: 1 }}>Notify When Available</Button>
+              <Button variant="primary" size="lg" style={{ flex: 1 }}>
+                Notify When Available
+              </Button>
             )}
           </div>
         </div>
@@ -204,31 +230,34 @@ export const DesktopProductDetailPage: React.FC<DesktopProductDetailPageProps> =
             {
               key: 'reviews',
               label: `Reviews (${displayReviews.length})`,
-              children: displayReviews.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '40px 0', color: '#999' }}>
-                  <p style={{ fontSize: 16, fontWeight: 600, color: '#333' }}>No reviews yet</p>
-                  <p style={{ fontSize: 14, marginTop: 4 }}>Be the first to review this product!</p>
-                </div>
-              ) : (
-                <div className={styles.reviewsSection}>
-                  <DesktopRatingDistribution
-                    distribution={{
-                      5: Math.round(displayReviews.filter((r) => r.rating === 5).length * 420),
-                      4: Math.round(displayReviews.filter((r) => r.rating === 4).length * 210),
-                      3: Math.round(displayReviews.filter((r) => r.rating === 3).length * 65),
-                      2: Math.round(displayReviews.filter((r) => r.rating === 2).length * 19),
-                      1: Math.round(displayReviews.filter((r) => r.rating === 1).length * 8),
-                    }}
-                    average={ratingValue}
-                    total={displayReviewCount}
-                  />
-                  <div className={styles.reviewsList}>
-                    {displayReviews.map((review, i) => (
-                      <DesktopReviewCard key={i} {...review} />
-                    ))}
+              children:
+                displayReviews.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '40px 0', color: '#999' }}>
+                    <p style={{ fontSize: 16, fontWeight: 600, color: '#333' }}>No reviews yet</p>
+                    <p style={{ fontSize: 14, marginTop: 4 }}>
+                      Be the first to review this product!
+                    </p>
                   </div>
-                </div>
-              ),
+                ) : (
+                  <div className={styles.reviewsSection}>
+                    <DesktopRatingDistribution
+                      distribution={{
+                        5: Math.round(displayReviews.filter((r) => r.rating === 5).length * 420),
+                        4: Math.round(displayReviews.filter((r) => r.rating === 4).length * 210),
+                        3: Math.round(displayReviews.filter((r) => r.rating === 3).length * 65),
+                        2: Math.round(displayReviews.filter((r) => r.rating === 2).length * 19),
+                        1: Math.round(displayReviews.filter((r) => r.rating === 1).length * 8),
+                      }}
+                      average={ratingValue}
+                      total={displayReviewCount}
+                    />
+                    <div className={styles.reviewsList}>
+                      {displayReviews.map((review, i) => (
+                        <DesktopReviewCard key={i} {...review} />
+                      ))}
+                    </div>
+                  </div>
+                ),
             },
           ]}
         />

@@ -1,24 +1,32 @@
 import { useState } from 'react';
 import {
   DesktopShell,
-  Breadcrumbs,
+  DesktopBreadcrumbs,
   DesktopPaymentMethodCard,
   DesktopButton,
   DesktopEmpty,
 } from '../../components';
-import type {
-  DesktopPaymentMethod,
-} from '../../components';
+import type { DesktopPaymentMethod } from '../../components';
 import { DefaultTopBar, DefaultHeaderRich, DefaultMegaMenu, DefaultFooter } from '../_shared';
 import styles from './DesktopPaymentMethodsPage.module.scss';
 
-
-
-
-
 const initialMethods: DesktopPaymentMethod[] = [
-  { id: 'pm-1', type: 'uzcard', label: 'UzCard', lastFour: '4523', expiryDate: '09/27', isDefault: true },
-  { id: 'pm-2', type: 'humo', label: 'Humo', lastFour: '8901', expiryDate: '03/28', isDefault: false },
+  {
+    id: 'pm-1',
+    type: 'uzcard',
+    label: 'UzCard',
+    lastFour: '4523',
+    expiryDate: '09/27',
+    isDefault: true,
+  },
+  {
+    id: 'pm-2',
+    type: 'humo',
+    label: 'Humo',
+    lastFour: '8901',
+    expiryDate: '03/28',
+    isDefault: false,
+  },
   { id: 'pm-3', type: 'payme', label: 'Payme', isDefault: false },
   { id: 'pm-4', type: 'cash', label: 'Naqd pul', isDefault: false },
 ];
@@ -46,13 +54,15 @@ export const DesktopPaymentMethodsPage: React.FC<DesktopPaymentMethodsPageProps>
   );
 
   return (
-    <DesktopShell
-      topBar={<DefaultTopBar />}
-      header={header}
-      footer={<DefaultFooter />}
-    >
+    <DesktopShell topBar={<DefaultTopBar />} header={header} footer={<DefaultFooter />}>
       <div className={styles.breadcrumbs}>
-        <Breadcrumbs items={[{ label: 'Home', href: '#' }, { label: 'My Account', href: '#' }, { label: 'Payment Methods' }]} />
+        <DesktopBreadcrumbs
+          items={[
+            { label: 'Home', href: '#' },
+            { label: 'My Account', href: '#' },
+            { label: 'Payment Methods' },
+          ]}
+        />
       </div>
 
       <div className={styles.pageHeader}>
