@@ -6,9 +6,9 @@
  */
 
 import {
-  TopBar,
-  MegaMenu,
-  Footer,
+  DesktopTopBar,
+  DesktopMegaMenu,
+  DesktopFooter,
   DesktopHeader,
   DesktopHeaderRich,
 } from '../../components';
@@ -17,8 +17,14 @@ import type { MegaMenuCategory, CategoryItem, PromoLink } from '../../components
 // ─── Shared data ──────────────────────────────────────────────────────────────
 
 export const defaultMegaMenuCategories: MegaMenuCategory[] = [
-  { label: 'Graphics Cards', subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }] },
-  { label: 'Processors', subcategories: [{ label: 'AMD Ryzen 7000' }, { label: 'Intel 14th Gen' }] },
+  {
+    label: 'Graphics Cards',
+    subcategories: [{ label: 'NVIDIA RTX 40' }, { label: 'AMD Radeon RX' }],
+  },
+  {
+    label: 'Processors',
+    subcategories: [{ label: 'AMD Ryzen 7000' }, { label: 'Intel 14th Gen' }],
+  },
   { label: 'Monitors', subcategories: [{ label: '4K Monitors' }, { label: '2K 165Hz' }] },
   { label: 'Laptops', subcategories: [{ label: 'Gaming' }, { label: 'Ultrabook' }] },
   { label: 'Memory (RAM)' },
@@ -27,10 +33,22 @@ export const defaultMegaMenuCategories: MegaMenuCategory[] = [
 ];
 
 export const defaultFooterColumns = [
-  { title: 'Customer Service', links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }] },
-  { title: 'About GeekShop', links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }] },
-  { title: 'Policies', links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }, { label: 'Cookie Policy' }] },
-  { title: 'Connect', links: [{ label: 'Telegram' }, { label: 'Instagram' }, { label: 'Facebook' }] },
+  {
+    title: 'Customer Service',
+    links: [{ label: 'Help Center' }, { label: 'Returns & Refunds' }, { label: 'Shipping Info' }],
+  },
+  {
+    title: 'About GeekShop',
+    links: [{ label: 'About Us' }, { label: 'Careers' }, { label: 'Press' }],
+  },
+  {
+    title: 'Policies',
+    links: [{ label: 'Privacy Policy' }, { label: 'Terms of Service' }, { label: 'Cookie Policy' }],
+  },
+  {
+    title: 'Connect',
+    links: [{ label: 'Telegram' }, { label: 'Instagram' }, { label: 'Facebook' }],
+  },
 ];
 
 export const defaultHeaderCategories: CategoryItem[] = [
@@ -57,31 +75,38 @@ export const defaultMegaMenuNavItems = [
 
 // ─── Shared shell components ──────────────────────────────────────────────────
 
-const topBarBtnStyle = { background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' } as const;
+const topBarBtnStyle = {
+  background: 'none',
+  border: 'none',
+  color: 'inherit',
+  cursor: 'pointer',
+  fontSize: 'inherit',
+} as const;
 
 export const DefaultTopBar = () => (
-  <TopBar
+  <DesktopTopBar
     leftItems={[
       <span key="w">Welcome to GeekShop!</span>,
       <span key="s">Seller Center</span>,
       <span key="h">Help</span>,
     ]}
     rightItems={[
-      <button key="l" type="button" style={topBarBtnStyle}>EN</button>,
-      <button key="c" type="button" style={topBarBtnStyle}>UZS</button>,
+      <button key="l" type="button" style={topBarBtnStyle}>
+        EN
+      </button>,
+      <button key="c" type="button" style={topBarBtnStyle}>
+        UZS
+      </button>,
     ]}
   />
 );
 
 export const DefaultMegaMenu = () => (
-  <MegaMenu
-    categories={defaultMegaMenuCategories}
-    navItems={defaultMegaMenuNavItems}
-  />
+  <DesktopMegaMenu categories={defaultMegaMenuCategories} navItems={defaultMegaMenuNavItems} />
 );
 
 export const DefaultFooter = () => (
-  <Footer
+  <DesktopFooter
     columns={defaultFooterColumns}
     copyrightText={'\u00A9 2026 GeekShop. All rights reserved.'}
   />
