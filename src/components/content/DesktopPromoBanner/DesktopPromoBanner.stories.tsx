@@ -49,7 +49,8 @@ export const FullFeatured: Story = {
   name: 'Full Featured (all props)',
   args: {
     title: 'Spring Laptop Festival',
-    description: 'MacBook Air M3, ROG Strix, ThinkPad X1 Carbon — up to 40% off on all premium laptops this week only.',
+    description:
+      'MacBook Air M3, ROG Strix, ThinkPad X1 Carbon — up to 40% off on all premium laptops this week only.',
     image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop',
     imageAlt: 'MacBook Air laptop on a desk',
     imageAlign: 'right',
@@ -65,7 +66,7 @@ export const ImageLeft: Story = {
   args: {
     title: 'Gaming Keyboards',
     description: 'Mechanical keyboards from Keychron, Razer, and Logitech.',
-    image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop',
     imageAlign: 'left',
     tag: 'NEW',
     ctaText: 'Browse Collection',
@@ -93,7 +94,7 @@ export const GreenTheme: Story = {
   args: {
     title: 'Eco-Friendly Tech',
     description: 'Save energy and money with our green-certified products.',
-    image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=300&fit=crop',
     imageAlign: 'right',
     ctaText: 'Learn More',
     background: 'linear-gradient(135deg, #07C160 0%, #4CD964 100%)',
@@ -121,7 +122,7 @@ export const NoCta: Story = {
   args: {
     title: 'Coming Soon: VR Headsets',
     description: 'Meta Quest 3, Apple Vision Pro, and more — launching next week.',
-    image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop',
     imageAlign: 'left',
     tag: 'SOON',
     background: 'linear-gradient(135deg, #1A1A1A 0%, #333333 100%)',
@@ -192,7 +193,8 @@ export const LongDescription: Story = {
   name: 'Edge: Long Description',
   args: {
     title: 'Spring Tech Festival 2026',
-    description: 'The biggest sale event of the year is here! Save up to 50% on laptops, GPUs, monitors, gaming peripherals, and so much more. Free shipping on all orders over 500,000 UZS. Limited quantities available — shop now before they are gone.',
+    description:
+      'The biggest sale event of the year is here! Save up to 50% on laptops, GPUs, monitors, gaming peripherals, and so much more. Free shipping on all orders over 500,000 UZS. Limited quantities available — shop now before they are gone.',
     image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=300&fit=crop',
     imageAlign: 'right',
     tag: 'MEGA',

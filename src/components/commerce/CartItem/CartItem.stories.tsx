@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     title: 'Logitech G PRO X Superlight 2 Wireless Gaming Mouse',
     variant: 'Qora',
     price: 1_200_000,
@@ -37,7 +37,7 @@ export const Default: Story = {
 export const Selected: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB GDDR6X',
     variant: 'Founders Edition',
     price: 24_500_000,
@@ -74,7 +74,7 @@ export const CartList = () => {
     {
       id: '1',
       image:
-        'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=200&h=200&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
       title: 'Logitech G PRO X Superlight 2 Wireless Gaming Mouse',
       variant: 'Qora',
       price: 1_200_000,
@@ -84,7 +84,7 @@ export const CartList = () => {
     {
       id: '2',
       image:
-        'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
       title: 'MSI GeForce RTX 4070 SUPER Ventus 3X 12GB OC',
       variant: 'Ventus 3X OC',
       price: 8_200_000,
@@ -94,7 +94,7 @@ export const CartList = () => {
     {
       id: '3',
       image:
-        'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=200&h=200&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop&auto=format',
       title: 'Keychron Q1 HE Wireless Mechanical Keyboard',
       variant: 'Gateron Magnetic Jade',
       price: 2_100_000,

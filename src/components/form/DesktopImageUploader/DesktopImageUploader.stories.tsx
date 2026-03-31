@@ -14,7 +14,7 @@ const sampleImages: DesktopImageFile[] = [
     name: 'watch-angle.jpg',
   },
   {
-    url: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop',
+    url: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&h=200&fit=crop',
     name: 'camera-detail.jpg',
   },
 ];
@@ -29,15 +29,15 @@ const manyImages: DesktopImageFile[] = [
     name: 'product-2.jpg',
   },
   {
-    url: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop',
+    url: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&h=200&fit=crop',
     name: 'product-3.jpg',
   },
   {
-    url: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop',
+    url: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop',
     name: 'product-4.jpg',
   },
   {
-    url: 'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=200&h=200&fit=crop',
+    url: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop',
     name: 'product-5.jpg',
   },
 ];

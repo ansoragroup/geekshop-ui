@@ -590,10 +590,10 @@ export const ImageGallery: Story = {
     children: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {[
-          'https://images.unsplash.com/photo-1587831990691-b10bea7e5e39?w=400&h=400&fit=crop',
-          'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&h=400&fit=crop',
-          'https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?w=400&h=400&fit=crop',
-          'https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=400&h=400&fit=crop',
+          'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop',
+          'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
+          'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+          'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop',
         ].map((src, i) => (
           <img
             key={i}

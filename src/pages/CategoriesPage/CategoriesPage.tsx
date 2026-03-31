@@ -417,7 +417,7 @@ const categoryProducts: Record<string, ProductCardFlatProps[]> = {
       discount: '-10%',
     },
     {
-      image: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=300&h=360&fit=crop',
+      image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=360&fit=crop',
       title: 'RTX 4070 Ti MSI Gaming X 12GB',
       price: 9200000,
       badge: 'top' as const,
@@ -435,7 +435,7 @@ const categoryProducts: Record<string, ProductCardFlatProps[]> = {
       badge: 'new' as const,
     },
     {
-      image: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=300&h=350&fit=crop',
+      image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=350&fit=crop',
       title: 'RX 7800 XT PowerColor Red Devil 16GB',
       price: 7400000,
       soldCount: '90+ sotilgan',
@@ -449,7 +449,7 @@ const categoryProducts: Record<string, ProductCardFlatProps[]> = {
       badge: 'hot' as const,
     },
     {
-      image: 'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=300&h=340&fit=crop',
+      image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=300&h=340&fit=crop',
       title: 'Intel Core i9-14900K',
       price: 8200000,
     },

@@ -47,22 +47,22 @@ const sampleCategories: CategoryItem[] = [
   {
     id: '9',
     label: 'Cameras',
-    icon: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=64&h=64&fit=crop',
+    icon: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=64&h=64&fit=crop',
   },
   {
     id: '10',
     label: 'Accessories',
-    icon: 'https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=64&h=64&fit=crop',
+    icon: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=64&h=64&fit=crop',
   },
   {
     id: '11',
     label: 'Smart Home',
-    icon: 'https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=64&h=64&fit=crop',
+    icon: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=64&h=64&fit=crop',
   },
   {
     id: '12',
     label: 'Audio',
-    icon: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=64&h=64&fit=crop',
+    icon: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=64&h=64&fit=crop',
   },
 ];
 

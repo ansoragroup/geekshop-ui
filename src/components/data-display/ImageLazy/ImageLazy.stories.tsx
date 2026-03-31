@@ -42,9 +42,9 @@ export const WithPlaceholder: Story = {
   render: () => (
     <div style={{ width: 280 }}>
       <ImageLazy
-        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&h=400&fit=crop&auto=format"
         alt="Product with placeholder"
-        placeholder="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=30&h=20&fit=crop&auto=format"
+        placeholder="https://images.unsplash.com/photo-1527814050087-3793815479db?w=30&h=20&fit=crop&auto=format"
         aspectRatio="3/2"
         radius={12}
       />
@@ -58,7 +58,7 @@ export const AspectRatio: Story = {
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
       <div style={{ width: 160 }}>
         <ImageLazy
-          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=300&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop&auto=format"
           alt="1:1 square"
           aspectRatio="1/1"
           radius={8}
@@ -68,7 +68,7 @@ export const AspectRatio: Story = {
       </div>
       <div style={{ width: 200 }}>
         <ImageLazy
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=300&fit=crop&auto=format"
           alt="4:3 landscape"
           aspectRatio="4/3"
           radius={8}
@@ -78,7 +78,7 @@ export const AspectRatio: Story = {
       </div>
       <div style={{ width: 240 }}>
         <ImageLazy
-          src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=480&h=270&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=480&h=270&fit=crop&auto=format"
           alt="16:9 widescreen"
           aspectRatio="16/9"
           radius={8}
@@ -98,7 +98,7 @@ export const ErrorFallback: Story = {
         <ImageLazy
           src="https://invalid-url.example/broken.jpg"
           alt="Broken image with fallback"
-          fallback="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=300&h=300&fit=crop&auto=format"
+          fallback="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=300&fit=crop&auto=format"
           aspectRatio="1/1"
           radius={8}
         />
@@ -126,7 +126,7 @@ export const Priority: Story = {
   render: () => (
     <div style={{ width: 280 }}>
       <ImageLazy
-        src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600&h=400&fit=crop&auto=format"
         alt="Above-fold hero image"
         width={600}
         height={400}
@@ -147,7 +147,7 @@ export const WithDimensions: Story = {
     <div style={{ display: 'flex', gap: 16 }}>
       <div style={{ width: 200 }}>
         <ImageLazy
-          src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop&auto=format"
           alt="With dimensions"
           width={400}
           height={400}
@@ -160,7 +160,7 @@ export const WithDimensions: Story = {
       </div>
       <div style={{ width: 200 }}>
         <ImageLazy
-          src="https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=400&h=300&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=300&fit=crop&auto=format"
           alt="Without dimensions"
           aspectRatio="4/3"
           radius={8}
@@ -206,9 +206,9 @@ export const Grid: Story = {
             }}
           >
             <ImageLazy
-              src={`https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=300&h=300&fit=crop&auto=format`}
+              src={`https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=300&fit=crop&auto=format`}
               alt={p.name}
-              placeholder={`https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=15&h=15&fit=crop&auto=format`}
+              placeholder={`https://images.unsplash.com/photo-1591488320449-011701bb6704?w=15&h=15&fit=crop&auto=format`}
               aspectRatio="1/1"
             />
             <div style={{ padding: '8px 10px' }}>

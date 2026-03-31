@@ -80,7 +80,7 @@ export const NoCountdown: Story = {
 
 export const AlmostSoldOut: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop',
     title: 'Anker Soundcore Liberty 4 NC True Wireless Earbuds',
     price: 750_000,
     originalPrice: 1_100_000,
@@ -96,7 +96,7 @@ export const AlmostSoldOut: Story = {
 
 export const HighDiscount: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop',
     title: 'Keychron Q1 Pro Mechanical Keyboard',
     price: 1_250_000,
     originalPrice: 2_500_000,
@@ -129,7 +129,7 @@ export const LowDiscount: Story = {
 export const NoRating: Story = {
   name: 'No Rating or Reviews',
   args: {
-    image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=300&h=300&fit=crop',
     title: 'Corsair Vengeance DDR5 32GB 6000MHz RAM Kit',
     price: 2_100_000,
     originalPrice: 2_800_000,
@@ -194,7 +194,7 @@ export const JustStarted: Story = {
 export const PerfectRating: Story = {
   name: 'Perfect 5-Star Rating',
   args: {
-    image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop',
     title: 'Apple Watch Ultra 2 GPS + Cellular 49mm Titanium',
     price: 11_500_000,
     originalPrice: 14_000_000,
@@ -212,7 +212,16 @@ export const GridLayout: Story = {
   name: 'Grid (2 cards stacked)',
   decorators: [
     (Story) => (
-      <div style={{ width: 600, padding: 24, background: '#f5f5f5', display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div
+        style={{
+          width: 600,
+          padding: 24,
+          background: '#f5f5f5',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}
+      >
         <Story />
       </div>
     ),
@@ -250,7 +259,8 @@ export const LongTitle: Story = {
   name: 'Edge: Long Title',
   args: {
     image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop',
-    title: 'Samsung Galaxy S24 Ultra 12GB RAM 512GB Storage Titanium Gray with S Pen and AI Features Premium Edition',
+    title:
+      'Samsung Galaxy S24 Ultra 12GB RAM 512GB Storage Titanium Gray with S Pen and AI Features Premium Edition',
     price: 15_990_000,
     originalPrice: 18_990_000,
     discount: 16,

@@ -26,7 +26,7 @@ export const Default: Story = {
         originalPrice: 26_500_000,
         quantity: 1,
         selected: true,
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
       },
       {
         id: 2,
@@ -67,7 +67,7 @@ export const WithCouponApplied: Story = {
         originalPrice: 26_500_000,
         quantity: 1,
         selected: true,
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
       },
       {
         id: 2,
@@ -147,7 +147,7 @@ export const ManyItems: Story = {
         originalPrice: 21_500_000,
         quantity: 1,
         selected: true,
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
       },
       {
         id: 2,
@@ -183,7 +183,7 @@ export const ManyItems: Story = {
         price: 2_800_000,
         quantity: 1,
         selected: false,
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
       },
       {
         id: 6,
@@ -219,7 +219,7 @@ export const HighValueCart: Story = {
         price: 42_000_000,
         quantity: 1,
         selected: true,
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
       },
       {
         id: 2,

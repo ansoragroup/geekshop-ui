@@ -15,7 +15,7 @@ import styles from './WishlistPage.module.scss';
 
 const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
   {
-    image: 'https://picsum.photos/seed/wish-gpu/300/300',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop',
     title: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
     price: 5200000,
     originalPrice: 5800000,
@@ -25,14 +25,14 @@ const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
     tags: ['sale'],
   },
   {
-    image: 'https://picsum.photos/seed/wish-cpu/300/300',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop',
     title: 'AMD Ryzen 7 7800X3D Protsessor AM5',
     price: 4100000,
     soldCount: '540+ sotilgan',
     tags: ['lowstock'],
   },
   {
-    image: 'https://picsum.photos/seed/wish-monitor/300/300',
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=300&fit=crop',
     title: 'ASUS ROG Swift 27" 2K 165Hz Gaming Monitor',
     price: 4800000,
     originalPrice: 5500000,
@@ -42,7 +42,7 @@ const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
     tags: ['sale'],
   },
   {
-    image: 'https://picsum.photos/seed/wish-keyboard/300/300',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop',
     title: 'Keychron Q1 Pro Mechanical Keyboard RGB',
     price: 1850000,
     badge: 'new',
@@ -50,7 +50,7 @@ const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
     tags: ['lowstock'],
   },
   {
-    image: 'https://picsum.photos/seed/wish-ssd/300/300',
+    image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=300&h=300&fit=crop',
     title: 'Samsung 990 Pro NVMe 2TB SSD M.2',
     price: 2800000,
     originalPrice: 3200000,
@@ -59,14 +59,14 @@ const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
     tags: ['sale'],
   },
   {
-    image: 'https://picsum.photos/seed/wish-mouse/300/300',
+    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop',
     title: 'Logitech G Pro X Superlight 2 Wireless Mouse',
     price: 1400000,
     soldCount: '610+ sotilgan',
     tags: [],
   },
   {
-    image: 'https://picsum.photos/seed/wish-cooler/300/300',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=300&h=300&fit=crop',
     title: 'Noctua NH-D15 CPU Cooler Dual Tower',
     price: 1200000,
     originalPrice: 1500000,
@@ -76,7 +76,7 @@ const wishlistProducts: (ProductCardFlatProps & { tags: string[] })[] = [
     tags: ['sale', 'lowstock'],
   },
   {
-    image: 'https://picsum.photos/seed/wish-case/300/300',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=300&fit=crop',
     title: 'NZXT H7 Flow ATX Mid-Tower Case Oq',
     price: 1600000,
     badge: 'new',
@@ -96,7 +96,16 @@ const tabKeys = [
 /* ---------- Heart filled icon ---------- */
 
 const HeartFilledIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF3B30" stroke="#FF3B30" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="#FF3B30"
+    stroke="#FF3B30"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
   </svg>
 );
@@ -128,9 +137,7 @@ export interface WishlistPageProps {
   empty?: boolean;
 }
 
-export const WishlistPage: React.FC<WishlistPageProps> = ({
-  empty = false,
-}) => {
+export const WishlistPage: React.FC<WishlistPageProps> = ({ empty = false }) => {
   const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState('all');
 
@@ -140,11 +147,15 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
     badge: tab.badge,
   }));
 
-  const filteredProducts = activeTab === 'all'
-    ? wishlistProducts
-    : wishlistProducts.filter((p) => p.tags.includes(activeTab));
+  const filteredProducts =
+    activeTab === 'all'
+      ? wishlistProducts
+      : wishlistProducts.filter((p) => p.tags.includes(activeTab));
 
-  const productsForGrid = filteredProducts.map(({ tags, ...rest }) => { void tags; return rest; });
+  const productsForGrid = filteredProducts.map(({ tags, ...rest }) => {
+    void tags;
+    return rest;
+  });
 
   return (
     <div className={styles.page}>
@@ -177,17 +188,10 @@ export const WishlistPage: React.FC<WishlistPageProps> = ({
           />
         ) : (
           <>
-            <TabFilter
-              tabs={tabs}
-              activeTab={activeTab}
-              onChange={setActiveTab}
-            />
+            <TabFilter tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
 
             {filteredProducts.length === 0 ? (
-              <Empty
-                title={t('wishlist.noResults')}
-                description={t('wishlist.noFilterResults')}
-              />
+              <Empty title={t('wishlist.noResults')} description={t('wishlist.noFilterResults')} />
             ) : (
               <div className={styles.gridWrapper}>
                 <ProductGrid products={productsForGrid} columns={2} gap={8} />

@@ -16,7 +16,11 @@ import {
   Toast,
   useGeekShop,
 } from '../../components';
-import type { SkuVariant, SkuProduct, SkuSelection } from '../../components/commerce/SkuSelector/SkuSelector';
+import type {
+  SkuVariant,
+  SkuProduct,
+  SkuSelection,
+} from '../../components/commerce/SkuSelector/SkuSelector';
 import styles from './ProductDetailPage.module.scss';
 
 /* ---------- Product data ---------- */
@@ -41,10 +45,10 @@ interface ProductData {
 const defaultProduct: ProductData = {
   title: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6 OC Edition',
   images: [
-    'https://picsum.photos/seed/msicard/750/750',
-    'https://picsum.photos/seed/msicard2/750/750',
-    'https://picsum.photos/seed/msicard3/750/750',
-    'https://picsum.photos/seed/msicard4/750/750',
+    'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=750&h=750&fit=crop',
+    'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=750&h=750&fit=crop',
+    'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=750&h=750&fit=crop',
+    'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=750&h=750&fit=crop',
   ],
   price: 5200000,
   originalPrice: 6500000,
@@ -71,9 +75,9 @@ const defaultProduct: ProductData = {
 const preOrderProduct: ProductData = {
   title: 'MSI GeForce RTX 5070 Ti 12GB GDDR7',
   images: [
-    'https://picsum.photos/seed/rtx5070/750/750',
-    'https://picsum.photos/seed/rtx5070-2/750/750',
-    'https://picsum.photos/seed/rtx5070-3/750/750',
+    'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=750&h=750&fit=crop',
+    'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=750&h=750&fit=crop',
+    'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=750&h=750&fit=crop',
   ],
   price: 12500000,
   sku: 'GS-MSI-5070TI-12G',
@@ -100,7 +104,7 @@ const preOrderProduct: ProductData = {
 
 const skuProduct: SkuProduct = {
   title: 'MSI GeForce RTX 4060 Ventus 2X 8GB',
-  image: 'https://picsum.photos/seed/msicard/200/200',
+  image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
   priceRange: [4_800_000, 6_500_000],
 };
 
@@ -108,7 +112,7 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'msi-ventus-8g',
     name: 'Ventus 2X 8GB',
-    image: 'https://picsum.photos/seed/msi-v2x-8g/200/200',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     price: 5_200_000,
     stock: 12,
     hotRank: 1,
@@ -116,7 +120,7 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'msi-gaming-8g',
     name: 'Gaming X 8GB',
-    image: 'https://picsum.photos/seed/msi-gx-8g/200/200',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
     price: 5_800_000,
     stock: 6,
     hotRank: 2,
@@ -124,7 +128,7 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'msi-ventus-8g-oc',
     name: 'Ventus 2X OC 8GB',
-    image: 'https://picsum.photos/seed/msi-v2x-oc/200/200',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     price: 5_500_000,
     stock: 8,
     hotRank: 3,
@@ -132,21 +136,21 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'asus-dual-8g',
     name: 'ASUS Dual 8GB',
-    image: 'https://picsum.photos/seed/asus-dual-8g/200/200',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
     price: 4_800_000,
     stock: 15,
   },
   {
     id: 'gigabyte-eagle-8g',
     name: 'Gigabyte Eagle 8GB',
-    image: 'https://picsum.photos/seed/giga-eagle-8g/200/200',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     price: 5_100_000,
     stock: 4,
   },
   {
     id: 'zotac-twin-8g',
     name: 'Zotac Twin Edge 8GB',
-    image: 'https://picsum.photos/seed/zotac-twin-8g/200/200',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
     price: 4_900_000,
     stock: 9,
   },
@@ -154,21 +158,28 @@ const skuVariants: SkuVariant[] = [
 
 const sampleReviews = [
   {
-    user: { name: 'Sardor A.', avatar: 'https://picsum.photos/seed/user1/80/80' },
+    user: {
+      name: 'Sardor A.',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop',
+    },
     rating: 5,
     variant: '8GB / Qora',
-    content: 'Ajoyib grafik karta! O\'yinlar 1080p da 60+ FPS bilan ishlaydi. Sovutish tizimi juda yaxshi, ovozi past.',
+    content:
+      "Ajoyib grafik karta! O'yinlar 1080p da 60+ FPS bilan ishlaydi. Sovutish tizimi juda yaxshi, ovozi past.",
     date: '10 mart, 2026',
-    images: ['https://picsum.photos/seed/rev1/200/200'],
+    images: ['https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop'],
   },
   {
     user: { name: 'Dilshod M.' },
     rating: 4,
-    content: 'Sifati yaxshi, lekin qutisida kabel yo\'q edi. Umuman olganda mamnunman.',
+    content: "Sifati yaxshi, lekin qutisida kabel yo'q edi. Umuman olganda mamnunman.",
     date: '5 mart, 2026',
   },
   {
-    user: { name: 'Aziza R.', avatar: 'https://picsum.photos/seed/user3/80/80' },
+    user: {
+      name: 'Aziza R.',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop',
+    },
     rating: 5,
     variant: '8GB / Qora',
     content: 'Rasmiy kafolat bilan keldi. Ray tracing ham yaxshi ishlaydi. Tavsiya qilaman!',
@@ -178,7 +189,16 @@ const sampleReviews = [
 
 /* ---------- Chevron icon ---------- */
 const ChevronRight = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#999"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M9 18l6-6-6-6" />
   </svg>
 );
@@ -209,9 +229,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const baseProduct = preOrder ? preOrderProduct : defaultProduct;
   const product = {
     ...baseProduct,
-    ...(withDiscount && !preOrder
-      ? {}
-      : { originalPrice: undefined, discount: undefined }),
+    ...(withDiscount && !preOrder ? {} : { originalPrice: undefined, discount: undefined }),
     ...(outOfStock ? { inStock: false, stock: 0 } : {}),
   };
 
@@ -228,16 +246,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     setSkuSheetOpen(false);
   }, []);
 
-  const handleAddToCart = useCallback((selections: SkuSelection[]) => {
-    handleCloseSkuSheet();
-    if (selections.length > 0) {
-      const variant = skuVariants.find((v) => v.id === selections[0].variantId);
-      if (variant) {
-        setSelectedVariantName(variant.name);
+  const handleAddToCart = useCallback(
+    (selections: SkuSelection[]) => {
+      handleCloseSkuSheet();
+      if (selections.length > 0) {
+        const variant = skuVariants.find((v) => v.id === selections[0].variantId);
+        if (variant) {
+          setSelectedVariantName(variant.name);
+        }
       }
-    }
-    showToast(t('product.addedToCart'));
-  }, [handleCloseSkuSheet, showToast, t]);
+      showToast(t('product.addedToCart'));
+    },
+    [handleCloseSkuSheet, showToast, t]
+  );
 
   const handleActionBarAddToCart = useCallback(() => {
     if (!outOfStock) {
@@ -275,23 +296,41 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       {/* Trust badges */}
       <div className={styles.trustBadges}>
         <span className={styles.trustBadge}>
-          <svg className={styles.trustIcon} viewBox="0 0 24 24" fill="none" stroke="#07C160" strokeWidth="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="m9 12 2 2 4-4"/>
+          <svg
+            className={styles.trustIcon}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#07C160"
+            strokeWidth="2"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="m9 12 2 2 4-4" />
           </svg>
           {t('product.warranty')}
         </span>
         <span className={styles.trustBadge}>
-          <svg className={styles.trustIcon} viewBox="0 0 24 24" fill="none" stroke="#1890FF" strokeWidth="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <polyline points="22 4 12 14.01 9 11.01"/>
+          <svg
+            className={styles.trustIcon}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#1890FF"
+            strokeWidth="2"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
           </svg>
           {t('product.qualityChecked')}
         </span>
         <span className={styles.trustBadge}>
-          <svg className={styles.trustIcon} viewBox="0 0 24 24" fill="none" stroke="#FF5000" strokeWidth="2">
-            <polyline points="1 4 1 10 7 10"/>
-            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+          <svg
+            className={styles.trustIcon}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#FF5000"
+            strokeWidth="2"
+          >
+            <polyline points="1 4 1 10 7 10" />
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
           </svg>
           {t('product.freeReturn')}
         </span>
@@ -354,12 +393,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <>
           <div className={styles.quantityRow}>
             <span className={styles.quantityLabel}>{t('commerce.quantity')}</span>
-            <QuantityStepper
-              value={quantity}
-              min={1}
-              max={product.stock}
-              onChange={setQuantity}
-            />
+            <QuantityStepper value={quantity} min={1} max={product.stock} onChange={setQuantity} />
           </div>
           <Divider />
         </>
@@ -370,9 +404,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         <div className={styles.descriptionContent}>
           <h4 className={styles.descHeading}>{t('product.about')}</h4>
           <p>
-            {product.title} — NVIDIA Ada Lovelace arxitekturasiga
-            asoslangan eng so&apos;nggi grafik karta. Ray tracing, DLSS 3.0 va boshqa
-            zamonaviy texnologiyalarni qo&apos;llab-quvvatlaydi.
+            {product.title} — NVIDIA Ada Lovelace arxitekturasiga asoslangan eng so&apos;nggi grafik
+            karta. Ray tracing, DLSS 3.0 va boshqa zamonaviy texnologiyalarni
+            qo&apos;llab-quvvatlaydi.
           </p>
           <ul className={styles.descList}>
             <li className={styles.descItem}>NVIDIA Ada Lovelace arxitekturasi</li>
@@ -389,7 +423,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
       {/* Specs section */}
       <Section>
-        <SectionHeader title={t('product.specifications')} count={product.specs.length} onViewAll={() => {}} />
+        <SectionHeader
+          title={t('product.specifications')}
+          count={product.specs.length}
+          onViewAll={() => {}}
+        />
         <SpecsTable specs={product.specs} />
       </Section>
 

@@ -7,7 +7,17 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div style={{ width: 390, padding: 24, display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#F5F5F5', borderRadius: 12 }}>
+      <div
+        style={{
+          width: 390,
+          padding: 24,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          background: '#F5F5F5',
+          borderRadius: 12,
+        }}
+      >
         <Story />
       </div>
     ),
@@ -58,7 +68,7 @@ export const WithLogo: Story = {
   args: {
     value: 'https://geekshop.uz/pickup/order-12345',
     size: 200,
-    logo: 'https://placehold.co/48x48/FF5000/FFFFFF?text=GS',
+    logo: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=48&h=48&fit=crop',
   },
 };
 

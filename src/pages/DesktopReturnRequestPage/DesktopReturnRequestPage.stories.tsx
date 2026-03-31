@@ -93,7 +93,7 @@ export const HighValueReturn: Story = {
     initialRefundMethod: 'original',
     item: {
       id: '1',
-      image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+      image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
       name: 'Apple MacBook Pro 16" M3 Max 36GB 1TB',
       price: 42_000_000,
       maxQuantity: 1,

@@ -3,13 +3,10 @@
  *
  * All prices are in Uzbek so'm (UZS).
  * Product names and addresses use realistic Uzbek locale content.
- * Images use picsum.photos with deterministic seeds for consistency.
+ * Images use Unsplash verified URLs for tech/hardware products.
  */
 
-import type {
-  Address,
-  PaymentMethod,
-} from '../../components';
+import type { Address, PaymentMethod } from '../../components';
 
 import type {
   Product,
@@ -32,7 +29,7 @@ export const mockProducts: Product[] = [
   {
     id: 1,
     name: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
-    image: 'https://picsum.photos/seed/product-gpu/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     price: 5_200_000,
     originalPrice: 6_500_000,
     rating: 4.6,
@@ -44,7 +41,7 @@ export const mockProducts: Product[] = [
   {
     id: 2,
     name: 'AMD Ryzen 7 7800X3D Protsessor AM5',
-    image: 'https://picsum.photos/seed/product-cpu/400/400',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
     price: 4_100_000,
     rating: 4.8,
     reviewCount: 134,
@@ -55,7 +52,7 @@ export const mockProducts: Product[] = [
   {
     id: 3,
     name: 'Corsair Vengeance DDR5 32GB (2x16GB) 6000MHz',
-    image: 'https://picsum.photos/seed/product-ram/400/400',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop',
     price: 2_200_000,
     originalPrice: 2_600_000,
     rating: 4.5,
@@ -67,7 +64,7 @@ export const mockProducts: Product[] = [
   {
     id: 4,
     name: 'Samsung 990 Pro NVMe 2TB SSD M.2',
-    image: 'https://picsum.photos/seed/product-ssd/400/400',
+    image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop',
     price: 2_800_000,
     originalPrice: 3_200_000,
     rating: 4.7,
@@ -78,7 +75,7 @@ export const mockProducts: Product[] = [
   {
     id: 5,
     name: 'ASUS ROG Swift 27" 2K 165Hz Gaming Monitor',
-    image: 'https://picsum.photos/seed/product-monitor/400/400',
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop',
     price: 4_800_000,
     originalPrice: 5_500_000,
     rating: 4.4,
@@ -90,7 +87,7 @@ export const mockProducts: Product[] = [
   {
     id: 6,
     name: 'Keychron Q1 Pro Mexanik Klaviatura RGB',
-    image: 'https://picsum.photos/seed/product-keyboard/400/400',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     price: 1_850_000,
     rating: 4.3,
     reviewCount: 29,
@@ -101,7 +98,7 @@ export const mockProducts: Product[] = [
   {
     id: 7,
     name: 'Logitech G Pro X Superlight 2 Simsiz Sichqoncha',
-    image: 'https://picsum.photos/seed/product-mouse/400/400',
+    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop',
     price: 1_400_000,
     rating: 4.9,
     reviewCount: 210,
@@ -111,7 +108,7 @@ export const mockProducts: Product[] = [
   {
     id: 8,
     name: 'ASUS ROG Strix B650E-F Gaming Anaplata',
-    image: 'https://picsum.photos/seed/product-mobo/400/400',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop',
     price: 3_400_000,
     rating: 4.5,
     reviewCount: 38,
@@ -121,7 +118,7 @@ export const mockProducts: Product[] = [
   {
     id: 9,
     name: 'Noctua NH-D15 CPU Sovutgich Dual Tower',
-    image: 'https://picsum.photos/seed/product-cooler/400/400',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
     price: 1_200_000,
     originalPrice: 1_500_000,
     rating: 4.8,
@@ -133,7 +130,7 @@ export const mockProducts: Product[] = [
   {
     id: 10,
     name: 'NZXT H7 Flow ATX Mid-Tower Korpus Oq',
-    image: 'https://picsum.photos/seed/product-case/400/400',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop',
     price: 1_600_000,
     rating: 4.2,
     reviewCount: 17,
@@ -144,7 +141,7 @@ export const mockProducts: Product[] = [
   {
     id: 11,
     name: 'MSI GeForce RTX 4070 Super 12GB GDDR6X',
-    image: 'https://picsum.photos/seed/product-gpu2/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     price: 8_900_000,
     originalPrice: 9_800_000,
     rating: 4.7,
@@ -156,7 +153,7 @@ export const mockProducts: Product[] = [
   {
     id: 12,
     name: 'Corsair RM850x 850W 80+ Gold Quvvat Bloki',
-    image: 'https://picsum.photos/seed/product-psu/400/400',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
     price: 1_800_000,
     rating: 4.6,
     reviewCount: 42,
@@ -166,7 +163,7 @@ export const mockProducts: Product[] = [
   {
     id: 13,
     name: 'NZXT Kraken X63 RGB 280mm AIO Sovutgich',
-    image: 'https://picsum.photos/seed/product-aio/400/400',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop',
     price: 1_900_000,
     rating: 4.4,
     reviewCount: 31,
@@ -177,7 +174,7 @@ export const mockProducts: Product[] = [
   {
     id: 14,
     name: 'Lian Li O11 Dynamic EVO RGB Korpus',
-    image: 'https://picsum.photos/seed/product-case2/400/400',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop',
     price: 2_400_000,
     rating: 4.3,
     reviewCount: 22,
@@ -187,7 +184,7 @@ export const mockProducts: Product[] = [
   {
     id: 15,
     name: 'AMD Ryzen 9 7950X Protsessor 16 Yadro',
-    image: 'https://picsum.photos/seed/product-cpu2/400/400',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
     price: 5_600_000,
     originalPrice: 6_200_000,
     rating: 4.9,
@@ -208,7 +205,7 @@ export const mockAddresses: Address[] = [
     id: 'addr-1',
     name: 'Jasur Karimov',
     phone: '+998 90 123 45 67',
-    street: 'Amir Temur ko\'chasi, 15-uy, 42-xonadon',
+    street: "Amir Temur ko'chasi, 15-uy, 42-xonadon",
     city: 'Toshkent',
     region: 'Toshkent shahri',
     postalCode: '100000',
@@ -219,7 +216,7 @@ export const mockAddresses: Address[] = [
     id: 'addr-2',
     name: 'Jasur Karimov',
     phone: '+998 90 123 45 67',
-    street: 'Mustaqillik ko\'chasi, 59-uy, 3-qavat',
+    street: "Mustaqillik ko'chasi, 59-uy, 3-qavat",
     city: 'Toshkent',
     region: 'Chilonzor tumani',
     postalCode: '100115',
@@ -230,7 +227,7 @@ export const mockAddresses: Address[] = [
     id: 'addr-3',
     name: 'Anvar Karimov',
     phone: '+998 71 234 56 78',
-    street: 'Navoiy ko\'chasi, 28-uy',
+    street: "Navoiy ko'chasi, 28-uy",
     city: 'Toshkent',
     region: 'Yakkasaroy tumani',
     postalCode: '100028',
@@ -281,7 +278,7 @@ export const mockPaymentMethods: PaymentMethod[] = [
 const orderItem1: OrderItem = {
   id: '1',
   name: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
-  image: 'https://picsum.photos/seed/order-gpu/160/160',
+  image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
   price: 5_200_000,
   quantity: 1,
   variant: '8GB / Qora',
@@ -290,7 +287,7 @@ const orderItem1: OrderItem = {
 const orderItem2: OrderItem = {
   id: '2',
   name: 'AMD Ryzen 7 7800X3D Protsessor AM5',
-  image: 'https://picsum.photos/seed/order-cpu/160/160',
+  image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=160&h=160&fit=crop',
   price: 4_100_000,
   quantity: 1,
   variant: '8 yadro / 16 ip',
@@ -299,7 +296,7 @@ const orderItem2: OrderItem = {
 const orderItem3: OrderItem = {
   id: '3',
   name: 'Corsair Vengeance DDR5 32GB (2x16GB) 6000MHz',
-  image: 'https://picsum.photos/seed/order-ram/160/160',
+  image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=160&h=160&fit=crop',
   price: 2_200_000,
   quantity: 2,
   variant: '32GB / RGB',
@@ -308,7 +305,7 @@ const orderItem3: OrderItem = {
 const orderItem4: OrderItem = {
   id: '4',
   name: 'Samsung 990 Pro NVMe 2TB SSD',
-  image: 'https://picsum.photos/seed/order-ssd/160/160',
+  image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=160&h=160&fit=crop',
   price: 2_800_000,
   quantity: 2,
   variant: '2TB / M.2',
@@ -317,7 +314,7 @@ const orderItem4: OrderItem = {
 const orderItem5: OrderItem = {
   id: '5',
   name: 'ASUS ROG Swift 27" 2K 165Hz Gaming Monitor',
-  image: 'https://picsum.photos/seed/order-monitor/160/160',
+  image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=160&h=160&fit=crop',
   price: 4_800_000,
   quantity: 1,
   variant: '27 dyuym / 2K',
@@ -390,7 +387,7 @@ export const mockCartItems: CartItemData[] = [
     originalPrice: 6_500_000,
     quantity: 1,
     selected: true,
-    image: 'https://picsum.photos/seed/cart-gpu/160/160',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
   },
   {
     id: 2,
@@ -399,7 +396,7 @@ export const mockCartItems: CartItemData[] = [
     price: 4_100_000,
     quantity: 1,
     selected: true,
-    image: 'https://picsum.photos/seed/cart-cpu/160/160',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=160&h=160&fit=crop',
   },
   {
     id: 3,
@@ -408,7 +405,7 @@ export const mockCartItems: CartItemData[] = [
     price: 2_200_000,
     quantity: 2,
     selected: false,
-    image: 'https://picsum.photos/seed/cart-ram/160/160',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=160&h=160&fit=crop',
   },
   {
     id: 4,
@@ -418,7 +415,7 @@ export const mockCartItems: CartItemData[] = [
     originalPrice: 3_200_000,
     quantity: 1,
     selected: true,
-    image: 'https://picsum.photos/seed/cart-ssd/160/160',
+    image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=160&h=160&fit=crop',
   },
 ];
 
@@ -433,7 +430,7 @@ export const mockUser: UserProfile = {
   email: 'jasur@example.com',
   birthDate: '15.03.1995',
   gender: 'male',
-  avatar: 'https://picsum.photos/seed/profile-avatar/200/200',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop',
 };
 
 export const mockGuestUser: UserProfile = {
@@ -455,7 +452,7 @@ export const mockCategories: Category[] = [
   { id: 6, name: 'Protsessorlar', icon: 'cpu', productCount: 167 },
   { id: 7, name: 'Monitorlar', icon: 'monitor', productCount: 312 },
   { id: 8, name: 'Aksessuarlar', icon: 'accessories', productCount: 1580 },
-  { id: 9, name: 'Uy-ro\'zg\'or', icon: 'home', productCount: 920 },
+  { id: 9, name: "Uy-ro'zg'or", icon: 'home', productCount: 920 },
   { id: 10, name: 'Sport', icon: 'sport', productCount: 445 },
 ];
 
@@ -467,14 +464,14 @@ export const mockReviews: Review[] = [
   {
     id: '1',
     userName: 'Dilshod Rahimov',
-    avatar: 'https://picsum.photos/seed/user-1/64/64',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop',
     rating: 5,
-    text: 'Ajoyib videokarta! O\'yinlarda juda yaxshi ishlaydi. RTX 4060 1080p da barcha o\'yinlarni ultra sozlamalarda 60+ FPS da chiqaradi. Harorat ham juda past, 65 darajadan oshmadi.',
+    text: "Ajoyib videokarta! O'yinlarda juda yaxshi ishlaydi. RTX 4060 1080p da barcha o'yinlarni ultra sozlamalarda 60+ FPS da chiqaradi. Harorat ham juda past, 65 darajadan oshmadi.",
     date: '14 mart, 2026',
     variant: '8GB / Qora',
     images: [
-      'https://picsum.photos/seed/review-img-1/200/200',
-      'https://picsum.photos/seed/review-img-2/200/200',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     ],
     likes: 24,
   },
@@ -482,7 +479,7 @@ export const mockReviews: Review[] = [
     id: '2',
     userName: 'Nodira Karimova',
     rating: 4,
-    text: 'Yaxshi mahsulot, lekin qutisi biroz ezilgan holda keldi. Karta o\'zi a\'lo ishlaydi. Yetkazib berish 2 kun oldi, Toshkent ichida tez yetkazishdi.',
+    text: "Yaxshi mahsulot, lekin qutisi biroz ezilgan holda keldi. Karta o'zi a'lo ishlaydi. Yetkazib berish 2 kun oldi, Toshkent ichida tez yetkazishdi.",
     date: '12 mart, 2026',
     variant: '8GB / Qora',
     likes: 8,
@@ -490,15 +487,15 @@ export const mockReviews: Review[] = [
   {
     id: '3',
     userName: 'Bekzod Tursunov',
-    avatar: 'https://picsum.photos/seed/user-3/64/64',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop',
     rating: 5,
-    text: 'Narxiga ko\'ra eng yaxshi tanlov. Oldingi GTX 1660 dan katta farq bor. DLSS 3 texnologiyasi juda zo\'r ishlaydi.',
+    text: "Narxiga ko'ra eng yaxshi tanlov. Oldingi GTX 1660 dan katta farq bor. DLSS 3 texnologiyasi juda zo'r ishlaydi.",
     date: '10 mart, 2026',
     variant: '8GB / Qora',
     images: [
-      'https://picsum.photos/seed/review-img-3/200/200',
-      'https://picsum.photos/seed/review-img-4/200/200',
-      'https://picsum.photos/seed/review-img-5/200/200',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=200&fit=crop',
     ],
     likes: 31,
   },
@@ -506,27 +503,27 @@ export const mockReviews: Review[] = [
     id: '4',
     userName: 'Shahlo Abdullayeva',
     rating: 3,
-    text: 'O\'rtacha. 4K uchun yetarli emas, lekin 1080p da yaxshi. Ovozi biroz baland.',
+    text: "O'rtacha. 4K uchun yetarli emas, lekin 1080p da yaxshi. Ovozi biroz baland.",
     date: '8 mart, 2026',
     likes: 3,
   },
   {
     id: '5',
     userName: 'Jamshid Aliyev',
-    avatar: 'https://picsum.photos/seed/user-5/64/64',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop',
     rating: 5,
-    text: 'Rasmiy do\'kondan sotib oldim, kafolat bilan keldi. 3 oydan beri ishlataman, hech qanday muammo yo\'q. Tavsiya qilaman!',
+    text: "Rasmiy do'kondan sotib oldim, kafolat bilan keldi. 3 oydan beri ishlataman, hech qanday muammo yo'q. Tavsiya qilaman!",
     date: '28 fevral, 2026',
     variant: '8GB / Qora',
-    images: ['https://picsum.photos/seed/review-img-6/200/200'],
+    images: ['https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&h=200&fit=crop'],
     likes: 15,
   },
   {
     id: '6',
     userName: 'Aziza Rustamova',
-    avatar: 'https://picsum.photos/seed/user-6/64/64',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop',
     rating: 2,
-    text: 'Yetkazib berish 5 kun kechikdi. Mahsulotning o\'zi yaxshi, lekin xizmat ko\'rsatish sifati pastroq.',
+    text: "Yetkazib berish 5 kun kechikdi. Mahsulotning o'zi yaxshi, lekin xizmat ko'rsatish sifati pastroq.",
     date: '20 fevral, 2026',
     likes: 5,
   },
@@ -597,7 +594,7 @@ export const mockNotifications: Notification[] = [
     message: 'Faqat bugun! RTX 4060, 4070, 4080 videokartalariga katta chegirma. Shoshiling!',
     timestamp: '1 soat oldin',
     read: false,
-    avatar: 'https://picsum.photos/seed/notif-promo1/64/64',
+    avatar: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=64&h=64&fit=crop',
     avatarName: 'GeekShop',
     badgeColor: 'primary',
   },
@@ -615,7 +612,8 @@ export const mockNotifications: Notification[] = [
     id: '4',
     type: 'system',
     title: 'Xavfsizlik xabarnomasi',
-    message: 'Hisobingizga yangi qurilmadan kirish aniqlandi. Agar bu siz bo\'lmasangiz, parolingizni o\'zgartiring.',
+    message:
+      "Hisobingizga yangi qurilmadan kirish aniqlandi. Agar bu siz bo'lmasangiz, parolingizni o'zgartiring.",
     timestamp: '5 soat oldin',
     read: true,
     avatarName: 'Xavfsizlik',
@@ -624,22 +622,23 @@ export const mockNotifications: Notification[] = [
   {
     id: '5',
     type: 'promo',
-    title: 'Kupon sovg\'a! GEEK2026',
-    message: 'Sizga 500 000 so\'mlik kupon berildi. 31 mart kunigacha amal qiladi. 5 000 000 so\'mdan ortiq buyurtmalarda foydalaning.',
+    title: "Kupon sovg'a! GEEK2026",
+    message:
+      "Sizga 500 000 so'mlik kupon berildi. 31 mart kunigacha amal qiladi. 5 000 000 so'mdan ortiq buyurtmalarda foydalaning.",
     timestamp: '1 kun oldin',
     read: true,
-    avatar: 'https://picsum.photos/seed/notif-promo2/64/64',
+    avatar: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
     avatarName: 'Kupon',
     badgeColor: 'primary',
   },
   {
     id: '6',
     type: 'order',
-    title: 'To\'lov muvaffaqiyatli',
-    message: 'GS-2026031201 raqamli buyurtmangiz uchun 5 200 000 so\'m to\'landi. UzCard **** 4523',
+    title: "To'lov muvaffaqiyatli",
+    message: "GS-2026031201 raqamli buyurtmangiz uchun 5 200 000 so'm to'landi. UzCard **** 4523",
     timestamp: '2 kun oldin',
     read: true,
-    avatarName: 'To\'lov',
+    avatarName: "To'lov",
     badgeColor: 'success',
   },
 ];
@@ -649,7 +648,7 @@ export const mockNotifications: Notification[] = [
 /* ================================================================== */
 
 export const mockDeliverySteps: DeliveryStep[] = [
-  { label: 'To\'landi', date: '12 mart', completed: true, active: false },
+  { label: "To'landi", date: '12 mart', completed: true, active: false },
   { label: 'Yuborildi', date: '13 mart', completed: true, active: false },
   { label: 'Yetkazilmoqda', date: '14 mart', completed: false, active: true },
   { label: 'Yetkazildi', completed: false, active: false },

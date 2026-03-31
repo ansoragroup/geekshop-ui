@@ -7,7 +7,7 @@ const sampleItems = [
     id: '1',
     title: 'ASUS ROG Strix RTX 4070 Super OC 12GB',
     image:
-      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=120&h=120&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=120&h=120&fit=crop&auto=format',
     price: 8900000,
     quantity: 1,
     variant: '12GB GDDR6X',
@@ -16,7 +16,7 @@ const sampleItems = [
     id: '2',
     title: 'AMD Ryzen 7 7800X3D Processor',
     image:
-      'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=120&h=120&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=120&h=120&fit=crop&auto=format',
     price: 5600000,
     quantity: 1,
     variant: 'AM5 Socket',
@@ -25,7 +25,7 @@ const sampleItems = [
     id: '3',
     title: 'Samsung 990 Pro NVMe SSD 2TB',
     image:
-      'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=120&h=120&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=120&h=120&fit=crop&auto=format',
     price: 3200000,
     quantity: 2,
   },
@@ -82,7 +82,7 @@ export const ManyItems: Story = {
         id: '4',
         title: 'Corsair Vengeance DDR5 32GB (2x16GB) 6000MHz',
         image:
-          'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=120&h=120&fit=crop&auto=format',
+          'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=120&h=120&fit=crop&auto=format',
         price: 2100000,
         quantity: 1,
         variant: 'DDR5-6000',
@@ -91,7 +91,7 @@ export const ManyItems: Story = {
         id: '5',
         title: 'ASUS ROG Crosshair X670E Hero Motherboard',
         image:
-          'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=120&h=120&fit=crop&auto=format',
+          'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=120&h=120&fit=crop&auto=format',
         price: 6800000,
         quantity: 1,
       },

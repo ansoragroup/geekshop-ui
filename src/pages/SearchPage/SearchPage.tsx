@@ -44,7 +44,7 @@ const suggestionsData = [
 
 const searchResultProducts: ProductCardFlatProps[] = [
   {
-    image: 'https://picsum.photos/seed/search-rtx4090/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB',
     price: 19800000,
     originalPrice: 21000000,
@@ -53,14 +53,14 @@ const searchResultProducts: ProductCardFlatProps[] = [
     soldCount: '45 dona sotilgan',
   },
   {
-    image: 'https://picsum.photos/seed/search-asus4090/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'ASUS ROG Strix RTX 4090 OC 24GB',
     price: 22500000,
     badge: 'top',
     soldCount: '32 dona sotilgan',
   },
   {
-    image: 'https://picsum.photos/seed/search-msi4090/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'MSI Suprim X RTX 4090 24GB GDDR6X',
     price: 21200000,
     originalPrice: 23000000,
@@ -68,20 +68,20 @@ const searchResultProducts: ProductCardFlatProps[] = [
     soldCount: '28 dona sotilgan',
   },
   {
-    image: 'https://picsum.photos/seed/search-giga4090/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'Gigabyte Aorus RTX 4090 Master 24GB',
     price: 23100000,
     badge: 'new',
     soldCount: '19 dona sotilgan',
   },
   {
-    image: 'https://picsum.photos/seed/search-evga4090/400/500',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=500&fit=crop',
     title: 'EVGA GeForce RTX 4090 FTW3 Ultra Gaming 24GB',
     price: 24500000,
     soldCount: '12 dona sotilgan',
   },
   {
-    image: 'https://picsum.photos/seed/search-zotac4090/400/350',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=350&fit=crop',
     title: 'Zotac Gaming RTX 4090 Trinity OC 24GB',
     price: 20900000,
     originalPrice: 22000000,
@@ -101,13 +101,29 @@ function parseSoldCount(text?: string): number {
 /* ---------- SVG Icons ---------- */
 
 const BackArrow = () => (
-  <svg className={styles.backIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    className={styles.backIcon}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="m15 18-6-6 6-6" />
   </svg>
 );
 
 const TrashIcon = () => (
-  <svg className={styles.historyClearIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    className={styles.historyClearIcon}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="3 6 5 6 21 6" />
     <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
   </svg>
@@ -133,9 +149,7 @@ export interface SearchPageProps {
 
 /* ---------- Component ---------- */
 
-export const SearchPage: React.FC<SearchPageProps> = ({
-  state = 'empty',
-}) => {
+export const SearchPage: React.FC<SearchPageProps> = ({ state = 'empty' }) => {
   const { t } = useGeekShop();
 
   const [activeTab, setActiveTab] = useState('all');
@@ -144,20 +158,26 @@ export const SearchPage: React.FC<SearchPageProps> = ({
 
   /* --- Tab / filter definitions (i18n) --- */
 
-  const tabFilterItems = useMemo(() => [
-    { key: 'all', label: t('common.all') },
-    { key: 'cheap', label: t('common.cheap') },
-    { key: 'expensive', label: t('common.expensive') },
-    { key: 'new', label: t('common.new') },
-    { key: 'popular', label: t('common.popular') },
-  ], [t]);
+  const tabFilterItems = useMemo(
+    () => [
+      { key: 'all', label: t('common.all') },
+      { key: 'cheap', label: t('common.cheap') },
+      { key: 'expensive', label: t('common.expensive') },
+      { key: 'new', label: t('common.new') },
+      { key: 'popular', label: t('common.popular') },
+    ],
+    [t]
+  );
 
-  const filterBarItems = useMemo(() => [
-    { key: 'popular', label: t('common.popular') },
-    { key: 'price', label: t('common.price'), hasDropdown: true },
-    { key: 'new', label: t('common.new') },
-    { key: 'rating', label: t('common.rating') },
-  ], [t]);
+  const filterBarItems = useMemo(
+    () => [
+      { key: 'popular', label: t('common.popular') },
+      { key: 'price', label: t('common.price'), hasDropdown: true },
+      { key: 'new', label: t('common.new') },
+      { key: 'rating', label: t('common.rating') },
+    ],
+    [t]
+  );
 
   /* --- Sorting --- */
 
@@ -177,9 +197,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
         });
       case 'popular':
         // Sort by sold count descending (most popular first)
-        return products.sort(
-          (a, b) => parseSoldCount(b.soldCount) - parseSoldCount(a.soldCount),
-        );
+        return products.sort((a, b) => parseSoldCount(b.soldCount) - parseSoldCount(a.soldCount));
       default:
         return products;
     }
@@ -190,9 +208,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
   const filteredProducts = useMemo(() => {
     if (!searchValue.trim()) return sortedProducts;
     const query = searchValue.toLowerCase();
-    return sortedProducts.filter((p) =>
-      p.title.toLowerCase().includes(query),
-    );
+    return sortedProducts.filter((p) => p.title.toLowerCase().includes(query));
   }, [searchValue, sortedProducts]);
 
   /* --- State derivation --- */
@@ -211,11 +227,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
     <div className={styles.page}>
       {/* Search Bar Area */}
       <div className={styles.searchBarWrapper}>
-        <button
-          className={styles.backBtn}
-          onClick={() => {}}
-          aria-label={t('common.back')}
-        >
+        <button className={styles.backBtn} onClick={() => {}} aria-label={t('common.back')}>
           <BackArrow />
         </button>
         <SearchBar
@@ -231,10 +243,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
       {/* Empty State: Popular Searches + History */}
       {showEmpty && (
         <>
-          <PopularSearches
-            searches={popularSearchData}
-            onSelect={() => {}}
-          />
+          <PopularSearches searches={popularSearchData} onSelect={() => {}} />
 
           <div className={styles.historySection}>
             <div className={styles.historyHeader}>
@@ -260,21 +269,13 @@ export const SearchPage: React.FC<SearchPageProps> = ({
 
       {/* Typing State: Suggestions (when empty state + user types) */}
       {showSuggestions && (
-        <SearchSuggestions
-          query={searchValue}
-          suggestions={suggestionsData}
-          onSelect={() => {}}
-        />
+        <SearchSuggestions query={searchValue} suggestions={suggestionsData} onSelect={() => {}} />
       )}
 
       {/* Results State */}
       {showResults && (
         <>
-          <TabFilter
-            tabs={tabFilterItems}
-            activeTab={activeTab}
-            onChange={setActiveTab}
-          />
+          <TabFilter tabs={tabFilterItems} activeTab={activeTab} onChange={setActiveTab} />
 
           <FilterBar
             filters={filterBarItems}
@@ -295,12 +296,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
               loading={false}
               endContent={<span>{t('search.allLoaded')}</span>}
             >
-              <ProductGrid
-                products={filteredProducts}
-                columns={2}
-                layout="waterfall"
-                gap={8}
-              />
+              <ProductGrid products={filteredProducts} columns={2} layout="waterfall" gap={8} />
             </InfiniteScroll>
           </div>
         </>

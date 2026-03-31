@@ -39,7 +39,7 @@ const sampleItems: FlashDealItem[] = [
   {
     id: '2',
     image:
-      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     title: 'AMD Ryzen 5 7600X',
     price: 2_100_000,
     originalPrice: 3_200_000,
@@ -59,7 +59,7 @@ const sampleItems: FlashDealItem[] = [
   {
     id: '4',
     image:
-      'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop&auto=format',
     title: 'Corsair Vengeance DDR5 32GB',
     price: 1_600_000,
     originalPrice: 2_000_000,
@@ -69,7 +69,7 @@ const sampleItems: FlashDealItem[] = [
   {
     id: '5',
     image:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
     title: 'Logitech G Pro X Superlight 2',
     price: 850_000,
     originalPrice: 1_200_000,
@@ -79,7 +79,7 @@ const sampleItems: FlashDealItem[] = [
   {
     id: '6',
     image:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
     title: 'ASUS ROG Strix B650E-F',
     price: 3_800_000,
     originalPrice: 6_900_000,
@@ -89,7 +89,7 @@ const sampleItems: FlashDealItem[] = [
   {
     id: '7',
     image:
-      'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop&auto=format',
     title: 'Noctua NH-D15 Cooler',
     price: 5_100_000,
     originalPrice: 6_000_000,

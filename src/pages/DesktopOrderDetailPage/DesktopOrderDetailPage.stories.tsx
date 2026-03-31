@@ -30,14 +30,14 @@ export const Processing: Story = {
     items: [
       {
         id: '1',
-        image: 'https://picsum.photos/seed/proc-gpu/160/160',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
         name: 'ASUS ROG Strix RTX 4070 Super 12GB',
         quantity: 1,
         price: 8_900_000,
       },
       {
         id: '2',
-        image: 'https://picsum.photos/seed/proc-ram/160/160',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=160&h=160&fit=crop',
         name: 'Corsair Vengeance DDR5 32GB 6000MHz',
         quantity: 2,
         price: 2_200_000,
@@ -70,7 +70,7 @@ export const Shipped: Story = {
     items: [
       {
         id: '1',
-        image: 'https://picsum.photos/seed/ship-laptop/160/160',
+        image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=160&h=160&fit=crop',
         name: 'Apple MacBook Pro 14" M3 Pro 18GB',
         quantity: 1,
         price: 23_000_000,
@@ -102,21 +102,21 @@ export const Delivered: Story = {
     items: [
       {
         id: '1',
-        image: 'https://picsum.photos/seed/del-keyboard/160/160',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
         name: 'Keychron Q1 Pro 75% Mechanical Keyboard',
         quantity: 1,
         price: 1_850_000,
       },
       {
         id: '2',
-        image: 'https://picsum.photos/seed/del-mouse/160/160',
+        image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=160&h=160&fit=crop',
         name: 'Logitech MX Master 3S Wireless Mouse',
         quantity: 1,
         price: 950_000,
       },
       {
         id: '3',
-        image: 'https://picsum.photos/seed/del-pad/160/160',
+        image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=160&h=160&fit=crop',
         name: 'Razer Gigantus V2 XXL Mouse Pad',
         quantity: 1,
         price: 350_000,
@@ -147,7 +147,7 @@ export const Cancelled: Story = {
     items: [
       {
         id: '1',
-        image: 'https://picsum.photos/seed/canc-gpu/160/160',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
         name: 'MSI RTX 4090 Suprim X 24GB GDDR6X',
         quantity: 1,
         price: 22_000_000,
@@ -181,7 +181,7 @@ export const ReturnRequested: Story = {
     items: [
       {
         id: '1',
-        image: 'https://picsum.photos/seed/ret-monitor/160/160',
+        image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=160&h=160&fit=crop',
         name: 'LG UltraGear 27" 4K 160Hz Monitor',
         quantity: 1,
         price: 8_500_000,

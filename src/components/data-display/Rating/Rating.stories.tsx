@@ -117,7 +117,7 @@ export const InProductCard: Story = {
       }}
     >
       <img
-        src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=180&h=140&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=180&h=140&fit=crop&auto=format"
         alt="RTX 4060"
         style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 8, marginBottom: 8 }}
       />

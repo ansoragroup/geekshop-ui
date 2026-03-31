@@ -56,7 +56,7 @@ export const AllOnSale: Story = {
       },
       {
         id: 'w2',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Dell XPS 15 i9 32GB RTX 4070 OLED Laptop',
         price: 22500000,
         originalPrice: 25000000,
@@ -67,7 +67,7 @@ export const AllOnSale: Story = {
       },
       {
         id: 'w3',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Nike Air Max 270 React Running Shoes',
         price: 1200000,
         originalPrice: 1800000,
@@ -78,7 +78,7 @@ export const AllOnSale: Story = {
       },
       {
         id: 'w4',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'Apple AirPods Pro 2nd Gen USB-C',
         price: 2800000,
         originalPrice: 3500000,
@@ -137,7 +137,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w4',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Apple MacBook Air M3 15" 16GB 512GB',
         price: 18900000,
         originalPrice: 21500000,
@@ -148,7 +148,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w5',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'New Balance 990v6 Running Shoes',
         price: 2200000,
         rating: 4.6,
@@ -157,7 +157,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w6',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'Apple AirPods Pro 2nd Gen USB-C',
         price: 2800000,
         originalPrice: 3500000,
@@ -168,7 +168,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w7',
-        image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
         title: 'Canon EOS R6 Mark II Mirrorless Camera',
         price: 28500000,
         rating: 4.7,
@@ -177,7 +177,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w8',
-        image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
         title: 'Fjallraven Kanken Classic Backpack',
         price: 850000,
         originalPrice: 1200000,
@@ -197,7 +197,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w10',
-        image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop',
         title: 'Ray-Ban Wayfarer Classic Sunglasses',
         price: 1750000,
         rating: 4.6,
@@ -206,7 +206,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w11',
-        image: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=400&fit=crop',
         title: 'Trek Domane SL 5 Road Bike 2024',
         price: 35000000,
         originalPrice: 38000000,
@@ -217,7 +217,7 @@ export const ManyItems: Story = {
       },
       {
         id: 'w12',
-        image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop',
         title: 'Zara Premium Cotton Oversized T-Shirt',
         price: 350000,
         rating: 4.3,
@@ -234,7 +234,7 @@ export const BudgetItems: Story = {
     initialProducts: [
       {
         id: 'w1',
-        image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop',
         title: 'Polarized Sunglasses UV400 Classic',
         price: 180000,
         originalPrice: 350000,
@@ -245,7 +245,7 @@ export const BudgetItems: Story = {
       },
       {
         id: 'w2',
-        image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=400&fit=crop',
         title: 'Gold Butterfly Hair Clip Set',
         price: 85000,
         rating: 4.1,
@@ -254,7 +254,7 @@ export const BudgetItems: Story = {
       },
       {
         id: 'w3',
-        image: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop',
         title: 'Handmade Beaded Bracelet Set 10pcs',
         price: 120000,
         originalPrice: 200000,
@@ -265,7 +265,7 @@ export const BudgetItems: Story = {
       },
       {
         id: 'w4',
-        image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
         title: 'Vintage Flower Brooch Pin',
         price: 95000,
         rating: 4.2,
@@ -274,7 +274,7 @@ export const BudgetItems: Story = {
       },
       {
         id: 'w5',
-        image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
         title: 'Canvas Tote Bag Eco-Friendly',
         price: 150000,
         originalPrice: 250000,

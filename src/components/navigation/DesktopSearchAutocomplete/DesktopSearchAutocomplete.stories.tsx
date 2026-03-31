@@ -23,14 +23,14 @@ const sampleProducts = [
   {
     id: '2',
     title: 'AMD Ryzen 9 7950X Processor',
-    image: 'https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=96&h=96&fit=crop',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=96&h=96&fit=crop',
     price: 7490000,
     rating: 4.8,
   },
   {
     id: '3',
     title: 'Corsair K100 RGB Mechanical Keyboard',
-    image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=96&h=96&fit=crop',
+    image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=96&h=96&fit=crop',
     price: 3290000,
     rating: 4.7,
   },
@@ -276,14 +276,19 @@ export const LongTextEdgeCases: Story = {
     suggestedProducts: [
       {
         id: '1',
-        title: 'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with RGB Lighting',
+        title:
+          'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with RGB Lighting',
         image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=96&h=96&fit=crop',
         price: 28990000,
         rating: 5.0,
       },
     ],
     categorySuggestions: [
-      { id: '1', name: 'High-Performance Desktop Graphics Cards for Gaming and Workstations', count: 9999 },
+      {
+        id: '1',
+        name: 'High-Performance Desktop Graphics Cards for Gaming and Workstations',
+        count: 9999,
+      },
     ],
     onClearRecent: () => {},
   },
@@ -299,7 +304,7 @@ export const MinimalContent: Story = {
       {
         id: '1',
         title: 'Anker USB-C Hub 7-in-1',
-        image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=96&h=96&fit=crop',
+        image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=96&h=96&fit=crop',
         price: 590000,
       },
     ],
@@ -329,13 +334,13 @@ export const ProductsWithoutRatings: Story = {
       {
         id: '1',
         title: 'Generic USB-C to HDMI Adapter',
-        image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=96&h=96&fit=crop',
+        image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=96&h=96&fit=crop',
         price: 120000,
       },
       {
         id: '2',
         title: 'Baseus 65W GaN Fast Charger',
-        image: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=96&h=96&fit=crop',
+        image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=96&h=96&fit=crop',
         price: 350000,
       },
     ],
@@ -382,7 +387,8 @@ export const Interactive: Story = {
           onPhotoSearch={(source) => console.log('Photo search:', source)}
         />
         <p style={{ marginTop: 24, color: '#666', fontSize: 14 }}>
-          Current value: &quot;{value}&quot; — Try typing, clicking suggestions, or using arrow keys.
+          Current value: &quot;{value}&quot; — Try typing, clicking suggestions, or using arrow
+          keys.
         </p>
       </div>
     );

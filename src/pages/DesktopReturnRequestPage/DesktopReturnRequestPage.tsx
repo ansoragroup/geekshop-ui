@@ -31,7 +31,7 @@ const returnReasons = [
 
 const defaultItem = {
   id: '1',
-  image: 'https://picsum.photos/seed/ret-monitor/160/160',
+  image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=160&h=160&fit=crop',
   name: 'LG UltraGear 27" 4K 160Hz Monitor',
   price: 8_500_000,
   maxQuantity: 1,

@@ -17,11 +17,13 @@ const meta = {
     onDelete: { action: 'onDelete' },
     onClick: { action: 'onClick' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 900, padding: 24, background: '#fff' }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 900, padding: 24, background: '#fff' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopCartItem>;
 
 export default meta;
@@ -114,7 +116,8 @@ export const FullFeatured: Story = {
 export const LongTitle: Story = {
   args: {
     image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
-    title: 'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with Aura Sync RGB LED Lighting and Axial-tech Fan Design',
+    title:
+      'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with Aura Sync RGB LED Lighting and Axial-tech Fan Design',
     variant: 'ROG Strix OC / 24GB GDDR6X / PCIe 4.0',
     price: 28_990_000,
     quantity: 1,
@@ -131,7 +134,7 @@ export const LongTitle: Story = {
 /** Cheap item with high quantity. */
 export const HighQuantity: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=200&h=200&fit=crop',
+    image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=200&h=200&fit=crop',
     title: 'Anker USB-C to USB-A Adapter',
     price: 45_000,
     quantity: 10,
@@ -166,10 +169,48 @@ export const OutOfStockSelected: Story = {
 export const MultipleItems: Story = {
   render: () => {
     const [items, setItems] = useState([
-      { id: 1, image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop', title: 'NVIDIA RTX 4090 Founders Edition', price: 28_900_000, quantity: 1, selected: true, inStock: true, freeShipping: true },
-      { id: 2, image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200&h=200&fit=crop', title: 'Samsung Galaxy S24 Ultra', variant: 'Titanium Black / 512GB', price: 16_200_000, quantity: 1, selected: true, inStock: true, freeShipping: false },
-      { id: 3, image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=200&h=200&fit=crop', title: 'Sony WH-1000XM5 Headphones', variant: 'Silver', price: 4_200_000, quantity: 2, selected: false, inStock: true, freeShipping: true },
-      { id: 4, image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=200&h=200&fit=crop', title: 'Logitech MX Master 3S Mouse', price: 1_290_000, quantity: 1, selected: false, inStock: false, freeShipping: false },
+      {
+        id: 1,
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
+        title: 'NVIDIA RTX 4090 Founders Edition',
+        price: 28_900_000,
+        quantity: 1,
+        selected: true,
+        inStock: true,
+        freeShipping: true,
+      },
+      {
+        id: 2,
+        image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200&h=200&fit=crop',
+        title: 'Samsung Galaxy S24 Ultra',
+        variant: 'Titanium Black / 512GB',
+        price: 16_200_000,
+        quantity: 1,
+        selected: true,
+        inStock: true,
+        freeShipping: false,
+      },
+      {
+        id: 3,
+        image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=200&h=200&fit=crop',
+        title: 'Sony WH-1000XM5 Headphones',
+        variant: 'Silver',
+        price: 4_200_000,
+        quantity: 2,
+        selected: false,
+        inStock: true,
+        freeShipping: true,
+      },
+      {
+        id: 4,
+        image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=200&h=200&fit=crop',
+        title: 'Logitech MX Master 3S Mouse',
+        price: 1_290_000,
+        quantity: 1,
+        selected: false,
+        inStock: false,
+        freeShipping: false,
+      },
     ]);
 
     return (
@@ -185,8 +226,12 @@ export const MultipleItems: Story = {
             selected={item.selected}
             inStock={item.inStock}
             freeShipping={item.freeShipping}
-            onSelect={(sel) => setItems((prev) => prev.map((i) => i.id === item.id ? { ...i, selected: sel } : i))}
-            onQuantityChange={(qty) => setItems((prev) => prev.map((i) => i.id === item.id ? { ...i, quantity: qty } : i))}
+            onSelect={(sel) =>
+              setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, selected: sel } : i)))
+            }
+            onQuantityChange={(qty) =>
+              setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, quantity: qty } : i)))
+            }
             onDelete={() => setItems((prev) => prev.filter((i) => i.id !== item.id))}
             onClick={() => console.log('Navigate to:', item.title)}
           />

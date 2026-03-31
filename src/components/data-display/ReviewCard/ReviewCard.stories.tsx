@@ -23,7 +23,7 @@ export const Default: Story = {
     user: {
       name: 'Aziz Karimov',
       avatar:
-        'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=80&h=80&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=80&h=80&fit=crop&auto=format',
     },
     rating: 5,
     variant: 'RTX 4060 VENTUS 2X OC',
@@ -39,7 +39,7 @@ export const WithImages: Story = {
     user: {
       name: 'Nodira Sultonova',
       avatar:
-        'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=80&h=80&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=80&h=80&fit=crop&auto=format',
     },
     rating: 4,
     variant: 'Logitech GPW3 Pushti',
@@ -48,7 +48,7 @@ export const WithImages: Story = {
     images: [
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&auto=format',
       'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     ],
     date: '2026-03-08',
   },
@@ -70,7 +70,7 @@ export const LowRating: Story = {
     user: {
       name: 'Dilshod T.',
       avatar:
-        'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=80&h=80&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=80&h=80&fit=crop&auto=format',
     },
     rating: 2,
     variant: 'Kingston FURY 16GB DDR5',
@@ -89,7 +89,7 @@ export const MultipleReviews: Story = {
         user={{
           name: 'Sardor U.',
           avatar:
-            'https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=80&h=80&fit=crop&auto=format',
+            'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=80&h=80&fit=crop&auto=format',
         }}
         rating={5}
         variant="Ryzen 7 7800X3D"
@@ -102,8 +102,8 @@ export const MultipleReviews: Story = {
         variant="ASUS B650M-A WiFi"
         content="Onaplata yaxshi, WiFi 6 ishlayapti. BIOS yangilash kerak bo'ldi lekin oson bo'ldi."
         images={[
-          'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=200&h=200&fit=crop&auto=format',
-          'https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=200&h=200&fit=crop&auto=format',
+          'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
+          'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&h=200&fit=crop&auto=format',
         ]}
         date="2026-03-09"
       />
@@ -111,7 +111,7 @@ export const MultipleReviews: Story = {
         user={{
           name: 'Javohir N.',
           avatar:
-            'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=80&h=80&fit=crop&auto=format',
+            'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=80&h=80&fit=crop&auto=format',
         }}
         rating={5}
         content="Tez yetkazib berishdi, rahmat GeekShop jamoasi!"

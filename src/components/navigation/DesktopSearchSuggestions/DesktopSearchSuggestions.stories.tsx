@@ -114,19 +114,19 @@ export const WithProducts: Story = {
             id: 'p3',
             text: 'Gigabyte RTX 4090 Aorus Master',
             thumbnail:
-              'https://images.unsplash.com/photo-1555618254-5e4ec5e33217?w=64&h=64&fit=crop',
+              'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
           },
           {
             id: 'p4',
             text: 'EVGA RTX 4090 FTW3 Ultra',
             thumbnail:
-              'https://images.unsplash.com/photo-1600348712270-3c9f3e0ce7f4?w=64&h=64&fit=crop',
+              'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
           },
           {
             id: 'p5',
             text: 'Zotac RTX 4090 AMP Extreme',
             thumbnail:
-              'https://images.unsplash.com/photo-1623820919239-0d0ff10797a1?w=64&h=64&fit=crop',
+              'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=64&h=64&fit=crop',
           },
         ],
       },

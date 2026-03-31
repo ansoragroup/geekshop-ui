@@ -10,13 +10,26 @@ import {
   SkuSelector,
   useGeekShop,
 } from '../../components';
-import type { SkuVariant, SkuProduct, SkuSelection } from '../../components/commerce/SkuSelector/SkuSelector';
+import type {
+  SkuVariant,
+  SkuProduct,
+  SkuSelection,
+} from '../../components/commerce/SkuSelector/SkuSelector';
 import styles from './PreOrderPage.module.scss';
 
 /* ---------- Icons ---------- */
 
 const CalendarIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#FF5000"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
     <line x1="16" y1="2" x2="16" y2="6" />
     <line x1="8" y1="2" x2="8" y2="6" />
@@ -25,14 +38,32 @@ const CalendarIcon = () => (
 );
 
 const MoneyIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#07C160" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#07C160"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <line x1="12" y1="1" x2="12" y2="23" />
     <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
   </svg>
 );
 
 const InfoIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1890FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#1890FF"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="12" cy="12" r="10" />
     <line x1="12" y1="16" x2="12" y2="12" />
     <line x1="12" y1="8" x2="12.01" y2="8" />
@@ -40,7 +71,16 @@ const InfoIcon = () => (
 );
 
 const ChevronRight = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#999"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M9 18l6-6-6-6" />
   </svg>
 );
@@ -49,7 +89,7 @@ const ChevronRight = () => (
 
 const preOrderProductData = {
   title: 'MSI GeForce RTX 5070 Ti 12GB GDDR7',
-  image: 'https://picsum.photos/seed/rtx5070/400/400',
+  image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
   price: 12_500_000,
   estimatedDate: '2026 yil, aprel oyi',
   depositPercent: 10,
@@ -57,7 +97,7 @@ const preOrderProductData = {
 
 const skuProduct: SkuProduct = {
   title: 'MSI GeForce RTX 5070 Ti 12GB',
-  image: 'https://picsum.photos/seed/rtx5070/200/200',
+  image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
   priceRange: [11_500_000, 14_000_000],
 };
 
@@ -65,7 +105,7 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'rtx5070-12g-black',
     name: '12GB / Qora',
-    image: 'https://picsum.photos/seed/rtx5070-black/200/200',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
     price: 12_500_000,
     stock: 50,
     hotRank: 1,
@@ -73,7 +113,7 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'rtx5070-12g-white',
     name: '12GB / Oq',
-    image: 'https://picsum.photos/seed/rtx5070-white/200/200',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     price: 13_000_000,
     stock: 30,
     hotRank: 2,
@@ -81,7 +121,7 @@ const skuVariants: SkuVariant[] = [
   {
     id: 'rtx5070-16g-black',
     name: '16GB / Qora',
-    image: 'https://picsum.photos/seed/rtx5070-16g/200/200',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
     price: 14_000_000,
     stock: 20,
   },
@@ -96,20 +136,18 @@ export interface PreOrderPageProps {
   notifyOnly?: boolean;
 }
 
-export const PreOrderPage: React.FC<PreOrderPageProps> = ({
-  notifyOnly = false,
-}) => {
+export const PreOrderPage: React.FC<PreOrderPageProps> = ({ notifyOnly = false }) => {
   const { t, formatPrice } = useGeekShop();
   const [quantity, setQuantity] = useState(1);
   const [skuSheetOpen, setSkuSheetOpen] = useState(false);
   const [selectedVariantName, setSelectedVariantName] = useState<string | null>(
-    skuVariants[0].name,
+    skuVariants[0].name
   );
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
 
   const depositAmount = Math.round(
-    preOrderProductData.price * (preOrderProductData.depositPercent / 100),
+    preOrderProductData.price * (preOrderProductData.depositPercent / 100)
   );
 
   const showToast = useCallback((message: string) => {
@@ -129,15 +167,13 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
     (selections: SkuSelection[]) => {
       handleCloseSkuSheet();
       if (selections.length > 0) {
-        const variant = skuVariants.find(
-          (v) => v.id === selections[0].variantId,
-        );
+        const variant = skuVariants.find((v) => v.id === selections[0].variantId);
         if (variant) {
           setSelectedVariantName(variant.name);
         }
       }
     },
-    [handleCloseSkuSheet],
+    [handleCloseSkuSheet]
   );
 
   const handlePreOrder = useCallback(() => {
@@ -155,12 +191,7 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
 
       {/* Product card */}
       <div className={styles.productCard}>
-        <Badge
-          type="text"
-          content={t('product.preOrder')}
-          color="primary"
-          position="inline"
-        />
+        <Badge type="text" content={t('product.preOrder')} color="primary" position="inline" />
         <div className={styles.productRow}>
           <img
             src={preOrderProductData.image}
@@ -168,12 +199,8 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
             className={styles.productImage}
           />
           <div className={styles.productInfo}>
-            <div className={styles.productTitle}>
-              {preOrderProductData.title}
-            </div>
-            <div className={styles.productPrice}>
-              {formatPrice(preOrderProductData.price)}
-            </div>
+            <div className={styles.productTitle}>{preOrderProductData.title}</div>
+            <div className={styles.productPrice}>{formatPrice(preOrderProductData.price)}</div>
           </div>
         </div>
       </div>
@@ -185,12 +212,8 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
         <div className={styles.infoRow}>
           <CalendarIcon />
           <div className={styles.infoContent}>
-            <div className={styles.infoLabel}>
-              {t('product.estimatedAvailability')}
-            </div>
-            <div className={styles.infoValue}>
-              {preOrderProductData.estimatedDate}
-            </div>
+            <div className={styles.infoLabel}>{t('product.estimatedAvailability')}</div>
+            <div className={styles.infoValue}>{preOrderProductData.estimatedDate}</div>
           </div>
         </div>
       </div>
@@ -200,9 +223,7 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
         <div className={styles.infoRow}>
           <MoneyIcon />
           <div className={styles.infoContent}>
-            <div className={styles.infoLabel}>
-              {t('product.preOrderDeposit')}
-            </div>
+            <div className={styles.infoLabel}>{t('product.preOrderDeposit')}</div>
             <div className={styles.infoValue}>
               {formatPrice(depositAmount)} ({preOrderProductData.depositPercent}
               %)
@@ -217,20 +238,12 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
       <div className={styles.termsSection}>
         <div className={styles.termsHeader}>
           <InfoIcon />
-          <span className={styles.termsTitle}>
-            {t('product.preOrderTerms')}
-          </span>
+          <span className={styles.termsTitle}>{t('product.preOrderTerms')}</span>
         </div>
         <ul className={styles.termsList}>
-          <li className={styles.termsItem}>
-            {t('product.preOrderTermNotify')}
-          </li>
-          <li className={styles.termsItem}>
-            {t('product.preOrderTermPayLater')}
-          </li>
-          <li className={styles.termsItem}>
-            {t('product.preOrderTermCancel')}
-          </li>
+          <li className={styles.termsItem}>{t('product.preOrderTermNotify')}</li>
+          <li className={styles.termsItem}>{t('product.preOrderTermPayLater')}</li>
+          <li className={styles.termsItem}>{t('product.preOrderTermCancel')}</li>
         </ul>
       </div>
 
@@ -256,15 +269,8 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
 
           {/* Quantity */}
           <div className={styles.quantitySection}>
-            <span className={styles.quantityLabel}>
-              {t('commerce.quantity')}
-            </span>
-            <QuantityStepper
-              value={quantity}
-              min={1}
-              max={10}
-              onChange={setQuantity}
-            />
+            <span className={styles.quantityLabel}>{t('commerce.quantity')}</span>
+            <QuantityStepper value={quantity} min={1} max={10} onChange={setQuantity} />
           </div>
 
           <Divider />
@@ -298,15 +304,8 @@ export const PreOrderPage: React.FC<PreOrderPageProps> = ({
 
       {/* Bottom action */}
       <div className={styles.bottomAction}>
-        <Button
-          variant="primary"
-          size="full"
-          block
-          onClick={handlePreOrder}
-        >
-          {notifyOnly
-            ? t('product.notifyWhenAvailable')
-            : t('product.preOrderNow')}
+        <Button variant="primary" size="full" block onClick={handlePreOrder}>
+          {notifyOnly ? t('product.notifyWhenAvailable') : t('product.preOrderNow')}
         </Button>
       </div>
     </div>

@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop',
+    src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop',
     name: 'Sarah Mitchell',
     size: 'lg',
   },
@@ -69,7 +69,7 @@ export const WithImages: Story = {
   render: () => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
       <DesktopAvatar
-        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop"
         name="Emily Chen"
         size="sm"
       />
@@ -79,7 +79,7 @@ export const WithImages: Story = {
         size="md"
       />
       <DesktopAvatar
-        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=128&h=128&fit=crop"
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=128&h=128&fit=crop"
         name="Anna Petrova"
         size="lg"
       />
@@ -155,7 +155,7 @@ export const NoName: Story = {
 export const CustomAlt: Story = {
   name: 'Custom Alt Text',
   args: {
-    src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=128&h=128&fit=crop',
+    src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=128&h=128&fit=crop',
     alt: 'Customer service representative',
     name: 'Maria Santos',
     size: 'lg',

@@ -14,11 +14,13 @@ const meta = {
   argTypes: {
     onSelect: { action: 'onSelect' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 500, padding: 24, background: '#fff', borderRadius: 12 }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 500, padding: 24, background: '#fff', borderRadius: 12 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopSkuSelector>;
 
 export default meta;
@@ -30,19 +32,11 @@ export const Default: Story = {
     variants: [
       {
         name: 'Color',
-        options: [
-          { value: 'Black' },
-          { value: 'White' },
-          { value: 'Blue' },
-        ],
+        options: [{ value: 'Black' }, { value: 'White' }, { value: 'Blue' }],
       },
       {
         name: 'Storage',
-        options: [
-          { value: '128GB' },
-          { value: '256GB' },
-          { value: '512GB' },
-        ],
+        options: [{ value: '128GB' }, { value: '256GB' }, { value: '512GB' }],
       },
     ],
     selectedValues: { Color: 'Black', Storage: '256GB' },
@@ -59,10 +53,26 @@ export const WithImages: Story = {
       {
         name: 'Color',
         options: [
-          { value: 'Midnight Black', image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop' },
-          { value: 'Pearl White', image: 'https://images.unsplash.com/photo-1580910051074-3eb694886f3b?w=48&h=48&fit=crop' },
-          { value: 'Ocean Blue', image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=48&h=48&fit=crop' },
-          { value: 'Sunset Gold', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=48&h=48&fit=crop' },
+          {
+            value: 'Midnight Black',
+            image:
+              'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop',
+          },
+          {
+            value: 'Pearl White',
+            image:
+              'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop',
+          },
+          {
+            value: 'Ocean Blue',
+            image:
+              'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=48&h=48&fit=crop',
+          },
+          {
+            value: 'Sunset Gold',
+            image:
+              'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=48&h=48&fit=crop',
+          },
         ],
       },
     ],
@@ -109,12 +119,7 @@ export const SingleVariant: Story = {
     variants: [
       {
         name: 'RAM',
-        options: [
-          { value: '8GB' },
-          { value: '16GB' },
-          { value: '32GB' },
-          { value: '64GB' },
-        ],
+        options: [{ value: '8GB' }, { value: '16GB' }, { value: '32GB' }, { value: '64GB' }],
       },
     ],
     selectedValues: { RAM: '16GB' },
@@ -130,28 +135,15 @@ export const ThreeVariantGroups: Story = {
     variants: [
       {
         name: 'Color',
-        options: [
-          { value: 'Space Gray' },
-          { value: 'Silver' },
-          { value: 'Midnight' },
-        ],
+        options: [{ value: 'Space Gray' }, { value: 'Silver' }, { value: 'Midnight' }],
       },
       {
         name: 'Storage',
-        options: [
-          { value: '256GB' },
-          { value: '512GB' },
-          { value: '1TB' },
-          { value: '2TB' },
-        ],
+        options: [{ value: '256GB' }, { value: '512GB' }, { value: '1TB' }, { value: '2TB' }],
       },
       {
         name: 'RAM',
-        options: [
-          { value: '16GB' },
-          { value: '32GB' },
-          { value: '64GB' },
-        ],
+        options: [{ value: '16GB' }, { value: '32GB' }, { value: '64GB' }],
       },
     ],
     selectedValues: { Color: 'Space Gray', Storage: '512GB', RAM: '32GB' },
@@ -168,19 +160,31 @@ export const FullFeatured: Story = {
       {
         name: 'Color',
         options: [
-          { value: 'Titanium Black', image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop' },
-          { value: 'Titanium Gray', image: 'https://images.unsplash.com/photo-1580910051074-3eb694886f3b?w=48&h=48&fit=crop' },
-          { value: 'Titanium Violet', image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=48&h=48&fit=crop' },
-          { value: 'Titanium Yellow', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=48&h=48&fit=crop' },
+          {
+            value: 'Titanium Black',
+            image:
+              'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop',
+          },
+          {
+            value: 'Titanium Gray',
+            image:
+              'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=48&h=48&fit=crop',
+          },
+          {
+            value: 'Titanium Violet',
+            image:
+              'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=48&h=48&fit=crop',
+          },
+          {
+            value: 'Titanium Yellow',
+            image:
+              'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=48&h=48&fit=crop',
+          },
         ],
       },
       {
         name: 'Storage',
-        options: [
-          { value: '256GB' },
-          { value: '512GB' },
-          { value: '1TB', outOfStock: true },
-        ],
+        options: [{ value: '256GB' }, { value: '512GB' }, { value: '1TB', outOfStock: true }],
       },
     ],
     selectedValues: { Color: 'Titanium Black', Storage: '512GB' },
@@ -216,10 +220,7 @@ export const LowStock: Story = {
     variants: [
       {
         name: 'Edition',
-        options: [
-          { value: 'Standard' },
-          { value: 'Limited Edition' },
-        ],
+        options: [{ value: 'Standard' }, { value: 'Limited Edition' }],
       },
     ],
     selectedValues: { Edition: 'Limited Edition' },
@@ -235,11 +236,7 @@ export const NoStockOrPrice: Story = {
     variants: [
       {
         name: 'Size',
-        options: [
-          { value: 'Small' },
-          { value: 'Medium' },
-          { value: 'Large' },
-        ],
+        options: [{ value: 'Small' }, { value: 'Medium' }, { value: 'Large' }],
       },
     ],
     selectedValues: { Size: 'Medium' },
@@ -279,8 +276,15 @@ export const ManyOptions: Story = {
 /** Interactive: selecting options updates the state. */
 export const Interactive: Story = {
   render: () => {
-    const [selected, setSelected] = useState<Record<string, string>>({ Color: 'Black', Storage: '256GB' });
-    const prices: Record<string, number> = { '128GB': 8_900_000, '256GB': 10_500_000, '512GB': 14_200_000 };
+    const [selected, setSelected] = useState<Record<string, string>>({
+      Color: 'Black',
+      Storage: '256GB',
+    });
+    const prices: Record<string, number> = {
+      '128GB': 8_900_000,
+      '256GB': 10_500_000,
+      '512GB': 14_200_000,
+    };
 
     return (
       <div>
@@ -297,11 +301,7 @@ export const Interactive: Story = {
             },
             {
               name: 'Storage',
-              options: [
-                { value: '128GB' },
-                { value: '256GB' },
-                { value: '512GB' },
-              ],
+              options: [{ value: '128GB' }, { value: '256GB' }, { value: '512GB' }],
             },
           ]}
           selectedValues={selected}

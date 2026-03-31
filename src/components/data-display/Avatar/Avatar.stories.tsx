@@ -33,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 // --- With image ---
 export const WithImage: Story = {
   args: {
-    src: 'https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=100&h=100&fit=crop&auto=format',
+    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=100&h=100&fit=crop&auto=format',
     name: 'Aziz Karimov',
     size: 'md',
   },
@@ -52,12 +52,12 @@ export const AllSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
       <Avatar
-        src="https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=100&h=100&fit=crop&auto=format"
         name="User"
         size="sm"
       />
       <Avatar
-        src="https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1555618568-bfe052310f39?w=100&h=100&fit=crop&auto=format"
         name="User"
         size="md"
       />
@@ -67,7 +67,7 @@ export const AllSizes: Story = {
         size="lg"
       />
       <Avatar
-        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=100&h=100&fit=crop&auto=format"
         name="User"
         size="xl"
       />
@@ -90,7 +90,7 @@ export const AllSizesInitials: Story = {
 // --- Online indicator ---
 export const Online: Story = {
   args: {
-    src: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=100&h=100&fit=crop&auto=format',
+    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=100&h=100&fit=crop&auto=format',
     name: 'Sardor Usmonov',
     size: 'lg',
     showOnline: true,
@@ -135,7 +135,7 @@ export const ProfileHeader: Story = {
       }}
     >
       <Avatar
-        src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop&auto=format"
         name="Sardor Usmonov"
         size="xl"
         showOnline

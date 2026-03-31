@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop&auto=format',
     title: 'RTX 4070 Ti Super',
     price: 8500000,
     originalPrice: 13000000,
@@ -63,7 +63,7 @@ export const LowDiscount: Story = {
 export const NoProgress: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop&auto=format',
     title: 'Samsung 990 Pro 2TB',
     price: 2800000,
     originalPrice: 3500000,
@@ -92,7 +92,7 @@ export const HorizontalScroll: Story = {
   render: () => (
     <>
       <DealCard
-        image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=300&fit=crop&auto=format"
+        image="https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop&auto=format"
         title="RTX 4070 Ti Super"
         price={8500000}
         originalPrice={13000000}
@@ -100,7 +100,7 @@ export const HorizontalScroll: Story = {
         soldPercent={67}
       />
       <DealCard
-        image="https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=300&h=300&fit=crop&auto=format"
+        image="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop&auto=format"
         title="ASUS ROG Strix G16"
         price={15200000}
         originalPrice={19000000}
@@ -116,7 +116,7 @@ export const HorizontalScroll: Story = {
         soldPercent={34}
       />
       <DealCard
-        image="https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=300&h=300&fit=crop&auto=format"
+        image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=300&fit=crop&auto=format"
         title="Samsung 990 Pro 2TB"
         price={2800000}
         originalPrice={3500000}

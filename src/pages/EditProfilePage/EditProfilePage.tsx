@@ -15,14 +15,32 @@ import styles from './EditProfilePage.module.scss';
 /* ---------- SVG Icons ---------- */
 
 const CameraIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
     <circle cx="12" cy="13" r="4" />
   </svg>
 );
 
 const GalleryIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
     <circle cx="8.5" cy="8.5" r="1.5" />
     <path d="M21 15l-5-5L5 21" />
@@ -30,14 +48,32 @@ const GalleryIcon = () => (
 );
 
 const CameraSheetIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
     <circle cx="12" cy="13" r="4" />
   </svg>
 );
 
 const TrashIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" />
     <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" />
   </svg>
@@ -142,17 +178,17 @@ export const EditProfilePage: React.FC<EditProfilePageProps> = ({
             <Avatar
               name={form.firstName ? `${form.firstName} ${form.lastName}` : 'Foydalanuvchi'}
               size="xl"
-              src={empty ? undefined : 'https://picsum.photos/seed/profile-avatar/200/200'}
+              src={
+                empty
+                  ? undefined
+                  : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop'
+              }
             />
             <span className={styles.cameraBadge}>
               <CameraIcon />
             </span>
           </div>
-          <button
-            className={styles.changePhotoBtn}
-            onClick={handleAvatarClick}
-            type="button"
-          >
+          <button className={styles.changePhotoBtn} onClick={handleAvatarClick} type="button">
             {t('profile.changePhoto')}
           </button>
         </div>
@@ -212,7 +248,9 @@ export const EditProfilePage: React.FC<EditProfilePageProps> = ({
             <span className={styles.genderLabel}>{t('profile.gender')}</span>
             <div className={styles.genderOptions}>
               <div
-                className={`${styles.genderOption} ${form.gender === 'male' ? styles.genderSelected : ''}`}
+                className={`${styles.genderOption} ${
+                  form.gender === 'male' ? styles.genderSelected : ''
+                }`}
                 role="radio"
                 aria-checked={form.gender === 'male'}
                 tabIndex={0}
@@ -230,7 +268,9 @@ export const EditProfilePage: React.FC<EditProfilePageProps> = ({
                 <span>{t('profile.male')}</span>
               </div>
               <div
-                className={`${styles.genderOption} ${form.gender === 'female' ? styles.genderSelected : ''}`}
+                className={`${styles.genderOption} ${
+                  form.gender === 'female' ? styles.genderSelected : ''
+                }`}
                 role="radio"
                 aria-checked={form.gender === 'female'}
                 tabIndex={0}

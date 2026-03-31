@@ -13,7 +13,7 @@ const sampleProducts = [
     id: '1',
     title: 'ASUS ROG Strix RTX 4070 Super 12GB OC',
     image:
-      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=100&h=100&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=100&h=100&fit=crop&auto=format',
     price: 8900000,
   },
   {
@@ -27,7 +27,7 @@ const sampleProducts = [
     id: '3',
     title: 'Gigabyte RTX 4070 Super Eagle OC 12GB',
     image:
-      'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=100&h=100&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=100&h=100&fit=crop&auto=format',
     price: 8700000,
   },
 ];
@@ -120,14 +120,14 @@ export const AllSections: Story = {
           id: '1',
           title: 'ASUS ROG Strix RTX 4070 Super OC 12GB GDDR6X',
           image:
-            'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=100&h=100&fit=crop&auto=format',
+            'https://images.unsplash.com/photo-1518770660439-4636190af475?w=100&h=100&fit=crop&auto=format',
           price: 8900000,
         },
         {
           id: '2',
           title: 'MSI GeForce RTX 4070 Ti Gaming X Trio 12GB',
           image:
-            'https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=100&h=100&fit=crop&auto=format',
+            'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=100&h=100&fit=crop&auto=format',
           price: 9500000,
         },
       ]}

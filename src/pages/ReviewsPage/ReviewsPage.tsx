@@ -29,13 +29,17 @@ const averageRating = 4.6;
 const allReviews = [
   {
     id: '1',
-    user: { name: 'Dilshod Rahimov', avatar: 'https://picsum.photos/seed/user-1/64/64' },
+    user: {
+      name: 'Dilshod Rahimov',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop',
+    },
     rating: 5,
     variant: '8GB / Qora',
-    content: 'Ajoyib videokarta! O\'yinlarda juda yaxshi ishlaydi. RTX 4060 1080p da barcha o\'yinlarni ultra sozlamalarda 60+ FPS da chiqaradi. Harorat ham juda past, 65 darajadan oshmadi.',
+    content:
+      "Ajoyib videokarta! O'yinlarda juda yaxshi ishlaydi. RTX 4060 1080p da barcha o'yinlarni ultra sozlamalarda 60+ FPS da chiqaradi. Harorat ham juda past, 65 darajadan oshmadi.",
     images: [
-      'https://picsum.photos/seed/review-img-1/200/200',
-      'https://picsum.photos/seed/review-img-2/200/200',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     ],
     date: '14 mart, 2026',
     stars: 5,
@@ -46,21 +50,26 @@ const allReviews = [
     user: { name: 'Nodira Karimova' },
     rating: 4,
     variant: '8GB / Qora',
-    content: 'Yaxshi mahsulot, lekin qutisi biroz ezilgan holda keldi. Karta o\'zi a\'lo ishlaydi. Yetkazib berish 2 kun oldi, Toshkent ichida tez yetkazishdi.',
+    content:
+      "Yaxshi mahsulot, lekin qutisi biroz ezilgan holda keldi. Karta o'zi a'lo ishlaydi. Yetkazib berish 2 kun oldi, Toshkent ichida tez yetkazishdi.",
     date: '12 mart, 2026',
     stars: 4,
     hasPhotos: false,
   },
   {
     id: '3',
-    user: { name: 'Bekzod Tursunov', avatar: 'https://picsum.photos/seed/user-3/64/64' },
+    user: {
+      name: 'Bekzod Tursunov',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop',
+    },
     rating: 5,
     variant: '8GB / Qora',
-    content: 'Narxiga ko\'ra eng yaxshi tanlov. Oldingi GTX 1660 dan katta farq bor. DLSS 3 texnologiyasi juda zo\'r ishlaydi.',
+    content:
+      "Narxiga ko'ra eng yaxshi tanlov. Oldingi GTX 1660 dan katta farq bor. DLSS 3 texnologiyasi juda zo'r ishlaydi.",
     images: [
-      'https://picsum.photos/seed/review-img-3/200/200',
-      'https://picsum.photos/seed/review-img-4/200/200',
-      'https://picsum.photos/seed/review-img-5/200/200',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=200&fit=crop',
     ],
     date: '10 mart, 2026',
     stars: 5,
@@ -71,19 +80,21 @@ const allReviews = [
     user: { name: 'Shahlo Abdullayeva' },
     rating: 3,
     variant: '8GB / Qora',
-    content: 'O\'rtacha. 4K uchun yetarli emas, lekin 1080p da yaxshi. Ovozi biroz baland.',
+    content: "O'rtacha. 4K uchun yetarli emas, lekin 1080p da yaxshi. Ovozi biroz baland.",
     date: '8 mart, 2026',
     stars: 3,
     hasPhotos: false,
   },
   {
     id: '5',
-    user: { name: 'Jamshid Aliyev', avatar: 'https://picsum.photos/seed/user-5/64/64' },
+    user: {
+      name: 'Jamshid Aliyev',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop',
+    },
     rating: 5,
-    content: 'GeekShop dan buyurtma berdim, 1 kunda yetib keldi. Mahsulot original, kafolat ham bor. Juda mamnunman!',
-    images: [
-      'https://picsum.photos/seed/review-img-6/200/200',
-    ],
+    content:
+      'GeekShop dan buyurtma berdim, 1 kunda yetib keldi. Mahsulot original, kafolat ham bor. Juda mamnunman!',
+    images: ['https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&h=200&fit=crop'],
     date: '5 mart, 2026',
     stars: 5,
     hasPhotos: true,
@@ -92,16 +103,20 @@ const allReviews = [
     id: '6',
     user: { name: 'Malika Ergasheva' },
     rating: 4,
-    content: 'Do\'konim uchun sotib oldim. Mijozlar uchun ajoyib tanlov. Narxi ham qulay.',
+    content: "Do'konim uchun sotib oldim. Mijozlar uchun ajoyib tanlov. Narxi ham qulay.",
     date: '3 mart, 2026',
     stars: 4,
     hasPhotos: false,
   },
   {
     id: '7',
-    user: { name: 'Otabek Nazarov', avatar: 'https://picsum.photos/seed/user-7/64/64' },
+    user: {
+      name: 'Otabek Nazarov',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop',
+    },
     rating: 2,
-    content: 'Kutganimdan past natija ko\'rsatdi. Ehtimol mening kompyuter konfiguratsiyamga mos kelmayapti.',
+    content:
+      "Kutganimdan past natija ko'rsatdi. Ehtimol mening kompyuter konfiguratsiyamga mos kelmayapti.",
     date: '1 mart, 2026',
     stars: 2,
     hasPhotos: false,
@@ -111,10 +126,11 @@ const allReviews = [
     user: { name: 'Zulfiya Raxmatullayeva' },
     rating: 5,
     variant: '8GB / Qora',
-    content: 'O\'g\'lim uchun tug\'ilgan kunga sovg\'a qildim. Juda xursand bo\'ldi! Ray tracing effektlari ajoyib ko\'rinadi.',
+    content:
+      "O'g'lim uchun tug'ilgan kunga sovg'a qildim. Juda xursand bo'ldi! Ray tracing effektlari ajoyib ko'rinadi.",
     images: [
-      'https://picsum.photos/seed/review-img-7/200/200',
-      'https://picsum.photos/seed/review-img-8/200/200',
+      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=200&h=200&fit=crop',
     ],
     date: '25 fevral, 2026',
     stars: 5,
@@ -180,11 +196,7 @@ export const ReviewsPage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <NavBar
-        title={t('page.reviews')}
-        showBack
-        onBack={() => {}}
-      />
+      <NavBar title={t('page.reviews')} showBack onBack={() => {}} />
 
       <Container hasNavbar>
         {/* Rating summary */}
@@ -192,7 +204,9 @@ export const ReviewsPage: React.FC = () => {
           <div className={styles.ratingLeft}>
             <span className={styles.ratingBig}>{averageRating}</span>
             <Rating value={averageRating} size="md" showCount={false} />
-            <span className={styles.ratingTotal}>{t('review.ratings', { count: totalReviews })}</span>
+            <span className={styles.ratingTotal}>
+              {t('review.ratings', { count: totalReviews })}
+            </span>
           </div>
 
           <div className={styles.ratingBars}>
@@ -202,10 +216,7 @@ export const ReviewsPage: React.FC = () => {
                   {item.stars} <StarSmall />
                 </span>
                 <div className={styles.barTrack}>
-                  <div
-                    className={styles.barFill}
-                    style={{ width: `${item.percentage}%` }}
-                  />
+                  <div className={styles.barFill} style={{ width: `${item.percentage}%` }} />
                 </div>
                 <span className={styles.barCount}>{item.count}</span>
               </div>
@@ -216,11 +227,7 @@ export const ReviewsPage: React.FC = () => {
         <Divider />
 
         {/* Tab filters */}
-        <TabFilter
-          tabs={tabs}
-          activeTab={activeTab}
-          onChange={handleTabChange}
-        />
+        <TabFilter tabs={tabs} activeTab={activeTab} onChange={handleTabChange} />
 
         {/* Reviews list */}
         <InfiniteScroll

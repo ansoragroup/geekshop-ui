@@ -46,12 +46,12 @@ export const Default: Story = {
 export const FullFeatured: Story = {
   name: 'Full Featured (all props)',
   args: {
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop',
     ],
     title: 'Nike Air Max 90 Essential Men Running Shoes Multiple Colorways Available',
     price: 1_290_000,
@@ -78,12 +78,12 @@ export const FullFeatured: Story = {
 export const ImageSwipePreview: Story = {
   name: 'Image Swipe Preview (5 images)',
   args: {
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     images: [
-      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop',
-      'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop',
     ],
     title: 'Nike Air Max 90 Running Shoes',
     price: 1_290_000,
@@ -117,7 +117,7 @@ export const BadgeSale: Story = {
 export const BadgeTop: Story = {
   name: 'Badge: Top',
   args: {
-    image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
     title: 'Anker Soundcore Liberty 4 NC Earbuds',
     price: 750_000,
     rating: 4.7,
@@ -132,7 +132,7 @@ export const BadgeTop: Story = {
 export const BadgeHot: Story = {
   name: 'Badge: Hot',
   args: {
-    image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
     title: 'Portable Bluetooth Speaker JBL Flip 6',
     price: 1_150_000,
     originalPrice: 1_400_000,
@@ -148,7 +148,7 @@ export const BadgeHot: Story = {
 export const BadgeCustom: Story = {
   name: 'Badge: Custom Color',
   args: {
-    image: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     title: 'Adidas Ultraboost Light Running Shoes',
     price: 2_400_000,
     badges: [
@@ -164,7 +164,7 @@ export const BadgeCustom: Story = {
 export const MultipleBadges: Story = {
   name: 'Multiple Badges (3)',
   args: {
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     title: 'MacBook Air M3 15-inch 16GB 512GB Space Gray',
     price: 22_900_000,
     originalPrice: 26_500_000,
@@ -183,7 +183,7 @@ export const MultipleBadges: Story = {
 
 export const Recommended: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     title: 'Natural Tourmaline Crystal Rough Stone',
     price: 49_000,
     originalPrice: 83_000,
@@ -201,7 +201,7 @@ export const Recommended: Story = {
 
 export const CustomRecommendedText: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
     title: 'Fujifilm X-T5 Mirrorless Camera Body',
     price: 18_900_000,
     originalPrice: 21_000_000,
@@ -218,7 +218,7 @@ export const CustomRecommendedText: Story = {
 
 export const FreeShipping: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop',
     title: 'Ray-Ban Aviator Classic Sunglasses Gold',
     price: 2_150_000,
     rating: 4.5,
@@ -247,7 +247,7 @@ export const PaidDelivery: Story = {
 
 export const NoDiscount: Story = {
   args: {
-    image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
     title: 'Samsung Galaxy Watch 6 Classic 47mm Silver',
     price: 4_800_000,
     rating: 4.6,
@@ -261,7 +261,7 @@ export const NoDiscount: Story = {
 export const NoRating: Story = {
   name: 'No Rating — No Reviews',
   args: {
-    image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=400&fit=crop',
     title: 'Bose SoundLink Flex Portable Speaker',
     price: 1_350_000,
     originalPrice: 1_600_000,
@@ -295,7 +295,7 @@ export const PurchaseCountFunction: Story = {
 export const ImageFitContain: Story = {
   name: 'imageFit: contain',
   args: {
-    image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
     title: 'Nike Dunk Low Retro White Black Panda',
     price: 1_490_000,
     rating: 4.7,
@@ -364,7 +364,7 @@ export const LongTitle: Story = {
 export const Minimal: Story = {
   name: 'Minimal (required props only)',
   args: {
-    image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'USB-C to VGA Adapter',
     price: 45_000,
   },
@@ -375,7 +375,7 @@ export const Minimal: Story = {
 export const WithCurrency: Story = {
   name: 'With Currency Label',
   args: {
-    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
     title: 'Fjallraven Kanken Classic Backpack 16L',
     price: 89.99,
     originalPrice: 129.99,
@@ -425,7 +425,7 @@ export const Grid: Story = {
           deliveryText="Free shipping"
         />
         <DesktopProductCard
-          image="https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop"
+          image="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop"
           title="Keychron Q1 Pro Wireless Mechanical Keyboard"
           price={2_450_000}
           rating={4.6}
@@ -433,7 +433,7 @@ export const Grid: Story = {
           badges={[{ label: 'HOT', variant: 'hot' }]}
         />
         <DesktopProductCard
-          image="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop"
+          image="https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop"
           title="North Face Borealis Backpack 28L Black"
           price={1_350_000}
           originalPrice={1_800_000}
@@ -444,7 +444,7 @@ export const Grid: Story = {
           deliveryText="2-5 day delivery"
         />
         <DesktopProductCard
-          image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop"
+          image="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop"
           title="New Balance 574 Classic Sneakers Grey"
           price={1_100_000}
           rating={4.3}
@@ -479,7 +479,7 @@ export const AsLink: Story = {
   args: {
     as: 'a',
     href: '#product-detail',
-    image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=400&h=400&fit=crop',
     title: 'Apple Watch Ultra 2 GPS + Cellular 49mm',
     price: 11_500_000,
     rating: 4.9,

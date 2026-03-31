@@ -542,11 +542,11 @@ export const ImageGallery: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
     const images = [
-      'https://images.unsplash.com/photo-1587831990691-b10bea7e5e39?w=300&h=220&fit=crop',
-      'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&h=220&fit=crop',
-      'https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?w=300&h=220&fit=crop',
-      'https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=300&h=220&fit=crop',
-      'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=300&h=220&fit=crop',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=220&fit=crop',
+      'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=300&h=220&fit=crop',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=220&fit=crop',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=220&fit=crop',
+      'https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=220&fit=crop',
       'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=220&fit=crop',
     ];
     return (

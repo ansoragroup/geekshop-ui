@@ -38,7 +38,7 @@ export const Default: Story = {
 export const AlreadyFollowed: Story = {
   args: {
     name: 'PC Master Components',
-    logo: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=100&h=100&fit=crop&auto=format',
+    logo: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=100&h=100&fit=crop&auto=format',
     rating: 4.5,
     followersCount: 8200,
     productsCount: 128,
@@ -64,7 +64,7 @@ export const NoResponseRate: Story = {
 export const HighFollowers: Story = {
   args: {
     name: 'GeekShop Official',
-    logo: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=100&h=100&fit=crop&auto=format',
+    logo: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=100&h=100&fit=crop&auto=format',
     rating: 4.9,
     followersCount: 156000,
     productsCount: 2450,
@@ -95,7 +95,7 @@ export const Interactive = () => {
 export const NoEnterButton: Story = {
   args: {
     name: 'Mini Shop',
-    logo: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=100&h=100&fit=crop&auto=format',
+    logo: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=100&h=100&fit=crop&auto=format',
     rating: 3.9,
     followersCount: 120,
     productsCount: 15,

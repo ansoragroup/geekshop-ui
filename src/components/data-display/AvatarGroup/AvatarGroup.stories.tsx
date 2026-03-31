@@ -86,37 +86,37 @@ export const WithImages: Story = {
     children: [
       <Avatar
         key={1}
-        src="https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=100&h=100&fit=crop&auto=format"
         name="User 1"
         size="md"
       />,
       <Avatar
         key={2}
-        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop&auto=format"
         name="User 2"
         size="md"
       />,
       <Avatar
         key={3}
-        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=100&h=100&fit=crop&auto=format"
         name="User 3"
         size="md"
       />,
       <Avatar
         key={4}
-        src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=100&h=100&fit=crop&auto=format"
         name="User 4"
         size="md"
       />,
       <Avatar
         key={5}
-        src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=100&h=100&fit=crop&auto=format"
         name="User 5"
         size="md"
       />,
       <Avatar
         key={6}
-        src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=100&h=100&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=100&h=100&fit=crop&auto=format"
         name="User 6"
         size="md"
       />,

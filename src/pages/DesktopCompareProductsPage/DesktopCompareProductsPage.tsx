@@ -13,19 +13,19 @@ const initialProducts: DesktopComparisonProduct[] = [
   {
     id: 'gpu1',
     name: 'MSI RTX 4060 Ventus 2X 8GB',
-    image: 'https://picsum.photos/seed/cmp-gpu1/300/300',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop',
     price: 5200000,
   },
   {
     id: 'gpu2',
     name: 'ASUS Dual RTX 4060 OC 8GB',
-    image: 'https://picsum.photos/seed/cmp-gpu2/300/300',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=300&fit=crop',
     price: 4800000,
   },
   {
     id: 'gpu3',
     name: 'Gigabyte RTX 4060 Eagle OC 8GB',
-    image: 'https://picsum.photos/seed/cmp-gpu3/300/300',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop',
     price: 4500000,
   },
 ];

@@ -7,7 +7,7 @@ import type { QuickBuyProduct, QuickBuyVariant } from './QuickBuyPopup';
 const mouseProduct: QuickBuyProduct = {
   title: 'Logitech G PRO X Superlight 2 Wireless Gaming Mouse',
   image:
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&auto=format',
   price: 1_200_000,
   stock: 45,
 };
@@ -21,7 +21,7 @@ const mouseVariants: QuickBuyVariant[] = [
 const keyboardProduct: QuickBuyProduct = {
   title: 'Razer BlackWidow V4 Pro Mechanical Gaming Keyboard',
   image:
-    'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
   price: 3_400_000,
   stock: 12,
 };
@@ -104,7 +104,7 @@ export const LowStock: Story = {
     product: {
       title: 'NVIDIA GeForce RTX 4090 Founders Edition 24GB GDDR6X',
       image:
-        'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop&auto=format',
       price: 24_500_000,
       stock: 2,
     },

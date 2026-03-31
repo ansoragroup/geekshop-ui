@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop&auto=format',
     title: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
     price: 5_200_000,
   },
@@ -42,7 +42,7 @@ export const Default: Story = {
 export const WithDiscount: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&auto=format',
     title: 'ASUS Dual GeForce RTX 4070 OC 12GB GDDR6X',
     price: 8_490_000,
     originalPrice: 9_200_000,
@@ -65,7 +65,7 @@ export const NewBadge: Story = {
 export const TopBadge: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop&auto=format',
     title: 'Samsung Odyssey G5 27" 165Hz QHD Monitor',
     price: 4_100_000,
     badge: 'top',
@@ -77,7 +77,7 @@ export const TopBadge: Story = {
 export const HotWithDiscount: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop&auto=format',
     title: 'Lenovo IdeaPad Gaming 3 RTX 4050 16GB',
     price: 11_900_000,
     originalPrice: 13_500_000,
@@ -91,7 +91,7 @@ export const HotWithDiscount: Story = {
 export const WithSoldCount: Story = {
   args: {
     image:
-      'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop&auto=format',
     title: 'Kingston Fury Beast DDR5 32GB (2x16GB) 5600MHz',
     price: 1_850_000,
     soldCount: '350+ sotilgan',
@@ -134,7 +134,7 @@ export const CompoundBasic: Story = {
   render: () => (
     <ProductCard>
       <ProductCard.Image
-        src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=400&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop&auto=format"
         alt="iPhone 15"
       />
       <ProductCard.Body>
@@ -150,7 +150,7 @@ export const CompoundWithDiscount: Story = {
   render: () => (
     <ProductCard>
       <ProductCard.Image
-        src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop&auto=format"
         alt="Samsung Galaxy"
         discount="-15%"
       />
@@ -167,7 +167,7 @@ export const CompoundWithBadges: Story = {
   render: () => (
     <ProductCard>
       <ProductCard.Image
-        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop&auto=format"
         alt="AirPods"
         badges={['hot']}
         discount="-10%"
@@ -204,7 +204,7 @@ export const CompoundWithInstallment: Story = {
   render: () => (
     <ProductCard>
       <ProductCard.Image
-        src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop&auto=format"
         alt="MacBook"
         badges={['top']}
       />
@@ -222,7 +222,7 @@ export const CompoundLineClamp: Story = {
   render: () => (
     <ProductCard>
       <ProductCard.Image
-        src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=400&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop&auto=format"
         alt="Mouse"
       />
       <ProductCard.Body>
@@ -241,7 +241,7 @@ export const CompoundFullFeatured: Story = {
   render: () => (
     <ProductCard onClick={() => console.log('clicked')}>
       <ProductCard.Image
-        src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=400&fit=crop&auto=format"
+        src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop&auto=format"
         alt="RTX 4090"
         badges={['hot']}
         discount="-11%"

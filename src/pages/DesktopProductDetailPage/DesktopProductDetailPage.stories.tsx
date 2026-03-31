@@ -64,7 +64,7 @@ export const WithReviews: Story = {
       {
         user: {
           name: 'Alisher Karimov',
-          avatar: 'https://picsum.photos/seed/rv-user1/64/64',
+          avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop',
         } as ReviewUser,
         rating: 5,
         content:
@@ -72,8 +72,8 @@ export const WithReviews: Story = {
         date: '20 mart, 2026',
         variant: 'Space Gray / 512GB',
         images: [
-          'https://picsum.photos/seed/rv-img1/200/200',
-          'https://picsum.photos/seed/rv-img2/200/200',
+          'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
+          'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
         ],
       },
       {
@@ -87,18 +87,18 @@ export const WithReviews: Story = {
       {
         user: {
           name: 'Sardor Abdurahmonov',
-          avatar: 'https://picsum.photos/seed/rv-user3/64/64',
+          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop',
         } as ReviewUser,
         rating: 5,
         content: 'Oldingi Intel MacBook dan 3x tezroq. Dizayn ham juda chiroyli, yengil va nozik.',
         date: '15 mart, 2026',
         variant: 'Midnight / 512GB',
-        images: ['https://picsum.photos/seed/rv-img3/200/200'],
+        images: ['https://images.unsplash.com/photo-1555618568-bfe052310f39?w=200&h=200&fit=crop'],
       },
       {
         user: {
           name: 'Dilnoza Ergasheva',
-          avatar: 'https://picsum.photos/seed/rv-user4/64/64',
+          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop',
         } as ReviewUser,
         rating: 5,
         content:

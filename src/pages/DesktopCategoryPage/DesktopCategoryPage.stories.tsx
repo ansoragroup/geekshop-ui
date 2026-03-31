@@ -28,7 +28,7 @@ export const Laptops: Story = {
     initialProducts: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Apple MacBook Air M3 15" 16GB 512GB',
         price: 18900000,
         originalPrice: 21500000,
@@ -39,7 +39,7 @@ export const Laptops: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'ASUS ROG Zephyrus G14 Ryzen 9 RTX 4060',
         price: 16200000,
         originalPrice: 18500000,
@@ -50,7 +50,7 @@ export const Laptops: Story = {
       },
       {
         id: '3',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Lenovo ThinkPad X1 Carbon Gen 11 i7 16GB',
         price: 14800000,
         rating: 4.6,
@@ -59,7 +59,7 @@ export const Laptops: Story = {
       },
       {
         id: '4',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Dell XPS 15 i9 32GB RTX 4070 OLED',
         price: 22500000,
         originalPrice: 25000000,
@@ -70,7 +70,7 @@ export const Laptops: Story = {
       },
       {
         id: '5',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'HP Omen 16 Ryzen 7 RTX 4060 16GB',
         price: 11200000,
         rating: 4.4,
@@ -79,7 +79,7 @@ export const Laptops: Story = {
       },
       {
         id: '6',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'MSI Raider GE78 i9 RTX 4080 32GB',
         price: 28500000,
         originalPrice: 32000000,
@@ -90,7 +90,7 @@ export const Laptops: Story = {
       },
       {
         id: '7',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Acer Nitro 5 Ryzen 5 RTX 4050 16GB',
         price: 8500000,
         rating: 4.2,
@@ -99,7 +99,7 @@ export const Laptops: Story = {
       },
       {
         id: '8',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
         title: 'Samsung Galaxy Book3 Ultra i7 RTX 4050',
         price: 15900000,
         originalPrice: 18200000,
@@ -195,7 +195,7 @@ export const Headphones: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'Apple AirPods Pro 2nd Gen USB-C',
         price: 2800000,
         originalPrice: 3500000,
@@ -215,7 +215,7 @@ export const Headphones: Story = {
       },
       {
         id: '4',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'Samsung Galaxy Buds3 Pro',
         price: 2200000,
         originalPrice: 2800000,
@@ -235,7 +235,7 @@ export const Headphones: Story = {
       },
       {
         id: '6',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'JBL Live 770NC Over-Ear',
         price: 1200000,
         originalPrice: 1800000,

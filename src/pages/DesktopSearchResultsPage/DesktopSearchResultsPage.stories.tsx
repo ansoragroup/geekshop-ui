@@ -174,7 +174,7 @@ export const HeadphoneSearch: Story = {
       },
       {
         id: '3',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'Apple AirPods Max (2nd Gen) USB-C',
         price: 5500000,
         rating: 4.6,
@@ -205,7 +205,7 @@ export const HeadphoneSearch: Story = {
       },
       {
         id: '6',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
         title: 'Samsung Galaxy Buds3 Pro TWS',
         price: 2200000,
         rating: 4.5,

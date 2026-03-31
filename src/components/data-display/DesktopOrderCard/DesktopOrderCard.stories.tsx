@@ -38,7 +38,7 @@ export const Default: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1555618568-bce51e8e11c6?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=128&h=128&fit=crop',
         title: 'AMD Ryzen 7 7800X3D',
       },
       {
@@ -87,7 +87,7 @@ export const StatusProcessing: Story = {
     products: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=128&h=128&fit=crop',
         title: 'Logitech MX Master 3S',
       },
       {
@@ -115,7 +115,7 @@ export const StatusShipping: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1625723044792-b84a7c238e96?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=128&h=128&fit=crop',
         title: 'Apple Magic Mouse',
       },
     ],
@@ -136,7 +136,7 @@ export const StatusDelivered: Story = {
     products: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=128&h=128&fit=crop',
         title: 'Nike Air Max 270',
       },
     ],
@@ -178,7 +178,7 @@ export const StatusReturned: Story = {
     products: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=128&h=128&fit=crop',
         title: 'Dell UltraSharp U2723QE Monitor',
       },
     ],
@@ -206,7 +206,7 @@ export const ManyItems: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1555618568-bce51e8e11c6?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=128&h=128&fit=crop',
         title: 'AMD Ryzen 7 7800X3D',
       },
       {
@@ -221,17 +221,17 @@ export const ManyItems: Story = {
       },
       {
         id: '5',
-        image: 'https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=128&h=128&fit=crop',
         title: 'NZXT H510 Case',
       },
       {
         id: '6',
-        image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=128&h=128&fit=crop',
         title: 'Corsair RM850x PSU',
       },
       {
         id: '7',
-        image: 'https://images.unsplash.com/photo-1625723044792-b84a7c238e96?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=128&h=128&fit=crop',
         title: 'Noctua NH-D15 Cooler',
       },
       {
@@ -256,7 +256,7 @@ export const SingleItem: Story = {
     products: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=128&h=128&fit=crop',
         title: 'Apple AirPods Pro 2nd Gen',
       },
     ],
@@ -296,7 +296,7 @@ export const HighTotal: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=128&h=128&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=128&h=128&fit=crop',
         title: 'Apple Pro Display XDR',
       },
     ],

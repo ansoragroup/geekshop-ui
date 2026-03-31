@@ -24,7 +24,7 @@ const gpuVariants: SkuVariant[] = [
     id: 'asus-tuf',
     name: 'ASUS TUF Gaming OC',
     image:
-      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     price: 9_100_000,
     stock: 8,
   },
@@ -32,7 +32,7 @@ const gpuVariants: SkuVariant[] = [
     id: 'gigabyte-eagle',
     name: 'Gigabyte Eagle OC',
     image:
-      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     price: 8_500_000,
     stock: 5,
   },
@@ -40,7 +40,7 @@ const gpuVariants: SkuVariant[] = [
     id: 'evga-ftw3',
     name: 'EVGA FTW3 Ultra',
     image:
-      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop&auto=format',
     price: 10_800_000,
     stock: 3,
   },
@@ -48,7 +48,7 @@ const gpuVariants: SkuVariant[] = [
     id: 'zotac-amp',
     name: 'Zotac AMP Extreme',
     image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
     price: 12_500_000,
     stock: 2,
   },
@@ -56,7 +56,7 @@ const gpuVariants: SkuVariant[] = [
     id: 'palit-gamerock',
     name: 'Palit GameRock OC',
     image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&auto=format',
     price: 9_400_000,
     stock: 7,
   },
@@ -76,7 +76,7 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
     id: 'asus-tuf',
     name: 'ASUS TUF Gaming OC',
     image:
-      'https://images.unsplash.com/photo-1542291026616-b53d31cf4641?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     price: 9_100_000,
     stock: 8,
     hotRank: 2,
@@ -85,7 +85,7 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
     id: 'gigabyte-eagle',
     name: 'Gigabyte Eagle OC',
     image:
-      'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&auto=format',
     price: 8_500_000,
     stock: 5,
     hotRank: 3,
@@ -94,7 +94,7 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
     id: 'evga-ftw3',
     name: 'EVGA FTW3 Ultra',
     image:
-      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop&auto=format',
     price: 10_800_000,
     stock: 3,
   },
@@ -102,7 +102,7 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
     id: 'zotac-amp',
     name: 'Zotac AMP Extreme',
     image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&auto=format',
     price: 12_500_000,
     stock: 2,
   },
@@ -110,7 +110,7 @@ const gpuVariantsWithHotRank: SkuVariant[] = [
     id: 'palit-gamerock',
     name: 'Palit GameRock OC',
     image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&auto=format',
     price: 9_400_000,
     stock: 7,
   },

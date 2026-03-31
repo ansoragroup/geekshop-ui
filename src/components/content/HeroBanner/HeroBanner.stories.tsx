@@ -40,7 +40,7 @@ export const WithImage: Story = {
     badge: 'HOT',
     bgGradient: 'linear-gradient(135deg, #FF5000 0%, #FF7A33 100%)',
     image:
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=400&fit=crop&auto=format',
   },
 };
 

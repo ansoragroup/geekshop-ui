@@ -130,7 +130,7 @@ export const DesktopTrackOrderPage: React.FC<DesktopTrackOrderPageProps> = ({
             <h2 className={styles.cardTitle}>Order Summary</h2>
             <div className={styles.orderItem}>
               <img
-                src="https://picsum.photos/seed/track-gpu/80/80"
+                src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=80&h=80&fit=crop"
                 alt="MSI RTX 4060 Ti"
                 className={styles.itemImage}
               />
@@ -142,7 +142,7 @@ export const DesktopTrackOrderPage: React.FC<DesktopTrackOrderPageProps> = ({
             </div>
             <div className={styles.orderItem}>
               <img
-                src="https://picsum.photos/seed/track-mouse/80/80"
+                src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=80&h=80&fit=crop"
                 alt="Logitech MX Master 3S"
                 className={styles.itemImage}
               />

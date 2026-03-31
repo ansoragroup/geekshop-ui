@@ -41,7 +41,7 @@ const products: CarouselProduct[] = [
     originalPrice: 5_500_000,
   },
   {
-    image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=240&h=240&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=240&h=240&fit=crop',
     title: 'Kingston Fury 16GB DDR5 5200MHz',
     price: 980_000,
   },
@@ -82,12 +82,12 @@ const laptopProducts: CarouselProduct[] = [
     originalPrice: 19_000_000,
   },
   {
-    image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=240&h=240&fit=crop',
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=240&h=240&fit=crop',
     title: 'Lenovo ThinkPad X1 Carbon Gen 11',
     price: 18_500_000,
   },
   {
-    image: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=240&h=240&fit=crop',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=240&h=240&fit=crop',
     title: 'Dell XPS 15 OLED i9 32GB',
     price: 25_800_000,
     originalPrice: 28_000_000,
@@ -201,13 +201,14 @@ export const Interactive: Story = {
   render: () => {
     const [activeTab, setActiveTab] = useState('all');
 
-    const filteredProducts = activeTab === 'all'
-      ? products
-      : activeTab === 'gpu'
+    const filteredProducts =
+      activeTab === 'all'
+        ? products
+        : activeTab === 'gpu'
         ? products.slice(0, 3)
         : activeTab === 'cpu'
-          ? products.slice(1, 4)
-          : products.slice(2, 6);
+        ? products.slice(1, 4)
+        : products.slice(2, 6);
 
     return (
       <ProductCarousel

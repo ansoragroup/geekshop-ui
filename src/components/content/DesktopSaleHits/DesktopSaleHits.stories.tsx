@@ -28,17 +28,105 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const saleItems: SaleHitItem[] = [
-  { id: '1', image: 'https://images.unsplash.com/photo-1515562141589-67f0d707b39b?w=300&h=300&fit=crop', title: 'Freshwater Pearl Pendant Set Natural Stone', price: 89_000, originalPrice: 173_000, discount: '-49%', currency: "so'm" },
-  { id: '2', image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=300&h=300&fit=crop', title: 'Vintage Pearl Brooch Pin Gold Plated', price: 164_000, originalPrice: 402_000, discount: '-59%', currency: "so'm" },
-  { id: '3', image: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=300&h=300&fit=crop', title: 'Acrylic Crystal Beads 30pc for DIY Bracelet', price: 69_000, originalPrice: 104_000, discount: '-34%', currency: "so'm" },
-  { id: '4', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop', title: 'Kids Summer Cotton Outfit Set 2-Piece', price: 332_000, originalPrice: 665_000, discount: '-50%', currency: "so'm" },
-  { id: '5', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&h=300&fit=crop', title: 'Vintage Metal Butterfly Hair Clip Gold', price: 184_000, originalPrice: 347_000, discount: '-47%', currency: "so'm" },
-  { id: '6', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&h=300&fit=crop', title: 'Handmade Acrylic Floral Brooch Set', price: 250_000, originalPrice: 568_000, discount: '-56%', currency: "so'm" },
-  { id: '7', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop', title: 'Minimalist Gold Wristwatch Unisex', price: 890_000, originalPrice: 1_500_000, discount: '-41%', currency: "so'm" },
-  { id: '8', image: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=300&h=300&fit=crop', title: 'Carbon Fiber MTB Frame 29" ELITA ONE', price: 4_260_000, originalPrice: 5_920_000, discount: '-28%', currency: "so'm" },
-  { id: '9', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop', title: 'TWS Wireless Earbuds Active Noise Cancel', price: 435_000, originalPrice: 870_000, discount: '-50%', currency: "so'm" },
-  { id: '10', image: 'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=300&h=300&fit=crop', title: 'Anker Soundcore Liberty 4 NC Earbuds', price: 750_000, originalPrice: 1_100_000, discount: '-32%', currency: "so'm" },
-  { id: '11', image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=300&h=300&fit=crop', title: 'JBL Flip 6 Portable Bluetooth Speaker', price: 1_150_000, originalPrice: 1_400_000, discount: '-18%', currency: "so'm" },
+  {
+    id: '1',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop',
+    title: 'Freshwater Pearl Pendant Set Natural Stone',
+    price: 89_000,
+    originalPrice: 173_000,
+    discount: '-49%',
+    currency: "so'm",
+  },
+  {
+    id: '2',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop',
+    title: 'Vintage Pearl Brooch Pin Gold Plated',
+    price: 164_000,
+    originalPrice: 402_000,
+    discount: '-59%',
+    currency: "so'm",
+  },
+  {
+    id: '3',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=300&fit=crop',
+    title: 'Acrylic Crystal Beads 30pc for DIY Bracelet',
+    price: 69_000,
+    originalPrice: 104_000,
+    discount: '-34%',
+    currency: "so'm",
+  },
+  {
+    id: '4',
+    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=300&h=300&fit=crop',
+    title: 'Kids Summer Cotton Outfit Set 2-Piece',
+    price: 332_000,
+    originalPrice: 665_000,
+    discount: '-50%',
+    currency: "so'm",
+  },
+  {
+    id: '5',
+    image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=300&h=300&fit=crop',
+    title: 'Vintage Metal Butterfly Hair Clip Gold',
+    price: 184_000,
+    originalPrice: 347_000,
+    discount: '-47%',
+    currency: "so'm",
+  },
+  {
+    id: '6',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop',
+    title: 'Handmade Acrylic Floral Brooch Set',
+    price: 250_000,
+    originalPrice: 568_000,
+    discount: '-56%',
+    currency: "so'm",
+  },
+  {
+    id: '7',
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop',
+    title: 'Minimalist Gold Wristwatch Unisex',
+    price: 890_000,
+    originalPrice: 1_500_000,
+    discount: '-41%',
+    currency: "so'm",
+  },
+  {
+    id: '8',
+    image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=300&h=300&fit=crop',
+    title: 'Carbon Fiber MTB Frame 29" ELITA ONE',
+    price: 4_260_000,
+    originalPrice: 5_920_000,
+    discount: '-28%',
+    currency: "so'm",
+  },
+  {
+    id: '9',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop',
+    title: 'TWS Wireless Earbuds Active Noise Cancel',
+    price: 435_000,
+    originalPrice: 870_000,
+    discount: '-50%',
+    currency: "so'm",
+  },
+  {
+    id: '10',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop',
+    title: 'Anker Soundcore Liberty 4 NC Earbuds',
+    price: 750_000,
+    originalPrice: 1_100_000,
+    discount: '-32%',
+    currency: "so'm",
+  },
+  {
+    id: '11',
+    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=300&h=300&fit=crop',
+    title: 'JBL Flip 6 Portable Bluetooth Speaker',
+    price: 1_150_000,
+    originalPrice: 1_400_000,
+    discount: '-18%',
+    currency: "so'm",
+  },
 ];
 
 // ─── Default ─────────────────────────────────────────────────────────────────
@@ -62,7 +150,20 @@ export const FullFeatured: Story = {
     scrollLeftAriaLabel: 'Scroll deals left',
     scrollRightAriaLabel: 'Scroll deals right',
     icon: (
-      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 28, height: 28, borderRadius: 6, background: '#FF3B30', color: '#FFF', fontSize: 11, fontWeight: 700 }}>
+      <span
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 28,
+          height: 28,
+          borderRadius: 6,
+          background: '#FF3B30',
+          color: '#FFF',
+          fontSize: 11,
+          fontWeight: 700,
+        }}
+      >
         HOT
       </span>
     ),
@@ -152,7 +253,16 @@ export const CustomRenderCard: Story = {
         <div style={{ marginTop: 8, fontSize: 13, fontWeight: 600, color: '#FF0000' }}>
           {item.discount} OFF
         </div>
-        <div style={{ fontSize: 11, color: '#666', marginTop: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        <div
+          style={{
+            fontSize: 11,
+            color: '#666',
+            marginTop: 4,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+          }}
+        >
           {item.title}
         </div>
       </div>
@@ -167,7 +277,16 @@ export const CustomIcon: Story = {
     items: saleItems.slice(0, 7),
     title: 'Lightning Deals',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#FF5000"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     ),

@@ -34,7 +34,7 @@ const initialCartItems: CartItemData[] = [
     price: 5200000,
     quantity: 1,
     selected: true,
-    image: 'https://picsum.photos/seed/cart-gpu/160/160',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const initialCartItems: CartItemData[] = [
     price: 4100000,
     quantity: 1,
     selected: true,
-    image: 'https://picsum.photos/seed/cart-cpu/160/160',
+    image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=160&h=160&fit=crop',
   },
   {
     id: 3,
@@ -52,7 +52,7 @@ const initialCartItems: CartItemData[] = [
     price: 2200000,
     quantity: 2,
     selected: false,
-    image: 'https://picsum.photos/seed/cart-ram/160/160',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=160&h=160&fit=crop',
   },
 ];
 
@@ -61,19 +61,13 @@ export interface CartPageProps {
   hasCoupon?: boolean;
 }
 
-export const CartPage: React.FC<CartPageProps> = ({
-  empty = false,
-  hasCoupon = false,
-}) => {
+export const CartPage: React.FC<CartPageProps> = ({ empty = false, hasCoupon = false }) => {
   const { t, formatPrice } = useGeekShop();
   const [items, setItems] = useState<CartItemData[]>(initialCartItems);
 
   const allSelected = items.length > 0 && items.every((i) => i.selected);
   const selectedItems = items.filter((i) => i.selected);
-  const subtotal = selectedItems.reduce(
-    (sum, i) => sum + i.price * i.quantity,
-    0,
-  );
+  const subtotal = selectedItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
   const delivery = 0;
   const discount = hasCoupon ? Math.round(subtotal * 0.1) : 0;
   const total = subtotal - discount + delivery;
@@ -83,15 +77,11 @@ export const CartPage: React.FC<CartPageProps> = ({
   };
 
   const handleItemSelect = (id: number, selected: boolean) => {
-    setItems((prev) =>
-      prev.map((i) => (i.id === id ? { ...i, selected } : i)),
-    );
+    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, selected } : i)));
   };
 
   const handleQuantityChange = (id: number, quantity: number) => {
-    setItems((prev) =>
-      prev.map((i) => (i.id === id ? { ...i, quantity } : i)),
-    );
+    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, quantity } : i)));
   };
 
   const handleDelete = (id: number) => {
@@ -110,9 +100,7 @@ export const CartPage: React.FC<CartPageProps> = ({
   const priceSummary = [
     { label: t('cart.items'), value: formatPrice(subtotal) },
     { label: t('cart.delivery'), value: delivery === 0 ? t('cart.free') : formatPrice(delivery) },
-    ...(hasCoupon
-      ? [{ label: t('cart.couponDiscount'), value: `-${formatPrice(discount)}` }]
-      : []),
+    ...(hasCoupon ? [{ label: t('cart.couponDiscount'), value: `-${formatPrice(discount)}` }] : []),
     { label: t('cart.total'), value: formatPrice(total) },
   ];
 
@@ -155,9 +143,7 @@ export const CartPage: React.FC<CartPageProps> = ({
                   quantity={item.quantity}
                   selected={item.selected}
                   onSelect={(sel) => handleItemSelect(item.id, sel)}
-                  onQuantityChange={(qty) =>
-                    handleQuantityChange(item.id, qty)
-                  }
+                  onQuantityChange={(qty) => handleQuantityChange(item.id, qty)}
                   onDelete={() => handleDelete(item.id)}
                 />
               </Swipe>
@@ -189,18 +175,12 @@ export const CartPage: React.FC<CartPageProps> = ({
           {/* Bottom action */}
           <div className={styles.actionBar}>
             <div className={styles.actionLeft}>
-              <Checkbox
-                checked={allSelected}
-                label={t('common.all')}
-                onChange={handleSelectAll}
-              />
+              <Checkbox checked={allSelected} label={t('common.all')} onChange={handleSelectAll} />
             </div>
             <div className={styles.actionRight}>
               <div className={styles.totalBlock}>
                 <span className={styles.totalLabel}>{t('cart.total')}:</span>
-                <span className={styles.totalPrice}>
-                  {formatPrice(total)}
-                </span>
+                <span className={styles.totalPrice}>{formatPrice(total)}</span>
               </div>
               <Button variant="primary" size="md">
                 {t('cart.placeOrder')} ({selectedItems.length})

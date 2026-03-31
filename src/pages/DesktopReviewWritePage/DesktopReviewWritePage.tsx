@@ -28,7 +28,7 @@ export interface DesktopReviewWritePageProps {
 export const DesktopReviewWritePage: React.FC<DesktopReviewWritePageProps> = ({
   productName = 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
   productVariant = '8GB / Qora',
-  productImage = 'https://picsum.photos/seed/review-product/100/100',
+  productImage = 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=100&h=100&fit=crop',
   initialRating = 0,
   initialReview = '',
 }) => {

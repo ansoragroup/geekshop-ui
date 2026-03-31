@@ -34,7 +34,7 @@ const sidebarBrands: SidebarBrand[] = [
 const products: DesktopProductGridItem[] = [
   {
     id: '1',
-    image: 'https://picsum.photos/seed/cat-gpu1/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'MSI GeForce RTX 4070 Super Gaming X Slim 12GB',
     price: 8900000,
     originalPrice: 9800000,
@@ -45,7 +45,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '2',
-    image: 'https://picsum.photos/seed/cat-gpu2/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'ASUS ROG Strix RTX 4060 Ti OC 8GB GDDR6',
     price: 5200000,
     originalPrice: 6500000,
@@ -56,7 +56,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '3',
-    image: 'https://picsum.photos/seed/cat-gpu3/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'Gigabyte RTX 4060 Eagle OC 8GB GDDR6',
     price: 4200000,
     rating: 4.2,
@@ -65,7 +65,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '4',
-    image: 'https://picsum.photos/seed/cat-gpu4/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'MSI RTX 4080 Super Ventus 3X OC 16GB',
     price: 14500000,
     originalPrice: 16200000,
@@ -76,7 +76,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '5',
-    image: 'https://picsum.photos/seed/cat-gpu5/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'ASUS Dual RTX 4060 OC 8GB GDDR6',
     price: 3900000,
     rating: 4.1,
@@ -85,7 +85,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '6',
-    image: 'https://picsum.photos/seed/cat-gpu6/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'Zotac RTX 4070 Twin Edge 12GB GDDR6X',
     price: 7800000,
     originalPrice: 8500000,
@@ -96,7 +96,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '7',
-    image: 'https://picsum.photos/seed/cat-gpu7/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'Sapphire RX 7800 XT Pulse 16GB',
     price: 6200000,
     rating: 4.6,
@@ -105,7 +105,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '8',
-    image: 'https://picsum.photos/seed/cat-gpu8/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'MSI RTX 4060 Ti Ventus 2X 8GB GDDR6',
     price: 4800000,
     originalPrice: 5600000,
@@ -116,7 +116,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '9',
-    image: 'https://picsum.photos/seed/cat-gpu9/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'ASUS TUF RTX 4070 OC 12GB GDDR6X',
     price: 7500000,
     rating: 4.5,
@@ -125,7 +125,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '10',
-    image: 'https://picsum.photos/seed/cat-gpu10/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'Gigabyte RX 7600 Gaming OC 8GB',
     price: 3200000,
     rating: 4.0,
@@ -134,7 +134,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '11',
-    image: 'https://picsum.photos/seed/cat-gpu11/400/400',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop',
     title: 'EVGA RTX 4060 XC Gaming 8GB GDDR6',
     price: 3800000,
     rating: 4.2,
@@ -143,7 +143,7 @@ const products: DesktopProductGridItem[] = [
   },
   {
     id: '12',
-    image: 'https://picsum.photos/seed/cat-gpu12/400/400',
+    image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
     title: 'MSI RTX 4090 Suprim X 24GB GDDR6X',
     price: 22000000,
     originalPrice: 24500000,

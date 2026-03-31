@@ -43,7 +43,7 @@ export const Default: Story = {
             id: '2',
             name: 'Apple MacBook Air M3 15" 16GB',
             image:
-              'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+              'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
             price: 18_900_000,
             quantity: 1,
             variant: 'Space Gray / 512GB',
@@ -132,7 +132,7 @@ export const WithPendingOrders: Story = {
             id: '1',
             name: 'Dell XPS 15 i9 32GB RTX 4070',
             image:
-              'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+              'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
             price: 22_500_000,
             quantity: 1,
             variant: 'Silver / 1TB',
@@ -157,7 +157,7 @@ export const WithPendingOrders: Story = {
             id: '3',
             name: 'Apple AirPods Pro 2nd Gen USB-C',
             image:
-              'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=160&h=160&fit=crop',
+              'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
             price: 2_800_000,
             quantity: 1,
           },
@@ -236,7 +236,7 @@ export const AllCancelled: Story = {
             id: '1',
             name: 'Apple MacBook Pro 16" M3 Max 36GB 1TB',
             image:
-              'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+              'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
             price: 42_000_000,
             quantity: 1,
           },
@@ -251,8 +251,7 @@ export const AllCancelled: Story = {
           {
             id: '2',
             name: 'Canon EOS R6 Mark II Body',
-            image:
-              'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=160&h=160&fit=crop',
+            image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=160&h=160&fit=crop',
             price: 28_500_000,
             quantity: 1,
           },
@@ -293,8 +292,7 @@ export const ManyOrders: Story = {
           {
             id: '2',
             name: 'Sony A7 IV Mirrorless Camera',
-            image:
-              'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=160&h=160&fit=crop',
+            image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=160&h=160&fit=crop',
             price: 24_000_000,
             quantity: 1,
           },
@@ -326,7 +324,7 @@ export const ManyOrders: Story = {
             id: '4',
             name: 'Apple AirPods Pro 2',
             image:
-              'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=160&h=160&fit=crop',
+              'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
             price: 2_800_000,
             quantity: 2,
           },
@@ -358,7 +356,7 @@ export const ManyOrders: Story = {
             id: '6',
             name: 'Trek Domane SL 5 Road Bike',
             image:
-              'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=160&h=160&fit=crop',
+              'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=160&h=160&fit=crop',
             price: 35_000_000,
             quantity: 1,
           },

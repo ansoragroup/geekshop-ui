@@ -15,14 +15,14 @@ import styles from './DesktopOrderConfirmationPage.module.scss';
 const defaultItems = [
   {
     id: '1',
-    image: 'https://picsum.photos/seed/conf-gpu/160/160',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
     name: 'MSI RTX 4060 Ti Ventus 2X 8GB',
     quantity: 1,
     price: 4_800_000,
   },
   {
     id: '2',
-    image: 'https://picsum.photos/seed/conf-mouse/160/160',
+    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=160&h=160&fit=crop',
     name: 'Logitech MX Master 3S Wireless Mouse',
     quantity: 2,
     price: 950_000,

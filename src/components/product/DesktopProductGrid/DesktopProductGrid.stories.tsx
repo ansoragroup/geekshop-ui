@@ -93,7 +93,7 @@ const mockProducts: DesktopProductGridItem[] = [
   },
   {
     id: 'keyboard-keychron',
-    image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
     title: 'Keychron Q1 Pro Mechanical Keyboard Gateron Brown',
     price: 2_450_000,
     rating: 4.6,
@@ -123,7 +123,7 @@ const mockProducts: DesktopProductGridItem[] = [
   },
   {
     id: 'ram-corsair',
-    image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400&h=400&fit=crop',
     title: 'Corsair Vengeance DDR5 32GB (2x16) 6000MHz CL30',
     price: 2_100_000,
     rating: 4.4,

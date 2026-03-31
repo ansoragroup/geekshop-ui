@@ -42,7 +42,7 @@ export const NoVariants: Story = {
     open: true,
     product: {
       title: 'Apple AirPods Pro 2nd Generation with MagSafe Charging Case (USB-C)',
-      image: 'https://images.unsplash.com/photo-1606220838315-056192d5e927?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
       price: 3_200_000,
       stock: 12,
     },
@@ -61,9 +61,7 @@ export const LowStock: Story = {
       price: 28_900_000,
       stock: 2,
     },
-    variants: [
-      { id: 'default', name: 'Founders Edition' },
-    ],
+    variants: [{ id: 'default', name: 'Founders Edition' }],
     onClose: fn(),
     onAddToCart: fn(),
   },
@@ -75,7 +73,7 @@ export const ManyVariants: Story = {
     open: true,
     product: {
       title: 'Nike Air Max 270 React Running Shoes',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop',
       price: 1_450_000,
       stock: 45,
     },
@@ -100,13 +98,11 @@ export const SingleVariant: Story = {
     open: true,
     product: {
       title: 'Corsair K100 RGB Mechanical Gaming Keyboard',
-      image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
       price: 3_290_000,
       stock: 8,
     },
-    variants: [
-      { id: 'cherry', name: 'Cherry MX Speed' },
-    ],
+    variants: [{ id: 'cherry', name: 'Cherry MX Speed' }],
     onClose: fn(),
     onAddToCart: fn(),
   },
@@ -117,7 +113,8 @@ export const LongTitle: Story = {
   args: {
     open: true,
     product: {
-      title: 'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with Aura Sync RGB LED Lighting and Triple Axial-tech Fan Design',
+      title:
+        'ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X PCI Express 4.0 Graphics Card with Aura Sync RGB LED Lighting and Triple Axial-tech Fan Design',
       image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop',
       price: 28_990_000,
       stock: 3,
@@ -137,7 +134,7 @@ export const HighStock: Story = {
     open: true,
     product: {
       title: 'Anker USB-C to Lightning Cable 1m',
-      image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=400&fit=crop',
       price: 85_000,
       stock: 500,
     },
@@ -152,7 +149,7 @@ export const Closed: Story = {
     open: false,
     product: {
       title: 'Test Product',
-      image: 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=400&fit=crop',
       price: 1_000_000,
       stock: 10,
     },

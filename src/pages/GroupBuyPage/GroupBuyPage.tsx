@@ -49,14 +49,14 @@ const groupBuyItems: Array<{
     currentMembers: 2,
     timeLeft: 4 * 3600 + 23 * 60,
     memberAvatars: [
-      'https://picsum.photos/seed/avatar-gb1/40/40',
-      'https://picsum.photos/seed/avatar-gb2/40/40',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop',
     ],
   },
   {
     product: {
       name: 'Apple AirPods Pro 2 USB-C',
-      image: 'https://picsum.photos/seed/airpods-pro/400/400',
+      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop',
       price: 1_200_000,
       originalPrice: 1_500_000,
     },
@@ -64,7 +64,7 @@ const groupBuyItems: Array<{
     currentMembers: 1,
     timeLeft: 2 * 3600 + 10 * 60,
     memberAvatars: [
-      'https://picsum.photos/seed/avatar-gb3/40/40',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop',
     ],
   },
   {
@@ -78,10 +78,10 @@ const groupBuyItems: Array<{
     currentMembers: 4,
     timeLeft: 1 * 3600 + 5 * 60,
     memberAvatars: [
-      'https://picsum.photos/seed/avatar-gb4/40/40',
-      'https://picsum.photos/seed/avatar-gb5/40/40',
-      'https://picsum.photos/seed/avatar-gb6/40/40',
-      'https://picsum.photos/seed/avatar-gb7/40/40',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop',
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop',
     ],
   },
   {
@@ -95,7 +95,7 @@ const groupBuyItems: Array<{
     currentMembers: 1,
     timeLeft: 8 * 3600 + 45 * 60,
     memberAvatars: [
-      'https://picsum.photos/seed/avatar-gb8/40/40',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop',
     ],
   },
   {
@@ -109,8 +109,8 @@ const groupBuyItems: Array<{
     currentMembers: 2,
     timeLeft: 5 * 3600 + 30 * 60,
     memberAvatars: [
-      'https://picsum.photos/seed/avatar-gb9/40/40',
-      'https://picsum.photos/seed/avatar-gb10/40/40',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop',
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop',
     ],
   },
 ];
@@ -124,11 +124,11 @@ export interface GroupBuyPageProps {
   filter?: 'active' | 'ending' | 'new';
 }
 
-export const GroupBuyPage: React.FC<GroupBuyPageProps> = ({
-  filter,
-}) => {
+export const GroupBuyPage: React.FC<GroupBuyPageProps> = ({ filter }) => {
   const { t } = useGeekShop();
-  const [activeTab, setActiveTab] = useState(filter === 'ending' ? 'ending' : filter === 'new' ? 'new' : 'all');
+  const [activeTab, setActiveTab] = useState(
+    filter === 'ending' ? 'ending' : filter === 'new' ? 'new' : 'all'
+  );
 
   const tabs = filterTabKeys.map((f) => ({
     key: f.key,
@@ -138,11 +138,7 @@ export const GroupBuyPage: React.FC<GroupBuyPageProps> = ({
   return (
     <div className={styles.page}>
       {/* NavBar */}
-      <NavBar
-        title={t('page.groupBuy')}
-        showBack
-        onBack={() => {}}
-      />
+      <NavBar title={t('page.groupBuy')} showBack onBack={() => {}} />
 
       {/* Announcement banner */}
       <Container>
@@ -151,23 +147,13 @@ export const GroupBuyPage: React.FC<GroupBuyPageProps> = ({
           <span className={styles.announceText}>
             {t('groupBuy.todayGroups', { count: TOTAL_GROUPS })}
           </span>
-          <Badge
-            type="text"
-            content="HOT"
-            color="primary"
-            position="inline"
-          />
+          <Badge type="text" content="HOT" color="primary" position="inline" />
         </div>
       </Container>
 
       {/* Tab filter */}
       <div className={styles.tabsWrap}>
-        <TabFilter
-          tabs={tabs}
-          activeTab={activeTab}
-          onChange={setActiveTab}
-          variant="pill"
-        />
+        <TabFilter tabs={tabs} activeTab={activeTab} onChange={setActiveTab} variant="pill" />
       </div>
 
       {/* Group buy cards */}
@@ -192,10 +178,10 @@ export const GroupBuyPage: React.FC<GroupBuyPageProps> = ({
             period="bugun"
             variant="text"
             avatars={[
-              'https://picsum.photos/seed/sp-1/40/40',
-              'https://picsum.photos/seed/sp-2/40/40',
-              'https://picsum.photos/seed/sp-3/40/40',
-              'https://picsum.photos/seed/sp-4/40/40',
+              'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop',
+              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop',
+              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop',
+              'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop',
             ]}
           />
         </div>

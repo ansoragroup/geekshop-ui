@@ -17,7 +17,7 @@ import styles from './StoreFrontPage.module.scss';
 
 const shopInfo = {
   name: 'TechZone Electronics',
-  logo: 'https://picsum.photos/seed/shop-logo/64/64',
+  logo: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=64&h=64&fit=crop',
   rating: 4.8,
   followersCount: 12500,
   productsCount: 856,
@@ -45,7 +45,16 @@ const PRODUCTS_PER_PAGE = 6;
 /* ---------- Icons ---------- */
 
 const ChatIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
   </svg>
 );
@@ -84,11 +93,7 @@ export const StoreFrontPage: React.FC<StoreFrontPageProps> = () => {
   return (
     <div className={styles.page}>
       {/* NavBar */}
-      <NavBar
-        title={t('page.storeFront')}
-        showBack
-        onBack={() => {}}
-      />
+      <NavBar title={t('page.storeFront')} showBack onBack={() => {}} />
 
       {/* Shop Card */}
       <div className={styles.shopSection}>
@@ -115,26 +120,13 @@ export const StoreFrontPage: React.FC<StoreFrontPageProps> = () => {
 
       {/* Tab Filter */}
       <div className={styles.tabsWrap}>
-        <TabFilter
-          tabs={tabs}
-          activeTab={activeTab}
-          onChange={setActiveTab}
-        />
+        <TabFilter tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
       </div>
 
       {/* Product Grid with InfiniteScroll */}
       <div className={styles.content}>
-        <InfiniteScroll
-          onLoadMore={handleLoadMore}
-          hasMore={hasMore}
-          loading={loading}
-        >
-          <ProductGrid
-            products={visibleProducts}
-            layout="grid"
-            columns={2}
-            gap={8}
-          />
+        <InfiniteScroll onLoadMore={handleLoadMore} hasMore={hasMore} loading={loading}>
+          <ProductGrid products={visibleProducts} layout="grid" columns={2} gap={8} />
         </InfiniteScroll>
       </div>
 

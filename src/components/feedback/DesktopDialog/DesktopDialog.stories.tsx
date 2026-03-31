@@ -313,7 +313,7 @@ export const RemoveFromCart: Story = {
     >
       <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 12 }}>
         <img
-          src="https://images.unsplash.com/photo-1587831990691-b10bea7e5e39?w=64&h=64&fit=crop"
+          src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=64&h=64&fit=crop"
           alt="Product"
           style={{ width: 64, height: 64, borderRadius: 8, objectFit: 'cover' }}
         />

@@ -25,14 +25,14 @@ const categories: ShowcaseCategory[] = [
   {
     label: 'GPUs',
     image:
-      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a0a?w=400&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&auto=format',
     count: 42,
     onClick: () => console.log('GPUs'),
   },
   {
     label: 'CPUs',
     image:
-      'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop&auto=format',
     count: 38,
     onClick: () => console.log('CPUs'),
   },
@@ -46,7 +46,7 @@ const categories: ShowcaseCategory[] = [
   {
     label: 'Laptops',
     image:
-      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=300&fit=crop&auto=format',
     count: 31,
     onClick: () => console.log('Laptops'),
   },
@@ -74,7 +74,7 @@ const categories: ShowcaseCategory[] = [
   {
     label: 'Coolers',
     image:
-      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=300&fit=crop&auto=format',
     count: 14,
     onClick: () => console.log('Coolers'),
   },
@@ -88,7 +88,7 @@ const categories: ShowcaseCategory[] = [
   {
     label: 'PSUs',
     image:
-      'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop&auto=format',
     count: 22,
     onClick: () => console.log('PSUs'),
   },

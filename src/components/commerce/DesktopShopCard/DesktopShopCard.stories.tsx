@@ -11,11 +11,13 @@ const meta = {
     layout: 'centered',
     viewport: { defaultViewport: 'desktop' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 700, padding: 24, background: '#f5f5f5' }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 700, padding: 24, background: '#f5f5f5' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopShopCard>;
 
 export default meta;
@@ -25,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'GeekTech Official Store',
-    logo: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=112&h=112&fit=crop',
     rating: 4.8,
     followersCount: 12500,
     productsCount: 342,
@@ -41,7 +43,7 @@ export const Default: Story = {
 export const Following: Story = {
   args: {
     name: 'Apple Premium Reseller Tashkent',
-    logo: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=112&h=112&fit=crop',
     rating: 5.0,
     followersCount: 45000,
     productsCount: 89,
@@ -57,7 +59,7 @@ export const Following: Story = {
 export const NoResponseRate: Story = {
   args: {
     name: 'Samsung Official',
-    logo: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=112&h=112&fit=crop',
     rating: 4.9,
     followersCount: 85000,
     productsCount: 1200,
@@ -72,7 +74,7 @@ export const NoResponseRate: Story = {
 export const SmallShop: Story = {
   args: {
     name: 'Micro Electronics',
-    logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=112&h=112&fit=crop',
     rating: 4.2,
     followersCount: 156,
     productsCount: 28,
@@ -87,7 +89,7 @@ export const SmallShop: Story = {
 export const WithoutChat: Story = {
   args: {
     name: 'Corsair Official Store',
-    logo: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=112&h=112&fit=crop',
     rating: 4.7,
     followersCount: 23400,
     productsCount: 156,
@@ -116,7 +118,7 @@ export const ViewOnly: Story = {
 export const LargeShop: Story = {
   args: {
     name: 'Alibaba Global Marketplace',
-    logo: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=112&h=112&fit=crop',
     rating: 4.5,
     followersCount: 2500000,
     productsCount: 150000,
@@ -132,7 +134,7 @@ export const LargeShop: Story = {
 export const LongName: Story = {
   args: {
     name: 'International Electronics & Computer Components Wholesale Distribution Center',
-    logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=112&h=112&fit=crop',
+    logo: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=112&h=112&fit=crop',
     rating: 3.9,
     followersCount: 450,
     productsCount: 8900,
@@ -153,7 +155,7 @@ export const Interactive: Story = {
     return (
       <DesktopShopCard
         name="GeekTech Official Store"
-        logo="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=112&h=112&fit=crop"
+        logo="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=112&h=112&fit=crop"
         rating={4.8}
         followersCount={followers}
         productsCount={342}
@@ -161,7 +163,7 @@ export const Interactive: Story = {
         isFollowed={isFollowed}
         onFollow={() => {
           setIsFollowed((prev) => !prev);
-          setFollowers((prev) => isFollowed ? prev - 1 : prev + 1);
+          setFollowers((prev) => (isFollowed ? prev - 1 : prev + 1));
         }}
         onEnter={() => alert('Navigating to shop page...')}
         onChat={() => alert('Opening chat...')}

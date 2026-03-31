@@ -712,14 +712,14 @@ export const CartDrawer: Story = {
         variant: 'Black',
         qty: 1,
         price: '4,200,000',
-        img: 'https://images.unsplash.com/photo-1599669454699-248893623440?w=80&h=80&fit=crop',
+        img: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=80&h=80&fit=crop',
       },
       {
         name: 'Corsair K70 RGB Pro',
         variant: 'Cherry MX Red',
         qty: 2,
         price: '2,350,000',
-        img: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=80&h=80&fit=crop',
+        img: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=80&h=80&fit=crop',
       },
     ];
 

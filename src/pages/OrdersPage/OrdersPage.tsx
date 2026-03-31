@@ -48,7 +48,7 @@ const allOrders: OrderData[] = [
     filterKey: 'shipping',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-gpu1/128/128',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=128&h=128&fit=crop',
         title: 'MSI GeForce RTX 4060 Ventus 2X 8GB',
         variant: '8GB / Qora',
         price: 5200000,
@@ -68,14 +68,14 @@ const allOrders: OrderData[] = [
     filterKey: 'delivered',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-cpu1/128/128',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=128&h=128&fit=crop',
         title: 'AMD Ryzen 7 7800X3D Protsessor AM5',
         variant: '8 yadro / 16 ip',
         price: 4100000,
         quantity: 1,
       },
       {
-        image: 'https://picsum.photos/seed/order-ram1/128/128',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=128&h=128&fit=crop',
         title: 'Corsair Vengeance DDR5 32GB 6000MHz',
         variant: '32GB / 2x16GB',
         price: 2200000,
@@ -95,7 +95,7 @@ const allOrders: OrderData[] = [
     filterKey: 'delivered',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-ssd1/128/128',
+        image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=128&h=128&fit=crop',
         title: 'Samsung 990 Pro NVMe 2TB SSD',
         variant: '2TB / M.2',
         price: 2800000,
@@ -115,7 +115,7 @@ const allOrders: OrderData[] = [
     filterKey: 'pending',
     products: [
       {
-        image: 'https://picsum.photos/seed/order-monitor1/128/128',
+        image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=128&h=128&fit=crop',
         title: 'ASUS ROG Swift 27" 2K 165Hz Gaming Monitor',
         variant: '27 dyuym / 2K',
         price: 4800000,
@@ -152,10 +152,7 @@ export interface OrdersPageProps {
   initialTab?: string;
 }
 
-export const OrdersPage: React.FC<OrdersPageProps> = ({
-  empty = false,
-  initialTab = 'all',
-}) => {
+export const OrdersPage: React.FC<OrdersPageProps> = ({ empty = false, initialTab = 'all' }) => {
   const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState(initialTab);
   const [hasMore, setHasMore] = useState(true);
@@ -168,8 +165,8 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({
   const filteredOrders = empty
     ? []
     : activeTab === 'all'
-      ? allOrders
-      : allOrders.filter((o) => o.filterKey === activeTab);
+    ? allOrders
+    : allOrders.filter((o) => o.filterKey === activeTab);
 
   const handleLoadMore = useCallback(() => {
     // Simulated: in real app, fetch next page
@@ -178,19 +175,10 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({
 
   return (
     <div className={styles.page}>
-      <NavBar
-        title={t('page.orders')}
-        showBack
-        onBack={() => {}}
-      />
+      <NavBar title={t('page.orders')} showBack onBack={() => {}} />
 
       <Container hasNavbar hasTabbar>
-        <TabFilter
-          tabs={tabs}
-          activeTab={activeTab}
-          onChange={setActiveTab}
-          variant="underline"
-        />
+        <TabFilter tabs={tabs} activeTab={activeTab} onChange={setActiveTab} variant="underline" />
 
         {filteredOrders.length === 0 ? (
           <Empty

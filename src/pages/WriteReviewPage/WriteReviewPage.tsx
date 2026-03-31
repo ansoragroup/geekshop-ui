@@ -1,26 +1,34 @@
 import { useState, useRef } from 'react';
-import {
-  NavBar,
-  Container,
-  Rating,
-  Button,
-  Divider,
-  Toast,
-  useGeekShop,
-} from '../../components';
+import { NavBar, Container, Rating, Button, Divider, Toast, useGeekShop } from '../../components';
 import styles from './WriteReviewPage.module.scss';
 
 /* ---------- SVG Icons ---------- */
 
 const PlusIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+  >
     <line x1="12" y1="5" x2="12" y2="19" />
     <line x1="5" y1="12" x2="19" y2="12" />
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 14 14"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+  >
     <line x1="2" y1="2" x2="12" y2="12" />
     <line x1="12" y1="2" x2="2" y2="12" />
   </svg>
@@ -31,12 +39,12 @@ const CloseIcon = () => (
 const mockProduct = {
   name: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
   variant: '8GB / Qora',
-  image: 'https://picsum.photos/seed/review-gpu/80/80',
+  image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=80&h=80&fit=crop',
 };
 
 const mockImages = [
-  'https://picsum.photos/seed/review-img1/200/200',
-  'https://picsum.photos/seed/review-img2/200/200',
+  'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
+  'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
 ];
 
 const MAX_TEXT_LENGTH = 500;
@@ -67,8 +75,8 @@ export const WriteReviewPage: React.FC<WriteReviewPageProps> = ({
   const [rating, setRating] = useState(initialRating);
   const [reviewText, setReviewText] = useState(
     hasText
-      ? 'Juda yaxshi videokarta! O\'yinlarda zo\'r ishlaydi, harorat past, shovqin kam. Tavsiya qilaman.'
-      : '',
+      ? "Juda yaxshi videokarta! O'yinlarda zo'r ishlaydi, harorat past, shovqin kam. Tavsiya qilaman."
+      : ''
   );
   const [images, setImages] = useState<string[]>(hasImages ? mockImages : []);
   const [toastVisible, setToastVisible] = useState(false);
@@ -104,7 +112,8 @@ export const WriteReviewPage: React.FC<WriteReviewPageProps> = ({
     const remaining = MAX_IMAGES - images.length;
     const newFiles = Array.from(files).slice(0, remaining);
     const newUrls = newFiles.map(
-      (_, i) => `https://picsum.photos/seed/upload-${Date.now()}-${i}/200/200`,
+      (_, i) =>
+        `https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop&q=${Date.now()}-${i}`
     );
     setImages((prev) => [...prev, ...newUrls]);
     e.target.value = '';
@@ -152,13 +161,7 @@ export const WriteReviewPage: React.FC<WriteReviewPageProps> = ({
         <div className={styles.ratingSection}>
           <h3 className={styles.sectionTitle}>{t('review.rateProduct')}</h3>
           <div className={styles.ratingWrap}>
-            <Rating
-              value={rating}
-              onChange={setRating}
-              interactive
-              size="lg"
-              showCount={false}
-            />
+            <Rating value={rating} onChange={setRating} interactive size="lg" showCount={false} />
           </div>
           {isRatingError && (
             <span className={styles.errorText} role="alert">
@@ -192,9 +195,7 @@ export const WriteReviewPage: React.FC<WriteReviewPageProps> = ({
 
         {/* Image upload section */}
         <div className={styles.imageSection}>
-          <h3 className={styles.sectionTitle}>
-            {t('review.addPhotos')}
-          </h3>
+          <h3 className={styles.sectionTitle}>{t('review.addPhotos')}</h3>
           <div className={styles.imageGrid}>
             {images.map((src, index) => (
               <div key={src} className={styles.imageThumbnail}>
@@ -227,9 +228,7 @@ export const WriteReviewPage: React.FC<WriteReviewPageProps> = ({
               </div>
             )}
           </div>
-          <span className={styles.imageHint}>
-            {t('review.imageHint', { max: MAX_IMAGES })}
-          </span>
+          <span className={styles.imageHint}>{t('review.imageHint', { max: MAX_IMAGES })}</span>
           <input
             ref={fileInputRef}
             type="file"

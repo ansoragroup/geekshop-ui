@@ -5,7 +5,7 @@ import type { ProductCardFlatProps } from '../ProductCard';
 const sampleProducts: ProductCardFlatProps[] = [
   {
     image:
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop&auto=format',
     title: 'MSI GeForce RTX 4060 Ventus 2X 8GB GDDR6',
     price: 5_200_000,
     originalPrice: 5_800_000,
@@ -15,7 +15,7 @@ const sampleProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&auto=format',
     title: 'AMD Ryzen 7 7800X3D Processor',
     price: 6_350_000,
     badge: 'new',
@@ -31,7 +31,7 @@ const sampleProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop&auto=format',
     title: 'Kingston Fury Beast DDR5 32GB (2x16GB) 5600MHz',
     price: 1_850_000,
     soldCount: '350+ sotilgan',
@@ -48,7 +48,7 @@ const sampleProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop&auto=format',
     title: 'Lenovo IdeaPad Gaming 3 RTX 4050 16GB',
     price: 11_900_000,
     originalPrice: 13_500_000,
@@ -57,14 +57,14 @@ const sampleProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=400&fit=crop&auto=format',
     title: 'ASUS Dual GeForce RTX 4070 OC 12GB GDDR6X',
     price: 8_490_000,
     badge: 'top',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=400&fit=crop&auto=format',
     title: 'MSI MAG B650 Tomahawk WiFi ATX Motherboard',
     price: 3_200_000,
     soldCount: '180+ sotilgan',
@@ -75,7 +75,7 @@ const sampleProducts: ProductCardFlatProps[] = [
 const waterfallProducts: ProductCardFlatProps[] = [
   {
     image:
-      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&h=560&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=560&fit=crop&auto=format',
     title: 'Xiaomi Mi Band 8 Pro Smart Bracelet',
     price: 490_000,
     originalPrice: 590_000,
@@ -85,14 +85,14 @@ const waterfallProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=400&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop&auto=format',
     title: 'Baseus 65W GaN USB-C Charger',
     price: 245_000,
     soldCount: '800+ sotilgan',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&h=600&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=600&fit=crop&auto=format',
     title: 'Samsung Galaxy S24 Ultra Case Silicone Cover Original',
     price: 189_000,
     originalPrice: 250_000,
@@ -101,7 +101,7 @@ const waterfallProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1628277613967-6abca504d0ac?w=400&h=400&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&auto=format',
     title: 'Logitech G Pro X Superlight Wireless Mouse',
     price: 1_350_000,
     badge: 'new',
@@ -117,7 +117,7 @@ const waterfallProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=400&h=520&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=520&fit=crop&auto=format',
     title: 'Anker Soundcore Liberty 4 NC True Wireless Earbuds',
     price: 890_000,
     soldCount: '1500+ sotilgan',
@@ -135,7 +135,7 @@ const waterfallProducts: ProductCardFlatProps[] = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=320&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=320&fit=crop&auto=format',
     title: 'Keychron K2 Pro Mechanical Keyboard',
     price: 1_100_000,
     badge: 'new',

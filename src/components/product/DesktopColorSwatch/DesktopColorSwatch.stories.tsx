@@ -88,22 +88,22 @@ export const MaterialSwatches: Story = {
     options: [
       {
         value: 'leather',
-        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=80&h=80&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=80&h=80&fit=crop',
         label: 'Leather',
       },
       {
         value: 'fabric',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop',
+        image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=80&h=80&fit=crop',
         label: 'Fabric',
       },
       {
         value: 'metal',
-        image: 'https://images.unsplash.com/photo-1519338381761-c7523edc1f46?w=80&h=80&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=80&h=80&fit=crop',
         label: 'Metal',
       },
       {
         value: 'wood',
-        image: 'https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=80&h=80&fit=crop',
+        image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=80&h=80&fit=crop',
         label: 'Wood',
       },
     ],
@@ -219,12 +219,12 @@ export const MixedSwatches: Story = {
       { value: 'solid-white', color: '#FAFAFA', label: 'Solid White' },
       {
         value: 'pattern-stripe',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=80&h=80&fit=crop',
+        image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=80&h=80&fit=crop',
         label: 'Striped',
       },
       {
         value: 'pattern-plaid',
-        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=80&h=80&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=80&h=80&fit=crop',
         label: 'Plaid',
       },
     ],

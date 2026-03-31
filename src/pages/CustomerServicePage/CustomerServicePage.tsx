@@ -1,47 +1,84 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import {
-  NavBar,
-  Container,
-  Input,
-  Button,
-  Chip,
-  Avatar,
-  useGeekShop,
-} from '../../components';
+import { NavBar, Container, Input, Button, Chip, Avatar, useGeekShop } from '../../components';
 import styles from './CustomerServicePage.module.scss';
 
 /* ---------- Icons ---------- */
 
 const SendIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <line x1="22" y1="2" x2="11" y2="13" />
     <polygon points="22 2 15 22 11 13 2 9 22 2" />
   </svg>
 );
 
 const OrderIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="3" y="3" width="18" height="18" rx="2" />
     <path d="M3 9h18M9 21V9" />
   </svg>
 );
 
 const PaymentIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="1" y="4" width="22" height="16" rx="2" />
     <line x1="1" y1="10" x2="23" y2="10" />
   </svg>
 );
 
 const ReturnIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="1 4 1 10 7 10" />
     <path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
   </svg>
 );
 
 const DeliveryIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="1" y="3" width="15" height="13" />
     <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
     <circle cx="5.5" cy="18.5" r="2.5" />
@@ -78,9 +115,7 @@ export interface CustomerServicePageProps {
   hasMessages?: boolean;
 }
 
-export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({
-  hasMessages = true,
-}) => {
+export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({ hasMessages = true }) => {
   const { t } = useGeekShop();
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -115,10 +150,7 @@ export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({
       ]
     : [];
 
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    ...initialMessages,
-    ...exampleMessages,
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([...initialMessages, ...exampleMessages]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -175,7 +207,7 @@ export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({
       };
       setMessages((prev) => [...prev, userMsg]);
     },
-    [t],
+    [t]
   );
 
   const handleKeyDown = useCallback(
@@ -185,17 +217,13 @@ export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({
         handleSend();
       }
     },
-    [handleSend],
+    [handleSend]
   );
 
   return (
     <div className={styles.page}>
       {/* NavBar */}
-      <NavBar
-        title={t('page.customerService')}
-        showBack
-        onBack={() => {}}
-      />
+      <NavBar title={t('page.customerService')} showBack onBack={() => {}} />
 
       {/* Messages area */}
       <div className={styles.messagesArea}>
@@ -203,7 +231,7 @@ export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({
           {/* Bot intro */}
           <div className={styles.botIntro}>
             <Avatar
-              src="https://picsum.photos/seed/cs-bot/64/64"
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=64&h=64&fit=crop"
               alt={t('customerService.botName')}
               size="lg"
             />
@@ -214,16 +242,18 @@ export const CustomerServicePage: React.FC<CustomerServicePageProps> = ({
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className={`${styles.messageRow} ${msg.type === 'user' ? styles.messageUser : styles.messageBot}`}
+              className={`${styles.messageRow} ${
+                msg.type === 'user' ? styles.messageUser : styles.messageBot
+              }`}
             >
-              <div className={`${styles.bubble} ${msg.type === 'user' ? styles.bubbleUser : styles.bubbleBot}`}>
+              <div
+                className={`${styles.bubble} ${
+                  msg.type === 'user' ? styles.bubbleUser : styles.bubbleBot
+                }`}
+              >
                 <p className={styles.bubbleText}>{msg.text}</p>
                 {msg.action && (
-                  <button
-                    type="button"
-                    className={styles.actionBtn}
-                    onClick={msg.action.onClick}
-                  >
+                  <button type="button" className={styles.actionBtn} onClick={msg.action.onClick}>
                     {msg.action.label}
                   </button>
                 )}

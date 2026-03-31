@@ -5,8 +5,8 @@ import { ImageUploader } from './ImageUploader';
 
 const sampleImages = [
   'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200&h=200&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=200&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&h=200&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=200&h=200&fit=crop&auto=format',
 ];
 
 const meta = {
@@ -45,11 +45,11 @@ export const WithImages: Story = {
 export const MaxReached: Story = {
   args: {
     value: [
-      'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=200&h=200&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop&auto=format',
       'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&h=200&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=200&h=200&fit=crop&auto=format',
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527814050087-3793815479db?w=200&h=200&fit=crop&auto=format',
     ],
     maxCount: 5,
   },
@@ -89,7 +89,7 @@ export const Interactive: Story = {
   name: 'Review Photo Upload',
   render: () => {
     const [images, setImages] = useState<string[]>([
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&auto=format',
     ]);
 
     return (

@@ -421,9 +421,9 @@ export const ImageGallery: Story = {
         {[
           'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=300&fit=crop',
           'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop',
-          'https://images.unsplash.com/photo-1555618568-bce51e8e11c6?w=300&h=300&fit=crop',
+          'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop',
           'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=300&h=300&fit=crop',
-          'https://images.unsplash.com/photo-1600861194942-f883de0dfe96?w=300&h=300&fit=crop',
+          'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=300&h=300&fit=crop',
           'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop',
         ].map((src, i) => (
           <img

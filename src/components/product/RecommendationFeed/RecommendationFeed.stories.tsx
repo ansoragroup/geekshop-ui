@@ -24,14 +24,14 @@ const sampleProducts = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=300&h=300&fit=crop&auto=format',
     title: 'AMD Ryzen 7 7800X3D Processor',
     price: 4200000,
     badge: 'hot' as const,
   },
   {
     image:
-      'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=300&fit=crop&auto=format',
     title: 'Samsung Odyssey G7 32" 240Hz Monitor',
     price: 6800000,
     originalPrice: 7500000,
@@ -39,14 +39,14 @@ const sampleProducts = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop&auto=format',
     title: 'ASUS ROG Strix B650E Motherboard',
     price: 3100000,
     badge: 'new' as const,
   },
   {
     image:
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=300&fit=crop&auto=format',
     title: 'Corsair Vengeance DDR5 32GB Kit',
     price: 1200000,
     soldCount: '1.2k+ sold',
@@ -61,27 +61,27 @@ const sampleProducts = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1546868871-af0de0ae72be?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=300&h=300&fit=crop&auto=format',
     title: 'Logitech G Pro X Superlight 2 Mouse',
     price: 1800000,
     badge: 'top' as const,
   },
   {
     image:
-      'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=300&fit=crop&auto=format',
     title: 'Corsair RM1000x Power Supply 1000W',
     price: 2100000,
   },
   {
     image:
-      'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527814050087-3793815479db?w=300&h=300&fit=crop&auto=format',
     title: 'Noctua NH-D15 CPU Cooler',
     price: 1500000,
     soldCount: '800+ sold',
   },
   {
     image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&auto=format',
+      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop&auto=format',
     title: 'LG UltraGear 27" 4K IPS 144Hz',
     price: 5500000,
     originalPrice: 6200000,

@@ -28,17 +28,17 @@ type Story = StoryObj<typeof meta>;
 
 const headphoneImages = [
   'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&h=600&fit=crop',
 ];
 
 const sneakerImages = [
-  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop',
 ];
 
 // ─── Default (5 images) ──────────────────────────────────────────────────────
@@ -64,7 +64,7 @@ export const FullFeatured: Story = {
 
 export const SingleImage: Story = {
   args: {
-    images: ['https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&h=600&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=600&h=600&fit=crop'],
   },
 };
 
@@ -92,15 +92,15 @@ export const ManyImages: Story = {
   args: {
     images: [
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600&h=600&fit=crop',
     ],
   },
 };

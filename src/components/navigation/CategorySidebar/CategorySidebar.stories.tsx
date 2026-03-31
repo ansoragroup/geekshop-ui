@@ -46,7 +46,7 @@ const categoryProducts: Record<
     {
       name: 'RX 7900 XTX 24GB',
       price: '15 200 000',
-      img: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=180&h=180&fit=crop',
+      img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=180&h=180&fit=crop',
       sold: '89 sotilgan',
     },
     {
@@ -65,7 +65,7 @@ const categoryProducts: Record<
     {
       name: 'RTX 4080 Super FE',
       price: '18 700 000',
-      img: 'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=180&h=180&fit=crop',
+      img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=180&h=180&fit=crop',
       badge: 'TOP',
       sold: '210 sotilgan',
     },
@@ -81,7 +81,7 @@ const categoryProducts: Record<
     {
       name: 'AMD Ryzen 9 7950X3D',
       price: '9 100 000',
-      img: 'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=180&h=180&fit=crop',
+      img: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=180&h=180&fit=crop',
       badge: 'TOP',
       sold: '76 sotilgan',
     },
@@ -101,7 +101,7 @@ const categoryProducts: Record<
     {
       name: 'Ryzen 5 7600X',
       price: '3 200 000',
-      img: 'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=180&h=180&fit=crop',
+      img: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=180&h=180&fit=crop',
       badge: 'SALE',
       sold: '890 sotilgan',
     },
@@ -123,7 +123,7 @@ const categoryProducts: Record<
     {
       name: 'LG 27GP950 4K 144Hz',
       price: '9 600 000',
-      img: 'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=180&h=180&fit=crop',
+      img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=180&h=180&fit=crop',
       sold: '112 sotilgan',
     },
     {
@@ -142,7 +142,7 @@ const categoryProducts: Record<
     {
       name: 'AOC 24G2SP 165Hz',
       price: '2 900 000',
-      img: 'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=180&h=180&fit=crop',
+      img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=180&h=180&fit=crop',
       badge: 'SALE',
       sold: '780 sotilgan',
     },
@@ -402,21 +402,21 @@ const productImages: Record<string, string[]> = {
   gpu: [
     'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
     'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
-    'https://images.unsplash.com/photo-1555618254-5e7c55d1a0b3?w=160&h=160&fit=crop',
+    'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=160&h=160&fit=crop',
   ],
   cpu: [
     'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=160&h=160&fit=crop',
-    'https://images.unsplash.com/photo-1592664474505-51c4993f3ddb?w=160&h=160&fit=crop',
+    'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=160&h=160&fit=crop',
     'https://images.unsplash.com/photo-1518770660439-4636190af475?w=160&h=160&fit=crop',
   ],
   monitor: [
     'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=160&h=160&fit=crop',
-    'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?w=160&h=160&fit=crop',
+    'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
     'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=160&h=160&fit=crop',
   ],
   laptop: [
     'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=160&h=160&fit=crop',
-    'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+    'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
     'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=160&h=160&fit=crop',
   ],
 };

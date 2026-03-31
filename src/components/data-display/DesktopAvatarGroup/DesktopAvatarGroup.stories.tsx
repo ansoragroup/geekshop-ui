@@ -27,11 +27,11 @@ const sampleAvatars = [
     name: 'Dilshod Rahimov',
   },
   {
-    src: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=128&h=128&fit=crop&auto=format',
+    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=128&h=128&fit=crop&auto=format',
     name: 'Aziza Karimova',
   },
   {
-    src: 'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=128&h=128&fit=crop&auto=format',
+    src: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=128&h=128&fit=crop&auto=format',
     name: 'Rustam Toshmatov',
   },
   { name: 'Nodira Saidova' },
@@ -41,7 +41,7 @@ const sampleAvatars = [
   },
   { name: 'Malika Umarova' },
   {
-    src: 'https://images.unsplash.com/photo-1583394838336-d831d2d8d3da?w=128&h=128&fit=crop&auto=format',
+    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=128&h=128&fit=crop&auto=format',
     name: 'Jasur Kamolov',
   },
   { name: 'Gulnora Alimova' },

@@ -19,11 +19,11 @@ import { DefaultTopBar, DefaultHeader, DefaultMegaMenu, DefaultFooter } from '..
 import styles from './DesktopProductDetailPage.module.scss';
 
 const productImages = [
-  'https://picsum.photos/seed/pdp-main/600/600',
-  'https://picsum.photos/seed/pdp-angle/600/600',
-  'https://picsum.photos/seed/pdp-back/600/600',
-  'https://picsum.photos/seed/pdp-box/600/600',
-  'https://picsum.photos/seed/pdp-ports/600/600',
+  'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=600&h=600&fit=crop',
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=600&fit=crop',
 ];
 
 const specs = [
@@ -45,7 +45,7 @@ const reviews = [
   {
     user: {
       name: 'Dilshod Rahimov',
-      avatar: 'https://picsum.photos/seed/user-1/64/64',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop',
     } as ReviewUser,
     rating: 5,
     content:
@@ -53,8 +53,8 @@ const reviews = [
     date: '14 March, 2026',
     variant: '12GB / Black',
     images: [
-      'https://picsum.photos/seed/review-img-1/200/200',
-      'https://picsum.photos/seed/review-img-2/200/200',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop',
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
     ],
   },
   {
@@ -68,14 +68,14 @@ const reviews = [
   {
     user: {
       name: 'Bekzod Tursunov',
-      avatar: 'https://picsum.photos/seed/user-3/64/64',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop',
     } as ReviewUser,
     rating: 5,
     content:
       'Best value for money. Massive upgrade from my GTX 1660. DLSS 3 technology works great and significantly boosts FPS.',
     date: '10 March, 2026',
     variant: '12GB / Black',
-    images: ['https://picsum.photos/seed/review-img-3/200/200'],
+    images: ['https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=200&h=200&fit=crop'],
   },
 ];
 

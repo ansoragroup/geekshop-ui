@@ -24,7 +24,7 @@ type Story = StoryObj<typeof meta>;
 const sampleProduct = {
   name: 'NVIDIA GeForce RTX 4060 Ti 8GB GDDR6',
   image:
-    'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=200&h=200&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&h=200&fit=crop&auto=format',
   price: 4_199_000,
   originalPrice: 5_999_000,
 };
@@ -46,7 +46,7 @@ export const OneJoined: Story = {
     product: {
       name: 'Intel Core i7-14700K Processor 20-Core',
       image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&auto=format',
       price: 3_499_000,
       originalPrice: 4_799_000,
     },
@@ -64,7 +64,7 @@ export const GroupFull: Story = {
     product: {
       name: 'Samsung 990 EVO Plus SSD 2TB NVMe M.2',
       image:
-        'https://images.unsplash.com/photo-1557683316-973673baf926?w=200&h=200&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&h=200&fit=crop&auto=format',
       price: 1_299_000,
       originalPrice: 1_799_000,
     },

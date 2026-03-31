@@ -46,7 +46,7 @@ const notifications: Notification[] = [
     message: 'Faqat bugun! RTX 4060, 4070, 4080 videokartalariga katta chegirma. Shoshiling!',
     timestamp: '1 soat oldin',
     read: false,
-    avatar: 'https://picsum.photos/seed/notif-promo1/64/64',
+    avatar: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=64&h=64&fit=crop',
     avatarName: 'GeekShop',
     badgeColor: 'primary',
   },
@@ -64,7 +64,8 @@ const notifications: Notification[] = [
     id: '4',
     type: 'system',
     title: 'Xavfsizlik xabarnomasi',
-    message: 'Hisobingizga yangi qurilmadan kirish aniqlandi. Agar bu siz bo\'lmasangiz, parolingizni o\'zgartiring.',
+    message:
+      "Hisobingizga yangi qurilmadan kirish aniqlandi. Agar bu siz bo'lmasangiz, parolingizni o'zgartiring.",
     timestamp: '5 soat oldin',
     read: true,
     avatarName: 'Xavfsizlik',
@@ -73,11 +74,12 @@ const notifications: Notification[] = [
   {
     id: '5',
     type: 'promo',
-    title: 'Kupon sovg\'a! GEEK2026',
-    message: 'Sizga 500 000 so\'mlik kupon berildi. 31 mart kunigacha amal qiladi. 5 000 000 so\'mdan ortiq buyurtmalarda foydalaning.',
+    title: "Kupon sovg'a! GEEK2026",
+    message:
+      "Sizga 500 000 so'mlik kupon berildi. 31 mart kunigacha amal qiladi. 5 000 000 so'mdan ortiq buyurtmalarda foydalaning.",
     timestamp: '1 kun oldin',
     read: true,
-    avatar: 'https://picsum.photos/seed/notif-promo2/64/64',
+    avatar: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=64&h=64&fit=crop',
     avatarName: 'Kupon',
     badgeColor: 'primary',
   },
@@ -85,7 +87,7 @@ const notifications: Notification[] = [
     id: '6',
     type: 'order',
     title: "To'lov muvaffaqiyatli",
-    message: 'GS-2026031201 raqamli buyurtmangiz uchun 5 200 000 so\'m to\'landi. UzCard •••• 4523',
+    message: "GS-2026031201 raqamli buyurtmangiz uchun 5 200 000 so'm to'landi. UzCard •••• 4523",
     timestamp: '2 kun oldin',
     read: true,
     avatarName: "To'lov",
@@ -104,11 +106,11 @@ const notifications: Notification[] = [
   {
     id: '8',
     type: 'promo',
-    title: "8 mart bayramiga maxsus chegirmalar!",
+    title: '8 mart bayramiga maxsus chegirmalar!',
     message: 'Barcha elektronika mahsulotlariga 15% gacha chegirma. Faqat 8-10 mart kunlari.',
     timestamp: '7 kun oldin',
     read: true,
-    avatar: 'https://picsum.photos/seed/notif-promo3/64/64',
+    avatar: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=64&h=64&fit=crop',
     avatarName: 'Bayram',
     badgeColor: 'primary',
   },
@@ -152,9 +154,7 @@ export interface NotificationsPageProps {
   empty?: boolean;
 }
 
-export const NotificationsPage: React.FC<NotificationsPageProps> = ({
-  empty = false,
-}) => {
+export const NotificationsPage: React.FC<NotificationsPageProps> = ({ empty = false }) => {
   const { t } = useGeekShop();
   const [activeTab, setActiveTab] = useState('all');
   const [dismissedIds, setDismissedIds] = useState<Set<string>>(new Set());
@@ -186,7 +186,16 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
                 {
                   key: 'mark-read',
                   icon: (
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
                       <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
                       <polyline points="22 4 12 14.01 9 11.01" />
                     </svg>
@@ -200,12 +209,7 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
       />
 
       <Container hasNavbar hasTabbar>
-        <TabFilter
-          tabs={tabs}
-          activeTab={activeTab}
-          onChange={setActiveTab}
-          variant="underline"
-        />
+        <TabFilter tabs={tabs} activeTab={activeTab} onChange={setActiveTab} variant="underline" />
 
         {activeNotifications.length === 0 ? (
           <Empty
@@ -229,22 +233,18 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
               >
                 <div className={`${styles.notifItem} ${!notif.read ? styles.notifUnread : ''}`}>
                   <div className={styles.notifAvatar}>
-                    <Badge
-                      type="dot"
-                      color={notif.badgeColor ?? 'primary'}
-                      position="top-right"
-                    >
-                      <Avatar
-                        src={notif.avatar}
-                        name={notif.avatarName}
-                        size="md"
-                      />
+                    <Badge type="dot" color={notif.badgeColor ?? 'primary'} position="top-right">
+                      <Avatar src={notif.avatar} name={notif.avatarName} size="md" />
                     </Badge>
                   </div>
 
                   <div className={styles.notifContent}>
                     <div className={styles.notifHeader}>
-                      <span className={`${styles.notifTitle} ${!notif.read ? styles.notifTitleUnread : ''}`}>
+                      <span
+                        className={`${styles.notifTitle} ${
+                          !notif.read ? styles.notifTitleUnread : ''
+                        }`}
+                      >
                         {notif.title}
                       </span>
                       {!notif.read && <span className={styles.unreadDot} />}

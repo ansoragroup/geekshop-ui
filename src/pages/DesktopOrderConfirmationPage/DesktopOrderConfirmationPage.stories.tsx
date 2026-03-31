@@ -27,14 +27,14 @@ export const WithInstallment: Story = {
     items: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
         name: 'Apple MacBook Pro 14" M3 Pro 18GB',
         quantity: 1,
         price: 23_000_000,
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1555618568-bfe052310f39?w=160&h=160&fit=crop',
         name: 'MacBook Pro 14" Leather Sleeve',
         quantity: 1,
         price: 850_000,
@@ -86,7 +86,7 @@ export const MultiItemOrder: Story = {
     items: [
       {
         id: '1',
-        image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=160&h=160&fit=crop',
         name: 'Apple MacBook Air M3 15" 16GB 512GB',
         quantity: 1,
         price: 18_900_000,
@@ -107,7 +107,7 @@ export const MultiItemOrder: Story = {
       },
       {
         id: '4',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
         name: 'Apple AirPods Pro 2nd Gen USB-C',
         quantity: 1,
         price: 2_800_000,
@@ -150,7 +150,7 @@ export const InstallmentExpress: Story = {
       },
       {
         id: '2',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=160&h=160&fit=crop',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=160&h=160&fit=crop',
         name: 'Samsung Galaxy Buds3 Pro',
         quantity: 1,
         price: 2_200_000,

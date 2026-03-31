@@ -10,11 +10,13 @@ const meta = {
     layout: 'centered',
     viewport: { defaultViewport: 'desktop' },
   },
-  decorators: [(Story) => (
-    <div style={{ width: 700, padding: 24, background: '#f5f5f5' }}>
-      <Story />
-    </div>
-  )],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 700, padding: 24, background: '#f5f5f5' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof DesktopGroupBuyCard>;
 
 export default meta;
@@ -25,16 +27,13 @@ export const Default: Story = {
   args: {
     product: {
       name: 'Apple AirPods Pro 2nd Generation with USB-C',
-      image: 'https://images.unsplash.com/photo-1606220838315-056192d5e927?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop',
       price: 2_800_000,
       originalPrice: 3_500_000,
     },
     groupSize: 5,
     currentMembers: 3,
-    memberAvatars: [
-      'https://i.pravatar.cc/64?img=1',
-      'https://i.pravatar.cc/64?img=2',
-    ],
+    memberAvatars: ['https://i.pravatar.cc/64?img=1', 'https://i.pravatar.cc/64?img=2'],
     timeLeft: 7200,
     onJoinGroup: fn(),
     onBuyAlone: fn(),
@@ -46,16 +45,13 @@ export const AlmostFull: Story = {
   args: {
     product: {
       name: 'Samsung Galaxy Buds3 Pro Wireless Earbuds',
-      image: 'https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=200&h=200&fit=crop',
       price: 1_200_000,
       originalPrice: 1_800_000,
     },
     groupSize: 3,
     currentMembers: 2,
-    memberAvatars: [
-      'https://i.pravatar.cc/64?img=5',
-      'https://i.pravatar.cc/64?img=6',
-    ],
+    memberAvatars: ['https://i.pravatar.cc/64?img=5', 'https://i.pravatar.cc/64?img=6'],
     timeLeft: 1800,
     onJoinGroup: fn(),
     onBuyAlone: fn(),
@@ -89,15 +85,13 @@ export const Expired: Story = {
   args: {
     product: {
       name: 'JBL Charge 5 Portable Bluetooth Speaker',
-      image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=200&fit=crop',
       price: 1_500_000,
       originalPrice: 2_000_000,
     },
     groupSize: 4,
     currentMembers: 2,
-    memberAvatars: [
-      'https://i.pravatar.cc/64?img=20',
-    ],
+    memberAvatars: ['https://i.pravatar.cc/64?img=20'],
     timeLeft: 0,
     onJoinGroup: fn(),
     onBuyAlone: fn(),
@@ -109,7 +103,7 @@ export const LargeGroup: Story = {
   args: {
     product: {
       name: 'Xiaomi Robot Vacuum X20 Pro',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=200&h=200&fit=crop',
       price: 4_500_000,
       originalPrice: 6_800_000,
     },
@@ -151,15 +145,13 @@ export const TwoPersonGroup: Story = {
   args: {
     product: {
       name: 'Apple iPad Air M2 11" 256GB',
-      image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=200&h=200&fit=crop',
       price: 7_200_000,
       originalPrice: 9_500_000,
     },
     groupSize: 2,
     currentMembers: 1,
-    memberAvatars: [
-      'https://i.pravatar.cc/64?img=40',
-    ],
+    memberAvatars: ['https://i.pravatar.cc/64?img=40'],
     timeLeft: 5400,
     onJoinGroup: fn(),
     onBuyAlone: fn(),
@@ -171,7 +163,7 @@ export const UrgentTimer: Story = {
   args: {
     product: {
       name: 'Marshall Emberton II Portable Speaker',
-      image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=200&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=200&fit=crop',
       price: 1_800_000,
       originalPrice: 2_500_000,
     },
